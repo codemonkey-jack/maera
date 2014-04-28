@@ -3,18 +3,22 @@
 {% block content %}
 
 	<div class="content-wrapper">
+
 		<article {{ function( 'post_class' ) }} id="post-{{post.ID}}">
-			<section class="article-content">
-				{% include 'parts/single-title.twig' %}
 
-				<p class="blog-author">
-					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.display_date }}
-				</p>
+			{% do action( 'shoestrap_single_top' ) %}
 
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
+			{% include 'parts/single-title.twig' %}
+
+			{% do action( 'shoestrap_entry_meta' ) %}
+
+			<div class="entry-content">
+
+				{% do action( 'shoestrap_single_pre_content' ) %}
+				{{post.content}}
+				<div class="clearfix"></div>
+				{% do action( 'shoestrap_single_after_content' ) %}
+			</div>
 
 			<section class="comments">
 				<div class="respond">
@@ -31,6 +35,7 @@
 			</section>
 
 		</article>
-	</div> <!-- /content-wrapper -->
+
+	</div><!-- /content-wrapper -->
 
 {% endblock %}
