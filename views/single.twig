@@ -15,24 +15,14 @@
 			<div class="entry-content">
 
 				{% do action( 'shoestrap/single/pre_content' ) %}
-				{{post.content}}
-				<div class="clearfix"></div>
+				{{ post.content }}
+				{{ framework.clearfix }}
 				{% do action( 'shoestrap/single/after_content' ) %}
 			</div>
 
-			<section class="comments">
-				<div class="respond">
-					<h3 class="h2">Comments</h3>
-						{{ comment_form }}
-					</div>
-					<div class="responses">
+			<footer></footer>
 
-						{% for cmt in post.get_comments() %}
-							{% include "comment.twig" with {comment:cmt} %}
-						{% endfor %}
-					</div>
-
-			</section>
+			{% include 'comments.twig' %}
 
 		</article>
 
