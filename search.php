@@ -13,6 +13,8 @@ $context = Timber::get_context();
 
 $context['title'] = __( 'Search results for ', 'shoestrap' ) . get_search_query();
 $context['posts'] = Timber::get_posts();
-$context['framework'] = shoestrap_framework_array();
+
+global $ss_framework;
+$context['framework'] = $ss_framework;
 
 Timber::render( $templates, $context );

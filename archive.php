@@ -46,6 +46,8 @@ if ( is_day() ) {
 }
 
 $data['posts'] = Timber::get_posts();
-$context['framework'] = shoestrap_framework_array();
+
+global $ss_framework;
+$context['framework'] = $ss_framework;
 
 Timber::render( $templates, $data );

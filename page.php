@@ -18,7 +18,9 @@
 $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
-$context['framework'] = shoestrap_framework_array();
+
+global $ss_framework;
+$context['framework'] = $ss_framework;
 
 Timber::render(
 	array(
