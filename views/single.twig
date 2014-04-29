@@ -6,18 +6,18 @@
 
 		<article {{ function( 'post_class' ) }} id="post-{{post.ID}}">
 
-			{% do action( 'shoestrap_single_top' ) %}
+			{% do action( 'shoestrap/single/top' ) %}
 
 			{% include 'parts/single-title.twig' %}
 
-			{% do action( 'shoestrap_entry_meta' ) %}
+			{% do action( 'shoestrap/entry/meta' ) %}
 
 			<div class="entry-content">
 
-				{% do action( 'shoestrap_single_pre_content' ) %}
+				{% do action( 'shoestrap/single/pre_content' ) %}
 				{{post.content}}
 				<div class="clearfix"></div>
-				{% do action( 'shoestrap_single_after_content' ) %}
+				{% do action( 'shoestrap/single/after_content' ) %}
 			</div>
 
 			<section class="comments">
