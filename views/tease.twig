@@ -1,10 +1,21 @@
-<article class="tease tease-{{post.post_type}}" id="tease-{{post.ID}}">
-	{% block content %}
-		{% include 'parts/tease-title.twig' %}
-		<p>{{post.get_preview}}</p>
+<article {{ function( 'post_class' ) }} id="tease-{{ post.ID }}">
 
-		{% if post.get_thumbnail %}
-			<img src="{{post.thumbnail.src}}" />
-		{% endif %}
+	{% block content %}
+
+		{% do action( 'shoestrap/in_article/top' ) %}
+
+		{% include 'parts/tease-title.twig' %}
+
+		{% do action( 'shoestrap/entry/meta' ) %}
+
+		<div class="entry-summary">
+			{{ post.get_preview | apply_filters( 'shoestrap/excerpt' ) }}
+			{{ framework.clearfix }}
+		</div>
+
+		<footer class="entry-footer">
+			{% do action( 'shoestrap/entry/footer' ) %}
+		</footer>
+
 	{% endblock %}
 </article>
