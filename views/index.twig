@@ -1,10 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<h2>{{foo}}</h2>
-	<p>{{qux}}</p>
+
+	{% do action( 'shoestrap/index/begin' ) %}
+
 	{% for post in posts %}
+		{% do action( 'shoestrap/in_loop/begin' ) %}
 		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+		{% do action( 'shoestrap/in_loop/end' ) %}
 	{% endfor %}
+
+	{% do action( 'shoestrap/index/end' ) %}
 
 {% endblock %}
