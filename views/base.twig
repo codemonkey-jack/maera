@@ -1,47 +1,52 @@
 {% include 'html-header.twig' %}
-{% block head %}
-{% endblock %}
-</head>
-    <body class="{{body_class}}" data-source="base.twig">
-        <header class="header" >
-            {% block header %}
-            <div class="wrapper">
 
-                <h1 class="hdr-logo" role="banner">
-                    <a class="hdr-logo-link" href="/" title="Timber" rel="home">{{bloginfo('name')}}</a>
-                </h1>
-                <nav id="access" class="main-navigation" role="navigation">
-                    <ul>
-                    {% for item in menu.items %}
-                        <li id="menu-item-{{item.ID}}" class="menu-item menu-item-type-{{item.type}} menu-item-object-{{item.object}} menu-item-{{item.ID}}">
-                            <a href="{{item.link}}">{{item.title}}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                </nav><!-- #access -->
+<body class="{{ body_class }}" data-source="base.twig">
 
-            </div>
-            {% endblock %}
-        </header>
+	<a href="#content" class="sr-only">{{ __( 'Skip to main content', 'shoestrap' ) }}</a>
 
+	{% do action( 'get_header' ) %}
 
-        <section id="content" role="main" class="content-wrapper">
-            {% if title %}<h1>{{title}}</h1>{% endif %}
-            <div class="wrapper {{sidebar_class}}">
-                {% block content %}
-                    Sorry, no content
-                {% endblock %}
-            </div>
-            {% if sidebar %}
-                <aside class="layout-sidebar">
-                    {{sidebar}}
-                </aside>
-            {% endif %}
-        </section>
+	{% do action( 'shoestrap/top-bar/before' ) %}
+	{% include 'parts/top-bar.twig' %}
+	{% do action( 'shoestrap/top-bar/after' ) %}
 
-        <footer id="footer">
-            {% include 'footer.twig' %}
-        </footer>
-        {{ function('wp_footer') }}
-    </body>
+	{% do action( 'shoestrap/wrap/before' ) %}
+
+	{{ framework.open_container( 'div', 'wrap-main-section', 'wrap main-section' ) }}
+
+		{% do action( 'shoestrap/content/before' ) %}
+
+		<div class="content" id="content">
+
+			{{ framework.open_row( 'div', null, 'bg' ) }}
+
+				{% do action( 'shoestrap/main/before' ) %}
+				<main class="{{ 'main' | apply_filters( 'shoestrap_section_class_main' ) }}" role="main">
+
+					{% if title %}<h1>{{title}}</h1>{% endif %}
+					{% block content %}
+						Sorry, no content
+					{% endblock %}
+
+				</main><!-- /.main -->
+				{% do action( 'shoestrap/main/after' ) %}
+
+				{# TODO: PRIMARY SIDEBAR #}
+
+				{# TODO: SECONDARY SIDEBAR #}
+
+				{{ framework.clearfix }}
+
+			{{ framework.close_row( 'div' ) }}
+
+		</div><!-- /#content -->
+
+		{% do action( 'shoestrap/content/after' ) %}
+
+	{{ framework.close_container( 'div' ) }}
+
+	{% do action( 'shoestrap/footer/before' ) %}
+	{% include 'footer.twig' %}
+	{{ function( 'wp_footer' ) }}
+</body>
 </html>
