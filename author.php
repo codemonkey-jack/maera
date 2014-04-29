@@ -11,6 +11,7 @@ $author = new TimberUser( $wp_query->query_vars['author'] );
 
 $data['author'] = $author;
 $data['title']  = 'Author Archives: ' . $author->name();
+$context['framework'] = shoestrap_framework_array();
 
 Timber::render(
 	array(

@@ -8,6 +8,7 @@ $post = new TimberPost();
 $context['post'] = $post;
 $context['wp_title'] .= ' - ' . $post->title();
 $context['comment_form'] = TimberHelper::get_comment_form();
+$context['framework'] = shoestrap_framework_array();
 
 Timber::render(
 	array(

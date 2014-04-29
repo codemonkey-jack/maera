@@ -14,6 +14,7 @@ if ( ! class_exists( 'Timber' ) ) {
 $context = Timber::get_context();
 
 $context['posts'] = Timber::get_posts();
+$context['framework'] = shoestrap_framework_array();
 
 $templates = array( 'index.twig' );
 
