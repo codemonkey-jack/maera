@@ -3,16 +3,20 @@
 {% block content %}
 
 	<div class="content-wrapper">
-		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-			<section class="article-content">
-				<h1 class="article-h1">{{post.title}}</h1>
 
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
+		<article {{ function( 'post_class' ) }} id="tease-{{ post.ID }}">
+
+			{% include 'parts/single-title.twig' %}
+
+			{% do action( 'shoestrap/entry/meta' ) %}
+
+			{% do action( 'shoestrap/page/pre_content' ) %}
+			{{ post.content }}
+			{{ framework.clearfix }}
+			{% do action( 'shoestrap/page/after_content' ) %}
 
 		</article>
+
 	</div> <!-- /content-wrapper -->
 
 {% endblock %}
