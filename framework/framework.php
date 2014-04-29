@@ -1,14 +1,30 @@
 <?php
 
+if ( ! defined( 'SS_FRAMEWORK' ) ) {
+	define( 'SS_FRAMEWORK', 'bootstrap' );
+}
+
 // Require the Core Framework class
 require_once locate_template( '/framework/class-SS_Framework_Core.php' );
+
+// Get the active framework
+global $ss_active_framework;
+if ( ! isset( $ss_active_framework ) || null == $ss_active_framework ) {
+	require_once locate_template( '/framework/bootstrap/framework.php' );
+}
+
+global $ss_framework;
+$framework_class = $ss_active_framework['classname'];
+$ss_framework = $framework_class::get_instance();
 
 /**
  * Builds the framework array.
  * This will be used by Timber
  */
 function shoestrap_framework_array() {
-	$ss_framework = SS_Framework_Core::get_instance();
+	global $ss_active_framework;
+	$framework_class = $ss_active_framework['classname'];
+	$ss_framework = $framework_class::get_instance();
 
 	$framework = array();
 
