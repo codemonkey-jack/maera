@@ -21,7 +21,7 @@
 			{{ framework.open_row( 'div', null, 'bg' ) }}
 
 				{% do action( 'shoestrap/main/before' ) %}
-				<main class="{{ 'main' | apply_filters( 'shoestrap_section_class_main' ) }}" role="main">
+				<main class="{{ 'main' | apply_filters( 'shoestrap/section_class/main' ) }}" role="main">
 
 					{% if title %}<h1>{{title}}</h1>{% endif %}
 					{% block content %}
