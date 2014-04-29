@@ -10,7 +10,7 @@ function shoestrap_widgets_init() {
 	// Sidebars
 	register_sidebar( array(
 		'name'          => __( 'Primary Sidebar', 'shoestrap' ),
-		'id'            => 'sidebar-primary',
+		'id'            => 'sidebar_primary',
 		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => $before_title,
@@ -19,7 +19,7 @@ function shoestrap_widgets_init() {
 
 	register_sidebar( array(
 		'name'          => __( 'Secondary Sidebar', 'shoestrap' ),
-		'id'            => 'sidebar-secondary',
+		'id'            => 'sidebar_secondary',
 		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => $before_title,

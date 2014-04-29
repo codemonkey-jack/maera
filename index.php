@@ -18,6 +18,9 @@ $context['posts'] = Timber::get_posts();
 global $ss_framework;
 $context['framework'] = $ss_framework;
 
+$context['sidebar_primary']   = Timber::get_widgets( 'sidebar_primary' );
+$context['sidebar_secondary'] = Timber::get_widgets( 'sidebar_secondary' );
+
 $templates = array( 'index.twig' );
 
 if ( is_home() ) {

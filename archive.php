@@ -47,6 +47,9 @@ if ( is_day() ) {
 
 $data['posts'] = Timber::get_posts();
 
+$context['sidebar_primary']   = Timber::get_widgets( 'sidebar_primary' );
+$context['sidebar_secondary'] = Timber::get_widgets( 'sidebar_secondary' );
+
 global $ss_framework;
 $context['framework'] = $ss_framework;
 

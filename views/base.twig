@@ -31,9 +31,16 @@
 				</main><!-- /.main -->
 				{% do action( 'shoestrap/main/after' ) %}
 
-				{# TODO: PRIMARY SIDEBAR #}
+				{# PRIMARY SIDEBAR #}
+				<aside id="sidebar-primary" class="{{ 'sidebar' | apply_filters( 'shoestrap/section_class/primary' ) }}" role="complementary">
+					{{ sidebar_primary }}
+				</aside>
 
-				{# TODO: SECONDARY SIDEBAR #}
+				{# SECONDARY SIDEBAR #}
+				<aside id="sidebar-secondary" class="{{ 'sidebar' | apply_filters( 'shoestrap/section_class/secondary' ) }}" role="complementary">
+					{{ sidebar_secondary }}
+				</aside>
+
 
 				{{ framework.clearfix }}
 
