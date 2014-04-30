@@ -9,62 +9,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		private static $instance;
 
-		var $defines = array(
-			// Generic framework definitions
-			'shortname' => 'bootstrap',
-			'name'      => 'Bootstrap',
-			'classname' => 'SS_Framework_Bootstrap',
-			'compiler'  => 'less_php',
-
-			// Layout
-			'container'  => 'container',
-			'row'        => 'row',
-			'col-mobile' => 'col-xs',
-			'col-tablet' => 'col-sm',
-			'col-medium' => 'col-md',
-			'col-large'  => 'col-lg',
-
-			// Buttons
-			'button'         => 'btn',
-			'button-default' => 'btn-default',
-			'button-primary' => 'btn-primary',
-			'button-success' => 'btn-success',
-			'button-info'    => 'btn-info',
-			'button-warning' => 'btn-warning',
-			'button-danger'  => 'btn-danger',
-			'button-link'    => 'btn-link',
-
-			'button-extra-small' => 'btn-xs',
-			'button-small'       => 'btn-sm',
-			'button-medium'      => null,
-			'button-large'       => 'btn-lg',
-			'button-extra-large' => 'btn-lg',
-
-			'button-block'    => 'btn-block',
-			'button-radius'   => null,
-			'button-round'    => null,
-
-			// Button-Groups
-			'button-group'             => 'btn-group',
-			'button-group-extra-small' => 'btn-group-xs',
-			'button-group-small'       => 'btn-group-sm',
-			'button-group-default'     => null,
-			'button-group-large'       => 'btn-group-lg',
-			'button-group-extra-large' => 'btn-group-lg',
-
-			// Alerts
-			'alert'         => 'alert',
-			'alert-success' => 'alert-success',
-			'alert-info'    => 'alert-info',
-			'alert-warning' => 'alert-warning',
-			'alert-danger'  => 'alert-danger',
-
-			// Miscelaneous
-			'clearfix' => '<div class="clearfix"></div>',
-
-			// Forms
-			'form-input' => 'form-control',
-		);
 
 		/**
 		 * Class constructor
@@ -96,6 +40,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			add_action( 'shoestrap_pre_wrap', array( $this, 'breadcrumbs' ), 99 );
 			add_filter( 'wp_nav_menu_args',   array( $this, 'nav_menu_args' ) );
+
+      // Override defaults based on config file
+      $this->set_defaults();
 		}
 
 		/**
