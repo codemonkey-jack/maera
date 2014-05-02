@@ -1,0 +1,93 @@
+{% macro open_container(element, id, extra_classes, properties) %}
+	{# If we've set an ID, then create the ID segment of our macro. #}
+	{% if id is not null %}
+		{% set id_segment = " id=#{ id }" %}
+	{% endif %}
+
+	{# If we've set any extra classes, just add a space in front of them. #}
+	{% if extra_classes is not null %}
+		{% set extras = " { extra_classes }" %}
+	{% endif %}
+
+	{# If we've set any properties, just add a space in front of it. #}
+	{% if properties is not null %}
+		{% set extras = " { props }" %}
+	{% endif %}
+
+	<{{ element|default('div') }} class="{{ 'container' | apply_filters( 'shoestrap/container_class' ) }}{{ extras }}"{{ props }}>
+{% endmacro %}
+
+
+{% macro close_container(element) %}
+	</{{ element|default('div') }}>
+{% endmacro %}
+
+
+{% macro open_row(element, id, extra_classes, properties) %}
+	{# If we've set an ID, then create the ID segment of our macro. #}
+	{% if id is not null %}
+		{% set id_segment = " id=#{ id }" %}
+	{% endif %}
+
+	{# If we've set any extra classes, just add a space in front of them. #}
+	{% if extra_classes is not null %}
+		{% set extras = " { extra_classes }" %}
+	{% endif %}
+
+	{# If we've set any properties, just add a space in front of it. #}
+	{% if properties is not null %}
+		{% set extras = " { props }" %}
+	{% endif %}
+
+	<{{ element|default('div') }} class="row{{ extras }}"{{ props }}>
+{% endmacro %}
+
+
+{% macro close_row(element) %}
+	</{{ element|default('div') }}>
+{% endmacro %}
+
+
+{% macro open_col(element, sizes, id, extra_classes, properties) %}
+	{# If we've set an ID, then create the ID segment of our macro. #}
+	{% if id is not null %}
+		{% set id_segment = " id=#{ id }" %}
+	{% endif %}
+
+	{# If we've set any extra classes, just add a space in front of them. #}
+	{% if extra_classes is not null %}
+		{% set extras = " { extra_classes }" %}
+	{% endif %}
+
+	{# If we've set any properties, just add a space in front of it. #}
+	{% if properties is not null %}
+		{% set extras = " { props }" %}
+	{% endif %}
+
+	<{{ element|default('div') }} class="{{ column_classes( { sizes } ) }}{{ extras }}"{{ props }}>
+
+{% endmacro %}
+
+
+{% macro close_col(element) %}
+	</{{ element|default('div') }}>
+{% endmacro %}
+
+
+{% macro column_classes(sizes) %}
+	{% if sizes is iterable %}
+		{% for size in sizes %}
+			{% if size.mobile not null %} col-xs-{{ size.mobile }} {% endif %}
+			{% if size.tablet not null %} col-sm-{{ size.mobile }} {% endif %}
+			{% if size.medium not null %} col-md-{{ size.mobile }} {% endif %}
+			{% if size.large not null %} col-lg-{{ size.mobile }} {% endif %}
+		{% endfor %}
+	{% endif %}
+{% endmacro %}
+
+
+{% macro float_class(alignment) %}
+	pull-{{ alignment }}
+{% endmacro %}
+
+
