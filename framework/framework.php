@@ -17,6 +17,15 @@ if ( ! isset( $ss_active_framework ) || null == $ss_active_framework ) {
 	require_once locate_template( '/framework/bootstrap/framework.php' );
 }
 
+// Get instance of framework object
 global $ss_framework;
 $framework_class = $ss_active_framework['classname'];
 $ss_framework = $framework_class::get_instance();
+
+// Add the framework object to global timber context
+add_filter('timber_context','add_to_context');
+function add_to_context($data) {
+  global $ss_framework;
+  $data['framework'] = $ss_framework;
+  return $data;
+}

@@ -3,64 +3,17 @@
 /**
 * The Framework
 */
-class SS_Framework_Core extends TimberCore {
+class SS_Framework_Core {
 
 	public static $representation = 'framework';
 
 	private static $instance;
 
-	var $defines = array(
-		// Layout
-		'container'  => 'container',
-		'row'        => 'row',
-		'col-mobile' => 'small',
-		'col-tablet' => 'small',
-		'col-medium' => 'medium',
-		'col-large'  => 'large',
-
-		// Buttons
-		'button'         => 'button',
-		'button-default' => null,
-		'button-primary' => null,
-		'button-success' => 'success',
-		'button-info'    => 'secondary',
-		'button-warning' => 'alert',
-		'button-danger'  => 'alert',
-		'button-link'    => null,
-		'button-disabled'=> 'disabled',
-
-		'button-extra-small' => 'tiny',
-		'button-small'       => 'small',
-		'button-medium'      => null,
-		'button-large'       => 'large',
-		'button-extra-large' => 'large',
-		'button-block'			 => 'expand',
-
-		// Button-Groups
-		'button-group'             => 'button-group',
-		'button-group-extra-small' => null,
-		'button-group-small'       => null,
-		'button-group-default'     => null,
-		'button-group-large'       => null,
-		'button-group-extra-large' => null,
-		// Button Bar not supported
-
-		// Alerts
-		'alert'         => 'alert-box',
-		'alert-success' => 'success',
-		'alert-info'    => 'info',
-		'alert-warning' => 'warning',
-		'alert-danger'  => 'warning',
-
-		// Miscelaneous
-		'clearfix' => '<div class="clearfix"></div>',
-
-		// Forms
-		'form-input' => 'form-control',
-	);
+  protected $defines = null;
 
 	private function __construct() {
 		do_action( 'shoestrap_framework_include_modules' );
+    $this->set_defaults();
 	}
 
 	public static function get_instance() {
@@ -70,6 +23,20 @@ class SS_Framework_Core extends TimberCore {
 
 		return self::$instance;
 	}
+
+  public function set_defaults() {
+    $defaults = $this->get_defaults();
+    $this->defines = $defaults;
+  }
+
+  public function get_defaults() {
+    $reflector = new ReflectionClass(get_class($this));
+    $config_dir_arr = explode('/', $reflector->getFileName());
+    array_pop($config_dir_arr);
+    $config_dir = implode('/', $config_dir_arr);
+    $json_defaults = file_get_contents($config_dir . '/config.json', true);
+    return json_decode($json_defaults , true);
+  }
 
 	/**
 	 * Creates a container using the framework definitions.
