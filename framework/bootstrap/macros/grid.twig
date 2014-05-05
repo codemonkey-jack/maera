@@ -1,79 +1,54 @@
+{#
+	Open container.
+#}
 {% macro open_container(element, id, extra_classes, properties) %}
-	{# If we've set an ID, then create the ID segment of our macro. #}
-	{% if id is not null %}
-		{% set id_segment = " id=#{ id }" %}
-	{% endif %}
-
-	{# If we've set any extra classes, just add a space in front of them. #}
-	{% if extra_classes is not null %}
-		{% set extras = " { extra_classes }" %}
-	{% endif %}
-
-	{# If we've set any properties, just add a space in front of it. #}
-	{% if properties is not null %}
-		{% set extras = " { props }" %}
-	{% endif %}
-
-	<{{ element|default('div') }} class="{{ 'container' | apply_filters( 'shoestrap/container_class' ) }}{{ extras }}"{{ props }}>
+	<{{ element|default('div') }} class="{{ 'container'|apply_filters( 'shoestrap/container_class' ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
 {% endmacro %}
 
 
+{#
+	Close container.
+#}
 {% macro close_container(element) %}
 	</{{ element|default('div') }}>
 {% endmacro %}
 
 
+{#
+	Open row.
+#}
 {% macro open_row(element, id, extra_classes, properties) %}
-	{# If we've set an ID, then create the ID segment of our macro. #}
-	{% if id is not null %}
-		{% set id_segment = " id=#{ id }" %}
-	{% endif %}
-
-	{# If we've set any extra classes, just add a space in front of them. #}
-	{% if extra_classes is not null %}
-		{% set extras = " { extra_classes }" %}
-	{% endif %}
-
-	{# If we've set any properties, just add a space in front of it. #}
-	{% if properties is not null %}
-		{% set extras = " { props }" %}
-	{% endif %}
-
-	<{{ element|default('div') }} class="row{{ extras }}"{{ props }}>
+	<{{ element|default('div') }} class="row{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
 {% endmacro %}
 
 
+{#
+	Close row
+#}
 {% macro close_row(element) %}
 	</{{ element|default('div') }}>
 {% endmacro %}
 
 
+{#
+	Open column
+#}
 {% macro open_col(element, sizes, id, extra_classes, properties) %}
-	{# If we've set an ID, then create the ID segment of our macro. #}
-	{% if id is not null %}
-		{% set id_segment = " id=#{ id }" %}
-	{% endif %}
-
-	{# If we've set any extra classes, just add a space in front of them. #}
-	{% if extra_classes is not null %}
-		{% set extras = " { extra_classes }" %}
-	{% endif %}
-
-	{# If we've set any properties, just add a space in front of it. #}
-	{% if properties is not null %}
-		{% set extras = " { props }" %}
-	{% endif %}
-
-	<{{ element|default('div') }} class="{{ column_classes( { sizes } ) }}{{ extras }}"{{ props }}>
-
+	<{{ element|default('div') }} class="{{ column_classes( #{ sizes } ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
 {% endmacro %}
 
 
+{#
+	Close column
+#}
 {% macro close_col(element) %}
 	</{{ element|default('div') }}>
 {% endmacro %}
 
 
+{#
+	Calculate column classes
+#}
 {% macro column_classes(sizes) %}
 	{% if sizes is iterable %}
 		{% for size in sizes %}
@@ -84,10 +59,3 @@
 		{% endfor %}
 	{% endif %}
 {% endmacro %}
-
-
-{% macro float_class(alignment) %}
-	pull-{{ alignment }}
-{% endmacro %}
-
-
