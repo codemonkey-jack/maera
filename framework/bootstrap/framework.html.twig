@@ -40,7 +40,7 @@
 	Open column
 #}
 {% macro open_col(element, sizes, id, extra_classes, properties) %}
-	<{{ element|default('div') }} class="{{ column_classes( #{ sizes } ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
+	<{{ element|default('div') }} class="{{ _self.column_classes( sizes ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
 {% endmacro %}
 
 
@@ -58,10 +58,10 @@
 {% macro column_classes(sizes) %}
 	{% if sizes is iterable %}
 		{% for size in sizes %}
-			{% if size.mobile not null %} col-xs-{{ size.mobile }} {% endif %}
-			{% if size.tablet not null %} col-sm-{{ size.mobile }} {% endif %}
-			{% if size.medium not null %} col-md-{{ size.mobile }} {% endif %}
-			{% if size.large not null %} col-lg-{{ size.mobile }} {% endif %}
+			{% if size.mobile %} col-xs-{{ size.mobile }} {% endif %}
+			{% if size.tablet %} col-sm-{{ size.mobile }} {% endif %}
+			{% if size.medium %} col-md-{{ size.mobile }} {% endif %}
+			{% if size.large %} col-lg-{{ size.mobile }} {% endif %}
 		{% endfor %}
 	{% endif %}
 {% endmacro %}
@@ -78,7 +78,7 @@
 {% macro make_dropdown_button(color, size, type, extra, label, content) %}
 
 	<div class="btn-group">
-		<button type="button" class="dropdown-toggle {{ button_classes( #{ color }, #{ size }, #{ type } ) }}" data-toggle="dropdown">
+		<button type="button" class="dropdown-toggle {{ _self.button_classes(color, size, type) }}" data-toggle="dropdown">
 			{{ label }} <span class="caret"></span>
 		</button>
 
@@ -94,11 +94,11 @@
 
 	btn-{{ color }}
 
-	{% if size is 'extra-small' %}btn-xs{% endif %}
-	{% if size is 'small' %}btn-sm{% endif %}
-	{% if size is 'medium' %}{# No need for an extra class #}{% endif %}
-	{% if size is 'large' %}btn-lg{% endif %}
-	{% if size is 'extra-large' %}btn-lg{% endif %}
+	{% if size == 'extra-small' %}btn-xs{% endif %}
+	{% if size == 'small' %}btn-sm{% endif %}
+	{% if size == 'medium' %}{# No need for an extra class #}{% endif %}
+	{% if size == 'large' %}btn-lg{% endif %}
+	{% if size == 'extra-large' %}btn-lg{% endif %}
 
 	{{ type }}
 	{{ extra }}
@@ -112,11 +112,11 @@
 {% macro button_group_classes(size, type, extra_classes) %}
 
 	btn-group
-	{% if size is 'extra-small' %}btn-group-xs{% endif %}
-	{% if size is 'small' %}btn-group-sm{% endif %}
-	{% if size is 'medium' %}{# No need for an extra class #}{% endif %}
-	{% if size is 'large' %}btn-group-lg{% endif %}
-	{% if size is 'extra-large' %}btn-group-lg{% endif %}
+	{% if size == 'extra-small' %}btn-group-xs{% endif %}
+	{% if size == 'small' %}btn-group-sm{% endif %}
+	{% if size == 'medium' %}{# No need for an extra class #}{% endif %}
+	{% if size == 'large' %}btn-group-lg{% endif %}
+	{% if size == 'extra-large' %}btn-group-lg{% endif %}
 	{{ type }}
 	{{ extra_classes }}
 
@@ -133,7 +133,7 @@
 		{% if close|default(false) %}
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		{% endif %}
-		{{ message|trans({}, domain|default('messages'))|raw }}
+		{{ message|raw }}
 	</div>
 {% endmacro %}
 

@@ -15,9 +15,6 @@ $context = Timber::get_context();
 
 $context['posts'] = Timber::get_posts();
 
-global $ss_framework;
-$context['framework'] = $ss_framework;
-
 $context['sidebar_primary']   = Timber::get_widgets( 'sidebar_primary' );
 $context['sidebar_secondary'] = Timber::get_widgets( 'sidebar_secondary' );
 
@@ -27,4 +24,4 @@ if ( is_home() ) {
 	array_unshift( $templates, 'home.twig' );
 }
 
-Timber::render( $templates, $context );
+Timber::render( $templates, $context, false );
