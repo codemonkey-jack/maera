@@ -14,14 +14,15 @@ function shoestrap_customizer_controls( $wp_customize ) {
 	if ( isset( $controls ) ) {
 		foreach ( $controls as $control ) {
 
+			// Add settings
+			$wp_customize->add_setting( $control['setting'], array(
+				'default'    => $control['default'],
+				'type'       => 'theme_mod',
+				'capability' => 'edit_theme_options'
+			) );
+
 			// Checkbox controls
 			if ( 'checkbox' == $control['type'] ) {
-
-				$wp_customize->add_setting( $control['setting'], array(
-					'default'    => $control['default'],
-					'type'       => 'theme_mod',
-					'capability' => 'edit_theme_options'
-				) );
 
 				$wp_customize->add_control( $control['setting'], array(
 					'label'       => __( $control['label'], 'shoestrap' ),
@@ -34,12 +35,6 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Slider Controls
 			} elseif ( 'slider' == $control['type'] ) {
 
-				$wp_customize->add_setting( $control['setting'], array(
-					'default'    => $control['default'],
-					'type'       => 'theme_mod',
-					'capability' => 'edit_theme_options'
-				) );
-
 				$wp_customize->add_control( new Shoestrap_Customize_Control_Slider( $wp_customize, $control['setting'], array(
 						'label'    => $control['label'],
 						'section'  => $control['section'],
@@ -51,12 +46,6 @@ function shoestrap_customizer_controls( $wp_customize ) {
 
 			// Multiselect Controls
 			} elseif ( 'multiselect' == $control['type'] ) {
-
-				$wp_customize->add_setting( $control['setting'], array(
-					'default'    => $control['default'],
-					'type'       => 'theme_mod',
-					'capability' => 'edit_theme_options'
-				) );
 
 				$wp_customize->add_control( new Shoestrap_Customize_Control_Multiple_Select( $wp_customize, $control['setting'], array(
 						'label'    => $control['label'],
