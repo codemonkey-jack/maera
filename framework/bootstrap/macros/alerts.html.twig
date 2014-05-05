@@ -1,8 +1,0 @@
-{% macro alert(type, message, id, class, close) %}
-	<div class="alert{{ type ? ' alert-'~type : '' }} fade in {{ class|default('') }} {% if close|default(false) %}alert-dismissable{% endif %}">
-		{% if close|default(false) %}
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		{% endif %}
-		{{ message|trans({}, domain|default('messages'))|raw }}
-	</div>
-{% endmacro %}

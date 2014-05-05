@@ -1,0 +1,227 @@
+{#
+===============================================
+	GRID
+===============================================
+#}
+
+{#
+	Open container.
+#}
+{% macro open_container(element, id, extra_classes, properties) %}
+	<{{ element|default('div') }} class="{{ 'container'|apply_filters( 'shoestrap/container_class' ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
+{% endmacro %}
+
+
+{#
+	Close container.
+#}
+{% macro close_container(element) %}
+	</{{ element|default('div') }}>
+{% endmacro %}
+
+
+{#
+	Open row.
+#}
+{% macro open_row(element, id, extra_classes, properties) %}
+	<{{ element|default('div') }} class="row{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
+{% endmacro %}
+
+
+{#
+	Close row
+#}
+{% macro close_row(element) %}
+	</{{ element|default('div') }}>
+{% endmacro %}
+
+
+{#
+	Open column
+#}
+{% macro open_col(element, sizes, id, extra_classes, properties) %}
+	<{{ element|default('div') }} class="{{ column_classes( #{ sizes } ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
+{% endmacro %}
+
+
+{#
+	Close column
+#}
+{% macro close_col(element) %}
+	</{{ element|default('div') }}>
+{% endmacro %}
+
+
+{#
+	Calculate column classes
+#}
+{% macro column_classes(sizes) %}
+	{% if sizes is iterable %}
+		{% for size in sizes %}
+			{% if size.mobile not null %} col-xs-{{ size.mobile }} {% endif %}
+			{% if size.tablet not null %} col-sm-{{ size.mobile }} {% endif %}
+			{% if size.medium not null %} col-md-{{ size.mobile }} {% endif %}
+			{% if size.large not null %} col-lg-{{ size.mobile }} {% endif %}
+		{% endfor %}
+	{% endif %}
+{% endmacro %}
+
+{#
+===============================================
+	BUTTONS
+===============================================
+#}
+
+{#
+	Make dropdown buttons
+#}
+{% macro make_dropdown_button(color, size, type, extra, label, content) %}
+
+	<div class="btn-group">
+		<button type="button" class="dropdown-toggle {{ button_classes( #{ color }, #{ size }, #{ type } ) }}" data-toggle="dropdown">
+			{{ label }} <span class="caret"></span>
+		</button>
+
+		<ul class="dropdown-menu" role="menu">{{ content }}</ul>
+	</div>
+
+{% endmacro %}
+
+{#
+	Calculate button classes
+#}
+{% macro button_classes(color, size, type, extra) %}
+
+	btn-{{ color }}
+
+	{% if size is 'extra-small' %}btn-xs{% endif %}
+	{% if size is 'small' %}btn-sm{% endif %}
+	{% if size is 'medium' %}{# No need for an extra class #}{% endif %}
+	{% if size is 'large' %}btn-lg{% endif %}
+	{% if size is 'extra-large' %}btn-lg{% endif %}
+
+	{{ type }}
+	{{ extra }}
+
+{% endmacro %}
+
+
+{#
+	Calculate button group classes
+#}
+{% macro button_group_classes(size, type, extra_classes) %}
+
+	btn-group
+	{% if size is 'extra-small' %}btn-group-xs{% endif %}
+	{% if size is 'small' %}btn-group-sm{% endif %}
+	{% if size is 'medium' %}{# No need for an extra class #}{% endif %}
+	{% if size is 'large' %}btn-group-lg{% endif %}
+	{% if size is 'extra-large' %}btn-group-lg{% endif %}
+	{{ type }}
+	{{ extra_classes }}
+
+{% endmacro %}
+
+{#
+===============================================
+	ALERTS
+===============================================
+#}
+
+{% macro alert(type, message, id, class, close) %}
+	<div class="alert{{ type ? ' alert-'~type : '' }} fade in {{ class|default('') }} {% if close|default(false) %}alert-dismissable{% endif %}">
+		{% if close|default(false) %}
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		{% endif %}
+		{{ message|trans({}, domain|default('messages'))|raw }}
+	</div>
+{% endmacro %}
+
+{#
+===============================================
+	PANELS
+===============================================
+#}
+
+{#
+	Open panel
+#}
+{% macro open_panel(extra_classes, id) %}
+	<div class="panel{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}>
+{% endmacro %}
+
+{#
+	Close panel
+#}
+{% macro close_panel() %}
+	</div>
+{% endmacro %}
+
+{#
+	Open panel heading
+#}
+{% macro open_panel_heading(extra_classes) %}
+	<div class="panel-heading{{ extra_classes ? ' '~extra_classes : '' }}">
+{% endmacro %}
+
+{#
+	Close panel heading
+#}
+{% macro close_panel_heading() %}
+	</div>
+{% endmacro %}
+
+{#
+	Open panel body
+#}
+{% macro open_panel_body(extra_classes) %}
+	<div class="panel-body{{ extra_classes ? ' '~extra_classes : '' }}">
+{% endmacro %}
+
+{#
+	Close panel body
+#}
+{% macro close_panel_body() %}
+	</div>
+{% endmacro %}
+
+{#
+	Open panel footer
+#}
+{% macro open_panel_footer(extra_classes) %}
+	<div class="panel-body{{ extra_classes ? ' '~extra_classes : '' }}">
+{% endmacro %}
+
+{#
+	Close panel footer
+#}
+{% macro close_panel_footer() %}
+	</div>
+{% endmacro %}
+
+{#
+===============================================
+	UTILITIES
+===============================================
+#}
+
+{#
+	Clearfix
+#}
+{% macro clearfix() %}
+	<div class="clearfix"></div>
+{% endmacro %}
+
+{#
+	Pagination <ul> class
+#}
+{% macro pagination_ul_class() %}
+	pagination
+{% endmacro %}
+
+{#
+	Float classes
+#}
+{% macro float_class(alignment) %}
+	pull-{{ alignment }}
+{% endmacro %}
