@@ -22,7 +22,7 @@
 			{{ framework.open_row( 'div', null, 'bg' ) }}
 
 				{% do action( 'shoestrap/main/before' ) %}
-				<main class="{{ 'main' | apply_filters( 'shoestrap/section_class/main' ) }}" role="main">
+				<main class="{{ 'main'|apply_filters( 'shoestrap/section_class/main' ) }}" role="main">
 
 					{% if title %}<h1>{{title}}</h1>{% endif %}
 					{% block content %}
@@ -33,12 +33,12 @@
 				{% do action( 'shoestrap/main/after' ) %}
 
 				{# PRIMARY SIDEBAR #}
-				<aside id="sidebar-primary" class="{{ 'sidebar' | apply_filters( 'shoestrap/section_class/primary' ) }}" role="complementary">
+				<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'shoestrap/section_class/primary' ) }}" role="complementary">
 					{{ sidebar_primary }}
 				</aside>
 
 				{# SECONDARY SIDEBAR #}
-				<aside id="sidebar-secondary" class="{{ 'sidebar' | apply_filters( 'shoestrap/section_class/secondary' ) }}" role="complementary">
+				<aside id="sidebar-secondary" class="{{ 'sidebar'|apply_filters( 'shoestrap/section_class/secondary' ) }}" role="complementary">
 					{{ sidebar_secondary }}
 				</aside>
 
