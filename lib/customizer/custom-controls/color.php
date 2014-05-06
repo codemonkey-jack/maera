@@ -1,15 +1,5 @@
 <?php
 
-    $of_options[] = array(
-      "name"      => __("Brand Colors: Info", "shoestrap"),
-      "desc"      => __("Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \"info\" class. Default: #5bc0de.", "shoestrap"),
-      "id"        => "color_brand_info",
-      "std"       => "#5bc0de",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
 /**
  * Customize Color Control Class
  *
@@ -17,7 +7,7 @@
  * @subpackage Customize
  * @since 3.4.0
  */
-class WP_Customize_Color_Control extends WP_Customize_Control {
+class SS_Customize_Color_Control extends WP_Customize_Control {
 	/**
 	 * @access public
 	 * @var string
