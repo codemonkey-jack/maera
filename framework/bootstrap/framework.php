@@ -21,5 +21,5 @@ if ( isset( $wp_customize ) ) {
 	include_once( SS_FRAMEWORK_PATH . '/customizer/general.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/colors.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/background.php' );
-	include_once( SS_FRAMEWORK_PATH . '/customizer/customizer.php' );
+	include_once( SS_FRAMEWORK_PATH . '/customizer/layout.php' );
 }
