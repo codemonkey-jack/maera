@@ -17,7 +17,7 @@ class SS_Customize_Sliderui_Control extends WP_Customize_Control {
 		<label>
 
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<input type="text" id="input_<?php echo $this->id; ?>" value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
+			<input type="text" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
 
 			<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
 				<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
