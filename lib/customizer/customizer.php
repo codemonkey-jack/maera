@@ -58,3 +58,11 @@ function shoestrap_customizer_controls( $wp_customize ) {
 	}
 }
 add_action( 'customize_register', 'shoestrap_customizer_controls' );
+
+function shoestrap_enqueue_customizer_controls_styles() {
+
+	wp_register_style( 'ss-customizer-controls', get_template_directory_uri() . '/lib/customizer/controls.css', NULL, NULL, 'all' );
+	wp_enqueue_style( 'ss-customizer-controls' );
+
+}
+add_action( 'customize_controls_print_styles', 'shoestrap_enqueue_customizer_controls_styles' );
