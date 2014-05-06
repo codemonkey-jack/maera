@@ -106,6 +106,7 @@ function shoestrap_background_customizer_settings( $controls ){
 			'center-bottom' => __( 'Center Bottom', 'shoestrap' ),
 		),
 		'priority' => 6,
+		'separator' => true,
 	);
 
 	$controls[] = array(

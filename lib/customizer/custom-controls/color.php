@@ -23,6 +23,9 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 	public $description = '';
 
 	public $subtitle = '';
+
+	public $separator = false;
+
 	/**
 	 * Constructor.
 	 *
@@ -88,6 +91,7 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 				<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"<?php echo $default_attr; ?> />
 			</div>
 		</label>
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php
 	}
 }

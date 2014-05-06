@@ -10,6 +10,8 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 
 	public $subtitle = '';
 
+	public $separator = false;
+
 	public function enqueue() {
 
 		if ( 'buttonset' == $this->mode || 'image' == $this->mode ) {
@@ -80,6 +82,7 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 			}
 			?>
 		</div>
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php if ( 'buttonset' == $this->mode || 'image' == $this->mode ) { ?>
 			<script>
 			jQuery(document).ready(function($) {

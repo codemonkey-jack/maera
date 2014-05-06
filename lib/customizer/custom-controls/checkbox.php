@@ -8,6 +8,8 @@ class SS_Customize_Checkbox_Control extends WP_Customize_Control {
 
 	public $subtitle = '';
 
+	public $separator = false;
+
 	public function render_content() { ?>
 		<label class="customizer-checkbox">
 			<input type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
@@ -19,6 +21,7 @@ class SS_Customize_Checkbox_Control extends WP_Customize_Control {
 				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
 			<?php endif; ?>
 		</label>
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php
 	}
 }

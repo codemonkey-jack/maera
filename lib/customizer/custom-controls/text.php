@@ -8,6 +8,8 @@ class SS_Customize_Text_Control extends WP_Customize_Control {
 
 	public $subtitle = '';
 
+	public $separator = false;
+
 	public function render_content() { ?>
 
 		<label class="customizer-text">
@@ -28,6 +30,7 @@ class SS_Customize_Text_Control extends WP_Customize_Control {
 				<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 			<?php } ?>
 		</label>
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php
 	}
 }

@@ -11,6 +11,8 @@
 
 	public $subtitle = '';
 
+	public $separator = false;
+
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
 		$this->fonts = $this->get_fonts();
 		parent::__construct( $manager, $id, $args );
@@ -41,6 +43,7 @@
 					} ?>
 				</select>
 			</label>
+			<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 			<?php
 		}
 	}

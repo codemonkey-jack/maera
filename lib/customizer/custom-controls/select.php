@@ -11,6 +11,8 @@ class SS_Select_Control extends WP_Customize_Control {
 
 	public $subtitle = '';
 
+	public $separator = false;
+
 	public function render_content() {
 
 		if ( empty( $this->choices ) ) {
@@ -35,6 +37,7 @@ class SS_Select_Control extends WP_Customize_Control {
 				} ?>
 			</select>
 		</label>
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php
 	}
 }

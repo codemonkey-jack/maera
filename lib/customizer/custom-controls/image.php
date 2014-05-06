@@ -17,6 +17,8 @@ class SS_Customize_Image_Control extends WP_Customize_Upload_Control {
 
 	public $subtitle = '';
 
+	public $separator = false;
+
 	protected $tabs = array();
 
 	/**
@@ -120,6 +122,7 @@ class SS_Customize_Image_Control extends WP_Customize_Upload_Control {
 				<a href="#" class="remove"><?php _e( 'Remove Image' ); ?></a>
 			</div>
 		</div>
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php
 	}
 

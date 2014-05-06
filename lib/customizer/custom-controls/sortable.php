@@ -10,6 +10,8 @@ class SS_Customize_Sortable_Control extends WP_Customize_Control {
 
 	public $subtitle = '';
 
+	public $separator = false;
+
 	public function enqueue() {
 
 		if ( 'checkbox' == $this->mode ) {
@@ -54,6 +56,7 @@ class SS_Customize_Sortable_Control extends WP_Customize_Control {
 
 			</ul>
 		</div>
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<script>jQuery(document).ready(function($) { $( "#input_<?php echo $this->id; ?>" ).sortable(); }); </script>
 		<?php
 	}
