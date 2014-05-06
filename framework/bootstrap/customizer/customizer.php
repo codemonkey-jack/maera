@@ -39,27 +39,9 @@ function shoestrap_layout_customizer_settings(){
 	);
 
 	$controls[] = array(
-		'type'     => 'select',
-		'setting'  => 'layout',
-		'label'    => __( 'Layout', 'shoestrap' ),
-		'description' => '',
-		'section'  => 'layout',
-		'priority' => 2,
-		'default'  => 1,
-		'choices'  => array(
-			0 => __( 'Content (no sidebars)', 'shoestrap' ),
-			1 => __( 'Content -Sidebar', 'shoestrap' ),
-			2 => __( 'Sidebar - Content', 'shoestrap' ),
-			3 => __( 'Sidebar - Sidebar - Content', 'shoestrap' ),
-			4 => __( 'Content - Sidebar - Sidebar', 'shoestrap' ),
-			5 => __( 'Sidebar - Content - Sidebar', 'shoestrap' ),
-		),
-	);
-
-	$controls[] = array(
 		'type'     => 'radio',
 		'mode'     => 'image',
-		'setting'  => 'layout_img',
+		'setting'  => 'layout',
 		'label'    => __( 'Layout', 'shoestrap' ),
 		'description' => '',
 		'section'  => 'layout',
