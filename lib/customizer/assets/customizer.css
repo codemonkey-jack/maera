@@ -1,12 +1,12 @@
 li.customize-control.customize-control-slider input[type=text] {
-  width: 13%;
+  width: 20%;
   float: left;
   text-align: center;
 }
 
 li.customize-control.customize-control-slider .ss-slider {
-  width: 85%;
-  margin-left: 15%;
+  width: 70%;
+  margin-left: 25%;
   margin-top: 12px;
 }
 .wp-core-ui .button.tooltip {
@@ -44,7 +44,7 @@ li.customize-control.customize-control-slider .ss-slider {
   background: #08c;
 }
 
-li#customize-control-layout .image.ui-buttonset label.ui-button {
+li .image.ui-buttonset label.ui-button {
   margin-bottom: 10px;
   margin-right: 15px;
 }

@@ -33,7 +33,10 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 		</span>
 		<div id="input_<?php echo $this->id; ?>" class="<?php echo $this->mode; ?>">
 			<?php
+
+			// JqueryUI Button Sets
 			if ( 'buttonset' == $this->mode ) {
+
 				foreach ( $this->choices as $value => $label ) : ?>
 					<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
 						<label for="<?php echo $this->id . $value; ?>">
@@ -42,7 +45,10 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 					</input>
 					<?php
 				endforeach;
+
+			// Image radios.
 			} elseif ( 'image' == $this->mode ) {
+
 				foreach ( $this->choices as $value => $label ) : ?>
 					<input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
 						<label for="<?php echo $this->id . $value; ?>">
@@ -51,7 +57,10 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 					</input>
 					<?php
 				endforeach;
+
+			// Normal radios
 			} else {
+
 				foreach ( $this->choices as $value => $label ) :
 					?>
 					<label class="customizer-radio">
@@ -60,6 +69,7 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 					</label>
 					<?php
 				endforeach;
+
 			}
 			?>
 		</div>

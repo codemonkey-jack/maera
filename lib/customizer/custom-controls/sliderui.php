@@ -16,12 +16,13 @@ class SS_Customize_Sliderui_Control extends WP_Customize_Control {
 	public function render_content() { ?>
 		<label>
 
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<span class="customize-control-title">
+				<?php echo esc_html( $this->label ); ?>
+				<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
+				<?php } ?>
+			</span>
 			<input type="text" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
-
-			<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
-				<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
-			<?php } ?>
 
 		</label>
 
