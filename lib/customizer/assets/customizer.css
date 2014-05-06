@@ -23,6 +23,7 @@ li.customize-control.customize-control-slider .ss-slider {
   font-weight: bold;
   -webkit-box-shadow: none;
   box-shadow: none;
+  float: right;
 }
 
 .customize-control-radio label {
