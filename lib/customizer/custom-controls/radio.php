@@ -33,14 +33,25 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 		</span>
 		<div id="input_<?php echo $this->id; ?>">
 			<?php
-			foreach ( $this->choices as $value => $label ) :
-				?>
-				<label class="customizer-radio">
-					<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
-					<?php echo esc_html( $label ); ?><br/>
-				</label>
-				<?php
-			endforeach;
+			if ( 'buttonset' == $this->mode ) {
+				foreach ( $this->choices as $value => $label ) : ?>
+					<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+						<label for="<?php echo $this->id . $value; ?>">
+							<?php echo esc_html( $label ); ?>
+						</label>
+					</input>
+					<?php
+				endforeach;
+			} else {
+				foreach ( $this->choices as $value => $label ) :
+					?>
+					<label class="customizer-radio">
+						<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
+						<?php echo esc_html( $label ); ?><br/>
+					</label>
+					<?php
+				endforeach;
+			}
 			?>
 		</div>
 		<?php if ( 'buttonset' == $this->mode ) { ?>

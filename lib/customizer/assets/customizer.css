@@ -24,3 +24,8 @@ li.customize-control.customize-control-slider .ss-slider {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+.customize-control-radio label {
+  line-height: 22px;
+  padding: 5px 10px;
+}
