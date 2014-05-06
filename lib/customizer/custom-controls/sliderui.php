@@ -2,45 +2,40 @@
 
 class SS_Customize_Sliderui_Control extends WP_Customize_Control {
 
-	public $type = 'text';
+	public $type = 'slider';
 
-	public function render_content() {
+	public function enqueue() {
 
-		add_action( $this->setting, array( $this, $this->setting ) );
+		wp_enqueue_script( 'jquery-ui-core' );
+		wp_enqueue_script( 'jquery-ui-slider' );
 
-		$s_val   = $s_min = $s_max = $s_step = $s_edit = ''; //no errors, please
-		$choices = $this->choices;
-		$s_val   = $this->value;
+	}
 
-		$s_min  = ! isset( $choices['min'] )  ? '0' : $choices['min'];
-		$s_max  = ! isset( $choices['max'] )  ? $s_min + 1 : $choices['max'];
-		$s_step = ! isset( $choices['step'] ) ? '1' : $choices['step'];
-		$s_edit = ! isset( $choices['edit'] ) ?' readonly="readonly"' : '';
+	public function render_content() { ?>
+		<label>
 
-		if ( $s_val == '' ) {
-			$s_val = $s_min;
-		}
+			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<input type="text" id="input_<?php echo $this->id; ?>" value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
 
-		//values
-		$s_data = 'data-id="' . $this->setting . '" data-val="' . $this->value() . '" data-min="' . $s_min . '" data-max="' . $s_max . '" data-step="' . $s_step . '"';
-
-		//html output
-		$output .= '<input type="text" ' . $this->get_link() . ' name="' . $this->setting . '" id="' . $this->setting . '" value="' . $this->value() . '" class="mini" ' . $s_edit . ' />';
-		$output .= '<div id="' . $this->setting . '-slider" class="smof_sliderui" style="margin-left: 7px;" ' . $s_data . '></div>';
-
-		?>
-
-		<label class="customizer-sliderui">
-			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-			</span>
-
-			<?php echo $output; ?>
-
-			<?php if ( '' != $this->description ) { ?>
+			<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
 				<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 			<?php } ?>
+
 		</label>
+
+		<div id="slider_<?php echo $this->id; ?>" class="ss-slider"></div>
+		<script>
+		jQuery(document).ready(function($) {
+			$( "#slider_<?php echo $this->id; ?>" ).slider({
+					value : <?php echo $this->value(); ?>,
+					min   : <?php echo $this->choices['min']; ?>,
+					max   : <?php echo $this->choices['max']; ?>,
+					step  : <?php echo $this->choices['step']; ?>,
+					slide : function( event, ui ) { $( "#input_<?php echo $this->id; ?>" ).val(ui.value).keyup(); }
+			});
+			$( "#input_<?php echo $this->id; ?>" ).val( $( "#slider_<?php echo $this->id; ?>" ).slider( "value" ) );
+		});
+		</script>
 		<?php
 	}
 }

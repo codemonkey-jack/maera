@@ -15,7 +15,7 @@ class SS_Select_Control extends WP_Customize_Control {
 
 		<label>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?>
-				<?php if ( isset( $this->description ) && ! empty( $this->description ) { ?>
+				<?php if ( isset( $this->description ) && ! empty( $this->description ) ) { ?>
 					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
 			</span>
