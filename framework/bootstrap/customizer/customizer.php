@@ -89,7 +89,7 @@ function shoestrap_layout_customizer_settings(){
 		'type'     => 'checkbox',
 		'setting'  => 'layout_sidebar_on_front',
 		'label'    => __( 'Show sidebars on the frontpage', 'shoestrap' ),
-		'description' => '',
+		'description' => 'This is a dummy description',
 		'section'  => 'layout',
 		'priority' => 7,
 		'default'  => 1

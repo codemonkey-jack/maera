@@ -4,6 +4,8 @@ class SS_Customize_Text_Control extends WP_Customize_Control {
 
 	public $type = 'text';
 
+	public $description = '';
+
 	public function render_content() { ?>
 
 		<label class="customizer-text">

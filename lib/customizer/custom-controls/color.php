@@ -20,6 +20,8 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 	 */
 	public $statuses;
 
+	public $description = '';
+
 	/**
 	 * Constructor.
 	 *

@@ -7,6 +7,8 @@
 
 	private $fonts = false;
 
+	public $description = '';
+
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
 		$this->fonts = $this->get_fonts();
 		parent::__construct( $manager, $id, $args );

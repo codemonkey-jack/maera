@@ -9,3 +9,18 @@ li.customize-control.customize-control-slider .ss-slider {
   margin-left: 15%;
   margin-top: 12px;
 }
+.wp-core-ui .button.tooltip {
+  margin-top: 5px;
+  background: #08c;
+  color: #fff;
+  border: 0px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 0;
+  line-height: 20px;
+  font-weight: bold;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

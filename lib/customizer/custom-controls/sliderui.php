@@ -4,6 +4,8 @@ class SS_Customize_Sliderui_Control extends WP_Customize_Control {
 
 	public $type = 'slider';
 
+	public $description = '';
+
 	public function enqueue() {
 
 		wp_enqueue_script( 'jquery-ui-core' );

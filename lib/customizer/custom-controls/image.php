@@ -13,6 +13,8 @@ class SS_Customize_Image_Control extends WP_Customize_Upload_Control {
 	public $statuses;
 	public $extensions = array( 'jpg', 'jpeg', 'gif', 'png' );
 
+	public $description = '';
+
 	protected $tabs = array();
 
 	/**

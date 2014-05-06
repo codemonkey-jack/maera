@@ -13,6 +13,8 @@ class SS_Customize_Upload_Control extends WP_Customize_Control {
 	public $context;
 	public $extensions = array();
 
+	public $description = '';
+
 	/**
 	 * Enqueue control related scripts/styles.
 	 *

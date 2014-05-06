@@ -4,6 +4,8 @@ class SS_Customize_Checkbox_Control extends WP_Customize_Control {
 
 	public $type = 'checkbox';
 
+	public $description = '';
+
 	public function render_content() { ?>
 		<label class="customizer-checkbox">
 			<input type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />

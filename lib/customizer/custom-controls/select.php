@@ -7,6 +7,8 @@ class SS_Select_Control extends WP_Customize_Control {
 	 */
 	public $type = 'select';
 
+	public $description = '';
+
 	public function render_content() {
 
 		if ( empty( $this->choices ) ) {

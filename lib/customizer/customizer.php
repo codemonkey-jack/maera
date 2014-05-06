@@ -66,5 +66,8 @@ function shoestrap_enqueue_customizer_controls_styles() {
 	wp_enqueue_style( 'ss-customizer-css' );
 	wp_enqueue_style( 'ss-customizer-ui' );
 
+	wp_enqueue_script( 'ss_customizer_js', get_template_directory_uri() . '/lib/customizer/assets/js/customizer.js');
+	wp_enqueue_script( 'tipsy', get_template_directory_uri() . '/lib/customizer/assets/js/tooltipsy.min.js', array( 'jquery' ) );
+
 }
 add_action( 'customize_controls_print_styles', 'shoestrap_enqueue_customizer_controls_styles' );

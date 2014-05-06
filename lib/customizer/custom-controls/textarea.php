@@ -4,6 +4,8 @@ class SS_Customize_Textarea_Control extends WP_Customize_Control {
 
 	public $type = 'textarea';
 
+	public $description = '';
+
 	public function render_content() { ?>
 		<label class="customizer-textarea">
 			<span class="customize-control-title">

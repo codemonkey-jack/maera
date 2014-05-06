@@ -4,6 +4,8 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 
 	public $type = 'radio';
 
+	public $description = '';
+
 	public function render_content() {
 
 		if ( empty( $this->choices ) ) {
