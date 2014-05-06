@@ -22,7 +22,8 @@ add_action( 'customize_register', 'shoestrap_layout_customizer' );
 function shoestrap_layout_customizer_settings(){
 
 	$controls[] = array(
-		'type'     => 'select',
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
 		'setting'  => 'site_style',
 		'label'    => __( 'Site Style', 'shoestrap' ),
 		'description' => '',

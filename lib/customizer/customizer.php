@@ -41,10 +41,115 @@ function shoestrap_customizer_controls( $wp_customize ) {
 					) )
 				);
 
+			// Color Controls
+			} elseif ( 'color' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Customize_Color_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+					) )
+				);
+
+			// Google Fonts Controls
+			} elseif ( 'google_fonts' == $control['type'] ) {
+
+				$wp_customize->add_control( new Google_Font_Dropdown_Custom_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+					) )
+				);
+
+			// Image Controls
+			} elseif ( 'image' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Customize_Image_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+					) )
+				);
+
+			// Radio Controls
+			} elseif ( 'radio' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Customize_Radio_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+						'mode'        => $control['mode'], // Can be 'radio' or 'buttonset'.
+					) )
+				);
+
+			// Select Controls
+			} elseif ( 'select' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Select_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+					) )
+				);
+
 			// Slider Controls
 			} elseif ( 'slider' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Sliderui_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+					) )
+				);
+
+			// Text Controls
+			} elseif ( 'text' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Customize_Text_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+					) )
+				);
+
+			// Text Controls
+			} elseif ( 'textarea' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Customize_Textarea_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+					) )
+				);
+
+			// Upload Controls
+			} elseif ( 'upload' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Customize_Upload_Control( $wp_customize, $control['setting'], array(
 						'label'       => $control['label'],
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
