@@ -1,0 +1,11 @@
+li.customize-control.customize-control-slider input[type=text] {
+  width: 13%;
+  float: left;
+  text-align: center;
+}
+
+li.customize-control.customize-control-slider .ss-slider {
+  width: 85%;
+  margin-left: 15%;
+  margin-top: 12px;
+}

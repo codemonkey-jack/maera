@@ -61,8 +61,10 @@ add_action( 'customize_register', 'shoestrap_customizer_controls' );
 
 function shoestrap_enqueue_customizer_controls_styles() {
 
-	wp_register_style( 'ss-customizer-controls', get_template_directory_uri() . '/lib/customizer/controls.css', NULL, NULL, 'all' );
-	wp_enqueue_style( 'ss-customizer-controls' );
+	wp_register_style( 'ss-customizer-css', get_template_directory_uri() . '/lib/customizer/assets/customizer.css', NULL, NULL, 'all' );
+	wp_register_style( 'ss-customizer-ui',  get_template_directory_uri() . '/lib/customizer/assets/jquery-ui-1.10.0.custom.css', NULL, NULL, 'all' );
+	wp_enqueue_style( 'ss-customizer-css' );
+	wp_enqueue_style( 'ss-customizer-ui' );
 
 }
 add_action( 'customize_controls_print_styles', 'shoestrap_enqueue_customizer_controls_styles' );
