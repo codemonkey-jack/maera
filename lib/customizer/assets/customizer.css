@@ -42,3 +42,8 @@ li.customize-control.customize-control-slider .ss-slider {
 .image.ui-buttonset label.ui-button.ui-state-active {
   background: #08c;
 }
+
+li#customize-control-layout .image.ui-buttonset label.ui-button {
+  margin-bottom: 10px;
+  margin-right: 15px;
+}
