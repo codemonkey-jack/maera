@@ -49,8 +49,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'label'       => $control['label'],
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
-						'priority'    => $control['priority'],
-						'choices'     => $control['choices'],
+						'priority'    => isset( $control['priority'] ) ? $control['priority'] : '',
 						'description' => $control['description'],
 					) )
 				);
@@ -76,7 +75,6 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
-						'choices'     => $control['choices'],
 						'description' => $control['description'],
 					) )
 				);
@@ -91,7 +89,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
 						'description' => $control['description'],
-						'mode'        => $control['mode'], // Can be 'radio', 'image' or 'buttonset'.
+						'mode'        => isset( $control['mode'] ) ? $control['mode'] : 'radio', // Can be 'radio', 'image' or 'buttonset'.
 					) )
 				);
 
