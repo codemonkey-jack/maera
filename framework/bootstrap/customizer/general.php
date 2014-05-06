@@ -37,7 +37,7 @@ function shoestrap_general_customizer_settings( $controls ){
 		'label'       => __( 'Custom Favicon', 'shoestrap' ),
 		'description' => __( 'Upload your site\'s favicon', 'shoestrap' ),
 		'section'     => 'general',
-		'priority'    => 1,
+		'priority'    => 2,
 		'default'     => null
 	);
 
@@ -47,8 +47,24 @@ function shoestrap_general_customizer_settings( $controls ){
 		'label'       => __( 'Apple Icon', 'shoestrap' ),
 		'description' =>  __( 'This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px.', 'shoestrap' ),
 		'section'     => 'general',
-		'priority'    => 1,
+		'priority'    => 3,
 		'default'     => null
+	);
+
+	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
+		'setting'  => 'widgets_mode',
+		'label'    => __( 'Widgets mode', 'shoestrap' ),
+		'description' => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
+		'section'  => 'general',
+		'priority' => 4,
+		'default'  => 0,
+		'choices'  => array(
+			0 => __( 'Panel', 'shoestrap' ),
+			1 => __( 'Well', 'shoestrap' ),
+			2=> __( 'None', 'shoestrap' ),
+		),
 	);
 
 	return $controls;

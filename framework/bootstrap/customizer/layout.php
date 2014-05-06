@@ -19,11 +19,20 @@ add_action( 'customize_register', 'shoestrap_layout_customizer' );
 /*
  * Creates the array of options and controls for the customizer
  */
-function shoestrap_layout_customizer_settings( $controls ){
+function shoestrap_layout_customizer_settings( $controls ) {
+
+	$layouts = array(
+		0 => get_template_directory_uri() . '/lib/customizer/assets/images/1c.png',
+		1 => get_template_directory_uri() . '/lib/customizer/assets/images/2cr.png',
+		2 => get_template_directory_uri() . '/lib/customizer/assets/images/2cl.png',
+		3 => get_template_directory_uri() . '/lib/customizer/assets/images/3cl.png',
+		4 => get_template_directory_uri() . '/lib/customizer/assets/images/3cr.png',
+		5 => get_template_directory_uri() . '/lib/customizer/assets/images/3cm.png',
+	);
 
 	$controls[] = array(
 		'type'     => 'radio',
-		'mode'     => 'buttonset',
+		'mode'     => 'radio',
 		'setting'  => 'site_style',
 		'label'    => __( 'Site Style', 'shoestrap' ),
 		'description' => '',
@@ -47,14 +56,7 @@ function shoestrap_layout_customizer_settings( $controls ){
 		'section'  => 'layout',
 		'priority' => 2,
 		'default'  => 1,
-		'choices'  => array(
-			0 => get_template_directory_uri() . '/lib/customizer/assets/images/1c.png',
-			1 => get_template_directory_uri() . '/lib/customizer/assets/images/2cr.png',
-			2 => get_template_directory_uri() . '/lib/customizer/assets/images/2cl.png',
-			3 => get_template_directory_uri() . '/lib/customizer/assets/images/3cl.png',
-			4 => get_template_directory_uri() . '/lib/customizer/assets/images/3cr.png',
-			5 => get_template_directory_uri() . '/lib/customizer/assets/images/3cm.png',
-		),
+		'choices'  => $layouts,
 	);
 
 	$controls[] = array(
@@ -63,7 +65,7 @@ function shoestrap_layout_customizer_settings( $controls ){
 		'label'    => __( 'Primary Sidebar Width', 'shoestrap' ),
 		'description' => '',
 		'section'  => 'layout',
-		'priority' => 10,
+		'priority' => 3,
 		'default'  => 4,
 		'choices'  => array(
 			'min'  => '1',
@@ -78,7 +80,7 @@ function shoestrap_layout_customizer_settings( $controls ){
 		'label'    => __( 'Secondary Sidebar Width', 'shoestrap' ),
 		'description' => '',
 		'section'  => 'layout',
-		'priority' => 10,
+		'priority' => 4,
 		'default'  => 4,
 		'choices'  => array(
 			'min'  => '1',
@@ -88,15 +90,154 @@ function shoestrap_layout_customizer_settings( $controls ){
 	);
 
 	$controls[] = array(
-		'type'     => 'checkbox',
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
 		'setting'  => 'layout_sidebar_on_front',
 		'label'    => __( 'Show sidebars on the frontpage', 'shoestrap' ),
-		'description' => 'This is a dummy description',
+		'description' => __( 'Select if you want to display sidebars on the frontpage. Please note that this only applies to the primary and secondary navbars and not all other widget areas.', 'shoestrap' ),
 		'section'  => 'layout',
-		'priority' => 7,
-		'default'  => 1
+		'priority' => 5,
+		'default'  => 0,
+		'choices'  => array(
+			0 => __( 'Hide', 'shoestrap' ),
+			1 => __( 'Show', 'shoestrap' ),
+		),
 	);
 
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'navbar_margin_top',
+		'label'    => __( 'Navbar Margin from top', 'shoestrap' ),
+		'description' => __( 'This will add a margin above the navbar. CAUTION: This setting only has an effect when using the "Boxed" site style.', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 7,
+		'default'  => 0,
+		'choices'  => array(
+			'min'  => '0',
+			'max'  => '120',
+			'step' => '1'
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'body_margin_top',
+		'label'    => __( 'Body Top Margin', 'shoestrap' ),
+		'description' => __( 'Select the top margin of body element in pixels.', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 8,
+		'default'  => 0,
+		'choices'  => array(
+			'min'  => '0',
+			'max'  => '200',
+			'step' => '1'
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'body_margin_bottom',
+		'label'    => __( 'Body Bottom Margin', 'shoestrap' ),
+		'description' => __( 'Select the bottom margin of body element in pixels.', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 9,
+		'default'  => 0,
+		'choices'  => array(
+			'min'  => '0',
+			'max'  => '200',
+			'step' => '1'
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'checkbox',
+		'setting'  => 'custom_grid',
+		'label'    => __( 'Enable Custom Grid', 'shoestrap' ),
+		'description' => __( 'After you enable this setting you will have to save your settings and refresh your page in order to see the new options.', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 80,
+		'default'  => 0,
+	);
+
+	if ( 1 == get_theme_mod( 'custom_grid', 0 ) ) {
+
+		$controls[] = array(
+			'type'     => 'slider',
+			'setting'  => 'screen_tablet',
+			'label'    => __( 'Small Screen / Tablet view', 'shoestrap' ),
+			'description' => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
+			'section'  => 'layout',
+			'priority' => 81,
+			'default'  => 768,
+			'choices'  => array(
+				'min'  => '620',
+				'max'  => '2100',
+				'step' => '1'
+			),
+		);
+
+		$controls[] = array(
+			'type'     => 'slider',
+			'setting'  => 'screen_desktop',
+			'label'    => __( 'Desktop Container Width', 'shoestrap' ),
+			'description' => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
+			'section'  => 'layout',
+			'priority' => 82,
+			'default'  => 992,
+			'choices'  => array(
+				'min'  => '620',
+				'max'  => '2100',
+				'step' => '1'
+			),
+		);
+
+		$controls[] = array(
+			'type'     => 'slider',
+			'setting'  => 'screen_large_desktop',
+			'label'    => __( 'Large Desktop Container Width', 'shoestrap' ),
+			'description' => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
+			'section'  => 'layout',
+			'priority' => 83,
+			'default'  => 1200,
+			'choices'  => array(
+				'min'  => '620',
+				'max'  => '2100',
+				'step' => '1'
+			),
+		);
+
+	}
+
+	$controls[] = array(
+		'type'     => 'checkbox',
+		'setting'  => 'cpt_layout_toggle',
+		'label'    => __( 'Per Post-Type layouts', 'shoestrap' ),
+		'description' => __( 'After you enable this setting you will have to save your settings and refresh your page in order to see the new options.', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 90,
+		'default'  => 0,
+	);
+
+	if ( 1 == get_theme_mod( 'cpt_layout_toggle', 0 ) ) {
+
+		$post_types = get_post_types( array( 'public' => true ), 'names' );
+
+		$layout = get_theme_mod( 'layout' );
+
+		foreach ( $post_types as $post_type ) {
+			$controls[] = array(
+				'type'     => 'radio',
+				'mode'     => 'image',
+				'setting'  => $post_type . 'layout',
+				'label'    => $post_type . ' ' . __( 'layout', 'shoestrap' ),
+				'description' => null,
+				'section'  => 'layout',
+				'priority' => 92,
+				'default'  => $layout,
+				'choices'  => $layouts,
+			);
+		}
+	}
 	return $controls;
 }
 add_filter( 'shoestrap/customizer/controls', 'shoestrap_layout_customizer_settings' );
