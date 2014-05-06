@@ -18,5 +18,6 @@ if ( 'bootstrap' == SS_FRAMEWORK ) {
 }
 
 if ( isset( $wp_customize ) ) {
+	include_once( SS_FRAMEWORK_PATH . '/customizer/general.php' ); // Customizer mods
 	include_once( SS_FRAMEWORK_PATH . '/customizer/customizer.php' ); // Customizer mods
 }

@@ -19,7 +19,7 @@ add_action( 'customize_register', 'shoestrap_layout_customizer' );
 /*
  * Creates the array of options and controls for the customizer
  */
-function shoestrap_layout_customizer_settings(){
+function shoestrap_layout_customizer_settings( $controls ){
 
 	$controls[] = array(
 		'type'     => 'radio',
