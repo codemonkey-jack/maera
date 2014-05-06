@@ -9,6 +9,8 @@
 
 	public $description = '';
 
+	public $subtitle = '';
+
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
 		$this->fonts = $this->get_fonts();
 		parent::__construct( $manager, $id, $args );
@@ -23,6 +25,9 @@
 
 		if ( ! empty( $this->fonts ) ) { ?>
 			<label>
+				<?php if ( '' != $this->subtitle ) : ?>
+					<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+				<?php endif; ?>
 				<span class="customize-category-select-control">
 					<?php echo esc_html( $this->label ); ?>
 					<?php if ( isset( $this->description ) && '' != $this->description ) { ?>

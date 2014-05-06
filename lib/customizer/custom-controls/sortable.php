@@ -8,6 +8,8 @@ class SS_Customize_Sortable_Control extends WP_Customize_Control {
 
 	public $mode = 'checkbox';
 
+	public $subtitle = '';
+
 	public function enqueue() {
 
 		if ( 'checkbox' == $this->mode ) {
@@ -32,13 +34,17 @@ class SS_Customize_Sortable_Control extends WP_Customize_Control {
 			<?php } ?>
 		</span>
 
+		<?php if ( '' != $this->subtitle ) : ?>
+			<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+		<?php endif; ?>
+
 		<div id="input_<?php echo $this->id; ?>" class="<?php echo $this->mode; ?>">
 			WARNING: The 'sortable' control is not yet functional.
 			<ul id="input_<?php echo $this->id; ?>">
 
 			<?php foreach ( $this->choices as $value => $label ) : ?>
 				<li class="ui-state-default">
-					<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $value, $this->value() ); ?>>
+					<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $value ); ?>" <?php $this->link(); checked( $value, $this->value() ); ?>>
 						<label for="<?php echo $this->id . $value; ?>">
 							<?php echo esc_html( $label ); ?>
 						</label>

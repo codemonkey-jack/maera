@@ -15,6 +15,8 @@ class SS_Customize_Upload_Control extends WP_Customize_Control {
 
 	public $description = '';
 
+	public $subtitle = '';
+
 	/**
 	 * Enqueue control related scripts/styles.
 	 *
@@ -56,6 +58,11 @@ class SS_Customize_Upload_Control extends WP_Customize_Control {
 					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
 			</span>
+
+			<?php if ( '' != $this->subtitle ) : ?>
+				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+			<?php endif; ?>
+
 			<div>
 				<a href="#" class="button-secondary upload"><?php _e( 'Upload' ); ?></a>
 				<a href="#" class="remove"><?php _e( 'Remove' ); ?></a>

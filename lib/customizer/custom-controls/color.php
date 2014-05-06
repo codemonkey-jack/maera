@@ -22,6 +22,7 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 
 	public $description = '';
 
+	public $subtitle = '';
 	/**
 	 * Constructor.
 	 *
@@ -80,6 +81,9 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
 			</span>
+			<?php if ( '' != $this->subtitle ) : ?>
+				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+			<?php endif; ?>
 			<div class="customize-control-content">
 				<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"<?php echo $default_attr; ?> />
 			</div>

@@ -6,6 +6,8 @@ class SS_Customize_Sliderui_Control extends WP_Customize_Control {
 
 	public $description = '';
 
+	public $subtitle = '';
+
 	public function enqueue() {
 
 		wp_enqueue_script( 'jquery-ui-core' );
@@ -22,6 +24,11 @@ class SS_Customize_Sliderui_Control extends WP_Customize_Control {
 					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
 			</span>
+
+			<?php if ( '' != $this->subtitle ) : ?>
+				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+			<?php endif; ?>
+
 			<input type="text" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
 
 		</label>

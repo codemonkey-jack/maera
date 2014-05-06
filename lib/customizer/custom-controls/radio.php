@@ -8,6 +8,8 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 
 	public $mode = 'radio';
 
+	public $subtitle = '';
+
 	public function enqueue() {
 
 		if ( 'buttonset' == $this->mode || 'image' == $this->mode ) {
@@ -31,6 +33,11 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 				<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 			<?php } ?>
 		</span>
+
+		<?php if ( '' != $this->subtitle ) : ?>
+			<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+		<?php endif; ?>
+
 		<div id="input_<?php echo $this->id; ?>" class="<?php echo $this->mode; ?>">
 			<?php
 

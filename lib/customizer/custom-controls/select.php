@@ -9,6 +9,8 @@ class SS_Select_Control extends WP_Customize_Control {
 
 	public $description = '';
 
+	public $subtitle = '';
+
 	public function render_content() {
 
 		if ( empty( $this->choices ) ) {
@@ -21,6 +23,10 @@ class SS_Select_Control extends WP_Customize_Control {
 					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
 			</span>
+
+			<?php if ( '' != $this->subtitle ) : ?>
+				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+			<?php endif; ?>
 
 			<select <?php $this->link(); ?>>
 				<?php

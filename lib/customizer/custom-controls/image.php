@@ -15,6 +15,8 @@ class SS_Customize_Image_Control extends WP_Customize_Upload_Control {
 
 	public $description = '';
 
+	public $subtitle = '';
+
 	protected $tabs = array();
 
 	/**
@@ -80,6 +82,10 @@ class SS_Customize_Image_Control extends WP_Customize_Upload_Control {
 					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
 			</span>
+
+			<?php if ( '' != $this->subtitle ) : ?>
+				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+			<?php endif; ?>
 
 			<div class="customize-control-content">
 				<div class="dropdown preview-thumbnail" tabindex="0">

@@ -38,7 +38,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -50,7 +51,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => isset( $control['priority'] ) ? $control['priority'] : '',
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -63,7 +65,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -75,7 +78,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -88,8 +92,9 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'mode'        => isset( $control['mode'] ) ? $control['mode'] : 'radio', // Can be 'radio', 'image' or 'buttonset'.
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -102,7 +107,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -115,7 +121,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -128,7 +135,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -141,7 +149,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -154,7 +163,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 
@@ -167,7 +177,8 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
-						'description' => $control['description'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 					) )
 				);
 			}
