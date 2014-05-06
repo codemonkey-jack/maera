@@ -10,7 +10,7 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		if ( 'buttonset' == $this->mode ) {
+		if ( 'buttonset' == $this->mode || 'image' == $this->mode ) {
 			wp_enqueue_script( 'jquery-ui-button' );
 		}
 
@@ -31,13 +31,22 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 				<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 			<?php } ?>
 		</span>
-		<div id="input_<?php echo $this->id; ?>">
+		<div id="input_<?php echo $this->id; ?>" class="<?php echo $this->mode; ?>">
 			<?php
 			if ( 'buttonset' == $this->mode ) {
 				foreach ( $this->choices as $value => $label ) : ?>
 					<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
 						<label for="<?php echo $this->id . $value; ?>">
 							<?php echo esc_html( $label ); ?>
+						</label>
+					</input>
+					<?php
+				endforeach;
+			} elseif ( 'image' == $this->mode ) {
+				foreach ( $this->choices as $value => $label ) : ?>
+					<input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+						<label for="<?php echo $this->id . $value; ?>">
+							<img src="<?php echo esc_html( $label ); ?>">
 						</label>
 					</input>
 					<?php
@@ -54,7 +63,7 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 			}
 			?>
 		</div>
-		<?php if ( 'buttonset' == $this->mode ) { ?>
+		<?php if ( 'buttonset' == $this->mode || 'image' == $this->mode ) { ?>
 			<script>
 			jQuery(document).ready(function($) {
 				$( "#input_<?php echo $this->id; ?>" ).buttonset();

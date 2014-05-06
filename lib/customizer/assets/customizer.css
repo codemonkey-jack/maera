@@ -29,3 +29,16 @@ li.customize-control.customize-control-slider .ss-slider {
   line-height: 22px;
   padding: 5px 10px;
 }
+
+.image.ui-buttonset label.ui-button {
+  padding: 2px;
+  line-height: 0;
+  border-radius: 0;
+  margin-right: 0;
+  background: #999;
+  border: 0;
+}
+
+.image.ui-buttonset label.ui-button.ui-state-active {
+  background: #08c;
+}

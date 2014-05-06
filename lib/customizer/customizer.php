@@ -90,7 +90,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'priority'    => $control['priority'],
 						'choices'     => $control['choices'],
 						'description' => $control['description'],
-						'mode'        => $control['mode'], // Can be 'radio' or 'buttonset'.
+						'mode'        => $control['mode'], // Can be 'radio', 'image' or 'buttonset'.
 					) )
 				);
 

@@ -57,6 +57,25 @@ function shoestrap_layout_customizer_settings(){
 	);
 
 	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'image',
+		'setting'  => 'layout_img',
+		'label'    => __( 'Layout', 'shoestrap' ),
+		'description' => '',
+		'section'  => 'layout',
+		'priority' => 2,
+		'default'  => 1,
+		'choices'  => array(
+			0 => get_template_directory_uri() . '/lib/customizer/assets/images/1c.png',
+			1 => get_template_directory_uri() . '/lib/customizer/assets/images/2cr.png',
+			2 => get_template_directory_uri() . '/lib/customizer/assets/images/2cl.png',
+			3 => get_template_directory_uri() . '/lib/customizer/assets/images/3cl.png',
+			4 => get_template_directory_uri() . '/lib/customizer/assets/images/3cr.png',
+			5 => get_template_directory_uri() . '/lib/customizer/assets/images/3cm.png',
+		),
+	);
+
+	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'layout_primary_width',
 		'label'    => __( 'Primary Sidebar Width', 'shoestrap' ),
