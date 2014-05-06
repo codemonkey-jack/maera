@@ -14,6 +14,7 @@ require_once locate_template( '/lib/customizer/custom-controls/sliderui.php' );
 require_once locate_template( '/lib/customizer/custom-controls/text.php' );
 require_once locate_template( '/lib/customizer/custom-controls/textarea.php' );
 require_once locate_template( '/lib/customizer/custom-controls/upload.php' );
+require_once locate_template( '/lib/customizer/custom-controls/sortable.php' );
 
 function shoestrap_customizer_controls( $wp_customize ) {
 
@@ -150,6 +151,19 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			} elseif ( 'upload' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Upload_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => $control['description'],
+					) )
+				);
+
+			// Sortable Controls
+			} elseif ( 'sortable' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Customize_Sortable_Control( $wp_customize, $control['setting'], array(
 						'label'       => $control['label'],
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],

@@ -36,6 +36,26 @@ function shoestrap_blog_customizer_settings( $controls ){
 		),
 	);
 
+	$controls[] = array(
+		'type'        => 'sortable',
+		'mode'        => 'checkbox',
+		'setting'     => 'shoestrap_entry_meta_config',
+		'label'       => __( 'Post Meta elements', 'shoestrap' ),
+		'description' => __( 'Activate and order Post Meta elements', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 2,
+		'default'     => '',
+		'choices'     => array(
+			'post-format'   => 'Post Format',
+			'tags'          => 'Tags',
+			'date'          => 'Date',
+			'category'      => 'Category',
+			'author'        => 'Author',
+			'comment-count' => 'Comments',
+			'sticky'        => 'Sticky'
+		),
+	);
+
 	return $controls;
 }
 add_filter( 'shoestrap/customizer/controls', 'shoestrap_blog_customizer_settings' );
