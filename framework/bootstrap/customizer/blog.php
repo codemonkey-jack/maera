@@ -131,56 +131,53 @@ function shoestrap_blog_customizer_settings( $controls ){
 		),
 	);
 
-	// if ( 1 == get_theme_mod( 'feat_img_archive', 0 ) ) {
+	$controls[] = array(
+		'type'        => 'radio',
+		'mode'        => 'buttonset',
+		'setting'     => 'feat_img_archive_custom_toggle',
+		'label'       => __( 'Width of Featured Images on Archives', 'shoestrap' ),
+		'description' => __( 'Set dimensions of featured Images on Archives. Default: Full Width', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 51,
+		'default'     => 0,
+		'choices'     => array(
+			0 => __( 'Full Width', 'shoestrap' ),
+			1 => __( 'Custom Dimensions', 'shoestrap' ),
+		),
+		'required'    => array( 'feat_img_archive' => 1 )
+	);
 
-		$controls[] = array(
-			'type'        => 'radio',
-			'mode'        => 'buttonset',
-			'setting'     => 'feat_img_archive_custom_toggle',
-			'label'       => __( 'Width of Featured Images on Archives', 'shoestrap' ),
-			'description' => __( 'Set dimensions of featured Images on Archives. Default: Full Width', 'shoestrap' ),
-			'section'     => 'blog',
-			'priority'    => 51,
-			'default'     => 0,
-			'choices'     => array(
-				0 => __( 'Full Width', 'shoestrap' ),
-				1 => __( 'Custom Dimensions', 'shoestrap' ),
-			),
-			'required'    => array( 'feat_img_archive' => 1 )
-		);
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'feat_img_archive_width',
+		'label'    => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
+		'description' => __( 'Select the width of your featured images on post archives. Default: 550px', 'shoestrap' ),
+		'section'  => 'blog',
+		'priority' => 52,
+		'default'  => 550,
+		'choices'  => array(
+			'min'  => 100,
+			'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
+			'step' => '1'
+		),
+		'required'    => array( 'feat_img_archive_custom_toggle' => 1 )
+	);
 
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'feat_img_archive_width',
-			'label'    => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
-			'description' => __( 'Select the width of your featured images on post archives. Default: 550px', 'shoestrap' ),
-			'section'  => 'blog',
-			'priority' => 52,
-			'default'  => 550,
-			'choices'  => array(
-				'min'  => 100,
-				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
-				'step' => '1'
-			),
-			'required'    => array( 'feat_img_archive_custom_toggle' => 1 )
-		);
-
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'feat_img_archive_height',
-			'label'    => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
-			'description' => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
-			'section'  => 'blog',
-			'priority' => 53,
-			'default'  => 300,
-			'choices'  => array(
-				'min'  => 50,
-				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
-				'step' => '1'
-			),
-			'required'    => array( 'feat_img_archive_custom_toggle' => 1 )
-		);
-	// }
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'feat_img_archive_height',
+		'label'    => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
+		'description' => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
+		'section'  => 'blog',
+		'priority' => 53,
+		'default'  => 300,
+		'choices'  => array(
+			'min'  => 50,
+			'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
+			'step' => '1'
+		),
+		'required'    => array( 'feat_img_archive' => 1 )
+	);
 
 	$controls[] = array(
 		'type'        => 'radio',
@@ -198,53 +195,53 @@ function shoestrap_blog_customizer_settings( $controls ){
 		),
 	);
 
-	if ( 1 == get_theme_mod( 'feat_img_post', 0 ) ) {
+	$controls[] = array(
+		'type'        => 'radio',
+		'mode'        => 'buttonset',
+		'setting'     => 'feat_img_post_custom_toggle',
+		'label'       => __( 'Width of Featured Images on Posts', 'shoestrap' ),
+		'description' => __( 'Set dimensions of featured Images on single posts. Default: Full Width', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 61,
+		'default'     => 0,
+		'choices'     => array(
+			0 => __( 'Full Width', 'shoestrap' ),
+			1 => __( 'Custom Dimensions', 'shoestrap' ),
+		),
+		'required'    => array( 'feat_img_post' => 1 )
+	);
 
-		$controls[] = array(
-			'type'        => 'radio',
-			'mode'        => 'buttonset',
-			'setting'     => 'feat_img_post_custom_toggle',
-			'label'       => __( 'Width of Featured Images on Posts', 'shoestrap' ),
-			'description' => __( 'Set dimensions of featured Images on single posts. Default: Full Width', 'shoestrap' ),
-			'section'     => 'blog',
-			'priority'    => 61,
-			'default'     => 0,
-			'choices'     => array(
-				0 => __( 'Full Width', 'shoestrap' ),
-				1 => __( 'Custom Dimensions', 'shoestrap' ),
-			),
-		);
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'feat_img_post_width',
+		'label'    => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
+		'description' => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
+		'section'  => 'blog',
+		'priority' => 62,
+		'default'  => 550,
+		'choices'  => array(
+			'min'  => 100,
+			'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
+			'step' => '1'
+		),
+		'required'    => array( 'feat_img_post_custom_toggle' => 1 )
+	);
 
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'feat_img_post_width',
-			'label'    => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
-			'description' => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
-			'section'  => 'blog',
-			'priority' => 62,
-			'default'  => 550,
-			'choices'  => array(
-				'min'  => 100,
-				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
-				'step' => '1'
-			),
-		);
-
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'feat_img_post_height',
-			'label'    => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
-			'description' => __( 'Select the height of your featured images on single posts. Default: 300px', 'shoestrap' ),
-			'section'  => 'blog',
-			'priority' => 63,
-			'default'  => 300,
-			'choices'  => array(
-				'min'  => 50,
-				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
-				'step' => '1'
-			),
-		);
-	}
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'feat_img_post_height',
+		'label'    => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
+		'description' => __( 'Select the height of your featured images on single posts. Default: 300px', 'shoestrap' ),
+		'section'  => 'blog',
+		'priority' => 63,
+		'default'  => 300,
+		'choices'  => array(
+			'min'  => 50,
+			'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
+			'step' => '1'
+		),
+		'required'    => array( 'feat_img_post' => 1 )
+	);
 
 	$post_types = get_post_types( array( 'public' => true ), 'names' );
 	$controls[] = array(
