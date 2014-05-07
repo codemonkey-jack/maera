@@ -9,8 +9,6 @@ class SS_Customize_Multicheck_Control extends WP_Customize_Control {
 
 	public $description = '';
 
-	public $mode = 'radio';
-
 	public $subtitle = '';
 
 	public $separator = false;
@@ -56,13 +54,7 @@ class SS_Customize_Multicheck_Control extends WP_Customize_Control {
 			});
 			</script>
 			<?php
-		}
-
-		$description = '';
-		if ( ! empty( $this->description ) ) {
-			$description = "<p class='description'>" . $this->description . "</p>";
-		}
-		?>
+		} ?>
 		<label class='tf-multicheck-container'>
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
