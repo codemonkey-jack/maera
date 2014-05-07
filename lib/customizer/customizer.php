@@ -6,7 +6,6 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
 
 require_once locate_template( '/lib/customizer/custom-controls/checkbox.php' );
 require_once locate_template( '/lib/customizer/custom-controls/color.php' );
-require_once locate_template( '/lib/customizer/custom-controls/google-fonts.php' );
 require_once locate_template( '/lib/customizer/custom-controls/image.php' );
 require_once locate_template( '/lib/customizer/custom-controls/radio.php' );
 require_once locate_template( '/lib/customizer/custom-controls/select.php' );
@@ -53,21 +52,6 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => isset( $control['priority'] ) ? $control['priority'] : '',
-						'description' => isset( $control['description'] ) ? $control['description'] : null,
-						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
-					) )
-				);
-
-			// Google Fonts Controls
-			} elseif ( 'google_fonts' == $control['type'] ) {
-
-				$wp_customize->add_control( new Google_Font_Dropdown_Custom_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
-						'section'     => $control['section'],
-						'settings'    => $control['setting'],
-						'priority'    => $control['priority'],
-						'choices'     => $control['choices'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
