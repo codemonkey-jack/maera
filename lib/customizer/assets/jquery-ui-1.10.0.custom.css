@@ -223,16 +223,12 @@
 ----------------------------------*/
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
 
-  background-color: #e6e6e6;
+  background-color: #FF5740;
 
   color: #333;
   font-size: 13px;
   line-height: normal;
-  border: 1px solid #ccc;
-  border-bottom-color: #bbb;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #CC1424;
   -webkit-transition: 0.1s linear background-image;
   -moz-transition: 0.1s linear background-image;
   -ms-transition: 0.1s linear background-image;
@@ -672,7 +668,7 @@
 
   cursor: pointer;
   display: inline-block;
-  background-color: #e6e6e6;
+  background-color: #f2f2f2;
   background-repeat: no-repeat;
   padding: 5px 14px 6px;
   margin: 0;
@@ -747,6 +743,7 @@ button.ui-button-icons-only { width: 3.7em; }
   color: #ffffff;
   background-color: #34495e;
   background-repeat: repeat-x;
+  border: 1px solid #3D7A99;
 }
 .ui-buttonset .ui-button { margin-left: 0; margin-right: -.4em; }
 
@@ -975,7 +972,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 }
 
 .ui-slider-horizontal { height: .8em; }
-.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; border-radius: 50%; }
 .ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
 .ui-slider-horizontal .ui-slider-range-min { left: 0; }
 .ui-slider-horizontal .ui-slider-range-max { right: 0; }
@@ -1303,7 +1300,7 @@ textarea,
 .ui-dialog-buttonset .ui-button:nth-child(2){
   cursor: pointer;
   display: inline-block;
-  background-color: #e6e6e6;
+  background-color: #f2f2f2;
   padding: 5px 14px 6px;
   color: #333;
   font-size: 13px;
@@ -1479,15 +1476,12 @@ div.wijmo-wijmenu .wijmo-wijmenu-child .wijmo-wijmenu-text
   padding: 5px 10px;
 }
 
-
 .wijmo-wijmenu .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
   text-shadow:none;
 }
-
 
 .wijmo-wijmenu .ui-state-default{
   box-shadow: none;
   color:#BFBFBF;
   filter: none;
 }
-
