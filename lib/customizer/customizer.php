@@ -42,6 +42,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -56,6 +57,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -71,6 +73,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -85,6 +88,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -101,6 +105,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'mode'        => isset( $control['mode'] ) ? $control['mode'] : 'radio', // Can be 'radio', 'image' or 'buttonset'.
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -116,6 +121,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -131,6 +137,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -145,6 +152,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -160,6 +168,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -175,6 +184,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -190,6 +200,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 
@@ -205,6 +216,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
 			}
