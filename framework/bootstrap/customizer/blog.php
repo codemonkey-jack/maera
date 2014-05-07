@@ -131,7 +131,7 @@ function shoestrap_blog_customizer_settings( $controls ){
 		),
 	);
 
-	if ( 1 == get_theme_mod( 'feat_img_archive', 0 ) ) {
+	// if ( 1 == get_theme_mod( 'feat_img_archive', 0 ) ) {
 
 		$controls[] = array(
 			'type'        => 'radio',
@@ -146,6 +146,7 @@ function shoestrap_blog_customizer_settings( $controls ){
 				0 => __( 'Full Width', 'shoestrap' ),
 				1 => __( 'Custom Dimensions', 'shoestrap' ),
 			),
+			'required'    => array( 'feat_img_archive' => 1 )
 		);
 
 		$controls[] = array(
@@ -161,6 +162,7 @@ function shoestrap_blog_customizer_settings( $controls ){
 				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
 				'step' => '1'
 			),
+			'required'    => array( 'feat_img_archive_custom_toggle' => 1 )
 		);
 
 		$controls[] = array(
@@ -176,8 +178,9 @@ function shoestrap_blog_customizer_settings( $controls ){
 				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
 				'step' => '1'
 			),
+			'required'    => array( 'feat_img_archive_custom_toggle' => 1 )
 		);
-	}
+	// }
 
 	$controls[] = array(
 		'type'        => 'radio',

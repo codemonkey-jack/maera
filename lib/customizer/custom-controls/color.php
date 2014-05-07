@@ -26,6 +26,8 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 
 	public $separator = false;
 
+	public $required;
+
 	/**
 	 * Constructor.
 	 *
@@ -92,6 +94,36 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 			</div>
 		</label>
 		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
-		<?php
+		<?php foreach ( $this->required as $id => $value ) :
+			
+			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
+				<script>
+				jQuery(document).ready(function($) {
+					$( "#customize-control-<?php echo $this->id; ?>" ).show();
+					$( "#<?php echo $id . get_theme_mod($id,0); ?>" ).click(function(){
+						$( "#customize-control-<?php echo $this->id; ?>" ).fadeOut(300);
+					});
+					$( "#<?php echo $id . $value; ?>" ).click(function(){
+						$( "#customize-control-<?php echo $this->id; ?>" ).fadeIn(300);
+					});
+				});
+				</script>
+			<?php }
+
+			if ( isset($id) && isset($value) && get_theme_mod($id,0)!=$value ) { ?>
+				<script>
+				jQuery(document).ready(function($) {
+					$( "#customize-control-<?php echo $this->id; ?>" ).hide();
+					$( "#<?php echo $id . get_theme_mod($id,0); ?>" ).click(function(){
+						$( "#customize-control-<?php echo $this->id; ?>" ).fadeOut(300);
+					});
+					$( "#<?php echo $id . $value; ?>" ).click(function(){
+						$( "#customize-control-<?php echo $this->id; ?>" ).fadeIn(300);
+					});
+				});
+				</script>
+			<?php }
+
+		endforeach; 
 	}
 }
