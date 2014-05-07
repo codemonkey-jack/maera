@@ -213,6 +213,3 @@ function shoestrap_jumbotron_customizer_settings( $controls ){
 	return $controls;
 }
 add_filter( 'shoestrap/customizer/controls', 'shoestrap_jumbotron_customizer_settings' );
-
-$font = get_theme_mod( 'font_jumbotron' );
-print_r($font);
