@@ -56,6 +56,193 @@ function shoestrap_blog_customizer_settings( $controls ){
 		),
 	);
 
+	$controls[] = array(
+		'type'        => 'checkbox',
+		'setting'     => 'breadcrumbs',
+		'label'       => __( 'Show Breadcrumbs', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 3,
+		'default'     => 0,
+	);
+
+	$controls[] = array(
+		'type'        => 'radio',
+		'mode'        => 'buttonset',
+		'setting'     => 'date_meta_format',
+		'label'       => __( 'Date format in meta', 'shoestrap' ),
+		'subtitle'    => __( 'Show the date as a normal date, or as time difference (example: 2 weeks ago)', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 9,
+		'default'     => 1,
+		'choices'     => array(
+			0 => __( 'Date', 'shoestrap' ),
+			1 => __( 'Time Difference', 'shoestrap' ),
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'post_excerpt_length',
+		'label'    => __( 'Post excerpt length', 'shoestrap' ),
+		'description' => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
+		'section'  => 'blog',
+		'priority' => 10,
+		'default'  => 40,
+		'choices'  => array(
+			'min'  => 10,
+			'max'  => 150,
+			'step' => 1,
+		),
+	);
+
+	$controls[] = array(
+		'type'        => 'text',
+		'setting'     => 'post_excerpt_link_text',
+		'label'       => __( '"more" text', 'shoestrap' ),
+		'subtitle'    => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 12,
+		'default'     => __( 'Continued', 'shoestrap' ),
+	);
+
+	$controls[] = array(
+		'type'        => 'checkbox',
+		'setting'     => 'single_meta',
+		'label'       => __( 'Post Meta in single posts', 'shoestrap' ),
+		'description' => __( 'When checked, the post tags and categories will be added on the footer of posts.', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 40,
+		'default'     => 1,
+	);
+
+	$controls[] = array(
+		'type'        => 'radio',
+		'mode'        => 'buttonset',
+		'setting'     => 'feat_img_archive',
+		'label'       => __( 'Featured Images on Archives', 'shoestrap' ),
+		'description' => __( 'Display featured Images on post archives ( such as categories, tags, month view etc ).', 'shoestrap' ),
+		'subtitle'    => __( 'After you enable this setting you will have to save & publish your changes and refresh your page in order to see the new options.', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 50,
+		'default'     => 1,
+		'choices'     => array(
+			0 => __( 'Hide', 'shoestrap' ),
+			1 => __( 'Show', 'shoestrap' ),
+		),
+	);
+
+	if ( 1 == get_theme_mod( 'feat_img_archive', 0 ) ) {
+
+		$controls[] = array(
+			'type'        => 'radio',
+			'mode'        => 'buttonset',
+			'setting'     => 'feat_img_archive_custom_toggle',
+			'label'       => __( 'Width of Featured Images on Archives', 'shoestrap' ),
+			'description' => __( 'Set dimensions of featured Images on Archives. Default: Full Width', 'shoestrap' ),
+			'section'     => 'blog',
+			'priority'    => 51,
+			'default'     => 0,
+			'choices'     => array(
+				0 => __( 'Full Width', 'shoestrap' ),
+				1 => __( 'Custom Dimensions', 'shoestrap' ),
+			),
+		);
+
+		$controls[] = array(
+			'type'     => 'slider',
+			'setting'  => 'feat_img_archive_width',
+			'label'    => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
+			'description' => __( 'Select the width of your featured images on post archives. Default: 550px', 'shoestrap' ),
+			'section'  => 'blog',
+			'priority' => 52,
+			'default'  => 550,
+			'choices'  => array(
+				'min'  => 100,
+				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
+				'step' => '1'
+			),
+		);
+
+		$controls[] = array(
+			'type'     => 'slider',
+			'setting'  => 'feat_img_archive_height',
+			'label'    => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
+			'description' => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
+			'section'  => 'blog',
+			'priority' => 53,
+			'default'  => 300,
+			'choices'  => array(
+				'min'  => 50,
+				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
+				'step' => '1'
+			),
+		);
+	}
+
+	$controls[] = array(
+		'type'        => 'radio',
+		'mode'        => 'buttonset',
+		'setting'     => 'feat_img_post',
+		'label'       => __( 'Featured Images on Posts', 'shoestrap' ),
+		'description' => __( 'Display featured Images on simgle posts.', 'shoestrap' ),
+		'subtitle'    => __( 'After you enable this setting you will have to save & publish your changes and refresh your page in order to see the new options.', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 60,
+		'default'     => 1,
+		'choices'     => array(
+			0 => __( 'Hide', 'shoestrap' ),
+			1 => __( 'Show', 'shoestrap' ),
+		),
+	);
+
+	if ( 1 == get_theme_mod( 'feat_img_post', 0 ) ) {
+
+		$controls[] = array(
+			'type'        => 'radio',
+			'mode'        => 'buttonset',
+			'setting'     => 'feat_img_post_custom_toggle',
+			'label'       => __( 'Width of Featured Images on Posts', 'shoestrap' ),
+			'description' => __( 'Set dimensions of featured Images on single posts. Default: Full Width', 'shoestrap' ),
+			'section'     => 'blog',
+			'priority'    => 61,
+			'default'     => 0,
+			'choices'     => array(
+				0 => __( 'Full Width', 'shoestrap' ),
+				1 => __( 'Custom Dimensions', 'shoestrap' ),
+			),
+		);
+
+		$controls[] = array(
+			'type'     => 'slider',
+			'setting'  => 'feat_img_post_width',
+			'label'    => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
+			'description' => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
+			'section'  => 'blog',
+			'priority' => 62,
+			'default'  => 550,
+			'choices'  => array(
+				'min'  => 100,
+				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
+				'step' => '1'
+			),
+		);
+
+		$controls[] = array(
+			'type'     => 'slider',
+			'setting'  => 'feat_img_post_height',
+			'label'    => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
+			'description' => __( 'Select the height of your featured images on single posts. Default: 300px', 'shoestrap' ),
+			'section'  => 'blog',
+			'priority' => 63,
+			'default'  => 300,
+			'choices'  => array(
+				'min'  => 50,
+				'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
+				'step' => '1'
+			),
+		);
+	}
+
 	return $controls;
 }
 add_filter( 'shoestrap/customizer/controls', 'shoestrap_blog_customizer_settings' );

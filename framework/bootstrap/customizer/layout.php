@@ -153,7 +153,7 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'type'     => 'checkbox',
 		'setting'  => 'custom_grid',
 		'label'    => __( 'Enable Custom Grid', 'shoestrap' ),
-		'subtitle' => __( 'After you enable this setting you will have to save your settings and refresh your page in order to see the new options.', 'shoestrap' ),
+		'subtitle' => __( 'After you enable this setting you will have to save & publish your changes and refresh your page in order to see the new options.', 'shoestrap' ),
 		'section'  => 'layout',
 		'priority' => 80,
 		'default'  => 0,
