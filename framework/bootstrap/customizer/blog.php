@@ -243,6 +243,19 @@ function shoestrap_blog_customizer_settings( $controls ){
 		);
 	}
 
+	$post_types = get_post_types( array( 'public' => true ), 'names' );
+	$controls[] = array(
+		'type'        => 'multicheck',
+		'mode'        => 'checkbox',
+		'setting'     => 'feat_img_per_post_type',
+		'label'       => __( 'Disable featured images on single post types', 'shoestrap' ),
+		'section'     => 'blog',
+		'priority'    => 65,
+		'default'     => '',
+		'choices'     => $post_types,
+	);
+
 	return $controls;
+
 }
 add_filter( 'shoestrap/customizer/controls', 'shoestrap_blog_customizer_settings' );
