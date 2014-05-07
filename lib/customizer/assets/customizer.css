@@ -11,7 +11,7 @@ li.customize-control.customize-control-slider .ss-slider {
 }
 .wp-core-ui .button.tooltip {
   margin-top: 5px;
-  background: #08c;
+  background: #1abc9c;
   color: #fff;
   border: 0px;
   border-radius: 50%;
@@ -92,7 +92,7 @@ li .image.ui-buttonset label.ui-button {
 #customize-theme-controls .control-section .accordion-section-title:hover,
 #customize-theme-controls .control-section.open .accordion-section-title,
 #customize-theme-controls .control-section:hover .accordion-section-title {
-  background: #0074a2;
+  background: #1abc9c;
   color: #fff;
 }
 
@@ -101,4 +101,10 @@ li .image.ui-buttonset label.ui-button {
 #customize-theme-controls .control-section.open .accordion-section-title::after,
 #customize-theme-controls .control-section:hover .accordion-section-title::after {
   color: #fff;
+}
+
+div.shoestrap-customizer {
+  background: url('images/header.png') no-repeat left center;
+  height: 80px;
+  border-bottom: 1px solid #333;
 }
