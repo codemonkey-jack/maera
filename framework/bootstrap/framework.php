@@ -23,4 +23,5 @@ if ( isset( $wp_customize ) ) {
 	include_once( SS_FRAMEWORK_PATH . '/customizer/background.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/layout.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/blog.php' );
+	include_once( SS_FRAMEWORK_PATH . '/customizer/jumbotron.php' );
 }
