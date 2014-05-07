@@ -151,7 +151,5 @@ div.shoestrap-customizer {
 }
 
 li.customize-control {
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #f2f2f2;
+  margin: 5px 0;
 }

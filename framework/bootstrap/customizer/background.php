@@ -41,10 +41,10 @@ function shoestrap_background_customizer_settings( $controls ){
 	);
 
 	$controls[] = array(
-		'type'     => 'radio',
+		'type'     => 'select',
 		'setting'  => 'html_bg_repeat',
 		'label'    => null,
-		'description' =>   __( 'Select if and how the background image will be repeated.', 'shoestrap' ),
+		'subtitle' => __( 'Background Repeat', 'shoestrap' ),
 		'section'  => 'background',
 		'default'  => 'repeat',
 		'choices'  => array(
@@ -59,9 +59,10 @@ function shoestrap_background_customizer_settings( $controls ){
 
 	$controls[] = array(
 		'type'     => 'radio',
+		'mode'     => 'buttonset',
 		'setting'  => 'html_bg_size',
 		'label'    => null,
-		'description' =>   __( 'Background Size', 'shoestrap' ),
+		'subtitle' =>  __( 'Background Size', 'shoestrap' ),
 		'section'  => 'background',
 		'default'  => 'inherit',
 		'choices'  => array(
@@ -74,9 +75,10 @@ function shoestrap_background_customizer_settings( $controls ){
 
 	$controls[] = array(
 		'type'     => 'radio',
+		'mode'     => 'buttonset',
 		'setting'  => 'html_bg_attach',
 		'label'    => null,
-		'description' =>   __( 'Background Attachment', 'shoestrap' ),
+		'subtitle' => __( 'Background Attachment', 'shoestrap' ),
 		'section'  => 'background',
 		'default'  => 'scroll',
 		'choices'  => array(
@@ -88,10 +90,10 @@ function shoestrap_background_customizer_settings( $controls ){
 	);
 
 	$controls[] = array(
-		'type'     => 'radio',
+		'type'     => 'select',
 		'setting'  => 'html_bg_position',
 		'label'    => null,
-		'description' =>   __( 'Background Position', 'shoestrap' ),
+		'subtitle' =>   __( 'Background Position', 'shoestrap' ),
 		'section'  => 'background',
 		'default'  => 'center-center',
 		'choices'  => array(
@@ -130,10 +132,10 @@ function shoestrap_background_customizer_settings( $controls ){
 	);
 
 	$controls[] = array(
-		'type'     => 'radio',
+		'type'     => 'select',
 		'setting'  => 'body_bg_repeat',
 		'label'    => null,
-		'description' =>   __( 'Select if and how the background image will be repeated.', 'shoestrap' ),
+		'subtitle' => __( 'Background Repeat', 'shoestrap' ),
 		'section'  => 'background',
 		'default'  => 'repeat',
 		'choices'  => array(
@@ -148,9 +150,10 @@ function shoestrap_background_customizer_settings( $controls ){
 
 	$controls[] = array(
 		'type'     => 'radio',
+		'mode'     => 'buttonset',
 		'setting'  => 'body_bg_size',
 		'label'    => null,
-		'description' =>   __( 'Background Size', 'shoestrap' ),
+		'subtitle' =>  __( 'Background Size', 'shoestrap' ),
 		'section'  => 'background',
 		'default'  => 'inherit',
 		'choices'  => array(
@@ -163,9 +166,10 @@ function shoestrap_background_customizer_settings( $controls ){
 
 	$controls[] = array(
 		'type'     => 'radio',
+		'mode'     => 'buttonset',
 		'setting'  => 'body_bg_attach',
 		'label'    => null,
-		'description' =>   __( 'Background Attachment', 'shoestrap' ),
+		'subtitle' => __( 'Background Attachment', 'shoestrap' ),
 		'section'  => 'background',
 		'default'  => 'scroll',
 		'choices'  => array(
@@ -177,10 +181,10 @@ function shoestrap_background_customizer_settings( $controls ){
 	);
 
 	$controls[] = array(
-		'type'     => 'radio',
+		'type'     => 'select',
 		'setting'  => 'body_bg_position',
 		'label'    => null,
-		'description' =>   __( 'Background Position', 'shoestrap' ),
+		'subtitle' =>   __( 'Background Position', 'shoestrap' ),
 		'section'  => 'background',
 		'default'  => 'center-center',
 		'choices'  => array(
