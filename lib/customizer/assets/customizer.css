@@ -108,3 +108,10 @@ div.shoestrap-customizer {
   height: 80px;
   border-bottom: 1px solid #333;
 }
+
+.wp-full-overlay.expanded {
+  margin-left: 330px;
+}
+.wp-full-overlay-sidebar {
+  width: 330px;
+}
