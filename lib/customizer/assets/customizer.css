@@ -36,7 +36,7 @@ li.customize-control.customize-control-slider .ss-slider {
 }
 
 .customize-control-radio label {
-  line-height: 22px;
+  line-height: 28px;
   padding: 5px 10px;
 }
 
@@ -144,4 +144,14 @@ div.shoestrap-customizer {
   background: #8cddcd !important;
   color: #34495e !important;
   border: 0px !important;
+}
+
+.customize-control-title {
+  color: #555;
+}
+
+li.customize-control {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f2f2f2;
 }

@@ -1,5 +1,11 @@
 <?php
 
+require_once locate_template( '/lib/dependencies/dependencies.php' );
+
+if ( ! class_exists( 'Timber' ) ) {
+	return;
+}
+
 require_once locate_template( '/lib/widgets.php' );      // Sidebars and widgets
 require_once locate_template( '/lib/customizer/customizer.php' );
 
