@@ -46,11 +46,10 @@ class SS_Customize_Sortable_Control extends WP_Customize_Control {
 
 			<?php foreach ( $this->choices as $value => $label ) : ?>
 				<li class="ui-state-default">
-					<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $value ); ?>" <?php $this->link(); checked( $value, $this->value() ); ?>>
-						<label for="<?php echo $this->id . $value; ?>">
-							<?php echo esc_html( $label ); ?>
-						</label>
-					</input>
+					<label for="<?php echo $this->id . $value; ?>">
+						<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" id="<?php echo $this->id . $value; ?>" <?php echo checked( in_array( $value, $this->choices ), true, false ); ?>/>
+						<?php echo $label; ?>
+					</label>
 				</li>
 			<?php endforeach; ?>
 
