@@ -35,7 +35,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			if ( 'checkbox' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Checkbox_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
+						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
@@ -49,7 +49,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			} elseif ( 'color' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Color_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
+						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => isset( $control['priority'] ) ? $control['priority'] : '',
@@ -63,7 +63,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			} elseif ( 'image' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Image_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
+						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
@@ -77,7 +77,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			} elseif ( 'radio' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Radio_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
+						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
@@ -93,7 +93,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			} elseif ( 'select' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Select_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
+						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
@@ -108,7 +108,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			} elseif ( 'slider' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Sliderui_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
+						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
@@ -123,7 +123,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			} elseif ( 'text' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Text_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
+						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
 						'priority'    => $control['priority'],
