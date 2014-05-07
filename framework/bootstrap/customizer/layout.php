@@ -153,61 +153,60 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'type'     => 'checkbox',
 		'setting'  => 'custom_grid',
 		'label'    => __( 'Enable Custom Grid', 'shoestrap' ),
-		'subtitle' => __( 'After you enable this setting you will have to save & publish your changes and refresh your page in order to see the new options.', 'shoestrap' ),
+		'subtitle' => __( 'Take control of the grid breakpoints.', 'shoestrap' ),
 		'section'  => 'layout',
 		'priority' => 80,
 		'default'  => 0,
 		'subtitle' => __( 'Please save and refresh to see new options', 'shoestrap' )
 	);
 
-	if ( 1 == get_theme_mod( 'custom_grid', 0 ) ) {
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'screen_tablet',
+		'label'    => __( 'Small Screen / Tablet view', 'shoestrap' ),
+		'subtitle' => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 81,
+		'default'  => 768,
+		'choices'  => array(
+			'min'  => '620',
+			'max'  => '2100',
+			'step' => '1'
+		),
+		'required'    => array( 'custom_grid' => 1 )
+	);
 
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'screen_tablet',
-			'label'    => __( 'Small Screen / Tablet view', 'shoestrap' ),
-			'subtitle' => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
-			'section'  => 'layout',
-			'priority' => 81,
-			'default'  => 768,
-			'choices'  => array(
-				'min'  => '620',
-				'max'  => '2100',
-				'step' => '1'
-			),
-		);
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'screen_desktop',
+		'label'    => __( 'Desktop Container Width', 'shoestrap' ),
+		'subtitle' => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 82,
+		'default'  => 992,
+		'choices'  => array(
+			'min'  => '620',
+			'max'  => '2100',
+			'step' => '1'
+		),
+		'required'    => array( 'custom_grid' => 1 )
+	);
 
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'screen_desktop',
-			'label'    => __( 'Desktop Container Width', 'shoestrap' ),
-			'subtitle' => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
-			'section'  => 'layout',
-			'priority' => 82,
-			'default'  => 992,
-			'choices'  => array(
-				'min'  => '620',
-				'max'  => '2100',
-				'step' => '1'
-			),
-		);
-
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'screen_large_desktop',
-			'label'    => __( 'Large Desktop Container Width', 'shoestrap' ),
-			'subtitle' => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
-			'section'  => 'layout',
-			'priority' => 83,
-			'default'  => 1200,
-			'choices'  => array(
-				'min'  => '620',
-				'max'  => '2100',
-				'step' => '1'
-			),
-		);
-
-	}
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'screen_large_desktop',
+		'label'    => __( 'Large Desktop Container Width', 'shoestrap' ),
+		'subtitle' => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 83,
+		'default'  => 1200,
+		'choices'  => array(
+			'min'  => '620',
+			'max'  => '2100',
+			'step' => '1'
+		),
+		'required'    => array( 'custom_grid' => 1 )
+	);
 
 	$controls[] = array(
 		'type'     => 'checkbox',

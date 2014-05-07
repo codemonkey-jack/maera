@@ -54,7 +54,7 @@ class SS_Customize_Sliderui_Control extends WP_Customize_Control {
 		<?php
 
 		foreach ( $this->required as $id => $value ) :
-			
+
 			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
 				<script>
 				jQuery(document).ready(function($) {
