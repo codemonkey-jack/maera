@@ -1,3 +1,12 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h3,
+.customize-control-title {
+  font-family: 'Roboto Slab', serif;
+}
+
 li.customize-control.customize-control-slider input[type=text] {
   width: 20%;
   float: left;
@@ -52,7 +61,6 @@ li .image.ui-buttonset label.ui-button {
 .customizer-subtitle {
   color: #999;
   font-size: 0.9em;
-  line-height: 1.25em;
   margin-bottom: 5px;
 }
 
@@ -114,4 +122,26 @@ div.shoestrap-customizer {
 }
 .wp-full-overlay-sidebar {
   width: 330px;
+}
+
+.wp-core-ui .button-primary {
+  background: #1abc9c;
+  border: 0px;
+}
+
+.wp-core-ui .button-primary.focus,
+.wp-core-ui .button-primary.hover,
+.wp-core-ui .button-primary:focus,
+.wp-core-ui .button-primary:hover {
+  background: #34495e;
+  border: 0px;
+}
+
+.wp-core-ui .button-primary-disabled,
+.wp-core-ui .button-primary.disabled,
+.wp-core-ui .button-primary:disabled,
+.wp-core-ui .button-primary[disabled] {
+  background: #8cddcd !important;
+  color: #34495e !important;
+  border: 0px !important;
 }

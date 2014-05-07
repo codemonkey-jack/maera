@@ -210,3 +210,9 @@ function shoestrap_enqueue_customizer_controls_styles() {
 
 }
 add_action( 'customize_controls_print_styles', 'shoestrap_enqueue_customizer_controls_styles' );
+
+function shoestrap_googlefonts_styling() { ?>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:100,400|Roboto+Slab:700,400&subset=latin,cyrillic-ext,greek,vietnamese,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+	<?php
+}
+add_action( 'customize_controls_print_styles', 'shoestrap_googlefonts_styling' );
