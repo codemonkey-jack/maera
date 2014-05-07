@@ -36,11 +36,10 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 			<?php } ?>
 		</span>
 
-		<?php if ( '' != $this->subtitle ) : ?>
-			<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
-		<?php endif; ?>
-
 		<div id="input_<?php echo $this->id; ?>" class="<?php echo $this->mode; ?>">
+			<?php if ( '' != $this->subtitle ) : ?>
+				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+			<?php endif; ?>
 			<?php
 
 			// JqueryUI Button Sets

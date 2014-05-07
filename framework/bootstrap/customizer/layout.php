@@ -32,15 +32,15 @@ function shoestrap_layout_customizer_settings( $controls ) {
 
 	$controls[] = array(
 		'type'     => 'radio',
-		'mode'     => 'radio',
+		'mode'     => 'buttonset',
 		'setting'  => 'site_style',
 		'label'    => __( 'Site Style', 'shoestrap' ),
-		'description' => '',
+		'subtitle' => __( 'A static layout is non-responsive. Wide and boxed Layouts are responsive while fluid layouts are full-width.', 'shoestrap' ),
 		'section'  => 'layout',
 		'priority' => 1,
 		'default'  => 'wide',
 		'choices'  => array(
-			'static'  => __( 'Static (Non-Responsive)', 'shoestrap' ),
+			'static'  => __( 'Static', 'shoestrap' ),
 			'wide'    => __( 'Wide', 'shoestrap' ),
 			'boxed'   => __( 'Boxed', 'shoestrap' ),
 			'fluid'   => __( 'Fluid', 'shoestrap' ),
@@ -52,7 +52,7 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'mode'     => 'image',
 		'setting'  => 'layout',
 		'label'    => __( 'Layout', 'shoestrap' ),
-		'description' => '',
+		'subtitle' => __( 'Select your main layout. Please note that if no widgets are present in a sidebar then that sidebar will not be displayed. ', 'shoestrap' ),
 		'section'  => 'layout',
 		'priority' => 2,
 		'default'  => 1,
@@ -81,7 +81,7 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'description' => '',
 		'section'  => 'layout',
 		'priority' => 4,
-		'default'  => 4,
+		'default'  => 3,
 		'choices'  => array(
 			'min'  => '1',
 			'max'  => '5',
