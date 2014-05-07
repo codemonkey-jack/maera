@@ -15,6 +15,7 @@ require_once locate_template( '/lib/customizer/custom-controls/text.php' );
 require_once locate_template( '/lib/customizer/custom-controls/textarea.php' );
 require_once locate_template( '/lib/customizer/custom-controls/upload.php' );
 require_once locate_template( '/lib/customizer/custom-controls/sortable.php' );
+require_once locate_template( '/lib/customizer/custom-controls/multicheck.php' );
 
 function shoestrap_customizer_controls( $wp_customize ) {
 
@@ -181,6 +182,21 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			} elseif ( 'sortable' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Sortable_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'choices'     => $control['choices'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
+						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+					) )
+				);
+
+			// Multicheck Controls
+			} elseif ( 'multicheck' == $control['type'] ) {
+
+				$wp_customize->add_control( new SS_Customize_Multicheck_Control( $wp_customize, $control['setting'], array(
 						'label'       => $control['label'],
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
