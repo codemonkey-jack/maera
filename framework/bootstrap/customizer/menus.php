@@ -254,6 +254,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'navbar_margin',
+		'label'    => __( 'Navbar Margins', 'shoestrap' ),
 		'subtitle' => __( 'Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbars. Default: 0px.', 'shoestrap' ),
 		'section'  => 'menus',
 		'default'  => 0,
@@ -265,6 +266,59 @@ function shoestrap_menus_customizer_settings( $controls ){
 		),
 	);
 
+	$controls[] = array(
+		'type'     => 'checkbox',
+		'setting'  => 'navbar_secondary_social',
+		'label'    => __( 'Secondary Sidebar Social Networks', 'shoestrap' ),
+		'description' => __( 'Should the social networks be displayed on the secondary navbar?', 'shoestrap' ),
+		'section'  => 'menus',
+		'default'  => 1,
+		'priority' => 32,
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'secondary_navbar_margin',
+		'label'    => __( 'Secondary NavBar Margin', 'shoestrap' ),
+		'subtitle' => __( 'Select the top and bottom margin of header in pixels. Default: 0px.', 'shoestrap' ),
+		'section'  => 'menus',
+		'default'  => 0,
+		'priority' => 33,
+		'choices'  => array(
+			'min'  => 0,
+			'max'  => 200,
+			'step' => 1,
+		),
+		'separator' => true
+	);
+
+	$controls[] = array(
+		'type'     => 'select',
+		'setting'  => 'sidebar_menus_class',
+		'label'    => __( 'Color for sidebar menus', 'shoestrap' ),
+		'subtitle' => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'shoestrap' ),
+		'section'  => 'menus',
+		'default'  => 'screen_sm_min',
+		'choices'  => array(
+			'default' => __( 'Default', 'shoestrap' ),
+			'primary' => __( 'Branding-Primary', 'shoestrap' ),
+			'success' => __( 'Branding-Success', 'shoestrap' ),
+			'warning' => __( 'Branding-Warning', 'shoestrap' ),
+			'info'    => __( 'Branding-Info', 'shoestrap' ),
+			'danger'  => __( 'Branding-Danger', 'shoestrap' ),
+		),
+		'priority' => 40,
+	);
+
+	$controls[] = array(
+		'type'     => 'checkbox',
+		'setting'  => 'inverse_navlist',
+		'label'    => __( 'Inverse Sidebar Menus.', 'shoestrap' ),
+		'description' => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'shoestrap' ),
+		'section'  => 'menus',
+		'default'  => 1,
+		'priority' => 41,
+	);
 
 	return $controls;
 }
