@@ -28,13 +28,10 @@ class SS_Customize_Text_Control extends WP_Customize_Control {
 			<?php endif; ?>
 
 			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
-			<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
-				<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
-			<?php } ?>
 		</label>
 		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php foreach ( $this->required as $id => $value ) :
-			
+
 			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
 				<script>
 				jQuery(document).ready(function($) {
@@ -63,6 +60,6 @@ class SS_Customize_Text_Control extends WP_Customize_Control {
 				</script>
 			<?php }
 
-		endforeach; 
+		endforeach;
 	}
 }
