@@ -189,7 +189,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 				);
 
 			// Number Controls
-			} elseif ( 'sortable' == $control['type'] ) {
+			} elseif ( 'number' == $control['type'] ) {
 
 				$wp_customize->add_control( new SS_Customize_Number_Control( $wp_customize, $control['setting'], array(
 						'label'       => $control['label'],
