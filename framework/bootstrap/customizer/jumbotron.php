@@ -209,6 +209,60 @@ function shoestrap_jumbotron_customizer_settings( $controls ){
 		'separator' => true
 	);
 
+	$controls[] = array(
+		'type'     => 'checkbox',
+		'setting'  => 'jumbotron_title_fit',
+		'label'    => __( 'Use fittext for titles.', 'shoestrap' ),
+		'description' => __( 'Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF', 'shoestrap' ),
+		'section'  => 'jumbotron',
+		'default'  => 0,
+		'priority' => 30,
+	);
+
+	$controls[] = array(
+		'type'     => 'checkbox',
+		'setting'  => 'jumbotron_center',
+		'label'    => __( 'Center-align the content.', 'shoestrap' ),
+		'description' =>  __( 'Turn this on to center-align the contents of the Jumbotron area. Default: OFF', 'shoestrap' ),
+		'section'  => 'jumbotron',
+		'default'  => 0,
+		'priority' => 31,
+	);
+
+	$controls[] = array(
+		'type'     => 'number',
+		'setting'  => 'jumbotron_border_bottom_thickness',
+		'label'    => __( 'Border Bottom', 'shoestrap' ),
+		'subtitle' => __( 'Border Thickness (px)', 'shoestrap' ),
+		'section'  => 'jumbotron',
+		'default'  => 0,
+		'priority' => 32,
+	);
+
+	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
+		'setting'  => 'jumbotron_border_bottom_style',
+		'subtitle' =>  __( 'Border Style', 'shoestrap' ),
+		'section'  => 'jumbotron',
+		'default'  => 'none',
+		'choices'  => array(
+			'solid'  => __( 'Solid', 'shoestrap' ),
+			'dashed' => __( 'Dashed', 'shoestrap' ),
+			'dotted' => __( 'Dotted', 'shoestrap' ),
+			'none'   => __( 'None', 'shoestrap' ),
+		),
+		'priority' => 33,
+	);
+
+	$controls[] = array(
+		'type'     => 'color',
+		'setting'  => 'jumbotron_border_bottom_color',
+		'subtitle' =>  __( 'Border Color', 'shoestrap' ),
+		'section'  => 'jumbotron',
+		'default'  => '#eeeeee',
+		'priority' => 34,
+	);
 
 	return $controls;
 }
