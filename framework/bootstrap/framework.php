@@ -26,4 +26,6 @@ if ( isset( $wp_customize ) ) {
 	include_once( SS_FRAMEWORK_PATH . '/customizer/jumbotron.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/menus.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/header.php' );
+	include_once( SS_FRAMEWORK_PATH . '/customizer/footer.php' );
+	include_once( SS_FRAMEWORK_PATH . '/customizer/typography.php' );
 }
