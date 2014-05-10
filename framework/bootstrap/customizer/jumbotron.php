@@ -7,7 +7,7 @@ function shoestrap_jumbotron_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "Jumbotron" section
 	$wp_customize->add_section( 'jumbotron', array(
 		'title' => __( 'Jumbotron', 'shoestrap' ),
 		'priority' => 12
@@ -266,4 +266,4 @@ function shoestrap_jumbotron_customizer_settings( $controls ){
 
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_jumbotron_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_jumbotron_customizer_settings' );

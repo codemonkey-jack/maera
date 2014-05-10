@@ -7,7 +7,7 @@ function shoestrap_blog_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "Blog" section
 	$wp_customize->add_section( 'blog', array(
 		'title' => __( 'Blog', 'shoestrap' ),
 		'priority' => 10
@@ -258,4 +258,4 @@ function shoestrap_blog_customizer_settings( $controls ){
 	return $controls;
 
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_blog_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_blog_customizer_settings' );

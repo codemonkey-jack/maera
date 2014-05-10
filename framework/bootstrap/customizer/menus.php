@@ -7,7 +7,7 @@ function shoestrap_menus_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "Menus" section
 	$wp_customize->add_section( 'menus', array(
 		'title' => __( 'Menus', 'shoestrap' ),
 		'priority' => 12
@@ -322,4 +322,4 @@ function shoestrap_menus_customizer_settings( $controls ){
 
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_menus_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_menus_customizer_settings' );

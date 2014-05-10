@@ -7,7 +7,7 @@ function shoestrap_social_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "Social" section
 	$wp_customize->add_section( 'social', array(
 		'title' => __( 'Social', 'shoestrap' ),
 		'priority' => 12
@@ -151,4 +151,4 @@ function shoestrap_social_customizer_settings( $controls ){
 
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_social_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_social_customizer_settings' );

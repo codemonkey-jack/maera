@@ -7,7 +7,7 @@
  * @subpackage Customize
  * @since 3.4.0
  */
-class SS_Customize_Image_Control extends WP_Customize_Upload_Control {
+class Kirki_Customize_Image_Control extends WP_Customize_Upload_Control {
 	public $type = 'image';
 	public $get_url;
 	public $statuses;
@@ -126,7 +126,7 @@ class SS_Customize_Image_Control extends WP_Customize_Upload_Control {
 		</div>
 		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php foreach ( $this->required as $id => $value ) :
-			
+
 			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
 				<script>
 				jQuery(document).ready(function($) {
@@ -155,7 +155,7 @@ class SS_Customize_Image_Control extends WP_Customize_Upload_Control {
 				</script>
 			<?php }
 
-		endforeach; 
+		endforeach;
 	}
 
 	/**

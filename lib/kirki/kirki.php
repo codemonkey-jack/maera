@@ -1,25 +1,41 @@
 <?php
+/*
+Plugin Name: Kirki Framework
+Plugin URI: http://wpmu.io
+Description: An options framework using and extending the WordPress Customizer
+Author: Aristeides Stathopoulos
+Author URI: http://aristeides.com
+Version: 0.2
+*/
 
-if ( ! class_exists( 'WP_Customize_Control' ) ) {
-	return;
+
+/**
+ * Include the necessary files
+ */
+function kirki_customizer_include_files() {
+
+	include_once( dirname( __FILE__ ) . '/includes/controls/checkbox.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/color.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/image.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/radio.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/select.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/sliderui.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/text.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/textarea.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/upload.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/number.php' );
+	include_once( dirname( __FILE__ ) . '/includes/controls/multicheck.php' );
+
 }
+add_action( 'customize_register', 'kirki_customizer_include_files', 1 );
 
-require_once locate_template( '/lib/customizer/custom-controls/checkbox.php' );
-require_once locate_template( '/lib/customizer/custom-controls/color.php' );
-require_once locate_template( '/lib/customizer/custom-controls/image.php' );
-require_once locate_template( '/lib/customizer/custom-controls/radio.php' );
-require_once locate_template( '/lib/customizer/custom-controls/select.php' );
-require_once locate_template( '/lib/customizer/custom-controls/sliderui.php' );
-require_once locate_template( '/lib/customizer/custom-controls/text.php' );
-require_once locate_template( '/lib/customizer/custom-controls/textarea.php' );
-require_once locate_template( '/lib/customizer/custom-controls/upload.php' );
-require_once locate_template( '/lib/customizer/custom-controls/sortable.php' );
-require_once locate_template( '/lib/customizer/custom-controls/number.php' );
-require_once locate_template( '/lib/customizer/custom-controls/multicheck.php' );
 
-function shoestrap_customizer_controls( $wp_customize ) {
+/**
+ * Build the controls
+ */
+function kirki_customizer_controls( $wp_customize ) {
 
-	$controls = apply_filters( 'shoestrap/customizer/controls', array() );
+	$controls = apply_filters( 'kirki/controls', array() );
 
 	if ( isset( $controls ) ) {
 		foreach ( $controls as $control ) {
@@ -34,7 +50,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Checkbox controls
 			if ( 'checkbox' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Checkbox_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Checkbox_Control( $wp_customize, $control['setting'], array(
 						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -49,7 +65,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Color Controls
 			} elseif ( 'color' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Color_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Color_Control( $wp_customize, $control['setting'], array(
 						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -64,7 +80,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Image Controls
 			} elseif ( 'image' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Image_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Image_Control( $wp_customize, $control['setting'], array(
 						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -79,7 +95,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Radio Controls
 			} elseif ( 'radio' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Radio_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Radio_Control( $wp_customize, $control['setting'], array(
 						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -96,7 +112,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Select Controls
 			} elseif ( 'select' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Select_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Select_Control( $wp_customize, $control['setting'], array(
 						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -112,7 +128,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Slider Controls
 			} elseif ( 'slider' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Sliderui_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Sliderui_Control( $wp_customize, $control['setting'], array(
 						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -128,7 +144,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Text Controls
 			} elseif ( 'text' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Text_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Text_Control( $wp_customize, $control['setting'], array(
 						'label'       => isset( $control['label'] ) ? $control['label'] : '',
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -143,7 +159,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Text Controls
 			} elseif ( 'textarea' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Textarea_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Textarea_Control( $wp_customize, $control['setting'], array(
 						'label'       => $control['label'],
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -158,23 +174,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Upload Controls
 			} elseif ( 'upload' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Upload_Control( $wp_customize, $control['setting'], array(
-						'label'       => $control['label'],
-						'section'     => $control['section'],
-						'settings'    => $control['setting'],
-						'priority'    => $control['priority'],
-						'choices'     => $control['choices'],
-						'description' => isset( $control['description'] ) ? $control['description'] : null,
-						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
-						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-					) )
-				);
-
-			// Sortable Controls
-			} elseif ( 'sortable' == $control['type'] ) {
-
-				$wp_customize->add_control( new SS_Customize_Sortable_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Upload_Control( $wp_customize, $control['setting'], array(
 						'label'       => $control['label'],
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -190,7 +190,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Number Controls
 			} elseif ( 'number' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Number_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Number_Control( $wp_customize, $control['setting'], array(
 						'label'       => $control['label'],
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -204,7 +204,7 @@ function shoestrap_customizer_controls( $wp_customize ) {
 			// Multicheck Controls
 			} elseif ( 'multicheck' == $control['type'] ) {
 
-				$wp_customize->add_control( new SS_Customize_Multicheck_Control( $wp_customize, $control['setting'], array(
+				$wp_customize->add_control( new Kirki_Customize_Multicheck_Control( $wp_customize, $control['setting'], array(
 						'label'       => $control['label'],
 						'section'     => $control['section'],
 						'settings'    => $control['setting'],
@@ -220,23 +220,136 @@ function shoestrap_customizer_controls( $wp_customize ) {
 		}
 	}
 }
-add_action( 'customize_register', 'shoestrap_customizer_controls' );
+add_action( 'customize_register', 'kirki_customizer_controls', 99 );
 
-function shoestrap_enqueue_customizer_controls_styles() {
 
-	wp_register_style( 'ss-customizer-css', get_template_directory_uri() . '/lib/customizer/assets/customizer.css', NULL, NULL, 'all' );
-	wp_register_style( 'ss-customizer-ui',  get_template_directory_uri() . '/lib/customizer/assets/jquery-ui-1.10.0.custom.css', NULL, NULL, 'all' );
-	wp_enqueue_style( 'ss-customizer-css' );
-	wp_enqueue_style( 'ss-customizer-ui' );
+/**
+ * Enqueue the stylesheets and scripts required.
+ */
+function kirki_enqueue_customizer_controls_styles() {
 
-	wp_enqueue_script( 'ss_customizer_js', get_template_directory_uri() . '/lib/customizer/assets/js/customizer.js');
-	wp_enqueue_script( 'tipsy', get_template_directory_uri() . '/lib/customizer/assets/js/tooltipsy.min.js', array( 'jquery' ) );
+	$options = apply_filters( 'kirki/config', array() );
+
+	$kirki_url = isset( $options['url_path'] ) ? $options['url_path'] : plugin_dir_url( __FILE__ );
+
+	wp_register_style( 'kirki-customizer-css', $kirki_url . 'assets/css/customizer.css', NULL, NULL, 'all' );
+	wp_register_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, NULL, 'all' );
+	wp_enqueue_style( 'kirki-customizer-css' );
+	wp_enqueue_style( 'kirki-customizer-ui' );
+
+	wp_enqueue_script( 'kirki_customizer_js', $kirki_url . 'assets/js/customizer.js');
+	wp_enqueue_script( 'tipsy', $kirki_url . 'assets/js/tooltipsy.min.js', array( 'jquery' ) );
 
 }
-add_action( 'customize_controls_print_styles', 'shoestrap_enqueue_customizer_controls_styles' );
+add_action( 'customize_controls_print_styles', 'kirki_enqueue_customizer_controls_styles' );
 
-function shoestrap_googlefonts_styling() { ?>
+
+/**
+ * Use the Roboto font on the customizer.
+ */
+function kirki_googlefonts_styling() { ?>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:100,400|Roboto+Slab:700,400&subset=latin,cyrillic-ext,greek,vietnamese,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
 	<?php
 }
-add_action( 'customize_controls_print_styles', 'shoestrap_googlefonts_styling' );
+add_action( 'customize_controls_print_styles', 'kirki_googlefonts_styling' );
+
+
+/**
+ * Add custom CSS rules to the head, applying our custom styles
+ */
+function kirki_custom_css() {
+
+	$options = apply_filters( 'kirki/config', array() );
+
+	$color_active = isset( $options['color_active'] ) ? $options['color_active'] : '#1abc9c';
+	$color_accent = isset( $options['color_accent'] ) ? $options['color_accent'] : '#FF5740';
+	$color_light  = isset( $options['color_light'] ) ? $options['color_light'] : '#8cddcd';
+	$color_select = isset( $options['color_select'] ) ? $options['color_select'] : '#34495e';
+	$color_back = isset( $options['color_back'] ) ? $options['color_back'] : '#222';
+	?>
+
+	<style>
+		.wp-core-ui .button.tooltip {
+			background: <?php echo $color_active; ?>;
+		}
+
+		.image.ui-buttonset label.ui-button.ui-state-active {
+			background: <?php echo $color_accent; ?>;
+		}
+
+		.wp-full-overlay-sidebar {
+			background: <?php echo $color_back; ?>;
+		}
+
+		#customize-info .accordion-section-title, #customize-info .accordion-section-title:hover {
+			background: <?php echo $color_back; ?>;
+		}
+
+		#customize-theme-controls .accordion-section-title {
+			background: <?php echo $color_back; ?>;
+		}
+
+		#customize-theme-controls .accordion-section-title {
+			border-bottom: 1px solid <?php echo $color_back; ?>;
+		}
+
+		#customize-theme-controls .control-section .accordion-section-title {
+			background: <?php echo $color_back; ?>;
+		}
+
+		#customize-theme-controls .control-section .accordion-section-title:focus,
+		#customize-theme-controls .control-section .accordion-section-title:hover,
+		#customize-theme-controls .control-section.open .accordion-section-title,
+		#customize-theme-controls .control-section:hover .accordion-section-title {
+			background: <?php echo $color_active; ?>;
+		}
+
+		.wp-core-ui .button-primary {
+			background: <?php echo $color_active; ?>;
+		}
+
+		.wp-core-ui .button-primary.focus,
+		.wp-core-ui .button-primary.hover,
+		.wp-core-ui .button-primary:focus,
+		.wp-core-ui .button-primary:hover {
+			background: <?php echo $color_select; ?>;
+		}
+
+		.wp-core-ui .button-primary-disabled,
+		.wp-core-ui .button-primary.disabled,
+		.wp-core-ui .button-primary:disabled,
+		.wp-core-ui .button-primary[disabled] {
+			background: <?php echo $color_light; ?> !important;
+			color: <?php echo $color_select; ?> !important;
+		}
+
+		<?php if ( isset( $options['logo_image'] ) ) : ?>
+			div.kirki-customizer {
+				background: url("<?php echo $options['logo_image']; ?>") no-repeat left center;
+			}
+		<?php endif; ?>
+	</style>
+	<?php
+
+}
+add_action( 'customize_controls_print_styles', 'kirki_custom_css', 999 );
+
+/**
+ * If we've specified an image to be used as logo, replace the default theme description with a div that will have our logo as background.
+ */
+function kirki_custom_js() {
+
+	$options = apply_filters( 'kirki/config', array() ); ?>
+
+	<?php if ( isset( $options['logo_image'] ) ) : ?>
+		<script>
+			jQuery(document).ready(function($) {
+				"use strict";
+
+				$( 'div#customize-info' ).replaceWith( '<div class="kirki-customizer"></div>' );
+			});
+		</script>
+	<?php endif;
+
+}
+add_action( 'customize_controls_print_scripts', 'kirki_custom_js', 999 );

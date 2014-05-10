@@ -7,7 +7,7 @@ function shoestrap_general_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "General" section
 	$wp_customize->add_section( 'general', array(
 		'title' => __( 'General', 'shoestrap' ),
 		'priority' => 1
@@ -69,4 +69,4 @@ function shoestrap_general_customizer_settings( $controls ){
 
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_general_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_general_customizer_settings' );

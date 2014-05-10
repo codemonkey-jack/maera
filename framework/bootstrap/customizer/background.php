@@ -7,7 +7,7 @@ function shoestrap_background_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "Background" section
 	$wp_customize->add_section( 'background', array(
 		'title' => __( 'Background', 'shoestrap' ),
 	) );
@@ -203,5 +203,5 @@ function shoestrap_background_customizer_settings( $controls ){
 
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_background_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_background_customizer_settings' );
 

@@ -7,7 +7,7 @@ function shoestrap_header_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "Header" section
 	$wp_customize->add_section( 'header', array(
 		'title' => __( 'Header', 'shoestrap' ),
 		'priority' => 12
@@ -188,4 +188,4 @@ function shoestrap_header_customizer_settings( $controls ){
 
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_header_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_header_customizer_settings' );

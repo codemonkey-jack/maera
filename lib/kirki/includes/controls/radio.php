@@ -1,6 +1,6 @@
 <?php
 
-class SS_Customize_Radio_Control extends WP_Customize_Control {
+class Kirki_Customize_Radio_Control extends WP_Customize_Control {
 
 	public $type = 'radio';
 
@@ -93,7 +93,7 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 		<?php } ?>
 
 		<?php foreach ( $this->required as $id => $value ) :
-			
+
 			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
 				<script>
 				jQuery(document).ready(function($) {
@@ -122,6 +122,6 @@ class SS_Customize_Radio_Control extends WP_Customize_Control {
 				</script>
 			<?php }
 
-		endforeach; 
+		endforeach;
 	}
 }

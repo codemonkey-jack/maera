@@ -7,7 +7,7 @@ function shoestrap_typography_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "Typography" section
 	$wp_customize->add_section( 'typography', array(
 		'title' => __( 'Typography', 'shoestrap' ),
 		'priority' => 12
@@ -180,4 +180,4 @@ function shoestrap_typography_customizer_settings( $controls ){
 
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_typography_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_typography_customizer_settings' );

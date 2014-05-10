@@ -7,7 +7,7 @@ function shoestrap_colors_customizer( $wp_customize ){
 
 	$controls = array();
 
-	// Create the "Layout" section
+	// Create the "Colors" section
 	$wp_customize->add_section( 'colors', array(
 		'title' => __( 'Colors', 'shoestrap' ),
 		'priority' => 3
@@ -83,4 +83,4 @@ function shoestrap_colors_customizer_settings( $controls ){
 
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_colors_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_colors_customizer_settings' );

@@ -1,24 +1,17 @@
 <?php
 
 /**
- * Customize Color Control Class
+ * Customize Upload Control Class
  *
  * @package WordPress
  * @subpackage Customize
  * @since 3.4.0
  */
-class SS_Customize_Color_Control extends WP_Customize_Control {
-	/**
-	 * @access public
-	 * @var string
-	 */
-	public $type = 'color';
-
-	/**
-	 * @access public
-	 * @var array
-	 */
-	public $statuses;
+class Kirki_Customize_Upload_Control extends WP_Customize_Control {
+	public $type    = 'upload';
+	public $removed = '';
+	public $context;
+	public $extensions = array();
 
 	public $description = '';
 
@@ -29,28 +22,12 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 	public $required;
 
 	/**
-	 * Constructor.
-	 *
-	 * @since 3.4.0
-	 * @uses WP_Customize_Control::__construct()
-	 *
-	 * @param WP_Customize_Manager $manager
-	 * @param string $id
-	 * @param array $args
-	 */
-	public function __construct( $manager, $id, $args = array() ) {
-		$this->statuses = array( '' => __('Default') );
-		parent::__construct( $manager, $id, $args );
-	}
-
-	/**
-	 * Enqueue scripts/styles for the color picker.
+	 * Enqueue control related scripts/styles.
 	 *
 	 * @since 3.4.0
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-plupload' );
 	}
 
 	/**
@@ -61,7 +38,14 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['statuses'] = $this->statuses;
+
+		$this->json['removed'] = $this->removed;
+
+		if ( $this->context )
+			$this->json['context'] = $this->context;
+
+		if ( $this->extensions )
+			$this->json['extensions'] = implode( ',', $this->extensions );
 	}
 
 	/**
@@ -70,32 +54,27 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 	 * @since 3.4.0
 	 */
 	public function render_content() {
-		$this_default = $this->setting->default;
-		$default_attr = '';
-		if ( $this_default ) {
-			if ( false === strpos( $this_default, '#' ) )
-				$this_default = '#' . $this_default;
-			$default_attr = ' data-default-color="' . esc_attr( $this_default ) . '"';
-		}
-		// The input's value gets set by JS. Don't fill it.
 		?>
 		<label>
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
-				<?php if ( isset( $this->description ) && ! empty( $this->description ) ) { ?>
+				<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
 					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
 			</span>
+
 			<?php if ( '' != $this->subtitle ) : ?>
 				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
 			<?php endif; ?>
-			<div class="customize-control-content">
-				<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"<?php echo $default_attr; ?> />
+
+			<div>
+				<a href="#" class="button-secondary upload"><?php _e( 'Upload' ); ?></a>
+				<a href="#" class="remove"><?php _e( 'Remove' ); ?></a>
 			</div>
 		</label>
 		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php foreach ( $this->required as $id => $value ) :
-			
+
 			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
 				<script>
 				jQuery(document).ready(function($) {
@@ -124,6 +103,6 @@ class SS_Customize_Color_Control extends WP_Customize_Control {
 				</script>
 			<?php }
 
-		endforeach; 
+		endforeach;
 	}
 }

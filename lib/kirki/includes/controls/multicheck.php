@@ -5,7 +5,7 @@
  * See https://github.com/gambitph/Titan-Framework/blob/v1.4.2/class-option-multicheck.php for more details.
  */
 
-class SS_Customize_Multicheck_Control extends WP_Customize_Control {
+class Kirki_Customize_Multicheck_Control extends WP_Customize_Control {
 
 	public $description = '';
 
@@ -82,7 +82,7 @@ class SS_Customize_Multicheck_Control extends WP_Customize_Control {
 		</label>
 		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php foreach ( $this->required as $id => $value ) :
-			
+
 			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
 				<script>
 				jQuery(document).ready(function($) {
@@ -111,6 +111,6 @@ class SS_Customize_Multicheck_Control extends WP_Customize_Control {
 				</script>
 			<?php }
 
-		endforeach; 
+		endforeach;
 	}
 }

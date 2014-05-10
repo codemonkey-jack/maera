@@ -1,8 +1,11 @@
 <?php
 
-class SS_Customize_Checkbox_Control extends WP_Customize_Control {
-
-	public $type = 'checkbox';
+class Kirki_Select_Control extends WP_Customize_Control {
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $type = 'select';
 
 	public $description = '';
 
@@ -12,20 +15,33 @@ class SS_Customize_Checkbox_Control extends WP_Customize_Control {
 
 	public $required;
 
-	public function render_content() { ?>
-		<label class="customizer-checkbox">
-			<input type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" id="<?php echo $this->id . esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
-			<strong><?php echo esc_html( $this->label ); ?></strong>
-			<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
-				<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
-			<?php } ?>
+	public function render_content() {
+
+		if ( empty( $this->choices ) ) {
+			return;
+		} ?>
+
+		<label>
+			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?>
+				<?php if ( isset( $this->description ) && ! empty( $this->description ) ) { ?>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
+				<?php } ?>
+			</span>
+
 			<?php if ( '' != $this->subtitle ) : ?>
 				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
 			<?php endif; ?>
+
+			<select <?php $this->link(); ?>>
+				<?php
+				foreach ( $this->choices as $value => $label ) {
+					echo '<option value="' . esc_attr( $value ) . '"' . selected( $this->value(), $value, false ) . '>' . $label . '</option>';
+				} ?>
+			</select>
 		</label>
 		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
 		<?php foreach ( $this->required as $id => $value ) :
-			
+
 			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
 				<script>
 				jQuery(document).ready(function($) {
@@ -54,6 +70,6 @@ class SS_Customize_Checkbox_Control extends WP_Customize_Control {
 				</script>
 			<?php }
 
-		endforeach; 
+		endforeach;
 	}
 }

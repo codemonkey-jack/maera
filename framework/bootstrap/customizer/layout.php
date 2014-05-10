@@ -240,4 +240,4 @@ function shoestrap_layout_customizer_settings( $controls ) {
 	}
 	return $controls;
 }
-add_filter( 'shoestrap/customizer/controls', 'shoestrap_layout_customizer_settings' );
+add_filter( 'kirki/controls', 'shoestrap_layout_customizer_settings' );
