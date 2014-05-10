@@ -7,37 +7,46 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 	*/
 	class Shoestrap_Compiler {
 
-		public $compiler;
-		public $minimize_css = true;
-		public $less_path;
-		public $sass_path;
-		public $custom_styles;
+		private $compiler;
+		private $minimize_css = true;
+		private $less_path;
+		private $sass_path;
+		private $custom_styles = '';
 
-		function __construct() {
+		function __construct( $args = array() ) {
+
+			$args = wp_parse_args( $args, array(
+				'compiler'      => null,
+				'minimize_css'  => true,
+				'less_path'     => '',
+				'sass_path'     => '',
+				'custom_styles' => '',
+			) );
+			extract( $args );
+
+			$this->compiler      = $compiler;
+			$this->minimize_css  = $minimize_css;
+			$this->less_path     = $less_path;
+			$this->sass_path     = $sass_path;
+			$this->custom_styles = $custom_styles;
 
 			if ( 'less_php' == $this->compiler ) {
 
 				// Require the less parser
 				if ( ! class_exists( 'Less_Parser' ) ) {
-					require_once( 'less.php' );
+					require_once( 'less-php/less.php' );
 				}
-
-				// Run the compiler
-				add_filter( 'shoestrap/compiler', array( $this, 'compiler_less' ) );
 
 			} elseif ( 'sass_php' == $this->compiler ) {
 
 				// Require the less parser
 				if ( ! class_exists( 'scssc' ) ) {
-					require_once( 'scss.inc.php' );
+					require_once( 'sass-php/scss.inc.php' );
 				}
-
-				// Run the compiler
-				add_filter( 'shoestrap/compiler', array( $this, 'compiler_sass' ) );
 
 			}
 
-			$this->custom_styles = apply_filters( 'shoestrap/compiler/custom_styles', '' );
+			$this->custom_styles = apply_filters( 'shoestrap/compiler/custom_styles', $this->custom_styles );
 
 			add_filter( 'shoestrap/stylesheet/url', array( $this, 'stylesheet_url' ) );
 			add_filter( 'shoestrap/stylesheet/ver', array( $this, 'stylesheet_ver' ) );
@@ -206,7 +215,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			}
 		}
 
-		public static function makecss() {
+		public function makecss() {
 			global $wp_filesystem;
 
 			$file = self::file();
@@ -220,6 +229,16 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			$content = '/********* Compiled - Do not edit *********/
 
 			';
+
+			if ( 'less_php' == $this->compiler ) {
+
+				$content = $this->compiler_less();
+
+			} elseif ( 'sass_php' == $this->compiler ) {
+
+				$content = $this->compiler_sass();
+
+			}
 
 			$content .= apply_filters( 'shoestrap/compiler', '' );
 
@@ -242,7 +261,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
-		public function compiler_less( $content ) {
+		public function compiler_less() {
 
 			$options   = array( 'compress' => $this->minimize_css );
 			$less_path = $this->less_path;
@@ -252,6 +271,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
 
 			$css = '';
+
 			try {
 
 				$parser = new Less_Parser( $options );
@@ -262,14 +282,9 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 				// Include the Elusive Icons
 				$parser->parseFile( $webfont_location . 'elusive-webfont.less', '' );
 
-				// Enable gradients
-				if ( $ss_settings['gradients_toggle'] == 1 ) {
-					$parser->parseFile( $less_path . 'gradients.less', '' );
-				}
-
 				// The custom.less file
 				if ( is_writable( $custom_less_file ) ) {
-					$parser->parseFile( $less_path . 'custom.less', '' );
+					$parser->parseFile( $custom_less_file );
 				}
 
 				// Parse any custom less added by the user
@@ -300,13 +315,13 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			$css = str_replace( 'http:', '', $css );
 			$css = str_replace( 'https:', '', $css );
 
-			return $content . $css;
+			return $css;
 		}
 
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
-		function compiler_sass( $content ) {
+		function compiler_sass() {
 
 			$scss = new scssc();
 			$scss->setImportPaths( $this->sass_path );
@@ -316,7 +331,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			// Ugly hack to properly set the path to webfonts
 			$css = str_replace( "url('Elusive-Icons", "url('" . get_template_directory_uri() . '/assets/fonts/' . "Elusive-Icons", $css );
 
-			return $content . $css;
+			return $css;
 		}
 
 	}
