@@ -31,6 +31,19 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 
 			}
 
+			// Triggers the compiler.
+			// To trigger the compiler, you will have to add an action to shoestrap/compiler/run like this:
+			// add_action( 'shoestrap/compiler/run', '__return_true' );
+			if ( has_action( 'shoestrap/compiler/run' ) ) {
+
+				if ( 'less_php' == $this->compiler ) {
+					$this->compiler_less;
+				} elseif ( 'sass_php' == $this->compiler ) {
+					$this->compiler_sass;
+				}
+
+			}
+
 			$this->custom_styles = apply_filters( 'shoestrap/compiler/custom_styles', '' );
 
 			add_filter( 'shoestrap/stylesheet/url', array( $this, 'stylesheet_url' ) );
@@ -239,7 +252,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
-		public function less_compiler() {
+		public function compiler_less() {
 
 			$options   = array( 'compress' => $this->minimize_css );
 			$less_path = $this->less_path;
@@ -303,7 +316,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
-		function sass_compiler() {
+		function compiler_sass() {
 
 			$scss = new scssc();
 			$scss->setImportPaths( $this->sass_path );
