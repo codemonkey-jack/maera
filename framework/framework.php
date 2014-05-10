@@ -4,6 +4,9 @@ if ( ! defined( 'SS_FRAMEWORK' ) ) {
 	define( 'SS_FRAMEWORK', 'bootstrap' );
 }
 
+// Include the compiler class
+require_once locate_template( '/lib/compilers/class-Shoestrap_Compiler.php' );
+
 // Require the Core Framework class
 require_once locate_template( '/framework/class-SS_Framework_Core.php' );
 
@@ -16,6 +19,3 @@ if ( ! isset( $ss_active_framework ) || null == $ss_active_framework ) {
 global $ss_framework;
 $framework_class = $ss_active_framework['classname'];
 $ss_framework = $framework_class::get_instance();
-
-// Include the compiler class
-require_once locate_template( '/lib/compilers/class-Shoestrap_Compiler.php' );
