@@ -18,6 +18,14 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
 			}
 
+			// CAUTION: THE BELOW IS SIMPLY FOR DEVELOPMENT
+			// STYLESHEETS WILL GET RECOMPILED ON EACH PAGE LOAD
+			$compiler = new Shoestrap_Compiler( array(
+				'compiler'     => 'less_php',
+				'minimize_css' => true,
+				'less_path'    => dirname( __FILE__ ) . '/assets/less/',
+			) );
+
 		}
 
 		/**
