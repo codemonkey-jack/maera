@@ -22,6 +22,9 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 					require_once( 'less.php' );
 				}
 
+				// Run the compiler
+				add_filter( 'shoestrap/compiler', array( $this, 'compiler_less' ) );
+
 			} elseif ( 'sass_php' == $this->compiler ) {
 
 				// Require the less parser
@@ -29,18 +32,8 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 					require_once( 'scss.inc.php' );
 				}
 
-			}
-
-			// Triggers the compiler.
-			// To trigger the compiler, you will have to add an action to shoestrap/compiler/run like this:
-			// add_action( 'shoestrap/compiler/run', '__return_true' );
-			if ( has_action( 'shoestrap/compiler/run' ) ) {
-
-				if ( 'less_php' == $this->compiler ) {
-					$this->compiler_less;
-				} elseif ( 'sass_php' == $this->compiler ) {
-					$this->compiler_sass;
-				}
+				// Run the compiler
+				add_filter( 'shoestrap/compiler', array( $this, 'compiler_sass' ) );
 
 			}
 
@@ -50,12 +43,9 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			add_filter( 'shoestrap/stylesheet/ver', array( $this, 'stylesheet_ver' ) );
 			add_action( 'admin_notices', array( $this, 'file_nag' ) );
 
-			// If the Custom LESS exists and has changed after the last compilation, trigger the compiler.
-			if ( is_writable( get_stylesheet_directory() . '/assets/less/custom.scss' ) ) {
-				if ( filemtime( get_stylesheet_directory() . '/assets/less/custom.scss' ) > filemtime( self::file() ) ) {
-					self::makecss();
-				}
-			}
+			// Trigger the compiler
+			$this->makecss();
+
 		}
 
 		/*
@@ -252,7 +242,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
-		public function compiler_less() {
+		public function compiler_less( $content ) {
 
 			$options   = array( 'compress' => $this->minimize_css );
 			$less_path = $this->less_path;
@@ -310,13 +300,13 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			$css = str_replace( 'http:', '', $css );
 			$css = str_replace( 'https:', '', $css );
 
-			return $css;
+			return $content . $css;
 		}
 
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
-		function compiler_sass() {
+		function compiler_sass( $content ) {
 
 			$scss = new scssc();
 			$scss->setImportPaths( $this->sass_path );
@@ -326,7 +316,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			// Ugly hack to properly set the path to webfonts
 			$css = str_replace( "url('Elusive-Icons", "url('" . get_template_directory_uri() . '/assets/fonts/' . "Elusive-Icons", $css );
 
-			return $css;
+			return $content . $css;
 		}
 
 	}
