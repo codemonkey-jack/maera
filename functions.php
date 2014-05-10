@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'SHOESTRAP_ASSETS_URL' ) ) {
+	define( 'SHOESTRAP_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
+}
+
 require_once locate_template( '/lib/dependencies/dependencies.php' );
 
 if ( ! class_exists( 'Timber' ) ) {
@@ -17,6 +21,8 @@ if ( ! function_exists( 'kirki_customizer_controls' ) ) {
 require_once locate_template( '/lib/customizer.php' );
 
 require_once locate_template( '/framework/framework.php' );
+
+require_once locate_template( '/lib/assets.php' );
 
 Timber::$locations = array(
 	SS_FRAMEWORK_PATH . '/macros',

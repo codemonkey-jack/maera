@@ -33,8 +33,8 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 
 			$this->custom_styles = apply_filters( 'shoestrap/compiler/custom_styles', '' );
 
-			add_filter( 'shoestrap/stylesheet_url', array( $this, 'stylesheet_url' ) );
-			add_filter( 'shoestrap/stylesheet_ver', array( $this, 'stylesheet_ver' ) );
+			add_filter( 'shoestrap/stylesheet/url', array( $this, 'stylesheet_url' ) );
+			add_filter( 'shoestrap/stylesheet/ver', array( $this, 'stylesheet_ver' ) );
 			add_action( 'admin_notices', array( $this, 'file_nag' ) );
 
 			// If the Custom LESS exists and has changed after the last compilation, trigger the compiler.
