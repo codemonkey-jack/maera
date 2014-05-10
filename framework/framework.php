@@ -16,3 +16,6 @@ if ( ! isset( $ss_active_framework ) || null == $ss_active_framework ) {
 global $ss_framework;
 $framework_class = $ss_active_framework['classname'];
 $ss_framework = $framework_class::get_instance();
+
+// Include the compiler class
+require_once locate_template( '/lib/compilers/class-Shoestrap_Compiler.php' );
