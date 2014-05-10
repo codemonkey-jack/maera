@@ -11,7 +11,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 		public $minimize_css = true;
 		public $less_path;
 		public $sass_path;
-		public $custom_styles = apply_filters( 'shoestrap/compiler/custom_styles', '' );
+		public $custom_styles;
 
 		function __construct() {
 
@@ -30,6 +30,8 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 				}
 
 			}
+
+			$this->custom_styles = apply_filters( 'shoestrap/compiler/custom_styles', '' );
 
 			add_filter( 'shoestrap/stylesheet_url', array( $this, 'stylesheet_url' ) );
 			add_filter( 'shoestrap/stylesheet_ver', array( $this, 'stylesheet_ver' ) );
@@ -233,86 +235,86 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			delete_transient( 'shoestrap_stylesheet_path' );
 			delete_transient( 'shoestrap_stylesheet_uri' );
 		}
-	}
 
-	/*
-	 * This function can be used to compile a less file to css using the lessphp compiler
-	 */
-	public function compiler() {
+		/*
+		 * This function can be used to compile a less file to css using the lessphp compiler
+		 */
+		public function less_compiler() {
 
-		$options   = array( 'compress' => $this->minimize_css );
-		$less_path = $this->less_path;
+			$options   = array( 'compress' => $this->minimize_css );
+			$less_path = $this->less_path;
 
-		$webfont_location   = get_template_directory() . '/assets/fonts/';
+			$webfont_location   = get_template_directory() . '/assets/fonts/';
 
-		$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
+			$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
 
-		$css = '';
-		try {
+			$css = '';
+			try {
 
-			$parser = new Less_Parser( $options );
+				$parser = new Less_Parser( $options );
 
-			// The main app.less file
-			$parser->parseFile( $less_path . 'app.less', '' );
+				// The main app.less file
+				$parser->parseFile( $less_path . 'app.less', '' );
 
-			// Include the Elusive Icons
-			$parser->parseFile( $webfont_location . 'elusive-webfont.less', '' );
+				// Include the Elusive Icons
+				$parser->parseFile( $webfont_location . 'elusive-webfont.less', '' );
 
-			// Enable gradients
-			if ( $ss_settings['gradients_toggle'] == 1 ) {
-				$parser->parseFile( $less_path . 'gradients.less', '' );
+				// Enable gradients
+				if ( $ss_settings['gradients_toggle'] == 1 ) {
+					$parser->parseFile( $less_path . 'gradients.less', '' );
+				}
+
+				// The custom.less file
+				if ( is_writable( $custom_less_file ) ) {
+					$parser->parseFile( $less_path . 'custom.less', '' );
+				}
+
+				// Parse any custom less added by the user
+				if ( '' != $this->custom_styles ) {
+					$parser->parse( $this->custom_styles );
+				}
+
+				// Get the extra variables & imports
+				$extra_vars = do_action( 'shoestrap/compiler/variables' );
+				$parser->parse( $extra_vars );
+
+				// Add a filter to the compiler
+				$parser->parse( apply_filters( 'shoestrap/compiler', '' ) );
+
+				$css = $parser->getCss();
+
+			} catch( Exception $e ) {
+
+				$error_message = $e->getMessage();
+
 			}
 
-			// The custom.less file
-			if ( is_writable( $custom_less_file ) ) {
-				$parser->parseFile( $less_path . 'custom.less', '' );
-			}
+			// Replace relaive with absolute paths
+			$css = str_replace( '../', get_template_directory_uri() . '/assets/', $css );
 
-			// Parse any custom less added by the user
-			if ( '' != $this->custom_styles ) {
-				$parser->parse( $this->custom_styles );
-			}
+			// apply some custom logic to make things work with SSL
+			$css = preg_replace( '|https?:\/\/([^\/]+)|i', null, $css );
+			$css = str_replace( 'http:', '', $css );
+			$css = str_replace( 'https:', '', $css );
 
-			// Get the extra variables & imports
-			$extra_vars = do_action( 'shoestrap/compiler/variables' );
-			$parser->parse( $extra_vars );
-
-			// Add a filter to the compiler
-			$parser->parse( apply_filters( 'shoestrap/compiler', '' ) );
-
-			$css = $parser->getCss();
-
-		} catch( Exception $e ) {
-
-			$error_message = $e->getMessage();
-
+			return $css;
 		}
 
-		// Replace relaive with absolute paths
-		$css = str_replace( '../', get_template_directory_uri() . '/assets/', $css );
+		/*
+		 * This function can be used to compile a less file to css using the lessphp compiler
+		 */
+		function sass_compiler() {
 
-		// apply some custom logic to make things work with SSL
-		$css = preg_replace( '|https?:\/\/([^\/]+)|i', null, $css );
-		$css = str_replace( 'http:', '', $css );
-		$css = str_replace( 'https:', '', $css );
+			$scss = new scssc();
+			$scss->setImportPaths( $this->sass_path );
 
-		return $css;
+			$css =  $scss->compile( apply_filters( 'foundation_scss', '@import "app.scss";' ) );
+
+			// Ugly hack to properly set the path to webfonts
+			$css = str_replace( "url('Elusive-Icons", "url('" . get_template_directory_uri() . '/assets/fonts/' . "Elusive-Icons", $css );
+
+			return $css;
+		}
+
 	}
-
-	/*
-	 * This function can be used to compile a less file to css using the lessphp compiler
-	 */
-	function compiler() {
-
-		$scss = new scssc();
-		$scss->setImportPaths( $this->sass_path );
-
-		$css =  $scss->compile( apply_filters( 'foundation_scss', '@import "app.scss";' ) );
-
-		// Ugly hack to properly set the path to webfonts
-		$css = str_replace( "url('Elusive-Icons", "url('" . get_template_directory_uri() . '/assets/fonts/' . "Elusive-Icons", $css );
-
-		return $css;
-	}
-
 }
