@@ -140,3 +140,22 @@ function shoestrap_sidebars_bypass() {
 
 }
 add_action( 'wp', 'shoestrap_sidebars_bypass' );
+
+/**
+ * Filter for the container class.
+ *
+ * When the user selects fluid site mode, remove the container class from containers.
+ */
+function shoestrap_container_class_modifier() {
+
+	$site_style = get_theme_mod( 'site_style', 'wide' );
+
+	if ( 'fluid' == $site_style ) {
+
+		// Fluid mode
+		add_filter( 'shoestrap/container_class', '__return_null' );
+
+	}
+
+}
+add_action( 'wp', 'shoestrap_container_class_modifier' );
