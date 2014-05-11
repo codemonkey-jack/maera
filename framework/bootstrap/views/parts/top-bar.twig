@@ -1,0 +1,52 @@
+{% if theme_mods.navbar_toggle == 'none' %}
+{% else %}
+
+	{% do action( 'shoestrap/topbar/before' ) %}
+
+	<header id="banner-header" class="banner {{ 'navbar navbar-default'|apply_filters( 'shoestrap/topbar/class' ) }}" role="banner">
+		<div class="{{ 'container'|apply_filters( 'shoestrap/topbar/class/container' ) }}">
+
+			<div class="navbar-header">
+
+				{{ '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main, .nav-extras"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>'|apply_filters( 'shoestrap/topbar/toggler' ) }}
+
+				{{ "<a class='navbar-brand text' href='#{ site.url }'>#{ site.name }</a>"|apply_filters( 'shoestrap/topbar/brand' ) }}
+
+			</div>
+
+			{% do action( 'shoestrap/topbar/main/before' ) %}
+
+			<nav class="nav-main navbar-collapse collapse" role="navigation">
+
+				{% do action( 'shoestrap/topbar/inside/begin' ) %}
+
+				<ul class="{{ 'nav navbar-main'|apply_filters('shoestrap/topbar/menu/class') }}">
+					{% for item in menu.primary_navigation.get_items %}
+
+						<li class="{{ item.classes | join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
+							{% if item.get_children %}
+
+								<ul class="dropdown-menu">
+									{% for child in item.get_children %}
+										<li class="{{ item.classes | join(' ') }}"><a href="{{ child.get_path }}">{{ child.title }}</a></li>
+									{% endfor %}
+								</ul>
+
+							{% endif %}
+						</li>
+
+					{% endfor %}
+				</ul>
+
+				{% do action( 'shoestrap/topbar/inside/end' ) %}
+
+			</nav>
+
+			{% do action( 'shoestrap/topbar/main/after' ) %}
+
+		</div>
+	</header>
+
+	{% do action( 'shoestrap/topbar/after' ) %}
+
+{% endif %}

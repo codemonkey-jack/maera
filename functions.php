@@ -26,7 +26,19 @@ require_once locate_template( '/lib/assets.php' );
 
 Timber::$locations = array(
 	SS_FRAMEWORK_PATH . '/macros',
+	SS_FRAMEWORK_PATH . '/views',
 	SS_FRAMEWORK_PATH,
 	get_stylesheet_directory() . '/views',
 	get_template_directory() . '/views'
 );
+
+function shoestrap_timber_global_context( $data ) {
+
+	$data['theme_mods'] = get_theme_mods();
+	$data['menu']['primary']   = new TimberMenu( 'primary_navigation' );
+	$data['menu']['secondary'] = new TimberMenu( 'secondary_navigation' );
+
+	return $data;
+
+}
+add_filter( 'timber_context', 'shoestrap_timber_global_context' );
