@@ -111,3 +111,15 @@ function shoestrap_transliterate( $str ) {
 
 	}
 }
+
+function shoestrap_return_0() { return 0; }
+
+function shoestrap_return_1() { return 1; }
+
+function shoestrap_return_2() { return 2; }
+
+function shoestrap_return_3() { return 3; }
+
+function shoestrap_return_4() { return 4; }
+
+function shoestrap_return_5() { return 5; }

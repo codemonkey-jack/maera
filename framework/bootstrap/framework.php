@@ -31,3 +31,5 @@ if ( isset( $wp_customize ) ) {
 	include_once( SS_FRAMEWORK_PATH . '/customizer/social.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/advanced.php' );
 }
+
+include_once( SS_FRAMEWORK_PATH . '/functions/layout.php' );

@@ -10,13 +10,17 @@
 if ( ! class_exists( 'Timber' ) ) {
 	_e( 'Timber not activated. Make sure you activate the plugin.', 'shoestrap' );
 }
-
+add_filter( 'shoestrap/sidebar/secondary', '__return_null' );
 $context = Timber::get_context();
 
 $context['posts'] = Timber::get_posts();
 
-$context['sidebar_primary']   = Timber::get_widgets( 'sidebar_primary' );
-$context['sidebar_secondary'] = Timber::get_widgets( 'sidebar_secondary' );
+$sidebar_primary = Timber::get_widgets( 'sidebar_primary' );
+$context['sidebar_primary'] = apply_filters( 'shoestrap/sidebar/primary', $sidebar_primary );
+
+
+$sidebar_secondary = Timber::get_widgets( 'sidebar_secondary' );
+$context['sidebar_secondary'] = apply_filters( 'shoestrap/sidebar/secondary', $sidebar_secondary );
 
 $templates = array( 'index.twig' );
 

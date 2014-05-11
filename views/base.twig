@@ -21,21 +21,23 @@
 
 			{{ framework.open_row( 'div', null, 'bg' ) }}
 
-				{% do action( 'shoestrap/main/before' ) %}
-				<main class="{{ 'main'|apply_filters( 'shoestrap/section_class/main' ) }}" role="main">
+				<div class="content-primary-wrapper {{ 'main'|apply_filters( 'shoestrap/section_class/wrapper' ) }}">
+					{% do action( 'shoestrap/main/before' ) %}
+					<main class="{{ 'main'|apply_filters( 'shoestrap/section_class/content' ) }}" role="main">
 
-					{% if title %}<h1>{{title}}</h1>{% endif %}
-					{% block content %}
-						Sorry, no content
-					{% endblock %}
+						{% if title %}<h1>{{title}}</h1>{% endif %}
+						{% block content %}
+							Sorry, no content
+						{% endblock %}
 
-				</main><!-- /.main -->
-				{% do action( 'shoestrap/main/after' ) %}
+					</main><!-- /.main -->
+					{% do action( 'shoestrap/main/after' ) %}
 
-				{# PRIMARY SIDEBAR #}
-				<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'shoestrap/section_class/primary' ) }}" role="complementary">
-					{{ sidebar_primary }}
-				</aside>
+					{# PRIMARY SIDEBAR #}
+					<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'shoestrap/section_class/primary' ) }}" role="complementary">
+						{{ sidebar_primary }}
+					</aside>
+				</div>
 
 				{# SECONDARY SIDEBAR #}
 				<aside id="sidebar-secondary" class="{{ 'sidebar'|apply_filters( 'shoestrap/section_class/secondary' ) }}" role="complementary">
