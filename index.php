@@ -10,7 +10,7 @@
 if ( ! class_exists( 'Timber' ) ) {
 	_e( 'Timber not activated. Make sure you activate the plugin.', 'shoestrap' );
 }
-add_filter( 'shoestrap/sidebar/secondary', '__return_null' );
+
 $context = Timber::get_context();
 
 $context['posts'] = Timber::get_posts();
