@@ -204,3 +204,26 @@ function shoestrap_boxed_body_class( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'shoestrap_boxed_body_class' );
+
+/**
+ * Additional CSS rules for layout options
+ */
+function shoestrap_layout_css() {
+
+	$body_margin_top    = get_theme_mod( 'body_margin_top', 0 );
+	$body_margin_bottom = get_theme_mod( 'body_margin_bottom', 0 );
+
+	$style = null;
+
+	if ( 0 != $body_margin_top ) {
+		$style .= 'html body.bootstrap { margin-top: ' . $body_margin_top . 'px !important; }';
+	}
+
+	if ( 0 != $body_margin_bottom ) {
+		$style .= 'html body.bootstrap { margin-bottom: ' . $body_margin_bottom . 'px !important; }';
+	}
+
+	wp_add_inline_style( 'shoestrap_css', $style );
+
+}
+add_action( 'wp_enqueue_scripts', 'shoestrap_layout_css', 105 );
