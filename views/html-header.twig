@@ -15,8 +15,8 @@
 		<script src="{{ function( 'get_template_directory_uri' ) }}/assets/js/html5shiv.js"></script>
 		<script src="{{ function( 'get_template_directory_uri' ) }}/assets/js/respond.min.js"></script>
 	<![endif]-->
-	{% if theme_mods.favicon %}
-		<link rel="icon" type="image/png" href="{{ theme_mods.favicon }}">
-	{% endif %}
+	{% if theme_mods.favicon %}<link rel="icon" type="image/png" href="{{ theme_mods.favicon }}">{% endif %}
+	{% if theme_mods.apple_icon %}<link rel="apple-touch-icon" href="{{ theme_mods.apple_icon }}">{% endif %}
+
 </head>
 {% endblock %}
