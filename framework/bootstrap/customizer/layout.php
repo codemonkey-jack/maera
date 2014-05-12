@@ -40,7 +40,6 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'priority' => 1,
 		'default'  => 'wide',
 		'choices'  => array(
-			'static'  => __( 'Static', 'shoestrap' ),
 			'wide'    => __( 'Wide', 'shoestrap' ),
 			'boxed'   => __( 'Boxed', 'shoestrap' ),
 			'fluid'   => __( 'Fluid', 'shoestrap' ),
