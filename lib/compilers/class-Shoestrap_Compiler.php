@@ -290,7 +290,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 				}
 
 				// Get the extra variables & imports
-				$extra_vars = do_action( 'shoestrap/compiler/variables' );
+				$extra_vars = apply_filters( 'shoestrap/compiler/variables', null );
 				$parser->parse( $extra_vars );
 
 				// Add a filter to the compiler
