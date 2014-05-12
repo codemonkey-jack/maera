@@ -1,22 +1,6 @@
 <?php
 
 /*
- * Creates the section, settings and the controls for the customizer
- */
-function shoestrap_menus_customizer( $wp_customize ){
-
-	$controls = array();
-
-	// Create the "Menus" section
-	$wp_customize->add_section( 'menus', array(
-		'title' => __( 'Menus', 'shoestrap' ),
-		'priority' => 12
-	) );
-
-}
-add_action( 'customize_register', 'shoestrap_menus_customizer' );
-
-/*
  * Creates the array of options and controls for the customizer
  */
 function shoestrap_menus_customizer_settings( $controls ){
@@ -27,7 +11,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'navbar_toggle',
 		'label'    => __( 'NavBar Type', 'shoestrap' ),
 		'subtitle' => __( 'Choose the type of Navbar you want. Off completely hides the navbar. <strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 'normal',
 		'choices'  => array(
 			'none'   => __( 'None', 'shoestrap' ),
@@ -35,7 +19,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 			'full'   => __( 'Full-Width', 'shoestrap' ),
 			'left'   => __( 'Static-Left', 'shoestrap' ),
 		),
-		'priority' => 1,
+		'priority' => 21,
 	);
 
 	$controls[] = array(
@@ -43,9 +27,9 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'navbar_logo',
 		'label'    => __( 'Use Logo ( if available ) for branding.', 'shoestrap' ),
 		'description' => __( 'If this option is not checked, or there is no logo available, then the sitename will be displayed instead.', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 1,
-		'priority' => 2,
+		'priority' => 22,
 	);
 
 	$controls[] = array(
@@ -54,14 +38,14 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'navbar_position',
 		'label'    => __( 'NavBar Positioning', 'shoestrap' ),
 		'description' => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 'normal',
 		'choices'  => array(
 			'normal'       => __( 'Normal', 'shoestrap' ),
 			'fixed-top'    => __( 'Fixed (top)', 'shoestrap' ),
 			'fixed-bottom' => __( 'Fixed (bottom)', 'shoestrap' ),
 		),
-		'priority' => 3,
+		'priority' => 23,
 	);
 
 	$controls[] = array(
@@ -69,7 +53,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'grid_float_breakpoint',
 		'label'    => __( 'Responsive NavBar Threshold', 'shoestrap' ),
 		'subtitle' => __( 'Point at which the navbar becomes uncollapsed', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 'screen_sm_min',
 		'choices'  => array(
 			'min'           => __( 'Never', 'shoestrap' ),
@@ -79,7 +63,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 			'screen_lg_min' => __( 'Large Desktop', 'shoestrap' ),
 			'max'           => __( 'Always', 'shoestrap' ),
 		),
-		'priority' => 4,
+		'priority' => 24,
 	);
 
 	$controls[] = array(
@@ -88,23 +72,23 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'navbar_social',
 		'label'    => __( 'Display social links in the NavBar.', 'shoestrap' ),
 		'subtitle' => __( 'Social network links can be set-up in the "Social" section.', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 'off',
 		'choices'  => array(
 			'off'      => __( 'Off', 'shoestrap' ),
 			'inline'   => __( 'Inline', 'shoestrap' ),
 			'dropdown' => __( 'Dropdown', 'shoestrap' ),
 		),
-		'priority' => 5,
+		'priority' => 25,
 	);
 
 	$controls[] = array(
 		'type'     => 'checkbox',
 		'setting'  => 'navbar_search',
 		'label'    => __( 'Display search form on the NavBar', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 1,
-		'priority' => 6,
+		'priority' => 26,
 	);
 
 	$controls[] = array(
@@ -112,14 +96,14 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'mode'     => 'buttonset',
 		'setting'  => 'navbar_nav_right',
 		'label'    => __( 'Menus alignment', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 'left',
 		'choices'  => array(
 			'left'   => __( 'Left', 'shoestrap' ),
 			'center' => __( 'Center', 'shoestrap' ),
 			'right'  => __( 'Right', 'shoestrap' ),
 		),
-		'priority' => 7,
+		'priority' => 27,
 	);
 
 	$controls[] = array(
@@ -127,18 +111,18 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'navbar_bg',
 		'label'    => __( 'NavBar Background Color', 'shoestrap' ),
 		'description' => __( 'Pick a background color for the NavBar. Default: #f8f8f8.', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => '#f8f8f8',
-		'priority' => 10,
+		'priority' => 30,
 	);
 
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'navbar_bg_opacity',
 		'label'    => __( 'NavBar Background Opacity', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 100,
-		'priority' => 11,
+		'priority' => 31,
 		'choices'  => array(
 			'min'  => 0,
 			'max'  => 100,
@@ -150,7 +134,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'type'     => 'select',
 		'setting'  => 'navbar_style',
 		'label'    => __( 'Navbar Style', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 'default',
 		'choices'  => array(
 			'default' => __( 'Default', 'shoestrap' ),
@@ -162,7 +146,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 			'style6'  => __( 'Style', 'shoestrap' ) . ' 6',
 			'metro'   => __( 'Metro', 'shoestrap' ),
 		),
-		'priority' => 12,
+		'priority' => 32,
 	);
 
 	$controls[] = array(
@@ -170,9 +154,9 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'navbar_height',
 		'label'    => __( 'NavBar Height', 'shoestrap' ),
 		'subtitle' => __( 'Select the height of your navbars in pixels.', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 50,
-		'priority' => 13,
+		'priority' => 33,
 		'choices'  => array(
 			'min'  => 38,
 			'max'  => 200,
@@ -184,9 +168,9 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'type'     => 'text',
 		'setting'  => 'font_menus_font_family',
 		'label'    => __( 'Menus font', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
-		'priority' => 20,
+		'priority' => 40,
 	);
 
 	$controls[] = array(
@@ -194,27 +178,27 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'font_menus_google',
 		'label'    => __( 'Google-Font', 'shoestrap' ),
 		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 0,
-		'priority' => 21,
+		'priority' => 41,
 	);
 
 	$controls[] = array(
 		'type'     => 'color',
 		'setting'  => 'font_menus_color',
 		'description' => __( 'Font Color', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => '#333333',
-		'priority' => 22,
+		'priority' => 42,
 	);
 
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_menus_weight',
 		'subtitle' => __( 'Font Weight', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 400,
-		'priority' => 23,
+		'priority' => 43,
 		'choices'  => array(
 			'min'  => 100,
 			'max'  => 800,
@@ -226,9 +210,9 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'type'     => 'slider',
 		'setting'  => 'font_menus_size',
 		'subtitle' => __( 'Font Size (px)', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 20,
-		'priority' => 24,
+		'priority' => 44,
 		'choices'  => array(
 			'min'  => 7,
 			'max'  => 70,
@@ -240,8 +224,8 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'type'     => 'slider',
 		'setting'  => 'font_menus_height',
 		'subtitle' => __( 'Line Height (px)', 'shoestrap' ),
-		'section'  => 'menus',
-		'default'  => 22,
+		'section'  => 'nav',
+		'default'  => 42,
 		'priority' => 25,
 		'choices'  => array(
 			'min'  => 7,
@@ -256,9 +240,9 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'navbar_margin',
 		'label'    => __( 'Navbar Margins', 'shoestrap' ),
 		'subtitle' => __( 'Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbars. Default: 0px.', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 0,
-		'priority' => 30,
+		'priority' => 50,
 		'choices'  => array(
 			'min'  => 0,
 			'max'  => 200,
@@ -271,9 +255,9 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'navbar_secondary_social',
 		'label'    => __( 'Secondary Sidebar Social Networks', 'shoestrap' ),
 		'description' => __( 'Should the social networks be displayed on the secondary navbar?', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 1,
-		'priority' => 32,
+		'priority' => 52,
 	);
 
 	$controls[] = array(
@@ -281,9 +265,9 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'secondary_navbar_margin',
 		'label'    => __( 'Secondary NavBar Margin', 'shoestrap' ),
 		'subtitle' => __( 'Select the top and bottom margin of header in pixels. Default: 0px.', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 0,
-		'priority' => 33,
+		'priority' => 53,
 		'choices'  => array(
 			'min'  => 0,
 			'max'  => 200,
@@ -297,7 +281,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'sidebar_menus_class',
 		'label'    => __( 'Color for sidebar menus', 'shoestrap' ),
 		'subtitle' => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 'screen_sm_min',
 		'choices'  => array(
 			'default' => __( 'Default', 'shoestrap' ),
@@ -307,7 +291,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 			'info'    => __( 'Branding-Info', 'shoestrap' ),
 			'danger'  => __( 'Branding-Danger', 'shoestrap' ),
 		),
-		'priority' => 40,
+		'priority' => 60,
 	);
 
 	$controls[] = array(
@@ -315,9 +299,9 @@ function shoestrap_menus_customizer_settings( $controls ){
 		'setting'  => 'inverse_navlist',
 		'label'    => __( 'Inverse Sidebar Menus.', 'shoestrap' ),
 		'description' => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'shoestrap' ),
-		'section'  => 'menus',
+		'section'  => 'nav',
 		'default'  => 1,
-		'priority' => 41,
+		'priority' => 61,
 	);
 
 	return $controls;
