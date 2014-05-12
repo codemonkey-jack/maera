@@ -23,17 +23,21 @@
 				<ul class="{{ 'nav navbar-nav navbar-main'|apply_filters('shoestrap/topbar/menu/class') }}">
 					{% for item in menu.primary.get_items %}
 
-						<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
-							{% if item.get_children %}
+						{% if item.get_children %}
 
+							<li class="dropdown {{ item.classes|join(' ') }}"><a class="dropdown-toggle" data-toggle="dropdown" href="{{ item.get_path }}">{{ item.title }} <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									{% for child in item.get_children %}
 										<li class="{{ item.classes|join(' ') }}"><a href="{{ child.get_path }}">{{ child.title }}</a></li>
 									{% endfor %}
 								</ul>
+							</li>
 
-							{% endif %}
-						</li>
+						{% else %}
+
+							<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
+
+						{% endif %}
 
 					{% endfor %}
 				</ul>
