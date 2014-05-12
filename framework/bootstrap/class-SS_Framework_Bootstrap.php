@@ -52,6 +52,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function scripts() {
 			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap.min.js', false, null, true  );
 			wp_enqueue_script( 'bootstrap-min' );
+
+			wp_register_script( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap-accessibility.min', false, null, true  );
+			wp_enqueue_script( 'bootstrap-accessibility' );
 		}
 
 		/**
