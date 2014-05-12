@@ -11,6 +11,7 @@ if ( ! class_exists( 'Timber' ) ) {
 }
 
 require_once locate_template( '/lib/widgets.php' );      // Sidebars and widgets
+require_once locate_template( '/lib/utils.php' );
 
 // Include the Kirki Advanced Customizer
 if ( ! function_exists( 'kirki_customizer_controls' ) ) {
