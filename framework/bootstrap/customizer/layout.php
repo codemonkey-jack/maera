@@ -105,21 +105,6 @@ function shoestrap_layout_customizer_settings( $controls ) {
 
 	$controls[] = array(
 		'type'     => 'slider',
-		'setting'  => 'navbar_margin_top',
-		'label'    => __( 'Navbar Margin from top', 'shoestrap' ),
-		'description' => __( 'This will add a margin above the navbar. CAUTION: This setting only has an effect when using the "Boxed" site style.', 'shoestrap' ),
-		'section'  => 'layout',
-		'priority' => 7,
-		'default'  => 0,
-		'choices'  => array(
-			'min'  => '0',
-			'max'  => '120',
-			'step' => '1'
-		),
-	);
-
-	$controls[] = array(
-		'type'     => 'slider',
 		'setting'  => 'body_margin_top',
 		'label'    => __( 'Body Top Margin', 'shoestrap' ),
 		'subtitle' => __( 'Select the top margin of the body element in pixels.', 'shoestrap' ),
