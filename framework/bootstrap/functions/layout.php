@@ -223,7 +223,7 @@ function shoestrap_layout_css() {
 		$style .= 'html body.bootstrap { margin-bottom: ' . $body_margin_bottom . 'px !important; }';
 	}
 
-	wp_add_inline_style( 'shoestrap_css', $style );
+	return $style;
 
 }
-add_action( 'wp_enqueue_scripts', 'shoestrap_layout_css', 105 );
+add_filter( 'shoestrap/customizer/styles', 'shoestrap_layout_css' );

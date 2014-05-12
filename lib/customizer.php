@@ -22,3 +22,29 @@ function shoestrap_customizer_config() {
 
 }
 add_filter( 'kirki/config', 'shoestrap_customizer_config' );
+
+/**
+ * Cache the customizer styles
+ */
+function shoestrap_customizer_styles_cache() {
+	global $wp_customize;
+
+	if ( ! isset( $wp_customize ) ) {
+
+		$data = get_transient( 'shoestrap_customizer_styles' );
+
+		if ( $data === false ) {
+			$data = apply_filters( 'shoestrap/customizer/styles', null );
+			set_transient( 'shoestrap_customizer_styles', $data, 3600 * 24 );
+		}
+
+	} else {
+
+		$data = apply_filters( 'shoestrap/customizer/styles', null );
+
+	}
+
+	wp_add_inline_style( 'shoestrap_css', $data );
+
+}
+add_action( 'wp_enqueue_scripts', 'shoestrap_customizer_styles_cache', 130 );
