@@ -80,3 +80,51 @@ function shoestrap_bs_widgets_init() {
 
 }
 add_action( 'widgets_init', 'shoestrap_bs_widgets_init' );
+
+/**
+ * Get the widget class
+ */
+function shoestrap_alter_widgets_class() {
+
+	$widgets_mode = get_theme_mod( 'widgets_mode', 0 );
+
+	if ( 0 == $widgets_mode ) {
+		return 'panel panel-default';
+	} elseif ( 1 == $widgets_mode ) {
+		return 'well';
+	}
+
+}
+add_action( 'shoestrap/widgets/class', 'shoestrap_alter_widgets_class' );
+
+/**
+ * Widgets 'before_title' modifying based on widgets mode.
+ */
+function shoestrap_alter_widgets_before_title() {
+
+	$widgets_mode = get_theme_mod( 'widgets_mode', 0 );
+
+	if ( 0 == $widgets_mode ) {
+		return '<div class="panel-heading">';
+	} elseif ( 1 == $widgets_mode ) {
+		return '<h3 class="widget-title">';
+	}
+
+}
+add_action( 'shoestrap/widgets/title/before', 'shoestrap_alter_widgets_before_title' );
+
+/**
+ * Widgets 'after_title' modifying based on widgets mode.
+ */
+function shoestrap_alter_widgets_after_title() {
+
+	$widgets_mode = get_theme_mod( 'widgets_mode', 0 );
+
+	if ( 0 == $widgets_mode ) {
+		return '</div><div class="panel-body">';
+	} elseif ( 1 == $widgets_mode ) {
+		return '</h3>';
+	}
+
+}
+add_action( 'shoestrap/widgets/title/after', 'shoestrap_alter_widgets_after_title' );
