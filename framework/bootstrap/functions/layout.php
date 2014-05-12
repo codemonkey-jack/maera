@@ -159,3 +159,25 @@ function shoestrap_container_class_modifier() {
 
 }
 add_action( 'wp', 'shoestrap_container_class_modifier' );
+
+/**
+ * Hide the sidebars on the frontpage if the user has selected to do so
+ */
+function shoestrap_timber_global_context_remove_sidebars( $data ) {
+
+	$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front' );
+
+	If ( 0 == $sidebars_on_front ) {
+
+		$data['sidebar']['primary']   = null;
+		$data['sidebar']['secondary'] = null;
+
+		// Add a filter for the layout.
+		add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_0' );
+
+	}
+
+	return $data;
+
+}
+add_filter( 'timber_context', 'shoestrap_timber_global_context_remove_sidebars', 50 );
