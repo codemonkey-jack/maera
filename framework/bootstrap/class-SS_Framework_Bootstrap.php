@@ -30,6 +30,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Trigger the compiler the first time the theme is enabled
 			add_action( 'after_switch_theme', array( $compiler, 'makecss' ) );
+
+			// Enqueue the scripts
+			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );
 		}
 
 		/**
@@ -47,6 +50,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 * Enqueue all scripts and additional stylesheets (if necessary)
 		 */
 		function scripts() {
+			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap.min.js', false, null, true  );
+			wp_enqueue_script( 'bootstrap-min' );
 		}
 
 		/**
