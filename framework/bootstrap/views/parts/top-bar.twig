@@ -3,7 +3,7 @@
 
 	{% do action( 'shoestrap/topbar/before' ) %}
 
-	<header id="banner-header" class="banner {{ 'navbar navbar-default'|apply_filters( 'shoestrap/topbar/class' ) }}" role="banner">
+	<header id="banner-header" class="banner {{ 'navbar navbar-default'|apply_filters( 'shoestrap/topbar/class' ) }}" role="navigation">
 		<div class="{{ 'container'|apply_filters( 'shoestrap/topbar/class/container' ) }}">
 
 			<div class="navbar-header">
@@ -20,15 +20,15 @@
 
 				{% do action( 'shoestrap/topbar/inside/begin' ) %}
 
-				<ul class="{{ 'nav navbar-main'|apply_filters('shoestrap/topbar/menu/class') }}">
-					{% for item in menu.primary_navigation.get_items %}
+				<ul class="{{ 'nav navbar-nav navbar-main'|apply_filters('shoestrap/topbar/menu/class') }}">
+					{% for item in menu.primary.get_items %}
 
-						<li class="{{ item.classes | join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
+						<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
 							{% if item.get_children %}
 
 								<ul class="dropdown-menu">
 									{% for child in item.get_children %}
-										<li class="{{ item.classes | join(' ') }}"><a href="{{ child.get_path }}">{{ child.title }}</a></li>
+										<li class="{{ item.classes|join(' ') }}"><a href="{{ child.get_path }}">{{ child.title }}</a></li>
 									{% endfor %}
 								</ul>
 
