@@ -35,8 +35,8 @@ Timber::$locations = array(
 function shoestrap_timber_global_context( $data ) {
 
 	$data['theme_mods'] = get_theme_mods();
-	$data['menu']['primary']   = new TimberMenu( 'primary-navigation' );
-	$data['menu']['secondary'] = new TimberMenu( 'secondary-navigation' );
+	$data['menu']['primary']   = new TimberMenu( 'primary_navigation' );
+	$data['menu']['secondary'] = new TimberMenu( 'secondary_navigation' );
 
 	$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
 	$sidebar_secondary = Timber::get_widgets( 'sidebar_secondary' );
