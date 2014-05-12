@@ -33,3 +33,4 @@ if ( isset( $wp_customize ) ) {
 }
 
 include_once( SS_FRAMEWORK_PATH . '/functions/layout.php' );
+include_once( SS_FRAMEWORK_PATH . '/functions/logo.php' );
