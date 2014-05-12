@@ -153,12 +153,16 @@ function shoestrap_container_class_modifier() {
 	if ( 'fluid' == $site_style ) {
 
 		// Fluid mode
-		add_filter( 'shoestrap/container_class', '__return_null' );
+		add_filter( 'shoestrap/container_class', 'shoestrap_return_container_fluid' );
+		add_filter( 'shoestrap/topbar/class/container', 'shoestrap_return_container_fluid' );
 
 	}
 
 }
 add_action( 'wp', 'shoestrap_container_class_modifier' );
+
+// return "container-fluid"
+function shoestrap_return_container_fluid() { return 'container-fluid'; }
 
 /**
  * Hide the sidebars on the frontpage if the user has selected to do so
