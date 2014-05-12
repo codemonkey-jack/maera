@@ -41,8 +41,18 @@ function shoestrap_timber_global_context( $data ) {
 	$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
 	$sidebar_secondary = Timber::get_widgets( 'sidebar_secondary' );
 
+	$sidebar_footer_1 = Timber::get_widgets( 'sidebar_footer_1' );
+	$sidebar_footer_2 = Timber::get_widgets( 'sidebar_footer_2' );
+	$sidebar_footer_3 = Timber::get_widgets( 'sidebar_footer_3' );
+	$sidebar_footer_4 = Timber::get_widgets( 'sidebar_footer_4' );
+
 	$data['sidebar']['primary']   = apply_filters( 'shoestrap/sidebar/primary', $sidebar_primary );
 	$data['sidebar']['secondary'] = apply_filters( 'shoestrap/sidebar/secondary', $sidebar_secondary );
+
+	$data['sidebar']['footer']['one']   = apply_filters( 'shoestrap/sidebar/footer/one', $sidebar_footer_1 );
+	$data['sidebar']['footer']['two']   = apply_filters( 'shoestrap/sidebar/footer/two', $sidebar_footer_2 );
+	$data['sidebar']['footer']['three'] = apply_filters( 'shoestrap/sidebar/footer/three', $sidebar_footer_3 );
+	$data['sidebar']['footer']['four']  = apply_filters( 'shoestrap/sidebar/footer/four', $sidebar_footer_4 );
 
 	return $data;
 
