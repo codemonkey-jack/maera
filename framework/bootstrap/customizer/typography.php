@@ -10,7 +10,7 @@ function shoestrap_typography_customizer( $wp_customize ){
 	// Create the "Typography" section
 	$wp_customize->add_section( 'typography', array(
 		'title' => __( 'Typography', 'shoestrap' ),
-		'priority' => 12
+		'priority' => 5
 	) );
 
 }

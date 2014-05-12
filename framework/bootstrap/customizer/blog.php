@@ -10,7 +10,7 @@ function shoestrap_blog_customizer( $wp_customize ){
 	// Create the "Blog" section
 	$wp_customize->add_section( 'blog', array(
 		'title' => __( 'Blog', 'shoestrap' ),
-		'priority' => 10
+		'priority' => 6
 	) );
 
 }

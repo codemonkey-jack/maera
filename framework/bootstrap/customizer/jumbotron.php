@@ -10,7 +10,7 @@ function shoestrap_jumbotron_customizer( $wp_customize ){
 	// Create the "Jumbotron" section
 	$wp_customize->add_section( 'jumbotron', array(
 		'title' => __( 'Jumbotron', 'shoestrap' ),
-		'priority' => 12
+		'priority' => 7
 	) );
 
 }

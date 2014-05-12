@@ -10,7 +10,7 @@ function shoestrap_footer_customizer( $wp_customize ){
 	// Create the "Footer" section
 	$wp_customize->add_section( 'footer', array(
 		'title' => __( 'Footer', 'shoestrap' ),
-		'priority' => 12
+		'priority' => 9
 	) );
 
 }

@@ -10,7 +10,7 @@ function shoestrap_header_customizer( $wp_customize ){
 	// Create the "Header" section
 	$wp_customize->add_section( 'header', array(
 		'title' => __( 'Header', 'shoestrap' ),
-		'priority' => 12
+		'priority' => 8
 	) );
 
 }

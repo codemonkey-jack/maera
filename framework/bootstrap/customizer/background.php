@@ -10,6 +10,7 @@ function shoestrap_background_customizer( $wp_customize ){
 	// Create the "Background" section
 	$wp_customize->add_section( 'background', array(
 		'title' => __( 'Background', 'shoestrap' ),
+		'priority' => 4
 	) );
 
 }

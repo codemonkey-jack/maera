@@ -10,7 +10,7 @@ function shoestrap_advanced_customizer( $wp_customize ){
 	// Create the "Advanced" section
 	$wp_customize->add_section( 'advanced', array(
 		'title' => __( 'Advanced', 'shoestrap' ),
-		'priority' => 2
+		'priority' => 200
 	) );
 
 }
