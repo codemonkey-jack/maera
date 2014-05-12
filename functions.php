@@ -76,3 +76,30 @@ function shoestrap_setup() {
 	add_editor_style( '/assets/css/editor-style.css' );
 }
 add_action( 'after_setup_theme', 'shoestrap_setup' );
+
+
+/**
+ * Add and remove body_class() classes
+ */
+function shoestrap_body_class( $classes ) {
+
+	// Add post/page slug
+	if ( is_single() || is_page() && ! is_front_page() ) {
+		$permalink = basename( get_permalink() );
+		$classes[] = shoestrap_transliterate( $permalink );
+	}
+
+	$classes[] = SS_FRAMEWORK;
+
+	// Remove unnecessary classes
+	$home_id_class = 'page-id-' . get_option( 'page_on_front' );
+	$remove_classes = array(
+		'page-template-default',
+		$home_id_class
+	);
+
+	$classes = array_diff( $classes, $remove_classes );
+
+	return $classes;
+}
+add_filter( 'body_class', 'shoestrap_body_class' );
