@@ -52,9 +52,6 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			add_filter( 'shoestrap/stylesheet/ver', array( $this, 'stylesheet_ver' ) );
 			add_action( 'admin_notices', array( $this, 'file_nag' ) );
 
-			// Trigger the compiler
-			$this->makecss();
-
 		}
 
 		/*
