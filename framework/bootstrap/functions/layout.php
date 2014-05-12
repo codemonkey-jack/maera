@@ -185,3 +185,22 @@ function shoestrap_timber_global_context_remove_sidebars( $data ) {
 
 }
 add_filter( 'timber_context', 'shoestrap_timber_global_context_remove_sidebars', 50 );
+
+
+/**
+ * Add and remove body_class() classes
+ */
+function shoestrap_boxed_body_class( $classes ) {
+
+	$site_style = get_theme_mod( 'site_style', 'wide' );
+
+	if ( 'boxed' == $site_style ) {
+		$classes[] = 'container';
+		$classes[] = 'boxed';
+	}
+
+	add_filter( 'shoestrap/container_class', 'shoestrap_return_container_fluid' );
+
+	return $classes;
+}
+add_filter( 'body_class', 'shoestrap_boxed_body_class' );
