@@ -25,6 +25,10 @@ function shoestrap_compiler_variables( $variables ) {
 		$variables .= '@brand-warning: ' . Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) ) . ';';
 		$variables .= '@brand-danger:  ' . Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_danger', '#d9534f' ) ) . ';';
 
+		if ( get_theme_mod( 'gradients_toggle', 0 ) ) {
+			$variables .= '@import "' . SS_FRAMEWORK_PATH . '/assets/less/gradients.less";';
+		}
+
 
 	}
 
