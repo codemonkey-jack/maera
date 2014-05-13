@@ -138,6 +138,22 @@ function shoestrap_sidebars_bypass() {
 		add_filter( 'shoestrap/sidebar/primary', '__return_null' );
 	}
 
+	// Have we selected custom layouts per post type?
+	// if yes, then make sure the layout used for post types is the custom selected one.
+	if ( 1 == get_theme_mod( 'cpt_layout_toggle' ) ) {
+
+		$post_types = get_post_types( array( 'public' => true ), 'names' );
+
+		foreach ( $post_types as $post_type ) {
+			if ( is_singular( $post_type ) ) {
+				$layout = get_theme_mod( $post_type . '_layout', get_theme_mod( 'layout' ) );
+				add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_' . $layout );
+			}
+
+		}
+
+	}
+
 }
 add_action( 'wp', 'shoestrap_sidebars_bypass' );
 
@@ -169,9 +185,12 @@ function shoestrap_return_container_fluid() { return 'container-fluid'; }
  */
 function shoestrap_timber_global_context_remove_sidebars( $data ) {
 
+	// Get the layout we're using (sidebar arrangement).
+	$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
+
 	$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front' );
 
-	If ( 0 == $sidebars_on_front ) {
+	If ( 0 == $layout || ( 0 == $sidebars_on_front && ( is_home() || is_front_page() ) ) ) {
 
 		$data['sidebar']['primary']   = null;
 		$data['sidebar']['secondary'] = null;

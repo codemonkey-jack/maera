@@ -212,7 +212,7 @@ function shoestrap_layout_customizer_settings( $controls ) {
 			$controls[] = array(
 				'type'     => 'radio',
 				'mode'     => 'image',
-				'setting'  => $post_type . 'layout',
+				'setting'  => $post_type . '_layout',
 				'label'    => $post_type . ' ' . __( 'layout', 'shoestrap' ),
 				'description' => null,
 				'section'  => 'layout',
