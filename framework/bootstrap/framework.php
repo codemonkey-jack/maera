@@ -17,6 +17,12 @@ if ( 'bootstrap' == SS_FRAMEWORK ) {
 	define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
 }
 
+include_once( SS_FRAMEWORK_PATH . '/functions/layout.php' );
+include_once( SS_FRAMEWORK_PATH . '/functions/logo.php' );
+include_once( SS_FRAMEWORK_PATH . '/functions/widgets.php' );
+include_once( SS_FRAMEWORK_PATH . '/functions/footer.php' );
+include_once( SS_FRAMEWORK_PATH . '/functions/variables.php' );
+
 if ( isset( $wp_customize ) ) {
 	include_once( SS_FRAMEWORK_PATH . '/customizer/general.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/colors.php' );
@@ -31,8 +37,3 @@ if ( isset( $wp_customize ) ) {
 	include_once( SS_FRAMEWORK_PATH . '/customizer/social.php' );
 	include_once( SS_FRAMEWORK_PATH . '/customizer/advanced.php' );
 }
-
-include_once( SS_FRAMEWORK_PATH . '/functions/layout.php' );
-include_once( SS_FRAMEWORK_PATH . '/functions/logo.php' );
-include_once( SS_FRAMEWORK_PATH . '/functions/widgets.php' );
-include_once( SS_FRAMEWORK_PATH . '/functions/footer.php' );
