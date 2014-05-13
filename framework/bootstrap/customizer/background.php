@@ -96,7 +96,7 @@ function shoestrap_background_customizer_settings( $controls ){
 		'label'    => null,
 		'subtitle' =>   __( 'Background Position', 'shoestrap' ),
 		'section'  => 'background',
-		'default'  => 'center-center',
+		'default'  => 'left-top',
 		'choices'  => array(
 			'left-top'      => __( 'Left Top', 'shoestrap' ),
 			'left-center'   => __( 'Left Center', 'shoestrap' ),
@@ -187,7 +187,7 @@ function shoestrap_background_customizer_settings( $controls ){
 		'label'    => null,
 		'subtitle' =>   __( 'Background Position', 'shoestrap' ),
 		'section'  => 'background',
-		'default'  => 'center-center',
+		'default'  => 'left-top',
 		'choices'  => array(
 			'left-top'      => __( 'Left Top', 'shoestrap' ),
 			'left-center'   => __( 'Left Center', 'shoestrap' ),
