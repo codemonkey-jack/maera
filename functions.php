@@ -5,6 +5,7 @@ if ( ! defined( 'SHOESTRAP_ASSETS_URL' ) ) {
 }
 
 require_once locate_template( '/lib/dependencies/dependencies.php' );
+require_once locate_template( '/lib/class-Shoestrap_Color.php' );
 
 if ( ! class_exists( 'Timber' ) ) {
 	return;
