@@ -112,6 +112,62 @@ function shoestrap_typography_customizer_settings( $controls ){
 		'priority' => 31,
 	);
 
+	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
+		'setting'  => 'headers_color_toggle',
+		'label'    => __( 'Headers colors', 'shoestrap' ),
+		'section'  => 'typography',
+		'default'  => 0,
+		'priority' => 39,
+		'choices'  => array(
+			0 => __( 'Off', 'shoestrap' ),
+			1 => __( 'On', 'shoestrap' )
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
+		'setting'  => 'headers_weight_toggle',
+		'label'    => __( 'Headers weight', 'shoestrap' ),
+		'section'  => 'typography',
+		'default'  => 0,
+		'priority' => 49,
+		'choices'  => array(
+			0 => __( 'Off', 'shoestrap' ),
+			1 => __( 'On', 'shoestrap' )
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
+		'setting'  => 'headers_size_toggle',
+		'label'    => __( 'Headers size', 'shoestrap' ),
+		'section'  => 'typography',
+		'default'  => 0,
+		'priority' => 59,
+		'choices'  => array(
+			0 => __( 'Off', 'shoestrap' ),
+			1 => __( 'On', 'shoestrap' )
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
+		'setting'  => 'headers_height_toggle',
+		'label'    => __( 'Headers height', 'shoestrap' ),
+		'section'  => 'typography',
+		'default'  => 0,
+		'priority' => 69,
+		'choices'  => array(
+			0 => __( 'Off', 'shoestrap' ),
+			1 => __( 'On', 'shoestrap' )
+		),
+	);
+
 	$headers = array(
 		'h1' => array( 'size' => 260, 'height' => 120 ),
 		'h2' => array( 'size' => 215, 'height' => 120 ),
@@ -131,6 +187,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 			'section'  => 'typography',
 			'default'  => '#333333',
 			'priority' => 40 + $i,
+			'required' => array( 'headers_color_toggle' => 1 )
 		);
 
 		$controls[] = array(
@@ -145,6 +202,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 				'max'  => 800,
 				'step' => 100,
 			),
+			'required' => array( 'headers_weight_toggle' => 1 )
 		);
 
 		$controls[] = array(
@@ -159,6 +217,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 				'max'  => 300,
 				'step' => 1,
 			),
+			'required' => array( 'headers_size_toggle' => 1 )
 		);
 
 		$controls[] = array(
@@ -173,6 +232,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 				'max'  => 300,
 				'step' => 1,
 			),
+			'required' => array( 'headers_height_toggle' => 1 )
 		);
 
 		$i++;
