@@ -227,12 +227,10 @@ add_filter( 'body_class', 'shoestrap_boxed_body_class' );
 /**
  * Additional CSS rules for layout options
  */
-function shoestrap_layout_css() {
+function shoestrap_layout_css( $style ) {
 
 	$body_margin_top    = get_theme_mod( 'body_margin_top', 0 );
 	$body_margin_bottom = get_theme_mod( 'body_margin_bottom', 0 );
-
-	$style = null;
 
 	if ( 0 != $body_margin_top ) {
 		$style .= 'html body.bootstrap { margin-top: ' . $body_margin_top . 'px !important; }';

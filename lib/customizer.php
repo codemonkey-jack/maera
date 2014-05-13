@@ -48,3 +48,13 @@ function shoestrap_customizer_styles_cache() {
 
 }
 add_action( 'wp_enqueue_scripts', 'shoestrap_customizer_styles_cache', 130 );
+
+/**
+ * Reset the cache when saving the customizer
+ */
+function shoestrap_reset_style_cache_on_customizer_save() {
+
+	delete_transient( 'shoestrap_customizer_styles' );
+
+}
+add_action( 'customize_save_after', 'shoestrap_reset_style_cache_on_customizer_save' );
