@@ -146,12 +146,10 @@ function shoestrap_compiler_variables( $variables ) {
 	$screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
 	$screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
 
-	if ( 1 == get_theme_mod( 'custom_grid', 0 ) ) {
-		$variables .= '@screen-sm: ' . $screen_sm . 'px;';
-		$variables .= '@screen-md: ' . $screen_md . 'px;';
-		$variables .= '@screen-lg: ' . $screen_lg . 'px;';
-		$variables .= '@grid-gutter-width: ' . $gutter . 'px;';
-	}
+	$variables .= '@screen-sm: ' . $screen_sm . 'px;';
+	$variables .= '@screen-md: ' . $screen_md . 'px;';
+	$variables .= '@screen-lg: ' . $screen_lg . 'px;';
+	$variables .= '@grid-gutter-width: ' . $gutter . 'px;';
 
 	$variables .= '@jumbotron-padding: @grid-gutter-width;';
 

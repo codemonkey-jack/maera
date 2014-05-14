@@ -67,9 +67,9 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'priority' => 3,
 		'default'  => 4,
 		'choices'  => array(
-			'min'  => '1',
-			'max'  => '5',
-			'step' => '1'
+			'min'  => 1,
+			'max'  => 5,
+			'step' => 1,
 		),
 	);
 
@@ -82,9 +82,9 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'priority' => 4,
 		'default'  => 3,
 		'choices'  => array(
-			'min'  => '1',
-			'max'  => '5',
-			'step' => '1'
+			'min'  => 1,
+			'max'  => 5,
+			'step' => 1,
 		),
 	);
 
@@ -112,9 +112,9 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'priority' => 8,
 		'default'  => 0,
 		'choices'  => array(
-			'min'  => '0',
-			'max'  => '200',
-			'step' => '1'
+			'min'  => 0,
+			'max'  => 200,
+			'step' => 1,
 		),
 	);
 
@@ -127,16 +127,16 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'priority' => 9,
 		'default'  => 0,
 		'choices'  => array(
-			'min'  => '0',
-			'max'  => '200',
-			'step' => '1'
+			'min'  => 0,
+			'max'  => 200,
+			'step' => 1,
 		),
 	);
 
 	$controls[] = array(
 		'type'     => 'checkbox',
 		'setting'  => 'custom_grid',
-		'label'    => __( 'Enable Custom Grid', 'shoestrap' ),
+		'label'    => __( 'Show Custom Grid Options', 'shoestrap' ),
 		'subtitle' => __( 'Take control of the grid breakpoints.', 'shoestrap' ),
 		'section'  => 'layout',
 		'priority' => 80,
@@ -153,9 +153,9 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'priority' => 81,
 		'default'  => 768,
 		'choices'  => array(
-			'min'  => '620',
-			'max'  => '2100',
-			'step' => '1'
+			'min'  => 620,
+			'max'  => 2100,
+			'step' => 1
 		),
 		'required'    => array( 'custom_grid' => 1 )
 	);
@@ -169,9 +169,9 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'priority' => 82,
 		'default'  => 992,
 		'choices'  => array(
-			'min'  => '620',
-			'max'  => '2100',
-			'step' => '1'
+			'min'  => 620,
+			'max'  => 2100,
+			'step' => 1,
 		),
 		'required'    => array( 'custom_grid' => 1 )
 	);
@@ -185,9 +185,25 @@ function shoestrap_layout_customizer_settings( $controls ) {
 		'priority' => 83,
 		'default'  => 1200,
 		'choices'  => array(
-			'min'  => '620',
-			'max'  => '2100',
-			'step' => '1'
+			'min'  => 620,
+			'max'  => 2100,
+			'step' => 1,
+		),
+		'required'    => array( 'custom_grid' => 1 )
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'gutter',
+		'label'    => __( 'Gutter', 'shoestrap' ),
+		'subtitle' => __( 'The spacing between grid columns. Default: 30px', 'shoestrap' ),
+		'section'  => 'layout',
+		'priority' => 84,
+		'default'  => 30,
+		'choices'  => array(
+			'min'  => 0,
+			'max'  => 80,
+			'step' => 1,
 		),
 		'required'    => array( 'custom_grid' => 1 )
 	);

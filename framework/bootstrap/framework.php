@@ -7,7 +7,7 @@ $ss_active_framework = array(
 	'shortname' => 'bootstrap',
 	'name'      => 'Bootstrap',
 	'classname' => 'SS_Framework_Bootstrap',
-	'compiler'  => 'less_php'
+	'compiler'  => 'less_php',
 );
 
 // Include the framework class
