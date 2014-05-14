@@ -4,12 +4,13 @@ if ( ! defined( 'SHOESTRAP_ASSETS_URL' ) ) {
 	define( 'SHOESTRAP_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 }
 
-require_once locate_template( '/lib/dependencies/dependencies.php' );
-require_once locate_template( '/lib/class-Shoestrap_Color.php' );
-
+// If the Timber plugin is not already installed, load it from the theme.
 if ( ! class_exists( 'Timber' ) ) {
-	return;
+	require_once locate_template( '/lib/timber/timber.php' );
 }
+
+// Include the Color Class.
+require_once locate_template( '/lib/class-Shoestrap_Color.php' );
 
 require_once locate_template( '/lib/widgets.php' );      // Sidebars and widgets
 require_once locate_template( '/lib/utils.php' );
