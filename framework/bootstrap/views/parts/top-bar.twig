@@ -10,7 +10,7 @@
 
 				{{ '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main, .nav-extras"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>'|apply_filters( 'shoestrap/topbar/toggler' ) }}
 
-				{{ "<a class='navbar-brand text' href='#{ site.url }'>#{ site.name }</a>"|apply_filters( 'shoestrap/topbar/brand' ) }}
+				<a class="navbar-brand" href="{{ site.url }}">{{ "<div class='sitename'>#{ site.name }</div>"|apply_filters( 'shoestrap/topbar/brand' ) }}</a>
 
 			</div>
 

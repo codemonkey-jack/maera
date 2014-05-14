@@ -9,7 +9,7 @@ function shoestrap_logo( $branding ) {
 	$logo = get_theme_mod( 'logo' );
 
 	if ( $logo ) {
-		return '<img class="navbar-brand" id="site-logo" src="' . $logo . '" alt="' . get_bloginfo( 'name' ) .'">';
+		return '<img id="site-logo" src="' . $logo . '" alt="' . get_bloginfo( 'name' ) .'">';
 	} else {
 		echo $branding;
 	}
