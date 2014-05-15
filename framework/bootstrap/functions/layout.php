@@ -29,14 +29,17 @@ function shoestrap_layout_classes( $element ) {
 	$width_one = ( 0 == $layout ) ? null : $width_one;
 
 	// If the selected layout only has one sidebar, disregard the 2nd sidebar width.
-	$width_two     = ( ! in_array( $layout, array( 3, 4, 5 ) ) ) ? null : $width_two;
-	$width_wrapper = ( ! in_array( $layout, array( 3, 4, 5 ) ) ) ? null : 12 - $width_two;
+	$width_two = ( ! in_array( $layout, array( 3, 4, 5 ) ) ) ? null : $width_two;
 
-	$width_main    = 12 - $width_one - $width_two;
+	// The main wrapper width
+	$width_wrapper = ( is_null( $width_two ) ) ? null : 12 - $width_two;
+
+	// The main content area width
+	$width_main = 12 - $width_one - $width_two;
 
 	// When we select a layout like sidebar-content-sidebar, we need a wrapper around the primary sidebar and the content.
 	// That changes the way we calculate the primary sidebar and the content columns.
-	if ( in_array( $layout, array( 3, 4, 5 ) ) ) {
+	if ( ! is_null( $width_wrapper ) ) {
 
 		$width_main = 12 - floor( ( 12 * $width_one ) / ( 12 - $width_two ) );
 		$width_one  = floor( ( 12 * $width_one ) / ( 12 - $width_two ) );
@@ -69,7 +72,7 @@ function shoestrap_layout_classes( $element ) {
 
 		// return the main class
 		$columns = $col . intval( $width_main );
-		$classes = ( in_array( $layout, array( 2, 3, 5 ) ) ) ? $columns . ' pull-right' : $columns;
+		$classes = ( in_array( $layout, array( 2, 3, 5 ) ) && ! is_null( $width_one ) ) ? $columns . ' pull-right' : $columns;
 
 	}
 
@@ -145,6 +148,7 @@ function shoestrap_sidebars_bypass() {
 		$post_types = get_post_types( array( 'public' => true ), 'names' );
 
 		foreach ( $post_types as $post_type ) {
+
 			if ( is_singular( $post_type ) ) {
 				$layout = get_theme_mod( $post_type . '_layout', get_theme_mod( 'layout' ) );
 				add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_' . $layout );
@@ -172,6 +176,11 @@ function shoestrap_container_class_modifier() {
 		add_filter( 'shoestrap/container_class', 'shoestrap_return_container_fluid' );
 		add_filter( 'shoestrap/topbar/class/container', 'shoestrap_return_container_fluid' );
 
+	} else {
+
+		add_filter( 'shoestrap/container_class', 'shoestrap_return_container' );
+		add_filter( 'shoestrap/topbar/class/container', 'shoestrap_return_container' );
+
 	}
 
 }
@@ -179,6 +188,9 @@ add_action( 'wp', 'shoestrap_container_class_modifier' );
 
 // return "container-fluid"
 function shoestrap_return_container_fluid() { return 'container-fluid'; }
+
+// return "container"
+function shoestrap_return_container() { return 'container'; }
 
 /**
  * Hide the sidebars on the frontpage if the user has selected to do so
@@ -217,8 +229,6 @@ function shoestrap_boxed_body_class( $classes ) {
 		$classes[] = 'container';
 		$classes[] = 'boxed';
 	}
-
-	add_filter( 'shoestrap/container_class', 'shoestrap_return_container_fluid' );
 
 	return $classes;
 }
