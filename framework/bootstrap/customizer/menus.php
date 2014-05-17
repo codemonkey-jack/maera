@@ -253,7 +253,7 @@ function shoestrap_menus_customizer_settings( $controls ){
 	$controls[] = array(
 		'type'     => 'checkbox',
 		'setting'  => 'navbar_secondary_social',
-		'label'    => __( 'Secondary Sidebar Social Networks', 'shoestrap' ),
+		'label'    => __( 'Secondary Navbar Social Networks', 'shoestrap' ),
 		'description' => __( 'Should the social networks be displayed on the secondary navbar?', 'shoestrap' ),
 		'section'  => 'nav',
 		'default'  => 1,
