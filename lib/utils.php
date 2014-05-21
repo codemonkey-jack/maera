@@ -165,7 +165,3 @@ function shoestrap_return_3() { return 3; }
 function shoestrap_return_4() { return 4; }
 
 function shoestrap_return_5() { return 5; }
-
-function shoestrap_return_excerpt() { return 'excerpt'; }
-
-function shoestrap_return_full() { return 'full'; }
