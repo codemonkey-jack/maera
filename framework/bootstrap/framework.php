@@ -17,6 +17,8 @@ if ( 'bootstrap' == SS_FRAMEWORK ) {
 	define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
 }
 
+include_once( SS_FRAMEWORK_PATH . '/classes/class-Shoestrap_Breadcrumbs.php' );
+
 include_once( SS_FRAMEWORK_PATH . '/functions/layout.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/logo.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/widgets.php' );
