@@ -23,6 +23,7 @@ include_once( SS_FRAMEWORK_PATH . '/functions/widgets.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/footer.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/variables.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/background.php' );
+include_once( SS_FRAMEWORK_PATH . '/functions/colors.php' );
 
 if ( isset( $wp_customize ) ) {
 	include_once( SS_FRAMEWORK_PATH . '/customizer/general.php' );
