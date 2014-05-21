@@ -84,10 +84,10 @@ function shoestrap_blog_customizer_settings( $controls ){
 		'type'     => 'slider',
 		'setting'  => 'post_excerpt_length',
 		'label'    => __( 'Post excerpt length', 'shoestrap' ),
-		'description' => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
+		'description' => __( 'Choose how many words should be used for post excerpt. Default: 55', 'shoestrap' ),
 		'section'  => 'blog',
 		'priority' => 10,
-		'default'  => 40,
+		'default'  => 55,
 		'choices'  => array(
 			'min'  => 10,
 			'max'  => 150,
