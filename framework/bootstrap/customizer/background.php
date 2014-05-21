@@ -202,6 +202,21 @@ function shoestrap_background_customizer_settings( $controls ){
 		'priority' => 12,
 	);
 
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'body_bg_opacity',
+		'label'    => __( 'Body Background Opacity', 'shoestrap' ),
+		'description' => __( 'Default: 100', 'shoestrap' ),
+		'section'  => 'background',
+		'priority' => 13,
+		'default'  => 100,
+		'choices'  => array(
+			'min'  => 0,
+			'max'  => 100,
+			'step' => 1,
+		),
+	);
+
 	return $controls;
 }
 add_filter( 'kirki/controls', 'shoestrap_background_customizer_settings' );

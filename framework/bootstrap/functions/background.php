@@ -18,6 +18,12 @@ function shoestrap_background_css( $styles ) {
 	$body_bg_size     = get_theme_mod( 'body_bg_size', 'inherit' );
 	$body_bg_attach   = get_theme_mod( 'body_bg_attach', 'scroll' );
 	$body_bg_position = get_theme_mod( 'body_bg_position', 'left-top' );
+	$body_bg_opacity  = get_theme_mod( 'body_bg_opacity', 100 );
+
+	// If we're using an opacity other than 100, then convert the color to RGBA.
+	if ( 100 != $body_bg_opacity ) {
+		$body_bg_color = Shoestrap_Color::get_rgba( $body_bg_color, $body_bg_opacity );
+	}
 
 	// HTML Background
 	$styles .= 'html { ';

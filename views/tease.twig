@@ -9,7 +9,7 @@
 		{% do action( 'shoestrap/entry/meta' ) %}
 
 		<div class="entry-summary">
-			{{ post.get_preview | apply_filters( 'shoestrap/excerpt' ) }}
+			{{ function( 'shoestrap_get_post_teaser', post.ID ) }}
 			{{ framework.clearfix }}
 		</div>
 

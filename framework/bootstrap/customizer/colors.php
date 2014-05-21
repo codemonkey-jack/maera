@@ -76,7 +76,7 @@ function shoestrap_colors_customizer_settings( $controls ){
 		'mode'     => 'buttonset',
 		'setting'  => 'gradients_toggle',
 		'label'    => __( 'Enable Gradients', 'shoestrap' ),
-		'description' => __( 'Enable or disable gradients. These are applied to navbars, buttons and other elements.', 'shoestrap' ),
+		'description' => __( 'Enable or disable gradients. These are applied to navbars, buttons and other elements. Please note that gradients will not be applied in the preview mode and can only be seen on the live site.', 'shoestrap' ),
 		'section'  => 'colors',
 		'priority' => 10,
 		'default'  => 0,

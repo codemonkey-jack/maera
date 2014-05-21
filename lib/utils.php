@@ -112,6 +112,48 @@ function shoestrap_transliterate( $str ) {
 	}
 }
 
+/**
+ * This is a helper function to bypass some of the quirks of twig
+ */
+function shoestrap_get_post_teaser( $id ) {
+
+	$mode = get_theme_mod( 'blog_post_mode', 'excerpt' );
+
+	// Get the post
+	$content_post = get_post( $id );
+
+	if ( 'full' == $mode ) {
+
+		// Get the content of the post
+		$content = $content_post->post_content;
+		// Apply the content filters
+		$content = apply_filters( 'the_content', $content );
+
+	} else {
+
+		// Get the content of the post
+		if ( $content_post->post_excerpt ) {
+
+			$content = $content_post->post_excerpt;
+
+		} else {
+
+			$excerpt_length = apply_filters( 'excerpt_length', 55 );
+			$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+			$content        = wp_trim_words( $content_post->post_content, $excerpt_length, $excerpt_more );
+
+		}
+
+		// Apply the content filters
+		$content = apply_filters( 'the_excerpt', $content );
+
+	}
+
+	$content = str_replace( ']]>', ']]&gt;', $content );
+
+	return $content;
+}
+
 function shoestrap_return_0() { return 0; }
 
 function shoestrap_return_1() { return 1; }

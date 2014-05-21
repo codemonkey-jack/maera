@@ -21,7 +21,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Instantianate the compiler and pass the framework's properties to it
 			$compiler = new Shoestrap_Compiler( array(
 				'compiler'     => 'less_php',
-				'minimize_css' => true,
+				'minimize_css' => false,
 				'less_path'    => dirname( __FILE__ ) . '/assets/less/',
 			) );
 
