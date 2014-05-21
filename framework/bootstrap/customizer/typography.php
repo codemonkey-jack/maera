@@ -41,12 +41,31 @@ function shoestrap_typography_customizer_settings( $controls ){
 	);
 
 	$controls[] = array(
+		'type'     => 'multicheck',
+		'setting'  => 'font_base_google_subsets',
+		'label'    => __( 'Google-Font subsets', 'shoestrap' ),
+		'description' => __( 'The subsets used from Google\'s API.', 'shoestrap' ),
+		'section'  => 'typography',
+		'default'  => 'latin',
+		'priority' => 22,
+		'choices'  => array(
+			'latin' 		=> __( 'Latin', 'shoestrap' ),
+			'latin-ext' 	=> __( 'Latin Ext.', 'shoestrap' ),
+			'greek' 		=> __( 'Greek', 'shoestrap' ),
+			'greek-ext' 	=> __( 'Greek Ext.', 'shoestrap' ),
+			'cyrillic' 		=> __( 'Cyrillic', 'shoestrap' ),
+			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'shoestrap' ),
+			'vietnamese' 	=> __( 'Vietnamese', 'shoestrap' ),
+		),
+	);
+
+	$controls[] = array(
 		'type'     => 'color',
 		'setting'  => 'font_base_color',
 		'description' =>   __( 'Font Color', 'shoestrap' ),
 		'section'  => 'typography',
 		'default'  => '#333333',
-		'priority' => 22,
+		'priority' => 23,
 	);
 
 	$controls[] = array(
@@ -55,7 +74,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 		'subtitle' => __( 'Font Weight', 'shoestrap' ),
 		'section'  => 'typography',
 		'default'  => 400,
-		'priority' => 23,
+		'priority' => 24,
 		'choices'  => array(
 			'min'  => 100,
 			'max'  => 800,
@@ -69,7 +88,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 		'subtitle' => __( 'Font Size (px)', 'shoestrap' ),
 		'section'  => 'typography',
 		'default'  => 20,
-		'priority' => 24,
+		'priority' => 25,
 		'choices'  => array(
 			'min'  => 7,
 			'max'  => 70,
@@ -83,7 +102,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 		'subtitle' => __( 'Line Height (px)', 'shoestrap' ),
 		'section'  => 'typography',
 		'default'  => 22,
-		'priority' => 25,
+		'priority' => 26,
 		'choices'  => array(
 			'min'  => 7,
 			'max'  => 70,
@@ -110,6 +129,25 @@ function shoestrap_typography_customizer_settings( $controls ){
 		'section'  => 'typography',
 		'default'  => 0,
 		'priority' => 31,
+	);
+
+	$controls[] = array(
+		'type'     => 'multicheck',
+		'setting'  => 'font_headers_google_subsets',
+		'label'    => __( 'Google-Font subsets', 'shoestrap' ),
+		'description' => __( 'The subsets used from Google\'s API.', 'shoestrap' ),
+		'section'  => 'typography',
+		'default'  => 'latin',
+		'priority' => 32,
+		'choices'  => array(
+			'latin' 		=> __( 'Latin', 'shoestrap' ),
+			'latin-ext' 	=> __( 'Latin Ext.', 'shoestrap' ),
+			'greek' 		=> __( 'Greek', 'shoestrap' ),
+			'greek-ext' 	=> __( 'Greek Ext.', 'shoestrap' ),
+			'cyrillic' 		=> __( 'Cyrillic', 'shoestrap' ),
+			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'shoestrap' ),
+			'vietnamese' 	=> __( 'Vietnamese', 'shoestrap' ),
+		),
 	);
 
 	$controls[] = array(

@@ -45,13 +45,23 @@ add_filter( 'shoestrap/customizer/styles', 'shoestrap_typography_css' );
 /**
 * Enqueue Google fonts if enabled
 */
-function shoestrap_base_google_font() {
+function shoestrap_google_font() {
 	$font_base_google = get_theme_mod( 'font_base_google' );
-
 	if ( $font_base_google == 1 ) {
 		$font_base_family = str_replace( ' ', '+', get_theme_mod( 'font_base_family' ) );
-		wp_register_style( 'shoestrap_base_google_font', 'http://fonts.googleapis.com/css?family='.$font_base_family );
+		$font_base_google_subsets = get_theme_mod( 'font_base_google_subsets' );
+
+		wp_register_style( 'shoestrap_base_google_font', 'http://fonts.googleapis.com/css?family='.$font_base_family.'&subset='.$font_base_google_subsets );
  		wp_enqueue_style( 'shoestrap_base_google_font' );	
 	}
+
+	$font_headers_google = get_theme_mod( 'headers_font_google' );
+	if ( $font_headers_google == 1 ) {
+		$font_headers_family = str_replace( ' ', '+', get_theme_mod( 'headers_font_family' ) );
+		$font_headers_google_subsets = get_theme_mod( 'font_headers_google_subsets' );
+
+		wp_register_style( 'shoestrap_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.'&subset='.$font_headers_google_subsets );
+ 		wp_enqueue_style( 'shoestrap_headers_google_font' );	
+	}
 }
-add_action( 'wp_print_styles', 'shoestrap_base_google_font' );
+add_action( 'wp_print_styles', 'shoestrap_google_font' );
