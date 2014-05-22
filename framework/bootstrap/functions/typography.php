@@ -11,21 +11,21 @@ function shoestrap_typography_css( $style ) {
 	$font_base_color     = get_theme_mod( 'font_base_color', '#333333' );
 	$font_base_weight    = get_theme_mod( 'font_base_weight', '#333333' );
 	$font_base_size      = get_theme_mod( 'font_base_size', 20 );
-	$font_base_height    = get_theme_mod( 'font_base_height', 22 );
+	$font_base_height    = get_theme_mod( 'font_base_height', 1.4 );
 
-	$style .= 'body { font-family: ' . $font_base_family . '; color: ' . $font_base_color . '; font-weight: ' . $font_base_weight . '; font-size: ' . $font_base_size . 'px; line-height: ' . $font_base_height . 'px; }';
+	$style .= 'body { font-family: ' . $font_base_family . '; color: ' . $font_base_color . '; font-weight: ' . $font_base_weight . '; font-size: ' . $font_base_size . 'px; line-height: ' . $font_base_height . '; }';
 
 	// Headers font
 	$headers_font_family = get_theme_mod( 'headers_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
 	$style .= 'h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 { font-family: ' . $headers_font_family . '; }';
 
 	$headers = array(
-		'h1' => array( 'size' => 260, 'height' => 120 ),
-		'h2' => array( 'size' => 215, 'height' => 120 ),
-		'h3' => array( 'size' => 170, 'height' => 120 ),
-		'h4' => array( 'size' => 110, 'height' => 125 ),
-		'h5' => array( 'size' => 100, 'height' => 100 ),
-		'h6' => array( 'size' => 85, 'height' => 85 ),
+		'h1' => array( 'size' => 260, 'height' => 1.1 ),
+		'h2' => array( 'size' => 215, 'height' => 1.1 ),
+		'h3' => array( 'size' => 170, 'height' => 1.1 ),
+		'h4' => array( 'size' => 110, 'height' => 1.1 ),
+		'h5' => array( 'size' => 100, 'height' => 1.1 ),
+		'h6' => array( 'size' => 85,  'height' => 1.1 ),
 	);
 
 	foreach ( $headers as $header => $values ) {
@@ -34,7 +34,7 @@ function shoestrap_typography_css( $style ) {
 		$header_size   = get_theme_mod( 'font_' . $header . '_size', $values['size'] );
 		$header_height = get_theme_mod( 'font_' . $header . '_height', $values['height'] );
 
-		$style .= $header . ', .' . $header . ' { color: ' . $header_color . '; font-weight: ' . $header_weight . '; font-size: ' . $header_size . '%; line-height: ' . $header_height . 'px; }';
+		$style .= $header . ', .' . $header . ' { color: ' . $header_color . '; font-weight: ' . $header_weight . '; font-size: ' . $header_size . '%; line-height: ' . $header_height . '; }';
 	}
 
 	return $style;

@@ -99,14 +99,14 @@ function shoestrap_typography_customizer_settings( $controls ){
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_base_height',
-		'subtitle' => __( 'Line Height (px)', 'shoestrap' ),
+		'subtitle' => __( 'Line Height', 'shoestrap' ),
 		'section'  => 'typography',
-		'default'  => 22,
+		'default'  => 1.4,
 		'priority' => 26,
 		'choices'  => array(
-			'min'  => 7,
-			'max'  => 70,
-			'step' => 1,
+			'min'  => 0,
+			'max'  => 3,
+			'step' => 0.1,
 		),
 		'separator' => true
 	);
@@ -207,12 +207,12 @@ function shoestrap_typography_customizer_settings( $controls ){
 	);
 
 	$headers = array(
-		'h1' => array( 'size' => 260, 'height' => 120 ),
-		'h2' => array( 'size' => 215, 'height' => 120 ),
-		'h3' => array( 'size' => 170, 'height' => 120 ),
-		'h4' => array( 'size' => 110, 'height' => 125 ),
-		'h5' => array( 'size' => 100, 'height' => 100 ),
-		'h6' => array( 'size' => 85, 'height' => 85 ),
+		'h1' => array( 'size' => 260, 'height' => 1.1 ),
+		'h2' => array( 'size' => 215, 'height' => 1.1 ),
+		'h3' => array( 'size' => 170, 'height' => 1.1 ),
+		'h4' => array( 'size' => 110, 'height' => 1.1 ),
+		'h5' => array( 'size' => 100, 'height' => 1.1 ),
+		'h6' => array( 'size' => 85,  'height' => 1.1 ),
 	);
 
 	$i = 0;
@@ -261,14 +261,14 @@ function shoestrap_typography_customizer_settings( $controls ){
 		$controls[] = array(
 			'type'     => 'slider',
 			'setting'  => 'font_' . $header . '_height',
-			'subtitle' => $header . ' ' . __( 'Line Height (px)', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['height'],
+			'subtitle' => $header . ' ' . __( 'Line Height', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['height'],
 			'section'  => 'typography',
 			'default'  => $values['height'],
 			'priority' => 70 + $i,
 			'choices'  => array(
-				'min'  => 30,
-				'max'  => 300,
-				'step' => 1,
+				'min'  => 0,
+				'max'  => 3,
+				'step' => 0.1,
 			),
 			'required' => array( 'headers_height_toggle' => 1 )
 		);
