@@ -124,7 +124,7 @@ function shoestrap_blog_customizer_settings( $controls ){
 		'subtitle'    => __( 'After you enable this setting you will have to save & publish your changes and refresh your page in order to see the new options.', 'shoestrap' ),
 		'section'     => 'blog',
 		'priority'    => 50,
-		'default'     => 1,
+		'default'     => 0,
 		'choices'     => array(
 			0 => __( 'Hide', 'shoestrap' ),
 			1 => __( 'Show', 'shoestrap' ),
@@ -188,7 +188,7 @@ function shoestrap_blog_customizer_settings( $controls ){
 		'subtitle'    => __( 'After you enable this setting you will have to save & publish your changes and refresh your page in order to see the new options.', 'shoestrap' ),
 		'section'     => 'blog',
 		'priority'    => 60,
-		'default'     => 1,
+		'default'     => 0,
 		'choices'     => array(
 			0 => __( 'Hide', 'shoestrap' ),
 			1 => __( 'Show', 'shoestrap' ),
