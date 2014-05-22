@@ -77,7 +77,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 		'priority' => 24,
 		'choices'  => array(
 			'min'  => 100,
-			'max'  => 800,
+			'max'  => 900,
 			'step' => 100,
 		),
 	);
@@ -237,7 +237,7 @@ function shoestrap_typography_customizer_settings( $controls ){
 			'priority' => 50 + $i,
 			'choices'  => array(
 				'min'  => 100,
-				'max'  => 800,
+				'max'  => 900,
 				'step' => 100,
 			),
 			'required' => array( 'headers_weight_toggle' => 1 )
