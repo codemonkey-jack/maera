@@ -11,6 +11,7 @@ if ( ! class_exists( 'Timber' ) ) {
 
 // Include the Color Class.
 require_once locate_template( '/lib/class-Shoestrap_Color.php' );
+require_once locate_template( '/lib/class-Shoestrap_Image.php' );
 
 require_once locate_template( '/lib/widgets.php' );      // Sidebars and widgets
 require_once locate_template( '/lib/utils.php' );
@@ -26,6 +27,7 @@ require_once locate_template( '/lib/customizer.php' );
 require_once locate_template( '/framework/framework.php' );
 
 require_once locate_template( '/lib/assets.php' );
+require_once locate_template( '/lib/image.php' );
 
 Timber::$locations = array(
 	SS_FRAMEWORK_PATH . '/macros',
@@ -61,6 +63,10 @@ function shoestrap_timber_global_context( $data ) {
 
 }
 add_filter( 'timber_context', 'shoestrap_timber_global_context' );
+
+if ( ! isset( $content_width ) ) {
+	$content_width = apply_filters( 'shoestrap/content_width', 960 );
+}
 
 /**
  * Shoestrap initial setup and constants
