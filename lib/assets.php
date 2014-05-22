@@ -10,7 +10,7 @@ function shoestrap_scripts() {
 	$stylesheet_ver = apply_filters( 'shoestrap/stylesheet/ver', null );
 
 	// Enqueue the theme's stylesheet
-	wp_enqueue_style( 'shoestrap_css', $stylesheet_url, false, $stylesheet_ver );
+	wp_enqueue_style( 'shoestrap', $stylesheet_url, false, $stylesheet_ver );
 
 	// Enqueue Modernizr
 	wp_register_script( 'modernizr', SHOESTRAP_ASSETS_URL . '/js/modernizr-2.7.0.min.js', false, null, false );
@@ -53,7 +53,7 @@ function shoestrap_scripts() {
 
 	// Add the CSS inline.
 	// See http://codex.wordpress.org/Function_Reference/wp_add_inline_style#Examples
-	wp_add_inline_style( 'shoestrap_css', $data );
+	wp_add_inline_style( 'shoestrap', $data );
 
 }
 add_action( 'wp_enqueue_scripts', 'shoestrap_scripts', 100 );
