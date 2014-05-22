@@ -1,3 +1,4 @@
+{#<?php#}
 {% import 'framework.html.twig' as framework %}
 {% include 'html-header.twig' %}
 
@@ -27,7 +28,7 @@
 
 						{% if title %}<h1>{{title}}</h1>{% endif %}
 						{% block content %}
-							Sorry, no content
+							{{ __( 'Sorry, no content', 'shoestrap' ) }}
 						{% endblock %}
 
 					</main><!-- /.main -->
