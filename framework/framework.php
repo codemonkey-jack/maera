@@ -15,7 +15,7 @@ global $ss_active_framework;
 if ( ! isset( $ss_active_framework ) || null == $ss_active_framework ) {
 	require_once locate_template( '/framework/bootstrap/framework.php' );
 }
+$framework_class = $ss_active_framework['classname'];
 
 global $ss_framework;
-$framework_class = $ss_active_framework['classname'];
 $ss_framework = $framework_class::get_instance();

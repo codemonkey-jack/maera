@@ -12,7 +12,7 @@ function shoestrap_typography_css( $style ) {
 	$font_base_weight    = get_theme_mod( 'font_base_weight', '#333333' );
 	$font_base_size      = get_theme_mod( 'font_base_size', 20 );
 	$font_base_height    = get_theme_mod( 'font_base_height', 22 );
-	
+
 	$style .= 'body { font-family: ' . $font_base_family . '; color: ' . $font_base_color . '; font-weight: ' . $font_base_weight . '; font-size: ' . $font_base_size . 'px; line-height: ' . $font_base_height . 'px; }';
 
 	// Headers font
@@ -40,7 +40,7 @@ function shoestrap_typography_css( $style ) {
 	return $style;
 
 }
-add_filter( 'shoestrap/customizer/styles', 'shoestrap_typography_css' );
+add_filter( 'shoestrap/styles', 'shoestrap_typography_css' );
 
 /**
 * Enqueue Google fonts if enabled
@@ -52,7 +52,7 @@ function shoestrap_google_font() {
 		$font_base_google_subsets = get_theme_mod( 'font_base_google_subsets' );
 
 		wp_register_style( 'shoestrap_base_google_font', 'http://fonts.googleapis.com/css?family='.$font_base_family.'&subset='.$font_base_google_subsets );
- 		wp_enqueue_style( 'shoestrap_base_google_font' );	
+ 		wp_enqueue_style( 'shoestrap_base_google_font' );
 	}
 
 	$font_headers_google = get_theme_mod( 'headers_font_google' );
@@ -61,7 +61,7 @@ function shoestrap_google_font() {
 		$font_headers_google_subsets = get_theme_mod( 'font_headers_google_subsets' );
 
 		wp_register_style( 'shoestrap_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.'&subset='.$font_headers_google_subsets );
- 		wp_enqueue_style( 'shoestrap_headers_google_font' );	
+ 		wp_enqueue_style( 'shoestrap_headers_google_font' );
 	}
 }
 add_action( 'wp_print_styles', 'shoestrap_google_font' );

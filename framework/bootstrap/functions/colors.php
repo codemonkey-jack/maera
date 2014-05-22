@@ -49,4 +49,4 @@ function shoestrap_color_css( $style ) {
 	return $style;
 
 }
-add_filter( 'shoestrap/customizer/styles', 'shoestrap_color_css' );
+add_filter( 'shoestrap/styles', 'shoestrap_color_css' );

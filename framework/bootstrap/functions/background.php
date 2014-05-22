@@ -62,4 +62,4 @@ function shoestrap_background_css( $styles ) {
 	return $styles;
 
 }
-add_filter( 'shoestrap/customizer/styles', 'shoestrap_background_css' );
+add_filter( 'shoestrap/styles', 'shoestrap_background_css' );
