@@ -29,21 +29,31 @@ add_filter( 'kirki/config', 'shoestrap_customizer_config' );
 function shoestrap_customizer_styles_cache() {
 	global $wp_customize;
 
+	// Check we're not on the Customizer.
+	// If we're on the customizer then DO NOT cache the results.
 	if ( ! isset( $wp_customize ) ) {
 
+		// Get the transient from the database
 		$data = get_transient( 'shoestrap_customizer_styles' );
 
+		// If the transient does not exist, then create it.
 		if ( $data === false ) {
+			// We'll be adding our actual CSS using a filter
 			$data = apply_filters( 'shoestrap/customizer/styles', null );
+			// Set the transient for 24 hours.
 			set_transient( 'shoestrap_customizer_styles', $data, 3600 * 24 );
 		}
 
+	// If we're on the customizer, get all the styles using our filter
 	} else {
 
 		$data = apply_filters( 'shoestrap/customizer/styles', null );
 
 	}
 
+	// Add the CSS inline.
+	// Please note that you must first enqueue the actual 'my-styles' stylesheet.
+	// See http://codex.wordpress.org/Function_Reference/wp_add_inline_style#Examples
 	wp_add_inline_style( 'shoestrap_css', $data );
 
 }
