@@ -37,7 +37,7 @@ function shoestrap_customizer_styles_cache() {
 		$data = get_transient( 'shoestrap_customizer_styles' );
 
 		// If the transient does not exist, then create it.
-		if ( $data === false ) {
+		if ( $data === false || empty( $data ) ) {
 			// We'll be adding our actual CSS using a filter
 			$data = apply_filters( 'shoestrap/customizer/styles', null );
 			// Set the transient for 24 hours.
@@ -52,7 +52,6 @@ function shoestrap_customizer_styles_cache() {
 	}
 
 	// Add the CSS inline.
-	// Please note that you must first enqueue the actual 'my-styles' stylesheet.
 	// See http://codex.wordpress.org/Function_Reference/wp_add_inline_style#Examples
 	wp_add_inline_style( 'shoestrap_css', $data );
 
