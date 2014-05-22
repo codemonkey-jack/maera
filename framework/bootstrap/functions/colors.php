@@ -8,7 +8,7 @@ function shoestrap_color_css( $style ) {
 
 	// Customizer-only styles
 	if ( ! $wp_customize ) {
-		return;
+		return $style;
 	}
 
 	$brand_primary = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_primary', '#428bca' ) ) );

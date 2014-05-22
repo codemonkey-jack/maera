@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Enqueue scripts and stylesheets
  */
@@ -29,25 +30,30 @@ function shoestrap_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	// Check we're not on the Customizer.
-	// If we're on the customizer then DO NOT cache the results.
-	if ( ! isset( $wp_customize ) ) {
+	$caching = apply_filters( 'shoestrap/styles/caching', false );
+
+	// If we're on the customizer, then set caching to false
+	if ( isset( $wp_customize ) ) {
+		$caching = false;
+	}
+
+	if ( ! $caching ) {
+
+		// Get our styles using the shoestrap/styles filter
+		$data = apply_filters( 'shoestrap/styles', null );
+
+	} else {
 
 		// Get the transient from the database
-		$data = get_transient( 'shoestrap_styles' );
+		$cache = get_transient( 'shoestrap_styles' );
 
 		// If the transient does not exist, then create it.
-		if ( $data === false || empty( $data ) ) {
-			// We'll be adding our actual CSS using a filter
+		if ( $cache === false ) {
+			// Get our styles using the shoestrap/styles filter
 			$data = apply_filters( 'shoestrap/styles', null );
 			// Set the transient for 24 hours.
 			set_transient( 'shoestrap_styles', $data, 3600 * 24 );
 		}
-
-	// If we're on the customizer, get all the styles using our filter
-	} else {
-
-		$data = apply_filters( 'shoestrap/styles', null );
 
 	}
 
