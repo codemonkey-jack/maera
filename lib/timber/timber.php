@@ -4,12 +4,17 @@ Plugin Name: Timber
 Plugin URI: http://timber.upstatement.com
 Description: The WordPress Timber Library allows you to write themes using the power Twig templates
 Author: Jared Novack + Upstatement
-Version: 0.18.1
+Version: 0.19.0
 Author URI: http://upstatement.com/
 */
 
 global $wp_version;
 global $timber;
+
+$composer_autoload = __DIR__ . '/vendor/autoload.php';
+if (file_exists($composer_autoload)){
+	require_once($composer_autoload);
+}
 
 require_once(__DIR__ . '/functions/functions-twig.php');
 require_once(__DIR__ . '/functions/timber-helper.php');
@@ -77,6 +82,9 @@ class Timber {
         }
         if (version_compare(phpversion(), '5.3.0', '<') && !is_admin()) {
             trigger_error('Timber requires PHP 5.3.0 or greater. You have '.phpversion(), E_USER_ERROR);
+        }
+        if (!class_exists('Twig_Autoloader')) {
+        	trigger_error('You have not run "composer install" to download required dependencies for Timber, you can read more on https://github.com/jarednova/timber#installation', E_USER_ERROR);
         }
     }
 
@@ -540,7 +548,7 @@ class Timber {
         if (strstr(strtolower($sidebar), '.php')) {
             return self::get_sidebar_from_php($sidebar, $data);
         }
-        return self::render($sidebar, $data, false);
+        return self::compile($sidebar, $data);
     }
 
     /**
@@ -604,10 +612,8 @@ class Timber {
     public static function add_route($route, $callback, $args = array()) {
         global $timber;
         if (!isset($timber->router)) {
-            require_once(__DIR__.'/functions/router/Router.php');
-            require_once(__DIR__.'/functions/router/Route.php');
-            if (class_exists('Router')){
-                $timber->router = new Router();
+            if (class_exists('PHPRouter\Router')){
+                $timber->router = new PHPRouter\Router();
                 $site_url = get_bloginfo('url');
                 $site_url_parts = explode('/', $site_url);
                 $site_url_parts = array_slice($site_url_parts, 3);
@@ -620,7 +626,7 @@ class Timber {
                 $timber->router->setBasePath($base_path);
             }
         }
-        if (class_exists('Router')){
+        if (class_exists('PHPRouter\Router')){
             $timber->router->map($route, $callback, $args);
         }
     }
