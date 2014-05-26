@@ -57,7 +57,12 @@
 	{{ framework.close_container( 'div' ) }}
 
 	{% do action( 'shoestrap/footer/before' ) %}
-	{% include 'footer.twig' %}
+	<footer class="page-footer">
+		{% do action( 'shoestrap/footer/start' ) %}
+		{% include 'footer.twig' %}
+		{% do action( 'shoestrap/footer/end' ) %}
+	</footer>
+	{% do action( 'shoestrap/footer/after' ) %}
 	{{ function( 'wp_footer' ) }}
 </body>
 </html>

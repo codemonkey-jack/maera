@@ -22,94 +22,21 @@ add_action( 'customize_register', 'shoestrap_jumbotron_customizer' );
 function shoestrap_jumbotron_customizer_settings( $controls ){
 
 	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'jumbo_bg_color',
-		'label'    => __( 'Jumbotron Background', 'shoestrap' ),
-		'description' =>   __( 'Background Color', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => '#eeeeee',
+		'type'         => 'background',
+		'setting'      => 'jumbo_bg',
+		'label'        => __( 'Jumbotron Background', 'shoestrap' ),
+		'section'      => 'background',
+		'default'      => array(
+			'color'    => '#eeeeee',
+			'image'    => null,
+			'repeat'   => 'repeat',
+			'size'     => 'inherit',
+			'attach'   => 'inherit',
+			'position' => 'left-top',
+			'opacity'  => 100,
+		),
 		'priority' => 1,
-	);
-
-	$controls[] = array(
-		'type'     => 'image',
-		'setting'  => 'jumbo_bg_image',
-		'label'    => null,
-		'description' =>   __( 'Background Image', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => '',
-		'priority' => 2,
-	);
-
-	$controls[] = array(
-		'type'     => 'select',
-		'setting'  => 'jumbo_bg_repeat',
-		'label'    => null,
-		'subtitle' => __( 'Background Repeat', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 'repeat',
-		'choices'  => array(
-			'no-repeat' => __( 'No Repeat', 'shoestrap' ),
-			'repeat'    => __( 'Repeat All', 'shoestrap' ),
-			'repeat-x'  => __( 'Repeat Horizontally', 'shoestrap' ),
-			'repeat-y'  => __( 'Repeat Vertically', 'shoestrap' ),
-			'inherit'   => __( 'Inherit', 'shoestrap' ),
-		),
-		'priority' => 3,
-	);
-
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'jumbo_bg_size',
-		'label'    => null,
-		'subtitle' =>  __( 'Background Size', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 'inherit',
-		'choices'  => array(
-			'inherit' => __( 'Inherit', 'shoestrap' ),
-			'cover'   => __( 'Cover', 'shoestrap' ),
-			'contain' => __( 'Contain', 'shoestrap' ),
-		),
-		'priority' => 4,
-	);
-
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'jumbo_bg_attach',
-		'label'    => null,
-		'subtitle' => __( 'Background Attachment', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 'scroll',
-		'choices'  => array(
-			'inherit' => __( 'Inherit', 'shoestrap' ),
-			'fixed'   => __( 'Fixed', 'shoestrap' ),
-			'scroll' => __( 'Scroll', 'shoestrap' ),
-		),
-		'priority' => 5,
-	);
-
-	$controls[] = array(
-		'type'     => 'select',
-		'setting'  => 'jumbo_bg_position',
-		'label'    => null,
-		'subtitle' =>   __( 'Background Position', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 'center-center',
-		'choices'  => array(
-			'left-top'      => __( 'Left Top', 'shoestrap' ),
-			'left-center'   => __( 'Left Center', 'shoestrap' ),
-			'left-bottom'   => __( 'Left Bottom', 'shoestrap' ),
-			'right-top'     => __( 'Right Top', 'shoestrap' ),
-			'right-center'  => __( 'Right Center', 'shoestrap' ),
-			'right-bottom'  => __( 'Right Bottom', 'shoestrap' ),
-			'center-top'    => __( 'Center Top', 'shoestrap' ),
-			'center-center' => __( 'Center Center', 'shoestrap' ),
-			'center-bottom' => __( 'Center Bottom', 'shoestrap' ),
-		),
-		'priority' => 6,
-		'separator' => true,
+		'output' => '.jumbotron',
 	);
 
 	$controls[] = array(

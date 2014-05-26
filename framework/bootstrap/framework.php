@@ -22,7 +22,6 @@ include_once( SS_FRAMEWORK_PATH . '/functions/logo.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/widgets.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/footer.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/variables.php' );
-include_once( SS_FRAMEWORK_PATH . '/functions/background.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/typography.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/colors.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/blog.php' );

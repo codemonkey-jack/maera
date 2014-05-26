@@ -22,108 +22,21 @@ add_action( 'customize_register', 'shoestrap_footer_customizer' );
 function shoestrap_footer_customizer_settings( $controls ){
 
 	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'footer_bg_color',
-		'label'    => __( 'Background', 'shoestrap' ),
-		'description' =>   __( 'Background Color', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => '#ffffff',
-		'priority' => 3,
-	);
-
-	$controls[] = array(
-		'type'     => 'image',
-		'setting'  => 'footer_bg_image',
-		'label'    => null,
-		'description' =>   __( 'Background Image', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => '',
-		'priority' => 4,
-	);
-
-	$controls[] = array(
-		'type'     => 'select',
-		'setting'  => 'footer_bg_repeat',
-		'label'    => null,
-		'subtitle' => __( 'Background Repeat', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 'repeat',
-		'choices'  => array(
-			'no-repeat' => __( 'No Repeat', 'shoestrap' ),
-			'repeat'    => __( 'Repeat All', 'shoestrap' ),
-			'repeat-x'  => __( 'Repeat Horizontally', 'shoestrap' ),
-			'repeat-y'  => __( 'Repeat Vertically', 'shoestrap' ),
-			'inherit'   => __( 'Inherit', 'shoestrap' ),
+		'type'         => 'background',
+		'setting'      => 'footer_bg',
+		'label'        => __( 'Footer Background', 'shoestrap' ),
+		'section'      => 'background',
+		'default'      => array(
+			'color'    => '#ffffff',
+			'image'    => null,
+			'repeat'   => 'repeat',
+			'size'     => 'inherit',
+			'attach'   => 'inherit',
+			'position' => 'left-top',
+			'opacity'  => 100,
 		),
-		'priority' => 5,
-	);
-
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'footer_bg_size',
-		'label'    => null,
-		'subtitle' =>  __( 'Background Size', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 'inherit',
-		'choices'  => array(
-			'inherit' => __( 'Inherit', 'shoestrap' ),
-			'cover'   => __( 'Cover', 'shoestrap' ),
-			'contain' => __( 'Contain', 'shoestrap' ),
-		),
-		'priority' => 6,
-	);
-
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'footer_bg_attach',
-		'label'    => null,
-		'subtitle' => __( 'Background Attachment', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 'scroll',
-		'choices'  => array(
-			'inherit' => __( 'Inherit', 'shoestrap' ),
-			'fixed'   => __( 'Fixed', 'shoestrap' ),
-			'scroll' => __( 'Scroll', 'shoestrap' ),
-		),
-		'priority' => 7,
-	);
-
-	$controls[] = array(
-		'type'     => 'select',
-		'setting'  => 'footer_bg_position',
-		'label'    => null,
-		'subtitle' =>   __( 'Background Position', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 'center-center',
-		'choices'  => array(
-			'left-top'      => __( 'Left Top', 'shoestrap' ),
-			'left-center'   => __( 'Left Center', 'shoestrap' ),
-			'left-bottom'   => __( 'Left Bottom', 'shoestrap' ),
-			'right-top'     => __( 'Right Top', 'shoestrap' ),
-			'right-center'  => __( 'Right Center', 'shoestrap' ),
-			'right-bottom'  => __( 'Right Bottom', 'shoestrap' ),
-			'center-top'    => __( 'Center Top', 'shoestrap' ),
-			'center-center' => __( 'Center Center', 'shoestrap' ),
-			'center-bottom' => __( 'Center Bottom', 'shoestrap' ),
-		),
-		'priority' => 8,
-		'separator' => true,
-	);
-
-	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'footer_bg_opacity',
-		'label'    => __( 'Footer Background Opacity', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 100,
-		'priority' => 9,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 100,
-			'step' => 1,
-		),
+		'priority' => 10,
+		'output' => 'footer.page-footer',
 	);
 
 	$controls[] = array(
