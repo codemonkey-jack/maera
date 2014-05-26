@@ -59,6 +59,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -74,6 +75,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -89,6 +91,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -106,6 +109,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -122,6 +126,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -138,6 +143,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -153,6 +159,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -168,6 +175,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -184,6 +192,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -198,6 +207,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						// 'transport'   => 'postMessage',
 					) )
 				);
 
@@ -214,6 +224,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
 					) )
 				);
 			}
