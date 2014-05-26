@@ -1,0 +1,2296 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Shoestrap 3.5\n"
+"POT-Creation-Date: 2014-05-26 12:57+0200\n"
+"PO-Revision-Date: 2014-05-26 12:58+0200\n"
+"Last-Translator: \n"
+"Language-Team: wpmu.io <info@shoestrap.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-2: ../.\n"
+
+#: ../search.php:14 .././search.php:14
+msgid "Search results for "
+msgstr ""
+
+#: ../archive.php:21 .././archive.php:21
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: ../archive.php:23 .././archive.php:23
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: ../archive.php:25 .././archive.php:25
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: ../archive.php:35 .././archive.php:35
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: ../archive.php:37 .././archive.php:37
+msgid "Asides"
+msgstr ""
+
+#: ../archive.php:39 .././archive.php:39
+msgid "Galleries"
+msgstr ""
+
+#: ../archive.php:41 .././archive.php:41
+msgid "Images"
+msgstr ""
+
+#: ../archive.php:43 .././archive.php:43
+msgid "Videos"
+msgstr ""
+
+#: ../archive.php:45 .././archive.php:45
+msgid "Quotes"
+msgstr ""
+
+#: ../archive.php:47 .././archive.php:47
+msgid "Links"
+msgstr ""
+
+#: ../archive.php:49 .././archive.php:49
+msgid "Statuses"
+msgstr ""
+
+#: ../archive.php:51 .././archive.php:51
+msgid "Audios"
+msgstr ""
+
+#: ../archive.php:53 .././archive.php:53
+msgid "Chats"
+msgstr ""
+
+#: ../archive.php:55 .././archive.php:55
+msgid "Archives"
+msgstr ""
+
+#: ../index.php:11 .././index.php:11
+msgid "Timber not activated. Make sure you activate the plugin."
+msgstr ""
+
+#: ../lib/init.php:60 .././lib/init.php:60
+msgid "Primary Navigation"
+msgstr ""
+
+#: ../lib/init.php:61 .././lib/init.php:61
+msgid "Secondary Navigation"
+msgstr ""
+
+#: ../lib/widgets.php:13 .././lib/widgets.php:13
+msgid "Primary Sidebar"
+msgstr ""
+
+#: ../lib/widgets.php:22 .././lib/widgets.php:22
+msgid "Secondary Sidebar"
+msgstr ""
+
+#: ../lib/widgets.php:31 .././lib/widgets.php:31
+msgid "Footer Widget Area 1"
+msgstr ""
+
+#: ../lib/widgets.php:40 .././lib/widgets.php:40
+msgid "Footer Widget Area 2"
+msgstr ""
+
+#: ../lib/widgets.php:49 .././lib/widgets.php:49
+msgid "Footer Widget Area 3"
+msgstr ""
+
+#: ../lib/widgets.php:58 .././lib/widgets.php:58
+msgid "Footer Widget Area 4"
+msgstr ""
+
+#: ../lib/widgets.php:83 .././lib/widgets.php:83
+msgid "Use this widget to add a vCard"
+msgstr ""
+
+#: ../lib/widgets.php:85 .././lib/widgets.php:85
+msgid "Shoestrap: vCard"
+msgstr ""
+
+#: ../lib/widgets.php:112 .././lib/widgets.php:112
+msgid "vCard"
+msgstr ""
+
+#: ../lib/class-Shoestrap_Image.php:67 .././lib/class-Shoestrap_Image.php:67
+msgid "No image URL has been entered."
+msgstr ""
+
+#: ../lib/compilers/class-Shoestrap_Compiler.php:197
+#: .././lib/compilers/class-Shoestrap_Compiler.php:197
+msgid ""
+"The following file does not exist and must be so in order to utilise this "
+"theme. Please create this file."
+msgstr ""
+
+#: ../lib/compilers/class-Shoestrap_Compiler.php:198
+#: .././lib/compilers/class-Shoestrap_Compiler.php:198
+msgid ""
+"Try visiting the theme options and clicking the \"Reset All\" button to "
+"attempt automatically creating it."
+msgstr ""
+
+#: ../lib/compilers/class-Shoestrap_Compiler.php:205
+#: .././lib/compilers/class-Shoestrap_Compiler.php:205
+msgid ""
+"The following file is not writable and must be so in order to utilise this "
+"theme. Please update the permissions."
+msgstr ""
+
+#: ../lib/kirki/includes/controls/color.php:42
+#: ../framework/bootstrap/customizer/social.php:59
+#: ../framework/bootstrap/customizer/menus.php:140
+#: ../framework/bootstrap/customizer/menus.php:287
+#: .././lib/kirki/includes/controls/color.php:42
+#: .././framework/bootstrap/customizer/social.php:59
+#: .././framework/bootstrap/customizer/menus.php:140
+#: .././framework/bootstrap/customizer/menus.php:287
+msgid "Default"
+msgstr ""
+
+#: ../lib/kirki/includes/controls/upload.php:71
+#: .././lib/kirki/includes/controls/upload.php:71
+msgid "Upload"
+msgstr ""
+
+#: ../lib/kirki/includes/controls/upload.php:72
+#: .././lib/kirki/includes/controls/upload.php:72
+msgid "Remove"
+msgstr ""
+
+#: ../lib/kirki/includes/controls/image.php:37
+#: .././lib/kirki/includes/controls/image.php:37
+msgid "No Image"
+msgstr ""
+
+#: ../lib/kirki/includes/controls/image.php:41
+#: .././lib/kirki/includes/controls/image.php:41
+msgid "Upload New"
+msgstr ""
+
+#: ../lib/kirki/includes/controls/image.php:42
+#: .././lib/kirki/includes/controls/image.php:42
+msgid "Uploaded"
+msgstr ""
+
+#: ../lib/kirki/includes/controls/image.php:124
+#: .././lib/kirki/includes/controls/image.php:124
+msgid "Remove Image"
+msgstr ""
+
+#: ../lib/kirki/includes/controls/image.php:193
+#: .././lib/kirki/includes/controls/image.php:193
+#, php-format
+msgid ""
+"The web browser on your device cannot be used to upload files. You may be "
+"able to use the <a href=\"%s\">native app for your device</a> instead."
+msgstr ""
+
+#: ../lib/kirki/includes/controls/image.php:197
+#: .././lib/kirki/includes/controls/image.php:197
+msgid "Drop a file here or <a href=\"#\" class=\"upload\">select a file</a>."
+msgstr ""
+
+#: ../lib/kirki/includes/controls/image.php:200
+#: .././lib/kirki/includes/controls/image.php:200
+msgid "Select File"
+msgstr ""
+
+#: ../lib/timber/functions/timber-archives.php:92
+#: .././lib/timber/functions/timber-archives.php:92
+#, php-format
+msgid "%1$s %2$d"
+msgstr ""
+
+#: ../lib/timber/functions/timber-archives.php:94
+#: .././lib/timber/functions/timber-archives.php:94
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: ../lib/timber/functions/timber-url-helper.php:164
+#: .././lib/timber/functions/timber-url-helper.php:164
+msgid "Invalid URL Provided."
+msgstr ""
+
+#: ../lib/timber/functions/timber-url-helper.php:169
+#: .././lib/timber/functions/timber-url-helper.php:169
+msgid "Could not create Temporary file."
+msgstr ""
+
+#: ../lib/timber/functions/timber-helper.php:149
+#: ../lib/timber/functions/timber-helper.php:483
+#: .././lib/timber/functions/timber-helper.php:149
+#: .././lib/timber/functions/timber-helper.php:483
+msgid "&hellip;"
+msgstr ""
+
+#: ../lib/timber/functions/timber-helper.php:431
+#: .././lib/timber/functions/timber-helper.php:431
+msgid "&laquo; Previous"
+msgstr ""
+
+#: ../lib/timber/functions/timber-helper.php:432
+#: .././lib/timber/functions/timber-helper.php:432
+msgid "Next &raquo;"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:12
+#: .././framework/bootstrap/customizer/header.php:12
+msgid "Header"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:27
+#: .././framework/bootstrap/customizer/header.php:27
+msgid "Display the Header."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:28
+#: .././framework/bootstrap/customizer/header.php:28
+msgid "Check this to display the header. Default: OFF"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:37
+#: .././framework/bootstrap/customizer/header.php:37
+msgid "Display branding on your Header."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:38
+#: .././framework/bootstrap/customizer/header.php:38
+msgid ""
+"Check to display branding ( Sitename or Logo )on your Header. Default: ON"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:47
+#: ../framework/bootstrap/customizer/footer.php:27
+#: ../framework/bootstrap/customizer/background.php:12
+#: .././framework/bootstrap/customizer/header.php:47
+#: .././framework/bootstrap/customizer/footer.php:27
+#: .././framework/bootstrap/customizer/background.php:12
+msgid "Background"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:48
+#: ../framework/bootstrap/customizer/jumbotron.php:28
+#: ../framework/bootstrap/customizer/footer.php:28
+#: ../framework/bootstrap/customizer/background.php:28
+#: ../framework/bootstrap/customizer/background.php:119
+#: .././framework/bootstrap/customizer/header.php:48
+#: .././framework/bootstrap/customizer/jumbotron.php:28
+#: .././framework/bootstrap/customizer/footer.php:28
+#: .././framework/bootstrap/customizer/background.php:28
+#: .././framework/bootstrap/customizer/background.php:119
+msgid "Background Color"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:58
+#: ../framework/bootstrap/customizer/jumbotron.php:38
+#: ../framework/bootstrap/customizer/footer.php:38
+#: ../framework/bootstrap/customizer/background.php:38
+#: ../framework/bootstrap/customizer/background.php:129
+#: .././framework/bootstrap/customizer/header.php:58
+#: .././framework/bootstrap/customizer/jumbotron.php:38
+#: .././framework/bootstrap/customizer/footer.php:38
+#: .././framework/bootstrap/customizer/background.php:38
+#: .././framework/bootstrap/customizer/background.php:129
+msgid "Background Image"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:68
+#: ../framework/bootstrap/customizer/jumbotron.php:48
+#: ../framework/bootstrap/customizer/footer.php:48
+#: ../framework/bootstrap/customizer/background.php:48
+#: ../framework/bootstrap/customizer/background.php:139
+#: .././framework/bootstrap/customizer/header.php:68
+#: .././framework/bootstrap/customizer/jumbotron.php:48
+#: .././framework/bootstrap/customizer/footer.php:48
+#: .././framework/bootstrap/customizer/background.php:48
+#: .././framework/bootstrap/customizer/background.php:139
+msgid "Background Repeat"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:72
+#: ../framework/bootstrap/customizer/jumbotron.php:52
+#: ../framework/bootstrap/customizer/footer.php:52
+#: ../framework/bootstrap/customizer/background.php:52
+#: ../framework/bootstrap/customizer/background.php:143
+#: .././framework/bootstrap/customizer/header.php:72
+#: .././framework/bootstrap/customizer/jumbotron.php:52
+#: .././framework/bootstrap/customizer/footer.php:52
+#: .././framework/bootstrap/customizer/background.php:52
+#: .././framework/bootstrap/customizer/background.php:143
+msgid "No Repeat"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:73
+#: ../framework/bootstrap/customizer/jumbotron.php:53
+#: ../framework/bootstrap/customizer/footer.php:53
+#: ../framework/bootstrap/customizer/background.php:53
+#: ../framework/bootstrap/customizer/background.php:144
+#: .././framework/bootstrap/customizer/header.php:73
+#: .././framework/bootstrap/customizer/jumbotron.php:53
+#: .././framework/bootstrap/customizer/footer.php:53
+#: .././framework/bootstrap/customizer/background.php:53
+#: .././framework/bootstrap/customizer/background.php:144
+msgid "Repeat All"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:74
+#: ../framework/bootstrap/customizer/jumbotron.php:54
+#: ../framework/bootstrap/customizer/footer.php:54
+#: ../framework/bootstrap/customizer/background.php:54
+#: ../framework/bootstrap/customizer/background.php:145
+#: .././framework/bootstrap/customizer/header.php:74
+#: .././framework/bootstrap/customizer/jumbotron.php:54
+#: .././framework/bootstrap/customizer/footer.php:54
+#: .././framework/bootstrap/customizer/background.php:54
+#: .././framework/bootstrap/customizer/background.php:145
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:75
+#: ../framework/bootstrap/customizer/jumbotron.php:55
+#: ../framework/bootstrap/customizer/footer.php:55
+#: ../framework/bootstrap/customizer/background.php:55
+#: ../framework/bootstrap/customizer/background.php:146
+#: .././framework/bootstrap/customizer/header.php:75
+#: .././framework/bootstrap/customizer/jumbotron.php:55
+#: .././framework/bootstrap/customizer/footer.php:55
+#: .././framework/bootstrap/customizer/background.php:55
+#: .././framework/bootstrap/customizer/background.php:146
+msgid "Repeat Vertically"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:76
+#: ../framework/bootstrap/customizer/header.php:90
+#: ../framework/bootstrap/customizer/header.php:106
+#: ../framework/bootstrap/customizer/jumbotron.php:56
+#: ../framework/bootstrap/customizer/jumbotron.php:70
+#: ../framework/bootstrap/customizer/jumbotron.php:86
+#: ../framework/bootstrap/customizer/footer.php:56
+#: ../framework/bootstrap/customizer/footer.php:70
+#: ../framework/bootstrap/customizer/footer.php:86
+#: ../framework/bootstrap/customizer/background.php:56
+#: ../framework/bootstrap/customizer/background.php:70
+#: ../framework/bootstrap/customizer/background.php:86
+#: ../framework/bootstrap/customizer/background.php:147
+#: ../framework/bootstrap/customizer/background.php:161
+#: ../framework/bootstrap/customizer/background.php:177
+#: .././framework/bootstrap/customizer/header.php:76
+#: .././framework/bootstrap/customizer/header.php:90
+#: .././framework/bootstrap/customizer/header.php:106
+#: .././framework/bootstrap/customizer/jumbotron.php:56
+#: .././framework/bootstrap/customizer/jumbotron.php:70
+#: .././framework/bootstrap/customizer/jumbotron.php:86
+#: .././framework/bootstrap/customizer/footer.php:56
+#: .././framework/bootstrap/customizer/footer.php:70
+#: .././framework/bootstrap/customizer/footer.php:86
+#: .././framework/bootstrap/customizer/background.php:56
+#: .././framework/bootstrap/customizer/background.php:70
+#: .././framework/bootstrap/customizer/background.php:86
+#: .././framework/bootstrap/customizer/background.php:147
+#: .././framework/bootstrap/customizer/background.php:161
+#: .././framework/bootstrap/customizer/background.php:177
+msgid "Inherit"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:86
+#: ../framework/bootstrap/customizer/jumbotron.php:66
+#: ../framework/bootstrap/customizer/footer.php:66
+#: ../framework/bootstrap/customizer/background.php:66
+#: ../framework/bootstrap/customizer/background.php:157
+#: .././framework/bootstrap/customizer/header.php:86
+#: .././framework/bootstrap/customizer/jumbotron.php:66
+#: .././framework/bootstrap/customizer/footer.php:66
+#: .././framework/bootstrap/customizer/background.php:66
+#: .././framework/bootstrap/customizer/background.php:157
+msgid "Background Size"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:91
+#: ../framework/bootstrap/customizer/jumbotron.php:71
+#: ../framework/bootstrap/customizer/footer.php:71
+#: ../framework/bootstrap/customizer/background.php:71
+#: ../framework/bootstrap/customizer/background.php:162
+#: .././framework/bootstrap/customizer/header.php:91
+#: .././framework/bootstrap/customizer/jumbotron.php:71
+#: .././framework/bootstrap/customizer/footer.php:71
+#: .././framework/bootstrap/customizer/background.php:71
+#: .././framework/bootstrap/customizer/background.php:162
+msgid "Cover"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:92
+#: ../framework/bootstrap/customizer/jumbotron.php:72
+#: ../framework/bootstrap/customizer/footer.php:72
+#: ../framework/bootstrap/customizer/background.php:72
+#: ../framework/bootstrap/customizer/background.php:163
+#: .././framework/bootstrap/customizer/header.php:92
+#: .././framework/bootstrap/customizer/jumbotron.php:72
+#: .././framework/bootstrap/customizer/footer.php:72
+#: .././framework/bootstrap/customizer/background.php:72
+#: .././framework/bootstrap/customizer/background.php:163
+msgid "Contain"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:102
+#: ../framework/bootstrap/customizer/jumbotron.php:82
+#: ../framework/bootstrap/customizer/footer.php:82
+#: ../framework/bootstrap/customizer/background.php:82
+#: ../framework/bootstrap/customizer/background.php:173
+#: .././framework/bootstrap/customizer/header.php:102
+#: .././framework/bootstrap/customizer/jumbotron.php:82
+#: .././framework/bootstrap/customizer/footer.php:82
+#: .././framework/bootstrap/customizer/background.php:82
+#: .././framework/bootstrap/customizer/background.php:173
+msgid "Background Attachment"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:107
+#: ../framework/bootstrap/customizer/jumbotron.php:87
+#: ../framework/bootstrap/customizer/footer.php:87
+#: ../framework/bootstrap/customizer/background.php:87
+#: ../framework/bootstrap/customizer/background.php:178
+#: .././framework/bootstrap/customizer/header.php:107
+#: .././framework/bootstrap/customizer/jumbotron.php:87
+#: .././framework/bootstrap/customizer/footer.php:87
+#: .././framework/bootstrap/customizer/background.php:87
+#: .././framework/bootstrap/customizer/background.php:178
+msgid "Fixed"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:108
+#: ../framework/bootstrap/customizer/jumbotron.php:88
+#: ../framework/bootstrap/customizer/footer.php:88
+#: ../framework/bootstrap/customizer/background.php:88
+#: ../framework/bootstrap/customizer/background.php:179
+#: .././framework/bootstrap/customizer/header.php:108
+#: .././framework/bootstrap/customizer/jumbotron.php:88
+#: .././framework/bootstrap/customizer/footer.php:88
+#: .././framework/bootstrap/customizer/background.php:88
+#: .././framework/bootstrap/customizer/background.php:179
+msgid "Scroll"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:117
+#: ../framework/bootstrap/customizer/jumbotron.php:97
+#: ../framework/bootstrap/customizer/footer.php:97
+#: ../framework/bootstrap/customizer/background.php:97
+#: ../framework/bootstrap/customizer/background.php:188
+#: .././framework/bootstrap/customizer/header.php:117
+#: .././framework/bootstrap/customizer/jumbotron.php:97
+#: .././framework/bootstrap/customizer/footer.php:97
+#: .././framework/bootstrap/customizer/background.php:97
+#: .././framework/bootstrap/customizer/background.php:188
+msgid "Background Position"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:121
+#: ../framework/bootstrap/customizer/jumbotron.php:101
+#: ../framework/bootstrap/customizer/footer.php:101
+#: ../framework/bootstrap/customizer/background.php:101
+#: ../framework/bootstrap/customizer/background.php:192
+#: .././framework/bootstrap/customizer/header.php:121
+#: .././framework/bootstrap/customizer/jumbotron.php:101
+#: .././framework/bootstrap/customizer/footer.php:101
+#: .././framework/bootstrap/customizer/background.php:101
+#: .././framework/bootstrap/customizer/background.php:192
+msgid "Left Top"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:122
+#: ../framework/bootstrap/customizer/jumbotron.php:102
+#: ../framework/bootstrap/customizer/footer.php:102
+#: ../framework/bootstrap/customizer/background.php:102
+#: ../framework/bootstrap/customizer/background.php:193
+#: .././framework/bootstrap/customizer/header.php:122
+#: .././framework/bootstrap/customizer/jumbotron.php:102
+#: .././framework/bootstrap/customizer/footer.php:102
+#: .././framework/bootstrap/customizer/background.php:102
+#: .././framework/bootstrap/customizer/background.php:193
+msgid "Left Center"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:123
+#: ../framework/bootstrap/customizer/jumbotron.php:103
+#: ../framework/bootstrap/customizer/footer.php:103
+#: ../framework/bootstrap/customizer/background.php:103
+#: ../framework/bootstrap/customizer/background.php:194
+#: .././framework/bootstrap/customizer/header.php:123
+#: .././framework/bootstrap/customizer/jumbotron.php:103
+#: .././framework/bootstrap/customizer/footer.php:103
+#: .././framework/bootstrap/customizer/background.php:103
+#: .././framework/bootstrap/customizer/background.php:194
+msgid "Left Bottom"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:124
+#: ../framework/bootstrap/customizer/jumbotron.php:104
+#: ../framework/bootstrap/customizer/footer.php:104
+#: ../framework/bootstrap/customizer/background.php:104
+#: ../framework/bootstrap/customizer/background.php:195
+#: .././framework/bootstrap/customizer/header.php:124
+#: .././framework/bootstrap/customizer/jumbotron.php:104
+#: .././framework/bootstrap/customizer/footer.php:104
+#: .././framework/bootstrap/customizer/background.php:104
+#: .././framework/bootstrap/customizer/background.php:195
+msgid "Right Top"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:125
+#: ../framework/bootstrap/customizer/jumbotron.php:105
+#: ../framework/bootstrap/customizer/footer.php:105
+#: ../framework/bootstrap/customizer/background.php:105
+#: ../framework/bootstrap/customizer/background.php:196
+#: .././framework/bootstrap/customizer/header.php:125
+#: .././framework/bootstrap/customizer/jumbotron.php:105
+#: .././framework/bootstrap/customizer/footer.php:105
+#: .././framework/bootstrap/customizer/background.php:105
+#: .././framework/bootstrap/customizer/background.php:196
+msgid "Right Center"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:126
+#: ../framework/bootstrap/customizer/jumbotron.php:106
+#: ../framework/bootstrap/customizer/footer.php:106
+#: ../framework/bootstrap/customizer/background.php:106
+#: ../framework/bootstrap/customizer/background.php:197
+#: .././framework/bootstrap/customizer/header.php:126
+#: .././framework/bootstrap/customizer/jumbotron.php:106
+#: .././framework/bootstrap/customizer/footer.php:106
+#: .././framework/bootstrap/customizer/background.php:106
+#: .././framework/bootstrap/customizer/background.php:197
+msgid "Right Bottom"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:127
+#: ../framework/bootstrap/customizer/jumbotron.php:107
+#: ../framework/bootstrap/customizer/footer.php:107
+#: ../framework/bootstrap/customizer/background.php:107
+#: ../framework/bootstrap/customizer/background.php:198
+#: .././framework/bootstrap/customizer/header.php:127
+#: .././framework/bootstrap/customizer/jumbotron.php:107
+#: .././framework/bootstrap/customizer/footer.php:107
+#: .././framework/bootstrap/customizer/background.php:107
+#: .././framework/bootstrap/customizer/background.php:198
+msgid "Center Top"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:128
+#: ../framework/bootstrap/customizer/jumbotron.php:108
+#: ../framework/bootstrap/customizer/footer.php:108
+#: ../framework/bootstrap/customizer/background.php:108
+#: ../framework/bootstrap/customizer/background.php:199
+#: .././framework/bootstrap/customizer/header.php:128
+#: .././framework/bootstrap/customizer/jumbotron.php:108
+#: .././framework/bootstrap/customizer/footer.php:108
+#: .././framework/bootstrap/customizer/background.php:108
+#: .././framework/bootstrap/customizer/background.php:199
+msgid "Center Center"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:129
+#: ../framework/bootstrap/customizer/jumbotron.php:109
+#: ../framework/bootstrap/customizer/footer.php:109
+#: ../framework/bootstrap/customizer/background.php:109
+#: ../framework/bootstrap/customizer/background.php:200
+#: .././framework/bootstrap/customizer/header.php:129
+#: .././framework/bootstrap/customizer/jumbotron.php:109
+#: .././framework/bootstrap/customizer/footer.php:109
+#: .././framework/bootstrap/customizer/background.php:109
+#: .././framework/bootstrap/customizer/background.php:200
+msgid "Center Bottom"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:138
+#: .././framework/bootstrap/customizer/header.php:138
+msgid "Header Background Opacity"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:152
+#: .././framework/bootstrap/customizer/header.php:152
+msgid "Header Text Color"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:153
+#: .././framework/bootstrap/customizer/header.php:153
+msgid "Select the text color for your header. Default: #333333."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:162
+#: ../framework/bootstrap/customizer/footer.php:142
+#: .././framework/bootstrap/customizer/header.php:162
+#: .././framework/bootstrap/customizer/footer.php:142
+msgid "Margin-top"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:163
+#: .././framework/bootstrap/customizer/header.php:163
+msgid "Select the top margin of the header in pixels. Default: 0px."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:177
+#: .././framework/bootstrap/customizer/header.php:177
+msgid "Margin-bottom"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/header.php:178
+#: .././framework/bootstrap/customizer/header.php:178
+msgid "Select the bottom margin of the header in pixels. Default: 0px."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:12
+#: ../framework/bootstrap/functions/widgets.php:18
+#: .././framework/bootstrap/customizer/jumbotron.php:12
+#: .././framework/bootstrap/functions/widgets.php:18
+msgid "Jumbotron"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:27
+#: .././framework/bootstrap/customizer/jumbotron.php:27
+msgid "Jumbotron Background"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:119
+#: .././framework/bootstrap/customizer/jumbotron.php:119
+msgid "Jumbotron Visibility"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:120
+#: .././framework/bootstrap/customizer/jumbotron.php:120
+msgid ""
+"Select if the Jumbotron should only be displayed in the frontpage or on all "
+"pages."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:124
+#: .././framework/bootstrap/customizer/jumbotron.php:124
+msgid "All Pages"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:125
+#: .././framework/bootstrap/customizer/jumbotron.php:125
+msgid "Frontpage only"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:133
+#: ../framework/bootstrap/customizer/menus.php:19
+#: .././framework/bootstrap/customizer/jumbotron.php:133
+#: .././framework/bootstrap/customizer/menus.php:19
+msgid "Full-Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:134
+#: .././framework/bootstrap/customizer/jumbotron.php:134
+msgid ""
+"When selected, the Jumbotron is no longer restricted by the width of your "
+"page, taking over the full width of your screen. This option is useful when "
+"you have assigned a slider widget on the Jumbotron area and you want its "
+"width to be the maximum width of the screen. Default: OFF."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:144
+#: .././framework/bootstrap/customizer/jumbotron.php:144
+msgid "Jumbotron font"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:153
+#: ../framework/bootstrap/customizer/typography.php:36
+#: ../framework/bootstrap/customizer/typography.php:127
+#: ../framework/bootstrap/customizer/menus.php:179
+#: .././framework/bootstrap/customizer/jumbotron.php:153
+#: .././framework/bootstrap/customizer/typography.php:36
+#: .././framework/bootstrap/customizer/typography.php:127
+#: .././framework/bootstrap/customizer/menus.php:179
+msgid "Google-Font"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:154
+#: ../framework/bootstrap/customizer/typography.php:37
+#: ../framework/bootstrap/customizer/typography.php:128
+#: ../framework/bootstrap/customizer/menus.php:180
+#: .././framework/bootstrap/customizer/jumbotron.php:154
+#: .././framework/bootstrap/customizer/typography.php:37
+#: .././framework/bootstrap/customizer/typography.php:128
+#: .././framework/bootstrap/customizer/menus.php:180
+msgid ""
+"If you have entered the name of a google font above, then you must enable "
+"check this option to process it."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:163
+#: ../framework/bootstrap/customizer/typography.php:65
+#: ../framework/bootstrap/customizer/menus.php:189
+#: .././framework/bootstrap/customizer/jumbotron.php:163
+#: .././framework/bootstrap/customizer/typography.php:65
+#: .././framework/bootstrap/customizer/menus.php:189
+msgid "Font Color"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:172
+#: ../framework/bootstrap/customizer/typography.php:74
+#: ../framework/bootstrap/customizer/menus.php:198
+#: .././framework/bootstrap/customizer/jumbotron.php:172
+#: .././framework/bootstrap/customizer/typography.php:74
+#: .././framework/bootstrap/customizer/menus.php:198
+msgid "Font Weight"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:186
+#: ../framework/bootstrap/customizer/typography.php:88
+#: ../framework/bootstrap/customizer/menus.php:212
+#: .././framework/bootstrap/customizer/jumbotron.php:186
+#: .././framework/bootstrap/customizer/typography.php:88
+#: .././framework/bootstrap/customizer/menus.php:212
+msgid "Font Size (px)"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:200
+#: ../framework/bootstrap/customizer/menus.php:226
+#: .././framework/bootstrap/customizer/jumbotron.php:200
+#: .././framework/bootstrap/customizer/menus.php:226
+msgid "Line Height (px)"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:215
+#: .././framework/bootstrap/customizer/jumbotron.php:215
+msgid "Use fittext for titles."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:216
+#: .././framework/bootstrap/customizer/jumbotron.php:216
+msgid ""
+"Use the fittext script to enlarge or scale-down the font-size of the widget "
+"title to fit the Jumbotron area. Default: OFF"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:225
+#: .././framework/bootstrap/customizer/jumbotron.php:225
+msgid "Center-align the content."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:226
+#: .././framework/bootstrap/customizer/jumbotron.php:226
+msgid ""
+"Turn this on to center-align the contents of the Jumbotron area. Default: OFF"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:235
+#: .././framework/bootstrap/customizer/jumbotron.php:235
+msgid "Border Bottom"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:236
+#: ../framework/bootstrap/customizer/footer.php:168
+#: .././framework/bootstrap/customizer/jumbotron.php:236
+#: .././framework/bootstrap/customizer/footer.php:168
+msgid "Border Thickness (px)"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:246
+#: ../framework/bootstrap/customizer/footer.php:178
+#: .././framework/bootstrap/customizer/jumbotron.php:246
+#: .././framework/bootstrap/customizer/footer.php:178
+msgid "Border Style"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:250
+#: ../framework/bootstrap/customizer/footer.php:182
+#: .././framework/bootstrap/customizer/jumbotron.php:250
+#: .././framework/bootstrap/customizer/footer.php:182
+msgid "Solid"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:251
+#: ../framework/bootstrap/customizer/footer.php:183
+#: .././framework/bootstrap/customizer/jumbotron.php:251
+#: .././framework/bootstrap/customizer/footer.php:183
+msgid "Dashed"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:252
+#: ../framework/bootstrap/customizer/footer.php:184
+#: .././framework/bootstrap/customizer/jumbotron.php:252
+#: .././framework/bootstrap/customizer/footer.php:184
+msgid "Dotted"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:253
+#: ../framework/bootstrap/customizer/social.php:42
+#: ../framework/bootstrap/customizer/footer.php:185
+#: ../framework/bootstrap/customizer/menus.php:17
+#: ../framework/bootstrap/customizer/general.php:66
+#: .././framework/bootstrap/customizer/jumbotron.php:253
+#: .././framework/bootstrap/customizer/social.php:42
+#: .././framework/bootstrap/customizer/footer.php:185
+#: .././framework/bootstrap/customizer/menus.php:17
+#: .././framework/bootstrap/customizer/general.php:66
+msgid "None"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/jumbotron.php:261
+#: ../framework/bootstrap/customizer/footer.php:193
+#: .././framework/bootstrap/customizer/jumbotron.php:261
+#: .././framework/bootstrap/customizer/footer.php:193
+msgid "Border Color"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:12
+#: .././framework/bootstrap/customizer/typography.php:12
+msgid "Typography"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:27
+#: .././framework/bootstrap/customizer/typography.php:27
+msgid "Base font"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:46
+#: ../framework/bootstrap/customizer/typography.php:137
+#: .././framework/bootstrap/customizer/typography.php:46
+#: .././framework/bootstrap/customizer/typography.php:137
+msgid "Google-Font subsets"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:47
+#: ../framework/bootstrap/customizer/typography.php:138
+#: .././framework/bootstrap/customizer/typography.php:47
+#: .././framework/bootstrap/customizer/typography.php:138
+msgid "The subsets used from Google's API."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:52
+#: ../framework/bootstrap/customizer/typography.php:143
+#: .././framework/bootstrap/customizer/typography.php:52
+#: .././framework/bootstrap/customizer/typography.php:143
+msgid "Latin"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:53
+#: ../framework/bootstrap/customizer/typography.php:144
+#: .././framework/bootstrap/customizer/typography.php:53
+#: .././framework/bootstrap/customizer/typography.php:144
+msgid "Latin Ext."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:54
+#: ../framework/bootstrap/customizer/typography.php:145
+#: .././framework/bootstrap/customizer/typography.php:54
+#: .././framework/bootstrap/customizer/typography.php:145
+msgid "Greek"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:55
+#: ../framework/bootstrap/customizer/typography.php:146
+#: .././framework/bootstrap/customizer/typography.php:55
+#: .././framework/bootstrap/customizer/typography.php:146
+msgid "Greek Ext."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:56
+#: ../framework/bootstrap/customizer/typography.php:147
+#: .././framework/bootstrap/customizer/typography.php:56
+#: .././framework/bootstrap/customizer/typography.php:147
+msgid "Cyrillic"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:57
+#: ../framework/bootstrap/customizer/typography.php:148
+#: .././framework/bootstrap/customizer/typography.php:57
+#: .././framework/bootstrap/customizer/typography.php:148
+msgid "Cyrillic Ext."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:58
+#: ../framework/bootstrap/customizer/typography.php:149
+#: .././framework/bootstrap/customizer/typography.php:58
+#: .././framework/bootstrap/customizer/typography.php:149
+msgid "Vietnamese"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:102
+#: ../framework/bootstrap/customizer/typography.php:264
+#: .././framework/bootstrap/customizer/typography.php:102
+#: .././framework/bootstrap/customizer/typography.php:264
+msgid "Line Height"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:117
+#: .././framework/bootstrap/customizer/typography.php:117
+msgid "Headers font"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:118
+#: .././framework/bootstrap/customizer/typography.php:118
+msgid "Headers font-family"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:157
+#: .././framework/bootstrap/customizer/typography.php:157
+msgid "Headers colors"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:162
+#: ../framework/bootstrap/customizer/typography.php:176
+#: ../framework/bootstrap/customizer/typography.php:190
+#: ../framework/bootstrap/customizer/typography.php:204
+#: ../framework/bootstrap/customizer/menus.php:78
+#: .././framework/bootstrap/customizer/typography.php:162
+#: .././framework/bootstrap/customizer/typography.php:176
+#: .././framework/bootstrap/customizer/typography.php:190
+#: .././framework/bootstrap/customizer/typography.php:204
+#: .././framework/bootstrap/customizer/menus.php:78
+msgid "Off"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:163
+#: ../framework/bootstrap/customizer/typography.php:177
+#: ../framework/bootstrap/customizer/typography.php:191
+#: ../framework/bootstrap/customizer/typography.php:205
+#: .././framework/bootstrap/customizer/typography.php:163
+#: .././framework/bootstrap/customizer/typography.php:177
+#: .././framework/bootstrap/customizer/typography.php:191
+#: .././framework/bootstrap/customizer/typography.php:205
+msgid "On"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:171
+#: .././framework/bootstrap/customizer/typography.php:171
+msgid "Headers weight"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:185
+#: .././framework/bootstrap/customizer/typography.php:185
+msgid "Headers size"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:199
+#: .././framework/bootstrap/customizer/typography.php:199
+msgid "Headers height"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:224
+#: .././framework/bootstrap/customizer/typography.php:224
+msgid "Color"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:234
+#: .././framework/bootstrap/customizer/typography.php:234
+msgid "Font Weight."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:234
+#: ../framework/bootstrap/customizer/typography.php:249
+#: ../framework/bootstrap/customizer/typography.php:264
+#: .././framework/bootstrap/customizer/typography.php:234
+#: .././framework/bootstrap/customizer/typography.php:249
+#: .././framework/bootstrap/customizer/typography.php:264
+msgid "Default: "
+msgstr ""
+
+#: ../framework/bootstrap/customizer/typography.php:249
+#: .././framework/bootstrap/customizer/typography.php:249
+msgid "Font Size (%)"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:12
+#: .././framework/bootstrap/customizer/social.php:12
+msgid "Social"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:27
+#: .././framework/bootstrap/customizer/social.php:27
+msgid "Sharing Button Text"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:28
+#: .././framework/bootstrap/customizer/social.php:28
+msgid "Select the text for the social sharing button."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:30
+#: .././framework/bootstrap/customizer/social.php:30
+msgid "Share"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:38
+#: .././framework/bootstrap/customizer/social.php:38
+msgid "Button Location"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:43
+#: .././framework/bootstrap/customizer/social.php:43
+msgid "Top"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:44
+#: .././framework/bootstrap/customizer/social.php:44
+msgid "Bottom"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:45
+#: .././framework/bootstrap/customizer/social.php:45
+msgid "Both"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:54
+#: .././framework/bootstrap/customizer/social.php:54
+msgid "Button Styling"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:55
+#: .././framework/bootstrap/customizer/social.php:55
+msgid "Select between your branding colors"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:60
+#: .././framework/bootstrap/customizer/social.php:60
+msgid "Primary"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:61
+#: .././framework/bootstrap/customizer/social.php:61
+msgid "Success"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:62
+#: .././framework/bootstrap/customizer/social.php:62
+msgid "Warning"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:63
+#: .././framework/bootstrap/customizer/social.php:63
+msgid "Danger"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:71
+#: .././framework/bootstrap/customizer/social.php:71
+msgid "Show in post archives"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:82
+#: .././framework/bootstrap/customizer/social.php:82
+msgid "Enable on single post types"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:83
+#: .././framework/bootstrap/customizer/social.php:83
+msgid ""
+"If you want to display the sharing buttons on posts, pages or any other post "
+"type you will have to select it here."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:94
+#: .././framework/bootstrap/customizer/social.php:94
+msgid "Social Share Networks"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:95
+#: .././framework/bootstrap/customizer/social.php:95
+msgid "Select the Social Networks you want to enable for social shares"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:100
+#: ../framework/bootstrap/customizer/social.php:116
+#: .././framework/bootstrap/customizer/social.php:100
+#: .././framework/bootstrap/customizer/social.php:116
+msgid "Facebook"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:101
+#: ../framework/bootstrap/customizer/social.php:119
+#: .././framework/bootstrap/customizer/social.php:101
+#: .././framework/bootstrap/customizer/social.php:119
+msgid "Google+"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:102
+#: ../framework/bootstrap/customizer/social.php:121
+#: .././framework/bootstrap/customizer/social.php:102
+#: .././framework/bootstrap/customizer/social.php:121
+msgid "LinkedIn"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:103
+#: ../framework/bootstrap/customizer/social.php:123
+#: .././framework/bootstrap/customizer/social.php:103
+#: .././framework/bootstrap/customizer/social.php:123
+msgid "Pinterest"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:104
+#: ../framework/bootstrap/customizer/social.php:124
+#: .././framework/bootstrap/customizer/social.php:104
+#: .././framework/bootstrap/customizer/social.php:124
+msgid "Reddit"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:105
+#: ../framework/bootstrap/customizer/social.php:128
+#: .././framework/bootstrap/customizer/social.php:105
+#: .././framework/bootstrap/customizer/social.php:128
+msgid "Tumblr"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:106
+#: ../framework/bootstrap/customizer/social.php:129
+#: .././framework/bootstrap/customizer/social.php:106
+#: .././framework/bootstrap/customizer/social.php:129
+msgid "Twitter"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:107
+#: .././framework/bootstrap/customizer/social.php:107
+msgid "Email"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:112
+#: .././framework/bootstrap/customizer/social.php:112
+msgid "Blogger"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:113
+#: .././framework/bootstrap/customizer/social.php:113
+msgid "DeviantART"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:114
+#: .././framework/bootstrap/customizer/social.php:114
+msgid "Digg"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:115
+#: .././framework/bootstrap/customizer/social.php:115
+msgid "Dribbble"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:117
+#: .././framework/bootstrap/customizer/social.php:117
+msgid "Flickr"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:118
+#: .././framework/bootstrap/customizer/social.php:118
+msgid "Github"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:120
+#: .././framework/bootstrap/customizer/social.php:120
+msgid "Instagram"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:122
+#: .././framework/bootstrap/customizer/social.php:122
+msgid "MySpace"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:125
+#: .././framework/bootstrap/customizer/social.php:125
+msgid "RSS"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:126
+#: .././framework/bootstrap/customizer/social.php:126
+msgid "Skype"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:127
+#: .././framework/bootstrap/customizer/social.php:127
+msgid "SoundCloud"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:130
+#: .././framework/bootstrap/customizer/social.php:130
+msgid "Vimeo"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:131
+#: .././framework/bootstrap/customizer/social.php:131
+msgid "Vkontakte"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:132
+#: .././framework/bootstrap/customizer/social.php:132
+msgid "YouTube"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/social.php:141
+#: .././framework/bootstrap/customizer/social.php:141
+msgid "link"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:12
+#: .././framework/bootstrap/customizer/footer.php:12
+msgid "Footer"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:118
+#: .././framework/bootstrap/customizer/footer.php:118
+msgid "Footer Background Opacity"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:132
+#: .././framework/bootstrap/customizer/footer.php:132
+msgid "Footer Text Color"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:133
+#: .././framework/bootstrap/customizer/footer.php:133
+msgid "Select the text color for your footer. Default: #333333."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:143
+#: .././framework/bootstrap/customizer/footer.php:143
+msgid "Select the top margin of the footer in pixels. Default: 0px."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:156
+#: .././framework/bootstrap/customizer/footer.php:156
+msgid "Footer Text"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:161
+#: .././framework/bootstrap/customizer/footer.php:161
+msgid ""
+"The text that will be displayed in your footer. You can use [year] and "
+"[sitename] and they will be replaced appropriately. Default: &copy; [year] "
+"[sitename]"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:167
+#: .././framework/bootstrap/customizer/footer.php:167
+msgid "Border Top"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:202
+#: .././framework/bootstrap/customizer/footer.php:202
+msgid "Footer social links column width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:203
+#: .././framework/bootstrap/customizer/footer.php:203
+msgid ""
+"You can customize the width of the footer social links area. The footer text "
+"width will be adjusted accordingly. Set to 0 to completely hide social links."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:217
+#: .././framework/bootstrap/customizer/footer.php:217
+msgid "Footer social icons open new window"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/footer.php:218
+#: .././framework/bootstrap/customizer/footer.php:218
+msgid "Social icons in footer will open a new window. Default: On."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:12
+#: .././framework/bootstrap/customizer/colors.php:12
+msgid "Colors"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:27
+#: .././framework/bootstrap/customizer/colors.php:27
+msgid "Brand Colors: Primary"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:28
+#: .././framework/bootstrap/customizer/colors.php:28
+msgid ""
+"Select your primary branding color. Also referred to as an accent color. "
+"This will affect various areas of your site, including the color of your "
+"primary buttons, link color, the background of some elements and many more."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:37
+#: .././framework/bootstrap/customizer/colors.php:37
+msgid "Brand Colors: Info"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:38
+#: .././framework/bootstrap/customizer/colors.php:38
+msgid ""
+"Select your branding color for info messages etc. It will also be used for "
+"the Search button color as well as other areas where it semantically makes "
+"sense to use an 'info' class."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:47
+#: .././framework/bootstrap/customizer/colors.php:47
+msgid "Brand Colors: Success"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:48
+#: .././framework/bootstrap/customizer/colors.php:48
+msgid "Select your branding color for success messages etc."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:57
+#: .././framework/bootstrap/customizer/colors.php:57
+msgid "Brand Colors: Warning"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:58
+#: .././framework/bootstrap/customizer/colors.php:58
+msgid "Select your branding color for warning messages etc."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:67
+#: .././framework/bootstrap/customizer/colors.php:67
+msgid "Brand Colors: Danger"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:68
+#: .././framework/bootstrap/customizer/colors.php:68
+msgid "Select your branding color for danger messages etc."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:78
+#: .././framework/bootstrap/customizer/colors.php:78
+msgid "Enable Gradients"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:79
+#: .././framework/bootstrap/customizer/colors.php:79
+msgid ""
+"Enable or disable gradients. These are applied to navbars, buttons and other "
+"elements. Please note that gradients will not be applied in the preview mode "
+"and can only be seen on the live site."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:84
+#: .././framework/bootstrap/customizer/colors.php:84
+msgid "Flat"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/colors.php:85
+#: .././framework/bootstrap/customizer/colors.php:85
+msgid "Gradients"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:12
+#: .././framework/bootstrap/customizer/advanced.php:12
+msgid "Advanced"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:36
+#: .././framework/bootstrap/customizer/advanced.php:36
+msgid "Enable Retina mode"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:37
+#: .././framework/bootstrap/customizer/advanced.php:37
+msgid ""
+"When checked, your site's featured images will be retina ready. Requires "
+"images to be uploaded at 2x the typical size desired. (uses retina.js) "
+"Default: On"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:46
+#: .././framework/bootstrap/customizer/advanced.php:46
+msgid "Border-Radius"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:47
+#: .././framework/bootstrap/customizer/advanced.php:47
+msgid ""
+"You can adjust the corner-radius of all elements in your site here. This "
+"will affect buttons, navbars, widgets and many more. Default: 4"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:61
+#: .././framework/bootstrap/customizer/advanced.php:61
+msgid "Padding Base"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:62
+#: .././framework/bootstrap/customizer/advanced.php:62
+msgid ""
+"You can adjust the padding base. This affects buttons size and lots of other "
+"cool stuff too! Default: 8"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:76
+#: .././framework/bootstrap/customizer/advanced.php:76
+msgid "Custom CSS"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:77
+#: .././framework/bootstrap/customizer/advanced.php:77
+msgid ""
+"You can write your custom CSS here. This code will appear in a script tag "
+"appended in the header section of the page."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:86
+#: .././framework/bootstrap/customizer/advanced.php:86
+msgid "Custom LESS"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:87
+#: .././framework/bootstrap/customizer/advanced.php:87
+msgid ""
+"You can write your custom LESS here. This code will be compiled with the "
+"other LESS files of the theme and be appended to the header."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:96
+#: .././framework/bootstrap/customizer/advanced.php:96
+msgid "Custom JS"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:97
+#: .././framework/bootstrap/customizer/advanced.php:97
+msgid ""
+"You can write your custom JavaScript/jQuery here. The code will be included "
+"in a script tag appended to the bottom of the page."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:106
+#: .././framework/bootstrap/customizer/advanced.php:106
+msgid "Minimize CSS"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/advanced.php:107
+#: .././framework/bootstrap/customizer/advanced.php:107
+msgid ""
+"Minimize the generated CSS. This should be always be checked for production "
+"sites."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:12
+#: ../framework/bootstrap/customizer/layout.php:53
+#: .././framework/bootstrap/customizer/layout.php:12
+#: .././framework/bootstrap/customizer/layout.php:53
+msgid "Layout"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:37
+#: .././framework/bootstrap/customizer/layout.php:37
+msgid "Site Style"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:38
+#: .././framework/bootstrap/customizer/layout.php:38
+msgid ""
+"A static layout is non-responsive. Wide and boxed Layouts are responsive "
+"while fluid layouts are full-width."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:43
+#: .././framework/bootstrap/customizer/layout.php:43
+msgid "Wide"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:44
+#: .././framework/bootstrap/customizer/layout.php:44
+msgid "Boxed"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:45
+#: .././framework/bootstrap/customizer/layout.php:45
+msgid "Fluid"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:54
+#: .././framework/bootstrap/customizer/layout.php:54
+msgid ""
+"Select your main layout. Please note that if no widgets are present in a "
+"sidebar then that sidebar will not be displayed. "
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:64
+#: .././framework/bootstrap/customizer/layout.php:64
+msgid "Primary Sidebar Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:79
+#: .././framework/bootstrap/customizer/layout.php:79
+msgid "Secondary Sidebar Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:95
+#: .././framework/bootstrap/customizer/layout.php:95
+msgid "Show sidebars on the frontpage"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:96
+#: .././framework/bootstrap/customizer/layout.php:96
+msgid ""
+"Select if you want to display sidebars on the frontpage. Please note that "
+"this only applies to the primary and secondary navbars and not all other "
+"widget areas."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:101
+#: ../framework/bootstrap/customizer/blog.php:129
+#: ../framework/bootstrap/customizer/blog.php:193
+#: .././framework/bootstrap/customizer/layout.php:101
+#: .././framework/bootstrap/customizer/blog.php:129
+#: .././framework/bootstrap/customizer/blog.php:193
+msgid "Hide"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:102
+#: ../framework/bootstrap/customizer/blog.php:130
+#: ../framework/bootstrap/customizer/blog.php:194
+#: .././framework/bootstrap/customizer/layout.php:102
+#: .././framework/bootstrap/customizer/blog.php:130
+#: .././framework/bootstrap/customizer/blog.php:194
+msgid "Show"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:109
+#: .././framework/bootstrap/customizer/layout.php:109
+msgid "Body Top Margin"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:110
+#: .././framework/bootstrap/customizer/layout.php:110
+msgid "Select the top margin of the body element in pixels."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:124
+#: .././framework/bootstrap/customizer/layout.php:124
+msgid "Body Bottom Margin"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:125
+#: .././framework/bootstrap/customizer/layout.php:125
+msgid "Select the bottom margin of the body element in pixels."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:139
+#: .././framework/bootstrap/customizer/layout.php:139
+msgid "Show Custom Grid Options"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:140
+#: .././framework/bootstrap/customizer/layout.php:140
+msgid "Take control of the grid breakpoints."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:144
+#: .././framework/bootstrap/customizer/layout.php:144
+msgid "Please save and refresh to see new options"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:150
+#: .././framework/bootstrap/customizer/layout.php:150
+msgid "Small Screen / Tablet view"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:151
+#: .././framework/bootstrap/customizer/layout.php:151
+msgid "The width of Tablet screens. Default: 768px"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:166
+#: .././framework/bootstrap/customizer/layout.php:166
+msgid "Desktop Container Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:167
+#: .././framework/bootstrap/customizer/layout.php:167
+msgid "The width of normal screens. Default: 992px"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:182
+#: .././framework/bootstrap/customizer/layout.php:182
+msgid "Large Desktop Container Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:183
+#: .././framework/bootstrap/customizer/layout.php:183
+msgid "The width of Large Desktop screens. Default: 1200px"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:198
+#: .././framework/bootstrap/customizer/layout.php:198
+msgid "Gutter"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:199
+#: .././framework/bootstrap/customizer/layout.php:199
+msgid "The spacing between grid columns. Default: 30px"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:214
+#: .././framework/bootstrap/customizer/layout.php:214
+msgid "Per Post-Type layouts"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:215
+#: .././framework/bootstrap/customizer/layout.php:215
+msgid ""
+"After you enable this setting you will have to save your settings and "
+"refresh your page in order to see the new options."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/layout.php:232
+#: .././framework/bootstrap/customizer/layout.php:232
+msgid "layout"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:12
+#: .././framework/bootstrap/customizer/menus.php:12
+msgid "NavBar Type"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:13
+#: .././framework/bootstrap/customizer/menus.php:13
+msgid ""
+"Choose the type of Navbar you want. Off completely hides the navbar. "
+"<strong>WARNING:</strong> The \"Static-Left\" option is ONLY compatible with "
+"fluid layouts. The width of the static-left navbar is controlled by the "
+"secondary sidebar width."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:18
+#: ../framework/bootstrap/customizer/menus.php:44
+#: .././framework/bootstrap/customizer/menus.php:18
+#: .././framework/bootstrap/customizer/menus.php:44
+msgid "Normal"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:20
+#: .././framework/bootstrap/customizer/menus.php:20
+msgid "Static-Left"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:28
+#: .././framework/bootstrap/customizer/menus.php:28
+msgid "Use Logo ( if available ) for branding."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:29
+#: .././framework/bootstrap/customizer/menus.php:29
+msgid ""
+"If this option is not checked, or there is no logo available, then the "
+"sitename will be displayed instead."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:39
+#: .././framework/bootstrap/customizer/menus.php:39
+msgid "NavBar Positioning"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:40
+#: .././framework/bootstrap/customizer/menus.php:40
+msgid ""
+"Using this option you can set the navbar to be fixed to top, fixed to bottom "
+"or normal. When you're using one of the 'fixed' options, the navbar will "
+"stay fixed on the top or bottom of the page. Default: Normal"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:45
+#: .././framework/bootstrap/customizer/menus.php:45
+msgid "Fixed (top)"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:46
+#: .././framework/bootstrap/customizer/menus.php:46
+msgid "Fixed (bottom)"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:54
+#: .././framework/bootstrap/customizer/menus.php:54
+msgid "Responsive NavBar Threshold"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:55
+#: .././framework/bootstrap/customizer/menus.php:55
+msgid "Point at which the navbar becomes uncollapsed"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:59
+#: .././framework/bootstrap/customizer/menus.php:59
+msgid "Never"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:60
+#: .././framework/bootstrap/customizer/menus.php:60
+msgid "Extra Small"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:61
+#: .././framework/bootstrap/customizer/menus.php:61
+msgid "Small"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:62
+#: .././framework/bootstrap/customizer/menus.php:62
+msgid "Desktop"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:63
+#: .././framework/bootstrap/customizer/menus.php:63
+msgid "Large Desktop"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:64
+#: .././framework/bootstrap/customizer/menus.php:64
+msgid "Always"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:73
+#: .././framework/bootstrap/customizer/menus.php:73
+msgid "Display social links in the NavBar."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:74
+#: .././framework/bootstrap/customizer/menus.php:74
+msgid "Social network links can be set-up in the \"Social\" section."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:79
+#: .././framework/bootstrap/customizer/menus.php:79
+msgid "Inline"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:80
+#: .././framework/bootstrap/customizer/menus.php:80
+msgid "Dropdown"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:88
+#: .././framework/bootstrap/customizer/menus.php:88
+msgid "Display search form on the NavBar"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:98
+#: .././framework/bootstrap/customizer/menus.php:98
+msgid "Menus alignment"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:102
+#: .././framework/bootstrap/customizer/menus.php:102
+msgid "Left"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:103
+#: .././framework/bootstrap/customizer/menus.php:103
+msgid "Center"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:104
+#: .././framework/bootstrap/customizer/menus.php:104
+msgid "Right"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:112
+#: .././framework/bootstrap/customizer/menus.php:112
+msgid "NavBar Background Color"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:113
+#: .././framework/bootstrap/customizer/menus.php:113
+msgid "Pick a background color for the NavBar. Default: #f8f8f8."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:122
+#: .././framework/bootstrap/customizer/menus.php:122
+msgid "NavBar Background Opacity"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:136
+#: .././framework/bootstrap/customizer/menus.php:136
+msgid "Navbar Style"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:141
+#: ../framework/bootstrap/customizer/menus.php:142
+#: ../framework/bootstrap/customizer/menus.php:143
+#: ../framework/bootstrap/customizer/menus.php:144
+#: ../framework/bootstrap/customizer/menus.php:145
+#: ../framework/bootstrap/customizer/menus.php:146
+#: .././framework/bootstrap/customizer/menus.php:141
+#: .././framework/bootstrap/customizer/menus.php:142
+#: .././framework/bootstrap/customizer/menus.php:143
+#: .././framework/bootstrap/customizer/menus.php:144
+#: .././framework/bootstrap/customizer/menus.php:145
+#: .././framework/bootstrap/customizer/menus.php:146
+msgid "Style"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:147
+#: .././framework/bootstrap/customizer/menus.php:147
+msgid "Metro"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:155
+#: .././framework/bootstrap/customizer/menus.php:155
+msgid "NavBar Height"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:156
+#: .././framework/bootstrap/customizer/menus.php:156
+msgid "Select the height of your navbars in pixels."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:170
+#: .././framework/bootstrap/customizer/menus.php:170
+msgid "Menus font"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:241
+#: .././framework/bootstrap/customizer/menus.php:241
+msgid "Navbar Margins"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:242
+#: .././framework/bootstrap/customizer/menus.php:242
+msgid ""
+"Select the top and bottom margin of the NavBar in pixels. Applies only in "
+"static top navbars. Default: 0px."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:256
+#: .././framework/bootstrap/customizer/menus.php:256
+msgid "Secondary Navbar Social Networks"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:257
+#: .././framework/bootstrap/customizer/menus.php:257
+msgid "Should the social networks be displayed on the secondary navbar?"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:266
+#: .././framework/bootstrap/customizer/menus.php:266
+msgid "Secondary NavBar Margin"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:267
+#: .././framework/bootstrap/customizer/menus.php:267
+msgid "Select the top and bottom margin of header in pixels. Default: 0px."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:282
+#: .././framework/bootstrap/customizer/menus.php:282
+msgid "Color for sidebar menus"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:283
+#: .././framework/bootstrap/customizer/menus.php:283
+msgid ""
+"Select a style for menus added to your sidebars using the custom menu widget"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:288
+#: .././framework/bootstrap/customizer/menus.php:288
+msgid "Branding-Primary"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:289
+#: .././framework/bootstrap/customizer/menus.php:289
+msgid "Branding-Success"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:290
+#: .././framework/bootstrap/customizer/menus.php:290
+msgid "Branding-Warning"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:291
+#: .././framework/bootstrap/customizer/menus.php:291
+msgid "Branding-Info"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:292
+#: .././framework/bootstrap/customizer/menus.php:292
+msgid "Branding-Danger"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:300
+#: .././framework/bootstrap/customizer/menus.php:300
+msgid "Inverse Sidebar Menus."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/menus.php:301
+#: .././framework/bootstrap/customizer/menus.php:301
+msgid ""
+"Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for "
+"more details"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:12
+#: .././framework/bootstrap/customizer/general.php:12
+msgid "General"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:27
+#: .././framework/bootstrap/customizer/general.php:27
+msgid "Logo"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:28
+#: .././framework/bootstrap/customizer/general.php:28
+msgid "Upload your site's logo"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:37
+#: .././framework/bootstrap/customizer/general.php:37
+msgid "Custom Favicon"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:38
+#: .././framework/bootstrap/customizer/general.php:38
+msgid "Upload your site's favicon"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:47
+#: .././framework/bootstrap/customizer/general.php:47
+msgid "Apple Icon"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:48
+#: .././framework/bootstrap/customizer/general.php:48
+msgid ""
+"This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina "
+"Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina "
+"( 144px x 144px ). Please note that for better results the image you upload "
+"should be at least 144px x 144px."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:58
+#: .././framework/bootstrap/customizer/general.php:58
+msgid "Widgets mode"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:59
+#: .././framework/bootstrap/customizer/general.php:59
+msgid "How do you want your widgets to be displayed?"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:64
+#: .././framework/bootstrap/customizer/general.php:64
+msgid "Panel"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/general.php:65
+#: .././framework/bootstrap/customizer/general.php:65
+msgid "Well"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:12
+#: .././framework/bootstrap/customizer/blog.php:12
+msgid "Blog"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:28
+#: .././framework/bootstrap/customizer/blog.php:28
+msgid "Archives Display Mode"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:29
+#: .././framework/bootstrap/customizer/blog.php:29
+msgid "Display the excerpt or the full post on post archives."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:34
+#: .././framework/bootstrap/customizer/blog.php:34
+msgid "Excerpt"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:35
+#: .././framework/bootstrap/customizer/blog.php:35
+msgid "Full Post"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:43
+#: .././framework/bootstrap/customizer/blog.php:43
+msgid "Post Meta elements"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:44
+#: .././framework/bootstrap/customizer/blog.php:44
+msgid "Activate and order Post Meta elements"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:62
+#: .././framework/bootstrap/customizer/blog.php:62
+msgid "Show Breadcrumbs"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:72
+#: .././framework/bootstrap/customizer/blog.php:72
+msgid "Date format in meta"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:73
+#: .././framework/bootstrap/customizer/blog.php:73
+msgid ""
+"Show the date as a normal date, or as time difference (example: 2 weeks ago)"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:78
+#: .././framework/bootstrap/customizer/blog.php:78
+msgid "Date"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:79
+#: .././framework/bootstrap/customizer/blog.php:79
+msgid "Time Difference"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:86
+#: .././framework/bootstrap/customizer/blog.php:86
+msgid "Post excerpt length"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:87
+#: .././framework/bootstrap/customizer/blog.php:87
+msgid "Choose how many words should be used for post excerpt. Default: 55"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:101
+#: .././framework/bootstrap/customizer/blog.php:101
+msgid "\"more\" text"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:102
+#: .././framework/bootstrap/customizer/blog.php:102
+msgid "Text to display in case of excerpt too long. Default: Continued"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:105
+#: .././framework/bootstrap/customizer/blog.php:105
+msgid "Continued"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:111
+#: .././framework/bootstrap/customizer/blog.php:111
+msgid "Post Meta in single posts"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:112
+#: .././framework/bootstrap/customizer/blog.php:112
+msgid ""
+"When checked, the post tags and categories will be added on the footer of "
+"posts."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:122
+#: .././framework/bootstrap/customizer/blog.php:122
+msgid "Featured Images on Archives"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:123
+#: .././framework/bootstrap/customizer/blog.php:123
+msgid ""
+"Display featured Images on post archives ( such as categories, tags, month "
+"view etc )."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:124
+#: ../framework/bootstrap/customizer/blog.php:188
+#: .././framework/bootstrap/customizer/blog.php:124
+#: .././framework/bootstrap/customizer/blog.php:188
+msgid ""
+"After you enable this setting you will have to save & publish your changes "
+"and refresh your page in order to see the new options."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:138
+#: .././framework/bootstrap/customizer/blog.php:138
+msgid "Width of Featured Images on Archives"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:139
+#: .././framework/bootstrap/customizer/blog.php:139
+msgid "Set dimensions of featured Images on Archives. Default: Full Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:144
+#: ../framework/bootstrap/customizer/blog.php:208
+#: .././framework/bootstrap/customizer/blog.php:144
+#: .././framework/bootstrap/customizer/blog.php:208
+msgid "Full Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:145
+#: ../framework/bootstrap/customizer/blog.php:209
+#: .././framework/bootstrap/customizer/blog.php:145
+#: .././framework/bootstrap/customizer/blog.php:209
+msgid "Custom Dimensions"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:153
+#: ../framework/bootstrap/customizer/blog.php:217
+#: .././framework/bootstrap/customizer/blog.php:153
+#: .././framework/bootstrap/customizer/blog.php:217
+msgid "Archives Featured Image Custom Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:154
+#: .././framework/bootstrap/customizer/blog.php:154
+msgid ""
+"Select the width of your featured images on post archives. Default: 550px"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:169
+#: ../framework/bootstrap/customizer/blog.php:233
+#: .././framework/bootstrap/customizer/blog.php:169
+#: .././framework/bootstrap/customizer/blog.php:233
+msgid "Archives Featured Image Custom Height"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:170
+#: .././framework/bootstrap/customizer/blog.php:170
+msgid ""
+"Select the height of your featured images on post archives. Default: 300px"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:186
+#: .././framework/bootstrap/customizer/blog.php:186
+msgid "Featured Images on Posts"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:187
+#: .././framework/bootstrap/customizer/blog.php:187
+msgid "Display featured Images on simgle posts."
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:202
+#: .././framework/bootstrap/customizer/blog.php:202
+msgid "Width of Featured Images on Posts"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:203
+#: .././framework/bootstrap/customizer/blog.php:203
+msgid "Set dimensions of featured Images on single posts. Default: Full Width"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:218
+#: .././framework/bootstrap/customizer/blog.php:218
+msgid ""
+"Select the width of your featured images on single posts. Default: 550px"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:234
+#: .././framework/bootstrap/customizer/blog.php:234
+msgid ""
+"Select the height of your featured images on single posts. Default: 300px"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/blog.php:251
+#: .././framework/bootstrap/customizer/blog.php:251
+msgid "Disable featured images on single post types"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/background.php:27
+#: .././framework/bootstrap/customizer/background.php:27
+msgid "General Background"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/background.php:118
+#: .././framework/bootstrap/customizer/background.php:118
+msgid "Body Background"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/background.php:208
+#: .././framework/bootstrap/customizer/background.php:208
+msgid "Body Background Opacity"
+msgstr ""
+
+#: ../framework/bootstrap/customizer/background.php:209
+#: .././framework/bootstrap/customizer/background.php:209
+msgid "Default: 100"
+msgstr ""
+
+#: ../framework/bootstrap/functions/widgets.php:9
+#: .././framework/bootstrap/functions/widgets.php:9
+msgid "Header Area"
+msgstr ""
+
+#: ../framework/bootstrap/functions/widgets.php:27
+#: .././framework/bootstrap/functions/widgets.php:27
+msgid "In-Navbar Widget Area"
+msgstr ""
+
+#: ../framework/bootstrap/functions/widgets.php:29
+#: .././framework/bootstrap/functions/widgets.php:29
+msgid ""
+"This widget area will show up in your NavBars. This is most useful when "
+"using a static-left navbar."
+msgstr ""
+
+#: ../framework/bootstrap/functions/widgets.php:37
+#: .././framework/bootstrap/functions/widgets.php:37
+msgid "Navbar Slide-Down Top"
+msgstr ""
+
+#: ../framework/bootstrap/functions/widgets.php:46
+#: .././framework/bootstrap/functions/widgets.php:46
+msgid "Navbar Slide-Down 1"
+msgstr ""
+
+#: ../framework/bootstrap/functions/widgets.php:55
+#: .././framework/bootstrap/functions/widgets.php:55
+msgid "Navbar Slide-Down 2"
+msgstr ""
+
+#: ../framework/bootstrap/functions/widgets.php:64
+#: .././framework/bootstrap/functions/widgets.php:64
+msgid "Navbar Slide-Down 3"
+msgstr ""
+
+#: ../framework/bootstrap/functions/widgets.php:73
+#: .././framework/bootstrap/functions/widgets.php:73
+msgid "Navbar Slide-Down 4"
+msgstr ""
+
+#: ../framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:160
+#: ../framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:175
+#: ../framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:189
+#: .././framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:160
+#: .././framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:175
+#: .././framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:189
+msgid "Archives for"
+msgstr ""
+
+#: ../framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:179
+#: .././framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:179
+msgid "You searched for"
+msgstr ""
+
+#: ../framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:210
+#: .././framework/bootstrap/classes/class-Shoestrap_Breadcrumbs.php:210
+msgid "Error 404: Page not found"
+msgstr ""
+
+#: ../views/single.twig:22 ../views/page.twig:18 .././views/single.twig:22
+#: .././views/page.twig:18
+msgid "Pages:"
+msgstr ""
+
+#: ../views/404.twig:5 .././views/404.twig:5
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: ../views/base.twig:7 .././views/base.twig:7
+msgid "Skip to main content"
+msgstr ""
+
+#: ../views/base.twig:31 .././views/base.twig:31
+msgid "Sorry, no content"
+msgstr ""
