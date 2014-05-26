@@ -13,6 +13,8 @@ function shoestrap_scripts() {
 	// Enqueue the theme's stylesheet
 	wp_enqueue_style( 'shoestrap', $stylesheet_url, false, $stylesheet_ver );
 
+	wp_enqueue_script( 'shoestrap-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+
 	// Enqueue Modernizr
 	wp_register_script( 'modernizr', SHOESTRAP_ASSETS_URL . '/js/modernizr-2.7.0.min.js', false, null, false );
 	wp_enqueue_script( 'modernizr' );

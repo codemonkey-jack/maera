@@ -50,7 +50,10 @@ add_filter( 'timber_context', 'shoestrap_timber_global_context' );
  */
 function shoestrap_setup() {
 	// Make theme available for translation
-	load_theme_textdomain( 'shoestrap', get_template_directory() . '/lang' );
+	load_theme_textdomain( 'shoestrap', get_template_directory() . '/languages' );
+
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
 
 	// Register wp_nav_menu() menus ( http://codex.wordpress.org/Function_Reference/register_nav_menus )
 	register_nav_menus( array(
@@ -64,9 +67,20 @@ function shoestrap_setup() {
 	// Add post formats ( http://codex.wordpress.org/Post_Formats )
 	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
-	add_theme_support( 'automatic-feed-links' );
+	// Setup the WordPress core custom background feature.
+	add_theme_support( 'custom-background', apply_filters( 'shoestrap_custom_background_args', array(
+		'default-color' => 'ffffff',
+		'default-image' => '',
+	) ) );
 
-	add_theme_support( 'html5', array( 'gallery', 'caption' ) );
+	// Enable support for HTML5 markup.
+	add_theme_support( 'html5', array(
+		'comment-list',
+		'search-form',
+		'comment-form',
+		'gallery',
+		'caption',
+	) );
 
 	// Tell the TinyMCE editor to use a custom stylesheet
 	add_editor_style( '/assets/css/editor-style.css' );

@@ -2,5 +2,6 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	{{ __( "Sorry, we couldn't find what you're looking for.", "shoestrap" ) }}
+	{{ __( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'shoestrap' ) }}
+	{{ function('get_search_form', false) }}
 {% endblock %}

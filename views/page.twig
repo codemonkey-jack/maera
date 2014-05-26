@@ -14,6 +14,11 @@
 			{% do action( 'shoestrap/page/pre_content' ) %}
 			{{ post.content }}
 			{{ framework.clearfix }}
+			{{ function( 'wp_link_pages', {
+				'before': '<div class="page-links">' . __( 'Pages:', 'shoestrap' ),
+				'after': '</div>'
+			}) }}
+			{{ framework.clearfix }}
 			{% do action( 'shoestrap/page/after_content' ) %}
 
 		</article>
