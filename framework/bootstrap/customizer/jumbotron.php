@@ -25,7 +25,7 @@ function shoestrap_jumbotron_customizer_settings( $controls ){
 		'type'         => 'background',
 		'setting'      => 'jumbo_bg',
 		'label'        => __( 'Jumbotron Background', 'shoestrap' ),
-		'section'      => 'background',
+		'section'      => 'jumbotron',
 		'default'      => array(
 			'color'    => '#eeeeee',
 			'image'    => null,

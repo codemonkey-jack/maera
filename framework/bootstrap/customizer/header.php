@@ -45,7 +45,7 @@ function shoestrap_header_customizer_settings( $controls ){
 		'type'         => 'background',
 		'setting'      => 'header_bg',
 		'label'        => __( 'Header Background', 'shoestrap' ),
-		'section'      => 'background',
+		'section'      => 'header',
 		'default'      => array(
 			'color'    => '#ffffff',
 			'image'    => null,

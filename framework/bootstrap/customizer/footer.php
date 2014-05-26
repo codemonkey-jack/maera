@@ -25,7 +25,7 @@ function shoestrap_footer_customizer_settings( $controls ){
 		'type'         => 'background',
 		'setting'      => 'footer_bg',
 		'label'        => __( 'Footer Background', 'shoestrap' ),
-		'section'      => 'background',
+		'section'      => 'footer',
 		'default'      => array(
 			'color'    => '#ffffff',
 			'image'    => null,
