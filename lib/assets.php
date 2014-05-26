@@ -44,15 +44,15 @@ function shoestrap_scripts() {
 
 	} else {
 
-		// Get the transient from the database
-		$cache = get_transient( 'shoestrap_styles' );
+		// Get the cached CSS from the database
+		$cache = get_theme_mod( 'css_cache' );
 
 		// If the transient does not exist, then create it.
 		if ( $cache === false ) {
 			// Get our styles using the shoestrap/styles filter
 			$data = apply_filters( 'shoestrap/styles', null );
 			// Set the transient for 24 hours.
-			set_transient( 'shoestrap_styles', $data, 3600 * 24 );
+			set_theme_mod( 'css_cache', $data );
 		}
 
 	}
@@ -69,7 +69,7 @@ add_action( 'wp_enqueue_scripts', 'shoestrap_scripts', 100 );
  */
 function shoestrap_reset_style_cache_on_customizer_save() {
 
-	delete_transient( 'shoestrap_styles' );
+	remove_theme_mod( 'css_cache' );
 
 }
 add_action( 'customize_save_after', 'shoestrap_reset_style_cache_on_customizer_save' );
