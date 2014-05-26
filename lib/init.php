@@ -6,7 +6,7 @@ if ( ! class_exists( 'Timber' ) ) {
 }
 
 // Include the Kirki Advanced Customizer
-if ( ! function_exists( 'kirki_customizer_controls' ) ) {
+if ( ! class_exists( 'Kirki' ) ) {
 	require_once locate_template( '/lib/kirki/kirki.php' );
 }
 
