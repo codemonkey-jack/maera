@@ -90,38 +90,28 @@ class Kirki_Customize_Radio_Control extends WP_Customize_Control {
 				$( "#input_<?php echo $this->id; ?>" ).buttonset();
 			});
 			</script>
-		<?php } ?>
+		<?php } 
 
-		<?php foreach ( $this->required as $id => $value ) :
-
-			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
-				<script>
-				jQuery(document).ready(function($) {
-					$( "#customize-control-<?php echo $this->id; ?>" ).show();
-					$( "#<?php echo $id . get_theme_mod($id,0); ?>" ).click(function(){
-						$( "#customize-control-<?php echo $this->id; ?>" ).fadeOut(300);
-					});
-					$( "#<?php echo $id . $value; ?>" ).click(function(){
-						$( "#customize-control-<?php echo $this->id; ?>" ).fadeIn(300);
-					});
-				});
-				</script>
-			<?php }
-
-			if ( isset($id) && isset($value) && get_theme_mod($id,0)!=$value ) { ?>
-				<script>
-				jQuery(document).ready(function($) {
-					$( "#customize-control-<?php echo $this->id; ?>" ).hide();
-					$( "#<?php echo $id . get_theme_mod($id,0); ?>" ).click(function(){
-						$( "#customize-control-<?php echo $this->id; ?>" ).fadeOut(300);
-					});
-					$( "#<?php echo $id . $value; ?>" ).click(function(){
-						$( "#customize-control-<?php echo $this->id; ?>" ).fadeIn(300);
+		foreach ( $this->required as $id => $value ) : ?>
+			<script>
+			jQuery(document).ready(function($) {
+			<?php if ( isset($id) && isset($value) && intval(get_theme_mod($id))==$value ) { ?>
+				$("#customize-control-<?php echo $this->id; ?>").removeClass('hide');
+			<?php } elseif ( isset($id) && isset($value) && intval(get_theme_mod($id))!=$value ) { ?>
+				$("#customize-control-<?php echo $this->id; ?>").addClass('hide');
+			<?php }	?>
+				$( "#input_<?php echo $id; ?> input" ).each(function(){
+					$(this).click(function(){
+						if ( $(this).val() == <?php echo $value; ?> ) {
+							$("#customize-control-<?php echo $this->id; ?>").removeClass('hide');
+						} else {
+							$("#customize-control-<?php echo $this->id; ?>").addClass('hide');
+						}
 					});
 				});
-				</script>
-			<?php }
-
-		endforeach;
+			});
+			</script>
+			<style type="text/css">.hide { display: none; }</style>
+		<?php endforeach;
 	}
 }
