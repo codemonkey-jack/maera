@@ -13,6 +13,10 @@
 
 			{% do action( 'shoestrap/entry/meta' ) %}
 
+			{% if singular.image.switch == 1 %}
+				<img src="{{ post.get_thumbnail.get_src|resize( singular.image.width, singular.image.height ) }}">
+			{% endif %}
+
 			<div class="entry-content">
 
 				{% do action( 'shoestrap/single/pre_content' ) %}

@@ -34,8 +34,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Enqueue the scripts
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );
 
-			// Enqueue bootstrap accessibility style sheet.
-			add_action( 'wp_enqueue_scripts', array( $this, 'bootstrap_accessibility_css' ) );
+			// Add the framework Timber modifications
+			add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
 		}
 
@@ -43,6 +43,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 * Singleton
 		 */
 		public static function get_instance() {
+
 			if ( null == self::$instance ) {
 				self::$instance = new self;
 			}
@@ -59,18 +60,35 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			wp_register_script( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap-accessibility.min.js', false, null, true  );
 			wp_enqueue_script( 'bootstrap-accessibility' );
-		}
 
-		/**
-		 * Register bootstrap accessibility style sheet.
-		 */
-		function bootstrap_accessibility_css() {
 			wp_register_style( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/css/bootstrap-accessibility.css', false, null, true );
 			wp_enqueue_style( 'bootstrap-accessibility' );
 		}
 
 		/**
-		 * Trigger the compiler when the customizer options are saved
+		 * Timber extras.
 		 */
+		function timber_extras( $data ) {
+
+			$data['singular']['image']['switch'] = get_theme_mod( 'feat_img_post', 0 );
+			$data['singular']['image']['width']  = get_theme_mod( 'feat_img_post_width', -1 );
+			$data['singular']['image']['height'] = get_theme_mod( 'feat_img_post_height', 300 );
+
+			if ( -1 == $data['singular']['image']['width'] ) {
+				$data['singular']['image']['width']  = get_theme_mod( 'screen_large_desktop', 1200 );
+			}
+
+			$data['archives']['image']['switch'] = get_theme_mod( 'feat_img_archive', 0 );
+			$data['archives']['image']['width']  = get_theme_mod( 'feat_img_archive_width', -1 );
+			$data['archives']['image']['height'] = get_theme_mod( 'feat_img_archive_height', 300 );
+
+			if ( -1 == $data['archives']['image']['width'] ) {
+				$data['archives']['image']['width']  = get_theme_mod( 'screen_large_desktop', 1200 );
+			}
+
+			return $data;
+		}
+
 	}
+
 }
