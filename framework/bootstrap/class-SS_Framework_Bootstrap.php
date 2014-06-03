@@ -34,6 +34,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Enqueue the scripts
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );
 
+			// Enqueue bootstrap accessibility style sheet.
+			add_action( 'wp_enqueue_scripts', array( $this, 'bootstrap_accessibility_css' ) );
+
 		}
 
 		/**
@@ -48,7 +51,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		}
 
 		/**
-		 * Enqueue all scripts and additional stylesheets (if necessary)
+		 * Register all scripts and additional stylesheets (if necessary)
 		 */
 		function scripts() {
 			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap.min.js', false, null, true  );
@@ -56,6 +59,14 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			wp_register_script( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap-accessibility.min.js', false, null, true  );
 			wp_enqueue_script( 'bootstrap-accessibility' );
+		}
+
+		/**
+		 * Register bootstrap accessibility style sheet.
+		 */
+		function bootstrap_accessibility_css() {
+			wp_register_style( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/css/bootstrap-accessibility.css', false, null, true );
+			wp_enqueue_style( 'bootstrap-accessibility' );
 		}
 
 		/**
