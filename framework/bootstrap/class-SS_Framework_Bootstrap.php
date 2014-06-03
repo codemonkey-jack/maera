@@ -34,12 +34,16 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Enqueue the scripts
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );
 
+			// Add the framework Timber modifications
+			add_filter( 'timber_context', array( $this, 'timber_extras' ) );
+
 		}
 
 		/**
 		 * Singleton
 		 */
 		public static function get_instance() {
+
 			if ( null == self::$instance ) {
 				self::$instance = new self;
 			}
@@ -59,7 +63,29 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		}
 
 		/**
-		 * Trigger the compiler when the customizer options are saved
+		 * Timber extras.
 		 */
+		function timber_extras( $data ) {
+
+			$data['singular']['image']['switch'] = get_theme_mod( 'feat_img_post', 0 );
+			$data['singular']['image']['width']  = get_theme_mod( 'feat_img_post_width', -1 );
+			$data['singular']['image']['height'] = get_theme_mod( 'feat_img_post_height', 300 );
+
+			if ( -1 == $data['singular']['image']['width'] ) {
+				$data['singular']['image']['width']  = get_theme_mod( 'screen_large_desktop', 1200 );
+			}
+
+			$data['archives']['image']['switch'] = get_theme_mod( 'feat_img_archive', 0 );
+			$data['archives']['image']['width']  = get_theme_mod( 'feat_img_archive_width', -1 );
+			$data['archives']['image']['height'] = get_theme_mod( 'feat_img_archive_height', 300 );
+
+			if ( -1 == $data['archives']['image']['width'] ) {
+				$data['archives']['image']['width']  = get_theme_mod( 'screen_large_desktop', 1200 );
+			}
+
+			return $data;
+		}
+
 	}
+
 }

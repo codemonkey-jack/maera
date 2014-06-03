@@ -188,5 +188,54 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			// Return image array
 			return $image_array;
 		}
+
+		public static function featured_image() {
+
+			$args = array();
+
+			// Do not continuee processing if a featured image does not exist
+			if ( ! has_post_thumbnail() || '' == get_the_post_thumbnail() ) {
+				return;
+			}
+
+			$args['width']  = $content_width;
+
+			if ( is_singular() ) {
+
+				// Do not process if we don't want images on single posts
+				if ( 1 != get_theme_mod( 'feat_img_post' ) ) {
+					return;
+				}
+
+				$args['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
+
+				if ( 1 == get_theme_mod( 'feat_img_post_custom_toggle' ) ) {
+					$args['width']  = get_theme_mod( 'feat_img_post_width' );
+				}
+
+				$args['height'] = get_theme_mod( 'feat_img_post_height' );
+
+			} else {
+
+				// Do not process if we don't want images on post archives
+				if ( 1 != get_theme_mod( 'feat_img_archive' ) ) {
+					return;
+				}
+
+				$args['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
+
+				if ( 1 == get_theme_mod( 'feat_img_archive_custom_toggle' ) ) {
+					$args['width']  = get_theme_mod( 'feat_img_archive_width' );
+				}
+
+				$args['height'] = get_theme_mod( 'feat_img_archive_height' );
+
+			}
+
+			$image = self::image_resize( $args );
+
+		}
+
 	}
+
 }
