@@ -4,7 +4,7 @@ function shoestrap_breadcrumbs() {
 
 	$breadcrumbs = get_theme_mod( 'breadcrumbs', 0 );
 
-	if ( 0 != $breadcrumbs ) {
+	if ( 0 != $breadcrumbs && ! is_home() && ! is_front_page() ) {
 
 		$args = array(
 			'container'       => 'ol',
