@@ -178,7 +178,6 @@ function shoestrap_blog_customizer_settings( $controls ){
 			'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
 			'step' => '1'
 		),
-		'required'    => array( 'feat_img_post_custom_toggle' => 1 )
 	);
 
 	$controls[] = array(
@@ -194,7 +193,6 @@ function shoestrap_blog_customizer_settings( $controls ){
 			'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
 			'step' => '1'
 		),
-		'required'    => array( 'feat_img_post' => 1 )
 	);
 
 	$post_types = get_post_types( array( 'public' => true ), 'names' );
