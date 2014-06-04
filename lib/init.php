@@ -87,8 +87,8 @@ add_action( 'after_setup_theme', 'shoestrap_setup' );
  *
  * See http://twig.sensiolabs.org/doc/functions/template_from_string.html for details
  */
-function add_to_twig( $twig ){
+function shoestrap_add_to_twig( $twig ){
 	$twig->addExtension( new Twig_Extension_StringLoader() );
 	return $twig;
 }
-add_filter('get_twig', 'add_to_twig');
+add_filter( 'get_twig', 'shoestrap_add_to_twig' );
