@@ -26,15 +26,4 @@ include_once( SS_FRAMEWORK_PATH . '/functions/blog.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/jumbotron.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/header.php' );
 
-include_once( SS_FRAMEWORK_PATH . '/customizer/general.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/colors.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/background.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/layout.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/blog.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/jumbotron.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/menus.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/header.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/footer.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/typography.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/social.php' );
-include_once( SS_FRAMEWORK_PATH . '/customizer/advanced.php' );
+include_once( SS_FRAMEWORK_PATH . '/customizer.php' );
