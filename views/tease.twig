@@ -9,8 +9,6 @@
 
 		{% do action( 'shoestrap/entry/meta' ) %}
 
-		{{ archives.image.switch }}
-
 		{% if archives.image.switch == 1 %}
 			<img src="{{ post.get_thumbnail.get_src|resize( archives.image.width, archives.image.height ) }}">
 		{% endif %}
