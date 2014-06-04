@@ -80,3 +80,15 @@ function shoestrap_setup() {
 	add_editor_style( '/assets/css/editor-style.css' );
 }
 add_action( 'after_setup_theme', 'shoestrap_setup' );
+
+/**
+ * Enable Twig_Extension_StringLoader.
+ * This allows us to use template_from_string() in our templates.
+ *
+ * See http://twig.sensiolabs.org/doc/functions/template_from_string.html for details
+ */
+function add_to_twig( $twig ){
+	$twig->addExtension( new Twig_Extension_StringLoader() );
+	return $twig;
+}
+add_filter('get_twig', 'add_to_twig');
