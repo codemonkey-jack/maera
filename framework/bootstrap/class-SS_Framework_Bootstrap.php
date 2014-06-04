@@ -70,7 +70,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function timber_extras( $data ) {
 
-			$data['singular']['image']['switch'] = get_theme_mod( 'feat_img_post', 0 );
+			$data['singular']['image']['switch'] = apply_filters( 'shoestrap/image/switch', get_theme_mod( 'feat_img_post', 0 ) );
 			$data['singular']['image']['width']  = get_theme_mod( 'feat_img_post_width', -1 );
 			$data['singular']['image']['height'] = get_theme_mod( 'feat_img_post_height', 300 );
 

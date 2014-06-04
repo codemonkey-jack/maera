@@ -200,7 +200,7 @@ function shoestrap_blog_customizer_settings( $controls ){
 		'type'        => 'multicheck',
 		'mode'        => 'checkbox',
 		'setting'     => 'feat_img_per_post_type',
-		'label'       => __( 'Disable featured images on single post types', 'shoestrap' ),
+		'label'       => __( 'Disable featured images per post type', 'shoestrap' ),
 		'section'     => 'blog',
 		'priority'    => 65,
 		'default'     => '',

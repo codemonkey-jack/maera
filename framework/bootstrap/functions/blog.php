@@ -50,3 +50,25 @@ function shoestrap_excerpt_more( $more ) {
 
 }
 add_filter( 'excerpt_more', 'shoestrap_excerpt_more' );
+
+/**
+ * Disable featured images per post type.
+ * This is a simple fanction that parses the array of disabled options from the customizer
+ * and then sets their display to 0 if we've selected them in our array.
+ */
+function shoestrap_disable_feat_images_ppt() {
+	global $post;
+
+	$current_post_type = get_post_type( $post );
+
+	// Get the array of disabled featured images per post type
+	$disabled = explode( ',', get_theme_mod( 'feat_img_per_post_type', array() ) );
+	// Get the default switch values for singulars and archives
+	$default = ( is_singular() ) ? get_theme_mod( 'feat_img_post', 0 ) : get_theme_mod( 'feat_img_archive', 0 );
+	// If the current post type exists in our array of disabled post types, then set its displaying to false
+	$display = ( in_array( $current_post_type, $disabled ) ) ? 0 : $default;
+
+	return $display;
+
+}
+add_filter( 'shoestrap/image/switch', 'shoestrap_disable_feat_images_ppt' );
