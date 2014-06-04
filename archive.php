@@ -18,7 +18,7 @@ $data = Timber::get_context();
 $data['title'] = 'Archive';
 
 if ( is_day() ) {
-	$data['title'] = printf( __( 'Day: %s', 'shoestrap' ), '<span>' . get_the_date() . '</span>'
+	$data['title'] = printf( __( 'Day: %s', 'shoestrap' ), '<span>' . get_the_date() . '</span>' );
 } else if ( is_month() ) {
 	$data['title'] = printf( __( 'Month: %s', 'shoestrap' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'shoestrap' ) ) . '</span>' );
 } else if ( is_year() ) {
