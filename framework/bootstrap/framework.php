@@ -24,6 +24,7 @@ include_once( SS_FRAMEWORK_PATH . '/functions/typography.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/colors.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/blog.php' );
 include_once( SS_FRAMEWORK_PATH . '/functions/jumbotron.php' );
+include_once( SS_FRAMEWORK_PATH . '/functions/header.php' );
 
 include_once( SS_FRAMEWORK_PATH . '/customizer/general.php' );
 include_once( SS_FRAMEWORK_PATH . '/customizer/colors.php' );

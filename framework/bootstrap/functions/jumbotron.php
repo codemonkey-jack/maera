@@ -11,7 +11,7 @@ class Shoestrap_Jumbotron {
 	 */
 	function __construct() {
 
-		add_action( 'shoestrap/wrap/before', array( $this, 'jumbotron_content' ), 5 );
+		add_action( 'shoestrap/wrap/before', array( $this, 'html' ), 5 );
 		add_filter( 'shoestrap/styles', array( $this, 'css' ) );
 
 		add_action( 'wp_footer', array( $this, 'fittext_init' ), 999 );
@@ -23,7 +23,7 @@ class Shoestrap_Jumbotron {
 	 * The content of the Jumbotron region
 	 * according to what we've entered in the customizer
 	 */
-	function jumbotron_content() {
+	function html() {
 
 		$site_style   = get_theme_mod( 'site_style', 'wide' );
 		$visibility   = get_theme_mod( 'jumbotron_visibility', 1 );
