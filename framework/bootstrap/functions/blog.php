@@ -6,8 +6,23 @@ function shoestrap_breadcrumbs() {
 
 	if ( 0 != $breadcrumbs ) {
 
-		$ss_breadcrumbs = new Shoestrap_Breadcrumbs();
-		echo $ss_breadcrumbs->breadcrumb( false );
+		$args = array(
+			'container'       => 'ol',
+			'separator'       => '</li><li>',
+			'before'          => '<li>',
+			'after'           => '</li>',
+			'show_on_front'   => true,
+			'network'         => false,
+			'show_title'      => true,
+			'show_browse'     => true,
+			'echo'            => true,
+			'labels'          => array(
+				'browse'      => '',
+				'home'        => '<i class="el-icon-home"></i>',
+			),
+		);
+
+		shoestrap_breadcrumb_trail( $args );
 
 	}
 

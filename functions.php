@@ -4,6 +4,7 @@ if ( ! defined( 'SHOESTRAP_ASSETS_URL' ) ) {
 	define( 'SHOESTRAP_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 }
 
+require_once locate_template( '/lib/breadcrumb-trail.php' );
 require_once locate_template( '/framework/framework.php' );
 require_once locate_template( '/lib/init.php' );
 require_once locate_template( '/lib/class-Shoestrap_Color.php' );
