@@ -83,7 +83,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$data['archives']['image']['height'] = get_theme_mod( 'feat_img_archive_height', 300 );
 
 			if ( -1 == $data['archives']['image']['width'] ) {
-				$data['archives']['image']['width']  = get_theme_mod( 'screen_large_desktop', 1200 );
+
+				$data['archives']['image']['width']  = apply_filters( 'shoestrap/content_width', 960 );
+
 			}
 
 			return $data;
