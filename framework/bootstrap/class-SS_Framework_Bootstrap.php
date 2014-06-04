@@ -5,7 +5,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 	/**
 	* The Bootstrap Framework module
 	*/
-	class SS_Framework_Bootstrap extends SS_Framework_Core {
+	class SS_Framework_Bootstrap {
 
 		private static $instance;
 
@@ -36,6 +36,20 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Add the framework Timber modifications
 			add_filter( 'timber_context', array( $this, 'timber_extras' ) );
+
+			include_once( SS_FRAMEWORK_PATH . '/functions/layout.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/logo.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/widgets.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/footer.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/variables.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/typography.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/colors.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/blog.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/jumbotron.php' );
+			include_once( SS_FRAMEWORK_PATH . '/functions/header.php' );
+
+			include_once( SS_FRAMEWORK_PATH . '/customizer.php' );
+
 
 		}
 
