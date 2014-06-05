@@ -9,6 +9,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		private static $instance;
 
+
 		/**
 		 * Class constructor
 		 */
@@ -40,39 +41,51 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Add the framework Timber modifications
 			add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
-			add_action( 'widgets_init', array( $this, 'widgets_init' ) );
-			add_action( 'shoestrap/widgets/title/after', array( $this, 'widgets_after_title' ) );
-			add_filter( 'shoestrap/compiler/variables', array( $this, 'compiler_variables' ) );
-			add_action( 'shoestrap/wrap/before', array( $this, 'jumbotron_html' ), 5 );
-			add_filter( 'shoestrap/styles', array( $this, 'jumbotron_css' ) );
+			// Breadcrumbs
+			add_action( 'shoestrap/content/before', array( $this, 'breadcrumbs' ) );
 
-			add_action( 'wp_footer', array( $this, 'fittext_init' ), 999 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'fittext_enqueue' ) );
-
-			add_action( 'shoestrap/wrap/before', array( $this, 'header_html' ), 3 );
-			add_filter( 'shoestrap/styles', array( $this, 'header_css' ) );
+			// Widgets
+			add_action( 'widgets_init', array( $this, 'widgets_init', 23 ) );
 			add_action( 'shoestrap/widgets/class', array( $this, 'widgets_class' ) );
 			add_action( 'shoestrap/widgets/title/before', array( $this, 'widgets_before_title' ) );
-			add_filter( 'shoestrap/styles', array( $this, 'typography_css' ) );
-			add_action( 'wp_print_styles', array( $this, 'google_font' ) );
-			add_action( 'init', array( $this, 'navbar_logo' ) );
+			add_action( 'shoestrap/widgets/title/after', array( $this, 'widgets_after_title' ) );
+
+			// Layout
 			add_filter( 'shoestrap/section_class/content', array( $this, 'layout_classes_content' ) );
 			add_filter( 'shoestrap/section_class/primary', array( $this, 'layout_classes_primary' ) );
 			add_filter( 'shoestrap/section_class/secondary', array( $this, 'layout_classes_secondary' ) );
 			add_filter( 'shoestrap/section_class/wrapper', array( $this, 'layout_classes_wrapper' ) );
 			add_action( 'wp', array( $this, 'sidebars_bypass' ) );
 			add_action( 'wp', array( $this, 'container_class_modifier' ) );
-			add_filter( 'timber_context', array( $this, 'timber_global_context_remove_sidebars' ), 50 );
 			add_filter( 'body_class', array( $this, 'boxed_body_class' ) );
+
+			// Styles
+			add_filter( 'shoestrap/styles', array( $this, 'jumbotron_css' ) );
+			add_filter( 'shoestrap/styles', array( $this, 'header_css' ) );
+			add_filter( 'shoestrap/styles', array( $this, 'typography_css' ) );
 			add_filter( 'shoestrap/styles', array( $this, 'layout_css' ) );
-			add_action( 'shoestrap/footer/content', array( $this, 'footer_content' ) );
 			add_filter( 'shoestrap/styles', array( $this, 'color_css' ) );
-			add_action( 'shoestrap/content/before', array( $this, 'breadcrumbs' ) );
+
+			// Fittext script
+			add_action( 'wp_footer', array( $this, 'fittext_init' ), 999 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'fittext_enqueue' ) );
+
+			add_action( 'wp_print_styles', array( $this, 'google_font' ) );
+			add_action( 'init', array( $this, 'navbar_logo' ) );
+
+			// Excerpt
 			add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
 			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
+
+			add_filter( 'shoestrap/compiler/variables', array( $this, 'compiler_variables' ) );
+			add_action( 'shoestrap/wrap/before', array( $this, 'jumbotron_html' ), 5 );
+			add_action( 'shoestrap/wrap/before', array( $this, 'header_html' ), 3 );
+			add_action( 'shoestrap/footer/content', array( $this, 'footer_content' ) );
+
 			add_filter( 'shoestrap/image/switch', array( $this, 'disable_feat_images_ppt' ) );
 
 		}
+
 
 		/**
 		 * Singleton
@@ -86,10 +99,12 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return self::$instance;
 		}
 
+
 		/**
 		 * Register all scripts and additional stylesheets (if necessary)
 		 */
 		function scripts() {
+
 			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap.min.js', false, null, true  );
 			wp_enqueue_script( 'bootstrap-min' );
 
@@ -98,7 +113,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			wp_register_style( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/css/bootstrap-accessibility.css', false, null, true );
 			wp_enqueue_style( 'bootstrap-accessibility' );
+
 		}
+
 
 		/**
 		 * Timber extras.
@@ -123,8 +140,24 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			}
 
+			// Get the layout we're using (sidebar arrangement).
+			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
+
+			$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front' );
+
+			If ( 0 == $layout || ( 0 == $sidebars_on_front && ( is_home() || is_front_page() ) ) ) {
+
+				$data['sidebar']['primary']   = null;
+				$data['sidebar']['secondary'] = null;
+
+				// Add a filter for the layout.
+				add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_0' );
+
+			}
+
 			return $data;
 		}
+
 
 		/**
 		 * Register sidebars and widgets
@@ -206,6 +239,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+
 		/**
 		 * Get the widget class
 		 */
@@ -221,6 +255,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+
 		/**
 		 * Widgets 'before_title' modifying based on widgets mode.
 		 */
@@ -235,6 +270,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 		}
+
 
 		/**
 		 * Widgets 'after_title' modifying based on widgets mode.
@@ -592,6 +628,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return $variables;
 		}
 
+
 		/**
 		 * CSS rules for typography options
 		 */
@@ -605,11 +642,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$font_base_size      = get_theme_mod( 'font_base_size', 20 );
 			$font_base_height    = get_theme_mod( 'font_base_height', 1.4 );
 
-			$style .= 'body { font-family: ' . $font_base_family . '; color: ' . $font_base_color . '; font-weight: ' . $font_base_weight . '; font-size: ' . $font_base_size . 'px; line-height: ' . $font_base_height . '; }';
+			$style .= 'body {font-family:' . $font_base_family . ';color:' . $font_base_color . ';font-weight:' . $font_base_weight . ';font-size:' . $font_base_size . 'px;line-height:' . $font_base_height . ';}';
 
 			// Headers font
 			$headers_font_family = get_theme_mod( 'headers_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
-			$style .= 'h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 { font-family: ' . $headers_font_family . '; }';
+			$style .= 'h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{font-family:' . $headers_font_family . ';}';
 
 			$headers = array(
 				'h1' => array( 'size' => 260, 'height' => 1.1 ),
@@ -626,7 +663,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$header_size   = get_theme_mod( 'font_' . $header . '_size', $values['size'] );
 				$header_height = get_theme_mod( 'font_' . $header . '_height', $values['height'] );
 
-				$style .= $header . ', .' . $header . ' { color: ' . $header_color . '; font-weight: ' . $header_weight . '; font-size: ' . $header_size . '%; line-height: ' . $header_height . '; }';
+				$style .= $header . ', .' . $header . ' {color:' . $header_color . ';font-weight: ' . $header_weight . ';font-size: ' . $header_size . '%;line-height: ' . $header_height . ';}';
 			}
 
 			return $style;
@@ -638,23 +675,31 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		* Enqueue Google fonts if enabled
 		*/
 		function google_font() {
-			$font_base_google = get_theme_mod( 'font_base_google' );
+
+			$font_base_google    = get_theme_mod( 'font_base_google' );
+			$font_headers_google = get_theme_mod( 'headers_font_google' );
+
 			if ( $font_base_google == 1 ) {
+
 				$font_base_family = str_replace( ' ', '+', get_theme_mod( 'font_base_family' ) );
 				$font_base_google_subsets = get_theme_mod( 'font_base_google_subsets' );
 
 				wp_register_style( 'shoestrap_base_google_font', 'http://fonts.googleapis.com/css?family='.$font_base_family.'&subset='.$font_base_google_subsets );
 		 		wp_enqueue_style( 'shoestrap_base_google_font' );
+
 			}
 
-			$font_headers_google = get_theme_mod( 'headers_font_google' );
+
 			if ( $font_headers_google == 1 ) {
+
 				$font_headers_family = str_replace( ' ', '+', get_theme_mod( 'headers_font_family' ) );
 				$font_headers_google_subsets = get_theme_mod( 'font_headers_google_subsets' );
 
 				wp_register_style( 'shoestrap_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.'&subset='.$font_headers_google_subsets );
 		 		wp_enqueue_style( 'shoestrap_headers_google_font' );
+
 			}
+
 		}
 
 
@@ -674,7 +719,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
-		// Add the logo to the main navbar.
+
+		/**
+		 * Adds the logo to the main navbar.
+		 */
 		function navbar_logo() {
 
 			// If we've selected NOT to display the logo on navbars, then do not proceed.
@@ -688,7 +736,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 
 		/**
-		 *
+		 * Figure out the layout classes.
+		 * This will be used by other functions so that layouts are properly calculated.
 		 */
 		public static function layout_classes( $element ) {
 
@@ -767,6 +816,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+
 		/**
 		 * This is just a helper function.
 		 *
@@ -775,6 +825,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function layout_classes_content() {
 			return self::layout_classes( 'content' );
 		}
+
 
 		/**
 		 * This is just a helper function.
@@ -785,6 +836,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return self::layout_classes( 'primary' );
 		}
 
+
 		/**
 		 * This is just a helper function.
 		 *
@@ -793,6 +845,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function layout_classes_secondary() {
 			return self::layout_classes( 'secondary' );
 		}
+
 
 		/**
 		 * This is just a helper function.
@@ -843,6 +896,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+
 		/**
 		 * Filter for the container class.
 		 *
@@ -867,35 +921,17 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
-		// return "container-fluid"
-		function return_container_fluid() { return 'container-fluid'; }
-
-		// return "container"
-		function return_container() { return 'container'; }
 
 		/**
-		 * Hide the sidebars on the frontpage if the user has selected to do so
+		 * return "container-fluid"
 		 */
-		function timber_global_context_remove_sidebars( $data ) {
+		function return_container_fluid() { return 'container-fluid'; }
 
-			// Get the layout we're using (sidebar arrangement).
-			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
 
-			$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front' );
-
-			If ( 0 == $layout || ( 0 == $sidebars_on_front && ( is_home() || is_front_page() ) ) ) {
-
-				$data['sidebar']['primary']   = null;
-				$data['sidebar']['secondary'] = null;
-
-				// Add a filter for the layout.
-				add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_0' );
-
-			}
-
-			return $data;
-
-		}
+		/**
+		 * return "container"
+		 */
+		function return_container() { return 'container'; }
 
 
 		/**
@@ -913,10 +949,12 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return $classes;
 		}
 
+
 		/**
 		 * Additional CSS rules for layout options
 		 */
 		function layout_css( $style ) {
+
 			global $wp_customize;
 
 			$body_margin_top    = get_theme_mod( 'body_margin_top', 0 );
@@ -977,6 +1015,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+
 		/*
 		 * The content of the Jumbotron region
 		 * according to what we've entered in the customizer
@@ -1019,6 +1058,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			endif;
 		}
 
+
 		/**
 		 * Any Jumbotron-specific CSS that can't be added in the .less stylesheet is calculated here.
 		 */
@@ -1049,6 +1089,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+
 		/*
 		 * Enables the fittext.js for h1 headings
 		 */
@@ -1063,7 +1104,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				echo '<script>jQuery(".jumbotron h1").fitText(1.3);</script>';
 
 			}
+
 		}
+
 
 		/*
 		 * Enqueues fittext.js when needed
@@ -1081,6 +1124,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 		}
+
 
 		/*
 		 * The Header template
@@ -1119,7 +1163,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				<?php endif;
 
 			endif;
+
 		}
+
 
 		/*
 		 * Any necessary extra CSS is generated here
@@ -1145,6 +1191,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 		}
+
 
 		/*
 		 * Get the content and widget areas for the footer
@@ -1242,6 +1289,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		}
 
 
+		/**
+		 * Configure and initialize the Breadcrumbs
+		 */
 		function breadcrumbs() {
 
 			$breadcrumbs = get_theme_mod( 'breadcrumbs', 0 );
@@ -1280,6 +1330,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+
 		/**
 		 * The "more" text
 		 */
@@ -1289,6 +1340,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return ' &hellip; <a href="' . get_permalink() . '">' . $continue_text . '</a>';
 
 		}
+
 
 		/**
 		 * Disable featured images per post type.
