@@ -12,6 +12,7 @@ require_once locate_template( '/lib/class-Shoestrap_Image.php' );
 require_once locate_template( '/lib/widgets.php' );
 require_once locate_template( '/lib/utils.php' );
 require_once locate_template( '/lib/customizer.php' );
+require_once locate_template( '/lib/admin-page.php' );
 
 require_once locate_template( '/lib/assets.php' );
 require_once locate_template( '/lib/image.php' );

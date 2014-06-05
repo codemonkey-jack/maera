@@ -54,3 +54,20 @@ class SS_Framework_Core {
 	}
 
 }
+
+/**
+ * Include the framework
+ */
+function shoestrap_framework_core_include( $frameworks ) {
+
+	// Add our framework to the array of available frameworks
+	$frameworks[] = array(
+		'value' => 'core',
+		'label' => 'Core',
+		'class' => 'SS_Framework_Core',
+	);
+
+	return $frameworks;
+
+}
+add_filter( 'shoestrap/frameworks/available', 'shoestrap_framework_core_include' );

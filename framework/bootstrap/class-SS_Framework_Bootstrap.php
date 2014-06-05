@@ -1366,3 +1366,20 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 	}
 
 }
+
+/**
+ * Include the framework
+ */
+function shoestrap_framework_bootstrap_include( $frameworks ) {
+
+	// Add our framework to the array of available frameworks
+	$frameworks[] = array(
+		'value' => 'bootstrap',
+		'label' => 'Bootstrap',
+		'class' => 'SS_Framework_Bootstrap',
+	);
+
+	return $frameworks;
+
+}
+add_filter( 'shoestrap/frameworks/available', 'shoestrap_framework_bootstrap_include' );

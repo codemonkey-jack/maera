@@ -11,6 +11,7 @@ function shoestrap_customizer_sections( $wp_customize ) {
 	// Please note the "General" section is added on the theme core and not a framework.
 
 	$sections = array(
+		'general'    => array( 'title' => __( 'General', 'shoestrap' ),    'priority' => 5 ),
 		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'priority' => 10 ),
 		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ), 'priority' => 11 ),
 		'colors'     => array( 'title' => __( 'Colors', 'shoestrap' ),     'priority' => 12 ),
