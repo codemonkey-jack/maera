@@ -2,7 +2,7 @@
 
 // If the Timber plugin is not already installed, load it from the theme.
 if ( ! class_exists( 'Timber' ) ) {
-	require_once locate_template( '/lib/timber/timber.php' );
+	require_once locate_template( '/lib/timber-library/timber.php' );
 }
 
 // Include the Kirki Advanced Customizer
