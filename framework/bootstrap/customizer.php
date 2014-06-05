@@ -6,7 +6,6 @@
 function shoestrap_customizer_sections( $wp_customize ) {
 
 	$sections = array(
-		'general'    => array( 'title' => __( 'General', 'shoestrap' ),    'priority' => 1 ),
 		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),     'priority' => 2 ),
 		'colors'     => array( 'title' => __( 'Colors', 'shoestrap' ),     'priority' => 3 ),
 		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'priority' => 4 ),
@@ -46,7 +45,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'       => __( 'Logo', 'shoestrap' ),
 		'subtitle' => __( 'Upload your site\'s logo', 'shoestrap' ),
 		'section'     => 'general',
-		'priority'    => 1,
+		'priority'    => 10,
 		'default'     => null
 	);
 
@@ -56,7 +55,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'       => __( 'Custom Favicon', 'shoestrap' ),
 		'subtitle' => __( 'Upload your site\'s favicon', 'shoestrap' ),
 		'section'     => 'general',
-		'priority'    => 2,
+		'priority'    => 11,
 		'default'     => null
 	);
 
@@ -66,7 +65,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'       => __( 'Apple Icon', 'shoestrap' ),
 		'subtitle' =>  __( 'This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px.', 'shoestrap' ),
 		'section'     => 'general',
-		'priority'    => 3,
+		'priority'    => 12,
 		'default'     => null
 	);
 
@@ -77,7 +76,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'    => __( 'Widgets mode', 'shoestrap' ),
 		'subtitle' => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
 		'section'  => 'general',
-		'priority' => 4,
+		'priority' => 13,
 		'default'  => 0,
 		'choices'  => array(
 			0 => __( 'Panel', 'shoestrap' ),

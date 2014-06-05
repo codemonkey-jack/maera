@@ -33,7 +33,7 @@ function shoestrap_body_class( $classes ) {
 
 	}
 
-	$classes[] = get_theme_mod( 'active_framework', 'bootstrap' );;
+	$classes[] = get_theme_mod( 'framework', 'bootstrap' );;
 
 	// Remove unnecessary classes
 	$home_id_class  = 'page-id-' . get_option( 'page_on_front' );

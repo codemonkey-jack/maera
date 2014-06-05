@@ -10,7 +10,7 @@ require_once locate_template( '/framework/core/class-SS_Framework_Core.php' );
 require_once locate_template( '/framework/bootstrap/class-SS_Framework_Bootstrap.php' );
 
 // Load the appropriate framework
-$framework = get_theme_mod( 'active_framework', 'bootstrap' );
+$framework = get_theme_mod( 'framework', 'bootstrap' );
 
 global $ss_framework;
 
