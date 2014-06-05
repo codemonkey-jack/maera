@@ -25,7 +25,7 @@ class Shoestrap_Admin_Page {
 	 */
 	function register_settings() {
 
-		register_setting( 'shoestrap_admin_options', 'shoestrap_admin_options' );
+		register_setting( 'shoestrap_admin_options', 'shoestrap_admin_options', array( $this, 'validate' ) );
 
 	}
 
@@ -45,7 +45,8 @@ class Shoestrap_Admin_Page {
 
 		// The available options
 		$shoestrap_admin_options = apply_filters( 'shoestrap/admin/options', array(
-			'framework' => 'bootstrap',
+			'framework'   => 'bootstrap',
+			'import_data' => '',
 		) );
 
 		// Get the available frameworks
@@ -69,6 +70,7 @@ class Shoestrap_Admin_Page {
 				<?php settings_fields( 'shoestrap_admin_options' ); ?>
 
 				<table class="form-table">
+
 					<tr valign="top">
 						<th scope="row"><?php _e( 'Choose a framework', 'shoestrap' ); ?></th>
 						<td>
@@ -78,6 +80,34 @@ class Shoestrap_Admin_Page {
 							<?php endforeach; ?>
 						</td>
 					</tr>
+
+					<tr>
+						<th><?php _e( 'Export Customizer Options', 'shoestrap' ); ?></th>
+						<td>
+							<?php
+								// Get an array of all the theme mods
+								$theme_mods = get_theme_mods();
+
+								$options = array();
+								foreach ( $theme_mods as $theme_mod => $value ) {
+									$options[$theme_mod] = maybe_unserialize( $value );
+								}
+
+								$json = json_encode( $options );
+
+								echo '<textarea rows="10" cols="50" disabled>' . $json . '</textarea>';
+							?>
+						</td>
+					</tr>
+
+					<tr>
+						<th><?php _e( 'Import Customizer Options', 'shoestrap' ); ?></th>
+						<td>
+							<textarea id="import_data" name="shoestrap_admin_options[import_data]" rows="10" cols="50"><?php echo stripslashes($settings['import_data']); ?></textarea>
+						</td>
+					</tr>
+
+
 				</table>
 
 				<p class="submit"><input type="submit" class="button-primary" value="Save Options" /></p>
@@ -86,6 +116,26 @@ class Shoestrap_Admin_Page {
 
 		</div>
 		<?php
+	}
+
+	function validate( $settings ) {
+
+		// Import the imported options
+		if ( ! empty( $settings['import_data'] ) ) {
+
+			$theme_mods = json_decode( $settings['import_data'], true );
+
+			foreach ( $theme_mods as $theme_mod => $value ) {
+				set_theme_mod( $theme_mod, $value );
+			}
+
+			// The import data should not be saved, save the field as empty.
+			$settings['import_data'] = '';
+
+		}
+
+		return $settings;
+
 	}
 
 }
