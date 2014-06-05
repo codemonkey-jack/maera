@@ -5,17 +5,23 @@
  */
 function shoestrap_customizer_sections( $wp_customize ) {
 
+	// Remove the "Navigation" menu so that we may add it manually using a different priority
+	$wp_customize->remove_section( 'nav' );
+
+	// Please note the "General" section is added on the theme core and not a framework.
+
 	$sections = array(
-		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),     'priority' => 2 ),
-		'colors'     => array( 'title' => __( 'Colors', 'shoestrap' ),     'priority' => 3 ),
-		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'priority' => 4 ),
-		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ), 'priority' => 5 ),
-		'blog'       => array( 'title' => __( 'Blog', 'shoestrap' ),       'priority' => 6 ),
-		'jumbotron'  => array( 'title' => __( 'Jumbotron', 'shoestrap' ),  'priority' => 7 ),
-		'header'     => array( 'title' => __( 'Header', 'shoestrap' ),     'priority' => 8 ),
-		'footer'     => array( 'title' => __( 'Footer', 'shoestrap' ),     'priority' => 9 ),
-		'social'     => array( 'title' => __( 'Social', 'shoestrap' ),     'priority' => 12 ),
-		'advanced'   => array( 'title' => __( 'Advanced', 'shoestrap' ),   'priority' => 200 ),
+		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'priority' => 10 ),
+		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ), 'priority' => 11 ),
+		'colors'     => array( 'title' => __( 'Colors', 'shoestrap' ),     'priority' => 12 ),
+		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),     'priority' => 13 ),
+		'blog'       => array( 'title' => __( 'Blog', 'shoestrap' ),       'priority' => 14 ),
+		'nav'        => array( 'title' => __( 'Navigation', 'shoestrap' ), 'priority' => 15 ),
+		'header'     => array( 'title' => __( 'Header', 'shoestrap' ),     'priority' => 16 ),
+		'jumbotron'  => array( 'title' => __( 'Jumbotron', 'shoestrap' ),  'priority' => 17 ),
+		'footer'     => array( 'title' => __( 'Footer', 'shoestrap' ),     'priority' => 18 ),
+		'social'     => array( 'title' => __( 'Social', 'shoestrap' ),     'priority' => 19 ),
+		'advanced'   => array( 'title' => __( 'Advanced', 'shoestrap' ),   'priority' => 20 ),
 	);
 
 	foreach ( $sections as $section => $args ) {
