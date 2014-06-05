@@ -84,6 +84,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			add_filter( 'shoestrap/image/switch', array( $this, 'disable_feat_images_ppt' ) );
 
+			add_filter( 'shoestrap/content_width', array( $this, 'content_width_px' ) );
+
 		}
 
 
@@ -156,6 +158,37 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 			return $data;
+		}
+
+
+		/*
+		 * Calculate the width of the content area in pixels.
+		 */
+		public static function content_width_px() {
+
+			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
+
+			$container  = filter_var( get_theme_mod( 'screen_large_desktop', 1200 ), FILTER_SANITIZE_NUMBER_INT );
+			$gutter     = filter_var( get_theme_mod( 'gutter' ), FILTER_SANITIZE_NUMBER_INT );
+
+			$main_span  = filter_var( self::layout_classes( 'content' ), FILTER_SANITIZE_NUMBER_INT );
+			$main_span  = str_replace( '-' , '', $main_span );
+
+			// If the layout is #5, override the default function and calculate the span width of the main area again.
+			if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
+				$main_span = 12 - intval( get_theme_mod( 'layout_primary_width' ) ) - intval( get_theme_mod( 'layout_secondary_width' ) );
+			}
+
+			if ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) != 1 ) {
+				$main_span = 12;
+			}
+
+			$width = $container * ( $main_span / 12 ) - $gutter;
+
+			// Width should be an integer since we're talking pixels, round up!.
+			$width = round( $width );
+
+			return $width;
 		}
 
 
