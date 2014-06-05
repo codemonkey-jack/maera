@@ -45,7 +45,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_action( 'shoestrap/content/before', array( $this, 'breadcrumbs' ) );
 
 			// Widgets
-			add_action( 'widgets_init', array( $this, 'widgets_init', 23 ) );
+			add_action( 'widgets_init', array( $this, 'widget_areas' ), 12 );
 			add_action( 'shoestrap/widgets/class', array( $this, 'widgets_class' ) );
 			add_action( 'shoestrap/widgets/title/before', array( $this, 'widgets_before_title' ) );
 			add_action( 'shoestrap/widgets/title/after', array( $this, 'widgets_after_title' ) );
@@ -162,7 +162,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * Register sidebars and widgets
 		 */
-		function widgets_init() {
+		function widget_areas() {
 
 			register_sidebar( array(
 				'name'          => __( 'Header Area', 'shoestrap' ),
