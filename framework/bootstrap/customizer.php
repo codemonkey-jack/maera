@@ -730,7 +730,7 @@ function shoestrap_customizer_settings( $controls ) {
 			'opacity'  => false,
 		),
 		'priority' => 1,
-		'output' => 'html',
+		'output' => 'body.bootstrap',
 	);
 
 	$controls[] = array(
@@ -748,7 +748,7 @@ function shoestrap_customizer_settings( $controls ) {
 			'opacity'  => 100,
 		),
 		'priority' => 10,
-		'output' => 'body.bootstrap',
+		'output' => 'body.bootstrap #wrap-main-section',
 	);
 
 	//-------------------------------------------------
