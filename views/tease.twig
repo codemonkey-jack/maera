@@ -9,9 +9,6 @@
 
 		{% do action( 'shoestrap/entry/meta' ) %}
 
-		{% if archives.image.switch == 1 %}
-			<img src="{{ post.get_thumbnail.get_src|resize( archives.image.width, archives.image.height ) }}">
-		{% endif %}
 
 		<div class="entry-summary">
 			{{ function( 'shoestrap_get_post_teaser', post.ID ) }}

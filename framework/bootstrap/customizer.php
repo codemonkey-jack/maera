@@ -1121,8 +1121,8 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'feat_img_archive_width',
-		'label'    => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
-		'description' => __( 'Select the width of your featured images on post archives. Default: -1', 'shoestrap' ) . '<strong>' . __( 'Set to -1 for full-width', 'shoestrap' ) . '</strong>',
+		'label'    => __( 'Archives Featured Image Width', 'shoestrap' ),
+		'description' => __( 'Select the width of your featured images on post archives. Set to -1 for max width and 0 for original width. Default: -1', 'shoestrap' ) . '<strong>' . __( 'Set to -1 for full-width', 'shoestrap' ) . '</strong>',
 		'section'  => 'blog',
 		'priority' => 52,
 		'default'  => 550,
@@ -1136,13 +1136,13 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'feat_img_archive_height',
-		'label'    => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
-		'description' => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
+		'label'    => __( 'Archives Featured Image Height', 'shoestrap' ),
+		'description' => __( 'Select the height of your featured images on post archives. Set to 0 to resize the image using the original image proportions. Default: -1', 'shoestrap' ),
 		'section'  => 'blog',
 		'priority' => 53,
 		'default'  => 300,
 		'choices'  => array(
-			'min'  => 50,
+			'min'  => 0,
 			'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
 			'step' => '1'
 		),
@@ -1161,8 +1161,8 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'feat_img_post_width',
-		'label'    => __( 'Posts Featured Image Custom Width', 'shoestrap' ),
-		'description' => __( 'Select the width of your featured images on single posts. Default: -1', 'shoestrap' ) . '<strong>' . __( 'Set to -1 for full-width', 'shoestrap' ) . '</strong>',
+		'label'    => __( 'Posts Featured Image Width', 'shoestrap' ),
+		'description' => __( 'Select the width of your featured images on single posts. Set to -1 for max width and 0 for original image width. Default: -1', 'shoestrap' ) . '<strong>' . __( 'Set to -1 for full-width', 'shoestrap' ) . '</strong>',
 		'section'  => 'blog',
 		'priority' => 62,
 		'default'  => 550,
@@ -1176,13 +1176,13 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'feat_img_post_height',
-		'label'    => __( 'Posts Featured Image Custom Height', 'shoestrap' ),
-		'description' => __( 'Select the height of your featured images on single posts. Default: 300px', 'shoestrap' ),
+		'label'    => __( 'Posts Featured Image Height', 'shoestrap' ),
+		'description' => __( 'Select the height of your featured images on single posts. Set to 0 to use the original image proportions. Default: 0', 'shoestrap' ),
 		'section'  => 'blog',
 		'priority' => 63,
 		'default'  => 300,
 		'choices'  => array(
-			'min'  => 50,
+			'min'  => 0,
 			'max'  => get_theme_mod( 'screen_large_desktop', 1200 ),
 			'step' => '1'
 		),

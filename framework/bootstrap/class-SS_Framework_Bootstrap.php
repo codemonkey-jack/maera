@@ -99,6 +99,13 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				add_filter( 'shoestrap/styles/caching', '__return_true' );
 			}
 
+			add_filter( 'the_content', array( $this, 'inject_featured_images_content' ), 100 );
+			add_filter( 'get_the_excerpt', array( $this, 'inject_featured_images_excerpt' ), 100 );
+
+			add_filter( 'shoestrap/image/display', array( $this, 'display_feat_image_posts' ) );
+			add_filter( 'shoestrap/image/width', array( $this, 'get_feat_image_width' ) );
+			add_filter( 'shoestrap/image/height', array( $this, 'get_feat_image_height' ) );
+
 		}
 
 
@@ -131,29 +138,75 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+		/**
+		 * Inject the featured images on the content.
+		 */
+		function inject_featured_images_content( $content ) {
+
+			$image = Shoestrap_Image::featured_image();
+
+			return '<img src="' . $image['url'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '">' . $content;
+
+		}
+
+		/**
+		 * Inject featured images on the excerpt
+		 */
+
+		function inject_featured_images_excerpt( $excerpt ) {
+
+			$image = Shoestrap_Image::featured_image();
+
+			return '<a href="' . get_permalink() . '"><img src="' . $image['url'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '"></a>' . $excerpt;
+
+		}
+
+		/**
+		 * Helper function: Return the feat_img_post theme mod
+		 */
+		function display_feat_image_posts() {
+
+			if ( is_singular() ) {
+				$display = ( 1 == get_theme_mod( 'feat_img_post', 0 ) ) ? true : false;
+			} else {
+				$display = ( 1 == get_theme_mod( 'feat_img_archive', 0 ) ) ? true : false;
+			}
+
+			return $display;
+
+		}
+
+		/**
+		 * Helper function: return the featured image width
+		 */
+		function get_feat_image_width() {
+
+			if ( is_singular() ) {
+				return get_theme_mod( 'feat_img_post_width', -1 );
+			} else {
+				return get_theme_mod( 'feat_img_archive_width', -1 );
+			}
+
+		}
+
+		/**
+		 * Helper function: return the featured image height
+		 */
+		function get_feat_image_height() {
+
+			if ( is_singular() ) {
+				return get_theme_mod( 'feat_img_post_height', -1 );
+			} else {
+				return get_theme_mod( 'feat_img_archive_height', -1 );
+			}
+
+		}
+
 
 		/**
 		 * Timber extras.
 		 */
 		function timber_extras( $data ) {
-
-			$data['singular']['image']['switch'] = apply_filters( 'shoestrap/image/switch', get_theme_mod( 'feat_img_post', 0 ) );
-			$data['singular']['image']['width']  = get_theme_mod( 'feat_img_post_width', -1 );
-			$data['singular']['image']['height'] = get_theme_mod( 'feat_img_post_height', 300 );
-
-			if ( -1 == $data['singular']['image']['width'] ) {
-				$data['singular']['image']['width']  = get_theme_mod( 'screen_large_desktop', 1200 );
-			}
-
-			$data['archives']['image']['switch'] = get_theme_mod( 'feat_img_archive', 0 );
-			$data['archives']['image']['width']  = get_theme_mod( 'feat_img_archive_width', -1 );
-			$data['archives']['image']['height'] = get_theme_mod( 'feat_img_archive_height', 300 );
-
-			if ( -1 == $data['archives']['image']['width'] ) {
-
-				$data['archives']['image']['width']  = apply_filters( 'shoestrap/content_width', 960 );
-
-			}
 
 			// Get the layout we're using (sidebar arrangement).
 			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
