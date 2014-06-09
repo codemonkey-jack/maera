@@ -32,6 +32,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Trigger the compiler when the customizer options are saved.
 			add_action( 'customize_save_after', array( $compiler, 'makecss' ), 77 );
 
+			// If the CSS file does not exist, attempt creating it.
+			if ( ! file_exists( $compiler->file( 'path' ) ) ) {
+				add_action( 'wp', array( $compiler, 'makecss' ) );
+			}
+
 			// Trigger the compiler the first time the theme is enabled
 			add_action( 'after_switch_theme', array( $compiler, 'makecss' ) );
 
@@ -1386,11 +1391,17 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$current_post_type = get_post_type( $post );
 
 			// Get the array of disabled featured images per post type
-			$disabled = explode( ',', get_theme_mod( 'feat_img_per_post_type', array() ) );
+			$disabled = ( '' != get_theme_mod( 'feat_img_per_post_type', '' ) ) ? explode( ',', get_theme_mod( 'feat_img_per_post_type', '' ) ) : '';
+
 			// Get the default switch values for singulars and archives
 			$default = ( is_singular() ) ? get_theme_mod( 'feat_img_post', 0 ) : get_theme_mod( 'feat_img_archive', 0 );
+
 			// If the current post type exists in our array of disabled post types, then set its displaying to false
-			$display = ( in_array( $current_post_type, $disabled ) ) ? 0 : $default;
+			if ( is_array( $disabled ) ) {
+				$display = ( in_array( $current_post_type, $disabled ) ) ? 0 : $default;
+			} else {
+				$display = $default;
+			}
 
 			return $display;
 

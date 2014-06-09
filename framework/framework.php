@@ -17,7 +17,9 @@ require_once locate_template( '/framework/bootstrap/class-SS_Framework_Bootstrap
 
 // Get the option from the database
 $options = get_option( 'shoestrap_admin_options', 'bootstrap' );
-$active_framework = $options['framework'];
+
+$active_framework = ( isset( $options['framework'] ) ) ? $options['framework'] : 'bootstrap';
+$active_framework = ( empty( $active_framework ) || '' == $active_framework ) ? 'bootstrap' : $active_framework;
 
 // Get the list of available frameworks
 $available_frameworks = apply_filters( 'shoestrap/frameworks/available', array() );
