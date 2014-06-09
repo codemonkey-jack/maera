@@ -92,6 +92,22 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 	);
 
+
+	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
+		'setting'  => 'font_size_units',
+		'label'    => __( 'Font-size units', 'shoestrap' ),
+		'section'  => 'general',
+		'subtitle' => __( 'Choose if you want to set font sizes as pixels or ems. This will apply to all settings. Please note that if you change this setting you will have to save and refresh this page. Once you do, please review ALL your font-size settings and set them accordingly.', 'shoestrap' ),
+		'default'  => 'px',
+		'choices'  => array(
+			'px'   => 'Pixels',
+			'rem'  => '(r)Ems',
+		),
+		'priority' => 18,
+	);
+
 	//-------------------------------------------------
 	// LAYOUTS
 	//-------------------------------------------------
@@ -522,14 +538,14 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_menus_size',
-		'subtitle' => __( 'Font Size (px)', 'shoestrap' ),
+		'subtitle' => __( 'Font Size', 'shoestrap' ),
 		'section'  => 'nav',
-		'default'  => 20,
+		'default'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5,
 		'priority' => 44,
 		'choices'  => array(
-			'min'  => 7,
-			'max'  => 70,
-			'step' => 1,
+			'min'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 7 : 0.1,
+			'max'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 70 : 7,
+			'step' => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 1 : 0.01,
 		),
 	);
 
@@ -793,14 +809,14 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_base_size',
-		'subtitle' => __( 'Font Size (px)', 'shoestrap' ),
+		'subtitle' => __( 'Font Size', 'shoestrap' ),
 		'section'  => 'typography',
-		'default'  => 20,
+		'default'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5,
 		'priority' => 25,
 		'choices'  => array(
-			'min'  => 7,
-			'max'  => 70,
-			'step' => 1,
+			'min'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 7 : 0.1,
+			'max'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 70 : 7,
+			'step' => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 1 : 0.01,
 		),
 	);
 
@@ -1267,14 +1283,14 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_jumbotron_size',
-		'subtitle' => __( 'Font Size (px)', 'shoestrap' ),
+		'subtitle' => __( 'Font Size', 'shoestrap' ),
 		'section'  => 'jumbotron',
-		'default'  => 20,
+		'default'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 20 : 1.8,
 		'priority' => 24,
 		'choices'  => array(
-			'min'  => 7,
-			'max'  => 70,
-			'step' => 1,
+			'min'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 7 : 0.1,
+			'max'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 70 : 7,
+			'step' => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 1 : 0.01,
 		),
 	);
 

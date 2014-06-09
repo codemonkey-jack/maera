@@ -677,10 +677,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
 			$font_base_color     = get_theme_mod( 'font_base_color', '#333333' );
 			$font_base_weight    = get_theme_mod( 'font_base_weight', '#333333' );
-			$font_base_size      = get_theme_mod( 'font_base_size', 20 );
+			$font_base_size      = get_theme_mod( 'font_base_size', ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.1 );
 			$font_base_height    = get_theme_mod( 'font_base_height', 1.4 );
 
-			$style .= 'body {font-family:' . $font_base_family . ';color:' . $font_base_color . ';font-weight:' . $font_base_weight . ';font-size:' . $font_base_size . 'px;line-height:' . $font_base_height . ';}';
+			$style .= 'body {font-family:' . $font_base_family . ';color:' . $font_base_color . ';font-weight:' . $font_base_weight . ';font-size:' . $font_base_size . get_theme_mod( 'font_size_units', 'px' ) . ';line-height:' . $font_base_height . ';}';
 
 			// Headers font
 			$headers_font_family = get_theme_mod( 'headers_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
