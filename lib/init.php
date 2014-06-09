@@ -1,15 +1,5 @@
 <?php
 
-// If the Timber plugin is not already installed, load it from the theme.
-if ( ! class_exists( 'Timber' ) ) {
-	require_once locate_template( '/lib/timber-library/timber.php' );
-}
-
-// Include the Kirki Advanced Customizer
-if ( ! class_exists( 'Kirki' ) ) {
-	require_once locate_template( '/lib/kirki/kirki.php' );
-}
-
 Timber::$locations = array(
 	SS_FRAMEWORK_PATH . '/macros',
 	SS_FRAMEWORK_PATH . '/views',

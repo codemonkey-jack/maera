@@ -94,6 +94,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Add stylesheets caching if dev_mode is set to off.
 			if ( 1 == get_theme_mod( 'dev_mode' ) ) {
 				add_filter( 'shoestrap/styles/caching', '__return_false' );
+				TimberLoader::CACHE_NONE;
 			} else {
 				add_filter( 'shoestrap/styles/caching', '__return_true' );
 			}
