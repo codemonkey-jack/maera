@@ -913,14 +913,17 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$layout = get_theme_mod( 'layout', 1 );
 			$layout = apply_filters( 'shoestrap/layout/modifier', $layout );
 
+			$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front', 0 );
+
 			// If the layout does not contain 2 sidebars, do not render the secondary sidebar
 			if ( ! in_array( $layout, array( 3, 4, 5 ) ) ) {
 				add_filter( 'shoestrap/sidebar/secondary', '__return_null' );
 			}
 
-			// If the layout selected contains no sidebars, do not render the primary sidebar
-			if ( 0 == $layout ) {
+			// If the layout selected contains no sidebars, do not render the sidebars
+			if ( 0 == $layout || ( 0 == $sidebars_on_front && is_front_page() ) || ( 0 == $sidebars_on_front && is_home() ) ) {
 				add_filter( 'shoestrap/sidebar/primary', '__return_null' );
+				add_filter( 'shoestrap/sidebar/secondary', '__return_null' );
 			}
 
 			// Have we selected custom layouts per post type?
