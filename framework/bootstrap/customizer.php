@@ -297,7 +297,7 @@ function shoestrap_customizer_settings( $controls ) {
 
 		$post_types = get_post_types( array( 'public' => true ), 'names' );
 
-		$layout = get_theme_mod( 'layout' );
+		$layout = get_theme_mod( 'layout', 1 );
 
 		foreach ( $post_types as $post_type ) {
 			$controls[] = array(

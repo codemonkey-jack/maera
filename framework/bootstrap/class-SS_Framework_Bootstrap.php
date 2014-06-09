@@ -145,7 +145,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Get the layout we're using (sidebar arrangement).
 			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
 
-			$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front' );
+			$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front', 0 );
 
 			If ( 0 == $layout || ( 0 == $sidebars_on_front && ( is_home() || is_front_page() ) ) ) {
 
@@ -169,17 +169,17 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
 
 			$container  = filter_var( get_theme_mod( 'screen_large_desktop', 1200 ), FILTER_SANITIZE_NUMBER_INT );
-			$gutter     = filter_var( get_theme_mod( 'gutter' ), FILTER_SANITIZE_NUMBER_INT );
+			$gutter     = filter_var( get_theme_mod( 'gutter', 30 ), FILTER_SANITIZE_NUMBER_INT );
 
 			$main_span  = filter_var( self::layout_classes( 'content' ), FILTER_SANITIZE_NUMBER_INT );
 			$main_span  = str_replace( '-' , '', $main_span );
 
 			// If the layout is #5, override the default function and calculate the span width of the main area again.
 			if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
-				$main_span = 12 - intval( get_theme_mod( 'layout_primary_width' ) ) - intval( get_theme_mod( 'layout_secondary_width' ) );
+				$main_span = 12 - intval( get_theme_mod( 'layout_primary_width', 4 ) ) - intval( get_theme_mod( 'layout_secondary_width', 3 ) );
 			}
 
-			if ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) != 1 ) {
+			if ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front', 0 ) != 1 ) {
 				$main_span = 12;
 			}
 
@@ -601,7 +601,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			/**
 			 * MENUS
 			 */
-			$font_navbar       = get_theme_mod( 'font_menus_font_family' );
+			$font_navbar       = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
 			$font_brand        = $font_navbar;
 			$navbar_bg         = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'navbar_bg', '#f8f8f8' ) ) );
 			$navbar_height     = filter_var( get_theme_mod( 'navbar_height', 50 ), FILTER_SANITIZE_NUMBER_INT );
@@ -669,7 +669,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Base font settings
 			$font_base_family    = get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
-			$font_base_google    = get_theme_mod( 'font_base_google' );
+			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
 			$font_base_color     = get_theme_mod( 'font_base_color', '#333333' );
 			$font_base_weight    = get_theme_mod( 'font_base_weight', '#333333' );
 			$font_base_size      = get_theme_mod( 'font_base_size', 20 );
@@ -709,15 +709,15 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		*/
 		function google_font() {
 
-			$font_base_google    = get_theme_mod( 'font_base_google' );
-			$font_headers_google = get_theme_mod( 'headers_font_google' );
+			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
+			$font_headers_google = get_theme_mod( 'headers_font_google', 0 );
 
 			if ( $font_base_google == 1 ) {
 
-				$font_base_family = str_replace( ' ', '+', get_theme_mod( 'font_base_family' ) );
-				$font_base_google_subsets = get_theme_mod( 'font_base_google_subsets' );
+				$font_base_family = str_replace( ' ', '+', get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' ) );
+				$font_base_google_subsets = get_theme_mod( 'font_base_google_subsets', 'latin' );
 
-				wp_register_style( 'shoestrap_base_google_font', 'http://fonts.googleapis.com/css?family='.$font_base_family.'&subset='.$font_base_google_subsets );
+				wp_register_style( 'shoestrap_base_google_font', 'http://fonts.googleapis.com/css?family=' . $font_base_family . '&subset=' . $font_base_google_subsets );
 		 		wp_enqueue_style( 'shoestrap_base_google_font' );
 
 			}
@@ -725,8 +725,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			if ( $font_headers_google == 1 ) {
 
-				$font_headers_family = str_replace( ' ', '+', get_theme_mod( 'headers_font_family' ) );
-				$font_headers_google_subsets = get_theme_mod( 'font_headers_google_subsets' );
+				$font_headers_family = str_replace( ' ', '+', get_theme_mod( 'headers_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' ) );
+				$font_headers_google_subsets = get_theme_mod( 'font_headers_google_subsets', 'latin' );
 
 				wp_register_style( 'shoestrap_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.'&subset='.$font_headers_google_subsets );
 		 		wp_enqueue_style( 'shoestrap_headers_google_font' );
@@ -742,7 +742,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function logo( $branding ) {
 
-			$logo = get_theme_mod( 'logo' );
+			$logo = get_theme_mod( 'logo', '' );
 
 			if ( $logo ) {
 				return '<img id="site-logo" src="' . $logo . '" alt="' . get_bloginfo( 'name' ) .'">';
@@ -897,7 +897,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function sidebars_bypass() {
 
-			$layout = get_theme_mod( 'layout' );
+			$layout = get_theme_mod( 'layout', 1 );
 			$layout = apply_filters( 'shoestrap/layout/modifier', $layout );
 
 			// If the layout does not contain 2 sidebars, do not render the secondary sidebar
@@ -912,14 +912,14 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Have we selected custom layouts per post type?
 			// if yes, then make sure the layout used for post types is the custom selected one.
-			if ( 1 == get_theme_mod( 'cpt_layout_toggle' ) ) {
+			if ( 1 == get_theme_mod( 'cpt_layout_toggle', 0 ) ) {
 
 				$post_types = get_post_types( array( 'public' => true ), 'names' );
 
 				foreach ( $post_types as $post_type ) {
 
 					if ( is_singular( $post_type ) ) {
-						$layout = get_theme_mod( $post_type . '_layout', get_theme_mod( 'layout' ) );
+						$layout = get_theme_mod( $post_type . '_layout', get_theme_mod( 'layout', 1 ) );
 						add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_' . $layout );
 					}
 
@@ -1164,34 +1164,34 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function header_html() { ?>
 
-			<?php if ( 1 == get_theme_mod( 'header_toggle' ) ) : ?>
+			<?php if ( 1 == get_theme_mod( 'header_toggle', 0 ) ) : ?>
 
-				<?php if ( 'boxed' == get_theme_mod( 'site_style' ) ) : ?>
+				<?php if ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
 					<div class="container header-boxed">
 				<?php endif; ?>
 
 					<div class="header-wrapper">
 
-						<?php if ( 'wide' == get_theme_mod( 'site_style' ) ) : ?>
+						<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
 							<div class="container">
 						<?php endif; ?>
 
-							<?php if ( 1 == get_theme_mod( 'header_branding' ) ) : ?>
+							<?php if ( 1 == get_theme_mod( 'header_branding', 1 ) ) : ?>
 								<?php $extra_class = ( is_active_sidebar( 'header_area' ) ) ? ' col-md-6' : null; ?>
 								<a class="brand-logo<?php echo $extra_class; ?>" href="<?php echo home_url(); ?>"><h1><?php $this->logo( bloginfo( 'name' ) ); ?></h1></a>
 							<?php endif; ?>
 
-							<?php $extra_class = ( 1 == get_theme_mod( 'header_branding' ) ) ? ' col-md-6' : null; ?>
+							<?php $extra_class = ( 1 == get_theme_mod( 'header_branding', 1 ) ) ? ' col-md-6' : null; ?>
 
 							<div class="header-widgets<?php echo $extra_class; ?>"><?php dynamic_sidebar( 'header_area' ); ?></div>
 
-						<?php if ( 'wide' == get_theme_mod( 'site_style' ) ) : ?>
+						<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
 							</div>
 						<?php endif; ?>
 
 					</div>
 
-				<?php if ( 'boxed' == get_theme_mod( 'site_style' ) ) : ?>
+				<?php if ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
 					</div>
 				<?php endif;
 
@@ -1205,9 +1205,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function header_css( $styles ) {
 
-			if ( 1 == get_theme_mod( 'header_toggle' ) ) {
+			if ( 1 == get_theme_mod( 'header_toggle', 0 ) ) {
 
-				$element = ( 'boxed' == get_theme_mod( 'site_style' ) ) ? 'body .header-boxed' : 'body .header-wrapper';
+				$element = ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) ? 'body .header-boxed' : 'body .header-wrapper';
 
 				$styles .= $element . ',';
 				$styles .= $element . ' a,';

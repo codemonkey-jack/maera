@@ -203,32 +203,32 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			if ( is_singular() ) {
 
 				// Do not process if we don't want images on single posts
-				if ( 1 != get_theme_mod( 'feat_img_post' ) ) {
+				if ( 1 != get_theme_mod( 'feat_img_post', 0 ) ) {
 					return;
 				}
 
 				$args['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
 
-				if ( 1 == get_theme_mod( 'feat_img_post_custom_toggle' ) ) {
-					$args['width']  = get_theme_mod( 'feat_img_post_width' );
+				if ( 1 == get_theme_mod( 'feat_img_post_custom_toggle', 0 ) ) {
+					$args['width']  = get_theme_mod( 'feat_img_post_width', -1 );
 				}
 
-				$args['height'] = get_theme_mod( 'feat_img_post_height' );
+				$args['height'] = get_theme_mod( 'feat_img_post_height', 300 );
 
 			} else {
 
 				// Do not process if we don't want images on post archives
-				if ( 1 != get_theme_mod( 'feat_img_archive' ) ) {
+				if ( 1 != get_theme_mod( 'feat_img_archive', 0 ) ) {
 					return;
 				}
 
 				$args['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
 
-				if ( 1 == get_theme_mod( 'feat_img_archive_custom_toggle' ) ) {
-					$args['width']  = get_theme_mod( 'feat_img_archive_width' );
+				if ( 1 == get_theme_mod( 'feat_img_archive_custom_toggle', 0 ) ) {
+					$args['width']  = get_theme_mod( 'feat_img_archive_width', -1 );
 				}
 
-				$args['height'] = get_theme_mod( 'feat_img_archive_height' );
+				$args['height'] = get_theme_mod( 'feat_img_archive_height', 300 );
 
 			}
 
