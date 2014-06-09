@@ -91,6 +91,13 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			add_filter( 'shoestrap/content_width', array( $this, 'content_width_px' ) );
 
+			// Add stylesheets caching if dev_mode is set to off.
+			if ( 1 == get_theme_mod( 'dev_mode' ) ) {
+				add_filter( 'shoestrap/styles/caching', '__return_false' );
+			} else {
+				add_filter( 'shoestrap/styles/caching', '__return_true' );
+			}
+
 		}
 
 
@@ -677,7 +684,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
 			$font_base_color     = get_theme_mod( 'font_base_color', '#333333' );
 			$font_base_weight    = get_theme_mod( 'font_base_weight', '#333333' );
-			$font_base_size      = get_theme_mod( 'font_base_size', ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.1 );
+			$font_base_size      = get_theme_mod( 'font_base_size', ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5 );
 			$font_base_height    = get_theme_mod( 'font_base_height', 1.4 );
 
 			$style .= 'body {font-family:' . $font_base_family . ';color:' . $font_base_color . ';font-weight:' . $font_base_weight . ';font-size:' . $font_base_size . get_theme_mod( 'font_size_units', 'px' ) . ';line-height:' . $font_base_height . ';}';

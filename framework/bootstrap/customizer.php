@@ -108,6 +108,16 @@ function shoestrap_customizer_settings( $controls ) {
 		'priority' => 18,
 	);
 
+	$controls[] = array(
+		'type'     => 'checkbox',
+		'setting'  => 'dev_mode',
+		'label'    => __( 'Enable development mode', 'shoestrap' ),
+		'section'  => 'general',
+		'subtitle' => __( 'When development mode is enabled, all theme caches are disabled (does not affect any caching plugins you may have installed).', 'shoestrap' ),
+		'default'  => 0,
+		'priority' => 20,
+	);
+
 	//-------------------------------------------------
 	// LAYOUTS
 	//-------------------------------------------------
