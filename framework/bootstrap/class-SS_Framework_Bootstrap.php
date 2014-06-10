@@ -105,6 +105,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_filter( 'shoestrap/image/width', array( $this, 'get_feat_image_width' ) );
 			add_filter( 'shoestrap/image/height', array( $this, 'get_feat_image_height' ) );
 
+			add_filter( 'shoestrap/topbar/class', array( $this, 'navbar_positioning_class' ) );
+
 		}
 
 
@@ -1102,6 +1104,22 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 			return $style;
+
+		}
+
+
+		/**
+		 * Navbar Positioning classes
+		 */
+		function navbar_positioning_class( $classes ) {
+
+			$position = get_theme_mod( 'navbar_position', 'normal' );
+
+			if ( 'fixed-top' == $position || 'fixed-bottom' == $position ) {
+				$classes .= ' navbar-' . $position;
+			}
+
+			return $classes;
 
 		}
 
