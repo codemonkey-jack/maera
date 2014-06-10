@@ -796,14 +796,14 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 * The site logo.
 		 * If no custom logo is uploaded, use the sitename
 		 */
-		function logo( $branding ) {
+		function logo( $fallback ) {
 
 			$logo = get_theme_mod( 'logo', '' );
 
 			if ( $logo ) {
 				return '<img id="site-logo" src="' . $logo . '" alt="' . get_bloginfo( 'name' ) .'">';
 			} else {
-				echo $branding;
+				return $fallback;
 			}
 
 		}
@@ -1251,7 +1251,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 							<?php if ( 1 == get_theme_mod( 'header_branding', 1 ) ) : ?>
 								<?php $extra_class = ( is_active_sidebar( 'header_area' ) ) ? ' col-md-6' : null; ?>
-								<a class="brand-logo<?php echo $extra_class; ?>" href="<?php echo home_url(); ?>"><h1><?php $this->logo( bloginfo( 'name' ) ); ?></h1></a>
+								<a class="brand-logo<?php echo $extra_class; ?>" href="<?php echo home_url(); ?>"><h1><?php echo $this->logo( get_bloginfo( 'name' ) ); ?></h1></a>
 							<?php endif; ?>
 
 							<?php $extra_class = ( 1 == get_theme_mod( 'header_branding', 1 ) ) ? ' col-md-6' : null; ?>
