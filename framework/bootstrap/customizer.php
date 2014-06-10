@@ -575,21 +575,6 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'navbar_margin',
-		'label'    => __( 'Navbar Margins', 'shoestrap' ),
-		'subtitle' => __( 'Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbars. Default: 0px.', 'shoestrap' ),
-		'section'  => 'nav',
-		'default'  => 0,
-		'priority' => 50,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 200,
-			'step' => 1,
-		),
-	);
-
-	$controls[] = array(
 		'type'     => 'checkbox',
 		'setting'  => 'navbar_secondary_social',
 		'label'    => __( 'Secondary Navbar Social Networks', 'shoestrap' ),
