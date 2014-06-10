@@ -1239,36 +1239,40 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			<?php if ( 1 == get_theme_mod( 'header_toggle', 0 ) ) : ?>
 
-				<?php if ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
-					<div class="container header-boxed">
-				<?php endif; ?>
+				<header class="page-header">
 
-					<div class="header-wrapper">
+					<?php if ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
+						<div class="container header-boxed">
+					<?php endif; ?>
 
-						<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
-							<div class="container">
-						<?php endif; ?>
+						<div class="header-wrapper">
 
-							<?php if ( 1 == get_theme_mod( 'header_branding', 1 ) ) : ?>
-								<?php $extra_class = ( is_active_sidebar( 'header_area' ) ) ? ' col-md-6' : null; ?>
-								<a class="brand-logo<?php echo $extra_class; ?>" href="<?php echo home_url(); ?>"><h1><?php echo $this->logo( get_bloginfo( 'name' ) ); ?></h1></a>
+							<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
+								<div class="container">
 							<?php endif; ?>
 
-							<?php $extra_class = ( 1 == get_theme_mod( 'header_branding', 1 ) ) ? ' col-md-6' : null; ?>
+								<?php if ( 1 == get_theme_mod( 'header_branding', 1 ) ) : ?>
+									<?php $extra_class = ( is_active_sidebar( 'header_area' ) ) ? ' col-md-6' : null; ?>
+									<a class="brand-logo<?php echo $extra_class; ?>" href="<?php echo home_url(); ?>"><h1><?php echo $this->logo( get_bloginfo( 'name' ) ); ?></h1></a>
+								<?php endif; ?>
 
-							<div class="header-widgets<?php echo $extra_class; ?>"><?php dynamic_sidebar( 'header_area' ); ?></div>
+								<?php $extra_class = ( 1 == get_theme_mod( 'header_branding', 1 ) ) ? ' col-md-6' : null; ?>
 
-						<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
-							</div>
-						<?php endif; ?>
+								<div class="header-widgets<?php echo $extra_class; ?>"><?php dynamic_sidebar( 'header_area' ); ?></div>
 
-					</div>
+							<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
+								</div>
+							<?php endif; ?>
 
-				<?php if ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
-					</div>
-				<?php endif;
+						</div>
 
-			endif;
+					<?php if ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
+						</div>
+					<?php endif; ?>
+
+				</header>
+
+			<?php endif;
 
 		}
 
