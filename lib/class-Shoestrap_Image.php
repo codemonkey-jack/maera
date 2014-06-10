@@ -192,7 +192,7 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			return $image_array;
 		}
 
-		public static function featured_image() {
+		public static function featured_image( $post_id = 0 ) {
 
 			$args = array();
 
@@ -201,15 +201,14 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			$image_height  = apply_filters( 'shoestrap/image/height', 0 );
 
 			// Do not continuee processing if a featured image does not exist
-			if ( ! has_post_thumbnail() || '' == get_the_post_thumbnail() ) {
+			if ( ! has_post_thumbnail( $post_id ) || '' == get_the_post_thumbnail( $post_id ) ) {
 				return;
 			}
-
 
 			// Only process if we want to display the image
 			if ( $image_display ) {
 
-				$args['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
+				$args['url'] = wp_get_attachment_url( get_post_thumbnail_id( $post_id ) );
 
 				if ( -1 == $image_width ) {
 

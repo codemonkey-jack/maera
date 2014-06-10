@@ -100,7 +100,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 			add_filter( 'the_content', array( $this, 'inject_featured_images_content' ), 100 );
-			add_filter( 'get_the_excerpt', array( $this, 'inject_featured_images_excerpt' ), 100 );
 
 			add_filter( 'shoestrap/image/display', array( $this, 'display_feat_image_posts' ) );
 			add_filter( 'shoestrap/image/width', array( $this, 'get_feat_image_width' ) );
@@ -149,17 +148,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
-		/**
-		 * Inject featured images on the excerpt
-		 */
-
-		function inject_featured_images_excerpt( $excerpt ) {
-
-			$image = Shoestrap_Image::featured_image();
-
-			return '<a href="' . get_permalink() . '"><img src="' . $image['url'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '"></a>' . $excerpt;
-
-		}
 
 		/**
 		 * Helper function: Return the feat_img_post theme mod

@@ -25,7 +25,6 @@ require_once locate_template( '/lib/customizer.php' );
 require_once locate_template( '/lib/admin-page.php' );
 
 require_once locate_template( '/lib/assets.php' );
-require_once locate_template( '/lib/image.php' );
 
 if ( ! isset( $content_width ) ) {
 	$content_width = apply_filters( 'shoestrap/content_width', 960 );
