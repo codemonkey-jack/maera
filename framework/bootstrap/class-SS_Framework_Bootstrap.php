@@ -1115,9 +1115,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			$position = get_theme_mod( 'navbar_position', 'normal' );
 
-			if ( 'fixed-top' == $position || 'fixed-bottom' == $position ) {
-				$classes .= ' navbar-' . $position;
-			}
+			$classes .= ( 'fixed-top' == $position || 'fixed-bottom' == $position ) ? ' navbar-' . $position : ' navbar-static-top';
 
 			return $classes;
 
