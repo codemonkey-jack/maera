@@ -57,3 +57,14 @@ function shoestrap_body_class( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'shoestrap_body_class' );
+
+
+/**
+ * Tell WordPress to use searchform.php from the templates/ directory
+ */
+function shoestrap_get_search_form( $form ) {
+	$form = '';
+	locate_template( '/searchform.php', true, false );
+	return $form;
+}
+add_filter( 'get_search_form', 'shoestrap_get_search_form' );
