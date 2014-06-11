@@ -831,6 +831,14 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
+		'type'     => 'group_title',
+		'setting'  => 'separ34534',
+		'label' => __( 'Separator Demo', 'shoestrap' ),
+		'section'  => 'typography',
+		'priority' => 28,
+	);
+
+	$controls[] = array(
 		'type'     => 'text',
 		'setting'  => 'headers_font_family',
 		'label'    => __( 'Headers font', 'shoestrap' ),
