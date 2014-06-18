@@ -89,6 +89,5 @@ class Kirki_Customize_Color_Control extends WP_Customize_Control {
 		</label>
 		<?php
 
-		endforeach;
 	}
 }

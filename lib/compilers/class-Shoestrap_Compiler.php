@@ -65,7 +65,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			global $blog_id;
 
 			// No need to process this on each page load... Use transients to improve performance.
-			// Transients are valid for 24 hours, so these calculations only run once aday.
+			// Transients are valid for 24 hours, so these calculations only run once a day.
 			if ( ! get_transient( 'shoestrap_stylesheet_path' ) || ! get_transient( 'shoestrap_stylesheet_uri' ) ) {
 
 				// Get the upload directory for this site.

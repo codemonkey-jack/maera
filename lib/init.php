@@ -1,15 +1,5 @@
 <?php
 
-// If the Timber plugin is not already installed, load it from the theme.
-if ( ! class_exists( 'Timber' ) ) {
-	require_once locate_template( '/lib/timber/timber.php' );
-}
-
-// Include the Kirki Advanced Customizer
-if ( ! class_exists( 'Kirki' ) ) {
-	require_once locate_template( '/lib/kirki/kirki.php' );
-}
-
 Timber::$locations = array(
 	SS_FRAMEWORK_PATH . '/macros',
 	SS_FRAMEWORK_PATH . '/views',
@@ -67,12 +57,6 @@ function shoestrap_setup() {
 	// Add post formats ( http://codex.wordpress.org/Post_Formats )
 	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
-	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'shoestrap_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
-
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
 		'comment-list',
@@ -86,3 +70,15 @@ function shoestrap_setup() {
 	add_editor_style( '/assets/css/editor-style.css' );
 }
 add_action( 'after_setup_theme', 'shoestrap_setup' );
+
+/**
+ * Enable Twig_Extension_StringLoader.
+ * This allows us to use template_from_string() in our templates.
+ *
+ * See http://twig.sensiolabs.org/doc/functions/template_from_string.html for details
+ */
+function shoestrap_add_to_twig( $twig ){
+	$twig->addExtension( new Twig_Extension_StringLoader() );
+	return $twig;
+}
+add_filter( 'get_twig', 'shoestrap_add_to_twig' );

@@ -115,17 +115,25 @@ function shoestrap_transliterate( $str ) {
 /**
  * This is a helper function to bypass some of the quirks of twig
  */
-function shoestrap_get_post_teaser( $id ) {
+function shoestrap_get_post_teaser( $post_id ) {
 
 	$mode = get_theme_mod( 'blog_post_mode', 'excerpt' );
 
 	// Get the post
-	$content_post = get_post( $id );
+	$content_post = get_post( $post_id );
+
+	$content = '';
+
+	$image = Shoestrap_Image::featured_image( $post_id );
+
+	if ( $image ) {
+		$content .= '<a href="' . get_permalink() . '"><img class="post-featured-image" src="' . $image['url'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '"></a>';
+	}
 
 	if ( 'full' == $mode ) {
 
 		// Get the content of the post
-		$content = $content_post->post_content;
+		$content .= $content_post->post_content;
 		// Apply the content filters
 		$content = apply_filters( 'the_content', $content );
 
@@ -134,17 +142,18 @@ function shoestrap_get_post_teaser( $id ) {
 		// Get the content of the post
 		if ( $content_post->post_excerpt ) {
 
-			$content = $content_post->post_excerpt;
+			$content .= $content_post->post_excerpt;
 
 		} else {
 
 			$excerpt_length = apply_filters( 'excerpt_length', 55 );
 			$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
-			$content        = wp_trim_words( $content_post->post_content, $excerpt_length, $excerpt_more );
+			$content        .= wp_trim_words( $content_post->post_content, $excerpt_length, $excerpt_more );
 
 		}
 
 		// Apply the content filters
+		$content = apply_filters( 'get_the_excerpt', $content );
 		$content = apply_filters( 'the_excerpt', $content );
 
 	}

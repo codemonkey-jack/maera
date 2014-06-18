@@ -70,6 +70,5 @@ class Kirki_Customize_Upload_Control extends WP_Customize_Control {
 		</label>
 		<?php
 
-		endforeach;
 	}
 }

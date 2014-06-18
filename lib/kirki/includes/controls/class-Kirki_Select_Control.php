@@ -35,6 +35,5 @@ class Kirki_Select_Control extends WP_Customize_Control {
 		</label>
 		<?php
 
-		endforeach;
 	}
 }

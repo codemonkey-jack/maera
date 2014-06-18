@@ -12,9 +12,6 @@ $author = new TimberUser( $wp_query->query_vars['author'] );
 $data['author'] = $author;
 $data['title']  = 'Author Archives: ' . $author->name();
 
-$context['sidebar_primary']   = Timber::get_widgets( 'sidebar_primary' );
-$context['sidebar_secondary'] = Timber::get_widgets( 'sidebar_secondary' );
-
 Timber::render(
 	array(
 		'author.twig',

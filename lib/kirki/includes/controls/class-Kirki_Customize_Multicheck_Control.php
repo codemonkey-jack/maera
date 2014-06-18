@@ -77,6 +77,5 @@ class Kirki_Customize_Multicheck_Control extends WP_Customize_Control {
 		</label>
 		<?php
 
-		endforeach;
 	}
 }

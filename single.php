@@ -9,9 +9,6 @@ $context['post'] = $post;
 $context['wp_title'] .= ' - ' . $post->title();
 $context['comment_form'] = TimberHelper::get_comment_form();
 
-$context['sidebar_primary']   = Timber::get_widgets( 'sidebar_primary' );
-$context['sidebar_secondary'] = Timber::get_widgets( 'sidebar_secondary' );
-
 Timber::render(
 	array(
 		'single-' . $post->ID . '.twig', 'single-' . $post->post_type . '.twig',

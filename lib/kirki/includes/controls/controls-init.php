@@ -68,7 +68,7 @@ function kirki_customizer_controls( $wp_customize ) {
 
 				// Add settings
 				$wp_customize->add_setting( $control['setting'], array(
-					'default'    => $control['default'],
+					'default'    => isset( $control['default'] ) ? $control['default'] : '',
 					'type'       => 'theme_mod',
 					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
@@ -86,7 +86,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'priority'    => $control['priority'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -112,7 +111,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'priority'    => $control['priority'] + 1,
 						'description' => null,
 						'subtitle'    => __( 'Background Image', 'kirki' ),
-						'separator'   => false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -131,7 +129,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						),
 						'description' => null,
 						'subtitle'    => __( 'Background Repeat', 'kirki' ),
-						'separator'   => false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -149,7 +146,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => null,
 						'mode'        => 'buttonset',
 						'subtitle'    => __( 'Background Size', 'kirki' ),
-						'separator'   => false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -167,7 +163,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => null,
 						'mode'        => 'buttonset',
 						'subtitle'    => __( 'Background Attachment', 'kirki' ),
-						'separator'   => false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -190,7 +185,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						),
 						'description' => null,
 						'subtitle'    => __( 'Background Position', 'kirki' ),
-						'separator'   => ( false != $control['default']['opacity'] ) ? false : true,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -208,7 +202,6 @@ function kirki_customizer_controls( $wp_customize ) {
 							),
 							'description' => null,
 							'subtitle'    => __( 'Background Opacity', 'kirki' ),
-							'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 							'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 						) )
 					);
@@ -224,7 +217,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'priority'    => isset( $control['priority'] ) ? $control['priority'] : '',
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -239,7 +231,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'priority'    => $control['priority'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -256,7 +247,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'mode'        => isset( $control['mode'] ) ? $control['mode'] : 'radio', // Can be 'radio', 'image' or 'buttonset'.
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -272,7 +262,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'choices'     => $control['choices'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -288,7 +277,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'choices'     => $control['choices'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -303,7 +291,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'priority'    => $control['priority'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -318,7 +305,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'priority'    => $control['priority'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -334,7 +320,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'choices'     => $control['choices'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);
@@ -349,7 +334,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'priority'    => $control['priority'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 					) )
 				);
 
@@ -364,7 +348,21 @@ function kirki_customizer_controls( $wp_customize ) {
 						'choices'     => $control['choices'],
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
-						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
+						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						// 'transport'   => 'postMessage',
+					) )
+				);
+
+			// Separator Controls
+			} elseif ( 'group_title' == $control['type'] ) {
+
+				$wp_customize->add_control( new Kirki_Customize_Group_Title_Control( $wp_customize, $control['setting'], array(
+						'label'       => $control['label'],
+						'section'     => $control['section'],
+						'settings'    => $control['setting'],
+						'priority'    => $control['priority'],
+						'description' => isset( $control['description'] ) ? $control['description'] : null,
+						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
 					) )
 				);

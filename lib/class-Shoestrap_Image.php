@@ -68,8 +68,8 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			}
 
 			// Get default size from database
-			$width  = ( $width )  ? $width  : get_option( 'thumbnail_size_w' );
-			$height = ( $height ) ? $height : get_option( 'thumbnail_size_h' );
+			$width  = ( $width )  ? $width  : null;
+			$height = ( $height ) ? $height : null;
 
 			// Allow for different retina sizes
 			$retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
@@ -78,15 +78,30 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			$file_path = parse_url( $url );
 			$file_path = $_SERVER['DOCUMENT_ROOT'] . $file_path['path'];
 
+			$editor = wp_get_image_editor( $file_path );
+			// Get the original image size
+			$size = $editor->get_size();
+			$orig_width  = $size['width'];
+			$orig_height = $size['height'];
+
 			// Destination width and height variables
 			$dest_width  = $width * $retina;
-			$dest_height = $height * $retina;
+			$dest_height = ( is_null( $height ) ) ? intval( ( $dest_width / ( $orig_width / $orig_height ) ) * $retina ) : $height * $retina;
 
 			// File name suffix (appended to original file name)
-			$suffix_width  = ( $dest_width / $retina );
+			$suffix_width  = ( ! is_null( $width ) ) ? ( $dest_width / $retina ) : 'Original';
 			$suffix_height = ( $dest_height / $retina );
 			$suffix_retina = ( $retina != 1 ) ? '@' . $retina . 'x' : NULL;
-			$suffix = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
+
+			$dest_width = ( 'Original' == $suffix_width ) ? $orig_width : $dest_width;
+			$dest_height = ( 'Original' == $suffix_width ) ? $orig_height : $dest_height;
+			$dest_height = ( 0 == $dest_height ) ? $orig_height : $dest_height;
+
+			if ( 'Original' == $suffix_width && 'Original' == $suffix_height && is_null( $suffix_retina ) ) {
+				$suffix = null;
+			} else {
+				$suffix = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
+			}
 
 			// Some additional info about the image
 			$info = pathinfo( $file_path );
@@ -99,16 +114,10 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 
 			$name = wp_basename( $file_path, ".$ext" );
 
-			// Suffix applied to filename
-			$suffix_width  = ( $dest_width / $retina );
-			$suffix_height = ( $dest_height / $retina );
-			$suffix_retina = ( $retina != 1 ) ? '@' . $retina . 'x' : NULL;
-			$suffix = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
-
 			// Get the destination file name
-			$dest_file_name = "{$dir}/{$name}-{$suffix}.{$ext}";
+			$dest_file_name = ( ! is_null( $suffix ) ) ? "{$dir}/{$name}-{$suffix}.{$ext}" : "{$dir}/{$name}.{$ext}";
 
-			if ( ! file_exists( $dest_file_name ) ) {
+			if ( ! is_null( $suffix ) && ! file_exists( $dest_file_name ) ) {
 				/*
 				 *  Bail if this image isn't in the Media Library.
 				 *  We only want to resize Media Library images, so we can be sure they get deleted correctly when appropriate.
@@ -121,15 +130,9 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 				}
 
 				// Load Wordpress Image Editor
-				$editor = wp_get_image_editor( $file_path );
 				if ( is_wp_error( $editor ) ) {
 					return array( 'url' => $url, 'width' => $width, 'height' => $height );
 				}
-
-				// Get the original image size
-				$size = $editor->get_size();
-				$orig_width  = $size['width'];
-				$orig_height = $size['height'];
 
 				$src_x = $src_y = 0;
 				$src_w = $orig_width;
@@ -188,5 +191,59 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			// Return image array
 			return $image_array;
 		}
+
+		public static function featured_image( $post_id = 0 ) {
+
+			$args = array();
+
+			$image_display = apply_filters( 'shoestrap/image/display', 0 );
+			$image_width   = apply_filters( 'shoestrap/image/width', -1 );
+			$image_height  = apply_filters( 'shoestrap/image/height', 0 );
+
+			// Do not continuee processing if a featured image does not exist
+			if ( ! has_post_thumbnail( $post_id ) || '' == get_the_post_thumbnail( $post_id ) ) {
+				return;
+			}
+
+			// Only process if we want to display the image
+			if ( $image_display ) {
+
+				$args['url'] = wp_get_attachment_url( get_post_thumbnail_id( $post_id ) );
+
+				if ( -1 == $image_width ) {
+
+					// If -1 then use max width
+					$args['width'] = apply_filters( 'shoestrap/content_width', 960 );
+
+				} else if ( 0 == $image_width ) {
+
+					// If 0 then use original width
+					$args['width'] = null;
+
+				} else {
+
+					// Resize to selected width
+					$args['width'] = $image_width;
+
+					}
+
+				if ( 0 == $image_height ) {
+					// If 0 then use original height
+					$args['height'] = null;
+				} else {
+					// Resize to selected height
+					$args['height'] = $image_height;
+				}
+
+			}
+
+			$image = self::image_resize( $args );
+
+			return $image;
+
+
+		}
+
 	}
+
 }

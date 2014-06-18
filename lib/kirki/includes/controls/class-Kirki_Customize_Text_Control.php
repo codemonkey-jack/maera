@@ -25,6 +25,5 @@ class Kirki_Customize_Text_Control extends WP_Customize_Control {
 		</label>
 		<?php
 
-		endforeach;
 	}
 }
