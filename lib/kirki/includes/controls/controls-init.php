@@ -15,36 +15,42 @@ function kirki_customizer_controls( $wp_customize ) {
 				$wp_customize->add_setting( $control['setting'] . '_color', array(
 					'default'    => $control['default']['color'],
 					'type'       => 'theme_mod',
+					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_image', array(
 					'default'    => $control['default']['image'],
 					'type'       => 'theme_mod',
+					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_repeat', array(
 					'default'    => $control['default']['repeat'],
 					'type'       => 'theme_mod',
+					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_size', array(
 					'default'    => $control['default']['size'],
 					'type'       => 'theme_mod',
+					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_attach', array(
 					'default'    => $control['default']['attach'],
 					'type'       => 'theme_mod',
+					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_position', array(
 					'default'    => $control['default']['position'],
 					'type'       => 'theme_mod',
+					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
@@ -53,6 +59,7 @@ function kirki_customizer_controls( $wp_customize ) {
 					$wp_customize->add_setting( $control['setting'] . '_opacity', array(
 						'default'    => $control['default']['opacity'],
 						'type'       => 'theme_mod',
+					  'transport'   => 'postMessage',
 						'capability' => 'edit_theme_options'
 					) );
 
@@ -63,6 +70,7 @@ function kirki_customizer_controls( $wp_customize ) {
 				$wp_customize->add_setting( $control['setting'], array(
 					'default'    => $control['default'],
 					'type'       => 'theme_mod',
+					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
@@ -80,7 +88,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -95,7 +102,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => __( 'Background Color', 'kirki' ),
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -108,7 +114,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => __( 'Background Image', 'kirki' ),
 						'separator'   => false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -128,7 +133,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => __( 'Background Repeat', 'kirki' ),
 						'separator'   => false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -147,7 +151,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => __( 'Background Size', 'kirki' ),
 						'separator'   => false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -166,7 +169,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => __( 'Background Attachment', 'kirki' ),
 						'separator'   => false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -190,7 +192,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => __( 'Background Position', 'kirki' ),
 						'separator'   => ( false != $control['default']['opacity'] ) ? false : true,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -209,7 +210,6 @@ function kirki_customizer_controls( $wp_customize ) {
 							'subtitle'    => __( 'Background Opacity', 'kirki' ),
 							'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 							'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-							'transport'   => 'postMessage',
 						) )
 					);
 				}
@@ -226,7 +226,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -242,7 +241,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -260,7 +258,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -277,7 +274,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -294,7 +290,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -310,7 +305,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -326,7 +320,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -343,7 +336,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -358,7 +350,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
-						'transport'   => 'postMessage',
 					) )
 				);
 
@@ -375,7 +366,6 @@ function kirki_customizer_controls( $wp_customize ) {
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'separator'   => isset( $control['separator'] ) ? $control['separator'] : false,
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
-						'transport'   => 'postMessage',
 					) )
 				);
 			}
