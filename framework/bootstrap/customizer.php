@@ -133,13 +133,21 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
+		'type'     => 'group_title',
+		'label'    => __( 'Basic Layout Options', 'shoestrap' ),
+		'priority' => 1,
+		'section'  => 'layout',
+		'setting'  => 'separator' . rand( 999, 9999 ),
+	);
+
+	$controls[] = array(
 		'type'     => 'radio',
 		'mode'     => 'buttonset',
 		'setting'  => 'site_style',
 		'label'    => __( 'Site Style', 'shoestrap' ),
 		'subtitle' => __( 'A static layout is non-responsive. Wide and boxed Layouts are responsive while fluid layouts are full-width.', 'shoestrap' ),
 		'section'  => 'layout',
-		'priority' => 1,
+		'priority' => 2,
 		'default'  => 'wide',
 		'choices'  => array(
 			'wide'    => __( 'Wide', 'shoestrap' ),
@@ -155,7 +163,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'    => __( 'Layout', 'shoestrap' ),
 		'subtitle' => __( 'Select your main layout. Please note that if no widgets are present in a sidebar then that sidebar will not be displayed. ', 'shoestrap' ),
 		'section'  => 'layout',
-		'priority' => 2,
+		'priority' => 3,
 		'default'  => 1,
 		'choices'  => $layouts,
 	);
@@ -166,7 +174,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'    => __( 'Primary Sidebar Width', 'shoestrap' ),
 		'description' => '',
 		'section'  => 'layout',
-		'priority' => 3,
+		'priority' => 4,
 		'default'  => 4,
 		'choices'  => array(
 			'min'  => 1,
@@ -181,7 +189,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'    => __( 'Secondary Sidebar Width', 'shoestrap' ),
 		'description' => '',
 		'section'  => 'layout',
-		'priority' => 4,
+		'priority' => 5,
 		'default'  => 3,
 		'choices'  => array(
 			'min'  => 1,
@@ -197,12 +205,20 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'    => __( 'Show sidebars on the frontpage', 'shoestrap' ),
 		'description' => __( 'Select if you want to display sidebars on the frontpage. Please note that this only applies to the primary and secondary navbars and not all other widget areas.', 'shoestrap' ),
 		'section'  => 'layout',
-		'priority' => 5,
+		'priority' => 6,
 		'default'  => 0,
 		'choices'  => array(
 			0 => __( 'Hide', 'shoestrap' ),
 			1 => __( 'Show', 'shoestrap' ),
 		),
+	);
+
+	$controls[] = array(
+		'type'     => 'group_title',
+		'label'    => __( 'Extended Layout Options', 'shoestrap' ),
+		'priority' => 7,
+		'section'  => 'layout',
+		'setting'  => 'separator' . rand( 999, 9999 ),
 	);
 
 	$controls[] = array(
@@ -236,14 +252,11 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'custom_grid',
-		'label'    => __( 'Show Custom Grid Options', 'shoestrap' ),
-		'subtitle' => __( 'Take control of the grid breakpoints.', 'shoestrap' ),
-		'section'  => 'layout',
+		'type'     => 'group_title',
+		'label'    => __( 'Advanced Layout Options', 'shoestrap' ),
 		'priority' => 80,
-		'default'  => 0,
-		'subtitle' => __( 'Please save and refresh to see new options', 'shoestrap' )
+		'section'  => 'layout',
+		'setting'  => 'separator' . rand( 999, 9999 ),
 	);
 
 	$controls[] = array(
@@ -259,7 +272,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 2100,
 			'step' => 1
 		),
-		'required'    => array( 'custom_grid' => 1 )
 	);
 
 	$controls[] = array(
@@ -275,7 +287,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 2100,
 			'step' => 1,
 		),
-		'required'    => array( 'custom_grid' => 1 )
 	);
 
 	$controls[] = array(
@@ -291,7 +302,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 2100,
 			'step' => 1,
 		),
-		'required'    => array( 'custom_grid' => 1 )
 	);
 
 	$controls[] = array(
@@ -307,7 +317,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 80,
 			'step' => 1,
 		),
-		'required'    => array( 'custom_grid' => 1 )
 	);
 
 	$controls[] = array(
@@ -344,6 +353,14 @@ function shoestrap_customizer_settings( $controls ) {
 	//-------------------------------------------------
 	// MENUS
 	//-------------------------------------------------
+
+	$controls[] = array(
+		'type'     => 'group_title',
+		'label'    => __( 'NavBar Styling', 'shoestrap' ),
+		'priority' => 20,
+		'section'  => 'nav',
+		'setting'  => 'separator' . rand( 999, 9999 ),
+	);
 
 	$controls[] = array(
 		'type'     => 'radio',
@@ -505,6 +522,14 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
+		'type'     => 'group_title',
+		'label'    => __( 'Menus Font', 'shoestrap' ),
+		'priority' => 35,
+		'section'  => 'nav',
+		'setting'  => 'separator' . rand( 999, 9999 ),
+	);
+
+	$controls[] = array(
 		'type'     => 'text',
 		'setting'  => 'font_menus_font_family',
 		'label'    => __( 'Menus font', 'shoestrap' ),
@@ -572,7 +597,14 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 70,
 			'step' => 1,
 		),
-		'separator' => true
+	);
+
+	$controls[] = array(
+		'type'     => 'group_title',
+		'label'    => __( 'Secondary NavBar', 'shoestrap' ),
+		'priority' => 51,
+		'section'  => 'nav',
+		'setting'  => 'separator' . rand( 999, 9999 ),
 	);
 
 	$controls[] = array(
@@ -598,7 +630,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 200,
 			'step' => 1,
 		),
-		'separator' => true
 	);
 
 	$controls[] = array(
@@ -701,6 +732,15 @@ function shoestrap_customizer_settings( $controls ) {
 	// BACKGROUND
 	//-------------------------------------------------
 
+
+	$controls[] = array(
+		'type'     => 'group_title',
+		'label'    => __( 'General Background', 'shoestrap' ),
+		'priority' => 1,
+		'section'  => 'background',
+		'setting'  => 'separator' . rand( 999, 9999 ),
+	);
+
 	$controls[] = array(
 		'type'         => 'background',
 		'setting'      => 'html_bg',
@@ -715,8 +755,16 @@ function shoestrap_customizer_settings( $controls ) {
 			'position' => 'left-top',
 			'opacity'  => false,
 		),
-		'priority' => 1,
+		'priority' => 2,
 		'output' => 'body.bootstrap',
+	);
+
+	$controls[] = array(
+		'type'     => 'group_title',
+		'label'    => __( 'Body Background', 'shoestrap' ),
+		'priority' => 30,
+		'section'  => 'background',
+		'setting'  => 'separator' . rand( 999, 9999 ),
 	);
 
 	$controls[] = array(
@@ -733,7 +781,7 @@ function shoestrap_customizer_settings( $controls ) {
 			'position' => 'left-top',
 			'opacity'  => 100,
 		),
-		'priority' => 10,
+		'priority' => 31,
 		'output' => 'body.bootstrap #wrap-main-section',
 	);
 
@@ -828,15 +876,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 3,
 			'step' => 0.1,
 		),
-		'separator' => true
-	);
-
-	$controls[] = array(
-		'type'     => 'group_title',
-		'setting'  => 'separ34534',
-		'label' => __( 'Separator Demo', 'shoestrap' ),
-		'section'  => 'typography',
-		'priority' => 28,
 	);
 
 	$controls[] = array(
@@ -1244,7 +1283,6 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'jumbotron',
 		'default'  => 0,
 		'priority' => 11,
-		'separator' => true
 	);
 
 	$controls[] = array(
@@ -1315,7 +1353,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 70,
 			'step' => 1,
 		),
-		'separator' => true
 	);
 
 	$controls[] = array(

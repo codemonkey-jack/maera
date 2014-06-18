@@ -17,8 +17,6 @@ class Kirki_Customize_Upload_Control extends WP_Customize_Control {
 
 	public $subtitle = '';
 
-	public $separator = false;
-
 	/**
 	 * Enqueue control related scripts/styles.
 	 *
@@ -70,7 +68,7 @@ class Kirki_Customize_Upload_Control extends WP_Customize_Control {
 				<a href="#" class="remove"><?php _e( 'Remove' ); ?></a>
 			</div>
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
+		<?php
 
 	}
 }
