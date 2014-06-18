@@ -37,6 +37,11 @@ function shoestrap_scripts() {
 	// If we're on the customizer, then set caching to false
 	if ( isset( $wp_customize ) ) {
 		$caching = false;
+    wp_register_script( 'lessjs-vars', get_template_directory_uri() . '/framework/bootstrap/assets/js/customizer-head.js', false, null, false );
+    wp_enqueue_script( 'lessjs-vars' );
+
+    wp_register_script( 'lessjs', SHOESTRAP_ASSETS_URL . '/js/less.min.js', 'lessjs-vars', null, false );
+    wp_enqueue_script( 'lessjs' );
 	}
 
 	if ( ! $caching ) {
