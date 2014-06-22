@@ -672,6 +672,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'colors',
 		'default'  => '#428bca',
 		'priority' => 1,
+        'framework_var' => '@brand-primary'
 	);
 
 	$controls[] = array(
@@ -682,6 +683,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'colors',
 		'default'  => '#5bc0de',
 		'priority' => 2,
+        'framework_var' => '@brand-info'
 	);
 
 	$controls[] = array(
@@ -692,6 +694,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'colors',
 		'default'  => '#5cb85c',
 		'priority' => 3,
+        'framework_var' => '@brand-success'
 	);
 
 	$controls[] = array(
@@ -702,6 +705,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'colors',
 		'default'  => '#f0ad4e',
 		'priority' => 4,
+        'framework_var' => '@brand-warning'
 	);
 
 	$controls[] = array(
@@ -712,6 +716,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'colors',
 		'default'  => '#d9534f',
 		'priority' => 5,
+        'framework_var' => '@brand-danger'
 	);
 
 	$controls[] = array(
