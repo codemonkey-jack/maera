@@ -1,0 +1,17 @@
+<ul class="pager">
+	{% if pagination.prev %}
+		<li class="previous">
+			<a href="{{pagination.prev.link}}" class="prev {{pagination.prev.link|length ? '' : 'invisible'}}">
+				{{ framework.icon('chevron-left') }} {{ __( 'Previous', 'shoestrap' ) }}
+			</a>
+		</li>
+	{% endif %}
+
+	{% if pagination.next %}
+		<li class="next">
+			<a href="{{pagination.next.link}}" class="next {{pagination.next.link|length ? '' : 'invisible'}}">
+				{{ __( 'Next', 'shoestrap' ) }} {{ framework.icon('chevron-right') }}
+			</a>
+		</li>
+	{% endif %}
+</ul>

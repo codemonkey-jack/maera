@@ -11,6 +11,8 @@
 		{% do action( 'shoestrap/in_loop/end' ) %}
 	{% endfor %}
 
+	{% include 'parts/pagination.twig' %}
+
 	{% do action( 'shoestrap/index/end' ) %}
 
 {% endblock %}
