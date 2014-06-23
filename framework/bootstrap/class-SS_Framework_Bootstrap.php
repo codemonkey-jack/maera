@@ -146,7 +146,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			$image = Shoestrap_Image::featured_image();
 
-			return '<img src="' . $image['url'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '">' . $content;
+			return '<div class="featured-image" style="background: url(\'' . $image['url'] . '\'); width: ' . $image['width'] . 'px; height: ' . $image['height'] . 'px;"></div>' . $content;
 
 		}
 
