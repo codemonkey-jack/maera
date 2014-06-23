@@ -44,7 +44,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );
 
 			// Add the framework Timber modifications
-			add_filter( 'timber_context', array( $this, 'timber_extras' ) );
+			add_filter( 'timber_context', array( $this, 'timber_extras' ), 20 );
 
 			// Breadcrumbs
 			add_action( 'shoestrap/content/before', array( $this, 'breadcrumbs' ) );
@@ -212,6 +212,13 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_0' );
 
 			}
+
+			$comment_form_args = array(
+				'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'shoestrap' ) . '</label><textarea class="form-control" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
+				'id_submit'     => 'comment-submit',
+			);
+
+			$data['comment_form'] = TimberHelper::get_comment_form( null, $comment_form_args );
 
 			return $data;
 		}

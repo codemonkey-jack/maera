@@ -7,7 +7,6 @@ $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
 $context['wp_title'] .= ' - ' . $post->title();
-$context['comment_form'] = TimberHelper::get_comment_form();
 
 Timber::render(
 	array(

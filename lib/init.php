@@ -31,6 +31,7 @@ function shoestrap_timber_global_context( $data ) {
 	$data['sidebar']['footer']['four']  = apply_filters( 'shoestrap/sidebar/footer/four', $sidebar_footer_4 );
 
 	$data['pagination'] = Timber::get_pagination();
+	$data['comment_form'] = TimberHelper::get_comment_form();
 
 	return $data;
 
