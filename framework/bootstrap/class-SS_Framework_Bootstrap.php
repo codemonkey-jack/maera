@@ -144,9 +144,16 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function inject_featured_images_content( $content ) {
 
-			$image = Shoestrap_Image::featured_image();
+			if ( has_post_thumbnail() ) {
 
-			return '<div class="featured-image" style="background: url(\'' . $image['url'] . '\'); width: ' . $image['width'] . 'px; height: ' . $image['height'] . 'px;"></div>' . $content;
+				$image = Shoestrap_Image::featured_image( get_the_ID() );
+
+				$r = '<div class="featured-image" style="background: url(\'' . $image['url'] . '\'); width: ' . $image['width'] . 'px; height: ' . $image['height'] . 'px;"></div>';
+				$r .= $content;
+
+			}
+
+			return $r;
 
 		}
 

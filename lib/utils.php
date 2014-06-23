@@ -127,7 +127,7 @@ function shoestrap_get_post_teaser( $post_id ) {
 	$image = Shoestrap_Image::featured_image( $post_id );
 
 	if ( $image ) {
-		$content .= '<a href="' . get_permalink() . '"><div class="featured-image" style="background: url(\'' . $image['url'] . '\'); width: ' . $image['width'] . 'px; height: ' . $image['height'] . 'px;"></div></a>';
+		$content .= '<a class="featured-image" href="' . get_permalink() . '" style="background: url(\'' . $image['url'] . '\'); width: ' . $image['width'] . 'px; height: ' . $image['height'] . 'px;"></a>';
 	}
 
 	if ( 'full' == $mode ) {
