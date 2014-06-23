@@ -3,12 +3,12 @@
 img {
 	max-width: 100%;
 	height: auto;
-}
 
-// The size of the logo on the main navbar
-img#site-logo {
-	max-height: 1em;
-	width: auto;
+	// The size of the logo on the main navbar
+	&#site-logo {
+		max-height: 1em;
+		width: auto;
+	}
 }
 
 .wp-caption {
@@ -16,10 +16,15 @@ img#site-logo {
 	height: auto;
 }
 
-body.container.boxed {
-	padding-left: 0;
-	padding-right: 0;
-	box-shadow: 0 0 1em 1px rgba(50,50,50,0.1)
+body {
+	ms-word-wrap: break-word;
+	word-wrap: break-word;
+
+	&.container.boxed {
+		padding-left: 0;
+		padding-right: 0;
+		box-shadow: 0 0 1em 1px rgba(50,50,50,0.1)
+	}
 }
 
 #banner-header {
@@ -49,4 +54,12 @@ header.page-header {
 #comment-submit {
 	.btn;
 	.btn-primary;
+}
+
+code {
+	display: inline-block;
+	max-width: 100%;
+	white-space: normal;
+	ms-word-wrap: break-word;
+	word-wrap: break-word;
 }
