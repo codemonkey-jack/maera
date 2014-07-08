@@ -256,6 +256,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				return;
 			}
 
+			// No need to proceed if we're on a single post and we don't want to display the post meta
+			if ( is_singular() && 1 != get_theme_mod( 'single_meta', 1 ) ) {
+				return;
+			}
+
 			$content = '';
 
 			// convert options from CSV to array
@@ -341,7 +346,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 						}
 
-						$content .= sprintf( '<span class="entry-date"><a href="%1$s" rel="bookmark"><i class="' . $icon . '"></i> <time class="entry-date" datetime="%2$s">%3$s</time></a></span>',
+						$content .= sprintf( '<span class="entry-date"><i class="' . $icon . '"></i> <a href="%1$s" rel="bookmark"><time class="entry-date" datetime="%2$s">%3$s</time></a></span>',
 							esc_url( get_permalink() ),
 							esc_attr( get_the_date( 'c' ) ),
 							$text
