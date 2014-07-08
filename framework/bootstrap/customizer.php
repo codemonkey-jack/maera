@@ -1063,23 +1063,13 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'        => 'sortable',
-		'mode'        => 'checkbox',
+		'type'        => 'text',
 		'setting'     => 'shoestrap_entry_meta_config',
 		'label'       => __( 'Post Meta elements', 'shoestrap' ),
-		'description' => __( 'Activate and order Post Meta elements', 'shoestrap' ),
+		'subtitle'    => __( 'You can define a comma-separated list of meta elements you want on your posts, in the order that you want them. Accepted values: <code>author, sticky, post-format, date, category, tags, comments</code>', 'shoestrap' ),
 		'section'     => 'blog',
 		'priority'    => 2,
-		'default'     => '',
-		'choices'     => array(
-			'post-format'   => 'Post Format',
-			'tags'          => 'Tags',
-			'date'          => 'Date',
-			'category'      => 'Category',
-			'author'        => 'Author',
-			'comment-count' => 'Comments',
-			'sticky'        => 'Sticky'
-		),
+		'default'     => 'post-format, date, author, comments',
 	);
 
 	$controls[] = array(

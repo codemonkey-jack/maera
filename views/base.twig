@@ -8,22 +8,22 @@
 
 	{% do action( 'get_header' ) %}
 
-	{% do action( 'shoestrap/top-bar/before' ) %}
+	{% do action( 'shoestrap/top-bar/before', post.ID ) %}
 	{% include 'parts/top-bar.twig' %}
-	{% do action( 'shoestrap/top-bar/after' ) %}
+	{% do action( 'shoestrap/top-bar/after', post.ID ) %}
 
-	{% do action( 'shoestrap/wrap/before' ) %}
+	{% do action( 'shoestrap/wrap/before', post.ID ) %}
 
 	{{ framework.open_container( 'div', 'wrap-main-section', 'wrap main-section' ) }}
 
-		{% do action( 'shoestrap/content/before' ) %}
+		{% do action( 'shoestrap/content/before', post.ID ) %}
 
 		<div class="content" id="content">
 
 			{{ framework.open_row( 'div', null, 'bg' ) }}
 
 				<div class="content-primary-wrapper {{ 'main'|apply_filters( 'shoestrap/section_class/wrapper' ) }}">
-					{% do action( 'shoestrap/main/before' ) %}
+					{% do action( 'shoestrap/main/before', post.ID ) %}
 					<main class="{{ 'main'|apply_filters( 'shoestrap/section_class/content' ) }}" role="main">
 
 						{% if title %}<h1>{{title}}</h1>{% endif %}
@@ -32,7 +32,7 @@
 						{% endblock %}
 
 					</main><!-- /.main -->
-					{% do action( 'shoestrap/main/after' ) %}
+					{% do action( 'shoestrap/main/after', post.ID ) %}
 
 					{# PRIMARY SIDEBAR #}
 					<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'shoestrap/section_class/primary' ) }}" role="complementary">
@@ -56,13 +56,13 @@
 
 	{{ framework.close_container( 'div' ) }}
 
-	{% do action( 'shoestrap/footer/before' ) %}
+	{% do action( 'shoestrap/footer/before', post.ID ) %}
 	<footer class="page-footer">
-		{% do action( 'shoestrap/footer/start' ) %}
+		{% do action( 'shoestrap/footer/start', post.ID ) %}
 		{% include 'footer.twig' %}
-		{% do action( 'shoestrap/footer/end' ) %}
+		{% do action( 'shoestrap/footer/end', post.ID ) %}
 	</footer>
-	{% do action( 'shoestrap/footer/after' ) %}
+	{% do action( 'shoestrap/footer/after', post.ID ) %}
 	{{ function( 'wp_footer' ) }}
 </body>
 </html>
