@@ -1647,6 +1647,50 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+		/**
+		* Build the social links
+		*/
+		function social_links( $before = '', $after = '', $separator = '' ) {
+
+			$social_links = array(
+				'blogger'     => __( 'Blogger', 'shoestrap' ),
+				'deviantart'  => __( 'DeviantART', 'shoestrap' ),
+				'digg'        => __( 'Digg', 'shoestrap' ),
+				'dribbble'    => __( 'Dribbble', 'shoestrap' ),
+				'facebook'    => __( 'Facebook', 'shoestrap' ),
+				'flickr'      => __( 'Flickr', 'shoestrap' ),
+				'github'      => __( 'Github', 'shoestrap' ),
+				'google_plus' => __( 'Google+', 'shoestrap' ),
+				'instagram'   => __( 'Instagram', 'shoestrap' ),
+				'linkedin'    => __( 'LinkedIn', 'shoestrap' ),
+				'myspace'     => __( 'MySpace', 'shoestrap' ),
+				'pinterest'   => __( 'Pinterest', 'shoestrap' ),
+				'reddit'      => __( 'Reddit', 'shoestrap' ),
+				'rss'         => __( 'RSS', 'shoestrap' ),
+				'skype'       => __( 'Skype', 'shoestrap' ),
+				'soundcloud'  => __( 'SoundCloud', 'shoestrap' ),
+				'tumblr'      => __( 'Tumblr', 'shoestrap' ),
+				'twitter'     => __( 'Twitter', 'shoestrap' ),
+				'vimeo'       => __( 'Vimeo', 'shoestrap' ),
+				'vkontakte'   => __( 'Vkontakte', 'shoestrap' ),
+				'youtube'     => __( 'YouTube', 'shoestrap' ),
+			);
+
+			$content = $before;
+
+			foreach ( $social_links as $social_link => $label ) {
+				$link = get_theme_mod( $social_link . '_link', '' );
+
+				if ( '' != esc_url( $link ) ) {
+					$content .= '<a role="link" aria-labelledby="' . $label . '" href="' . $link . '" target="_blank"><i class="el-icon-' . $link . '"></i></a>';
+					$content .= $separator;
+				}
+			}
+
+			$content .= $after;
+
+		}
+
 	}
 
 }
