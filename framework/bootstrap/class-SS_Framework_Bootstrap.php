@@ -1173,7 +1173,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			}
 
-			if ( 'max' == $breakpoint ) {
+			if ( 'full' == $nav_style ) {
 
 				add_filter( 'shoestrap/topbar/class/container', array( $this, 'return_container_fluid' ) );
 
