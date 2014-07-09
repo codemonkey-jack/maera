@@ -367,7 +367,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'mode'     => 'buttonset',
 		'setting'  => 'navbar_toggle',
 		'label'    => __( 'NavBar Type', 'shoestrap' ),
-		'subtitle' => __( 'Choose the type of Navbar you want. Off completely hides the navbar. <strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'shoestrap' ),
+		'subtitle' => __( 'Choose the type of Navbar you want. Off completely hides the navbar. <strong>WARNING:</strong> You will have to save the option and refresh this page to see the result. The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'shoestrap' ),
 		'section'  => 'nav',
 		'default'  => 'normal',
 		'choices'  => array(

@@ -1157,6 +1157,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function container_class_modifier() {
 
 			$site_style = get_theme_mod( 'site_style', 'wide' );
+			$nav_style  = get_theme_mod( 'navbar_toggle', 'normal' );
+			$breakpoint = get_theme_mod( 'grid_float_breakpoint', 'screen_sm_min' );
 
 			if ( 'fluid' == $site_style ) {
 
@@ -1168,6 +1170,12 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 				add_filter( 'shoestrap/container_class', array( $this, 'return_container' ) );
 				add_filter( 'shoestrap/topbar/class/container', array( $this, 'return_container' ) );
+
+			}
+
+			if ( 'max' == $breakpoint ) {
+
+				add_filter( 'shoestrap/topbar/class/container', array( $this, 'return_container_fluid' ) );
 
 			}
 
