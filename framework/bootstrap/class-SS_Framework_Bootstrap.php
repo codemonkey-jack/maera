@@ -110,6 +110,15 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Post Meta
 			add_action( 'shoestrap/entry/meta', array( $this, 'meta_elements' ), 10, 1 );
 
+			if ( 'left' == get_theme_mod( 'menu_mode', 'normal' ) ) {
+
+				add_action( 'shoestrap/top-bar/before', array( $this, 'open_nav_left_row' ), 1 );
+				add_filter( 'shoestrap/topbar/class', array( $this, 'return_nav_left_class' ) );
+				add_action( 'shoestrap/top-bar/after', array( $this, 'left_wrapper_open_right' ), 1 );
+				add_action( 'shoestrap/footer/after', array( $this, 'left_wrapper_close_right' ) );
+
+			}
+
 		}
 
 
@@ -1156,8 +1165,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function container_class_modifier() {
 
-			$site_style = get_theme_mod( 'site_style', 'wide' );
 			$nav_style  = get_theme_mod( 'navbar_toggle', 'normal' );
+			$site_style = ( 'left' != $nav_style ) ? get_theme_mod( 'site_style', 'wide' ) : 'fluid';
 			$breakpoint = get_theme_mod( 'grid_float_breakpoint', 'screen_sm_min' );
 
 			if ( 'fluid' == $site_style ) {
@@ -1176,13 +1185,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			if ( 'full' == $nav_style ) {
 
 				add_filter( 'shoestrap/topbar/class/container', array( $this, 'return_container_fluid' ) );
-
-			} else if ( 'left' == $nav_style ) {
-
-				add_action( 'shoestrap/top-bar/before', array( $this, 'open_nav_left_row' ), 1 );
-				add_filter( 'shoestrap/topbar/class', array( $this, 'return_nav_left_class' ) );
-				add_action( 'shoestrap/top-bar/after', array( $this, 'left_wrapper_open_right' ), 1 );
-				add_action( 'shoestrap/footer/after', array( $this, 'left_wrapper_close_right' ) );
 
 			}
 
@@ -1239,6 +1241,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function boxed_body_class( $classes ) {
 
 			$site_style = get_theme_mod( 'site_style', 'wide' );
+			if ( 'left' == get_theme_mod( 'menu_mode' ) ) {
+				$site_style = 'fluid';
+			}
 
 			if ( 'boxed' == $site_style ) {
 				$classes[] = 'container';

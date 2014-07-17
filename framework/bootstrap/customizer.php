@@ -93,6 +93,22 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 	);
 
+	$controls[] = array(
+		'type'     => 'radio',
+		'setting'  => 'menu_mode',
+		'label'    => __( 'Menu mode', 'shoestrap' ),
+		'subtitle' => __( 'Choose a mode for your menus. Requires that you save and refresh the options before proceeding.', 'shoestrap' ),
+		'section'  => 'general',
+		'priority' => 13,
+		'default'  => 0,
+		'choices'  => array(
+			'left'         => __( 'Left', 'shoestrap' ),
+			'normal'       => __( 'Normal', 'shoestrap' ),
+			// 'left-hidden'  => __( 'Left - Hidden', 'shoestrap' ),
+			// 'right-hidden' => __( 'Right - Hidden', 'shoestrap' ),
+		),
+	);
+
 
 	$controls[] = array(
 		'type'     => 'radio',
@@ -367,14 +383,13 @@ function shoestrap_customizer_settings( $controls ) {
 		'mode'     => 'buttonset',
 		'setting'  => 'navbar_toggle',
 		'label'    => __( 'NavBar Type', 'shoestrap' ),
-		'subtitle' => __( 'Choose the type of Navbar you want. Off completely hides the navbar. <strong>WARNING:</strong> You will have to save the option and refresh this page to see the result. The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'shoestrap' ),
+		'subtitle' => __( 'Choose the type of Navbar you want. Off completely hides the navbar. <strong>WARNING:</strong> You will have to save the option and refresh this page to see the result.', 'shoestrap' ),
 		'section'  => 'nav',
 		'default'  => 'normal',
 		'choices'  => array(
 			'none'   => __( 'None', 'shoestrap' ),
 			'normal' => __( 'Normal', 'shoestrap' ),
 			'full'   => __( 'Full-Width', 'shoestrap' ),
-			'left'   => __( 'Static-Left', 'shoestrap' ),
 		),
 		'priority' => 21,
 	);
