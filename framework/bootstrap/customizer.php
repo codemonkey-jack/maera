@@ -466,7 +466,7 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'radio',
 		'mode'     => 'buttonset',
-		'setting'  => 'navbar_nav_right',
+		'setting'  => 'navbar_nav_align',
 		'label'    => __( 'Menus alignment', 'shoestrap' ),
 		'section'  => 'nav',
 		'default'  => 'left',

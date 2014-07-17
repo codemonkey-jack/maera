@@ -119,6 +119,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			}
 
+			add_filter( 'shoestrap/topbar/menu/class', array( $this, 'navbar_links_alignment' ) );
+
 		}
 
 
@@ -1733,6 +1735,22 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			$content .= $after;
 
+		}
+
+		/**
+		 * Take care of the alignment of navbar menu items
+		 */
+		function navbar_links_alignment( $classes ) {
+
+			$align = get_theme_mod( 'navbar_nav_align', 'left' );
+
+			if ( 'center' == $align ) {
+				$classes .= ' navbar-center';
+			} else if ( 'right' == $align ) {
+				$classes .= ' navbar-right';
+			}
+
+			return $classes;
 		}
 
 	}
