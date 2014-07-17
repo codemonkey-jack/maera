@@ -1177,9 +1177,48 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 				add_filter( 'shoestrap/topbar/class/container', array( $this, 'return_container_fluid' ) );
 
+			} else if ( 'left' == $nav_style ) {
+
+				add_action( 'shoestrap/top-bar/before', array( $this, 'open_nav_left_row' ), 1 );
+				add_filter( 'shoestrap/topbar/class', array( $this, 'return_nav_left_class' ) );
+				add_action( 'shoestrap/top-bar/after', array( $this, 'left_wrapper_open_right' ), 1 );
+				add_action( 'shoestrap/footer/after', array( $this, 'left_wrapper_close_right' ) );
+
 			}
 
 		}
+
+		/**
+		 * Open a row to hold the left sidebar and main content divs
+		 */
+		function open_nav_left_row() { echo '<div class="row">'; }
+
+
+		/**
+		 * Return the width of the left navbar
+		 */
+		function return_nav_left_class() {
+
+			$cols = get_theme_mod( 'layout_secondary_width', 3 );
+			return 'col-sm-' . $cols;
+
+		}
+
+		/**
+		 * Add a wrapper div to all the content when we're using the left navbar
+		 */
+		function left_wrapper_open_right() {
+
+			$cols = 12 - get_theme_mod( 'layout_secondary_width', 3 );
+
+			echo '<div class="right-wrapper col-sm-' . $cols . '">';
+
+		}
+
+		/**
+		 * Close the wrapper div when using the left navbar
+		 */
+		function left_wrapper_close_right() { echo '</div></div>'; }
 
 
 		/**
