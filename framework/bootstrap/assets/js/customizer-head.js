@@ -3,4 +3,5 @@ var less = {
     watchMode: true
 };
 
-var kirki = {'configs': jQuery.parseJSON(kirki.configs)};
+var kirki = {};
+//var kirki = {'configs': jQuery.parseJSON(kirki.configs)};
