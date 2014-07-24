@@ -1,9 +1,9 @@
 <?php
 
-class TimberMenu extends TimberCore
-{
+class TimberMenu extends TimberCore {
 
     public $MenuItemClass = 'TimberMenuItem';
+    public $PostClass = 'TimberPost';
 
     public $items = null;
     public $id = null;
@@ -28,7 +28,7 @@ class TimberMenu extends TimberCore
         if ($menu_id) {
             $this->init($menu_id);
         } else {
-            TimberHelper::error_log("Sorry, the menu you were looking for wasn't found ('" . $slug . "'). Here's what Timber did find:");
+            //TimberHelper::error_log("Sorry, the menu you were looking for wasn't found ('" . $slug . "'). Here's what Timber did find:");
         }
         return null;
     }
@@ -38,7 +38,9 @@ class TimberMenu extends TimberCore
      */
     private function init($menu_id) {
         $menu = wp_get_nav_menu_items($menu_id);
-        $menu = self::order_children($menu);
+        if (is_array($menu)){
+            $menu = self::order_children($menu);
+        }
         $this->items = $menu;
         $menu_info = wp_get_nav_menu_object($menu_id);
         $this->import($menu_info);
@@ -110,12 +112,16 @@ class TimberMenu extends TimberCore
     function order_children($items) {
         $index = array();
         $menu = array();
-        _wp_menu_item_classes_by_context($items);
         foreach ($items as $item) {
-            $index[$item->ID] = new $this->MenuItemClass($item);
+            if(isset($item->ID)){
+                if (is_object($item) && get_class($item) == 'WP_Post'){
+                    $item = new $this->PostClass($item);
+                }
+                $index[$item->ID] = new $this->MenuItemClass($item);
+            }
         }
         foreach ($index as $item) {
-            if ($item->menu_item_parent && isset($index[$item->menu_item_parent])) {
+            if (isset($item->menu_item_parent) && $item->menu_item_parent && isset($index[$item->menu_item_parent])) {
                 $index[$item->menu_item_parent]->add_child($item);
             } else {
                 $menu[] = $item;
@@ -135,152 +141,4 @@ class TimberMenu extends TimberCore
     }
 }
 
-class TimberMenuItem extends TimberCore
-{
 
-    public $children;
-    public $has_child_class = false;
-
-    public $classes = array();
-    public $class;
-    public $post_name;
-    public $type;
-
-    /**
-     * @param array|object $data
-     */
-    function __construct($data) {
-        $this->import($data);
-        $this->import_classes($data);
-        if (isset($this->name)) {
-            $this->_name = $this->name;
-        }
-        $this->name = $this->name();
-        $this->add_class('menu-item-' . $this->ID);
-    }
-
-    /**
-     * @param string $class_name
-     */
-    function add_class($class_name) {
-        $this->classes[] = $class_name;
-        $this->class .= ' ' . $class_name;
-    }
-
-    /**
-     * @return string
-     */
-    function name() {
-        if (isset($this->title)) {
-            return $this->title;
-        }
-        return $this->_name;
-    }
-
-    /**
-     * @return string
-     */
-    function slug() {
-        return $this->post_name;
-    }
-
-    /**
-     * @return string
-     */
-    function get_link() {
-        return $this->url;
-    }
-
-    /**
-     * @return string
-     */
-    function get_path() {
-        return TimberURLHelper::get_rel_url($this->url);
-    }
-
-    /**
-     * @param TimberMenuItem $item
-     */
-    function add_child($item) {
-        if (!$this->has_child_class) {
-            $this->add_class('menu-item-has-children');
-            $this->has_child_class = true;
-        }
-        if (!isset($this->children)) {
-            $this->children = array();
-        }
-        $this->children[] = $item;
-    }
-
-    /**
-     * @param object $data
-     */
-    function import_classes($data) {
-        $this->class = trim(implode(' ', $data->classes));
-    }
-
-    /**
-     * @return array|bool
-     */
-    function get_children() {
-        if (isset($this->children)) {
-            return $this->children;
-        }
-        return false;
-    }
-
-    /**
-     * @return bool
-     */
-    function is_external() {
-        if ($this->type != 'custom') {
-            return false;
-        }
-        return TimberURLHelper::is_external($this->url);
-    }
-
-    /* Aliases */
-
-    /**
-     * @return array|bool
-     */
-    public function children() {
-        return $this->get_children();
-    }
-
-    /**
-     * @return bool
-     */
-    public function external() {
-        return $this->is_external();
-    }
-
-    /**
-     * @return string
-     */
-    public function link() {
-        return $this->get_link();
-    }
-
-    /**
-     * @return string
-     */
-    public function path() {
-        return $this->get_path();
-    }
-
-    /**
-     * @return string
-     */
-    public function permalink() {
-        return $this->get_link();
-    }
-
-    /**
-     * @return string
-     */
-    public function get_permalink() {
-        return $this->get_link();
-    }
-
-}

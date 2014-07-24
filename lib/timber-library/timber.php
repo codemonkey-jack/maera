@@ -4,7 +4,7 @@ Plugin Name: Timber
 Plugin URI: http://timber.upstatement.com
 Description: The WordPress Timber Library allows you to write themes using the power Twig templates
 Author: Jared Novack + Upstatement
-Version: 0.19.1
+Version: 0.20.1
 Author URI: http://upstatement.com/
 */
 
@@ -16,32 +16,33 @@ if (file_exists($composer_autoload)){
 	require_once($composer_autoload);
 }
 
-require_once(__DIR__ . '/functions/functions-twig.php');
+require_once(__DIR__ . '/functions/timber-twig.php');
 require_once(__DIR__ . '/functions/timber-helper.php');
 require_once(__DIR__ . '/functions/timber-url-helper.php');
 require_once(__DIR__ . '/functions/timber-image-helper.php');
 
+require_once(__DIR__ . '/functions/timber-core-interface.php');
 require_once(__DIR__ . '/functions/timber-core.php');
 require_once(__DIR__ . '/functions/timber-post.php');
+require_once(__DIR__ . '/functions/timber-post-getter.php');
 require_once(__DIR__ . '/functions/timber-comment.php');
 require_once(__DIR__ . '/functions/timber-user.php');
 require_once(__DIR__ . '/functions/timber-term.php');
 require_once(__DIR__ . '/functions/timber-term-getter.php');
 require_once(__DIR__ . '/functions/timber-image.php');
+require_once(__DIR__ . '/functions/timber-menu-item.php');
 require_once(__DIR__ . '/functions/timber-menu.php');
+require_once(__DIR__ . '/functions/timber-query-iterator.php');
+require_once(__DIR__ . '/functions/timber-posts-collection.php');
 
 //Other 2nd-class citizens
 require_once(__DIR__ . '/functions/timber-archives.php');
 require_once(__DIR__ . '/functions/timber-site.php');
 require_once(__DIR__ . '/functions/timber-theme.php');
-
-
 require_once(__DIR__ . '/functions/timber-loader.php');
 require_once(__DIR__ . '/functions/timber-function-wrapper.php');
 require_once(__DIR__ . '/functions/integrations/acf-timber.php');
-if ( defined('WP_CLI') && WP_CLI ) {
-    require_once(__DIR__ . '/functions/integrations/wpcli-timber.php');
-}
+require_once(__DIR__ . '/functions/integrations/wpcli-timber.php');
 
 require_once(__DIR__ . '/functions/timber-admin.php');
 
@@ -101,253 +102,99 @@ class Timber {
      * @return array|bool|null
      */
     public static function get_post($query = false, $PostClass = 'TimberPost') {
-        if (is_int($query)) {
-            /* its a post id number */
-            $query = array($query);
-        }
-        $posts = self::get_posts($query, $PostClass);
-        if (count($posts) && is_array($posts)) {
-            return $posts[0];
-        }
-        return $posts;
+        return TimberPostGetter::get_post($query, $PostClass);
     }
-
 
     /**
      * @param mixed $query
      * @param string $PostClass
      * @return array|bool|null
      */
-    public static function get_posts($query = false, $PostClass = 'TimberPost'){
-        if (self::is_post_class_or_class_map($query)) {
-            $PostClass = $query;
-            $query = false;
-        }
-        if (TimberHelper::is_array_assoc($query) || (is_string($query) && strstr($query, '='))) {
-            // we have a regularly formed WP query string or array to use
-            $posts = self::get_posts_from_wp_query($query, $PostClass);
-        } else if (is_string($query) && !is_integer($query)) {
-            // we have what could be a post name to pull out
-            $posts = self::get_posts_from_slug($query, $PostClass);
-        } else if (is_array($query) && count($query) && (is_integer($query[0]) || is_string($query[0]))) {
-            // we have a list of pids (post IDs) to extract from
-            $posts = self::get_posts_from_array_of_ids($query, $PostClass);
-        } else if (is_array($query) && count($query) && isset($query[0]) && is_object($query[0])) {
-            // maybe its an array of post objects that already have data
-            $posts = self::handle_post_results($query, $PostClass);
-        } else if (self::wp_query_has_posts()) {
-            //lets just use the default WordPress current query
-            $posts = self::get_posts_from_loop($PostClass);
-        } else if (!$query) {
-            //okay, everything failed lets just return some posts so that the user has something to work with
-            //this turns out to cause all kinds of awful behavior
-            //return self::get_posts_from_wp_query(array(), $PostClass);
-            return null;
-        } else {
-            TimberHelper::error_log('I have failed you! in timber.php::94');
-            TimberHelper::error_log($query);
-            return $query;
-        }
+    public static function get_posts($query = false, $PostClass = 'TimberPost', $return_collection = false ){
+        return TimberPostGetter::get_posts($query, $PostClass, $return_collection);
+    }
 
-        return self::maybe_set_preview( $posts );
+    public static function query_posts($query = false, $PostClass = 'TimberPost') {
+        return TimberPostGetter::query_posts( $query, $PostClass );
     }
 
     /**
      * @param array|string $query
      * @return array
+     * @deprecated since 0.20.0
      */
-    public static function get_pids($query = null) {
-        $posts = get_posts($query);
-        $pids = array();
-        foreach ($posts as $post) {
-            if ($post->ID) {
-                $pids[] = $post->ID;
-            }
-        }
-        return $pids;
+    static function get_pids($query = null) {
+        return TimberPostGetter::get_pids($query);
     }
 
     /**
      * @param string $PostClass
      * @return array
+     * @deprecated since 0.20.0
      */
-    public static function get_posts_from_loop($PostClass) {
-        $results = self::get_pids_from_loop();
-        return self::handle_post_results($results, $PostClass);
-    }
-
-    /**
-     * @return array
-     */
-    public static function get_pids_from_loop() {
-        if (!self::wp_query_has_posts()) { return array(); }
-
-        global $wp_query;
-        return array_filter(array_map(function($p) {
-            return ($p && property_exists($p, 'ID')) ? $p->ID : null;
-        }, $wp_query->posts));
+    static function get_posts_from_loop($PostClass) {
+        return TimberPostGetter::get_posts($PostClass);
     }
 
     /**
      * @param string $slug
      * @param string $PostClass
      * @return array
+     * @deprecated since 0.20.0
      */
-    public static function get_posts_from_slug($slug, $PostClass) {
-        global $wpdb;
-        $query = $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_name = %s", $slug);
-        if (strstr($slug, '#')) {
-            //we have a post_type directive here
-            $q = explode('#', $slug);
-            $q = array_filter($q);
-            $q = array_values($q);
-            if (count($q) == 1){
-                $query = $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_name = %s", $q[0]);
-            } else if (count($q) == 2){
-                $query = $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = %s LIMIT 1", $q[1], $q[0]);
-            } else {
-                TimberHelper::error_log('something we dont understand about '.$slug);
-            }
-        }
-        $results = $wpdb->get_col($query);
-        return self::handle_post_results($results, $PostClass);
+    static function get_posts_from_slug($slug, $PostClass = 'TimberPost') {
+        return TimberPostGetter::get_posts($slug, $PostClass);
     }
 
     /**
      * @param array $query
      * @param string $PostClass
      * @return array
+     * @deprecated since 0.20.0
      */
-    public static function get_posts_from_wp_query($query = array(), $PostClass = 'TimberPost') {
-        $results = get_posts($query);
-        return self::handle_post_results($results, $PostClass);
+    static function get_posts_from_wp_query($query = array(), $PostClass = 'TimberPost') {
+        return TimberPostGetter::query_posts($query, $PostClass);
     }
 
     /**
      * @param array $query
      * @param string $PostClass
      * @return array|null
+     * @deprecated since 0.20.0
      */
-    public static function get_posts_from_array_of_ids($query = array(), $PostClass = 'TimberPost') {
-        if (!is_array($query) || !count($query)) {
-            return null;
-        }
-        $results = get_posts(array('post_type'=>'any', 'post__in' =>$query, 'orderby' => 'post__in', 'numberposts' => -1));
-        return self::handle_post_results($results, $PostClass);
+    static function get_posts_from_array_of_ids($query = array(), $PostClass = 'TimberPost') {
+        return TimberPostGetter::get_posts($query, $PostClass);
     }
 
     /**
      * @param array $results
      * @param string $PostClass
      * @return array
+     * @deprecated since 0.20.0
      */
-    public static function handle_post_results($results, $PostClass = 'TimberPost') {
-        $posts = array();
-        foreach ($results as $rid) {
-            $PostClassUse = $PostClass;
-            if (is_array($PostClass)) {
-                $post_type = get_post_type($rid);
-                $PostClassUse = 'TimberPost';
-                if (isset($PostClass[$post_type])) {
-                    $PostClassUse = $PostClass[$post_type];
-                } else {
-                    if (is_array($PostClass)) {
-                        TimberHelper::error_log($post_type.' of '.$rid.' not found in ' . print_r($PostClass, true));
-                    } else {
-                        TimberHelper::error_log($post_type.' not found in '.$PostClass);
-                    }
-                }
-            }
-            $post = new $PostClassUse($rid);
-            if (isset($post->ID)) {
-                $posts[] = $post;
-            }
-        }
-        return $posts;
+    static function handle_post_results($results, $PostClass = 'TimberPost') {
+        return TimberPostGetter::handle_post_results($results, $PostClass);
     }
 
     /**
      * @param $query
-     * @return mixed
+     * @return int
+     * @deprecated since 0.20.0
      */
-    public function get_pid($query) {
-        $post = self::get_posts($query);
-        return $post->ID;
-    }
-
-    public static function wp_query_has_posts() {
-        global $wp_query;
-        return ($wp_query && property_exists($wp_query, 'posts') && $wp_query->posts);
-    }
-
-    /* Post Previews
-    ================================ */
-
-    /**
-     * @param array $posts
-     * @return array
-     */
-    public static function maybe_set_preview( $posts ) {
-        if ( is_array( $posts ) && isset( $_GET['preview'] ) && $_GET['preview']
-               && isset( $_GET['preview_id'] ) && $_GET['preview_id']
-               && current_user_can( 'edit_post', $_GET['preview_id'] ) ) {
-
-            // No need to check the nonce, that already happened in _show_post_preview on init
-
-            $preview_id = $_GET['preview_id'];
-            foreach( $posts as &$post ) {
-                if ( is_object( $post ) && $post->ID == $preview_id ) {
-                    // Based on _set_preview( $post ), but adds import_custom
-                    $preview = wp_get_post_autosave( $preview_id );
-
-                    if ( is_object($preview) ) {
-
-                        $preview = sanitize_post($preview);
-
-                        $post->post_content = $preview->post_content;
-                        $post->post_title = $preview->post_title;
-                        $post->post_excerpt = $preview->post_excerpt;
-                        $post->import_custom( $preview_id );
-
-                        add_filter( 'get_the_terms', '_wp_preview_terms_filter', 10, 3 );
-                    }
-                }
-            }
-
+    static function get_pid($query) {
+        $pids = TimberPostGetter::get_pids($query);
+        if (is_array($pids) && count($pids)){
+            return $pids[0];
         }
-
-        return $posts;
-    }
-
-
-    /*  Deprecated
-    ================================ */
-
-    /**
-     * @param string $PostClass
-     * @return bool|null
-     */
-    public static function loop_to_posts($PostClass = 'TimberPost') {
-        return self::get_posts(false, $PostClass);
     }
 
     /**
-     * @return bool|int
+     * @return bool
+     * @deprecated since 0.20.0
      */
-    public static function loop_to_id() {
-        if (!self::wp_query_has_posts()) { return false; }
-
-        global $wp_query;
-        $post_num = property_exists($wp_query, 'current_post')
-                  ? $wp_query->current_post + 1
-                  : 0
-                  ;
-
-        if (!isset($wp_query->posts[$post_num])) { return false; }
-
-        return $wp_query->posts[$post_num]->ID;
+    static function wp_query_has_posts() {
+        return TimberPostGetter::wp_query_has_posts();
     }
-
 
     /* Term Retrieval
     ================================ */
@@ -358,60 +205,8 @@ class Timber {
      * @param string $TermClass
      * @return mixed
      */
-    public static function get_terms($args, $maybe_args = array(), $TermClass = 'TimberTerm'){
-        if (is_string($maybe_args) && !strstr($maybe_args, '=')){
-            //the user is sending the $TermClass in the second argument
-            $TermClass = $maybe_args;
-        }
-        if (is_string($maybe_args) && strstr($maybe_args, '=')){
-            parse_str($maybe_args, $maybe_args);
-        }
-        if (is_string($args) && strstr($args, '=')){
-            //a string and a query string!
-            $parsed = TimberTermGetter::get_term_query_from_query_string($args);
-            if (is_array($maybe_args)){
-                $parsed->args = array_merge($parsed->args, $maybe_args);
-            }
-            return self::handle_term_query($parsed->taxonomies, $parsed->args, $TermClass);
-        } else if (is_string($args)){
-            //its just a string with a single taxonomy
-            $parsed = TimberTermGetter::get_term_query_from_string($args);
-            if (is_array($maybe_args)){
-                $parsed->args = array_merge($parsed->args, $maybe_args);
-            }
-            return self::handle_term_query($parsed->taxonomies, $parsed->args, $TermClass);
-        } else if (is_array($args) && TimberHelper::is_array_assoc($args)){
-            //its an associative array, like a good ole query
-            $parsed = TimberTermGetter::get_term_query_from_assoc_array($args);
-            return self::handle_term_query($parsed->taxonomies, $parsed->args, $TermClass);
-        } else if (is_array($args)){
-            //its just an array of strings or IDs (hopefully)
-            $parsed = TimberTermGetter::get_term_query_from_array($args);
-            if (is_array($maybe_args)){
-                $parsed->args = array_merge($parsed->args, $maybe_args);
-            }
-            return self::handle_term_query($parsed->taxonomies, $parsed->args, $TermClass);
-        } else {
-            //no clue, what you talkin' bout?
-            return null;
-        }
-    }
-
-    /**
-     * @param string|array $taxonomies
-     * @param string|array $args
-     * @param $TermClass
-     * @return mixed
-     */
-    public static function handle_term_query($taxonomies, $args, $TermClass){
-        if (!isset($args['hide_empty'])){
-            $args['hide_empty'] = false;
-        }
-        $terms = get_terms($taxonomies, $args);
-        foreach($terms as &$term){
-            $term = new $TermClass($term->term_id, $term->taxonomy);
-        }
-        return $terms;
+    public static function get_terms($args = null, $maybe_args = array(), $TermClass = 'TimberTerm'){
+        return TimberTermGetter::get_terms($args, $maybe_args, $TermClass);
     }
 
     /* Site Retrieval
@@ -447,7 +242,7 @@ class Timber {
         $data['wp_head'] = TimberHelper::function_wrapper('wp_head');
         $data['wp_footer'] = TimberHelper::function_wrapper('wp_footer');
         $data['body_class'] = implode(' ', get_body_class());
-        
+
         $data['site'] = new TimberSite();
         $data['theme'] = $data['site']->theme;
         //deprecated, these should be fetched via TimberSite or TimberTheme
@@ -455,6 +250,9 @@ class Timber {
         $data['language_attributes'] = TimberHelper::function_wrapper('language_attributes');
         $data['stylesheet_uri'] = get_stylesheet_uri();
         $data['template_uri'] = get_template_directory_uri();
+
+        $data['posts'] = Timber::query_posts();
+        
         //deprecated, this should be fetched via TimberMenu
         if (function_exists('wp_nav_menu')) {
             $locations = get_nav_menu_locations();
@@ -601,7 +399,7 @@ class Timber {
     /*  Routes
     ================================ */
 
-    public function init_routes() {
+    function init_routes() {
         global $timber;
         if (isset($timber->router)) {
             $route = $timber->router->matchCurrentRequest();
@@ -651,13 +449,20 @@ class Timber {
     }
 
     /**
+     * @deprecated since 0.20.0
+     */
+    public static function load_template($template, $query = false, $force_header = 0, $tparams = false) {
+        return self::load_view($template, $query, $force_header, $tparams);
+    }
+
+    /**
      * @param array $template
      * @param mixed $query
      * @param int $force_header
      * @param bool $tparams
      * @return bool
      */
-    public static function load_template($template, $query = false, $force_header = 0, $tparams = false) {
+    public static function load_view($template, $query = false, $force_header = 0, $tparams = false) {
 
         $fullPath = is_readable($template);
         if (!$fullPath) {
@@ -765,6 +570,7 @@ class Timber {
     /**
      * @param int $offset
      * @return string
+     * @deprecated since 0.20.0
      */
     public static function get_calling_script_path($offset = 0) {
         $dir = self::get_calling_script_dir($offset);
@@ -774,6 +580,7 @@ class Timber {
     /**
      * @param int $offset
      * @return string|null
+     * @deprecated since 0.20.0
      */
     public static function get_calling_script_dir($offset = 0) {
         $caller = null;
@@ -798,21 +605,12 @@ class Timber {
     }
 
     /**
-     * @param string|array $arg
+     * @param string|array $args
      * @return bool
+     * @deprecated since 0.20.0
      */
-    public static function is_post_class_or_class_map($arg){
-        if (is_string($arg) && class_exists($arg)) {
-            return true;
-        }
-        if (is_array($arg)) {
-            foreach ($arg as $item) {
-                if (is_string($item) && class_exists($item)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    public static function is_post_class_or_class_map($args){
+        return TimberPostGetter::is_post_class_or_class_map($args);
     }
 
 }

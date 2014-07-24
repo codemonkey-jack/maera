@@ -1,17 +1,17 @@
 <?php
 
-class TimberUser extends TimberCore
-{
+class TimberUser extends TimberCore implements TimberCoreInterface {
 
-    public $_link;
     public $object_type = 'user';
-
     public static $representation = 'user';
 
+    public $_link;
+
     public $display_name;
+    public $id;
     public $name;
     public $user_nicename;
-
+    
     /**
      * @param int|bool $uid
      */
@@ -82,6 +82,7 @@ class TimberUser extends TimberCore
             }
             $this->ID = $uid;
             $this->id = $uid;
+            $this->name = $this->name();
             $this->import_custom();
         }
     }
