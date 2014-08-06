@@ -80,7 +80,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Excerpt
 			add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
-			add_filter( 'shoestrap/excerpt_more', array( $this, 'excerpt_more' ), 10, 2 );
+			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ), 10, 2 );
 
 			add_filter( 'shoestrap/compiler/variables', array( $this, 'compiler_variables' ) );
 			add_action( 'shoestrap/wrap/before', array( $this, 'jumbotron_html' ), 5 );
