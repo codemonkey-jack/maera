@@ -147,7 +147,7 @@ function shoestrap_get_post_teaser( $post_id ) {
 		} else {
 
 			$excerpt_length = apply_filters( 'excerpt_length', 55 );
-			$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+			$excerpt_more   = apply_filters( 'shoestrap/excerpt_more', ' ' . '[&hellip;]', $post_id );
 			$content        .= wp_trim_words( $content_post->post_content, $excerpt_length, $excerpt_more );
 
 		}

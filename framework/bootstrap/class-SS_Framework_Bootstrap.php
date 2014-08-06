@@ -80,7 +80,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Excerpt
 			add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
-			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
+			add_filter( 'shoestrap/excerpt_more', array( $this, 'excerpt_more' ), 10, 2 );
 
 			add_filter( 'shoestrap/compiler/variables', array( $this, 'compiler_variables' ) );
 			add_action( 'shoestrap/wrap/before', array( $this, 'jumbotron_html' ), 5 );
@@ -1659,10 +1659,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * The "more" text
 		 */
-		function excerpt_more( $more ) {
+		function excerpt_more( $more, $post_id ) {
 
 			$continue_text = get_theme_mod( 'post_excerpt_link_text', 'Continued' );
-			return ' &hellip; <a href="' . get_permalink() . '">' . $continue_text . '</a>';
+			return ' &hellip; <a href="' . get_permalink( $post_id ) . '">' . $continue_text . '</a>';
 
 		}
 
