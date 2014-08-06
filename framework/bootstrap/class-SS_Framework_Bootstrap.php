@@ -890,7 +890,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return $variables;
 		}
 
-
 		/**
 		 * CSS rules for typography options
 		 */
