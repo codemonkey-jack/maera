@@ -27,7 +27,7 @@ class Kirki_Customize_Sliderui_Control extends WP_Customize_Control {
 				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
 			<?php endif; ?>
 
-			<input type="text" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
+			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
 
 		</label>
 

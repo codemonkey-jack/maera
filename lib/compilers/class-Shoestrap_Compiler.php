@@ -155,7 +155,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 			// Get the file version based on its filemtime
 			if ( $target == 'ver' ) {
 				if ( ! get_transient( 'shoestrap_stylesheet_time' ) ) {
-					set_transient( 'shoestrap_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
+					//set_transient( 'shoestrap_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
 				}
 
 				$value = get_transient( 'shoestrap_stylesheet_time' );
