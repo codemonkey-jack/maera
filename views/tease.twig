@@ -3,12 +3,11 @@
 
 	{% block content %}
 
-		{% do action( 'shoestrap/in_article/top' ) %}
+		{% do action( 'shoestrap/in_article/top', post.ID ) %}
 
 		{% include 'parts/tease-title.twig' %}
 
-		{% do action( 'shoestrap/entry/meta' ) %}
-
+		{% do action( 'shoestrap/entry/meta', post.ID ) %}
 
 		<div class="entry-summary">
 			{{ function( 'shoestrap_get_post_teaser', post.ID ) }}
@@ -16,7 +15,7 @@
 		</div>
 
 		<footer class="entry-footer">
-			{% do action( 'shoestrap/entry/footer' ) %}
+			{% do action( 'shoestrap/entry/footer', post.ID ) %}
 		</footer>
 
 	{% endblock %}

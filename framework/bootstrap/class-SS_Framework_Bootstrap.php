@@ -121,6 +121,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			add_filter( 'shoestrap/topbar/menu/class', array( $this, 'navbar_links_alignment' ) );
 
+			add_action( 'shoestrap/topbar/inside/end', array( $this, 'social_links_navbar_content' ) );
+
 		}
 
 
@@ -259,8 +261,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$metas       = get_theme_mod( 'shoestrap_entry_meta_config', 'post-format, date, author, comments' );
 			$date_format = get_theme_mod( 'date_meta_format', 1 );
 
-			$categories_list = has_category() ? get_the_category_list( __( ', ', 'shoestrap' ) ) : false;
-			$tag_list        = has_tag() ? get_the_tag_list( '', __( ', ', 'shoestrap' ) ) : false;
+			$categories_list = has_category( '', $post_id ) ? get_the_category_list( __( ', ', 'shoestrap' ), '', $post_id ) : false;
+			$tag_list        = has_tag( '', $post_id ) ? get_the_tag_list( '', __( ', ', 'shoestrap' ) ) : false;
 
 			// No need to proceed if the option is empty
 			if ( empty( $metas ) ) {
@@ -347,19 +349,19 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 						if ( $date_format == 0 ) {
 
-							$text = esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) );
+							$text = esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date( '', $post_id ) ) );
 							$icon = "el-icon-calendar icon";
 
 						} elseif ( $date_format == 1 ) {
 
-							$text = sprintf( human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago');
+							$text = sprintf( human_time_diff( get_the_time('U', $post_id ), current_time('timestamp') ) . ' ago');
 							$icon = "el-icon-time icon";
 
 						}
 
 						$content .= sprintf( '<span class="entry-date"><i class="' . $icon . '"></i> <a href="%1$s" rel="bookmark"><time class="entry-date" datetime="%2$s">%3$s</time></a></span>',
-							esc_url( get_permalink() ),
-							esc_attr( get_the_date( 'c' ) ),
+							esc_url( get_permalink( $post_id ) ),
+							esc_attr( get_the_date( 'c', $post_id ) ),
 							$text
 						);
 
@@ -1696,7 +1698,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		* Build the social links
 		*/
-		function social_links( $before = '', $after = '', $separator = '' ) {
+		function social_links_builder( $before = '', $after = '', $separator = '' ) {
 
 			$social_links = array(
 				'blogger'     => __( 'Blogger', 'shoestrap' ),
@@ -1735,6 +1737,28 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			$content .= $after;
 
+		}
+
+		/**
+		 * Social links in navbars
+		 */
+		function social_links_navbar_content() {
+
+			$social_mode = get_theme_mod( 'navbar_social', 'off' );
+
+			$content = 'dfssf';
+
+			if ( 'inline' == $social_mode ) {
+
+				$before    = '<ul class="nav navbar-nav"><li>';
+				$after     = '</li></ul>';
+				$separator = '</li><li>';
+
+			}
+
+			$content = $this->social_links_builder( $before, $after, $separator );
+
+			echo $content;
 		}
 
 		/**
