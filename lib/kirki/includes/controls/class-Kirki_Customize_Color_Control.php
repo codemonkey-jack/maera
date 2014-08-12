@@ -36,7 +36,7 @@ class Kirki_Customize_Color_Control extends WP_Customize_Control {
 	public function __construct( $manager, $id, $args = array() ) {
 		$this->statuses = array( '' => __('Default') );
 		parent::__construct( $manager, $id, $args );
-        $this->framework_var = $args['framework_var'];
+        $this->framework_var = ( isset( $args['framework_var'] )&& ! is_null( $args['framework_var'] ) ) ? $args['framework_var'] : null;
 	}
 
 	/**
