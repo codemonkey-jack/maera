@@ -1707,7 +1707,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				'facebook'    => __( 'Facebook', 'shoestrap' ),
 				'flickr'      => __( 'Flickr', 'shoestrap' ),
 				'github'      => __( 'Github', 'shoestrap' ),
-				'google_plus' => __( 'Google+', 'shoestrap' ),
+				'googleplus' => __( 'Google+', 'shoestrap' ),
 				'instagram'   => __( 'Instagram', 'shoestrap' ),
 				'linkedin'    => __( 'LinkedIn', 'shoestrap' ),
 				'myspace'     => __( 'MySpace', 'shoestrap' ),
@@ -1729,12 +1729,19 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$link = get_theme_mod( $social_link . '_link', '' );
 
 				if ( '' != esc_url( $link ) ) {
-					$content .= '<a role="link" aria-labelledby="' . $label . '" href="' . $link . '" target="_blank"><i class="el-icon-' . $link . '"></i></a>';
+					$content .= '<a role="link" aria-labelledby="' . $label . '" href="' . $link . '" target="_blank" title="' . $label . '"><i class="el-icon-' . $social_link . '"></i>';
+
+					if ( 'dropdown' == get_theme_mod( 'navbar_social', 'off' ) ) {
+						$content .= '&nbsp;'.$label;
+					}
+					$content .= '</a>';
 					$content .= $separator;
 				}
 			}
 
 			$content .= $after;
+
+			return $content;
 
 		}
 
@@ -1743,14 +1750,22 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function social_links_navbar_content() {
 
-			$social_mode = get_theme_mod( 'navbar_social', 'off' );
+			$content = $before = $after = $separator = '';
 
-			$content = 'dfssf';
+			$social_mode = get_theme_mod( 'navbar_social', 'off' );
 
 			if ( 'inline' == $social_mode ) {
 
-				$before    = '<ul class="nav navbar-nav"><li>';
+				$before    = '<ul class="nav navbar-nav navbar-inline-socials"><li>';
 				$after     = '</li></ul>';
+				$separator = '</li><li>';
+
+			}
+
+			if ( 'dropdown' == $social_mode ) {
+
+				$before    = '<ul class="nav navbar-nav navbar-dropdown-socials"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"><i class="el-icon-network"></i>&nbsp;<b class="caret"></b></a><ul class="dropdown-menu" role="menu"><li>';
+				$after     = '</li></ul></li></ul>';
 				$separator = '</li><li>';
 
 			}
