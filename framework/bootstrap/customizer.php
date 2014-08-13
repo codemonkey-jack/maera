@@ -8,22 +8,33 @@ function shoestrap_customizer_sections( $wp_customize ) {
 	// Remove the "Navigation" menu so that we may add it manually using a different priority
 	$wp_customize->remove_section( 'nav' );
 
-	// Please note the "General" section is added on the theme core and not a framework.
+	$panels = array(
+		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ), 'priority' => 20 ),
+		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ), 'description' => __( 'Set the site typography options', 'shoestrap' ), 'priority' => 30 ),
+	);
 
+	// Please note the "General" section is added on the theme core and not a framework.
 	$sections = array(
-		'general'    => array( 'title' => __( 'General', 'shoestrap' ),         'priority' => 5 ),
-		'background' => array( 'title' => __( 'Background', 'shoestrap' ),      'priority' => 10 ),
-		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ),      'priority' => 11 ),
-		'colors'     => array( 'title' => __( 'Colors', 'shoestrap' ),          'priority' => 12 ),
-		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),          'priority' => 13 ),
-		'blog'       => array( 'title' => __( 'Blog', 'shoestrap' ),            'priority' => 14 ),
-		'feat'       => array( 'title' => __( 'Featured Images', 'shoestrap' ), 'priority' => 15 ),
-		'nav'        => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 16 ),
-		'header'     => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 17 ),
-		'jumbotron'  => array( 'title' => __( 'Jumbotron', 'shoestrap' ),       'priority' => 18 ),
-		'footer'     => array( 'title' => __( 'Footer', 'shoestrap' ),          'priority' => 18 ),
-		'social'     => array( 'title' => __( 'Social', 'shoestrap' ),          'priority' => 20 ),
-		'advanced'   => array( 'title' => __( 'Advanced', 'shoestrap' ),        'priority' => 21 ),
+		'general'    => array( 'title' => __( 'General', 'shoestrap' ),         'priority' => 5,  'panel' => '' ),
+		'html_bg'    => array( 'title' => __( 'HTML Background', 'shoestrap' ), 'priority' => 10, 'panel' => 'background' ),
+		'body_bg'    => array( 'title' => __( 'Body Background', 'shoestrap' ), 'priority' => 10, 'panel' => 'background' ),
+
+		'typ_family' => array( 'title' => __( 'Font-Families', 'shoestrap' ),   'priority' => 10, 'panel' => 'typography' ),
+		'typ_colors' => array( 'title' => __( 'Colors', 'shoestrap' ),          'priority' => 11, 'panel' => 'typography' ),
+		'typ_size'   => array( 'title' => __( 'Font-Size', 'shoestrap' ),       'priority' => 12, 'panel' => 'typography' ),
+		'typ_weight' => array( 'title' => __( 'Font-Weights', 'shoestrap' ),    'priority' => 13, 'panel' => 'typography' ),
+		'typ_lh'     => array( 'title' => __( 'Line Height', 'shoestrap' ),     'priority' => 14, 'panel' => 'typography' ),
+
+		'colors'     => array( 'title' => __( 'Colors', 'shoestrap' ),          'priority' => 12, 'panel' => '' ),
+		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),          'priority' => 13, 'panel' => '' ),
+		'blog'       => array( 'title' => __( 'Blog', 'shoestrap' ),            'priority' => 14, 'panel' => '' ),
+		'feat'       => array( 'title' => __( 'Featured Images', 'shoestrap' ), 'priority' => 15, 'panel' => '' ),
+		'nav'        => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 16, 'panel' => '' ),
+		'header'     => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 17, 'panel' => '' ),
+		'jumbotron'  => array( 'title' => __( 'Jumbotron', 'shoestrap' ),       'priority' => 18, 'panel' => '' ),
+		'footer'     => array( 'title' => __( 'Footer', 'shoestrap' ),          'priority' => 18, 'panel' => '' ),
+		'social'     => array( 'title' => __( 'Social', 'shoestrap' ),          'priority' => 20, 'panel' => '' ),
+		'advanced'   => array( 'title' => __( 'Advanced', 'shoestrap' ),        'priority' => 21, 'panel' => '' ),
 	);
 
 	foreach ( $sections as $section => $args ) {
@@ -31,9 +42,22 @@ function shoestrap_customizer_sections( $wp_customize ) {
 		$wp_customize->add_section( $section, array(
 			'title'    => $args['title'],
 			'priority' => $args['priority'],
+			'panel'    => $args['panel']
 		) );
 
 	}
+
+	foreach ( $panels as $panel => $args ) {
+		$wp_customize->add_panel( $panel, array(
+			'priority'       => $args['priority'],
+			'capability'     => 'edit_theme_options',
+			'theme_supports' => '',
+			'title'          => $args['title'],
+			'description'    => $args['description']
+		) );
+	}
+
+
 
 }
 add_action( 'customize_register', 'shoestrap_customizer_sections' );
@@ -752,20 +776,11 @@ function shoestrap_customizer_settings( $controls ) {
 	// BACKGROUND
 	//-------------------------------------------------
 
-
-	$controls[] = array(
-		'type'     => 'group_title',
-		'label'    => __( 'General Background', 'shoestrap' ),
-		'priority' => 1,
-		'section'  => 'background',
-		'setting'  => 'separator' . rand( 999, 9999 ),
-	);
-
 	$controls[] = array(
 		'type'         => 'background',
 		'setting'      => 'html_bg',
 		'label'        => __( 'General Background', 'shoestrap' ),
-		'section'      => 'background',
+		'section'      => 'html_bg',
 		'default'      => array(
 			'color'    => '#ffffff',
 			'image'    => null,
@@ -780,18 +795,10 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'group_title',
-		'label'    => __( 'Body Background', 'shoestrap' ),
-		'priority' => 30,
-		'section'  => 'background',
-		'setting'  => 'separator' . rand( 999, 9999 ),
-	);
-
-	$controls[] = array(
 		'type'         => 'background',
 		'setting'      => 'body_bg',
 		'label'        => __( 'Body Background', 'shoestrap' ),
-		'section'      => 'background',
+		'section'      => 'body_bg',
 		'default'      => array(
 			'color'    => '#ffffff',
 			'image'    => null,
@@ -813,7 +820,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'text',
 		'setting'  => 'font_base_family',
 		'label'    => __( 'Base font', 'shoestrap' ),
-		'section'  => 'typography',
+		'section'  => 'typ_family',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
 	);
@@ -823,7 +830,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'font_base_google',
 		'label'    => __( 'Google-Font', 'shoestrap' ),
 		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'shoestrap' ),
-		'section'  => 'typography',
+		'section'  => 'typ_family',
 		'default'  => 0,
 		'priority' => 21,
 	);
@@ -833,7 +840,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'font_base_google_subsets',
 		'label'    => __( 'Google-Font subsets', 'shoestrap' ),
 		'description' => __( 'The subsets used from Google\'s API.', 'shoestrap' ),
-		'section'  => 'typography',
+		'section'  => 'typ_family',
 		'default'  => 'latin',
 		'priority' => 22,
 		'choices'  => array(
@@ -849,9 +856,10 @@ function shoestrap_customizer_settings( $controls ) {
 
 	$controls[] = array(
 		'type'     => 'color',
+		'label'    => __( 'Base font color', 'shoestrap' ),
 		'setting'  => 'font_base_color',
 		'description' =>   __( 'Font Color', 'shoestrap' ),
-		'section'  => 'typography',
+		'section'  => 'typ_colors',
 		'default'  => '#333333',
 		'priority' => 23,
 	);
@@ -903,7 +911,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'headers_font_family',
 		'label'    => __( 'Headers font', 'shoestrap' ),
 		'subtitle' => __( 'Headers font-family', 'shoestrap' ),
-		'section'  => 'typography',
+		'section'  => 'typ_family',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 30,
 	);
@@ -913,7 +921,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'headers_font_google',
 		'label'    => __( 'Google-Font', 'shoestrap' ),
 		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'shoestrap' ),
-		'section'  => 'typography',
+		'section'  => 'typ_family',
 		'default'  => 0,
 		'priority' => 31,
 	);
@@ -923,7 +931,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'font_headers_google_subsets',
 		'label'    => __( 'Google-Font subsets', 'shoestrap' ),
 		'description' => __( 'The subsets used from Google\'s API.', 'shoestrap' ),
-		'section'  => 'typography',
+		'section'  => 'typ_family',
 		'default'  => 'latin',
 		'priority' => 32,
 		'choices'  => array(
@@ -934,62 +942,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'cyrillic' 		=> __( 'Cyrillic', 'shoestrap' ),
 			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'shoestrap' ),
 			'vietnamese' 	=> __( 'Vietnamese', 'shoestrap' ),
-		),
-	);
-
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'headers_color_toggle',
-		'label'    => __( 'Headers colors', 'shoestrap' ),
-		'section'  => 'typography',
-		'default'  => 0,
-		'priority' => 39,
-		'choices'  => array(
-			0 => __( 'Off', 'shoestrap' ),
-			1 => __( 'On', 'shoestrap' )
-		),
-	);
-
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'headers_weight_toggle',
-		'label'    => __( 'Headers weight', 'shoestrap' ),
-		'section'  => 'typography',
-		'default'  => 0,
-		'priority' => 49,
-		'choices'  => array(
-			0 => __( 'Off', 'shoestrap' ),
-			1 => __( 'On', 'shoestrap' )
-		),
-	);
-
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'headers_size_toggle',
-		'label'    => __( 'Headers size', 'shoestrap' ),
-		'section'  => 'typography',
-		'default'  => 0,
-		'priority' => 59,
-		'choices'  => array(
-			0 => __( 'Off', 'shoestrap' ),
-			1 => __( 'On', 'shoestrap' )
-		),
-	);
-
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'headers_height_toggle',
-		'label'    => __( 'Headers height', 'shoestrap' ),
-		'section'  => 'typography',
-		'default'  => 0,
-		'priority' => 69,
-		'choices'  => array(
-			0 => __( 'Off', 'shoestrap' ),
-			1 => __( 'On', 'shoestrap' )
 		),
 	);
 
@@ -1008,18 +960,17 @@ function shoestrap_customizer_settings( $controls ) {
 		$controls[] = array(
 			'type'     => 'color',
 			'setting'  => 'font_' . $header . '_color',
-			'subtitle' => $header . ' ' . __( 'Color', 'shoestrap' ),
-			'section'  => 'typography',
+			'label'    => $header . ' ' . __( 'Color', 'shoestrap' ),
+			'section'  => 'typ_colors',
 			'default'  => '#333333',
 			'priority' => 40 + $i,
-			'required' => array( 'headers_color_toggle' => 1 )
 		);
 
 		$controls[] = array(
 			'type'     => 'slider',
 			'setting'  => 'font_' . $header . '_weight',
-			'subtitle' => $header . ' ' . __( 'Font Weight.', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . 400,
-			'section'  => 'typography',
+			'label'    => $header . ' ' . __( 'Font Weight.', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . 400,
+			'section'  => 'typ_weight',
 			'default'  => 400,
 			'priority' => 50 + $i,
 			'choices'  => array(
@@ -1027,14 +978,13 @@ function shoestrap_customizer_settings( $controls ) {
 				'max'  => 900,
 				'step' => 100,
 			),
-			'required' => array( 'headers_weight_toggle' => 1 )
 		);
 
 		$controls[] = array(
 			'type'     => 'slider',
 			'setting'  => 'font_' . $header .'_size',
-			'subtitle' => $header . ' ' . __( 'Font Size (%)', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['size'],
-			'section'  => 'typography',
+			'label'    => $header . ' ' . __( 'Font Size (%)', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['size'],
+			'section'  => 'typ_size',
 			'default'  => $values['size'],
 			'priority' => 60 + $i,
 			'choices'  => array(
@@ -1042,14 +992,13 @@ function shoestrap_customizer_settings( $controls ) {
 				'max'  => 300,
 				'step' => 1,
 			),
-			'required' => array( 'headers_size_toggle' => 1 )
 		);
 
 		$controls[] = array(
 			'type'     => 'slider',
 			'setting'  => 'font_' . $header . '_height',
-			'subtitle' => $header . ' ' . __( 'Line Height', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['height'],
-			'section'  => 'typography',
+			'label'    => $header . ' ' . __( 'Line Height', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['height'],
+			'section'  => 'typ_lh',
 			'default'  => $values['height'],
 			'priority' => 70 + $i,
 			'choices'  => array(
@@ -1057,7 +1006,6 @@ function shoestrap_customizer_settings( $controls ) {
 				'max'  => 3,
 				'step' => 0.1,
 			),
-			'required' => array( 'headers_height_toggle' => 1 )
 		);
 
 		$i++;
