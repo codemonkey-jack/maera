@@ -36,24 +36,24 @@ function shoestrap_scripts() {
     $caching = apply_filters( 'shoestrap/styles/caching', false );
 
     // If we're on the customizer, then set caching to false
-    if ( isset( $wp_customize ) ) {
-        $caching = false;
+    // if ( isset( $wp_customize ) ) {
+    //     $caching = false;
 
-        // Load framework less files 
-        wp_enqueue_style( 'framework-less-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/less/app.less', false, null, false );
-        add_filter('style_loader_tag', 'shoestrap_less_tag_loader', 5, 2);
-
-
-        // Load less.js listener and kirki javascript object
-        wp_register_script( 'lessjs-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer-head.js', false, null, false );
-
-        wp_enqueue_script( 'lessjs-vars' ); 
+    //     // Load framework less files
+    //     wp_enqueue_style( 'framework-less-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/less/app.less', false, null, false );
+    //     add_filter('style_loader_tag', 'shoestrap_less_tag_loader', 5, 2);
 
 
-        // Load less.js
-        wp_register_script( 'lessjs', SHOESTRAP_ASSETS_URL . '/js/less.min.js', 'lessjs-vars', null, false );
-        wp_enqueue_script( 'lessjs' );
-    }
+    //     // Load less.js listener and kirki javascript object
+    //     wp_register_script( 'lessjs-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer-head.js', false, null, false );
+
+    //     wp_enqueue_script( 'lessjs-vars' );
+
+
+    //     // Load less.js
+    //     wp_register_script( 'lessjs', SHOESTRAP_ASSETS_URL . '/js/less.min.js', 'lessjs-vars', null, false );
+    //     wp_enqueue_script( 'lessjs' );
+    // }
 
     if ( ! $caching ) {
 
@@ -95,21 +95,21 @@ add_action( 'customize_save_after', 'shoestrap_reset_style_cache_on_customizer_s
 /**
  * Set rel attribute for less stylesheet so that less.js imports stylesheet
  */
-function shoestrap_less_tag_loader($tag, $handle) {
+// function shoestrap_less_tag_loader($tag, $handle) {
 
-    global $wp_styles;
-    $match_pattern = '/\.less$/U';
-    if ( preg_match( $match_pattern, $wp_styles->registered[$handle]->src ) ) {
-        $handle = $wp_styles->registered[$handle]->handle;
-        $media = $wp_styles->registered[$handle]->args;
-        $href = $wp_styles->registered[$handle]->src . '?ver=' . $wp_styles->registered[$handle]->ver;
-        $rel = isset($wp_styles->registered[$handle]->extra['alt']) && $wp_styles->registered[$handle]->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
-        $title = isset($wp_styles->registered[$handle]->extra['title']) ? "title='" . esc_attr( $wp_styles->registered[$handle]->extra['title'] ) . "'" : '';
+//     global $wp_styles;
+//     $match_pattern = '/\.less$/U';
+//     if ( preg_match( $match_pattern, $wp_styles->registered[$handle]->src ) ) {
+//         $handle = $wp_styles->registered[$handle]->handle;
+//         $media = $wp_styles->registered[$handle]->args;
+//         $href = $wp_styles->registered[$handle]->src . '?ver=' . $wp_styles->registered[$handle]->ver;
+//         $rel = isset($wp_styles->registered[$handle]->extra['alt']) && $wp_styles->registered[$handle]->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
+//         $title = isset($wp_styles->registered[$handle]->extra['title']) ? "title='" . esc_attr( $wp_styles->registered[$handle]->extra['title'] ) . "'" : '';
 
-        $tag = "<link rel='stylesheet/less' id='$handle' $title href='$href' type='text/less' media='$media' />";
-    }
-    return $tag;
-}
+//         $tag = "<link rel='stylesheet/less' id='$handle' $title href='$href' type='text/less' media='$media' />";
+//     }
+//     return $tag;
+// }
 
 function shoestrap_customizer_live_preview() {
     global $active_framework;
