@@ -16,7 +16,7 @@ function shoestrap_customizer_config() {
 		'color_back'    => '#222',
 		'url_path'      => get_template_directory_uri() . '/lib/kirki/',
 		'stylesheet_id' => 'shoestrap',
-		'live_css'      => false,
+		// 'live_css'      => false,
 
 	);
 

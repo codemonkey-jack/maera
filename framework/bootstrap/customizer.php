@@ -867,8 +867,8 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_base_weight',
-		'subtitle' => __( 'Font Weight', 'shoestrap' ),
-		'section'  => 'typography',
+		'label'    => __( 'Base Font Weight', 'shoestrap' ),
+		'section'  => 'typ_weight',
 		'default'  => 400,
 		'priority' => 24,
 		'choices'  => array(
@@ -881,8 +881,8 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_base_size',
-		'subtitle' => __( 'Font Size', 'shoestrap' ),
-		'section'  => 'typography',
+		'label'    => __( 'Base Font Size', 'shoestrap' ),
+		'section'  => 'typ_size',
 		'default'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5,
 		'priority' => 25,
 		'choices'  => array(
@@ -895,8 +895,8 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_base_height',
-		'subtitle' => __( 'Line Height', 'shoestrap' ),
-		'section'  => 'typography',
+		'label'    => __( 'Base Line Height', 'shoestrap' ),
+		'section'  => 'typ_lh',
 		'default'  => 1.4,
 		'priority' => 26,
 		'choices'  => array(
@@ -1496,15 +1496,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'danger'  => __( 'Danger', 'shoestrap' ),
 		),
 		'priority' => 3,
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'social_sharing_archives',
-		'label'    => __( 'Show in post archives', 'shoestrap' ),
-		'section'  => 'social',
-		'default'  => 0,
-		'priority' => 4,
 	);
 
 	$post_types = get_post_types( array( 'public' => true ), 'names' );

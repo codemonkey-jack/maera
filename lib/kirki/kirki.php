@@ -98,6 +98,39 @@ class Kirki {
 		?>
 
 		<style>
+
+			<?php if ( kirki_get_brightness( $color_back ) > 100 ) : ?>
+				#customize-theme-controls .accordion-section-title { color: #222; }
+				.control-section.control-panel>.accordion-section-title:after {
+					background: rgba(255,255,255,0.3);
+					border-left: rgba(255,255,255,0.4);
+					color: #222;
+				}
+			<?php else : ?>
+				#customize-theme-controls .accordion-section-title { color: #fff; }
+				.control-section.control-panel>.accordion-section-title:after {
+					background: rgba(0,0,0,0.3);
+					border-left: rgba(0,0,0,0.4);
+					color: #fff;
+				}
+			<?php endif; ?>
+
+			<?php if ( kirki_get_brightness( $color_accent ) > 100 ) : ?>
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after,
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
+					background: rgba(255,255,255,0.3);
+					border: none;
+					color: #222;
+				}
+			<?php else : ?>
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after,
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
+					background: rgba(0,0,0,0.3);
+					border: none;
+					color: #fff;
+				}
+			<?php endif; ?>
+
 			.wp-core-ui .button.tooltip {
 				background: <?php echo $color_active; ?>;
 			}
