@@ -43,6 +43,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Enqueue the scripts
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );
 
+			// Add the custom CSS
+			add_action( 'wp_enqueue_scripts', array( $this, 'custom_css' ), 105 );
+
 			// Add the framework Timber modifications
 			add_filter( 'timber_context', array( $this, 'timber_extras' ), 20 );
 
@@ -125,16 +128,16 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Conditions for showing share button
 			$social_share_post_types = explode(',', get_theme_mod('social_sharing_singular' ) );
-			
+
 			foreach ($social_share_post_types as $key) {
 
 				if ( $key == 'page' ) {
 					if ( get_theme_mod('social_sharing_location') == 'top' ) {
 						add_action( 'shoestrap/page/pre_content',   array( $this, 'social_sharing' ) );
-					} 
+					}
 					elseif ( get_theme_mod('social_sharing_location') == 'bottom' ) {
 						add_action( 'shoestrap/page/after_content', array( $this, 'social_sharing' ) );
-					} 
+					}
 					elseif ( get_theme_mod('social_sharing_location') == 'both' ) {
 						add_action( 'shoestrap/page/pre_content',   array( $this, 'social_sharing' ) );
 						add_action( 'shoestrap/page/after_content', array( $this, 'social_sharing' ) );
@@ -143,10 +146,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				if ( $key == 'post' ) {
 					if ( get_theme_mod('social_sharing_location') == 'top' ) {
 						add_action( 'shoestrap/single/pre_content',   array( $this, 'social_sharing' ) );
-					} 
+					}
 					elseif ( get_theme_mod('social_sharing_location') == 'bottom' ) {
 						add_action( 'shoestrap/single/after_content', array( $this, 'social_sharing' ) );
-					} 
+					}
 					elseif ( get_theme_mod('social_sharing_location') == 'both' ) {
 						add_action( 'shoestrap/single/pre_content',   array( $this, 'social_sharing' ) );
 						add_action( 'shoestrap/single/after_content', array( $this, 'social_sharing' ) );
@@ -1960,6 +1963,17 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// If at least ONE social share option is enabled then echo the content
 			if ( ! empty( $networks ) ) {
 				echo $content;
+			}
+		}
+
+		/**
+		 * Include the custom CSS
+		 */
+		function custom_css() {
+			$css = get_theme_mod( 'css', '' );
+
+			if ( ! empty( $css ) ) {
+				wp_add_inline_style( 'shoestrap', $css );
 			}
 		}
 
