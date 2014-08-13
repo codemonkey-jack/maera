@@ -51,7 +51,7 @@ function kirki_background_css() {
 					$styles .= '}';
 				}
 
-				//wp_add_inline_style( $config['stylesheet_id'], $styles );
+				wp_add_inline_style( $config['stylesheet_id'], $styles );
 
 			}
 
