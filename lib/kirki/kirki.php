@@ -166,6 +166,17 @@ class Kirki {
 				background: <?php echo $color_active; ?>;
 			}
 
+			#customize-theme-controls .control-section.control-panel .accordion-section-title,
+			#customize-theme-controls .control-section.control-panel .accordion-section-title,
+			#customize-theme-controls .control-section.control-panel .accordion-section-title {
+				background: <?php echo $color_back; ?>;
+			}
+
+			#customize-theme-controls .control-section.control-panel .accordion-section-title:focus,
+			#customize-theme-controls .control-section.control-panel .accordion-section-title:hover {
+				background: <?php echo $color_active; ?>;
+			}
+
 			.wp-core-ui .button-primary {
 				background: <?php echo $color_active; ?>;
 			}
