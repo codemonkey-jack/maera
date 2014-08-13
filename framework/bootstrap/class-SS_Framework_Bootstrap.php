@@ -123,6 +123,38 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			add_action( 'shoestrap/topbar/inside/end', array( $this, 'social_links_navbar_content' ) );
 
+			// Conditions for showing share button
+			$social_share_post_types = explode(',', get_theme_mod('social_sharing_singular' ) );
+			
+			foreach ($social_share_post_types as $key) {
+
+				if ( $key == 'page' ) {
+					if ( get_theme_mod('social_sharing_location') == 'top' ) {
+						add_action( 'shoestrap/page/pre_content',   array( $this, 'social_sharing' ) );
+					} 
+					elseif ( get_theme_mod('social_sharing_location') == 'bottom' ) {
+						add_action( 'shoestrap/page/after_content', array( $this, 'social_sharing' ) );
+					} 
+					elseif ( get_theme_mod('social_sharing_location') == 'both' ) {
+						add_action( 'shoestrap/page/pre_content',   array( $this, 'social_sharing' ) );
+						add_action( 'shoestrap/page/after_content', array( $this, 'social_sharing' ) );
+					}
+				}
+				if ( $key == 'post' ) {
+					if ( get_theme_mod('social_sharing_location') == 'top' ) {
+						add_action( 'shoestrap/single/pre_content',   array( $this, 'social_sharing' ) );
+					} 
+					elseif ( get_theme_mod('social_sharing_location') == 'bottom' ) {
+						add_action( 'shoestrap/single/after_content', array( $this, 'social_sharing' ) );
+					} 
+					elseif ( get_theme_mod('social_sharing_location') == 'both' ) {
+						add_action( 'shoestrap/single/pre_content',   array( $this, 'social_sharing' ) );
+						add_action( 'shoestrap/single/after_content', array( $this, 'social_sharing' ) );
+					}
+				}
+
+			}
+
 		}
 
 
@@ -1789,6 +1821,146 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 			return $classes;
+		}
+
+		/**
+		 * Build an array of the available/enabled networks for social sharing.
+		 */
+		function get_social_shares() {
+
+			$nets   = explode(',', get_theme_mod( 'share_networks' ) );
+
+			$networks = null;
+
+			foreach ($nets as $net) {
+
+				if ( $net == 'fb') {
+					$networks['facebook'] = array(
+						'icon'      => 'facebook',
+						'fullname'  => 'Facebook',
+						'url'       => 'http://www.facebook.com/sharer.php?u=' . get_permalink() . '&amp;title=' . urlencode( html_entity_decode( get_the_title(),ENT_QUOTES,'UTF-8' ) )
+					);
+				}
+
+				if ( $net == 'tw' ) {
+					$networks['twitter'] = array(
+						'icon'      => 'twitter',
+						'fullname'  => 'Twitter',
+						'url'       => 'http://twitter.com/home/?status=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) ) . ' - ' . get_permalink()
+					);
+
+					$twittername = $this->get_tw_username();
+
+					if ( $twittername != '' ) {
+						$network['twitter']['username'] = $twittername;
+						$networks['twitter']['url'] .= ' via @' . $twittername;
+					}
+				}
+
+				if ( $net == 'rd' ) {
+					$networks['reddit'] = array(
+						'icon'      => 'reddit',
+						'fullname'  => 'Reddit',
+						'url'       => 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) )
+					);
+				}
+
+				if ( $net == 'li' ) {
+					$networks['linkedin'] = array(
+						'icon'      => 'linkedin',
+						'fullname'  => 'LinkedIn',
+						'url'       => 'http://linkedin.com/shareArticle?mini=true&amp;url=' .get_permalink() . '&amp;title=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) )
+					);
+				}
+
+				if ( $net == 'gp' ) {
+					$networks['googleplus'] = array(
+						'icon'      => 'googleplus',
+						'fullname'  => 'Google+',
+						'url'       => 'https://plus.google.com/share?url=' . get_permalink()
+					);
+				}
+
+				if ( $net == 'tu' ) {
+					$networks['tumblr'] = array(
+						'icon'      => 'tumblr',
+						'fullname'  => 'Tumblr',
+						'url'       =>  'http://www.tumblr.com/share/link?url=' . urlencode( get_permalink() ) . '&amp;name=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) ) . "&amp;description=" . urlencode( get_the_excerpt() )
+					);
+				}
+
+				if ( $net == 'pi' ) {
+					$networks['pinterest'] = array(
+						'icon'      => 'pinterest',
+						'fullname'  => 'Pinterest',
+						'url'       => 'http://pinterest.com/pin/create/button/?url=' . get_permalink()
+					);
+				}
+
+				if ( $net == 'em' ) {
+					$networks['email'] = array(
+						'icon'      => 'envelope',
+						'fullname'  => 'Email',
+						'url'       => 'mailto:?subject=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) ) . '&amp;body=' . get_permalink()
+					);
+				}
+
+			}
+
+			return $networks;
+		}
+
+		/**
+		 * Properly parses the twitter URL if set
+		 */
+		function get_tw_username() {
+			$twittername  = '';
+			$twitter_link = get_theme_mod( 'twitter_link' );
+
+			if ( $twitter_link != "" ) {
+				$twitter_link = explode( '/', rtrim( $twitter_link, '/' ) );
+				$twittername = end( $twitter_link );
+			}
+
+			return $twittername;
+		}
+
+		/**
+		 * Create the social sharing buttons
+		 */
+		function social_sharing() {
+
+			// The base class for icons that will be used
+			$baseclass  = 'icon el-icon-';
+
+			// Don't show by default
+			$show = false;
+
+			// Button class
+			$button_color = get_theme_mod('social_sharing_button_class', 'default' );
+
+			// Button Text
+			$text = get_theme_mod('social_sharing_text');
+
+			// Build the content
+			$content  = '<div class="btn-group btn-group-sm social-share">';
+			$content .= '<button class="btn btn-'.$button_color.' social-share-main">'.$text.'</button>';
+
+			// An array of the available networks
+			$networks = $this->get_social_shares();
+			$networks = is_null( $networks ) ? array() : $networks;
+
+			foreach ( $networks as $network ) {
+				$content .= '<a class="btn btn-'.$button_color.' social-link" href="'.$network['url'].'" target="_blank">';
+				$content .= '<i class="' . $baseclass . $network['icon'] . '"></i>';
+				$content .= '</a>';
+			}
+			$content .= '</div>';
+
+			// If at least ONE social share option is enabled then echo the content
+			if ( ! empty( $networks ) ) {
+				echo $content;
+			}
 		}
 
 	}

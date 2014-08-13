@@ -1601,7 +1601,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'facebook'    => __( 'Facebook', 'shoestrap' ),
 		'flickr'      => __( 'Flickr', 'shoestrap' ),
 		'github'      => __( 'Github', 'shoestrap' ),
-		'googleplus' => __( 'Google+', 'shoestrap' ),
+		'googleplus'  => __( 'Google+', 'shoestrap' ),
 		'instagram'   => __( 'Instagram', 'shoestrap' ),
 		'linkedin'    => __( 'LinkedIn', 'shoestrap' ),
 		'myspace'     => __( 'MySpace', 'shoestrap' ),
