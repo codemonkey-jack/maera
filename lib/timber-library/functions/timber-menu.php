@@ -38,6 +38,7 @@ class TimberMenu extends TimberCore {
      */
     private function init($menu_id) {
         $menu = wp_get_nav_menu_items($menu_id);
+        _wp_menu_item_classes_by_context($menu);
         if (is_array($menu)){
             $menu = self::order_children($menu);
         }
@@ -46,6 +47,7 @@ class TimberMenu extends TimberCore {
         $this->import($menu_info);
         $this->ID = $this->term_id;
         $this->id = $this->term_id;
+        $this->title = $this->name;
     }
 
     /**
@@ -115,9 +117,14 @@ class TimberMenu extends TimberCore {
         foreach ($items as $item) {
             if(isset($item->ID)){
                 if (is_object($item) && get_class($item) == 'WP_Post'){
+                    $old_menu_item = $item;
                     $item = new $this->PostClass($item);
                 }
-                $index[$item->ID] = new $this->MenuItemClass($item);
+                $menu_item = new $this->MenuItemClass($item);
+                if (isset($old_menu_item)){
+                    $menu_item->import_classes($old_menu_item);
+                }
+                $index[$item->ID] = $menu_item;
             }
         }
         foreach ($index as $item) {

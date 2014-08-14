@@ -4,7 +4,7 @@ Plugin Name: Timber
 Plugin URI: http://timber.upstatement.com
 Description: The WordPress Timber Library allows you to write themes using the power Twig templates
 Author: Jared Novack + Upstatement
-Version: 0.20.1
+Version: 0.20.3
 Author URI: http://upstatement.com/
 */
 
@@ -37,6 +37,7 @@ require_once(__DIR__ . '/functions/timber-posts-collection.php');
 
 //Other 2nd-class citizens
 require_once(__DIR__ . '/functions/timber-archives.php');
+require_once(__DIR__ . '/functions/timber-routes.php');
 require_once(__DIR__ . '/functions/timber-site.php');
 require_once(__DIR__ . '/functions/timber-theme.php');
 require_once(__DIR__ . '/functions/timber-loader.php');
@@ -54,7 +55,7 @@ require_once(__DIR__ . '/functions/timber-admin.php');
  *  $posts = Timber::get_posts(array(23,24,35,67), 'InkwellArticle');
  *
  *  $context = Timber::get_context(); // returns wp favorites!
- *
+ *  $context['posts'] = $posts;
  *  Timber::render('index.twig', $context);
  */
 
@@ -69,12 +70,9 @@ class Timber {
     public static $auto_meta = true;
     public static $autoescape = false;
 
-    protected $router;
-
     public function __construct(){
         $this->test_compatibility();
         $this->init_constants();
-        add_action('init', array($this, 'init_routes'));
     }
 
     protected function test_compatibility(){
@@ -114,6 +112,20 @@ class Timber {
         return TimberPostGetter::get_posts($query, $PostClass, $return_collection);
     }
 
+    /**
+     * @param mixed $query
+     * @param string $PostClass
+     * @return array|bool|null
+     */
+    public static function query_post($query = false, $PostClass = 'TimberPost') {
+        return TimberPostGetter::query_post($query, $PostClass);
+    }
+
+    /**
+     * @param mixed $query
+     * @param string $PostClass
+     * @return array|bool|null
+     */
     public static function query_posts($query = false, $PostClass = 'TimberPost') {
         return TimberPostGetter::query_posts( $query, $PostClass );
     }
@@ -274,6 +286,8 @@ class Timber {
      */
     public static function compile($filenames, $data = array(), $expires = false, $cache_mode = TimberLoader::CACHE_USE_DEFAULT, $via_render = false) {
         $caller = self::get_calling_script_dir();
+        $caller_file = self::get_calling_script_file();
+        $caller_file = apply_filters('timber_calling_php_file', $caller_file);
         $loader = new TimberLoader($caller);
         $file = $loader->choose_template($filenames);
         $output = '';
@@ -399,43 +413,19 @@ class Timber {
     /*  Routes
     ================================ */
 
-    function init_routes() {
-        global $timber;
-        if (isset($timber->router)) {
-            $route = $timber->router->matchCurrentRequest();
-            if ($route) {
-                $callback = $route->getTarget();
-                $params = $route->getParameters();
-                $callback($params);
-            }
-        }
+    function init_routes(){
+        global $timberRoutes;
+        $timberRoutes->init();
     }
 
     /**
      * @param string $route
      * @param callable $callback
      * @param array $args
+     * @deprecated since 0.20.0
      */
     public static function add_route($route, $callback, $args = array()) {
-        global $timber;
-        if (!isset($timber->router)) {
-            if (class_exists('PHPRouter\Router')){
-                $timber->router = new PHPRouter\Router();
-                $site_url = get_bloginfo('url');
-                $site_url_parts = explode('/', $site_url);
-                $site_url_parts = array_slice($site_url_parts, 3);
-                $base_path = implode('/', $site_url_parts);
-                if (!$base_path || strpos($route, $base_path) === 0) {
-                    $base_path = '/';
-                } else {
-                    $base_path = '/' . $base_path . '/';
-                }
-                $timber->router->setBasePath($base_path);
-            }
-        }
-        if (class_exists('PHPRouter\Router')){
-            $timber->router->map($route, $callback, $args);
-        }
+        TimberRoutes::add_route($route, $callback, $args);
     }
 
     public function cancel_query(){
@@ -451,70 +441,17 @@ class Timber {
     /**
      * @deprecated since 0.20.0
      */
-    public static function load_template($template, $query = false, $force_header = 0, $tparams = false) {
-        return self::load_view($template, $query, $force_header, $tparams);
+    public static function load_template($template, $query = false, $status_code = 200, $tparams = false) {
+        return TimberRoutes::load_view($template, $query, $status_code, $tparams);
     }
 
     /**
-     * @param array $template
-     * @param mixed $query
-     * @param int $force_header
-     * @param bool $tparams
-     * @return bool
+     * @deprecated since 0.20.2
      */
-    public static function load_view($template, $query = false, $force_header = 0, $tparams = false) {
-
-        $fullPath = is_readable($template);
-        if (!$fullPath) {
-            $template = locate_template($template);
-        }
-        if ($tparams){
-            global $params;
-            $params = $tparams;
-        }
-        if ($force_header) {
-            add_filter('status_header', function($status_header, $header, $text, $protocol) use ($force_header) {
-                $text = get_status_header_desc($force_header);
-                $header_string = "$protocol $force_header $text";
-                return $header_string;
-            }, 10, 4 );
-            if (404 != $force_header) {
-                add_action('parse_query', function($query) {
-                    if ($query->is_main_query()){
-                        $query->is_404 = false;
-                    }
-                },1);
-                add_action('template_redirect', function(){
-                    global $wp_query;
-                    $wp_query->is_404 = false;
-                },1);
-            }
-        }
-
-        if ($query) {
-            add_action('do_parse_request', function() use ($query) {
-                global $wp;
-                if ( is_callable($query) )
-                    $query = call_user_func($query);
-
-                if ( is_array($query) )
-                    $wp->query_vars = $query;
-                elseif ( !empty($query) )
-                    parse_str($query, $wp->query_vars);
-                else
-                    return true; // Could not interpret query. Let WP try.
-
-                return false;
-            });
-        }
-        if ($template) {
-        	add_filter('template_include', function($t) use ($template) {
-        		return $template;
-        	});
-            return true;
-        }
-        return false;
+    public static function load_view($template, $query = false, $status_code = 200, $tparams = false) {
+        return TimberRoutes::load_view($template, $query, $status_code, $tparams);
     }
+    
 
     /*  Pagination
     ================================ */
@@ -577,12 +514,22 @@ class Timber {
         return str_replace(ABSPATH, '', realpath($dir));
     }
 
+    public static function get_calling_script_dir($offset = 0) {
+        $caller = self::get_calling_script_file($offset);
+        if (!is_null($caller)){
+            $pathinfo = pathinfo($caller);
+            $dir = $pathinfo['dirname'];
+            return $dir;
+        }
+        return null;
+    }
+
     /**
      * @param int $offset
      * @return string|null
      * @deprecated since 0.20.0
      */
-    public static function get_calling_script_dir($offset = 0) {
+    public static function get_calling_script_file($offset = 0) {
         $caller = null;
         $backtrace = debug_backtrace();
         $i = 0;
@@ -596,12 +543,7 @@ class Timber {
         if ($offset){
             $caller = $backtrace[$i + $offset]['file'];
         }
-        if ($caller !== null) {
-            $pathinfo = pathinfo($caller);
-            $dir = $pathinfo['dirname'];
-            return $dir;
-        }
-        return null;
+        return $caller;
     }
 
     /**

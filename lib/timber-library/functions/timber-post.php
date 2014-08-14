@@ -33,7 +33,7 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
         if ($pid === null && get_the_ID()) {
             $pid = get_the_ID();
             $this->ID = $pid;
-        } else if ($pid === null && ($pid_from_loop = Timber::loop_to_id())) {
+        } else if ($pid === null && ($pid_from_loop = TimberPostGetter::loop_to_id())) {
             $this->ID = $pid_from_loop;
         }
         if (is_numeric($pid)) {
@@ -41,6 +41,14 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
         }
         $this->init($pid);
     }
+
+     /**
+     * @return string
+     */
+    function __toString() {
+        return $this->title();
+    }
+
 
     /**
      * @param int|bool $pid
@@ -284,29 +292,28 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
     }
 
     /**
-     * @param bool $by_taxonomy
+     * @param bool $taxonomy
      * @return mixed
      */
-    function get_next($by_taxonomy = false) {
-        if (!isset($this->_next) || !isset($this->_next[$by_taxonomy])) {
+    function get_next($taxonomy = false) {
+        if (!isset($this->_next) || !isset($this->_next[$taxonomy])) {
             global $post;
             $this->_next = array();
             $old_global = $post;
             $post = $this;
-            if ($by_taxonomy == 'category' || $by_taxonomy == 'categories') {
-                $in_same_cat = true;
+            if ($taxonomy) {
+                $adjacent = get_adjacent_post(true, '', false, $taxonomy);
             } else {
-                $in_same_cat = false;
+                $adjacent = get_adjacent_post(false, '', false);
             }
-            $adjacent = get_adjacent_post($in_same_cat, '', false);
             if ($adjacent) {
-                $this->_next[$by_taxonomy] = new $this->PostClass($adjacent);
+                $this->_next[$taxonomy] = new $this->PostClass($adjacent);
             } else {
-                $this->_next[$by_taxonomy] = false;
+                $this->_next[$taxonomy] = false;
             }
             $post = $old_global;
         }
-        return $this->_next[$by_taxonomy];
+        return $this->_next[$taxonomy];
     }
 
     /**
@@ -360,29 +367,30 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
     }
 
     /**
-     * @param bool $by_taxonomy
+     * @param bool $taxonomy
      * @return mixed
      */
-    function get_prev($by_taxonomy = false) {
-        if (!isset($this->_prev) || !isset($this->_prev[$by_taxonomy])) {
+    function get_prev($taxonomy = false) {
+        if (!isset($this->_prev) || !isset($this->_prev[$taxonomy])) {
             global $post;
             $this->_prev = array();
             $old_global = $post;
             $post = $this;
-            if ($by_taxonomy == 'category' || $by_taxonomy == 'categories') {
-                $in_same_cat = true;
+            $in_same_cat = false;
+            if ($taxonomy) {
+                $adjacent = get_adjacent_post(true, '', true, $taxonomy);
             } else {
-                $in_same_cat = false;
+                $adjacent = get_adjacent_post(false, '', true);
             }
-            $adjacent = get_adjacent_post($in_same_cat, '', true);
+            
             if ($adjacent) {
-                $this->_prev[$by_taxonomy] = new $this->PostClass($adjacent);
+                $this->_prev[$taxonomy] = new $this->PostClass($adjacent);
             } else {
-                $this->_prev[$by_taxonomy] = false;
+                $this->_prev[$taxonomy] = false;
             }
             $post = $old_global;
         }
-        return $this->_prev[$by_taxonomy];
+        return $this->_prev[$taxonomy];
     }
 
     /**
@@ -560,6 +568,9 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
      * @return array
      */
     function get_terms($tax = '', $merge = true, $TermClass = 'TimberTerm') {
+        if (is_string($merge) && class_exists($merge)){
+            $TermClass = $merge;
+        }
         if (is_string($tax)) {
             if (isset($this->_get_terms) && isset($this->_get_terms[$tax])) {
                 return $this->_get_terms[$tax];
@@ -827,8 +838,8 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
     /**
      * @return array
      */
-    public function children() {
-        return $this->get_children();
+    public function children( $post_type = 'any', $childPostClass = false ) {
+        return $this->get_children( $post_type, $childPostClass );
     }
 
     /**
