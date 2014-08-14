@@ -151,6 +151,16 @@ function shoestrap_customizer_settings( $controls ) {
 
 	$controls[] = array(
 		'type'     => 'checkbox',
+		'setting'  => 'wai_aria',
+		'label'    => __( 'Enable accessibility scripts', 'shoestrap' ),
+		'section'  => 'general',
+		'subtitle' => __( 'When enabled, paypal\'s bootstrap-accessibility plugin is loaded', 'shoestrap' ),
+		'default'  => 1,
+		'priority' => 19,
+	);
+
+	$controls[] = array(
+		'type'     => 'checkbox',
 		'setting'  => 'dev_mode',
 		'label'    => __( 'Enable development mode', 'shoestrap' ),
 		'section'  => 'general',

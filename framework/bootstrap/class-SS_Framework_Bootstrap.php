@@ -182,11 +182,15 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap.min.js', false, null, true  );
 			wp_enqueue_script( 'bootstrap-min' );
 
-			wp_register_script( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap-accessibility.min.js', false, null, true  );
-			wp_enqueue_script( 'bootstrap-accessibility' );
+			if ( get_theme_mod( 'wai_aria', 0 ) == 1 ) {
 
-			wp_register_style( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/css/bootstrap-accessibility.css', false, null, true );
-			wp_enqueue_style( 'bootstrap-accessibility' );
+				wp_register_script( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap-accessibility.min.js', false, null, true  );
+				wp_enqueue_script( 'bootstrap-accessibility' );
+
+				wp_register_style( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/css/bootstrap-accessibility.css', false, null, true );
+				wp_enqueue_style( 'bootstrap-accessibility' );
+
+			}
 
 		}
 
