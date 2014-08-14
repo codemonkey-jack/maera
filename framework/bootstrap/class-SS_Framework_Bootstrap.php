@@ -1497,7 +1497,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 						<div class="container header-boxed">
 					<?php endif; ?>
 
-						<div class="header-wrapper">
+						<div class="header-wrapper container-fluid">
 
 							<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
 								<div class="container">
