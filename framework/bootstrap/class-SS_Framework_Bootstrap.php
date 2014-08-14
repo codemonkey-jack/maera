@@ -65,7 +65,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_filter( 'shoestrap/section_class/wrapper', array( $this, 'layout_classes_wrapper' ) );
 			add_action( 'wp', array( $this, 'sidebars_bypass' ) );
 			add_action( 'wp', array( $this, 'container_class_modifier' ) );
-			add_filter( 'body_class', array( $this, 'boxed_body_class' ) );
+			add_filter( 'body_class', array( $this, 'body_class' ) );
 
 			// Styles
 			add_filter( 'shoestrap/styles', array( $this, 'jumbotron_css' ) );
@@ -1276,7 +1276,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * Add and remove body_class() classes
 		 */
-		function boxed_body_class( $classes ) {
+		function body_class( $classes ) {
 
 			$site_style = get_theme_mod( 'site_style', 'wide' );
 			if ( 'left' == get_theme_mod( 'menu_mode' ) ) {
@@ -1287,6 +1287,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$classes[] = 'container';
 				$classes[] = 'boxed';
 			}
+
+			$navbar_position = get_theme_mod( 'navbar_position', 'normal' );
+			$classes[] = 'body-nav-' . $navbar_position;
 
 			return $classes;
 		}

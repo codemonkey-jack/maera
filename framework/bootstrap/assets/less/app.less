@@ -28,6 +28,16 @@ body {
 		padding-right: 0;
 		box-shadow: 0 0 1em 1px rgba(50,50,50,0.1)
 	}
+
+	&.admin-bar {
+		#banner-header {
+			top: 32px;
+		}
+	}
+
+	&.body-nav-fixed-top {
+		margin-top: @navbar-height;
+	}
 }
 
 #banner-header {
@@ -145,12 +155,12 @@ ul.nav.navbar-nav.navbar-center {
 .btn-group.social-share {
 	.social-link {
 		display: none;
-	} 
+	}
 	&:hover {
 		.social-share-main {
 			border-bottom-right-radius: 0px !important;
 			border-top-right-radius: 0px !important;
-		} 
+		}
 		a {
 			display: block;
 			width: auto;
