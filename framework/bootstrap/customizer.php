@@ -9,9 +9,10 @@ function shoestrap_customizer_sections( $wp_customize ) {
 	$wp_customize->remove_section( 'nav' );
 
 	$panels = array(
-		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ),        'priority' => 20 ),
-		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ), 'description' => __( 'Set the site typography options', 'shoestrap' ), 'priority' => 30 ),
-		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),     'description' => __( 'Set the site layout options', 'shoestrap' ),     'priority' => 40 ),
+		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ),        'priority' => 2 ),
+		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ), 'description' => __( 'Set the site typography options', 'shoestrap' ), 'priority' => 3 ),
+		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),     'description' => __( 'Set the site layout options', 'shoestrap' ),     'priority' => 4 ),
+		'blog'       => array( 'title' => __( 'Blog', 'shoestrap' ),       'description' => __( 'Set the blog options', 'shoestrap' ),            'priority' => 5 ),
 	);
 
 	// Please note the "General" section is added on the theme core and not a framework.
@@ -31,8 +32,9 @@ function shoestrap_customizer_sections( $wp_customize ) {
 		'body_margin' => array( 'title' => __( 'Body Margins', 'shoestrap' ),    'priority' => 14, 'panel' => 'layout' ),
 		'layout_a'    => array( 'title' => __( 'Anvanced Layout', 'shoestrap' ), 'priority' => 15, 'panel' => 'layout' ),
 
-		'blog'       => array( 'title' => __( 'Blog', 'shoestrap' ),            'priority' => 14, 'panel' => '' ),
-		'feat'       => array( 'title' => __( 'Featured Images', 'shoestrap' ), 'priority' => 15, 'panel' => '' ),
+		'blog_options' => array( 'title' => __( 'Blog Options', 'shoestrap' ),    'priority' => 14, 'panel' => 'blog' ),
+		'feat'         => array( 'title' => __( 'Featured Images', 'shoestrap' ), 'priority' => 15, 'panel' => 'blog' ),
+
 		'nav'        => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 16, 'panel' => '' ),
 		'header'     => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 17, 'panel' => '' ),
 		'jumbotron'  => array( 'title' => __( 'Jumbotron', 'shoestrap' ),       'priority' => 18, 'panel' => '' ),
@@ -1011,7 +1013,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'     => 'blog_post_mode',
 		'label'       => __( 'Archives Display Mode', 'shoestrap' ),
 		'description' => __( 'Display the excerpt or the full post on post archives.', 'shoestrap' ),
-		'section'     => 'blog',
+		'section'     => 'blog_options',
 		'priority'    => 1,
 		'default'     => 'excerpt',
 		'choices'     => array(
@@ -1025,7 +1027,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'     => 'shoestrap_entry_meta_config',
 		'label'       => __( 'Post Meta elements', 'shoestrap' ),
 		'subtitle'    => __( 'You can define a comma-separated list of meta elements you want on your posts, in the order that you want them. Accepted values: <code>author, sticky, post-format, date, category, tags, comments</code>', 'shoestrap' ),
-		'section'     => 'blog',
+		'section'     => 'blog_options',
 		'priority'    => 2,
 		'default'     => 'post-format, date, author, comments',
 	);
@@ -1034,7 +1036,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'        => 'checkbox',
 		'setting'     => 'breadcrumbs',
 		'label'       => __( 'Show Breadcrumbs', 'shoestrap' ),
-		'section'     => 'blog',
+		'section'     => 'blog_options',
 		'priority'    => 3,
 		'default'     => 0,
 	);
@@ -1045,7 +1047,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'     => 'date_meta_format',
 		'label'       => __( 'Date format in meta', 'shoestrap' ),
 		'subtitle'    => __( 'Show the date as a normal date, or as time difference (example: 2 weeks ago)', 'shoestrap' ),
-		'section'     => 'blog',
+		'section'     => 'blog_options',
 		'priority'    => 9,
 		'default'     => 1,
 		'choices'     => array(
@@ -1059,7 +1061,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'post_excerpt_length',
 		'label'    => __( 'Post excerpt length', 'shoestrap' ),
 		'description' => __( 'Choose how many words should be used for post excerpt. Default: 55', 'shoestrap' ),
-		'section'  => 'blog',
+		'section'  => 'blog_options',
 		'priority' => 10,
 		'default'  => 55,
 		'choices'  => array(
@@ -1074,7 +1076,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'     => 'post_excerpt_link_text',
 		'label'       => __( '"more" text', 'shoestrap' ),
 		'subtitle'    => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
-		'section'     => 'blog',
+		'section'     => 'blog_options',
 		'priority'    => 12,
 		'default'     => __( 'Continued', 'shoestrap' ),
 	);
@@ -1084,7 +1086,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'     => 'single_meta',
 		'label'       => __( 'Post Meta in single posts', 'shoestrap' ),
 		'description' => __( 'When checked, the post tags and categories will be added on the footer of posts.', 'shoestrap' ),
-		'section'     => 'blog',
+		'section'     => 'blog_options',
 		'priority'    => 40,
 		'default'     => 1,
 	);
