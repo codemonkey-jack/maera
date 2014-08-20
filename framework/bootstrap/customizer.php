@@ -9,8 +9,9 @@ function shoestrap_customizer_sections( $wp_customize ) {
 	$wp_customize->remove_section( 'nav' );
 
 	$panels = array(
-		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ), 'priority' => 20 ),
+		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ),        'priority' => 20 ),
 		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ), 'description' => __( 'Set the site typography options', 'shoestrap' ), 'priority' => 30 ),
+		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),     'description' => __( 'Set the site layout options', 'shoestrap' ),     'priority' => 40 ),
 	);
 
 	// Please note the "General" section is added on the theme core and not a framework.
@@ -25,8 +26,11 @@ function shoestrap_customizer_sections( $wp_customize ) {
 		'typ_weight' => array( 'title' => __( 'Font-Weights', 'shoestrap' ),    'priority' => 13, 'panel' => 'typography' ),
 		'typ_lh'     => array( 'title' => __( 'Line Height', 'shoestrap' ),     'priority' => 14, 'panel' => 'typography' ),
 
-		'colors'     => array( 'title' => __( 'Colors', 'shoestrap' ),          'priority' => 12, 'panel' => '' ),
-		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),          'priority' => 13, 'panel' => '' ),
+		'colors'      => array( 'title' => __( 'Colors', 'shoestrap' ),          'priority' => 12, 'panel' => '' ),
+		'layout_b'    => array( 'title' => __( 'Basic Layout', 'shoestrap' ),    'priority' => 13, 'panel' => 'layout' ),
+		'body_margin' => array( 'title' => __( 'Body Margins', 'shoestrap' ),    'priority' => 14, 'panel' => 'layout' ),
+		'layout_a'    => array( 'title' => __( 'Anvanced Layout', 'shoestrap' ), 'priority' => 15, 'panel' => 'layout' ),
+
 		'blog'       => array( 'title' => __( 'Blog', 'shoestrap' ),            'priority' => 14, 'panel' => '' ),
 		'feat'       => array( 'title' => __( 'Featured Images', 'shoestrap' ), 'priority' => 15, 'panel' => '' ),
 		'nav'        => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 16, 'panel' => '' ),
@@ -183,20 +187,12 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'group_title',
-		'label'    => __( 'Basic Layout Options', 'shoestrap' ),
-		'priority' => 1,
-		'section'  => 'layout',
-		'setting'  => 'separator' . rand( 999, 9999 ),
-	);
-
-	$controls[] = array(
 		'type'     => 'radio',
 		'mode'     => 'buttonset',
 		'setting'  => 'site_style',
 		'label'    => __( 'Site Style', 'shoestrap' ),
 		'subtitle' => __( 'A static layout is non-responsive. Wide and boxed Layouts are responsive while fluid layouts are full-width.', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_b',
 		'priority' => 2,
 		'default'  => 'wide',
 		'choices'  => array(
@@ -209,7 +205,7 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'radio',
 		'mode'     => 'image',
-		'setting'  => 'layout',
+		'setting'  => 'layout_b',
 		'label'    => __( 'Layout', 'shoestrap' ),
 		'subtitle' => __( 'Select your main layout. Please note that if no widgets are present in a sidebar then that sidebar will not be displayed. ', 'shoestrap' ),
 		'section'  => 'layout',
@@ -223,7 +219,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'layout_primary_width',
 		'label'    => __( 'Primary Sidebar Width', 'shoestrap' ),
 		'description' => '',
-		'section'  => 'layout',
+		'section'  => 'layout_b',
 		'priority' => 4,
 		'default'  => 4,
 		'choices'  => array(
@@ -238,7 +234,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'layout_secondary_width',
 		'label'    => __( 'Secondary Sidebar Width', 'shoestrap' ),
 		'description' => '',
-		'section'  => 'layout',
+		'section'  => 'layout_b',
 		'priority' => 5,
 		'default'  => 3,
 		'choices'  => array(
@@ -254,7 +250,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'layout_sidebar_on_front',
 		'label'    => __( 'Show sidebars on the frontpage', 'shoestrap' ),
 		'description' => __( 'Select if you want to display sidebars on the frontpage. Please note that this only applies to the primary and secondary navbars and not all other widget areas.', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_b',
 		'priority' => 6,
 		'default'  => 0,
 		'choices'  => array(
@@ -264,19 +260,11 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'group_title',
-		'label'    => __( 'Extended Layout Options', 'shoestrap' ),
-		'priority' => 7,
-		'section'  => 'layout',
-		'setting'  => 'separator' . rand( 999, 9999 ),
-	);
-
-	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'body_margin_top',
 		'label'    => __( 'Body Top Margin', 'shoestrap' ),
 		'subtitle' => __( 'Select the top margin of the body element in pixels.', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'body_margin',
 		'priority' => 8,
 		'default'  => 0,
 		'choices'  => array(
@@ -291,7 +279,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'body_margin_bottom',
 		'label'    => __( 'Body Bottom Margin', 'shoestrap' ),
 		'subtitle' => __( 'Select the bottom margin of the body element in pixels.', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'body_margin',
 		'priority' => 9,
 		'default'  => 0,
 		'choices'  => array(
@@ -302,19 +290,11 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'group_title',
-		'label'    => __( 'Advanced Layout Options', 'shoestrap' ),
-		'priority' => 80,
-		'section'  => 'layout',
-		'setting'  => 'separator' . rand( 999, 9999 ),
-	);
-
-	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'screen_tablet',
 		'label'    => __( 'Small Screen / Tablet view', 'shoestrap' ),
 		'subtitle' => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_a',
 		'priority' => 81,
 		'default'  => 768,
 		'choices'  => array(
@@ -329,7 +309,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'screen_desktop',
 		'label'    => __( 'Desktop Container Width', 'shoestrap' ),
 		'subtitle' => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_a',
 		'priority' => 82,
 		'default'  => 992,
 		'choices'  => array(
@@ -344,7 +324,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'screen_large_desktop',
 		'label'    => __( 'Large Desktop Container Width', 'shoestrap' ),
 		'subtitle' => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_a',
 		'priority' => 83,
 		'default'  => 1200,
 		'choices'  => array(
@@ -359,7 +339,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'gutter',
 		'label'    => __( 'Gutter', 'shoestrap' ),
 		'subtitle' => __( 'The spacing between grid columns. Default: 30px', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_a',
 		'priority' => 84,
 		'default'  => 30,
 		'choices'  => array(
@@ -374,7 +354,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'cpt_layout_toggle',
 		'label'    => __( 'Per Post-Type layouts', 'shoestrap' ),
 		'subtitle' => __( 'After you enable this setting you will have to save your settings and refresh your page in order to see the new options.', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_a',
 		'priority' => 90,
 		'default'  => 0,
 	);
@@ -392,7 +372,7 @@ function shoestrap_customizer_settings( $controls ) {
 				'setting'  => $post_type . '_layout',
 				'label'    => $post_type . ' ' . __( 'layout', 'shoestrap' ),
 				'description' => null,
-				'section'  => 'layout',
+				'section'  => 'layout_a',
 				'priority' => 92,
 				'default'  => $layout,
 				'choices'  => $layouts,
