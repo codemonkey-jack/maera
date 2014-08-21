@@ -3,19 +3,19 @@
 
 	{% block content %}
 
-		{% do action( 'shoestrap/in_article/top', post.ID ) %}
+		{{ post.top }}
 
 		{% include 'parts/tease-title.twig' %}
 
 		{{ post.meta_info }}
 
 		<div class="entry-summary">
-			{{ function( 'shoestrap_get_post_teaser', post.ID ) }}
+			{{ post.teaser }}
 			{{ framework.clearfix }}
 		</div>
 
 		<footer class="entry-footer">
-			{% do action( 'shoestrap/entry/footer', post.ID ) %}
+			{{ post.footer }}
 		</footer>
 
 	{% endblock %}
