@@ -9,28 +9,33 @@ function shoestrap_customizer_sections( $wp_customize ) {
 	$wp_customize->remove_section( 'nav' );
 
 	$panels = array(
-		'background' => array( 'title' => __( 'Background', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ),        'priority' => 2 ),
-		'typography' => array( 'title' => __( 'Typography', 'shoestrap' ), 'description' => __( 'Set the site typography options', 'shoestrap' ), 'priority' => 3 ),
-		'layout'     => array( 'title' => __( 'Layout', 'shoestrap' ),     'description' => __( 'Set the site layout options', 'shoestrap' ),     'priority' => 4 ),
-		'blog'       => array( 'title' => __( 'Blog', 'shoestrap' ),       'description' => __( 'Set the blog options', 'shoestrap' ),            'priority' => 5 ),
+		'backgrounds' => array( 'title' => __( 'Backgrounds', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ),        'priority' => 2 ),
+		'typography'  => array( 'title' => __( 'Typography', 'shoestrap' ), 'description' => __( 'Set the site typography options', 'shoestrap' ), 'priority' => 3 ),
+		'layout'      => array( 'title' => __( 'Layout', 'shoestrap' ),     'description' => __( 'Set the site layout options', 'shoestrap' ),     'priority' => 4 ),
+		'blog'        => array( 'title' => __( 'Blog', 'shoestrap' ),       'description' => __( 'Set the blog options', 'shoestrap' ),            'priority' => 5 ),
 	);
 
 	// Please note the "General" section is added on the theme core and not a framework.
 	$sections = array(
-		'general'    => array( 'title' => __( 'General', 'shoestrap' ),         'priority' => 5,  'panel' => '' ),
-		'html_bg'    => array( 'title' => __( 'HTML Background', 'shoestrap' ), 'priority' => 10, 'panel' => 'background' ),
-		'body_bg'    => array( 'title' => __( 'Body Background', 'shoestrap' ), 'priority' => 10, 'panel' => 'background' ),
+		'general'    => array( 'title' => __( 'General', 'shoestrap' ),   'priority' => 5,  'panel' => '' ),
 
-		'typ_family' => array( 'title' => __( 'Font-Families', 'shoestrap' ),   'priority' => 10, 'panel' => 'typography' ),
-		'typ_colors' => array( 'title' => __( 'Colors', 'shoestrap' ),          'priority' => 11, 'panel' => 'typography' ),
-		'typ_size'   => array( 'title' => __( 'Font-Size', 'shoestrap' ),       'priority' => 12, 'panel' => 'typography' ),
-		'typ_weight' => array( 'title' => __( 'Font-Weights', 'shoestrap' ),    'priority' => 13, 'panel' => 'typography' ),
-		'typ_lh'     => array( 'title' => __( 'Line Height', 'shoestrap' ),     'priority' => 14, 'panel' => 'typography' ),
+		'html_bg'    => array( 'title' => __( 'HTML', 'shoestrap' ),         'priority' => 10, 'panel' => 'backgrounds' ),
+		'body_bg'    => array( 'title' => __( 'Body', 'shoestrap' ),         'priority' => 15, 'panel' => 'backgrounds' ),
+		'nav_bg'     => array( 'title' => __( 'Navbar', 'shoestrap' ),       'priority' => 20, 'panel' => 'backgrounds' ),
+		'header_bg'  => array( 'title' => __( 'Extra Header', 'shoestrap' ), 'priority' => 25, 'panel' => 'backgrounds' ),
+		'jumbo_bg'   => array( 'title' => __( 'Jumbotron', 'shoestrap' ),    'priority' => 30, 'panel' => 'backgrounds' ),
+		'footer_bg'  => array( 'title' => __( 'Footer', 'shoestrap' ),       'priority' => 35, 'panel' => 'backgrounds' ),
+
+		'typo_base'    => array( 'title' => __( 'Base', 'shoestrap' ),         'priority' => 10, 'panel' => 'typography' ),
+		'typo_headers' => array( 'title' => __( 'Headers', 'shoestrap' ),      'priority' => 15, 'panel' => 'typography' ),
+		'typo_nav'     => array( 'title' => __( 'Navbar', 'shoestrap' ),       'priority' => 20, 'panel' => 'typography' ),
+		'typo_header'  => array( 'title' => __( 'Extra Header', 'shoestrap' ), 'priority' => 25, 'panel' => 'typography' ),
+		'typo_jumbo'   => array( 'title' => __( 'Jumbotron', 'shoestrap' ),    'priority' => 30, 'panel' => 'typography' ),
+		'typo_footer'  => array( 'title' => __( 'Footer', 'shoestrap' ),       'priority' => 35, 'panel' => 'typography' ),
 
 		'colors'      => array( 'title' => __( 'Colors', 'shoestrap' ),          'priority' => 12, 'panel' => '' ),
-		'layout_b'    => array( 'title' => __( 'Basic Layout', 'shoestrap' ),    'priority' => 13, 'panel' => 'layout' ),
-		'body_margin' => array( 'title' => __( 'Body Margins', 'shoestrap' ),    'priority' => 14, 'panel' => 'layout' ),
-		'layout_a'    => array( 'title' => __( 'Anvanced Layout', 'shoestrap' ), 'priority' => 15, 'panel' => 'layout' ),
+
+		'layout'    => array( 'title' => __( 'Layout', 'shoestrap' ),    'priority' => 13, 'panel' => '' ),
 
 		'blog_options' => array( 'title' => __( 'Blog Options', 'shoestrap' ),    'priority' => 14, 'panel' => 'blog' ),
 		'feat'         => array( 'title' => __( 'Featured Images', 'shoestrap' ), 'priority' => 15, 'panel' => 'blog' ),
@@ -38,8 +43,7 @@ function shoestrap_customizer_sections( $wp_customize ) {
 		'nav'        => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 16, 'panel' => '' ),
 		'header'     => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 17, 'panel' => '' ),
 		'jumbotron'  => array( 'title' => __( 'Jumbotron', 'shoestrap' ),       'priority' => 18, 'panel' => '' ),
-		'footer'     => array( 'title' => __( 'Footer', 'shoestrap' ),          'priority' => 18, 'panel' => '' ),
-		'social'     => array( 'title' => __( 'Social', 'shoestrap' ),          'priority' => 20, 'panel' => '' ),
+		'social'     => array( 'title' => __( 'Social Links', 'shoestrap' ),    'priority' => 20, 'panel' => '' ),
 		'advanced'   => array( 'title' => __( 'Advanced', 'shoestrap' ),        'priority' => 21, 'panel' => '' ),
 	);
 
@@ -193,8 +197,8 @@ function shoestrap_customizer_settings( $controls ) {
 		'mode'     => 'buttonset',
 		'setting'  => 'site_style',
 		'label'    => __( 'Site Style', 'shoestrap' ),
-		'subtitle' => __( 'A static layout is non-responsive. Wide and boxed Layouts are responsive while fluid layouts are full-width.', 'shoestrap' ),
-		'section'  => 'layout_b',
+		'subtitle' => __( 'Wide and boxed Layouts are responsive while fluid layouts are full-width.', 'shoestrap' ),
+		'section'  => 'layout',
 		'priority' => 2,
 		'default'  => 'wide',
 		'choices'  => array(
@@ -207,7 +211,7 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'radio',
 		'mode'     => 'image',
-		'setting'  => 'layout_b',
+		'setting'  => 'layout',
 		'label'    => __( 'Layout', 'shoestrap' ),
 		'subtitle' => __( 'Select your main layout. Please note that if no widgets are present in a sidebar then that sidebar will not be displayed. ', 'shoestrap' ),
 		'section'  => 'layout',
@@ -221,7 +225,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'layout_primary_width',
 		'label'    => __( 'Primary Sidebar Width', 'shoestrap' ),
 		'description' => '',
-		'section'  => 'layout_b',
+		'section'  => 'layout',
 		'priority' => 4,
 		'default'  => 4,
 		'choices'  => array(
@@ -236,7 +240,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'layout_secondary_width',
 		'label'    => __( 'Secondary Sidebar Width', 'shoestrap' ),
 		'description' => '',
-		'section'  => 'layout_b',
+		'section'  => 'layout',
 		'priority' => 5,
 		'default'  => 3,
 		'choices'  => array(
@@ -252,7 +256,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'layout_sidebar_on_front',
 		'label'    => __( 'Show sidebars on the frontpage', 'shoestrap' ),
 		'description' => __( 'Select if you want to display sidebars on the frontpage. Please note that this only applies to the primary and secondary navbars and not all other widget areas.', 'shoestrap' ),
-		'section'  => 'layout_b',
+		'section'  => 'layout',
 		'priority' => 6,
 		'default'  => 0,
 		'choices'  => array(
@@ -296,7 +300,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'screen_tablet',
 		'label'    => __( 'Small Screen / Tablet view', 'shoestrap' ),
 		'subtitle' => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
-		'section'  => 'layout_a',
+		'section'  => 'layout',
 		'priority' => 81,
 		'default'  => 768,
 		'choices'  => array(
@@ -311,7 +315,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'screen_desktop',
 		'label'    => __( 'Desktop Container Width', 'shoestrap' ),
 		'subtitle' => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
-		'section'  => 'layout_a',
+		'section'  => 'layout',
 		'priority' => 82,
 		'default'  => 992,
 		'choices'  => array(
@@ -326,7 +330,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'screen_large_desktop',
 		'label'    => __( 'Large Desktop Container Width', 'shoestrap' ),
 		'subtitle' => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
-		'section'  => 'layout_a',
+		'section'  => 'layout',
 		'priority' => 83,
 		'default'  => 1200,
 		'choices'  => array(
@@ -341,7 +345,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'gutter',
 		'label'    => __( 'Gutter', 'shoestrap' ),
 		'subtitle' => __( 'The spacing between grid columns. Default: 30px', 'shoestrap' ),
-		'section'  => 'layout_a',
+		'section'  => 'layout',
 		'priority' => 84,
 		'default'  => 30,
 		'choices'  => array(
@@ -356,7 +360,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'cpt_layout_toggle',
 		'label'    => __( 'Per Post-Type layouts', 'shoestrap' ),
 		'subtitle' => __( 'After you enable this setting you will have to save your settings and refresh your page in order to see the new options.', 'shoestrap' ),
-		'section'  => 'layout_a',
+		'section'  => 'layout',
 		'priority' => 90,
 		'default'  => 0,
 	);
@@ -374,7 +378,7 @@ function shoestrap_customizer_settings( $controls ) {
 				'setting'  => $post_type . '_layout',
 				'label'    => $post_type . ' ' . __( 'layout', 'shoestrap' ),
 				'description' => null,
-				'section'  => 'layout_a',
+				'section'  => 'layout',
 				'priority' => 92,
 				'default'  => $layout,
 				'choices'  => $layouts,
@@ -499,7 +503,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'navbar_bg',
 		'label'    => __( 'NavBar Background Color', 'shoestrap' ),
 		'description' => __( 'Pick a background color for the NavBar. Default: #f8f8f8.', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'nav_bg',
 		'default'  => '#f8f8f8',
 		'priority' => 30,
 	);
@@ -508,7 +512,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'navbar_bg_opacity',
 		'label'    => __( 'NavBar Background Opacity', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'nav_bg',
 		'default'  => 100,
 		'priority' => 31,
 		'choices'  => array(
@@ -553,18 +557,10 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'group_title',
-		'label'    => __( 'Menus Font', 'shoestrap' ),
-		'priority' => 35,
-		'section'  => 'nav',
-		'setting'  => 'separator' . rand( 999, 9999 ),
-	);
-
-	$controls[] = array(
 		'type'     => 'text',
 		'setting'  => 'font_menus_font_family',
 		'label'    => __( 'Menus font', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'typo_nav',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 40,
 	);
@@ -574,7 +570,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'font_menus_google',
 		'label'    => __( 'Google-Font', 'shoestrap' ),
 		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'typo_nav',
 		'default'  => 0,
 		'priority' => 41,
 	);
@@ -583,7 +579,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'color',
 		'setting'  => 'font_menus_color',
 		'description' => __( 'Font Color', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'typo_nav',
 		'default'  => '#333333',
 		'priority' => 42,
 	);
@@ -592,7 +588,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_menus_weight',
 		'subtitle' => __( 'Font Weight', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'typo_nav',
 		'default'  => 400,
 		'priority' => 43,
 		'choices'  => array(
@@ -606,7 +602,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_menus_size',
 		'subtitle' => __( 'Font Size', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'typo_nav',
 		'default'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5,
 		'priority' => 44,
 		'choices'  => array(
@@ -620,7 +616,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_menus_height',
 		'subtitle' => __( 'Line Height (px)', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'typo_nav',
 		'default'  => 42,
 		'priority' => 25,
 		'choices'  => array(
@@ -628,14 +624,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 70,
 			'step' => 1,
 		),
-	);
-
-	$controls[] = array(
-		'type'     => 'group_title',
-		'label'    => __( 'Secondary NavBar', 'shoestrap' ),
-		'priority' => 51,
-		'section'  => 'nav',
-		'setting'  => 'separator' . rand( 999, 9999 ),
 	);
 
 	$controls[] = array(
@@ -812,7 +800,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'text',
 		'setting'  => 'font_base_family',
 		'label'    => __( 'Base font', 'shoestrap' ),
-		'section'  => 'typ_family',
+		'section'  => 'typo_base',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
 	);
@@ -822,7 +810,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'font_base_google',
 		'label'    => __( 'Google-Font', 'shoestrap' ),
 		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'shoestrap' ),
-		'section'  => 'typ_family',
+		'section'  => 'typo_base',
 		'default'  => 0,
 		'priority' => 21,
 	);
@@ -832,7 +820,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'font_base_google_subsets',
 		'label'    => __( 'Google-Font subsets', 'shoestrap' ),
 		'description' => __( 'The subsets used from Google\'s API.', 'shoestrap' ),
-		'section'  => 'typ_family',
+		'section'  => 'typo_base',
 		'default'  => 'latin',
 		'priority' => 22,
 		'choices'  => array(
@@ -851,7 +839,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'label'    => __( 'Base font color', 'shoestrap' ),
 		'setting'  => 'font_base_color',
 		'description' =>   __( 'Font Color', 'shoestrap' ),
-		'section'  => 'typ_colors',
+		'section'  => 'typo_base',
 		'default'  => '#333333',
 		'priority' => 23,
 	);
@@ -860,7 +848,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_base_weight',
 		'label'    => __( 'Base Font Weight', 'shoestrap' ),
-		'section'  => 'typ_weight',
+		'section'  => 'typo_base',
 		'default'  => 400,
 		'priority' => 24,
 		'choices'  => array(
@@ -874,7 +862,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_base_size',
 		'label'    => __( 'Base Font Size', 'shoestrap' ),
-		'section'  => 'typ_size',
+		'section'  => 'typo_base',
 		'default'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5,
 		'priority' => 25,
 		'choices'  => array(
@@ -888,7 +876,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_base_height',
 		'label'    => __( 'Base Line Height', 'shoestrap' ),
-		'section'  => 'typ_lh',
+		'section'  => 'typo_base',
 		'default'  => 1.4,
 		'priority' => 26,
 		'choices'  => array(
@@ -901,9 +889,8 @@ function shoestrap_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'text',
 		'setting'  => 'headers_font_family',
-		'label'    => __( 'Headers font', 'shoestrap' ),
-		'subtitle' => __( 'Headers font-family', 'shoestrap' ),
-		'section'  => 'typ_family',
+		'label'    => __( 'Font-Family', 'shoestrap' ),
+		'section'  => 'typo_headers',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 30,
 	);
@@ -913,7 +900,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'headers_font_google',
 		'label'    => __( 'Google-Font', 'shoestrap' ),
 		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'shoestrap' ),
-		'section'  => 'typ_family',
+		'section'  => 'typo_headers',
 		'default'  => 0,
 		'priority' => 31,
 	);
@@ -923,7 +910,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'font_headers_google_subsets',
 		'label'    => __( 'Google-Font subsets', 'shoestrap' ),
 		'description' => __( 'The subsets used from Google\'s API.', 'shoestrap' ),
-		'section'  => 'typ_family',
+		'section'  => 'typo_headers',
 		'default'  => 'latin',
 		'priority' => 32,
 		'choices'  => array(
@@ -934,6 +921,58 @@ function shoestrap_customizer_settings( $controls ) {
 			'cyrillic' 		=> __( 'Cyrillic', 'shoestrap' ),
 			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'shoestrap' ),
 			'vietnamese' 	=> __( 'Vietnamese', 'shoestrap' ),
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'color',
+		'setting'  => 'font_headers_color',
+		'label'    => __( 'Color', 'shoestrap' ),
+		'section'  => 'typo_headers',
+		'default'  => '#333333',
+		'priority' => 33,
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'font_headers_weight',
+		'label'    => __( 'Font Weight.', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . 400,
+		'section'  => 'typo_headers',
+		'default'  => 400,
+		'priority' => 34,
+		'choices'  => array(
+			'min'  => 100,
+			'max'  => 900,
+			'step' => 100,
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'font_headers_size',
+		'label'    => __( 'Font Size (%)', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . '215',
+		'description' => __( 'The size defined here applies to H2. All other header elements are calculated porportionally.', 'shoestrap' ),
+		'section'  => 'typo_headers',
+		'default'  => 215,
+		'priority' => 35,
+		'choices'  => array(
+			'min'  => 30,
+			'max'  => 350,
+			'step' => 1,
+		),
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'font_headers_height',
+		'label'    => __( 'Line Height', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . '1.1',
+		'section'  => 'typo_headers',
+		'default'  => 1.1,
+		'priority' => 36,
+		'choices'  => array(
+			'min'  => 0,
+			'max'  => 3,
+			'step' => 0.1,
 		),
 	);
 
@@ -1196,7 +1235,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'         => 'background',
 		'setting'      => 'jumbo_bg',
 		'label'        => __( 'Jumbotron Background', 'shoestrap' ),
-		'section'      => 'jumbotron',
+		'section'      => 'jumbo_bg',
 		'default'      => array(
 			'color'    => '#eeeeee',
 			'image'    => null,
@@ -1239,7 +1278,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'text',
 		'setting'  => 'font_jumbotron_font_family',
 		'label'    => __( 'Jumbotron font', 'shoestrap' ),
-		'section'  => 'jumbotron',
+		'section'  => 'typo_jumbo',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
 	);
@@ -1249,7 +1288,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'font_jumbotron_google',
 		'label'    => __( 'Google-Font', 'shoestrap' ),
 		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'shoestrap' ),
-		'section'  => 'jumbotron',
+		'section'  => 'typo_jumbo',
 		'default'  => 0,
 		'priority' => 21,
 	);
@@ -1258,7 +1297,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'color',
 		'setting'  => 'font_jumbotron_color',
 		'description' =>   __( 'Font Color', 'shoestrap' ),
-		'section'  => 'jumbotron',
+		'section'  => 'typo_jumbo',
 		'default'  => '#333333',
 		'priority' => 22,
 	);
@@ -1267,7 +1306,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_jumbotron_weight',
 		'subtitle' => __( 'Font Weight', 'shoestrap' ),
-		'section'  => 'jumbotron',
+		'section'  => 'typo_jumbo',
 		'default'  => 400,
 		'priority' => 23,
 		'choices'  => array(
@@ -1281,7 +1320,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_jumbotron_size',
 		'subtitle' => __( 'Font Size', 'shoestrap' ),
-		'section'  => 'jumbotron',
+		'section'  => 'typo_jumbo',
 		'default'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 20 : 1.8,
 		'priority' => 24,
 		'choices'  => array(
@@ -1295,7 +1334,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'font_jumbotron_height',
 		'subtitle' => __( 'Line Height (px)', 'shoestrap' ),
-		'section'  => 'jumbotron',
+		'section'  => 'typo_jumbo',
 		'default'  => 22,
 		'priority' => 25,
 		'choices'  => array(
@@ -1388,7 +1427,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'         => 'background',
 		'setting'      => 'header_bg',
 		'label'        => __( 'Header Background', 'shoestrap' ),
-		'section'      => 'header',
+		'section'      => 'header_bg',
 		'default'      => array(
 			'color'    => '#ffffff',
 			'image'    => null,
@@ -1407,7 +1446,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'header_color',
 		'label'    => __( 'Header Text Color', 'shoestrap' ),
 		'description' => __( 'Select the text color for your header. Default: #333333.', 'shoestrap' ),
-		'section'  => 'header',
+		'section'  => 'typo_header',
 		'default'  => '#333333',
 		'priority' => 20,
 	);
@@ -1566,14 +1605,14 @@ function shoestrap_customizer_settings( $controls ) {
 
 
 	//-------------------------------------------------
-	// FOOTER
+	// FOOTER BACKGROUND
 	//-------------------------------------------------
 
 	$controls[] = array(
 		'type'         => 'background',
 		'setting'      => 'footer_bg',
 		'label'        => __( 'Footer Background', 'shoestrap' ),
-		'section'      => 'footer',
+		'section'      => 'footer_bg',
 		'default'      => array(
 			'color'    => '#ffffff',
 			'image'    => null,
@@ -1592,7 +1631,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'footer_color',
 		'label'    => __( 'Footer Text Color', 'shoestrap' ),
 		'description' => __( 'Select the text color for your footer. Default: #333333.', 'shoestrap' ),
-		'section'  => 'footer',
+		'section'  => 'typo_footer',
 		'default'  => '#333333',
 		'priority' => 10,
 	);
@@ -1602,7 +1641,7 @@ function shoestrap_customizer_settings( $controls ) {
 	// 	'setting'  => 'footer_margin_top',
 	// 	'label'    => __( 'Margin-top', 'shoestrap' ),
 	// 	'subtitle' => __( 'Select the top margin of the footer in pixels. Default: 0px.', 'shoestrap' ),
-	// 	'section'  => 'footer',
+	// 	'section'  => 'footer_bg',
 	// 	'default'  => 0,
 	// 	'priority' => 11,
 	// 	'choices'  => array(
