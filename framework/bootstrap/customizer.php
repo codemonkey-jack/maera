@@ -120,11 +120,11 @@ function shoestrap_customizer_settings( $controls ) {
 		'subtitle' => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
 		'section'  => 'layout_advanced',
 		'priority' => 13,
-		'default'  => 0,
+		'default'  => 2,
 		'choices'  => array(
-			0 => __( 'Panel', 'shoestrap' ),
-			1 => __( 'Well', 'shoestrap' ),
-			2 => __( 'None', 'shoestrap' ),
+			'none'  => __( 'None', 'shoestrap' ),
+			'well'  => __( 'Well', 'shoestrap' ),
+			'panel' => __( 'Panel', 'shoestrap' ),
 		),
 	);
 

@@ -546,11 +546,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function widgets_class() {
 
-			$widgets_mode = get_theme_mod( 'widgets_mode', 0 );
+			$widgets_mode = get_theme_mod( 'widgets_mode', 'none' );
 
-			if ( 0 == $widgets_mode ) {
+			if ( 'panel' == $widgets_mode ) {
 				return 'panel panel-default';
-			} elseif ( 1 == $widgets_mode ) {
+			} elseif ( 'well' == $widgets_mode ) {
 				return 'well';
 			}
 
@@ -562,11 +562,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function widgets_before_title() {
 
-			$widgets_mode = get_theme_mod( 'widgets_mode', 0 );
+			$widgets_mode = get_theme_mod( 'widgets_mode', 'none' );
 
-			if ( 0 == $widgets_mode ) {
+			if ( 'panel' == $widgets_mode ) {
 				return '<div class="panel-heading">';
-			} elseif ( 1 == $widgets_mode ) {
+			} elseif ( 'well' == $widgets_mode ) {
 				return '<h3 class="widget-title">';
 			}
 
@@ -578,11 +578,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function widgets_after_title() {
 
-			$widgets_mode = get_theme_mod( 'widgets_mode', 0 );
+			$widgets_mode = get_theme_mod( 'widgets_mode', 'none' );
 
-			if ( 0 == $widgets_mode ) {
+			if ( 'panel' == $widgets_mode ) {
 				return '</div><div class="panel-body">';
-			} elseif ( 1 == $widgets_mode ) {
+			} elseif ( 'well' == $widgets_mode ) {
 				return '</h3>';
 			}
 
