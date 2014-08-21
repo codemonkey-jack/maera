@@ -9,15 +9,21 @@ function shoestrap_customizer_sections( $wp_customize ) {
 	$wp_customize->remove_section( 'nav' );
 
 	$panels = array(
-		'backgrounds' => array( 'title' => __( 'Backgrounds', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ),        'priority' => 2 ),
-		'typography'  => array( 'title' => __( 'Typography', 'shoestrap' ), 'description' => __( 'Set the site typography options', 'shoestrap' ), 'priority' => 3 ),
-		'layout'      => array( 'title' => __( 'Layout', 'shoestrap' ),     'description' => __( 'Set the site layout options', 'shoestrap' ),     'priority' => 4 ),
-		'blog'        => array( 'title' => __( 'Blog', 'shoestrap' ),       'description' => __( 'Set the blog options', 'shoestrap' ),            'priority' => 5 ),
+		'structure'   => array( 'title' => __( 'Structure', 'shoestrap' ),   'description' => __( 'Set the structure options', 'shoestrap' ),       'priority' => 10 ),
+		'backgrounds' => array( 'title' => __( 'Backgrounds', 'shoestrap' ), 'description' => __( 'Set the site backgrounds', 'shoestrap' ),        'priority' => 20 ),
+		'typography'  => array( 'title' => __( 'Typography', 'shoestrap' ),  'description' => __( 'Set the site typography options', 'shoestrap' ), 'priority' => 30 ),
+		'blog'        => array( 'title' => __( 'Blog', 'shoestrap' ),        'description' => __( 'Set the blog options', 'shoestrap' ),            'priority' => 40 ),
 	);
 
-	// Please note the "General" section is added on the theme core and not a framework.
 	$sections = array(
-		'general'    => array( 'title' => __( 'General', 'shoestrap' ),   'priority' => 5,  'panel' => '' ),
+		'branding' => array( 'title' => __( 'Branding', 'shoestrap' ), 'priority' => 5, 'panel' => '' ),
+
+		'general'         => array( 'title' => __( 'General', 'shoestrap' ),         'priority' => 10,  'panel' => 'structure' ),
+		'layout'          => array( 'title' => __( 'Layout', 'shoestrap' ),          'priority' => 15, 'panel' => 'structure' ),
+		'layout_advanced' => array( 'title' => __( 'Advanced Layout', 'shoestrap' ), 'priority' => 20, 'panel' => 'structure' ),
+		'header'          => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 25, 'panel' => 'structure' ),
+		'structure_jumbo' => array( 'title' => __( 'Jumbotron', 'shoestrap' ),       'priority' => 30, 'panel' => 'structure' ),
+		'nav'             => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 35, 'panel' => 'structure' ),
 
 		'html_bg'    => array( 'title' => __( 'HTML', 'shoestrap' ),         'priority' => 10, 'panel' => 'backgrounds' ),
 		'body_bg'    => array( 'title' => __( 'Body', 'shoestrap' ),         'priority' => 15, 'panel' => 'backgrounds' ),
@@ -26,6 +32,8 @@ function shoestrap_customizer_sections( $wp_customize ) {
 		'jumbo_bg'   => array( 'title' => __( 'Jumbotron', 'shoestrap' ),    'priority' => 30, 'panel' => 'backgrounds' ),
 		'footer_bg'  => array( 'title' => __( 'Footer', 'shoestrap' ),       'priority' => 35, 'panel' => 'backgrounds' ),
 
+		'colors' => array( 'title' => __( 'Colors', 'shoestrap' ), 'priority' => 25, 'panel' => '' ),
+
 		'typo_base'    => array( 'title' => __( 'Base', 'shoestrap' ),         'priority' => 10, 'panel' => 'typography' ),
 		'typo_headers' => array( 'title' => __( 'Headers', 'shoestrap' ),      'priority' => 15, 'panel' => 'typography' ),
 		'typo_nav'     => array( 'title' => __( 'Navbar', 'shoestrap' ),       'priority' => 20, 'panel' => 'typography' ),
@@ -33,18 +41,11 @@ function shoestrap_customizer_sections( $wp_customize ) {
 		'typo_jumbo'   => array( 'title' => __( 'Jumbotron', 'shoestrap' ),    'priority' => 30, 'panel' => 'typography' ),
 		'typo_footer'  => array( 'title' => __( 'Footer', 'shoestrap' ),       'priority' => 35, 'panel' => 'typography' ),
 
-		'colors'      => array( 'title' => __( 'Colors', 'shoestrap' ),          'priority' => 12, 'panel' => '' ),
-
-		'layout'    => array( 'title' => __( 'Layout', 'shoestrap' ),    'priority' => 13, 'panel' => '' ),
-
-		'blog_options' => array( 'title' => __( 'Blog Options', 'shoestrap' ),    'priority' => 14, 'panel' => 'blog' ),
+		'blog_options' => array( 'title' => __( 'Blog Options', 'shoestrap' ),    'priority' => 10, 'panel' => 'blog' ),
 		'feat'         => array( 'title' => __( 'Featured Images', 'shoestrap' ), 'priority' => 15, 'panel' => 'blog' ),
 
-		'nav'        => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 16, 'panel' => '' ),
-		'header'     => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 17, 'panel' => '' ),
-		'jumbotron'  => array( 'title' => __( 'Jumbotron', 'shoestrap' ),       'priority' => 18, 'panel' => '' ),
-		'social'     => array( 'title' => __( 'Social Links', 'shoestrap' ),    'priority' => 20, 'panel' => '' ),
-		'advanced'   => array( 'title' => __( 'Advanced', 'shoestrap' ),        'priority' => 21, 'panel' => '' ),
+		'social' => array( 'title' => __( 'Social Links', 'shoestrap' ), 'priority' => 45, 'panel' => '' ),
+		'advanced' => array( 'title' => __( 'Advanced', 'shoestrap' ), 'priority' => 50, 'panel' => '' ),
 	);
 
 	foreach ( $sections as $section => $args ) {
@@ -86,7 +87,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'     => 'logo',
 		'label'       => __( 'Logo', 'shoestrap' ),
 		'subtitle' => __( 'Upload your site\'s logo', 'shoestrap' ),
-		'section'     => 'general',
+		'section'     => 'branding',
 		'priority'    => 10,
 		'default'     => null
 	);
@@ -149,7 +150,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'mode'     => 'buttonset',
 		'setting'  => 'font_size_units',
 		'label'    => __( 'Font-size units', 'shoestrap' ),
-		'section'  => 'general',
+		'section'  => 'typo_base',
 		'subtitle' => __( 'Choose if you want to set font sizes as pixels or ems. This will apply to all settings. Please note that if you change this setting you will have to save and refresh this page. Once you do, please review ALL your font-size settings and set them accordingly.', 'shoestrap' ),
 		'default'  => 'px',
 		'choices'  => array(
@@ -300,7 +301,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'screen_tablet',
 		'label'    => __( 'Small Screen / Tablet view', 'shoestrap' ),
 		'subtitle' => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_advanced',
 		'priority' => 81,
 		'default'  => 768,
 		'choices'  => array(
@@ -315,7 +316,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'screen_desktop',
 		'label'    => __( 'Desktop Container Width', 'shoestrap' ),
 		'subtitle' => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_advanced',
 		'priority' => 82,
 		'default'  => 992,
 		'choices'  => array(
@@ -330,7 +331,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'screen_large_desktop',
 		'label'    => __( 'Large Desktop Container Width', 'shoestrap' ),
 		'subtitle' => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_advanced',
 		'priority' => 83,
 		'default'  => 1200,
 		'choices'  => array(
@@ -345,7 +346,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'gutter',
 		'label'    => __( 'Gutter', 'shoestrap' ),
 		'subtitle' => __( 'The spacing between grid columns. Default: 30px', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_advanced',
 		'priority' => 84,
 		'default'  => 30,
 		'choices'  => array(
@@ -360,7 +361,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'cpt_layout_toggle',
 		'label'    => __( 'Per Post-Type layouts', 'shoestrap' ),
 		'subtitle' => __( 'After you enable this setting you will have to save your settings and refresh your page in order to see the new options.', 'shoestrap' ),
-		'section'  => 'layout',
+		'section'  => 'layout_advanced',
 		'priority' => 90,
 		'default'  => 0,
 	);
@@ -378,7 +379,7 @@ function shoestrap_customizer_settings( $controls ) {
 				'setting'  => $post_type . '_layout',
 				'label'    => $post_type . ' ' . __( 'layout', 'shoestrap' ),
 				'description' => null,
-				'section'  => 'layout',
+				'section'  => 'layout_advanced',
 				'priority' => 92,
 				'default'  => $layout,
 				'choices'  => $layouts,
@@ -389,14 +390,6 @@ function shoestrap_customizer_settings( $controls ) {
 	//-------------------------------------------------
 	// MENUS
 	//-------------------------------------------------
-
-	$controls[] = array(
-		'type'     => 'group_title',
-		'label'    => __( 'NavBar Styling', 'shoestrap' ),
-		'priority' => 20,
-		'section'  => 'nav',
-		'setting'  => 'separator' . rand( 999, 9999 ),
-	);
 
 	$controls[] = array(
 		'type'     => 'radio',
@@ -419,7 +412,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'navbar_logo',
 		'label'    => __( 'Use Logo ( if available ) for branding.', 'shoestrap' ),
 		'description' => __( 'If this option is not checked, or there is no logo available, then the sitename will be displayed instead.', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'branding',
 		'default'  => 1,
 		'priority' => 22,
 	);
@@ -464,7 +457,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'navbar_social',
 		'label'    => __( 'Display social links in the NavBar.', 'shoestrap' ),
 		'subtitle' => __( 'Social network links can be set-up in the "Social" section.', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'social',
 		'default'  => 'off',
 		'choices'  => array(
 			'off'      => __( 'Off', 'shoestrap' ),
@@ -631,7 +624,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'navbar_secondary_social',
 		'label'    => __( 'Secondary Navbar Social Networks', 'shoestrap' ),
 		'description' => __( 'Should the social networks be displayed on the secondary navbar?', 'shoestrap' ),
-		'section'  => 'nav',
+		'section'  => 'social',
 		'default'  => 1,
 		'priority' => 52,
 	);
@@ -1249,27 +1242,27 @@ function shoestrap_customizer_settings( $controls ) {
 		'output' => '.jumbotron',
 	);
 
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'jumbotron_visibility',
-		'label'    => __( 'Jumbotron Visibility', 'shoestrap' ),
-		'subtitle' => __( 'Select if the Jumbotron should only be displayed in the frontpage or on all pages.', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 1,
-		'choices'  => array(
-			0 => __( 'All Pages', 'shoestrap' ),
-			1 => __( 'Frontpage only', 'shoestrap' ),
-		),
-		'priority' => 10,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'radio',
+	// 	'mode'     => 'buttonset',
+	// 	'setting'  => 'jumbotron_visibility',
+	// 	'label'    => __( 'Jumbotron Visibility', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select if the Jumbotron should only be displayed in the frontpage or on all pages.', 'shoestrap' ),
+	// 	'section'  => 'jumbotron',
+	// 	'default'  => 1,
+	// 	'choices'  => array(
+	// 		0 => __( 'All Pages', 'shoestrap' ),
+	// 		1 => __( 'Frontpage only', 'shoestrap' ),
+	// 	),
+	// 	'priority' => 10,
+	// );
 
 	$controls[] = array(
 		'type'     => 'checkbox',
 		'setting'  => 'jumbotron_nocontainer',
 		'label'    => __( 'Full-Width', 'shoestrap' ),
 		'description' => __( 'When selected, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.', 'shoestrap' ),
-		'section'  => 'jumbotron',
+		'section'  => 'structure_jumbo',
 		'default'  => 0,
 		'priority' => 11,
 	);

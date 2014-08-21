@@ -1386,10 +1386,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function jumbotron_html() {
 
 			$site_style   = get_theme_mod( 'site_style', 'wide' );
-			$visibility   = get_theme_mod( 'jumbotron_visibility', 1 );
+			// $visibility   = get_theme_mod( 'jumbotron_visibility', 1 );
 			$nocontainer  = get_theme_mod( 'jumbotron_nocontainer', 0 );
 
-			$hero = ( ( ( 1 == $visibility && is_front_page() ) || 1 != $visibility ) && is_active_sidebar( 'jumbotron' ) ) ? true : false;
+			// $hero = ( ( ( 1 == $visibility && is_front_page() ) || 1 != $visibility ) && is_active_sidebar( 'jumbotron' ) ) ? true : false;
+			$hero = ( is_active_sidebar( 'jumbotron' ) ) ? true : false;
 
 			if ( $hero ) : ?>
 
