@@ -18,7 +18,7 @@ function shoestrap_customizer_sections( $wp_customize ) {
 	$sections = array(
 		'branding' => array( 'title' => __( 'Branding', 'shoestrap' ), 'priority' => 5, 'panel' => '' ),
 
-		'general'         => array( 'title' => __( 'General', 'shoestrap' ),         'priority' => 10,  'panel' => 'structure' ),
+		'general'         => array( 'title' => __( 'General', 'shoestrap' ),         'priority' => 10, 'panel' => 'structure' ),
 		'layout'          => array( 'title' => __( 'Layout', 'shoestrap' ),          'priority' => 15, 'panel' => 'structure' ),
 		'layout_advanced' => array( 'title' => __( 'Advanced Layout', 'shoestrap' ), 'priority' => 20, 'panel' => 'structure' ),
 		'header'          => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 25, 'panel' => 'structure' ),
@@ -118,7 +118,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'widgets_mode',
 		'label'    => __( 'Widgets mode', 'shoestrap' ),
 		'subtitle' => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
-		'section'  => 'general',
+		'section'  => 'layout_advanced',
 		'priority' => 13,
 		'default'  => 0,
 		'choices'  => array(
@@ -164,7 +164,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'checkbox',
 		'setting'  => 'wai_aria',
 		'label'    => __( 'Enable accessibility scripts', 'shoestrap' ),
-		'section'  => 'general',
+		'section'  => 'advanced',
 		'subtitle' => __( 'When enabled, paypal\'s bootstrap-accessibility plugin is loaded', 'shoestrap' ),
 		'default'  => 1,
 		'priority' => 19,
@@ -174,7 +174,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'checkbox',
 		'setting'  => 'dev_mode',
 		'label'    => __( 'Enable development mode', 'shoestrap' ),
-		'section'  => 'general',
+		'section'  => 'advanced',
 		'subtitle' => __( 'When development mode is enabled, all theme caches are disabled (does not affect any caching plugins you may have installed).', 'shoestrap' ),
 		'default'  => 0,
 		'priority' => 20,
@@ -1733,7 +1733,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'border_radius',
 		'label'    => __( 'Border-Radius', 'shoestrap' ),
 		'description' => __( 'You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4', 'shoestrap' ),
-		'section'  => 'advanced',
+		'section'  => 'general',
 		'priority' => 2,
 		'default'  => 4,
 		'choices'  => array(
@@ -1748,7 +1748,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'setting'  => 'padding_base',
 		'label'    => __( 'Padding Base', 'shoestrap' ),
 		'description' => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8', 'shoestrap' ),
-		'section'  => 'advanced',
+		'section'  => 'general',
 		'priority' => 3,
 		'default'  => 8,
 		'choices'  => array(
