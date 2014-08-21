@@ -55,6 +55,6 @@ if ( is_day() ) {
 	$data['title'] = __( 'Archives', 'shoestrap' );
 }
 
-$data['posts'] = Timber::get_posts();
+$data['posts'] = Timber::query_posts( false, 'Shoestrap_Post' );
 
 Timber::render( $templates, $data );

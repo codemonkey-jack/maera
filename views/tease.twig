@@ -7,7 +7,7 @@
 
 		{% include 'parts/tease-title.twig' %}
 
-		{% do action( 'shoestrap/entry/meta', post.ID ) %}
+		{{ post.meta_info }}
 
 		<div class="entry-summary">
 			{{ function( 'shoestrap_get_post_teaser', post.ID ) }}

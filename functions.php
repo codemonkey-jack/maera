@@ -19,6 +19,7 @@ require_once locate_template( '/framework/framework.php' );
 require_once locate_template( '/lib/init.php' );
 require_once locate_template( '/lib/class-Shoestrap_Color.php' );
 require_once locate_template( '/lib/class-Shoestrap_Image.php' );
+require_once locate_template( '/lib/class-Shoestrap_Posts.php' );
 require_once locate_template( '/lib/widgets.php' );
 require_once locate_template( '/lib/utils.php' );
 require_once locate_template( '/lib/customizer.php' );

@@ -11,7 +11,7 @@
 
 			{% include 'parts/single-title.twig' %}
 
-			{% do action( 'shoestrap/entry/meta', post.ID ) %}
+			{{ post.meta_info }}
 
 			<div class="entry-content">
 

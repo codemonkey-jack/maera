@@ -9,7 +9,7 @@
 
 			{% include 'parts/single-title.twig' %}
 
-			{% do action( 'shoestrap/entry/meta' ) %}
+			{{ post.meta_info }}
 			{{ framework.clearfix }}
 			{% do action( 'shoestrap/page/pre_content' ) %}
 			{{ post.content }}
