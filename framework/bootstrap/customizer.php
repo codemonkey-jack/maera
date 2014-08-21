@@ -87,25 +87,25 @@ function shoestrap_customizer_settings( $controls ) {
 		'default'     => null
 	);
 
-	$controls[] = array(
-		'type'        => 'image',
-		'setting'     => 'favicon',
-		'label'       => __( 'Custom Favicon', 'shoestrap' ),
-		'subtitle' => __( 'Upload your site\'s favicon', 'shoestrap' ),
-		'section'     => 'general',
-		'priority'    => 11,
-		'default'     => null
-	);
+	// $controls[] = array(
+	// 	'type'        => 'image',
+	// 	'setting'     => 'favicon',
+	// 	'label'       => __( 'Custom Favicon', 'shoestrap' ),
+	// 	'subtitle' => __( 'Upload your site\'s favicon', 'shoestrap' ),
+	// 	'section'     => 'general',
+	// 	'priority'    => 11,
+	// 	'default'     => null
+	// );
 
-	$controls[] = array(
-		'type'        => 'image',
-		'setting'     => 'apple_icon',
-		'label'       => __( 'Apple Icon', 'shoestrap' ),
-		'subtitle' =>  __( 'This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px.', 'shoestrap' ),
-		'section'     => 'general',
-		'priority'    => 12,
-		'default'     => null
-	);
+	// $controls[] = array(
+	// 	'type'        => 'image',
+	// 	'setting'     => 'apple_icon',
+	// 	'label'       => __( 'Apple Icon', 'shoestrap' ),
+	// 	'subtitle' =>  __( 'This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px.', 'shoestrap' ),
+	// 	'section'     => 'general',
+	// 	'priority'    => 12,
+	// 	'default'     => null
+	// );
 
 	$controls[] = array(
 		'type'     => 'radio',
@@ -119,25 +119,25 @@ function shoestrap_customizer_settings( $controls ) {
 		'choices'  => array(
 			0 => __( 'Panel', 'shoestrap' ),
 			1 => __( 'Well', 'shoestrap' ),
-			2=> __( 'None', 'shoestrap' ),
+			2 => __( 'None', 'shoestrap' ),
 		),
 	);
 
-	$controls[] = array(
-		'type'     => 'radio',
-		'setting'  => 'menu_mode',
-		'label'    => __( 'Menu mode', 'shoestrap' ),
-		'subtitle' => __( 'Choose a mode for your menus. Requires that you save and refresh the options before proceeding.', 'shoestrap' ),
-		'section'  => 'general',
-		'priority' => 13,
-		'default'  => 0,
-		'choices'  => array(
-			'left'         => __( 'Left', 'shoestrap' ),
-			'normal'       => __( 'Normal', 'shoestrap' ),
-			// 'left-hidden'  => __( 'Left - Hidden', 'shoestrap' ),
-			// 'right-hidden' => __( 'Right - Hidden', 'shoestrap' ),
-		),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'radio',
+	// 	'setting'  => 'menu_mode',
+	// 	'label'    => __( 'Menu mode', 'shoestrap' ),
+	// 	'subtitle' => __( 'Choose a mode for your menus. Requires that you save and refresh the options before proceeding.', 'shoestrap' ),
+	// 	'section'  => 'general',
+	// 	'priority' => 13,
+	// 	'default'  => 0,
+	// 	'choices'  => array(
+	// 		'left'         => __( 'Left', 'shoestrap' ),
+	// 		'normal'       => __( 'Normal', 'shoestrap' ),
+	// 		// 'left-hidden'  => __( 'Left - Hidden', 'shoestrap' ),
+	// 		// 'right-hidden' => __( 'Right - Hidden', 'shoestrap' ),
+	// 	),
+	// );
 
 
 	$controls[] = array(
@@ -261,35 +261,35 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 	);
 
-	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'body_margin_top',
-		'label'    => __( 'Body Top Margin', 'shoestrap' ),
-		'subtitle' => __( 'Select the top margin of the body element in pixels.', 'shoestrap' ),
-		'section'  => 'body_margin',
-		'priority' => 8,
-		'default'  => 0,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 200,
-			'step' => 1,
-		),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'slider',
+	// 	'setting'  => 'body_margin_top',
+	// 	'label'    => __( 'Body Top Margin', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select the top margin of the body element in pixels.', 'shoestrap' ),
+	// 	'section'  => 'body_margin',
+	// 	'priority' => 8,
+	// 	'default'  => 0,
+	// 	'choices'  => array(
+	// 		'min'  => 0,
+	// 		'max'  => 200,
+	// 		'step' => 1,
+	// 	),
+	// );
 
-	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'body_margin_bottom',
-		'label'    => __( 'Body Bottom Margin', 'shoestrap' ),
-		'subtitle' => __( 'Select the bottom margin of the body element in pixels.', 'shoestrap' ),
-		'section'  => 'body_margin',
-		'priority' => 9,
-		'default'  => 0,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 200,
-			'step' => 1,
-		),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'slider',
+	// 	'setting'  => 'body_margin_bottom',
+	// 	'label'    => __( 'Body Bottom Margin', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select the bottom margin of the body element in pixels.', 'shoestrap' ),
+	// 	'section'  => 'body_margin',
+	// 	'priority' => 9,
+	// 	'default'  => 0,
+	// 	'choices'  => array(
+	// 		'min'  => 0,
+	// 		'max'  => 200,
+	// 		'step' => 1,
+	// 	),
+	// );
 
 	$controls[] = array(
 		'type'     => 'slider',
@@ -518,24 +518,24 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 	);
 
-	$controls[] = array(
-		'type'     => 'select',
-		'setting'  => 'navbar_style',
-		'label'    => __( 'Navbar Style', 'shoestrap' ),
-		'section'  => 'nav',
-		'default'  => 'default',
-		'choices'  => array(
-			'default' => __( 'Default', 'shoestrap' ),
-			'style1'  => __( 'Style', 'shoestrap' ) . ' 1',
-			'style2'  => __( 'Style', 'shoestrap' ) . ' 2',
-			'style3'  => __( 'Style', 'shoestrap' ) . ' 3',
-			'style4'  => __( 'Style', 'shoestrap' ) . ' 4',
-			'style5'  => __( 'Style', 'shoestrap' ) . ' 5',
-			'style6'  => __( 'Style', 'shoestrap' ) . ' 6',
-			'metro'   => __( 'Metro', 'shoestrap' ),
-		),
-		'priority' => 32,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'select',
+	// 	'setting'  => 'navbar_style',
+	// 	'label'    => __( 'Navbar Style', 'shoestrap' ),
+	// 	'section'  => 'nav',
+	// 	'default'  => 'default',
+	// 	'choices'  => array(
+	// 		'default' => __( 'Default', 'shoestrap' ),
+	// 		'style1'  => __( 'Style', 'shoestrap' ) . ' 1',
+	// 		'style2'  => __( 'Style', 'shoestrap' ) . ' 2',
+	// 		'style3'  => __( 'Style', 'shoestrap' ) . ' 3',
+	// 		'style4'  => __( 'Style', 'shoestrap' ) . ' 4',
+	// 		'style5'  => __( 'Style', 'shoestrap' ) . ' 5',
+	// 		'style6'  => __( 'Style', 'shoestrap' ) . ' 6',
+	// 		'metro'   => __( 'Metro', 'shoestrap' ),
+	// 	),
+	// 	'priority' => 32,
+	// );
 
 	$controls[] = array(
 		'type'     => 'slider',
@@ -648,48 +648,48 @@ function shoestrap_customizer_settings( $controls ) {
 		'priority' => 52,
 	);
 
-	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'secondary_navbar_margin',
-		'label'    => __( 'Secondary NavBar Margin', 'shoestrap' ),
-		'subtitle' => __( 'Select the top and bottom margin of header in pixels. Default: 0px.', 'shoestrap' ),
-		'section'  => 'nav',
-		'default'  => 0,
-		'priority' => 53,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 200,
-			'step' => 1,
-		),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'slider',
+	// 	'setting'  => 'secondary_navbar_margin',
+	// 	'label'    => __( 'Secondary NavBar Margin', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select the top and bottom margin of header in pixels. Default: 0px.', 'shoestrap' ),
+	// 	'section'  => 'nav',
+	// 	'default'  => 0,
+	// 	'priority' => 53,
+	// 	'choices'  => array(
+	// 		'min'  => 0,
+	// 		'max'  => 200,
+	// 		'step' => 1,
+	// 	),
+	// );
 
-	$controls[] = array(
-		'type'     => 'select',
-		'setting'  => 'sidebar_menus_class',
-		'label'    => __( 'Color for sidebar menus', 'shoestrap' ),
-		'subtitle' => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'shoestrap' ),
-		'section'  => 'nav',
-		'default'  => 'screen_sm_min',
-		'choices'  => array(
-			'default' => __( 'Default', 'shoestrap' ),
-			'primary' => __( 'Branding-Primary', 'shoestrap' ),
-			'success' => __( 'Branding-Success', 'shoestrap' ),
-			'warning' => __( 'Branding-Warning', 'shoestrap' ),
-			'info'    => __( 'Branding-Info', 'shoestrap' ),
-			'danger'  => __( 'Branding-Danger', 'shoestrap' ),
-		),
-		'priority' => 60,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'select',
+	// 	'setting'  => 'sidebar_menus_class',
+	// 	'label'    => __( 'Color for sidebar menus', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'shoestrap' ),
+	// 	'section'  => 'nav',
+	// 	'default'  => 'screen_sm_min',
+	// 	'choices'  => array(
+	// 		'default' => __( 'Default', 'shoestrap' ),
+	// 		'primary' => __( 'Branding-Primary', 'shoestrap' ),
+	// 		'success' => __( 'Branding-Success', 'shoestrap' ),
+	// 		'warning' => __( 'Branding-Warning', 'shoestrap' ),
+	// 		'info'    => __( 'Branding-Info', 'shoestrap' ),
+	// 		'danger'  => __( 'Branding-Danger', 'shoestrap' ),
+	// 	),
+	// 	'priority' => 60,
+	// );
 
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'inverse_navlist',
-		'label'    => __( 'Inverse Sidebar Menus.', 'shoestrap' ),
-		'description' => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'shoestrap' ),
-		'section'  => 'nav',
-		'default'  => 1,
-		'priority' => 61,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'checkbox',
+	// 	'setting'  => 'inverse_navlist',
+	// 	'label'    => __( 'Inverse Sidebar Menus.', 'shoestrap' ),
+	// 	'description' => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'shoestrap' ),
+	// 	'section'  => 'nav',
+	// 	'default'  => 1,
+	// 	'priority' => 61,
+	// );
 
 	//-------------------------------------------------
 	// COLORS
@@ -937,71 +937,71 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 	);
 
-	$headers = array(
-		'h1' => array( 'size' => 260, 'height' => 1.1 ),
-		'h2' => array( 'size' => 215, 'height' => 1.1 ),
-		'h3' => array( 'size' => 170, 'height' => 1.1 ),
-		'h4' => array( 'size' => 110, 'height' => 1.1 ),
-		'h5' => array( 'size' => 100, 'height' => 1.1 ),
-		'h6' => array( 'size' => 85,  'height' => 1.1 ),
-	);
+	// $headers = array(
+	// 	'h1' => array( 'size' => 260, 'height' => 1.1 ),
+	// 	'h2' => array( 'size' => 215, 'height' => 1.1 ),
+	// 	'h3' => array( 'size' => 170, 'height' => 1.1 ),
+	// 	'h4' => array( 'size' => 110, 'height' => 1.1 ),
+	// 	'h5' => array( 'size' => 100, 'height' => 1.1 ),
+	// 	'h6' => array( 'size' => 85,  'height' => 1.1 ),
+	// );
 
-	$i = 0;
-	foreach ( $headers as $header => $values ) {
+	// $i = 0;
+	// foreach ( $headers as $header => $values ) {
 
-		$controls[] = array(
-			'type'     => 'color',
-			'setting'  => 'font_' . $header . '_color',
-			'label'    => $header . ' ' . __( 'Color', 'shoestrap' ),
-			'section'  => 'typ_colors',
-			'default'  => '#333333',
-			'priority' => 40 + $i,
-		);
+	// 	$controls[] = array(
+	// 		'type'     => 'color',
+	// 		'setting'  => 'font_' . $header . '_color',
+	// 		'label'    => $header . ' ' . __( 'Color', 'shoestrap' ),
+	// 		'section'  => 'typ_colors',
+	// 		'default'  => '#333333',
+	// 		'priority' => 40 + $i,
+	// 	);
 
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'font_' . $header . '_weight',
-			'label'    => $header . ' ' . __( 'Font Weight.', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . 400,
-			'section'  => 'typ_weight',
-			'default'  => 400,
-			'priority' => 50 + $i,
-			'choices'  => array(
-				'min'  => 100,
-				'max'  => 900,
-				'step' => 100,
-			),
-		);
+	// 	$controls[] = array(
+	// 		'type'     => 'slider',
+	// 		'setting'  => 'font_' . $header . '_weight',
+	// 		'label'    => $header . ' ' . __( 'Font Weight.', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . 400,
+	// 		'section'  => 'typ_weight',
+	// 		'default'  => 400,
+	// 		'priority' => 50 + $i,
+	// 		'choices'  => array(
+	// 			'min'  => 100,
+	// 			'max'  => 900,
+	// 			'step' => 100,
+	// 		),
+	// 	);
 
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'font_' . $header .'_size',
-			'label'    => $header . ' ' . __( 'Font Size (%)', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['size'],
-			'section'  => 'typ_size',
-			'default'  => $values['size'],
-			'priority' => 60 + $i,
-			'choices'  => array(
-				'min'  => 30,
-				'max'  => 300,
-				'step' => 1,
-			),
-		);
+	// 	$controls[] = array(
+	// 		'type'     => 'slider',
+	// 		'setting'  => 'font_' . $header .'_size',
+	// 		'label'    => $header . ' ' . __( 'Font Size (%)', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['size'],
+	// 		'section'  => 'typ_size',
+	// 		'default'  => $values['size'],
+	// 		'priority' => 60 + $i,
+	// 		'choices'  => array(
+	// 			'min'  => 30,
+	// 			'max'  => 300,
+	// 			'step' => 1,
+	// 		),
+	// 	);
 
-		$controls[] = array(
-			'type'     => 'slider',
-			'setting'  => 'font_' . $header . '_height',
-			'label'    => $header . ' ' . __( 'Line Height', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['height'],
-			'section'  => 'typ_lh',
-			'default'  => $values['height'],
-			'priority' => 70 + $i,
-			'choices'  => array(
-				'min'  => 0,
-				'max'  => 3,
-				'step' => 0.1,
-			),
-		);
+	// 	$controls[] = array(
+	// 		'type'     => 'slider',
+	// 		'setting'  => 'font_' . $header . '_height',
+	// 		'label'    => $header . ' ' . __( 'Line Height', 'shoestrap' ) . ' ' . __( 'Default: ', 'shoestrap' ) . $values['height'],
+	// 		'section'  => 'typ_lh',
+	// 		'default'  => $values['height'],
+	// 		'priority' => 70 + $i,
+	// 		'choices'  => array(
+	// 			'min'  => 0,
+	// 			'max'  => 3,
+	// 			'step' => 0.1,
+	// 		),
+	// 	);
 
-		$i++;
-	}
+	// 	$i++;
+	// }
 
 	//-------------------------------------------------
 	// BLOG
@@ -1081,15 +1081,15 @@ function shoestrap_customizer_settings( $controls ) {
 		'default'     => __( 'Continued', 'shoestrap' ),
 	);
 
-	$controls[] = array(
-		'type'        => 'checkbox',
-		'setting'     => 'single_meta',
-		'label'       => __( 'Post Meta in single posts', 'shoestrap' ),
-		'description' => __( 'When checked, the post tags and categories will be added on the footer of posts.', 'shoestrap' ),
-		'section'     => 'blog_options',
-		'priority'    => 40,
-		'default'     => 1,
-	);
+	// $controls[] = array(
+	// 	'type'        => 'checkbox',
+	// 	'setting'     => 'single_meta',
+	// 	'label'       => __( 'Post Meta in single posts', 'shoestrap' ),
+	// 	'description' => __( 'When checked, the post tags and categories will be added on the footer of posts.', 'shoestrap' ),
+	// 	'section'     => 'blog_options',
+	// 	'priority'    => 40,
+	// 	'default'     => 1,
+	// );
 
 
 	//-------------------------------------------------
@@ -1305,60 +1305,60 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 	);
 
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'jumbotron_title_fit',
-		'label'    => __( 'Use fittext for titles.', 'shoestrap' ),
-		'description' => __( 'Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 0,
-		'priority' => 30,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'checkbox',
+	// 	'setting'  => 'jumbotron_title_fit',
+	// 	'label'    => __( 'Use fittext for titles.', 'shoestrap' ),
+	// 	'description' => __( 'Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF', 'shoestrap' ),
+	// 	'section'  => 'jumbotron',
+	// 	'default'  => 0,
+	// 	'priority' => 30,
+	// );
 
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'jumbotron_center',
-		'label'    => __( 'Center-align the content.', 'shoestrap' ),
-		'description' =>  __( 'Turn this on to center-align the contents of the Jumbotron area. Default: OFF', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 0,
-		'priority' => 31,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'checkbox',
+	// 	'setting'  => 'jumbotron_center',
+	// 	'label'    => __( 'Center-align the content.', 'shoestrap' ),
+	// 	'description' =>  __( 'Turn this on to center-align the contents of the Jumbotron area. Default: OFF', 'shoestrap' ),
+	// 	'section'  => 'jumbotron',
+	// 	'default'  => 0,
+	// 	'priority' => 31,
+	// );
 
-	$controls[] = array(
-		'type'     => 'number',
-		'setting'  => 'jumbotron_border_bottom_thickness',
-		'label'    => __( 'Border Bottom', 'shoestrap' ),
-		'subtitle' => __( 'Border Thickness (px)', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 0,
-		'priority' => 32,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'number',
+	// 	'setting'  => 'jumbotron_border_bottom_thickness',
+	// 	'label'    => __( 'Border Bottom', 'shoestrap' ),
+	// 	'subtitle' => __( 'Border Thickness (px)', 'shoestrap' ),
+	// 	'section'  => 'jumbotron',
+	// 	'default'  => 0,
+	// 	'priority' => 32,
+	// );
 
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'jumbotron_border_bottom_style',
-		'subtitle' =>  __( 'Border Style', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => 'none',
-		'choices'  => array(
-			'solid'  => __( 'Solid', 'shoestrap' ),
-			'dashed' => __( 'Dashed', 'shoestrap' ),
-			'dotted' => __( 'Dotted', 'shoestrap' ),
-			'none'   => __( 'None', 'shoestrap' ),
-		),
-		'priority' => 33,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'radio',
+	// 	'mode'     => 'buttonset',
+	// 	'setting'  => 'jumbotron_border_bottom_style',
+	// 	'subtitle' =>  __( 'Border Style', 'shoestrap' ),
+	// 	'section'  => 'jumbotron',
+	// 	'default'  => 'none',
+	// 	'choices'  => array(
+	// 		'solid'  => __( 'Solid', 'shoestrap' ),
+	// 		'dashed' => __( 'Dashed', 'shoestrap' ),
+	// 		'dotted' => __( 'Dotted', 'shoestrap' ),
+	// 		'none'   => __( 'None', 'shoestrap' ),
+	// 	),
+	// 	'priority' => 33,
+	// );
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'jumbotron_border_bottom_color',
-		'subtitle' =>  __( 'Border Color', 'shoestrap' ),
-		'section'  => 'jumbotron',
-		'default'  => '#eeeeee',
-		'priority' => 34,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'jumbotron_border_bottom_color',
+	// 	'subtitle' =>  __( 'Border Color', 'shoestrap' ),
+	// 	'section'  => 'jumbotron',
+	// 	'default'  => '#eeeeee',
+	// 	'priority' => 34,
+	// );
 
 	//-------------------------------------------------
 	// HEADER
@@ -1412,117 +1412,117 @@ function shoestrap_customizer_settings( $controls ) {
 		'priority' => 20,
 	);
 
-	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'header_margin_top',
-		'label'    => __( 'Margin-top', 'shoestrap' ),
-		'subtitle' => __( 'Select the top margin of the header in pixels. Default: 0px.', 'shoestrap' ),
-		'section'  => 'header',
-		'default'  => 0,
-		'priority' => 21,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 200,
-			'step' => 1,
-		),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'slider',
+	// 	'setting'  => 'header_margin_top',
+	// 	'label'    => __( 'Margin-top', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select the top margin of the header in pixels. Default: 0px.', 'shoestrap' ),
+	// 	'section'  => 'header',
+	// 	'default'  => 0,
+	// 	'priority' => 21,
+	// 	'choices'  => array(
+	// 		'min'  => 0,
+	// 		'max'  => 200,
+	// 		'step' => 1,
+	// 	),
+	// );
 
-	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'header_margin_bottom',
-		'label'    => __( 'Margin-bottom', 'shoestrap' ),
-		'subtitle' => __( 'Select the bottom margin of the header in pixels. Default: 0px.', 'shoestrap' ),
-		'section'  => 'header',
-		'default'  => 0,
-		'priority' => 22,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 200,
-			'step' => 1,
-		),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'slider',
+	// 	'setting'  => 'header_margin_bottom',
+	// 	'label'    => __( 'Margin-bottom', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select the bottom margin of the header in pixels. Default: 0px.', 'shoestrap' ),
+	// 	'section'  => 'header',
+	// 	'default'  => 0,
+	// 	'priority' => 22,
+	// 	'choices'  => array(
+	// 		'min'  => 0,
+	// 		'max'  => 200,
+	// 		'step' => 1,
+	// 	),
+	// );
 
 	//-------------------------------------------------
 	// SOCIAL
 	//-------------------------------------------------
 
-	$controls[] = array(
-		'type'     => 'text',
-		'setting'  => 'social_sharing_text',
-		'label'    => __( 'Sharing Button Text', 'shoestrap' ),
-		'description' => __( 'Select the text for the social sharing button.', 'shoestrap' ),
-		'section'  => 'social',
-		'default'  => __( 'Share', 'shoestrap' ),
-		'priority' => 1,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'text',
+	// 	'setting'  => 'social_sharing_text',
+	// 	'label'    => __( 'Sharing Button Text', 'shoestrap' ),
+	// 	'description' => __( 'Select the text for the social sharing button.', 'shoestrap' ),
+	// 	'section'  => 'social',
+	// 	'default'  => __( 'Share', 'shoestrap' ),
+	// 	'priority' => 1,
+	// );
 
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'social_sharing_location',
-		'label'    => __( 'Button Location', 'shoestrap' ),
-		'section'  => 'social',
-		'default'  => 'none',
-		'choices'  => array(
-			'none'   => __( 'None', 'shoestrap' ),
-			'top'    => __( 'Top', 'shoestrap' ),
-			'bottom' => __( 'Bottom', 'shoestrap' ),
-			'both'   => __( 'Both', 'shoestrap' ),
-		),
-		'priority' => 2,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'radio',
+	// 	'mode'     => 'buttonset',
+	// 	'setting'  => 'social_sharing_location',
+	// 	'label'    => __( 'Button Location', 'shoestrap' ),
+	// 	'section'  => 'social',
+	// 	'default'  => 'none',
+	// 	'choices'  => array(
+	// 		'none'   => __( 'None', 'shoestrap' ),
+	// 		'top'    => __( 'Top', 'shoestrap' ),
+	// 		'bottom' => __( 'Bottom', 'shoestrap' ),
+	// 		'both'   => __( 'Both', 'shoestrap' ),
+	// 	),
+	// 	'priority' => 2,
+	// );
 
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'radio',
-		'setting'  => 'social_sharing_button_class',
-		'label'    => __( 'Button Styling', 'shoestrap' ),
-		'subtitle' => __( 'Select between your branding colors', 'shoestrap' ),
-		'section'  => 'social',
-		'default'  => 'default',
-		'choices'  => array(
-			'default' => __( 'Default', 'shoestrap' ),
-			'primary' => __( 'Primary', 'shoestrap' ),
-			'success' => __( 'Success', 'shoestrap' ),
-			'warning' => __( 'Warning', 'shoestrap' ),
-			'danger'  => __( 'Danger', 'shoestrap' ),
-		),
-		'priority' => 3,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'radio',
+	// 	'mode'     => 'radio',
+	// 	'setting'  => 'social_sharing_button_class',
+	// 	'label'    => __( 'Button Styling', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select between your branding colors', 'shoestrap' ),
+	// 	'section'  => 'social',
+	// 	'default'  => 'default',
+	// 	'choices'  => array(
+	// 		'default' => __( 'Default', 'shoestrap' ),
+	// 		'primary' => __( 'Primary', 'shoestrap' ),
+	// 		'success' => __( 'Success', 'shoestrap' ),
+	// 		'warning' => __( 'Warning', 'shoestrap' ),
+	// 		'danger'  => __( 'Danger', 'shoestrap' ),
+	// 	),
+	// 	'priority' => 3,
+	// );
 
-	$post_types = get_post_types( array( 'public' => true ), 'names' );
-	$controls[] = array(
-		'type'        => 'multicheck',
-		'mode'        => 'checkbox',
-		'setting'     => 'social_sharing_singular',
-		'label'       => __( 'Enable on single post types', 'shoestrap' ),
-		'subtitle'    => __( 'If you want to display the sharing buttons on posts, pages or any other post type you will have to select it here.', 'shoestrap' ),
-		'section'     => 'social',
-		'priority'    => 5,
-		'default'     => '',
-		'choices'     => $post_types,
-	);
+	// $post_types = get_post_types( array( 'public' => true ), 'names' );
+	// $controls[] = array(
+	// 	'type'        => 'multicheck',
+	// 	'mode'        => 'checkbox',
+	// 	'setting'     => 'social_sharing_singular',
+	// 	'label'       => __( 'Enable on single post types', 'shoestrap' ),
+	// 	'subtitle'    => __( 'If you want to display the sharing buttons on posts, pages or any other post type you will have to select it here.', 'shoestrap' ),
+	// 	'section'     => 'social',
+	// 	'priority'    => 5,
+	// 	'default'     => '',
+	// 	'choices'     => $post_types,
+	// );
 
-	$controls[] = array(
-		'type'        => 'multicheck',
-		'mode'        => 'checkbox',
-		'setting'     => 'share_networks',
-		'label'       => __( 'Social Share Networks', 'shoestrap' ),
-		'subtitle'    => __( 'Select the Social Networks you want to enable for social shares', 'shoestrap' ),
-		'section'     => 'social',
-		'priority'    => 6,
-		'default'     => '',
-		'choices'     => array(
-			'fb'    => __( 'Facebook', 'shoestrap' ),
-			'gp'    => __( 'Google+', 'shoestrap' ),
-			'li'    => __( 'LinkedIn', 'shoestrap' ),
-			'pi'    => __( 'Pinterest', 'shoestrap' ),
-			'rd'    => __( 'Reddit', 'shoestrap' ),
-			'tu'    => __( 'Tumblr', 'shoestrap' ),
-			'tw'    => __( 'Twitter', 'shoestrap' ),
-			'em'    => __( 'Email', 'shoestrap' ),
-		)
-	);
+	// $controls[] = array(
+	// 	'type'        => 'multicheck',
+	// 	'mode'        => 'checkbox',
+	// 	'setting'     => 'share_networks',
+	// 	'label'       => __( 'Social Share Networks', 'shoestrap' ),
+	// 	'subtitle'    => __( 'Select the Social Networks you want to enable for social shares', 'shoestrap' ),
+	// 	'section'     => 'social',
+	// 	'priority'    => 6,
+	// 	'default'     => '',
+	// 	'choices'     => array(
+	// 		'fb'    => __( 'Facebook', 'shoestrap' ),
+	// 		'gp'    => __( 'Google+', 'shoestrap' ),
+	// 		'li'    => __( 'LinkedIn', 'shoestrap' ),
+	// 		'pi'    => __( 'Pinterest', 'shoestrap' ),
+	// 		'rd'    => __( 'Reddit', 'shoestrap' ),
+	// 		'tu'    => __( 'Tumblr', 'shoestrap' ),
+	// 		'tw'    => __( 'Twitter', 'shoestrap' ),
+	// 		'em'    => __( 'Email', 'shoestrap' ),
+	// 	)
+	// );
 
 	$social_links = array(
 		'blogger'     => __( 'Blogger', 'shoestrap' ),
@@ -1597,90 +1597,90 @@ function shoestrap_customizer_settings( $controls ) {
 		'priority' => 10,
 	);
 
-	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'footer_margin_top',
-		'label'    => __( 'Margin-top', 'shoestrap' ),
-		'subtitle' => __( 'Select the top margin of the footer in pixels. Default: 0px.', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 0,
-		'priority' => 11,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 200,
-			'step' => 1,
-		),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'slider',
+	// 	'setting'  => 'footer_margin_top',
+	// 	'label'    => __( 'Margin-top', 'shoestrap' ),
+	// 	'subtitle' => __( 'Select the top margin of the footer in pixels. Default: 0px.', 'shoestrap' ),
+	// 	'section'  => 'footer',
+	// 	'default'  => 0,
+	// 	'priority' => 11,
+	// 	'choices'  => array(
+	// 		'min'  => 0,
+	// 		'max'  => 200,
+	// 		'step' => 1,
+	// 	),
+	// );
 
-	$controls[] = array(
-		'type'     => 'textarea',
-		'label'    => __( 'Footer Text', 'shoestrap' ),
-		'setting'  => 'footer_text',
-		'default'  => '&copy; [year] [sitename]',
-		'section'  => 'footer',
-		'priority' => 12,
-		'subtitle' => __( 'The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]', 'shoestrap' ),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'textarea',
+	// 	'label'    => __( 'Footer Text', 'shoestrap' ),
+	// 	'setting'  => 'footer_text',
+	// 	'default'  => '&copy; [year] [sitename]',
+	// 	'section'  => 'footer',
+	// 	'priority' => 12,
+	// 	'subtitle' => __( 'The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]', 'shoestrap' ),
+	// );
 
-	$controls[] = array(
-		'type'     => 'number',
-		'setting'  => 'footer_border_bottom_thickness',
-		'label'    => __( 'Border Top', 'shoestrap' ),
-		'subtitle' => __( 'Border Thickness (px)', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 0,
-		'priority' => 32,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'number',
+	// 	'setting'  => 'footer_border_bottom_thickness',
+	// 	'label'    => __( 'Border Top', 'shoestrap' ),
+	// 	'subtitle' => __( 'Border Thickness (px)', 'shoestrap' ),
+	// 	'section'  => 'footer',
+	// 	'default'  => 0,
+	// 	'priority' => 32,
+	// );
 
-	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'footer_border_bottom_style',
-		'subtitle' =>  __( 'Border Style', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 'none',
-		'choices'  => array(
-			'solid'  => __( 'Solid', 'shoestrap' ),
-			'dashed' => __( 'Dashed', 'shoestrap' ),
-			'dotted' => __( 'Dotted', 'shoestrap' ),
-			'none'   => __( 'None', 'shoestrap' ),
-		),
-		'priority' => 33,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'radio',
+	// 	'mode'     => 'buttonset',
+	// 	'setting'  => 'footer_border_bottom_style',
+	// 	'subtitle' =>  __( 'Border Style', 'shoestrap' ),
+	// 	'section'  => 'footer',
+	// 	'default'  => 'none',
+	// 	'choices'  => array(
+	// 		'solid'  => __( 'Solid', 'shoestrap' ),
+	// 		'dashed' => __( 'Dashed', 'shoestrap' ),
+	// 		'dotted' => __( 'Dotted', 'shoestrap' ),
+	// 		'none'   => __( 'None', 'shoestrap' ),
+	// 	),
+	// 	'priority' => 33,
+	// );
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'footer_border_bottom_color',
-		'subtitle' =>  __( 'Border Color', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => '#eeeeee',
-		'priority' => 34,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'footer_border_bottom_color',
+	// 	'subtitle' =>  __( 'Border Color', 'shoestrap' ),
+	// 	'section'  => 'footer',
+	// 	'default'  => '#eeeeee',
+	// 	'priority' => 34,
+	// );
 
-	$controls[] = array(
-		'type'     => 'slider',
-		'setting'  => 'footer_social_width',
-		'label'    => __( 'Footer social links column width', 'shoestrap' ),
-		'description' => __( 'You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Set to 0 to completely hide social links.', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 0,
-		'priority' => 40,
-		'choices'  => array(
-			'min'  => 0,
-			'max'  => 12,
-			'step' => 1,
-		),
-	);
+	// $controls[] = array(
+	// 	'type'     => 'slider',
+	// 	'setting'  => 'footer_social_width',
+	// 	'label'    => __( 'Footer social links column width', 'shoestrap' ),
+	// 	'description' => __( 'You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Set to 0 to completely hide social links.', 'shoestrap' ),
+	// 	'section'  => 'footer',
+	// 	'default'  => 0,
+	// 	'priority' => 40,
+	// 	'choices'  => array(
+	// 		'min'  => 0,
+	// 		'max'  => 12,
+	// 		'step' => 1,
+	// 	),
+	// );
 
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'footer_social_new_window_toggle',
-		'label'    => __( 'Footer social icons open new window', 'shoestrap' ),
-		'description' => __( 'Social icons in footer will open a new window. Default: On.', 'shoestrap' ),
-		'section'  => 'footer',
-		'default'  => 0,
-		'priority' => 1,
-	);
+	// $controls[] = array(
+	// 	'type'     => 'checkbox',
+	// 	'setting'  => 'footer_social_new_window_toggle',
+	// 	'label'    => __( 'Footer social icons open new window', 'shoestrap' ),
+	// 	'description' => __( 'Social icons in footer will open a new window. Default: On.', 'shoestrap' ),
+	// 	'section'  => 'footer',
+	// 	'default'  => 0,
+	// 	'priority' => 1,
+	// );
 
 	//-------------------------------------------------
 	// ADVANCED
