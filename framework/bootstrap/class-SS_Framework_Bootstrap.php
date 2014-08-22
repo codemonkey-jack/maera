@@ -946,7 +946,20 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Headers font
 			$headers_font_family = get_theme_mod( 'headers_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
-			$style .= 'h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{font-family:' . $headers_font_family . ';}';
+
+			$style .= 'h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{';
+			$style .= 'font-family: ' . $headers_font_family . ';';
+			$style .= 'color: ' . get_theme_mod( 'font_headers_color', '#333333' ) . ';';
+			$style .= 'font-weight: ' . get_theme_mod( 'font_headers_weight', 400 ) . ';';
+			$style .= 'line-height: ' . get_theme_mod( 'font_headers_height', 1.1 ) . ';';
+			$style .= '}';
+
+			$style .= 'h1, .h1 { font-size: ' . intval( ( 260 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
+			$style .= 'h2, .h2 { font-size: ' . intval( ( 215 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
+			$style .= 'h3, .h3 { font-size: ' . intval( ( 170 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
+			$style .= 'h4, .h4 { font-size: ' . intval( ( 110 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
+			$style .= 'h5, .h5 { font-size: ' . intval( ( 100 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
+			$style .= 'h6, .h6 { font-size: ' . intval( ( 85 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 
 			// $headers = array(
 			// 	'h1' => array( 'size' => 260, 'height' => 1.1 ),
