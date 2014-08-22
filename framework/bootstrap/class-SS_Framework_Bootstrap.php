@@ -68,15 +68,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_filter( 'body_class', array( $this, 'body_class' ) );
 
 			// Styles
-			// add_filter( 'shoestrap/styles', array( $this, 'jumbotron_css' ) );
 			add_filter( 'shoestrap/styles', array( $this, 'header_css' ) );
 			add_filter( 'shoestrap/styles', array( $this, 'typography_css' ) );
 			add_filter( 'shoestrap/styles', array( $this, 'layout_css' ) );
 			add_filter( 'shoestrap/styles', array( $this, 'color_css' ) );
-
-			// Fittext script
-			// add_action( 'wp_footer', array( $this, 'fittext_init' ), 999 );
-			// add_action( 'wp_enqueue_scripts', array( $this, 'fittext_enqueue' ) );
 
 			add_action( 'wp_print_styles', array( $this, 'google_font' ) );
 			add_action( 'init', array( $this, 'navbar_logo' ) );
@@ -113,50 +108,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Post Meta
 			add_action( 'shoestrap/entry/meta', array( $this, 'meta_elements' ), 10, 1 );
 
-			// if ( 'left' == get_theme_mod( 'menu_mode', 'normal' ) ) {
-
-			// 	add_action( 'shoestrap/top-bar/before', array( $this, 'open_nav_left_row' ), 1 );
-			// 	add_filter( 'shoestrap/topbar/class', array( $this, 'return_nav_left_class' ) );
-			// 	add_action( 'shoestrap/top-bar/after', array( $this, 'left_wrapper_open_right' ), 1 );
-			// 	add_action( 'shoestrap/footer/after', array( $this, 'left_wrapper_close_right' ) );
-
-			// }
-
 			add_filter( 'shoestrap/topbar/menu/class', array( $this, 'navbar_links_alignment' ) );
 
 			add_action( 'shoestrap/topbar/inside/end', array( $this, 'social_links_navbar_content' ) );
-
-			// // Conditions for showing share button
-			// $social_share_post_types = explode(',', get_theme_mod('social_sharing_singular' ) );
-
-			// foreach ($social_share_post_types as $key) {
-
-			// 	if ( $key == 'page' ) {
-			// 		if ( get_theme_mod('social_sharing_location') == 'top' ) {
-			// 			add_action( 'shoestrap/page/pre_content',   array( $this, 'social_sharing' ) );
-			// 		}
-			// 		elseif ( get_theme_mod('social_sharing_location') == 'bottom' ) {
-			// 			add_action( 'shoestrap/page/after_content', array( $this, 'social_sharing' ) );
-			// 		}
-			// 		elseif ( get_theme_mod('social_sharing_location') == 'both' ) {
-			// 			add_action( 'shoestrap/page/pre_content',   array( $this, 'social_sharing' ) );
-			// 			add_action( 'shoestrap/page/after_content', array( $this, 'social_sharing' ) );
-			// 		}
-			// 	}
-			// 	if ( $key == 'post' ) {
-			// 		if ( get_theme_mod('social_sharing_location') == 'top' ) {
-			// 			add_action( 'shoestrap/single/pre_content',   array( $this, 'social_sharing' ) );
-			// 		}
-			// 		elseif ( get_theme_mod('social_sharing_location') == 'bottom' ) {
-			// 			add_action( 'shoestrap/single/after_content', array( $this, 'social_sharing' ) );
-			// 		}
-			// 		elseif ( get_theme_mod('social_sharing_location') == 'both' ) {
-			// 			add_action( 'shoestrap/single/pre_content',   array( $this, 'social_sharing' ) );
-			// 			add_action( 'shoestrap/single/after_content', array( $this, 'social_sharing' ) );
-			// 		}
-			// 	}
-
-			// }
 
 		}
 
@@ -307,11 +261,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			if ( empty( $metas ) ) {
 				return;
 			}
-
-			// // No need to proceed if we're on a single post and we don't want to display the post meta
-			// if ( is_singular() && 1 != get_theme_mod( 'single_meta', 1 ) ) {
-			// 	return;
-			// }
 
 			$content = '';
 
@@ -961,24 +910,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$style .= 'h5, .h5 { font-size: ' . intval( ( 100 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 			$style .= 'h6, .h6 { font-size: ' . intval( ( 85 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 
-			// $headers = array(
-			// 	'h1' => array( 'size' => 260, 'height' => 1.1 ),
-			// 	'h2' => array( 'size' => 215, 'height' => 1.1 ),
-			// 	'h3' => array( 'size' => 170, 'height' => 1.1 ),
-			// 	'h4' => array( 'size' => 110, 'height' => 1.1 ),
-			// 	'h5' => array( 'size' => 100, 'height' => 1.1 ),
-			// 	'h6' => array( 'size' => 85,  'height' => 1.1 ),
-			// );
-
-			// foreach ( $headers as $header => $values ) {
-			// 	$header_color  = get_theme_mod( 'font_' . $header . '_color', '#333333' );
-			// 	$header_weight = get_theme_mod( 'font_' . $header . '_weight', 400 );
-			// 	$header_size   = get_theme_mod( 'font_' . $header . '_size', $values['size'] );
-			// 	$header_height = get_theme_mod( 'font_' . $header . '_height', $values['height'] );
-
-			// 	$style .= $header . ', .' . $header . ' {color:' . $header_color . ';font-weight: ' . $header_weight . ';font-size: ' . $header_size . '%;line-height: ' . $header_height . ';}';
-			// }
-
 			return $style;
 
 		}
@@ -1296,9 +1227,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function body_class( $classes ) {
 
 			$site_style = get_theme_mod( 'site_style', 'wide' );
-			// if ( 'left' == get_theme_mod( 'menu_mode' ) ) {
-			// 	$site_style = 'fluid';
-			// }
 
 			if ( 'boxed' == $site_style ) {
 				$classes[] = 'container';
@@ -1318,17 +1246,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function layout_css( $style ) {
 
 			global $wp_customize;
-
-			// $body_margin_top    = get_theme_mod( 'body_margin_top', 0 );
-			// $body_margin_bottom = get_theme_mod( 'body_margin_bottom', 0 );
-
-			// if ( 0 != $body_margin_top ) {
-			// 	$style .= 'html body.bootstrap { margin-top: ' . $body_margin_top . 'px !important; }';
-			// }
-
-			// if ( 0 != $body_margin_bottom ) {
-			// 	$style .= 'html body.bootstrap { margin-bottom: ' . $body_margin_bottom . 'px !important; }';
-			// }
 
 			// Customizer-only styles
 			if ( $wp_customize ) {
@@ -1435,73 +1352,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		}
 
 
-		/**
-		 * Any Jumbotron-specific CSS that can't be added in the .less stylesheet is calculated here.
-		 */
-		// function jumbotron_css( $styles ) {
-
-		// 	// $center = get_theme_mod( 'jumbotron_center', 0 );
-		// 	$thickness = get_theme_mod( 'jumbotron_border_bottom_thickness', 0 );
-		// 	$style     = get_theme_mod( 'jumbotron_border_bottom_style', 'none');
-		// 	$color     = get_theme_mod( 'jumbotron_border_bottom_color', '#eeeeee' );
-
-		// 	if ( 0 != $center && 0 != $thickness ) {
-
-		// 		$styles .= '.jumbotron{';
-
-		// 		if ( $center ) {
-		// 			$styles .= 'text-align:center;';
-		// 		}
-
-		// 		if ( $thickness ) {
-		// 			$styles .= 'border-bottom:' . $thickness . 'px ' . $style . ' ' . $color . ';';
-		// 		}
-
-		// 		$styles .= '}';
-
-		// 	}
-
-		// 	return $styles;
-
-		// }
-
-
-		/*
-		 * Enables the fittext.js for h1 headings
-		 */
-		// function fittext_init() {
-
-		// 	$fittext_toggle   = get_theme_mod( 'jumbotron_title_fit', 0 );
-		// 	$jumbo_visibility = get_theme_mod( 'jumbotron_visibility', 1 );
-
-		// 	// Should only show on the front page if it's enabled, or site-wide when appropriate
-		// 	if ( 1 == $fittext_toggle && ( 0 == $jumbo_visibility || ( 1 == $jumbo_visibility && is_front_page() ) ) ) {
-
-		// 		echo '<script>jQuery(".jumbotron h1").fitText(1.3);</script>';
-
-		// 	}
-
-		// }
-
-
-		/*
-		 * Enqueues fittext.js when needed
-		 */
-		// function fittext_enqueue() {
-
-		// 	$fittext_toggle   = get_theme_mod( 'jumbotron_title_fit', 0 );
-		// 	$jumbo_visibility = get_theme_mod( 'jumbotron_visibility', 1 );
-
-		// 	if ( 1 == $fittext_toggle && ( 0 == $jumbo_visibility || ( 1 == $jumbo_visibility && is_front_page() ) ) ) {
-
-		// 		wp_register_script( 'fittext', get_template_directory_uri() . '/framework/bootstrap/assets/js/jquery.fittext.js', false, null, true  );
-		// 		wp_enqueue_script( 'fittext' );
-
-		// 	}
-
-		// }
-
-
 		/*
 		 * The Header template
 		 */
@@ -1555,11 +1405,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			if ( 1 == get_theme_mod( 'header_toggle', 0 ) ) {
 
 				$el = ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) ? 'body .header-boxed' : 'body .header-wrapper';
-
 				$styles .= $el . ',' . $el . ' a,' . $el . ' h1,' . $el . ' h2,' . $el . ' h3,' . $el . ' h4,' . $el . ' h5,' . $el . ' h6{ color:' . get_theme_mod( 'header_color', '#333333') . ';}';
-
-				// $styles .= ( 0 < get_theme_mod( 'header_margin_top', 0 ) ) ? $element . '{margin-top:' . get_theme_mod( 'header_margin_top', 0 ) . 'px;}' : null;
-				// $styles .= ( 0 < get_theme_mod( 'header_margin_bottom', 0 ) ) ? $element . '{margin-bottom:' . get_theme_mod( 'header_margin_bottom', 0 ) . 'px;}' : null;
 
 			}
 
@@ -1841,93 +1687,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		}
 
 		/**
-		 * Build an array of the available/enabled networks for social sharing.
-		 */
-		// function get_social_shares() {
-
-		// 	$nets   = explode(',', get_theme_mod( 'share_networks' ) );
-
-		// 	$networks = null;
-
-		// 	foreach ($nets as $net) {
-
-		// 		if ( $net == 'fb') {
-		// 			$networks['facebook'] = array(
-		// 				'icon'      => 'facebook',
-		// 				'fullname'  => 'Facebook',
-		// 				'url'       => 'http://www.facebook.com/sharer.php?u=' . get_permalink() . '&amp;title=' . urlencode( html_entity_decode( get_the_title(),ENT_QUOTES,'UTF-8' ) )
-		// 			);
-		// 		}
-
-		// 		if ( $net == 'tw' ) {
-		// 			$networks['twitter'] = array(
-		// 				'icon'      => 'twitter',
-		// 				'fullname'  => 'Twitter',
-		// 				'url'       => 'http://twitter.com/home/?status=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) ) . ' - ' . get_permalink()
-		// 			);
-
-		// 			$twittername = $this->get_tw_username();
-
-		// 			if ( $twittername != '' ) {
-		// 				$network['twitter']['username'] = $twittername;
-		// 				$networks['twitter']['url'] .= ' via @' . $twittername;
-		// 			}
-		// 		}
-
-		// 		if ( $net == 'rd' ) {
-		// 			$networks['reddit'] = array(
-		// 				'icon'      => 'reddit',
-		// 				'fullname'  => 'Reddit',
-		// 				'url'       => 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) )
-		// 			);
-		// 		}
-
-		// 		if ( $net == 'li' ) {
-		// 			$networks['linkedin'] = array(
-		// 				'icon'      => 'linkedin',
-		// 				'fullname'  => 'LinkedIn',
-		// 				'url'       => 'http://linkedin.com/shareArticle?mini=true&amp;url=' .get_permalink() . '&amp;title=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) )
-		// 			);
-		// 		}
-
-		// 		if ( $net == 'gp' ) {
-		// 			$networks['googleplus'] = array(
-		// 				'icon'      => 'googleplus',
-		// 				'fullname'  => 'Google+',
-		// 				'url'       => 'https://plus.google.com/share?url=' . get_permalink()
-		// 			);
-		// 		}
-
-		// 		if ( $net == 'tu' ) {
-		// 			$networks['tumblr'] = array(
-		// 				'icon'      => 'tumblr',
-		// 				'fullname'  => 'Tumblr',
-		// 				'url'       =>  'http://www.tumblr.com/share/link?url=' . urlencode( get_permalink() ) . '&amp;name=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) ) . "&amp;description=" . urlencode( get_the_excerpt() )
-		// 			);
-		// 		}
-
-		// 		if ( $net == 'pi' ) {
-		// 			$networks['pinterest'] = array(
-		// 				'icon'      => 'pinterest',
-		// 				'fullname'  => 'Pinterest',
-		// 				'url'       => 'http://pinterest.com/pin/create/button/?url=' . get_permalink()
-		// 			);
-		// 		}
-
-		// 		if ( $net == 'em' ) {
-		// 			$networks['email'] = array(
-		// 				'icon'      => 'envelope',
-		// 				'fullname'  => 'Email',
-		// 				'url'       => 'mailto:?subject=' . urlencode( html_entity_decode( strip_tags( get_the_title() ),ENT_QUOTES,'UTF-8' ) ) . '&amp;body=' . get_permalink()
-		// 			);
-		// 		}
-
-		// 	}
-
-		// 	return $networks;
-		// }
-
-		/**
 		 * Properly parses the twitter URL if set
 		 */
 		function get_tw_username() {
@@ -1941,44 +1700,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			return $twittername;
 		}
-
-		/**
-		 * Create the social sharing buttons
-		 */
-		// function social_sharing() {
-
-		// 	// The base class for icons that will be used
-		// 	$baseclass  = 'icon el-icon-';
-
-		// 	// Don't show by default
-		// 	$show = false;
-
-		// 	// Button class
-		// 	$button_color = get_theme_mod('social_sharing_button_class', 'default' );
-
-		// 	// Button Text
-		// 	$text = get_theme_mod('social_sharing_text');
-
-		// 	// Build the content
-		// 	$content  = '<div class="btn-group btn-group-sm social-share">';
-		// 	$content .= '<button class="btn btn-'.$button_color.' social-share-main">'.$text.'</button>';
-
-		// 	// An array of the available networks
-		// 	$networks = $this->get_social_shares();
-		// 	$networks = is_null( $networks ) ? array() : $networks;
-
-		// 	foreach ( $networks as $network ) {
-		// 		$content .= '<a class="btn btn-'.$button_color.' social-link" href="'.$network['url'].'" target="_blank">';
-		// 		$content .= '<i class="' . $baseclass . $network['icon'] . '"></i>';
-		// 		$content .= '</a>';
-		// 	}
-		// 	$content .= '</div>';
-
-		// 	// If at least ONE social share option is enabled then echo the content
-		// 	if ( ! empty( $networks ) ) {
-		// 		echo $content;
-		// 	}
-		// }
 
 		/**
 		 * Include the custom CSS
