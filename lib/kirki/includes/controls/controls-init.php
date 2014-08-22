@@ -22,35 +22,35 @@ function kirki_customizer_controls( $wp_customize ) {
 				$wp_customize->add_setting( $control['setting'] . '_image', array(
 					'default'    => $control['default']['image'],
 					'type'       => 'theme_mod',
-					'transport'   => 'postMessage',
+					//'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_repeat', array(
 					'default'    => $control['default']['repeat'],
 					'type'       => 'theme_mod',
-					'transport'   => 'postMessage',
+					//'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_size', array(
 					'default'    => $control['default']['size'],
 					'type'       => 'theme_mod',
-					'transport'   => 'postMessage',
+					//'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_attach', array(
 					'default'    => $control['default']['attach'],
 					'type'       => 'theme_mod',
-					'transport'   => 'postMessage',
+					//'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_position', array(
 					'default'    => $control['default']['position'],
 					'type'       => 'theme_mod',
-					'transport'   => 'postMessage',
+					//'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
@@ -59,18 +59,20 @@ function kirki_customizer_controls( $wp_customize ) {
 					$wp_customize->add_setting( $control['setting'] . '_opacity', array(
 						'default'    => $control['default']['opacity'],
 						'type'       => 'theme_mod',
-					  'transport'   => 'postMessage',
+					    //'transport'   => 'postMessage',
 						'capability' => 'edit_theme_options'
 					) );
 
 				}
 			} else {
 
+                $is_ajax = ($control['framework_var']) ? 'postMessage' : 'refresh';
+
 				// Add settings
 				$wp_customize->add_setting( $control['setting'], array(
 					'default'    => isset( $control['default'] ) ? $control['default'] : '',
 					'type'       => 'theme_mod',
-					'transport'   => 'postMessage',
+					'transport'   => $is_ajax,
 					'capability' => 'edit_theme_options'
 				) );
 
@@ -101,6 +103,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => __( 'Background Color', 'kirki' ),
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						'framework_var'    => isset( $control['framework_var'] ) ? $control['framework_var'] : null,
 					) )
 				);
 

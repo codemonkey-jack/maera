@@ -471,6 +471,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'nav',
 		'default'  => '#f8f8f8',
 		'priority' => 30,
+        'framework_var' => '@navbar-default-bg'
 	);
 
 	$controls[] = array(
@@ -555,6 +556,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'nav',
 		'default'  => '#333333',
 		'priority' => 42,
+        'framework_var' => '@navbar-default-color'
 	);
 
 	$controls[] = array(
@@ -744,6 +746,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'priority' => 1,
 		'section'  => 'background',
 		'setting'  => 'separator' . rand( 999, 9999 ),
+        'framework_var' => '@body-bg',
 	);
 
 	$controls[] = array(
@@ -762,6 +765,7 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 		'priority' => 2,
 		'output' => 'body.bootstrap',
+        'framework_var' => '@body-bg',
 	);
 
 	$controls[] = array(
@@ -788,6 +792,7 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 		'priority' => 31,
 		'output' => 'body.bootstrap #wrap-main-section',
+        'framework_var' => '@boxed-container-bg-color',
 	);
 
 	//-------------------------------------------------
@@ -839,6 +844,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'typography',
 		'default'  => '#333333',
 		'priority' => 23,
+        'framework_var' => '@text-color'
 	);
 
 	$controls[] = array(
@@ -997,7 +1003,8 @@ function shoestrap_customizer_settings( $controls ) {
 			'section'  => 'typography',
 			'default'  => '#333333',
 			'priority' => 40 + $i,
-			'required' => array( 'headers_color_toggle' => 1 )
+			'required' => array( 'headers_color_toggle' => 1 ),
+            'framework_var' => '@text-color'
 		);
 
 		$controls[] = array(
@@ -1263,6 +1270,7 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 		'priority' => 1,
 		'output' => '.jumbotron',
+        'framework_var' => 'jumbotron-bg'
 	);
 
 	$controls[] = array(
@@ -1316,6 +1324,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'jumbotron',
 		'default'  => '#333333',
 		'priority' => 22,
+        'framework_var' => '@jumbotron-color'
 	);
 
 	$controls[] = array(
@@ -1413,6 +1422,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'jumbotron',
 		'default'  => '#eeeeee',
 		'priority' => 34,
+        'framework_var' => '@jumbotron-bottom-border'
 	);
 
 	//-------------------------------------------------
@@ -1455,6 +1465,7 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 		'priority' => 10,
 		'output' => 'header.page-header',
+        'framework_var' => '@header-bg'
 	);
 
 	$controls[] = array(
@@ -1465,6 +1476,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'header',
 		'default'  => '#333333',
 		'priority' => 20,
+        'framework_var' => '@header-color'
 	);
 
 	$controls[] = array(
@@ -1649,6 +1661,7 @@ function shoestrap_customizer_settings( $controls ) {
 		),
 		'priority' => 10,
 		'output' => 'footer.page-footer',
+        'framework_var' => '@footer-bg'
 	);
 
 	$controls[] = array(
@@ -1659,6 +1672,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'footer',
 		'default'  => '#333333',
 		'priority' => 10,
+        'framework_var' => '@footer-bg'
 	);
 
 	$controls[] = array(
@@ -1719,6 +1733,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'footer',
 		'default'  => '#eeeeee',
 		'priority' => 34,
+        'framework_var' => '@footer-color'
 	);
 
 	$controls[] = array(

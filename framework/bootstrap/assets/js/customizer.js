@@ -1,51 +1,53 @@
 (function($){
-
-    var kirki_functionality = {
-        less_vars: {},
-        //config_array: [],
+    var kirki = {
+        getParentLess: function(){
+            var parentWindow = window.parent;
+            // check if loading the first time and if so create object in parent
+            if(typeof(parentWindow.SSCustomizer) != "undefined" && parentWindow.SSCustomizer.hasOwnProperty('framework_vars')) {
+                return parentWindow.SSCustomizer.framework_vars;
+            } else {
+                parentWindow.SSCustomizer = {};
+                parentWindow.SSCustomizer.framework_vars = {};
+            }
+        },
+        setParentLess: function(prop_name, prop_value){
+            window.parent.SSCustomizer.framework_vars[prop_name] = prop_value;
+        },
         parent_customizer_base: window.parent.wp.customize.settings, 
         getParentControls: function(){
-            var self = this;
-            return self.parent_customizer_base.controls;
+            return this.parent_customizer_base.controls;
         },
         getParentSettings: function(){
-            var self = this;
-            return self.parent_customizer_base.settings;
-        },
-        init: function(){
-            this.configs2array();
-            //this.bindListeners();
+            return this.parent_customizer_base.settings;
         },
         modifyVars: function(){
-            less.modifyVars(this.less_vars);
-        },
-        id2var: function(data_str){
-            //convert the setting name to a pre-processor variable
-        },
-        bindPreProcessor: function(e, ui, setting){
-            var self = this;
-            //var pre_processor_var = self.id2var(setting);
-            console.log(setting);
+            var less_vars =  this.getParentLess();
+            less.modifyVars(less_vars);
         },
         bindListeners: function(){
             // Get reference to kirki object literal
-            var self = this; 
-            for(var setting_name in self.getParentControls()){
+            var that = this; 
+            for(var setting_name in that.getParentControls()){
                 $target = parent.jQuery('input[data-customize-setting-link="'+ setting_name +'"]');
                 if($target.hasClass('kirki-color-picker')) {
                     $target.iris({
                         change: function(event,ui){ 
                             var less_var = $(this).data('framework-var');
-                            self.less_vars[less_var] = ui.color.toString();
-                            self.modifyVars();
+                            that.setParentLess(less_var, ui.color.toString());
+                            that.modifyVars();
+                            $(this).parent().siblings('.wp-picker-open').attr('style', 'background-color:' + ui.color.toString() + ';');
                             }
                     });
                 }
             }
+        },
+        init: function(){
+            this.bindListeners();
+            this.modifyVars();
         }
     };
 
-    _(kirki).extend(kirki_functionality);
-    kirki.bindListeners();
+    //_(kirki).extend(kirki_functionality);
+    kirki.init();
 
 })(jQuery);

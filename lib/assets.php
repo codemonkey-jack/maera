@@ -45,7 +45,7 @@ function shoestrap_scripts() {
 
 
         // Load less.js listener and kirki javascript object
-        wp_register_script( 'lessjs-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer-head.js', false, null, false );
+        //wp_register_script( 'lessjs-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer-head.js', false, null, false );
 
         wp_enqueue_script( 'lessjs-vars' ); 
 
