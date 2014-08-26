@@ -12,23 +12,16 @@ function shoestrap_timber_global_context( $data ) {
 
 	$data['theme_mods'] = get_theme_mods();
 	$data['menu']['primary']   = has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null;
-	$data['menu']['secondary'] = has_nav_menu( 'secondary_navigation' ) ? new TimberMenu( 'secondary_navigation' ) : null;
 
 	$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
 	$sidebar_secondary = Timber::get_widgets( 'sidebar_secondary' );
 
-	$sidebar_footer_1 = Timber::get_widgets( 'sidebar_footer_1' );
-	$sidebar_footer_2 = Timber::get_widgets( 'sidebar_footer_2' );
-	$sidebar_footer_3 = Timber::get_widgets( 'sidebar_footer_3' );
-	$sidebar_footer_4 = Timber::get_widgets( 'sidebar_footer_4' );
+	$sidebar_footer = Timber::get_widgets( 'sidebar_footer' );
 
 	$data['sidebar']['primary']   = apply_filters( 'shoestrap/sidebar/primary', $sidebar_primary );
 	$data['sidebar']['secondary'] = apply_filters( 'shoestrap/sidebar/secondary', $sidebar_secondary );
 
-	$data['sidebar']['footer']['one']   = apply_filters( 'shoestrap/sidebar/footer/one', $sidebar_footer_1 );
-	$data['sidebar']['footer']['two']   = apply_filters( 'shoestrap/sidebar/footer/two', $sidebar_footer_2 );
-	$data['sidebar']['footer']['three'] = apply_filters( 'shoestrap/sidebar/footer/three', $sidebar_footer_3 );
-	$data['sidebar']['footer']['four']  = apply_filters( 'shoestrap/sidebar/footer/four', $sidebar_footer_4 );
+	$data['sidebar']['footer'] = apply_filters( 'shoestrap/sidebar/footer', $sidebar_footer );
 
 	$data['pagination'] = Timber::get_pagination();
 	$data['comment_form'] = TimberHelper::get_comment_form();
@@ -51,7 +44,7 @@ function shoestrap_setup() {
 	// Register wp_nav_menu() menus ( http://codex.wordpress.org/Function_Reference/register_nav_menus )
 	register_nav_menus( array(
 		'primary_navigation'   => __( 'Primary Navigation', 'shoestrap' ),
-		'secondary_navigation' => __( 'Secondary Navigation', 'shoestrap' ),
+		'' => __( 'Secondary Navigation', 'shoestrap' ),
 	 ) );
 
 	// Add post thumbnails ( http://codex.wordpress.org/Post_Thumbnails )
