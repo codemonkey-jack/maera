@@ -41,10 +41,9 @@ function shoestrap_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-	// Register wp_nav_menu() menus ( http://codex.wordpress.org/Function_Reference/register_nav_menus )
+	// Register wp_nav_menu() menu ( http://codex.wordpress.org/Function_Reference/register_nav_menus )
 	register_nav_menus( array(
-		'primary_navigation'   => __( 'Primary Navigation', 'shoestrap' ),
-		'' => __( 'Secondary Navigation', 'shoestrap' ),
+		'primary_navigation'   => __( 'Primary Navigation', 'shoestrap' )
 	 ) );
 
 	// Add post thumbnails ( http://codex.wordpress.org/Post_Thumbnails )
