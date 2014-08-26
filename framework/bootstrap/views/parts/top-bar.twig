@@ -1,5 +1,83 @@
 {#<?php#}
 {% if theme_mods.navbar_toggle == 'none' %}
+{% elseif theme_mods.navbar_position == 'left-slide' %}
+
+	{% do action( 'shoestrap/topbar/before' ) %}
+		<div class="row">
+			{{ '<button type="button" class="trigger">&#9776;</button>'|apply_filters( 'shoestrap/topbar/toggler' ) }}
+		</div>
+
+		<div id="banner-header" class="banner navWrap" role="navigation">
+
+			<div class="navbar-header">
+
+				<a class="left-slide-brand" href="{{ site.url }}">{{ "<div class='sitename'>#{ site.name }</div>"|apply_filters( 'shoestrap/topbar/brand' ) }}</a>
+
+			</div>
+
+			{% do action( 'shoestrap/topbar/main/before' ) %}
+
+			<nav class="nav-main" role="navigation">
+
+				{% do action( 'shoestrap/topbar/inside/begin' ) %}
+
+				<ul class="{{ 'nav navbar-main mainList'|apply_filters('shoestrap/topbar/menu/class') }}">
+					{% for item in menu.primary.get_items %}
+
+						{% if item.get_children %}
+
+							<li class="dropdown {{ item.classes|join(' ') }}"><a class="dropdown-toggle" data-toggle="dropdown" href="{{ item.get_path }}">{{ item.title }} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									{% for child in item.get_children %}
+										<li class="{{ item.classes|join(' ') }}"><a href="{{ child.get_path }}">{{ child.title }}</a></li>
+									{% endfor %}
+								</ul>
+							</li>
+
+						{% else %}
+
+							<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
+
+						{% endif %}
+
+					{% endfor %}
+				</ul>
+
+				{% do action( 'shoestrap/topbar/inside/end' ) %}
+
+			</nav>
+
+			{% do action( 'shoestrap/topbar/main/after' ) %}
+
+	</div>
+	<script type="text/javascript">
+		var $jq = jQuery.noConflict();
+		$body = $jq('body');
+		$trig = $jq('.trigger');
+		$jq("document").ready(function() {
+			$trig.click(function () {
+		        $jq('.navWrap').toggleClass('open');
+		        $body.toggleClass('bodyLeft');
+		        return false;
+		    });
+		    $trig.bind('touchstart', function (e) {
+		        $jq(this).trigger('click');
+		        e.preventDefault();
+		    });
+		    $body.click(function (event) {
+		        if (!$jq(event.target).closest('.navWrap').length) {
+		            $jq('.navWrap').removeClass('open');
+		            $body.removeClass('bodyLeft');
+		        }
+		    });
+		    $jq('.navWrap #searchform').removeClass('navbar-right navbar-form').addClass('navbar-center');
+		    $jq('.navbar-inline-socials').removeClass('navbar-nav navbar-right');
+		    $jq('.mainList').removeClass('navbar-left navbar-right navbar-center');
+		});
+	</script>
+
+	{% do action( 'shoestrap/topbar/after' ) %}
+
 {% else %}
 
 	{% do action( 'shoestrap/topbar/before' ) %}
