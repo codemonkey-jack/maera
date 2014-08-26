@@ -351,17 +351,17 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
+		'type'     => 'select',
 		'setting'  => 'navbar_position',
 		'label'    => __( 'NavBar Positioning', 'shoestrap' ),
 		'description' => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
 		'section'  => 'nav',
 		'default'  => 'normal',
 		'choices'  => array(
-			'normal'       => __( 'Normal', 'shoestrap' ),
-			'fixed-top'    => __( 'Fixed (top)', 'shoestrap' ),
-			'fixed-bottom' => __( 'Fixed (bottom)', 'shoestrap' ),
+			'normal'        => __( 'Normal', 'shoestrap' ),
+			'fixed-top'     => __( 'Fixed (top)', 'shoestrap' ),
+			'fixed-bottom'  => __( 'Fixed (bottom)', 'shoestrap' ),
+			'after-headers' => __( 'After Extra Headers', 'shoestrap' )
 		),
 		'priority' => 23,
 	);
