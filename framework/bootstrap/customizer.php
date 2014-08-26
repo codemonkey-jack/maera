@@ -361,7 +361,9 @@ function shoestrap_customizer_settings( $controls ) {
 			'normal'        => __( 'Normal', 'shoestrap' ),
 			'fixed-top'     => __( 'Fixed (top)', 'shoestrap' ),
 			'fixed-bottom'  => __( 'Fixed (bottom)', 'shoestrap' ),
-			'after-headers' => __( 'After Extra Headers', 'shoestrap' )
+			'after-headers' => __( 'After Extra Headers', 'shoestrap' ),
+			'left-slide'	=> __( 'Left Slide', 'shoestrap' ),
+			'right-slide'	=> __( 'Right Slide', 'shoestrap' )
 		),
 		'priority' => 23,
 	);
