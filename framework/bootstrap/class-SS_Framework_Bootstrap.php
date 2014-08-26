@@ -110,7 +110,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			add_filter( 'shoestrap/topbar/menu/class', array( $this, 'navbar_links_alignment' ) );
 
-			add_action( 'shoestrap/topbar/inside/end', array( $this, 'social_links_navbar_content' ) );
+			add_action( 'shoestrap/topbar/inside/begin', array( $this, 'social_links_navbar_content' ), 10 );
+
+			add_action( 'shoestrap/topbar/inside/begin', array( $this, 'navbar_search' ), 5 );
 
 		}
 
@@ -1590,6 +1592,20 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		}
 
 		/**
+		 * Include the custom CSS
+		 */
+		function navbar_search() {
+			$navbar_search = get_theme_mod( 'navbar_search' );
+
+			if ( $navbar_search == 1 ) { ?>
+				<form role="search" method="get" id="searchform" class="form-search navbar-right navbar-form" action="<?php echo home_url('/'); ?>">
+					<label class="hide" for="s"><?php _e('Search for:', 'shoestrap'); ?></label>
+					<input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e('Search', 'shoestrap'); ?> <?php bloginfo('name'); ?>">
+				</form>
+			<?php }
+		}
+
+		/**
 		* Build the social links
 		*/
 		function social_links_builder( $before = '', $after = '', $separator = '' ) {
@@ -1650,11 +1666,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$social_mode = get_theme_mod( 'navbar_social', 'off' );
 
 			if ( 'inline' == $social_mode ) {
-				$before    = '<ul class="nav navbar-nav navbar-inline-socials"><li>';
+				$before    = '<ul class="nav navbar-nav navbar-right navbar-inline-socials"><li>';
 				$after     = '</li></ul>';
 				$separator = '</li><li>';
 			} elseif ( 'dropdown' == $social_mode ) {
-				$before    = '<ul class="nav navbar-nav navbar-dropdown-socials"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"><i class="el-icon-network"></i>&nbsp;<b class="caret"></b></a><ul class="dropdown-menu" role="menu"><li>';
+				$before    = '<ul class="nav navbar-nav navbar-right navbar-dropdown-socials"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"><i class="el-icon-network"></i>&nbsp;<b class="caret"></b></a><ul class="dropdown-menu" role="menu"><li>';
 				$after     = '</li></ul></li></ul>';
 				$separator = '</li><li>';
 			} elseif ( 'off' == $social_mode ) {
