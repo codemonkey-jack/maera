@@ -24,6 +24,7 @@ function shoestrap_customizer_sections( $wp_customize ) {
 		'header'          => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 25, 'panel' => 'structure' ),
 		'structure_jumbo' => array( 'title' => __( 'Jumbotron', 'shoestrap' ),       'priority' => 30, 'panel' => 'structure' ),
 		'nav'             => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 35, 'panel' => 'structure' ),
+		'widget_areas'    => array( 'title' => __( 'Widget Areas', 'shoestrap' ),    'priority' => 35, 'panel' => 'structure' ),
 
 		'html_bg'    => array( 'title' => __( 'HTML', 'shoestrap' ),         'priority' => 10, 'panel' => 'backgrounds' ),
 		'body_bg'    => array( 'title' => __( 'Body', 'shoestrap' ),         'priority' => 15, 'panel' => 'backgrounds' ),
@@ -1317,6 +1318,45 @@ function shoestrap_customizer_settings( $controls ) {
 		'priority' => 10,
 		'default'  => 1,
 	);
+
+	$areas = array(
+		'body_top'     => array( 'name' => __( 'Body Top', 'shoestrap' ),     'default' => 0 ),
+		'pre_header'   => array( 'name' => __( 'Pre-Header', 'shoestrap' ),   'default' => 0 ),
+		'header'       => array( 'name' => __( 'Header', 'shoestrap' ),       'default' => 0 ),
+		'post_header'  => array( 'name' => __( 'Post-Header', 'shoestrap' ),  'default' => 0 ),
+		'jumbotron'    => array( 'name' => __( 'Jumbotron', 'shoestrap' ),    'default' => 0 ),
+		'pre_content'  => array( 'name' => __( 'Pre-Content', 'shoestrap' ),  'default' => 0 ),
+		'pre_main'     => array( 'name' => __( 'Pre-Main', 'shoestrap' ),     'default' => 0 ),
+		'post_main'    => array( 'name' => __( 'Post-Main', 'shoestrap' ),    'default' => 0 ),
+		'post_content' => array( 'name' => __( 'Post-Content', 'shoestrap' ), 'default' => 0 ),
+		'pre_footer'   => array( 'name' => __( 'Pre-Footer', 'shoestrap' ),   'default' => 0 ),
+		'footer'       => array( 'name' => __( 'Footer', 'shoestrap' ),       'default' => 0 ),
+		'post_footer'  => array( 'name' => __( 'Post-Footer', 'shoestrap' ),  'default' => 0 ),
+	);
+
+	$i = 1;
+
+	foreach ( $areas as $area => $settings ) {
+
+		$controls[] = array(
+			'type'     => 'select',
+			'setting'  => $area . '_widgets_nr',
+			'label'    => sprintf( __( 'Number of widge areas in %s', 'shoestrap' ), $settings['name'] ),
+			'section'  => 'widget_areas',
+			'default'  => $settings['default'],
+			'choices'  => array(
+				0 => 0,
+				1 => 1,
+				2 => 2,
+				3 => 3,
+				4 => 4,
+				6 => 6,
+			),
+			'priority' => $i,
+		);
+
+		$i++;
+	}
 
 
 	return $controls;
