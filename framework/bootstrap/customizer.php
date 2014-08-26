@@ -385,22 +385,6 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'navbar_social',
-		'label'    => __( 'Display social links in the NavBar.', 'shoestrap' ),
-		'subtitle' => __( 'Social network links can be set-up in the "Social" section.', 'shoestrap' ),
-		'section'  => 'social',
-		'default'  => 'off',
-		'choices'  => array(
-			'off'      => __( 'Off', 'shoestrap' ),
-			'inline'   => __( 'Inline', 'shoestrap' ),
-			'dropdown' => __( 'Dropdown', 'shoestrap' ),
-		),
-		'priority' => 25,
-	);
-
-	$controls[] = array(
 		'type'     => 'checkbox',
 		'setting'  => 'navbar_search',
 		'label'    => __( 'Display search form on the NavBar', 'shoestrap' ),
@@ -531,16 +515,6 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 70,
 			'step' => 1,
 		),
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'navbar_secondary_social',
-		'label'    => __( 'Secondary Navbar Social Networks', 'shoestrap' ),
-		'description' => __( 'Should the social networks be displayed on the secondary navbar?', 'shoestrap' ),
-		'section'  => 'social',
-		'default'  => 1,
-		'priority' => 52,
 	);
 
 	//-------------------------------------------------
@@ -1170,6 +1144,22 @@ function shoestrap_customizer_settings( $controls ) {
 	//-------------------------------------------------
 	// SOCIAL
 	//-------------------------------------------------
+
+	$controls[] = array(
+		'type'     => 'radio',
+		'mode'     => 'buttonset',
+		'setting'  => 'navbar_social',
+		'label'    => __( 'Display social links in the NavBar.', 'shoestrap' ),
+		'subtitle' => __( 'Social network links can be set-up in the "Social" section.', 'shoestrap' ),
+		'section'  => 'social',
+		'default'  => 'off',
+		'choices'  => array(
+			'off'      => __( 'Off', 'shoestrap' ),
+			'inline'   => __( 'Inline', 'shoestrap' ),
+			'dropdown' => __( 'Dropdown', 'shoestrap' ),
+		),
+		'priority' => 1,
+	);
 
 	$social_links = array(
 		'blogger'     => __( 'Blogger', 'shoestrap' ),

@@ -1650,19 +1650,15 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$social_mode = get_theme_mod( 'navbar_social', 'off' );
 
 			if ( 'inline' == $social_mode ) {
-
 				$before    = '<ul class="nav navbar-nav navbar-inline-socials"><li>';
 				$after     = '</li></ul>';
 				$separator = '</li><li>';
-
-			}
-
-			if ( 'dropdown' == $social_mode ) {
-
+			} elseif ( 'dropdown' == $social_mode ) {
 				$before    = '<ul class="nav navbar-nav navbar-dropdown-socials"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"><i class="el-icon-network"></i>&nbsp;<b class="caret"></b></a><ul class="dropdown-menu" role="menu"><li>';
 				$after     = '</li></ul></li></ul>';
 				$separator = '</li><li>';
-
+			} elseif ( 'off' == $social_mode ) {
+				return;
 			}
 
 			$content = $this->social_links_builder( $before, $after, $separator );
