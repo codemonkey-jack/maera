@@ -1267,10 +1267,10 @@ function shoestrap_customizer_settings( $controls ) {
 		'type'     => 'slider',
 		'setting'  => 'padding_base',
 		'label'    => __( 'Padding Base', 'shoestrap' ),
-		'description' => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8', 'shoestrap' ),
+		'description' => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 6', 'shoestrap' ),
 		'section'  => 'general',
 		'priority' => 3,
-		'default'  => 8,
+		'default'  => 6,
 		'choices'  => array(
 			'min'  => 0,
 			'max'  => 22,
