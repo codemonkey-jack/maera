@@ -83,7 +83,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_filter( 'shoestrap/compiler/variables', array( $this, 'compiler_variables' ) );
 			add_action( 'shoestrap/wrap/before', array( $this, 'jumbotron_html' ), 5 );
 			add_action( 'shoestrap/wrap/before', array( $this, 'header_html' ), 3 );
-			add_action( 'shoestrap/footer/content', array( $this, 'footer_content' ) );
 
 			add_filter( 'shoestrap/image/display', array( $this, 'disable_feat_images_ppt' ), 99 );
 
@@ -113,6 +112,18 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_action( 'shoestrap/topbar/inside/begin', array( $this, 'social_links_navbar_content' ), 10 );
 
 			add_action( 'shoestrap/topbar/inside/begin', array( $this, 'navbar_search' ), 5 );
+
+			add_action( 'shoestrap/top-bar/before', array( $this, 'extra_widgets_body_top' ) );
+			add_action( 'shoestrap/wrap/before', array( $this, 'extra_widgets_pre_header' ), 3 );
+			add_action( 'shoestrap/extra_header/widgets', array( $this, 'extra_widgets_header' ) );
+			add_action( 'shoestrap/extra_header/after', array( $this, 'extra_widgets_post_header' ) );
+			add_action( 'shoestrap/jumbotron', array( $this, 'extra_widgets_jumbotron' ) );
+			add_action( 'shoestrap/wrap/before', array( $this, 'extra_widgets_pre_content' ) );
+			add_action( 'shoestrap/content/before', array( $this, 'extra_widgets_pre_main' ) );
+			add_action( 'shoestrap/content/after', array( $this, 'extra_widgets_post_main' ) );
+			add_action( 'shoestrap/footer/before', array( $this, 'extra_widgets_pre_footer' ) );
+			add_action( 'shoestrap/footer/content', array( $this, 'extra_widgets_footer' ) );
+			add_action( 'shoestrap/footer/after', array( $this, 'extra_widgets_post_footer' ) );
 
 		}
 
@@ -410,6 +421,29 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return $width;
 		}
 
+		/**
+		 * Return an array of the extra widget area regions
+		 */
+		function extra_widget_areas_array() {
+
+			$areas = array(
+				'body_top'     => array( 'name' => __( 'Body Top', 'shoestrap' ),     'default' => 0 ),
+				'pre_header'   => array( 'name' => __( 'Pre-Header', 'shoestrap' ),   'default' => 0 ),
+				'header'       => array( 'name' => __( 'Header', 'shoestrap' ),       'default' => 0 ),
+				'post_header'  => array( 'name' => __( 'Post-Header', 'shoestrap' ),  'default' => 0 ),
+				'jumbotron'    => array( 'name' => __( 'Jumbotron', 'shoestrap' ),    'default' => 0 ),
+				'pre_content'  => array( 'name' => __( 'Pre-Content', 'shoestrap' ),  'default' => 0 ),
+				'pre_main'     => array( 'name' => __( 'Pre-Main', 'shoestrap' ),     'default' => 0 ),
+				'post_main'    => array( 'name' => __( 'Post-Main', 'shoestrap' ),    'default' => 0 ),
+				'pre_footer'   => array( 'name' => __( 'Pre-Footer', 'shoestrap' ),   'default' => 0 ),
+				'footer'       => array( 'name' => __( 'Footer', 'shoestrap' ),       'default' => 0 ),
+				'post_footer'  => array( 'name' => __( 'Post-Footer', 'shoestrap' ),  'default' => 0 ),
+			);
+
+			return $areas;
+
+		}
+
 
 		/**
 		 * Register sidebars and widgets
@@ -426,15 +460,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			) );
 
 			register_sidebar( array(
-				'name'          => __( 'Jumbotron', 'shoestrap' ),
-				'id'            => 'jumbotron',
-				'before_widget' => '<section id="%1$s"><div class="section-inner">',
-				'after_widget'  => '</div></section>',
-				'before_title'  => '<h1>',
-				'after_title'   => '</h1>',
-			) );
-
-			register_sidebar( array(
 				'name'          => __( 'In-Navbar Widget Area', 'shoestrap' ),
 				'id'            => 'navbar',
 				'description'   => __( 'This widget area will show up in your NavBars. This is most useful when using a static-left navbar.', 'shoestrap' ),
@@ -444,50 +469,34 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				'after_title'   => '</h1>',
 			) );
 
-			register_sidebar( array(
-				'name'          => __( 'Navbar Slide-Down Top', 'shoestrap' ),
-				'id'            => 'navbar_slide_down_top',
-				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-				'after_widget'  => '</div></section>',
-				'before_title'  => '<h3>',
-				'after_title'   => '</h3>',
-			) );
+			$areas = $this->extra_widget_areas_array();
 
-			register_sidebar( array(
-				'name'          => __( 'Navbar Slide-Down 1', 'shoestrap' ),
-				'id'            => 'navbar_slide_down_1',
-				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-				'after_widget'  => '</div></section>',
-				'before_title'  => '<h3>',
-				'after_title'   => '</h3>',
-			) );
+			$class        = apply_filters( 'shoestrap/widgets/class', '' );
+			$before_title = apply_filters( 'shoestrap/widgets/title/before', '<h3 class="widget-title">' );
+			$after_title  = apply_filters( 'shoestrap/widgets/title/after', '</h3>' );
 
-			register_sidebar( array(
-				'name'          => __( 'Navbar Slide-Down 2', 'shoestrap' ),
-				'id'            => 'navbar_slide_down_2',
-				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-				'after_widget'  => '</div></section>',
-				'before_title'  => '<h3>',
-				'after_title'   => '</h3>',
-			) );
+			foreach ( $areas as $area => $settings ) {
 
-			register_sidebar( array(
-				'name'          => __( 'Navbar Slide-Down 3', 'shoestrap' ),
-				'id'            => 'navbar_slide_down_3',
-				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-				'after_widget'  => '</div></section>',
-				'before_title'  => '<h3>',
-				'after_title'   => '</h3>',
-			) );
+				$areas_nr = get_theme_mod( $area . '_widgets_nr', $settings['default'] );
 
-			register_sidebar( array(
-				'name'          => __( 'Navbar Slide-Down 4', 'shoestrap' ),
-				'id'            => 'navbar_slide_down_4',
-				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-				'after_widget'  => '</div></section>',
-				'before_title'  => '<h3>',
-				'after_title'   => '</h3>',
-			) );
+				if ( 0 < $areas_nr ) {
+
+					for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+						register_sidebar( array(
+							'name'          => $settings['name'] . ' ' . $i,
+							'id'            => $area . '_' . $i,
+							'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
+							'after_widget'  => '</section>',
+							'before_title'  => $before_title,
+							'after_title'   => $after_title,
+						) );
+
+					}
+
+				}
+
+			}
 
 		}
 
@@ -1338,7 +1347,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 						<div class="container">
 					<?php endif; ?>
 
-						<?php dynamic_sidebar( 'Jumbotron' ); ?>
+						<?php do_action( 'shoestrap/jumbotron' ); ?>
 
 					<?php if ( ( 1 != $nocontainer && 'wide' == $site_style ) || 'boxed' == $site_style ) : ?>
 						</div>
@@ -1359,7 +1368,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		function header_html() { ?>
 
-			<?php if ( 1 == get_theme_mod( 'header_toggle', 0 ) ) : ?>
+			<?php if ( 0 != get_theme_mod( 'header_widgets_nr', 0 ) ) : ?>
 
 				<header class="page-header">
 
@@ -1373,14 +1382,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 								<div class="container">
 							<?php endif; ?>
 
-								<?php if ( 1 == get_theme_mod( 'header_branding', 1 ) ) : ?>
-									<?php $extra_class = ( is_active_sidebar( 'header_area' ) ) ? ' col-md-6' : null; ?>
-									<a class="brand-logo<?php echo $extra_class; ?>" href="<?php echo home_url(); ?>"><h1><?php echo $this->logo( get_bloginfo( 'name' ) ); ?></h1></a>
-								<?php endif; ?>
-
-								<?php $extra_class = ( 1 == get_theme_mod( 'header_branding', 1 ) ) ? ' col-md-6' : null; ?>
-
-								<div class="header-widgets<?php echo $extra_class; ?>"><?php dynamic_sidebar( 'header_area' ); ?></div>
+							<?php do_action( 'shoetrap/extra_header/widgets' ); ?>
 
 							<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
 								</div>
@@ -1394,7 +1396,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 				</header>
 
-			<?php endif;
+			<?php endif; ?>
+
+			<?php do_action( 'shoetrap/extra_header/after' );
 
 		}
 
@@ -1413,51 +1417,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
-
-		/*
-		 * Get the content and widget areas for the footer
-		 */
-		function footer_content() {
-
-			// Finding the number of active widget sidebars
-			$num_of_sidebars = 0;
-
-			for ( $i = 0; $i < 5; $i++ ) {
-				$sidebar = 'sidebar_footer_' . $i;
-				if ( is_active_sidebar( $sidebar ) ) {
-					$num_of_sidebars++;
-				}
-			}
-
-			// If sidebars exist, open row.
-			if ( $num_of_sidebars >= 0 ) {
-				echo '<div class="row">';
-			}
-
-			// Showing the active sidebars
-			for ( $i = 0; $i < 5; $i++ ) {
-				$sidebar = 'sidebar_footer_' . $i;
-
-				if ( is_active_sidebar( $sidebar ) ) {
-					// Setting each column width accordingly
-					$col_class = 12 / $num_of_sidebars;
-
-					echo '<div class="col-md-' . $col_class . '">';
-						dynamic_sidebar( $sidebar );
-					echo '</div>';
-
-				}
-			}
-
-			// If sidebars exist, close row.
-			if ( $num_of_sidebars >= 0 ) {
-				echo '</div>';
-
-				// add a clearfix div.
-				echo '<div class="clearfix"></div>';
-			}
-
-		}
 
 		/**
 		 * Additional CSS rules for layout options
@@ -1722,6 +1681,247 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			if ( ! empty( $css ) ) {
 				wp_add_inline_style( 'shoestrap', $css );
 			}
+		}
+
+
+		/**
+		 * Extra body_top widget areas
+		 */
+		function extra_widgets_body_top() {
+
+			$area     = 'body_top';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra pre_header widget areas
+		 */
+		function extra_widgets_pre_header() {
+
+			$area     = 'pre_header';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra header widget areas
+		 */
+		function extra_widgets_header() {
+
+			$area     = 'header';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra post_header widget areas
+		 */
+		function extra_widgets_post_header() {
+
+			$area     = 'post_header';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra jumbotron widget areas
+		 */
+		function extra_widgets_jumbotron() {
+
+			$area     = 'jumbotron';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra pre_content widget areas
+		 */
+		function extra_widgets_pre_content() {
+
+			$area     = 'pre_content';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra pre_main widget areas
+		 */
+		function extra_widgets_pre_main() {
+
+			$area     = 'pre_main';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra post_main widget areas
+		 */
+		function extra_widgets_post_main() {
+
+			$area     = 'post_main';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra pre_footer widget areas
+		 */
+		function extra_widgets_pre_footer() {
+
+			$area     = 'pre_footer';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra footer widget areas
+		 */
+		function extra_widgets_footer() {
+
+			$area     = 'footer';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+
+		/**
+		 * Extra post_footer widget areas
+		 */
+		function extra_widgets_post_footer() {
+
+			$area     = 'post_footer';
+			$areas_nr = get_theme_mod( $area . '_widgets_nr', 0 );
+
+			if ( 0 < $areas_nr ) {
+
+				for ( $i = 0;  $i < $areas_nr;  $i++ ) {
+
+					$this->extra_widgets_render_content( $areas_nr, $area, $i );
+
+				}
+
+			}
+
+		}
+
+		function extra_widgets_render_content( $areas_nr, $area, $i ) {
+
+			$class = apply_filters( 'shoestrap/extra_widgets/' . $area . '/' . $i, 'col-md-' . ( 12 / $areas_nr ) );
+
+			echo '<div class="' . $area . '_' . $i . ' ' . $class . '">';
+			dynamic_sidebar( $area . '_' . $i );
+			echo '</div>';
+
 		}
 
 	}
