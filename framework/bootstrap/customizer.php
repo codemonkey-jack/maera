@@ -21,7 +21,6 @@ function shoestrap_customizer_sections( $wp_customize ) {
 		'general'         => array( 'title' => __( 'General', 'shoestrap' ),         'priority' => 10, 'panel' => 'structure' ),
 		'layout'          => array( 'title' => __( 'Layout', 'shoestrap' ),          'priority' => 15, 'panel' => 'structure' ),
 		'layout_advanced' => array( 'title' => __( 'Advanced Layout', 'shoestrap' ), 'priority' => 20, 'panel' => 'structure' ),
-		'header'          => array( 'title' => __( 'Header', 'shoestrap' ),          'priority' => 25, 'panel' => 'structure' ),
 		'structure_jumbo' => array( 'title' => __( 'Jumbotron', 'shoestrap' ),       'priority' => 30, 'panel' => 'structure' ),
 		'nav'             => array( 'title' => __( 'Navigation', 'shoestrap' ),      'priority' => 35, 'panel' => 'structure' ),
 		'widget_areas'    => array( 'title' => __( 'Widget Areas', 'shoestrap' ),    'priority' => 35, 'panel' => 'structure' ),
@@ -1095,26 +1094,6 @@ function shoestrap_customizer_settings( $controls ) {
 	//-------------------------------------------------
 
 	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'header_toggle',
-		'label'    => __( 'Display the Header.', 'shoestrap' ),
-		'description' => __( 'Check this to display the header. Default: OFF', 'shoestrap' ),
-		'section'  => 'header',
-		'default'  => 0,
-		'priority' => 1,
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'header_branding',
-		'label'    => __( 'Display branding on your Header.', 'shoestrap' ),
-		'description' => __( 'Check to display branding ( Sitename or Logo )on your Header. Default: ON', 'shoestrap' ),
-		'section'  => 'header',
-		'default'  => 1,
-		'priority' => 2,
-	);
-
-	$controls[] = array(
 		'type'         => 'background',
 		'setting'      => 'header_bg',
 		'label'        => __( 'Header Background', 'shoestrap' ),
@@ -1319,20 +1298,8 @@ function shoestrap_customizer_settings( $controls ) {
 		'default'  => 1,
 	);
 
-	$areas = array(
-		'body_top'     => array( 'name' => __( 'Body Top', 'shoestrap' ),     'default' => 0 ),
-		'pre_header'   => array( 'name' => __( 'Pre-Header', 'shoestrap' ),   'default' => 0 ),
-		'header'       => array( 'name' => __( 'Header', 'shoestrap' ),       'default' => 0 ),
-		'post_header'  => array( 'name' => __( 'Post-Header', 'shoestrap' ),  'default' => 0 ),
-		'jumbotron'    => array( 'name' => __( 'Jumbotron', 'shoestrap' ),    'default' => 0 ),
-		'pre_content'  => array( 'name' => __( 'Pre-Content', 'shoestrap' ),  'default' => 0 ),
-		'pre_main'     => array( 'name' => __( 'Pre-Main', 'shoestrap' ),     'default' => 0 ),
-		'post_main'    => array( 'name' => __( 'Post-Main', 'shoestrap' ),    'default' => 0 ),
-		'post_content' => array( 'name' => __( 'Post-Content', 'shoestrap' ), 'default' => 0 ),
-		'pre_footer'   => array( 'name' => __( 'Pre-Footer', 'shoestrap' ),   'default' => 0 ),
-		'footer'       => array( 'name' => __( 'Footer', 'shoestrap' ),       'default' => 0 ),
-		'post_footer'  => array( 'name' => __( 'Post-Footer', 'shoestrap' ),  'default' => 0 ),
-	);
+	global $ss_framework;
+	$areas = $ss_framework->extra_widget_areas_array();
 
 	$i = 1;
 
