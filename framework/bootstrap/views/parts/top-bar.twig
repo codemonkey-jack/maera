@@ -1,33 +1,32 @@
 {#<?php#}
 {% if theme_mods.navbar_toggle == 'none' %}
-{% elseif theme_mods.navbar_position == 'left-slide' %}
+{% elseif theme_mods.navbar_position == 'right-slide' %}
 
-	{% do action( 'shoestrap/topbar/before' ) %}
-		<div class="row">
-			{{ '<button type="button" class="trigger">&#9776;</button>'|apply_filters( 'shoestrap/topbar/toggler' ) }}
-		</div>
+	{% do action( 'shoestrap/sidebar/before' ) %}
+		<a id="menu-toggle" href="#" class="btn btn-link btn-lg toggle"><i class="el-icon-lines"></i></a>
 
-		<div id="banner-header" class="banner navWrap" role="navigation">
+		<div id="sidebar-wrapper" role="navigation">
 
-			<div class="navbar-header">
+			{% do action( 'shoestrap/sidebar/main/before' ) %}
 
-				<a class="left-slide-brand" href="{{ site.url }}">{{ "<div class='sitename'>#{ site.name }</div>"|apply_filters( 'shoestrap/topbar/brand' ) }}</a>
+			<nav class="sidebar-nav" role="navigation">
 
-			</div>
+				<a id="menu-close" href="#" class="btn btn-links btn-lg toggle"><i class="el-icon-caret-left"></i></a>
 
-			{% do action( 'shoestrap/topbar/main/before' ) %}
+				<div class="sidebar-header">
+					<a class="sidebar-brand" href="{{ site.url }}">{{ "<div class='sitename h3'>#{ site.name }</div>"|apply_filters( 'shoestrap/sidebar/brand' ) }}</a>
+				</div>
 
-			<nav class="nav-main" role="navigation">
+				{% do action( 'shoestrap/sidebar/inside/begin' ) %}
 
-				{% do action( 'shoestrap/topbar/inside/begin' ) %}
-
-				<ul class="{{ 'nav navbar-main mainList'|apply_filters('shoestrap/topbar/menu/class') }}">
+				<ul class="{{ 'nav'|apply_filters('shoestrap/sidebar/menu/class') }}">
+					
 					{% for item in menu.primary.get_items %}
 
 						{% if item.get_children %}
 
-							<li class="dropdown {{ item.classes|join(' ') }}"><a class="dropdown-toggle" data-toggle="dropdown" href="{{ item.get_path }}">{{ item.title }} <b class="caret"></b></a>
-								<ul class="dropdown-menu">
+							<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }} </a>
+								<ul class="sidebar-dropdown-menu">
 									{% for child in item.get_children %}
 										<li class="{{ item.classes|join(' ') }}"><a href="{{ child.get_path }}">{{ child.title }}</a></li>
 									{% endfor %}
@@ -43,11 +42,11 @@
 					{% endfor %}
 				</ul>
 
-				{% do action( 'shoestrap/topbar/inside/end' ) %}
+				{% do action( 'shoestrap/sidebar/inside/end' ) %}
 
 			</nav>
 
-			{% do action( 'shoestrap/topbar/main/after' ) %}
+			{% do action( 'shoestrap/sidebar/main/after' ) %}
 
 	</div>
 	<script type="text/javascript">
@@ -55,24 +54,16 @@
 		$body = $jq('body');
 		$trig = $jq('.trigger');
 		$jq("document").ready(function() {
-			$trig.click(function () {
-		        $jq('.navWrap').toggleClass('open');
-		        $body.toggleClass('bodyLeft');
-		        return false;
-		    });
-		    $trig.bind('touchstart', function (e) {
-		        $jq(this).trigger('click');
-		        e.preventDefault();
-		    });
-		    $body.click(function (event) {
-		        if (!$jq(event.target).closest('.navWrap').length) {
-		            $jq('.navWrap').removeClass('open');
-		            $body.removeClass('bodyLeft');
-		        }
-		    });
-		    $jq('.navWrap #searchform').removeClass('navbar-right navbar-form').addClass('navbar-center');
-		    $jq('.navbar-inline-socials').removeClass('navbar-nav navbar-right');
-		    $jq('.mainList').removeClass('navbar-left navbar-right navbar-center');
+			/*---------- Sidebar ----------*/
+			    $jq("#menu-close").click(function(e) {
+			        e.preventDefault();
+			        $jq("#sidebar-wrapper").toggleClass("active");
+			    });
+			    $jq("#menu-toggle").click(function(e) {
+			        e.preventDefault();
+			        $jq("#sidebar-wrapper").toggleClass("active");
+			    });
+			/*----------*/
 		});
 	</script>
 
