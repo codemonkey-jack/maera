@@ -1908,11 +1908,14 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		function extra_widgets_render_content( $areas_nr, $area, $i ) {
 
-			$class = apply_filters( 'shoestrap/extra_widgets/' . $area . '/' . $i, 'col-md-' . ( 12 / $areas_nr ) );
+			$class = apply_filters( 'shoestrap/extra_widgets/' . $area . '/' . $i, 'col-md-' . ( 12 / $areas_nr ) ); ?>
 
-			echo '<div class="' . $area . '_' . $i . ' ' . $class . '">';
-			dynamic_sidebar( $area . '_' . $i );
-			echo '</div>';
+			<div class="row row-<?php echo $area; ?>">
+				<div class="<?php echo $area . '_' . $i . ' ' . $class; ?>">
+					<?php dynamic_sidebar( $area . '_' . $i ); ?>
+				</div>
+			</div>
+			<?php
 
 		}
 
