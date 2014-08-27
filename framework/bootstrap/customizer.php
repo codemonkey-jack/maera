@@ -326,16 +326,6 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'navbar_logo',
-		'label'    => __( 'Use Logo ( if available ) for branding in navbars.', 'shoestrap' ),
-		'description' => __( 'If this option is not checked, or there is no logo available, then the sitename will be displayed instead.', 'shoestrap' ),
-		'section'  => 'branding',
-		'default'  => 1,
-		'priority' => 22,
-	);
-
-	$controls[] = array(
 		'type'     => 'select',
 		'setting'  => 'navbar_position',
 		'label'    => __( 'NavBar Positioning', 'shoestrap' ),

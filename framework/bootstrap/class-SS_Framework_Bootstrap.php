@@ -74,7 +74,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_filter( 'shoestrap/styles', array( $this, 'color_css' ) );
 
 			add_action( 'wp_print_styles', array( $this, 'google_font' ) );
-			add_action( 'init', array( $this, 'navbar_logo' ) );
 
 			// Excerpt
 			add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
@@ -124,6 +123,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_action( 'shoestrap/footer/before', array( $this, 'extra_widgets_pre_footer' ) );
 			add_action( 'shoestrap/footer/content', array( $this, 'extra_widgets_footer' ) );
 			add_action( 'shoestrap/footer/after', array( $this, 'extra_widgets_post_footer' ) );
+
+			add_action( 'shoestrap/topbar/brand', array( $this, 'logo' ) );
 
 		}
 
@@ -965,21 +966,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			} else {
 				return $fallback;
 			}
-
-		}
-
-
-		/**
-		 * Adds the logo to the main navbar.
-		 */
-		function navbar_logo() {
-
-			// If we've selected NOT to display the logo on navbars, then do not proceed.
-			if ( 1 != get_theme_mod( 'navbar_logo', 1 ) ) {
-				return;
-			}
-
-			add_action( 'shoestrap/topbar/brand', array( $this, 'logo' ) );
 
 		}
 
