@@ -1201,6 +1201,16 @@ function shoestrap_customizer_settings( $controls ) {
 		'priority' => 10,
 	);
 
+	$controls[] = array(
+		'type'     => 'textarea',
+		'label'    => __( 'Footer Text', 'shoestrap' ),
+		'setting'  => 'footer_text',
+		'default'  => '&copy; [year] [sitename]',
+		'section'  => 'branding',
+		'priority' => 12,
+		'subtitle' => __( 'The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]', 'shoestrap' ),
+	);
+
 	//-------------------------------------------------
 	// ADVANCED
 	//-------------------------------------------------
