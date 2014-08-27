@@ -9,7 +9,6 @@ require_once locate_template( '/framework/core/class-SS_Framework_Core.php' );
 // Include Bootstrap
 require_once locate_template( '/framework/bootstrap/class-SS_Framework_Bootstrap.php' );
 
-
 /**
  * Activate the enabled framework
  */

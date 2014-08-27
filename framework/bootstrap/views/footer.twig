@@ -23,8 +23,6 @@
 		{{ framework.open_row( 'div' ) }}
 			{{ framework.open_col( 'div', 'large', 'copyright-bar' ) }}
 				{{ theme_mods.footer_text|replace({'[year]': now|date('Y') ,'[sitename]': bloginfo('name') }) }}
-
-
 			{{ framework.close_col( 'div' ) }}
 			{{ framework.clearfix() }}
 		{{ framework.close_row( 'div' ) }}

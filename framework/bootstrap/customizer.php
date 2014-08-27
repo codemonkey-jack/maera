@@ -1285,12 +1285,11 @@ function shoestrap_customizer_settings( $controls ) {
 		'default'  => 1,
 	);
 
-	global $ss_framework;
-	$areas = $ss_framework->extra_widget_areas_array();
+	global $extra_widget_areas;
 
 	$i = 1;
 
-	foreach ( $areas as $area => $settings ) {
+	foreach ( $extra_widget_areas as $area => $settings ) {
 
 		$controls[] = array(
 			'type'     => 'select',
