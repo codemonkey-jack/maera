@@ -58,10 +58,10 @@
 {% macro column_classes(sizes) %}
 	{% if sizes is iterable %}
 		{% for size in sizes %}
-			{% if size.mobile %} columns-extra-small-{{ size.mobile }} {% endif %}
-			{% if size.tablet %} columns-small-{{ size.mobile }} {% endif %}
-			{% if size.medium %} columns-medium-{{ size.mobile }} {% endif %}
-			{% if size.large %} columns-large-{{ size.mobile }} {% endif %}
+			{% if size.mobile %} column extra-small size-{{ size.mobile }} {% endif %}
+			{% if size.tablet %} column small size-{{ size.mobile }} {% endif %}
+			{% if size.medium %} column medium size-{{ size.mobile }} {% endif %}
+			{% if size.large %} column large size-{{ size.mobile }} {% endif %}
 		{% endfor %}
 	{% endif %}
 {% endmacro %}
