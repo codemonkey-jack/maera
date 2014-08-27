@@ -215,21 +215,6 @@ function shoestrap_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'layout_sidebar_on_front',
-		'label'    => __( 'Show sidebars on the frontpage', 'shoestrap' ),
-		'description' => __( 'Select if you want to display sidebars on the frontpage. Please note that this only applies to the primary and secondary navbars and not all other widget areas.', 'shoestrap' ),
-		'section'  => 'layout',
-		'priority' => 6,
-		'default'  => 0,
-		'choices'  => array(
-			0 => __( 'Hide', 'shoestrap' ),
-			1 => __( 'Show', 'shoestrap' ),
-		),
-	);
-
-	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'screen_tablet',
 		'label'    => __( 'Small Screen / Tablet view', 'shoestrap' ),

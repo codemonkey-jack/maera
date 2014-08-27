@@ -233,9 +233,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Get the layout we're using (sidebar arrangement).
 			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
 
-			$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front', 0 );
-
-			If ( 0 == $layout || ( 0 == $sidebars_on_front && ( is_home() || is_front_page() ) ) ) {
+			If ( 0 == $layout ) {
 
 				$data['sidebar']['primary']   = null;
 				$data['sidebar']['secondary'] = null;
@@ -407,10 +405,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// If the layout is #5, override the default function and calculate the span width of the main area again.
 			if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
 				$main_span = 12 - intval( get_theme_mod( 'layout_primary_width', 4 ) ) - intval( get_theme_mod( 'layout_secondary_width', 3 ) );
-			}
-
-			if ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front', 0 ) != 1 ) {
-				$main_span = 12;
 			}
 
 			$width = $container * ( $main_span / 12 ) - $gutter;
@@ -1122,15 +1116,13 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$layout = get_theme_mod( 'layout', 1 );
 			$layout = apply_filters( 'shoestrap/layout/modifier', $layout );
 
-			$sidebars_on_front = get_theme_mod( 'layout_sidebar_on_front', 0 );
-
 			// If the layout does not contain 2 sidebars, do not render the secondary sidebar
 			if ( ! in_array( $layout, array( 3, 4, 5 ) ) ) {
 				add_filter( 'shoestrap/sidebar/secondary', '__return_null' );
 			}
 
 			// If the layout selected contains no sidebars, do not render the sidebars
-			if ( 0 == $layout || ( 0 == $sidebars_on_front && is_front_page() ) || ( 0 == $sidebars_on_front && is_home() ) ) {
+			if ( 0 == $layout ) {
 				add_filter( 'shoestrap/sidebar/primary', '__return_null' );
 				add_filter( 'shoestrap/sidebar/secondary', '__return_null' );
 			}
