@@ -35,26 +35,6 @@ function maera_scripts() {
 
     $caching = apply_filters( 'maera/styles/caching', false );
 
-    // If we're on the customizer, then set caching to false
-    // if ( isset( $wp_customize ) ) {
-    //     $caching = false;
-
-    //     // Load framework less files
-    //     wp_enqueue_style( 'framework-less-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/less/app.less', false, null, false );
-    //     add_filter('style_loader_tag', 'maera_less_tag_loader', 5, 2);
-
-
-    //     // Load less.js listener and kirki javascript object
-    //     wp_register_script( 'lessjs-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer-head.js', false, null, false );
-
-    //     wp_enqueue_script( 'lessjs-vars' );
-
-
-    //     // Load less.js
-    //     wp_register_script( 'lessjs', MAERA_ASSETS_URL . '/js/less.min.js', 'lessjs-vars', null, false );
-    //     wp_enqueue_script( 'lessjs' );
-    // }
-
     if ( ! $caching ) {
 
         // Get our styles using the maera/styles filter
@@ -67,10 +47,16 @@ function maera_scripts() {
 
         // If the transient does not exist, then create it.
         if ( $cache === false || empty( $cache ) || '' == $cache ) {
+
             // Get our styles using the maera/styles filter
             $data = apply_filters( 'maera/styles', null );
             // Set the transient for 24 hours.
             set_theme_mod( 'css_cache', $data );
+
+        } else {
+
+        	$data = $cache;
+
         }
 
     }
