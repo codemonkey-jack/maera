@@ -71,6 +71,9 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 				TimberLoader::CACHE_NONE;
 			} else {
 				add_filter( 'maera/styles/caching', '__return_true' );
+				// Turn on Timber caching.
+				// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
+				Timber::$cache = true;
 			}
 
 			add_action( 'maera/topbar/brand', array( $this, 'logo' ) );

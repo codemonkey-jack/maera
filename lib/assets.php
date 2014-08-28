@@ -4,66 +4,66 @@
  * Enqueue scripts and stylesheets
  */
 function maera_scripts() {
-    global $wp_customize;
-    global $active_framework;
+	global $wp_customize;
+	global $active_framework;
 
-    // Get the stylesheet path and version
-    $stylesheet_url = apply_filters( 'maera/stylesheet/url', MAERA_ASSETS_URL . '/css/style.css' );
-    $stylesheet_ver = apply_filters( 'maera/stylesheet/ver', null );
+	// Get the stylesheet path and version
+	$stylesheet_url = apply_filters( 'maera/stylesheet/url', MAERA_ASSETS_URL . '/css/style.css' );
+	$stylesheet_ver = apply_filters( 'maera/stylesheet/ver', null );
 
-    // Enqueue the theme's stylesheet
-    wp_enqueue_style( 'maera', $stylesheet_url, false, $stylesheet_ver );
+	// Enqueue the theme's stylesheet
+	wp_enqueue_style( 'maera', $stylesheet_url, false, $stylesheet_ver );
 
-    wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-    // Enqueue Modernizr
-    wp_register_script( 'modernizr', MAERA_ASSETS_URL . '/js/modernizr-2.7.0.min.js', false, null, false );
-    wp_enqueue_script( 'modernizr' );
+	// Enqueue Modernizr
+	wp_register_script( 'modernizr', MAERA_ASSETS_URL . '/js/modernizr-2.7.0.min.js', false, null, false );
+	wp_enqueue_script( 'modernizr' );
 
-    // Enqueue fitvids
-    wp_register_script( 'fitvids', MAERA_ASSETS_URL . '/js/jquery.fitvids.js',false, null, true  );
-    wp_enqueue_script( 'fitvids' );
+	// Enqueue fitvids
+	wp_register_script( 'fitvids', MAERA_ASSETS_URL . '/js/jquery.fitvids.js',false, null, true  );
+	wp_enqueue_script( 'fitvids' );
 
 
-    // Enqueue jQuery
-    wp_enqueue_script( 'jquery' );
+	// Enqueue jQuery
+	wp_enqueue_script( 'jquery' );
 
-    // If needed, add the comment-reply script.
-    if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
-    }
+	// If needed, add the comment-reply script.
+	if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 
-    $caching = apply_filters( 'maera/styles/caching', false );
+	$caching = apply_filters( 'maera/styles/caching', false );
 
-    if ( ! $caching ) {
+	if ( ! $caching ) {
 
-        // Get our styles using the maera/styles filter
-        $data = apply_filters( 'maera/styles', null );
+		// Get our styles using the maera/styles filter
+		$data = apply_filters( 'maera/styles', null );
 
-    } else {
+	} else {
 
-        // Get the cached CSS from the database
-        $cache = get_theme_mod( 'css_cache', '' );
+		// Get the cached CSS from the database
+		$cache = get_theme_mod( 'css_cache', '' );
 
-        // If the transient does not exist, then create it.
-        if ( $cache === false || empty( $cache ) || '' == $cache ) {
+		// If the transient does not exist, then create it.
+		if ( $cache === false || empty( $cache ) || '' == $cache ) {
 
-            // Get our styles using the maera/styles filter
-            $data = apply_filters( 'maera/styles', null );
-            // Set the transient for 24 hours.
-            set_theme_mod( 'css_cache', $data );
+			// Get our styles using the maera/styles filter
+			$data = apply_filters( 'maera/styles', null );
+			// Set the transient for 24 hours.
+			set_theme_mod( 'css_cache', $data );
 
-        } else {
+		} else {
 
-        	$data = $cache;
+			$data = $cache;
 
-        }
+		}
 
-    }
+	}
 
-    // Add the CSS inline.
-    // See http://codex.wordpress.org/Function_Reference/wp_add_inline_style#Examples
-    wp_add_inline_style( 'maera', $data );
+	// Add the CSS inline.
+	// See http://codex.wordpress.org/Function_Reference/wp_add_inline_style#Examples
+	wp_add_inline_style( 'maera', $data );
 
 }
 add_action( 'wp_enqueue_scripts', 'maera_scripts', 100 );
@@ -73,33 +73,7 @@ add_action( 'wp_enqueue_scripts', 'maera_scripts', 100 );
  */
 function maera_reset_style_cache_on_customizer_save() {
 
-    remove_theme_mod( 'css_cache' );
+	remove_theme_mod( 'css_cache' );
 
 }
 add_action( 'customize_save_after', 'maera_reset_style_cache_on_customizer_save' );
-
-/**
- * Set rel attribute for less stylesheet so that less.js imports stylesheet
- */
-// function maera_less_tag_loader($tag, $handle) {
-
-//     global $wp_styles;
-//     $match_pattern = '/\.less$/U';
-//     if ( preg_match( $match_pattern, $wp_styles->registered[$handle]->src ) ) {
-//         $handle = $wp_styles->registered[$handle]->handle;
-//         $media = $wp_styles->registered[$handle]->args;
-//         $href = $wp_styles->registered[$handle]->src . '?ver=' . $wp_styles->registered[$handle]->ver;
-//         $rel = isset($wp_styles->registered[$handle]->extra['alt']) && $wp_styles->registered[$handle]->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
-//         $title = isset($wp_styles->registered[$handle]->extra['title']) ? "title='" . esc_attr( $wp_styles->registered[$handle]->extra['title'] ) . "'" : '';
-
-//         $tag = "<link rel='stylesheet/less' id='$handle' $title href='$href' type='text/less' media='$media' />";
-//     }
-//     return $tag;
-// }
-
-function maera_customizer_live_preview() {
-    global $active_framework;
-    wp_enqueue_script('maera-customizer-live', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer.js', array('jquery', 'customize-preview', 'underscore'), '', true);
-}
-
-add_action('customize_preview_init', 'maera_customizer_live_preview');
