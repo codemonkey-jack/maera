@@ -17,5 +17,6 @@ Timber::render(
 		'author.twig',
 		'archive.twig'
 	),
-	$data
+	$data,
+	apply_filters( 'maera/timber/cache', false )
 );

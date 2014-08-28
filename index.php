@@ -21,4 +21,4 @@ if ( is_home() ) {
 	array_unshift( $templates, 'home.twig' );
 }
 
-Timber::render( $templates, $context, false );
+Timber::render( $templates, $context, apply_filters( 'maera/timber/cache', false ) );

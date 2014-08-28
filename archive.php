@@ -57,4 +57,4 @@ if ( is_day() ) {
 
 $data['posts'] = Timber::query_posts( false, 'Maera_Post' );
 
-Timber::render( $templates, $data );
+Timber::render( $templates, $data, apply_filters( 'maera/timber/cache', false ) );

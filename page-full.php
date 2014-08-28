@@ -18,5 +18,6 @@ Timber::render(
 		'page-' . $post->post_name . '.twig',
 		'page.twig'
 	),
-	$context
+	$context,
+	apply_filters( 'maera/timber/cache', false )
 );

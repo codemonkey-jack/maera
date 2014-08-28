@@ -74,6 +74,8 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 				// Turn on Timber caching.
 				// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
 				Timber::$cache = true;
+				add_filter( 'maera/timber/cache', array( $this, 'timber_caching' ) );
+
 			}
 
 			add_action( 'maera/topbar/brand', array( $this, 'logo' ) );
@@ -109,6 +111,27 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 
 				wp_register_style( 'bootstrap-accessibility', get_template_directory_uri() . '/framework/bootstrap/assets/css/bootstrap-accessibility.css', false, null, true );
 				wp_enqueue_style( 'bootstrap-accessibility' );
+
+			}
+
+		}
+
+
+		/**
+		 * Timber caching
+		 */
+		function timber_caching() {
+
+			$caching_int = get_theme_mod( 'caching_int', 0 );
+
+			if ( 0 != $caching_int ) {
+
+				// Convert minutes to seconds
+				return ( $caching_int * 60 );
+
+			} else {
+
+				return false;
 
 			}
 

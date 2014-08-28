@@ -143,6 +143,22 @@ function maera_customizer_settings( $controls ) {
 		'priority' => 20,
 	);
 
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'caching_int',
+		'label'    => __( 'Caching time', 'maera' ),
+		'subtitle' => __( 'Set the time (in minutes) you want your pages cached. CAUTION: If you have any context dependent sub-views (eg. current user), this mode won\'t do. In that case, set this to 0.', 'maera' ),
+		'section'  => 'advanced',
+		'priority' => 30,
+		'default'  => 0,
+		'choices'  => array(
+			'min'  => 0,
+			'max'  => 1440,
+			'step' => 1,
+		),
+	);
+
 	//-------------------------------------------------
 	// LAYOUTS
 	//-------------------------------------------------
