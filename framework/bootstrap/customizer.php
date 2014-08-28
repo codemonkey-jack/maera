@@ -1310,7 +1310,7 @@ function maera_customizer_settings( $controls ) {
 		$controls[] = array(
 			'type'     => 'select',
 			'setting'  => $area . '_widgets_nr',
-			'label'    => sprintf( __( 'Number of widge areas in %s', 'maera' ), $settings['name'] ),
+			'label'    => sprintf( __( 'Number of widget areas in %s', 'maera' ), $settings['name'] ),
 			'section'  => 'widget_areas',
 			'default'  => $settings['default'],
 			'choices'  => array(
