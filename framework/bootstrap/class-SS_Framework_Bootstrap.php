@@ -747,7 +747,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			foreach ( $headers as $header => $values ) {
 				$header_color  = get_theme_mod( 'font_' . $header . '_color', '#333333' );
-				$header_weight = get_theme_mod( 'font_' . $header . '_weight', 400 );
+				$header_weight = get_theme_mod( 'font_headings_weight', 400 );
 				$header_size   = get_theme_mod( 'font_' . $header . '_size', $values['size'] );
 				$header_height = get_theme_mod( 'font_' . $header . '_height', $values['height'] );
 

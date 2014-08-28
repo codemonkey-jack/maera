@@ -537,6 +537,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'nav',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 40,
+        'framework_var' => '@nav-font-family',
 	);
 
 	$controls[] = array(
@@ -571,6 +572,7 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 800,
 			'step' => 100,
 		),
+        'framework_var' => '@nav-font-weight'
 	);
 
 	$controls[] = array(
@@ -806,6 +808,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'typography',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
+        'framework_var' => '@font-family-base',
 	);
 
 	$controls[] = array(
@@ -859,6 +862,7 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 900,
 			'step' => 100,
 		),
+        'framework_var' => '@base-font-weight'
 	);
 
 	$controls[] = array(
@@ -873,6 +877,7 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 70 : 7,
 			'step' => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 1 : 0.01,
 		),
+        'framework_var' => '@font-size-base',
 	);
 
 	$controls[] = array(
@@ -887,6 +892,7 @@ function shoestrap_customizer_settings( $controls ) {
 			'max'  => 3,
 			'step' => 0.1,
 		),
+        'framework_var' => '@line-height-base',
 	);
 
 	$controls[] = array(
@@ -897,6 +903,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'typography',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 30,
+        'framework_var' => '@headings-font-family',
 	);
 
 	$controls[] = array(
@@ -926,6 +933,21 @@ function shoestrap_customizer_settings( $controls ) {
 			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'shoestrap' ),
 			'vietnamese' 	=> __( 'Vietnamese', 'shoestrap' ),
 		),
+	);
+
+	$controls[] = array(
+		'type'     => 'slider',
+		'setting'  => 'font_headings_weight',
+		'subtitle' => __( 'Font Weight', 'shoestrap' ),
+		'section'  => 'typography',
+		'default'  => 400,
+		'priority' => 38,
+		'choices'  => array(
+			'min'  => 100,
+			'max'  => 900,
+			'step' => 100,
+		),
+        'framework_var' => '@headings-font-weight'
 	);
 
 	$controls[] = array(
@@ -1672,7 +1694,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'footer',
 		'default'  => '#333333',
 		'priority' => 10,
-        'framework_var' => '@footer-bg'
+        'framework_var' => '@footer-color'
 	);
 
 	$controls[] = array(
@@ -1733,7 +1755,7 @@ function shoestrap_customizer_settings( $controls ) {
 		'section'  => 'footer',
 		'default'  => '#eeeeee',
 		'priority' => 34,
-        'framework_var' => '@footer-color'
+        'framework_var' => '@footer-border'
 	);
 
 	$controls[] = array(

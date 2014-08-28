@@ -282,6 +282,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						'framework_var'    => isset( $control['framework_var'] ) ? $control['framework_var'] : null,
 					) )
 				);
 
@@ -296,6 +297,7 @@ function kirki_customizer_controls( $wp_customize ) {
 						'description' => isset( $control['description'] ) ? $control['description'] : null,
 						'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
 						'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+						'framework_var'    => isset( $control['framework_var'] ) ? $control['framework_var'] : null,
 					) )
 				);
 
