@@ -23,20 +23,20 @@
  */
 
 /**
- * Shows a breadcrumb for all types of pages.  This is a wrapper function for the Shoestrap_Breadcrumb_Trail class,
+ * Shows a breadcrumb for all types of pages.  This is a wrapper function for the Maera_Breadcrumb_Trail class,
  * which should be used in theme templates.
  *
  * @since  0.1.0
  * @access public
- * @param  array $args Arguments to pass to Shoestrap_Breadcrumb_Trail.
+ * @param  array $args Arguments to pass to Maera_Breadcrumb_Trail.
  * @return void
  */
-function shoestrap_breadcrumb_trail( $args = array() ) {
+function maera_breadcrumb_trail( $args = array() ) {
 
 	if ( function_exists( 'is_bbpress' ) && is_bbpress() )
-		$breadcrumb = new Shoestrap_bbPress_Breadcrumb_Trail( $args );
+		$breadcrumb = new Maera_bbPress_Breadcrumb_Trail( $args );
 	else
-		$breadcrumb = new Shoestrap_Breadcrumb_Trail( $args );
+		$breadcrumb = new Maera_Breadcrumb_Trail( $args );
 
 	$breadcrumb->trail();
 }
@@ -46,7 +46,7 @@ function shoestrap_breadcrumb_trail( $args = array() ) {
  *
  * @since 0.6.0
  */
-class Shoestrap_Breadcrumb_Trail {
+class Maera_Breadcrumb_Trail {
 
 	/**
 	 * Array of items belonging to the current breadcrumb trail.
@@ -97,11 +97,11 @@ class Shoestrap_Breadcrumb_Trail {
 				// 'book'  => 'genre',
 			),
 
-			/* Labels for text used (see Shoestrap_Breadcrumb_Trail::default_labels). */
+			/* Labels for text used (see Maera_Breadcrumb_Trail::default_labels). */
 			'labels' => array()
 		);
 
-		$this->args = apply_filters( 'shoestrap_breadcrumb_trail_args', wp_parse_args( $args, $defaults ) );
+		$this->args = apply_filters( 'maera_breadcrumb_trail_args', wp_parse_args( $args, $defaults ) );
 
 		/* Merge the user-added labels with the defaults. */
 		$this->args['labels'] = wp_parse_args( $this->args['labels'], $this->default_labels() );
@@ -150,7 +150,7 @@ class Shoestrap_Breadcrumb_Trail {
 		}
 
 		/* Allow developers to filter the breadcrumb trail HTML. */
-		$breadcrumb = apply_filters( 'shoestrap_breadcrumb_trail', $breadcrumb, $this->args );
+		$breadcrumb = apply_filters( 'maera_breadcrumb_trail', $breadcrumb, $this->args );
 
 		if ( true === $this->args['echo'] )
 			echo $breadcrumb;
@@ -168,20 +168,20 @@ class Shoestrap_Breadcrumb_Trail {
 	public function default_labels() {
 
 		$labels = array(
-			'browse'              => __( 'Browse:',                 'shoestrap' ),
-			'home'                => __( 'Home',                    'shoestrap' ),
-			'search'              => __( 'Search results for "%s"', 'shoestrap' ),
-			'error_404'           => __( '404 Not Found',           'shoestrap' ),
-			'paged'               => __( 'Page %d',                 'shoestrap' ),
-			'archives'            => __( 'Archives',                'shoestrap' ),
-			'archive_minute_hour' => __( 'g:i a',                   'shoestrap' ),
-			'archive_minute'      => __( 'Minute %d',               'shoestrap' ),
-			'archive_hour'        => __( 'g a',                     'shoestrap' ),
-			'archive_day'         => __( 'd',                       'shoestrap' ),
-			'archive_week'        => __( 'Week %d',                 'shoestrap' ),
-			'archive_month'       => __( 'F',                       'shoestrap' ),
-			'archive_year'        => __( 'Y',                       'shoestrap' ),
-		//	'edit'                => __( 'Edit',                    'shoestrap' ), // @todo Implement edit link
+			'browse'              => __( 'Browse:',                 'maera' ),
+			'home'                => __( 'Home',                    'maera' ),
+			'search'              => __( 'Search results for "%s"', 'maera' ),
+			'error_404'           => __( '404 Not Found',           'maera' ),
+			'paged'               => __( 'Page %d',                 'maera' ),
+			'archives'            => __( 'Archives',                'maera' ),
+			'archive_minute_hour' => __( 'g:i a',                   'maera' ),
+			'archive_minute'      => __( 'Minute %d',               'maera' ),
+			'archive_hour'        => __( 'g a',                     'maera' ),
+			'archive_day'         => __( 'd',                       'maera' ),
+			'archive_week'        => __( 'Week %d',                 'maera' ),
+			'archive_month'       => __( 'F',                       'maera' ),
+			'archive_year'        => __( 'Y',                       'maera' ),
+		//	'edit'                => __( 'Edit',                    'maera' ), // @todo Implement edit link
 		);
 
 		return $labels;
@@ -271,7 +271,7 @@ class Shoestrap_Breadcrumb_Trail {
 		$this->do_paged_items();
 
 		/* Allow developers to overwrite the items for the breadcrumb trail. */
-		$this->items = apply_filters( 'shoestrap_breadcrumb_trail_items', $this->items, $this->args );
+		$this->items = apply_filters( 'maera_breadcrumb_trail_items', $this->items, $this->args );
 	}
 
 	/**
@@ -1021,15 +1021,15 @@ class Shoestrap_Breadcrumb_Trail {
 
 				/* If using the %year% tag, add a link to the yearly archive. */
 				if ( '%year%' == $tag )
-					$this->items[] = '<a href="' . get_year_link( get_the_time( 'Y', $post_id ) ) . '" title="' . get_the_time( __( 'Y', 'shoestrap' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_year'], $post_id ) . '</a>';
+					$this->items[] = '<a href="' . get_year_link( get_the_time( 'Y', $post_id ) ) . '" title="' . get_the_time( __( 'Y', 'maera' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_year'], $post_id ) . '</a>';
 
 				/* If using the %monthnum% tag, add a link to the monthly archive. */
 				elseif ( '%monthnum%' == $tag )
-					$this->items[] = '<a href="' . get_month_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ) ) . '" title="' . get_the_time( esc_attr__( 'F Y', 'shoestrap' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_month'], $post_id ) . '</a>';
+					$this->items[] = '<a href="' . get_month_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ) ) . '" title="' . get_the_time( esc_attr__( 'F Y', 'maera' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_month'], $post_id ) . '</a>';
 
 				/* If using the %day% tag, add a link to the daily archive. */
 				elseif ( '%day%' == $tag )
-					$this->items[] = '<a href="' . get_day_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ), get_the_time( 'd', $post_id ) ) . '" title="' . get_the_time( esc_attr__( 'F j, Y', 'shoestrap' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_day'], $post_id ) . '</a>';
+					$this->items[] = '<a href="' . get_day_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ), get_the_time( 'd', $post_id ) ) . '" title="' . get_the_time( esc_attr__( 'F j, Y', 'maera' ), $post_id ) . '">' . get_the_time( $this->args['labels']['archive_day'], $post_id ) . '</a>';
 
 				/* If using the %author% tag, add a link to the post author archive. */
 				elseif ( '%author%' == $tag )
@@ -1065,13 +1065,13 @@ class Shoestrap_Breadcrumb_Trail {
 }
 
 /**
- * Extends the Shoestrap_Breadcrumb_Trail class for bbPress.  Only use this if bbPress is in use.  This should
+ * Extends the Maera_Breadcrumb_Trail class for bbPress.  Only use this if bbPress is in use.  This should
  * serve as an example for other plugin developers to build custom breadcrumb items.
  *
  * @since  0.6.0
  * @access public
  */
-class Shoestrap_bbPress_Breadcrumb_Trail extends Shoestrap_Breadcrumb_Trail {
+class Maera_bbPress_Breadcrumb_Trail extends Maera_Breadcrumb_Trail {
 
 	/**
 	 * Runs through the various bbPress conditional tags to check the current page being viewed.  Once
@@ -1120,7 +1120,7 @@ class Shoestrap_bbPress_Breadcrumb_Trail extends Shoestrap_Breadcrumb_Trail {
 			$this->items[] = '<a href="' . bbp_get_topic_tag_link() . '">' . bbp_get_topic_tag_name() . '</a>';
 
 			if ( true === $this->args['show_title'] )
-				$this->items[] = __( 'Edit', 'shoestrap' );
+				$this->items[] = __( 'Edit', 'maera' );
 		}
 
 		/* If viewing a "view" page. */
@@ -1148,15 +1148,15 @@ class Shoestrap_bbPress_Breadcrumb_Trail extends Shoestrap_Breadcrumb_Trail {
 
 			/* If viewing a topic split page. */
 			if ( bbp_is_topic_split() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Split', 'shoestrap' );
+				$this->items[] = __( 'Split', 'maera' );
 
 			/* If viewing a topic merge page. */
 			elseif ( bbp_is_topic_merge() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Merge', 'shoestrap' );
+				$this->items[] = __( 'Merge', 'maera' );
 
 			/* If viewing a topic edit page. */
 			elseif ( bbp_is_topic_edit() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Edit', 'shoestrap' );
+				$this->items[] = __( 'Edit', 'maera' );
 		}
 
 		/* If viewing a single reply page. */
@@ -1173,7 +1173,7 @@ class Shoestrap_bbPress_Breadcrumb_Trail extends Shoestrap_Breadcrumb_Trail {
 				$this->items[] = '<a href="' . bbp_get_reply_url( $reply_id ) . '">' . bbp_get_reply_title( $reply_id ) . '</a>';
 
 				if ( true === $this->args['show_title'] )
-					$this->items[] = __( 'Edit', 'shoestrap' );
+					$this->items[] = __( 'Edit', 'maera' );
 
 			} elseif ( true === $this->args['show_title'] ) {
 				$this->items[] = bbp_get_reply_title( $reply_id );
@@ -1204,13 +1204,13 @@ class Shoestrap_bbPress_Breadcrumb_Trail extends Shoestrap_Breadcrumb_Trail {
 				$this->items[] = '<a href="' . bbp_get_user_profile_url() . '">' . bbp_get_displayed_user_field( 'display_name' ) . '</a>';
 
 				if ( true === $this->args['show_title'] )
-					$this->items[] = __( 'Edit', 'shoestrap' );
+					$this->items[] = __( 'Edit', 'maera' );
 			} elseif ( true === $this->args['show_title'] ) {
 				$this->items[] = bbp_get_displayed_user_field( 'display_name' );
 			}
 		}
 
 		/* Return the bbPress breadcrumb trail items. */
-		$this->items = apply_filters( 'shoestrap_breadcrumb_trail_get_bbpress_items', $this->items, $this->args );
+		$this->items = apply_filters( 'maera_breadcrumb_trail_get_bbpress_items', $this->items, $this->args );
 	}
 }

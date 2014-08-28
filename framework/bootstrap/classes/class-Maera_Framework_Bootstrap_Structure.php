@@ -1,49 +1,49 @@
 <?php
 
-if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
+if ( ! class_exists( 'Maera_Framework_Bootstrap_Structure' ) ) {
 
 	/**
 	* The Bootstrap Framework module
 	*/
-	class SS_Framework_Bootstrap_Structure {
+	class Maera_Framework_Bootstrap_Structure {
 
 		/**
 		 * Class constructor
 		 */
 		public function __construct() {
 
-			add_action( 'shoestrap/topbar/inside/begin', array( $this, 'social_links_navbar_content' ), 10 );
-			add_filter( 'shoestrap/topbar/menu/class', array( $this, 'navbar_links_alignment' ) );
-			add_action( 'shoestrap/topbar/inside/begin', array( $this, 'navbar_search' ), 5 );
+			add_action( 'maera/topbar/inside/begin', array( $this, 'social_links_navbar_content' ), 10 );
+			add_filter( 'maera/topbar/menu/class', array( $this, 'navbar_links_alignment' ) );
+			add_action( 'maera/topbar/inside/begin', array( $this, 'navbar_search' ), 5 );
 
 			// Breadcrumbs
-			add_action( 'shoestrap/content/before', array( $this, 'breadcrumbs' ) );
+			add_action( 'maera/content/before', array( $this, 'breadcrumbs' ) );
 
-			add_action( 'shoestrap/wrap/before', array( $this, 'header_html' ), 3 );
-			add_action( 'shoestrap/wrap/before', array( $this, 'jumbotron_html' ), 5 );
+			add_action( 'maera/wrap/before', array( $this, 'header_html' ), 3 );
+			add_action( 'maera/wrap/before', array( $this, 'jumbotron_html' ), 5 );
 
-			add_filter( 'shoestrap/topbar/class', array( $this, 'navbar_positioning_class' ) );
+			add_filter( 'maera/topbar/class', array( $this, 'navbar_positioning_class' ) );
 
 			add_filter( 'body_class', array( $this, 'body_class' ) );
 
 			add_action( 'wp', array( $this, 'sidebars_bypass' ) );
 
 			// Layout
-			add_filter( 'shoestrap/section_class/content', array( $this, 'layout_classes_content' ) );
-			add_filter( 'shoestrap/section_class/primary', array( $this, 'layout_classes_primary' ) );
-			add_filter( 'shoestrap/section_class/secondary', array( $this, 'layout_classes_secondary' ) );
-			add_filter( 'shoestrap/section_class/wrapper', array( $this, 'layout_classes_wrapper' ) );
+			add_filter( 'maera/section_class/content', array( $this, 'layout_classes_content' ) );
+			add_filter( 'maera/section_class/primary', array( $this, 'layout_classes_primary' ) );
+			add_filter( 'maera/section_class/secondary', array( $this, 'layout_classes_secondary' ) );
+			add_filter( 'maera/section_class/wrapper', array( $this, 'layout_classes_wrapper' ) );
 			add_action( 'wp', array( $this, 'container_class_modifier' ) );
 
-			add_filter( 'shoestrap/image/height', array( $this, 'get_feat_image_height' ) );
-			add_filter( 'shoestrap/image/width', array( $this, 'get_feat_image_width' ) );
+			add_filter( 'maera/image/height', array( $this, 'get_feat_image_height' ) );
+			add_filter( 'maera/image/width', array( $this, 'get_feat_image_width' ) );
 			add_filter( 'the_content', array( $this, 'inject_featured_images_content' ), 100 );
-			add_filter( 'shoestrap/image/display', array( $this, 'display_feat_image_posts' ) );
+			add_filter( 'maera/image/display', array( $this, 'display_feat_image_posts' ) );
 
 			// Post Meta
-			add_action( 'shoestrap/entry/meta', array( $this, 'meta_elements' ), 10, 1 );
+			add_action( 'maera/entry/meta', array( $this, 'meta_elements' ), 10, 1 );
 
-			add_filter( 'shoestrap/content_width', array( $this, 'content_width_px' ) );
+			add_filter( 'maera/content_width', array( $this, 'content_width_px' ) );
 
 		}
 
@@ -53,7 +53,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 		 */
 		public static function content_width_px() {
 
-			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
+			$layout = apply_filters( 'maera/layout/modifier', get_theme_mod( 'layout', 1 ) );
 
 			$container  = filter_var( get_theme_mod( 'screen_large_desktop', 1200 ), FILTER_SANITIZE_NUMBER_INT );
 			$gutter     = filter_var( get_theme_mod( 'gutter', 30 ), FILTER_SANITIZE_NUMBER_INT );
@@ -83,11 +83,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 			$post = get_post( $post_id );
 
 			// Get the options from the db
-			$metas       = get_theme_mod( 'shoestrap_entry_meta_config', 'post-format, date, author, comments' );
+			$metas       = get_theme_mod( 'maera_entry_meta_config', 'post-format, date, author, comments' );
 			$date_format = get_theme_mod( 'date_meta_format', 1 );
 
-			$categories_list = has_category( '', $post_id ) ? get_the_category_list( __( ', ', 'shoestrap' ), '', $post_id ) : false;
-			$tag_list        = has_tag( '', $post_id ) ? get_the_tag_list( '', __( ', ', 'shoestrap' ) ) : false;
+			$categories_list = has_category( '', $post_id ) ? get_the_category_list( __( ', ', 'maera' ), '', $post_id ) : false;
+			$tag_list        = has_tag( '', $post_id ) ? get_the_tag_list( '', __( ', ', 'maera' ) ) : false;
 
 			// No need to proceed if the option is empty
 			if ( empty( $metas ) ) {
@@ -108,7 +108,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 					$content .= sprintf( '<span class="post-meta-element ' . $meta . '"><span class="author vcard"><i class="el-icon-user icon"></i> <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span></span>',
 						esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) ),
-						esc_attr( sprintf( __( 'View all posts by %s', 'shoestrap' ), get_the_author_meta( 'display_name', $post->post_author ) ) ),
+						esc_attr( sprintf( __( 'View all posts by %s', 'maera' ), get_the_author_meta( 'display_name', $post->post_author ) ) ),
 						get_the_author_meta( 'display_name', $post->post_author )
 					);
 
@@ -116,7 +116,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 					if ( is_sticky() ) {
 						$content .= '<span class="post-meta-element ' . $meta . '">';
-						$content .= '<i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'shoestrap' );
+						$content .= '<i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'maera' );
 						$content .= '</span>';
 					}
 
@@ -128,31 +128,31 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 						if ( get_post_format( $post_id ) === 'gallery' ) {
 							// Gallery
-							$content .= '<i class="el-icon-picture"></i> <a href="' . esc_url( get_post_format_link( 'gallery' ) ) . '">' . __('Gallery','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-picture"></i> <a href="' . esc_url( get_post_format_link( 'gallery' ) ) . '">' . __('Gallery','maera') . '</a>';
 						} elseif ( get_post_format( $post_id ) === 'aside' ) {
 							// Aside
-							$content .= '<i class="el-icon-chevron-right"></i> <a href="' . esc_url( get_post_format_link( 'aside' ) ) . '">' . __('Aside','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-chevron-right"></i> <a href="' . esc_url( get_post_format_link( 'aside' ) ) . '">' . __('Aside','maera') . '</a>';
 						} elseif ( get_post_format( $post_id ) === 'link' ) {
 							// Link
-							$content .= '<i class="el-icon-link"></i> <a href="' . esc_url( get_post_format_link( 'link' ) ) . '">' . __('Link','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-link"></i> <a href="' . esc_url( get_post_format_link( 'link' ) ) . '">' . __('Link','maera') . '</a>';
 						} elseif ( get_post_format( $post_id ) === 'image' ) {
 							// Image
-							$content .= '<i class="el-icon-picture"></i> <a href="' . esc_url( get_post_format_link( 'image' ) ) . '">' . __('Image','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-picture"></i> <a href="' . esc_url( get_post_format_link( 'image' ) ) . '">' . __('Image','maera') . '</a>';
 						} elseif ( get_post_format( $post_id ) === 'quote' ) {
 							// Quote
-							$content .= '<i class="el-icon-quotes-alt"></i> <a href="' . esc_url( get_post_format_link( 'quote' ) ) . '">' . __('Quote','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-quotes-alt"></i> <a href="' . esc_url( get_post_format_link( 'quote' ) ) . '">' . __('Quote','maera') . '</a>';
 						} elseif ( get_post_format( $post_id ) === 'status' ) {
 							// Status
-							$content .= '<i class="el-icon-comment"></i> <a href="' . esc_url( get_post_format_link( 'status' ) ) . '">' . __('Status','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-comment"></i> <a href="' . esc_url( get_post_format_link( 'status' ) ) . '">' . __('Status','maera') . '</a>';
 						} elseif ( get_post_format( $post_id ) === 'video' ) {
 							// Video
-							$content .= '<i class="el-icon-video"></i> <a href="' . esc_url( get_post_format_link( 'video' ) ) . '">' . __('Video','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-video"></i> <a href="' . esc_url( get_post_format_link( 'video' ) ) . '">' . __('Video','maera') . '</a>';
 						} elseif ( get_post_format( $post_id ) === 'audio' ) {
 							// Audio
-							$content .= '<i class="el-icon-volume-up"></i> <a href="' . esc_url( get_post_format_link( 'audio' ) ) . '">' . __('Audio','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-volume-up"></i> <a href="' . esc_url( get_post_format_link( 'audio' ) ) . '">' . __('Audio','maera') . '</a>';
 						} elseif ( get_post_format( $post_id ) === 'chat' ) {
 							// Chat
-							$content .= '<i class="el-icon-comment-alt"></i> <a href="' . esc_url( get_post_format_link( 'chat' ) ) . '">' . __('Chat','shoestrap') . '</a>';
+							$content .= '<i class="el-icon-comment-alt"></i> <a href="' . esc_url( get_post_format_link( 'chat' ) ) . '">' . __('Chat','maera') . '</a>';
 						}
 
 						$content .= '</span>';
@@ -165,7 +165,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 						$content .= '<span class="post-meta-element ' . $meta . '">';
 
-						$format_prefix = ( has_post_format( 'chat' ) || has_post_format( 'status' ) ) ? _x( '%1$s on %2$s', '1: post format name. 2: date', 'shoestrap' ): '%2$s';
+						$format_prefix = ( has_post_format( 'chat' ) || has_post_format( 'status' ) ) ? _x( '%1$s on %2$s', '1: post format name. 2: date', 'maera' ): '%2$s';
 
 						if ( $date_format == 0 ) {
 
@@ -199,7 +199,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 				} elseif ( 'comments' == $meta ) { // Comments
 
-					$content .= '<span class="post-meta-element ' . $meta . '"><i class="el-icon-comment icon"></i> <a href="' . get_comments_link( $post_id ) . '">' . get_comments_number( $post_id ) . ' ' . __( 'Comments', 'shoestrap' ) . '</a></span>';
+					$content .= '<span class="post-meta-element ' . $meta . '"><i class="el-icon-comment icon"></i> <a href="' . get_comments_link( $post_id ) . '">' . get_comments_number( $post_id ) . ' ' . __( 'Comments', 'maera' ) . '</a></span>';
 
 				}
 
@@ -219,7 +219,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 			if ( has_post_thumbnail() ) {
 
-				$image = Shoestrap_Image::featured_image( get_the_ID() );
+				$image = Maera_Image::featured_image( get_the_ID() );
 
 				$r .= '<div class="featured-image" style="background: url(\'' . $image['url'] . '\'); width: ' . $image['width'] . 'px; height: ' . $image['height'] . 'px;"></div>';
 
@@ -288,10 +288,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 			// Apply a filter to the layout.
 			// Allows us to bypass the selected layout using a simple filter like this:
-			// add_filter( 'shoestrap/layout/modifier', function() { return 3 } ); // will only run on PHP > 5.3
+			// add_filter( 'maera/layout/modifier', function() { return 3 } ); // will only run on PHP > 5.3
 			// OR
-			// add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_2' ); // will also run on PHP < 5.3
-			$layout = apply_filters( 'shoestrap/layout/modifier', $layout );
+			// add_filter( 'maera/layout/modifier', 'maera_return_2' ); // will also run on PHP < 5.3
+			$layout = apply_filters( 'maera/layout/modifier', $layout );
 
 			// Get the site style. Defaults to 'Wide'.
 			$site_mode = get_theme_mod( 'site_style', 'wide' );
@@ -411,19 +411,19 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 			if ( 'fluid' == $site_style ) {
 
 				// Fluid mode
-				add_filter( 'shoestrap/container_class', array( $this, 'return_container_fluid' ) );
-				add_filter( 'shoestrap/topbar/class/container', array( $this, 'return_container_fluid' ) );
+				add_filter( 'maera/container_class', array( $this, 'return_container_fluid' ) );
+				add_filter( 'maera/topbar/class/container', array( $this, 'return_container_fluid' ) );
 
 			} else {
 
-				add_filter( 'shoestrap/container_class', array( $this, 'return_container' ) );
-				add_filter( 'shoestrap/topbar/class/container', array( $this, 'return_container' ) );
+				add_filter( 'maera/container_class', array( $this, 'return_container' ) );
+				add_filter( 'maera/topbar/class/container', array( $this, 'return_container' ) );
 
 			}
 
 			if ( 'full' == $nav_style ) {
 
-				add_filter( 'shoestrap/topbar/class/container', array( $this, 'return_container_fluid' ) );
+				add_filter( 'maera/topbar/class/container', array( $this, 'return_container_fluid' ) );
 
 			}
 
@@ -437,17 +437,17 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 		function sidebars_bypass() {
 
 			$layout = get_theme_mod( 'layout', 1 );
-			$layout = apply_filters( 'shoestrap/layout/modifier', $layout );
+			$layout = apply_filters( 'maera/layout/modifier', $layout );
 
 			// If the layout does not contain 2 sidebars, do not render the secondary sidebar
 			if ( ! in_array( $layout, array( 3, 4, 5 ) ) ) {
-				add_filter( 'shoestrap/sidebar/secondary', '__return_null' );
+				add_filter( 'maera/sidebar/secondary', '__return_null' );
 			}
 
 			// If the layout selected contains no sidebars, do not render the sidebars
 			if ( 0 == $layout ) {
-				add_filter( 'shoestrap/sidebar/primary', '__return_null' );
-				add_filter( 'shoestrap/sidebar/secondary', '__return_null' );
+				add_filter( 'maera/sidebar/primary', '__return_null' );
+				add_filter( 'maera/sidebar/secondary', '__return_null' );
 			}
 
 			// Have we selected custom layouts per post type?
@@ -460,7 +460,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 					if ( is_singular( $post_type ) ) {
 						$layout = get_theme_mod( $post_type . '_layout', get_theme_mod( 'layout', 1 ) );
-						add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_' . $layout );
+						add_filter( 'maera/layout/modifier', 'maera_return_' . $layout );
 					}
 
 				}
@@ -548,7 +548,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 						<div class="container">
 					<?php endif; ?>
 
-						<?php do_action( 'shoestrap/jumbotron' ); ?>
+						<?php do_action( 'maera/jumbotron' ); ?>
 
 					<?php if ( ( 1 != $nocontainer && 'wide' == $site_style ) || 'boxed' == $site_style ) : ?>
 						</div>
@@ -629,7 +629,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 					),
 				);
 
-				shoestrap_breadcrumb_trail( $args );
+				maera_breadcrumb_trail( $args );
 
 			}
 
@@ -644,8 +644,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 
 			if ( $navbar_search == 1 ) { ?>
 				<form role="search" method="get" id="searchform" class="form-search navbar-right navbar-form" action="<?php echo home_url('/'); ?>">
-					<label class="hide" for="s"><?php _e('Search for:', 'shoestrap'); ?></label>
-					<input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e('Search', 'shoestrap'); ?> <?php bloginfo('name'); ?>">
+					<label class="hide" for="s"><?php _e('Search for:', 'maera'); ?></label>
+					<input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e('Search', 'maera'); ?> <?php bloginfo('name'); ?>">
 				</form>
 			<?php }
 		}
@@ -656,27 +656,27 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Structure' ) ) {
 		function social_links_builder( $before = '', $after = '', $separator = '' ) {
 
 			$social_links = array(
-				'blogger'     => __( 'Blogger', 'shoestrap' ),
-				'deviantart'  => __( 'DeviantART', 'shoestrap' ),
-				'digg'        => __( 'Digg', 'shoestrap' ),
-				'dribbble'    => __( 'Dribbble', 'shoestrap' ),
-				'facebook'    => __( 'Facebook', 'shoestrap' ),
-				'flickr'      => __( 'Flickr', 'shoestrap' ),
-				'github'      => __( 'Github', 'shoestrap' ),
-				'googleplus' => __( 'Google+', 'shoestrap' ),
-				'instagram'   => __( 'Instagram', 'shoestrap' ),
-				'linkedin'    => __( 'LinkedIn', 'shoestrap' ),
-				'myspace'     => __( 'MySpace', 'shoestrap' ),
-				'pinterest'   => __( 'Pinterest', 'shoestrap' ),
-				'reddit'      => __( 'Reddit', 'shoestrap' ),
-				'rss'         => __( 'RSS', 'shoestrap' ),
-				'skype'       => __( 'Skype', 'shoestrap' ),
-				'soundcloud'  => __( 'SoundCloud', 'shoestrap' ),
-				'tumblr'      => __( 'Tumblr', 'shoestrap' ),
-				'twitter'     => __( 'Twitter', 'shoestrap' ),
-				'vimeo'       => __( 'Vimeo', 'shoestrap' ),
-				'vkontakte'   => __( 'Vkontakte', 'shoestrap' ),
-				'youtube'     => __( 'YouTube', 'shoestrap' ),
+				'blogger'     => __( 'Blogger', 'maera' ),
+				'deviantart'  => __( 'DeviantART', 'maera' ),
+				'digg'        => __( 'Digg', 'maera' ),
+				'dribbble'    => __( 'Dribbble', 'maera' ),
+				'facebook'    => __( 'Facebook', 'maera' ),
+				'flickr'      => __( 'Flickr', 'maera' ),
+				'github'      => __( 'Github', 'maera' ),
+				'googleplus' => __( 'Google+', 'maera' ),
+				'instagram'   => __( 'Instagram', 'maera' ),
+				'linkedin'    => __( 'LinkedIn', 'maera' ),
+				'myspace'     => __( 'MySpace', 'maera' ),
+				'pinterest'   => __( 'Pinterest', 'maera' ),
+				'reddit'      => __( 'Reddit', 'maera' ),
+				'rss'         => __( 'RSS', 'maera' ),
+				'skype'       => __( 'Skype', 'maera' ),
+				'soundcloud'  => __( 'SoundCloud', 'maera' ),
+				'tumblr'      => __( 'Tumblr', 'maera' ),
+				'twitter'     => __( 'Twitter', 'maera' ),
+				'vimeo'       => __( 'Vimeo', 'maera' ),
+				'vkontakte'   => __( 'Vkontakte', 'maera' ),
+				'youtube'     => __( 'YouTube', 'maera' ),
 			);
 
 			$content = $before;

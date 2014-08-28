@@ -4,7 +4,7 @@
  */
 
 $context = Timber::get_context();
-$post = new Shoestrap_Post();
+$post = new Maera_Post();
 $context['post'] = $post;
 $context['wp_title'] .= ' - ' . $post->title();
 

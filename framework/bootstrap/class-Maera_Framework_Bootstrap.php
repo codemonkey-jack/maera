@@ -1,11 +1,11 @@
 <?php
 
-if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
+if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 
 	/**
 	* The Bootstrap Framework module
 	*/
-	class SS_Framework_Bootstrap {
+	class Maera_Framework_Bootstrap {
 
 		private static $instance;
 
@@ -15,28 +15,28 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		public function __construct() {
 
-			if ( ! defined( 'SS_FRAMEWORK_PATH' ) ) {
-				define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
+			if ( ! defined( 'MAERA_FRAMEWORK_PATH' ) ) {
+				define( 'MAERA_FRAMEWORK_PATH', dirname( __FILE__ ) );
 			}
 
 			// Include the customizer
-			include_once( SS_FRAMEWORK_PATH . '/customizer.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/customizer.php' );
 
 			// Include other classes
-			include_once( SS_FRAMEWORK_PATH . '/classes/class-SS_Framework_Bootstrap_Widgets.php' );
-			include_once( SS_FRAMEWORK_PATH . '/classes/class-SS_Framework_Bootstrap_Styles.php' );
-			include_once( SS_FRAMEWORK_PATH . '/classes/class-SS_Framework_Bootstrap_Structure.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Widgets.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Styles.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Structure.php' );
 
 			// Instantianate addon classes
-			$widgets   = new SS_Framework_Bootstrap_Widgets();
-			$styles    = new SS_Framework_Bootstrap_Styles();
-			$structure = new SS_Framework_Bootstrap_Structure();
+			$widgets   = new Maera_Framework_Bootstrap_Widgets();
+			$styles    = new Maera_Framework_Bootstrap_Styles();
+			$structure = new Maera_Framework_Bootstrap_Structure();
 
 			global $extra_widget_areas;
 			$extra_widget_areas = $widgets->extra_widget_areas_array();
 
 			// Instantianate the compiler and pass the framework's properties to it
-			$compiler = new Shoestrap_Compiler( array(
+			$compiler = new Maera_Compiler( array(
 				'compiler'     => 'less_php',
 				'minimize_css' => false,
 				'less_path'    => dirname( __FILE__ ) . '/assets/less/',
@@ -63,17 +63,17 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
 			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ), 10, 2 );
 
-			add_filter( 'shoestrap/image/display', array( $this, 'disable_feat_images_ppt' ), 99 );
+			add_filter( 'maera/image/display', array( $this, 'disable_feat_images_ppt' ), 99 );
 
 			// Add stylesheets caching if dev_mode is set to off.
 			if ( 1 == get_theme_mod( 'dev_mode' ) ) {
-				add_filter( 'shoestrap/styles/caching', '__return_false' );
+				add_filter( 'maera/styles/caching', '__return_false' );
 				TimberLoader::CACHE_NONE;
 			} else {
-				add_filter( 'shoestrap/styles/caching', '__return_true' );
+				add_filter( 'maera/styles/caching', '__return_true' );
 			}
 
-			add_action( 'shoestrap/topbar/brand', array( $this, 'logo' ) );
+			add_action( 'maera/topbar/brand', array( $this, 'logo' ) );
 
 		}
 
@@ -118,7 +118,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function timber_extras( $data ) {
 
 			// Get the layout we're using (sidebar arrangement).
-			$layout = apply_filters( 'shoestrap/layout/modifier', get_theme_mod( 'layout', 1 ) );
+			$layout = apply_filters( 'maera/layout/modifier', get_theme_mod( 'layout', 1 ) );
 
 			If ( 0 == $layout ) {
 
@@ -126,12 +126,12 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$data['sidebar']['secondary'] = null;
 
 				// Add a filter for the layout.
-				add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_0' );
+				add_filter( 'maera/layout/modifier', 'maera_return_0' );
 
 			}
 
 			$comment_form_args = array(
-				'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'shoestrap' ) . '</label><textarea class="form-control" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
+				'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'maera' ) . '</label><textarea class="form-control" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
 				'id_submit'     => 'comment-submit',
 			);
 
@@ -214,16 +214,16 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 /**
  * Include the framework
  */
-function shoestrap_framework_bootstrap_include( $frameworks ) {
+function maera_framework_bootstrap_include( $frameworks ) {
 
 	// Add our framework to the array of available frameworks
 	$frameworks[] = array(
 		'value' => 'bootstrap',
 		'label' => 'Bootstrap',
-		'class' => 'SS_Framework_Bootstrap',
+		'class' => 'Maera_Framework_Bootstrap',
 	);
 
 	return $frameworks;
 
 }
-add_filter( 'shoestrap/frameworks/available', 'shoestrap_framework_bootstrap_include' );
+add_filter( 'maera/frameworks/available', 'maera_framework_bootstrap_include' );

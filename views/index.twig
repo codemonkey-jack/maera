@@ -3,16 +3,16 @@
 
 {% block content %}
 
-	{% do action( 'shoestrap/index/begin' ) %}
+	{% do action( 'maera/index/begin' ) %}
 
 	{% for post in posts %}
-		{% do action( 'shoestrap/in_loop/begin' ) %}
+		{% do action( 'maera/in_loop/begin' ) %}
 		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-		{% do action( 'shoestrap/in_loop/end' ) %}
+		{% do action( 'maera/in_loop/end' ) %}
 	{% endfor %}
 
 	{% include 'parts/pagination.twig' %}
 
-	{% do action( 'shoestrap/index/end' ) %}
+	{% do action( 'maera/index/end' ) %}
 
 {% endblock %}

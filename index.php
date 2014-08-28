@@ -8,12 +8,12 @@
  */
 
 if ( ! class_exists( 'Timber' ) ) {
-	_e( 'Timber not activated. Make sure you activate the plugin.', 'shoestrap' );
+	_e( 'Timber not activated. Make sure you activate the plugin.', 'maera' );
 }
 
 $context = Timber::get_context();
 
-$context['posts'] = Timber::query_posts( false, 'Shoestrap_Post' );
+$context['posts'] = Timber::query_posts( false, 'Maera_Post' );
 
 $templates = array( 'index.twig' );
 

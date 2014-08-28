@@ -3,25 +3,25 @@
 /**
  * Enqueue scripts and stylesheets
  */
-function shoestrap_scripts() {
+function maera_scripts() {
     global $wp_customize;
     global $active_framework;
 
     // Get the stylesheet path and version
-    $stylesheet_url = apply_filters( 'shoestrap/stylesheet/url', SHOESTRAP_ASSETS_URL . '/css/style.css' );
-    $stylesheet_ver = apply_filters( 'shoestrap/stylesheet/ver', null );
+    $stylesheet_url = apply_filters( 'maera/stylesheet/url', MAERA_ASSETS_URL . '/css/style.css' );
+    $stylesheet_ver = apply_filters( 'maera/stylesheet/ver', null );
 
     // Enqueue the theme's stylesheet
-    wp_enqueue_style( 'shoestrap', $stylesheet_url, false, $stylesheet_ver );
+    wp_enqueue_style( 'maera', $stylesheet_url, false, $stylesheet_ver );
 
-    wp_enqueue_script( 'shoestrap-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
+    wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
     // Enqueue Modernizr
-    wp_register_script( 'modernizr', SHOESTRAP_ASSETS_URL . '/js/modernizr-2.7.0.min.js', false, null, false );
+    wp_register_script( 'modernizr', MAERA_ASSETS_URL . '/js/modernizr-2.7.0.min.js', false, null, false );
     wp_enqueue_script( 'modernizr' );
 
     // Enqueue fitvids
-    wp_register_script( 'fitvids', SHOESTRAP_ASSETS_URL . '/js/jquery.fitvids.js',false, null, true  );
+    wp_register_script( 'fitvids', MAERA_ASSETS_URL . '/js/jquery.fitvids.js',false, null, true  );
     wp_enqueue_script( 'fitvids' );
 
 
@@ -33,7 +33,7 @@ function shoestrap_scripts() {
         wp_enqueue_script( 'comment-reply' );
     }
 
-    $caching = apply_filters( 'shoestrap/styles/caching', false );
+    $caching = apply_filters( 'maera/styles/caching', false );
 
     // If we're on the customizer, then set caching to false
     // if ( isset( $wp_customize ) ) {
@@ -41,7 +41,7 @@ function shoestrap_scripts() {
 
     //     // Load framework less files
     //     wp_enqueue_style( 'framework-less-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/less/app.less', false, null, false );
-    //     add_filter('style_loader_tag', 'shoestrap_less_tag_loader', 5, 2);
+    //     add_filter('style_loader_tag', 'maera_less_tag_loader', 5, 2);
 
 
     //     // Load less.js listener and kirki javascript object
@@ -51,14 +51,14 @@ function shoestrap_scripts() {
 
 
     //     // Load less.js
-    //     wp_register_script( 'lessjs', SHOESTRAP_ASSETS_URL . '/js/less.min.js', 'lessjs-vars', null, false );
+    //     wp_register_script( 'lessjs', MAERA_ASSETS_URL . '/js/less.min.js', 'lessjs-vars', null, false );
     //     wp_enqueue_script( 'lessjs' );
     // }
 
     if ( ! $caching ) {
 
-        // Get our styles using the shoestrap/styles filter
-        $data = apply_filters( 'shoestrap/styles', null );
+        // Get our styles using the maera/styles filter
+        $data = apply_filters( 'maera/styles', null );
 
     } else {
 
@@ -67,8 +67,8 @@ function shoestrap_scripts() {
 
         // If the transient does not exist, then create it.
         if ( $cache === false || empty( $cache ) || '' == $cache ) {
-            // Get our styles using the shoestrap/styles filter
-            $data = apply_filters( 'shoestrap/styles', null );
+            // Get our styles using the maera/styles filter
+            $data = apply_filters( 'maera/styles', null );
             // Set the transient for 24 hours.
             set_theme_mod( 'css_cache', $data );
         }
@@ -77,25 +77,25 @@ function shoestrap_scripts() {
 
     // Add the CSS inline.
     // See http://codex.wordpress.org/Function_Reference/wp_add_inline_style#Examples
-    wp_add_inline_style( 'shoestrap', $data );
+    wp_add_inline_style( 'maera', $data );
 
 }
-add_action( 'wp_enqueue_scripts', 'shoestrap_scripts', 100 );
+add_action( 'wp_enqueue_scripts', 'maera_scripts', 100 );
 
 /**
  * Reset the cache when saving the customizer
  */
-function shoestrap_reset_style_cache_on_customizer_save() {
+function maera_reset_style_cache_on_customizer_save() {
 
     remove_theme_mod( 'css_cache' );
 
 }
-add_action( 'customize_save_after', 'shoestrap_reset_style_cache_on_customizer_save' );
+add_action( 'customize_save_after', 'maera_reset_style_cache_on_customizer_save' );
 
 /**
  * Set rel attribute for less stylesheet so that less.js imports stylesheet
  */
-// function shoestrap_less_tag_loader($tag, $handle) {
+// function maera_less_tag_loader($tag, $handle) {
 
 //     global $wp_styles;
 //     $match_pattern = '/\.less$/U';
@@ -111,9 +111,9 @@ add_action( 'customize_save_after', 'shoestrap_reset_style_cache_on_customizer_s
 //     return $tag;
 // }
 
-function shoestrap_customizer_live_preview() {
+function maera_customizer_live_preview() {
     global $active_framework;
-    wp_enqueue_script('shoestrap-customizer-live', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer.js', array('jquery', 'customize-preview', 'underscore'), '', true);
+    wp_enqueue_script('maera-customizer-live', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer.js', array('jquery', 'customize-preview', 'underscore'), '', true);
 }
 
-add_action('customize_preview_init', 'shoestrap_customizer_live_preview');
+add_action('customize_preview_init', 'maera_customizer_live_preview');

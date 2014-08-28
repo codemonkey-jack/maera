@@ -1,11 +1,11 @@
 <?php
 
-if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
+if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 
 	/**
 	* The Bootstrap Framework module
 	*/
-	class SS_Framework_Bootstrap_Styles {
+	class Maera_Framework_Bootstrap_Styles {
 
 
 		/**
@@ -17,14 +17,14 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'custom_css' ), 105 );
 
 			// Styles
-			add_filter( 'shoestrap/styles', array( $this, 'header_css' ) );
-			add_filter( 'shoestrap/styles', array( $this, 'typography_css' ) );
-			add_filter( 'shoestrap/styles', array( $this, 'layout_css' ) );
-			add_filter( 'shoestrap/styles', array( $this, 'color_css' ) );
+			add_filter( 'maera/styles', array( $this, 'header_css' ) );
+			add_filter( 'maera/styles', array( $this, 'typography_css' ) );
+			add_filter( 'maera/styles', array( $this, 'layout_css' ) );
+			add_filter( 'maera/styles', array( $this, 'color_css' ) );
 
 			add_action( 'wp_print_styles', array( $this, 'google_font' ) );
 
-			add_filter( 'shoestrap/compiler/variables', array( $this, 'compiler_variables' ) );
+			add_filter( 'maera/compiler/variables', array( $this, 'compiler_variables' ) );
 
 		}
 
@@ -32,18 +32,18 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 		/**
 		 * Get the variables from the theme options and parse them all together.
 		 *
-		 * These will then be added to the compiler using the "shoestrap/compiler/variables" filter
+		 * These will then be added to the compiler using the "maera/compiler/variables" filter
 		 */
 		function compiler_variables( $variables ) {
 
 			/**
 			 * BACKGROUND
 			 */
-			$body_bg = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'body_bg_color', '#ffffff' ) ) );
+			$body_bg = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'body_bg_color', '#ffffff' ) ) );
 
 			// Calculate the gray shadows based on the body background.
 			// We basically create 2 "presets": light and dark.
-			if ( Shoestrap_Color::get_brightness( $body_bg ) > 80 ) {
+			if ( Maera_Color::get_brightness( $body_bg ) > 80 ) {
 				$gray_darker  = 'lighten(#000, 13.5%)';
 				$gray_dark    = 'lighten(#000, 20%)';
 				$gray         = 'lighten(#000, 33.5%)';
@@ -57,7 +57,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 				$gray_lighter = 'darken(#fff, 93.5%)';
 			}
 
-			$bg_brightness = Shoestrap_Color::get_brightness( $body_bg );
+			$bg_brightness = Maera_Color::get_brightness( $body_bg );
 
 			$table_bg_accent      = $bg_brightness > 50 ? 'darken(@body-bg, 2.5%)'    : 'lighten(@body-bg, 2.5%)';
 			$table_bg_hover       = $bg_brightness > 50 ? 'darken(@body-bg, 4%)'      : 'lighten(@body-bg, 4%)';
@@ -205,19 +205,19 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 			/**
 			 * BRANDING
 			 */
-			$brand_primary = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_primary', '#428bca' ) ) );
-			$brand_success = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_success', '#5cb85c' ) ) );
-			$brand_warning = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) ) );
-			$brand_danger  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_danger', '#d9534f' ) ) );
-			$brand_info    = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_info', '#5bc0de' ) ) );
+			$brand_primary = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_primary', '#428bca' ) ) );
+			$brand_success = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_success', '#5cb85c' ) ) );
+			$brand_warning = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) ) );
+			$brand_danger  = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_danger', '#d9534f' ) ) );
+			$brand_info    = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_info', '#5bc0de' ) ) );
 
-			$link_hover_color = ( Shoestrap_Color::get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
+			$link_hover_color = ( Maera_Color::get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
-			$brand_primary_brightness = Shoestrap_Color::get_brightness( $brand_primary );
-			$brand_success_brightness = Shoestrap_Color::get_brightness( $brand_success );
-			$brand_warning_brightness = Shoestrap_Color::get_brightness( $brand_warning );
-			$brand_danger_brightness  = Shoestrap_Color::get_brightness( $brand_danger );
-			$brand_info_brightness    = Shoestrap_Color::get_brightness( $brand_info );
+			$brand_primary_brightness = Maera_Color::get_brightness( $brand_primary );
+			$brand_success_brightness = Maera_Color::get_brightness( $brand_success );
+			$brand_warning_brightness = Maera_Color::get_brightness( $brand_warning );
+			$brand_danger_brightness  = Maera_Color::get_brightness( $brand_danger );
+			$brand_info_brightness    = Maera_Color::get_brightness( $brand_info );
 
 			// Button text colors
 			$btn_primary_color  = $brand_primary_brightness < 195 ? '#fff' : '333';
@@ -233,8 +233,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 			$btn_danger_border  = $brand_danger_brightness  < 195 ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
 			$btn_info_border    = $brand_info_brightness    < 195 ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
 
-			$input_border_focus = ( Shoestrap_Color::get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%)' : 'darken(@brand-primary, 10%)';
-			$navbar_border      = ( Shoestrap_Color::get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+			$input_border_focus = ( Maera_Color::get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%)' : 'darken(@brand-primary, 10%)';
+			$navbar_border      = ( Maera_Color::get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 
 			// Branding colors
 			$variables .= '@brand-primary: ' . $brand_primary . ';';
@@ -311,14 +311,14 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 			 */
 			$font_navbar       = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
 			$font_brand        = $font_navbar;
-			$navbar_bg         = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'navbar_bg', '#f8f8f8' ) ) );
+			$navbar_bg         = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'navbar_bg', '#f8f8f8' ) ) );
 			$navbar_height     = filter_var( get_theme_mod( 'navbar_height', 50 ), FILTER_SANITIZE_NUMBER_INT );
 			$navbar_text_color = '#' . str_replace( '#', '', get_theme_mod( 'font_menus_color', '#333333' ) );
 			$brand_text_color  = $navbar_text_color;
-			$navbar_border     = ( Shoestrap_Color::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+			$navbar_border     = ( Maera_Color::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 			$gfb = get_theme_mod( 'grid_float_breakpoint', 'screen_sm_min' );
 
-			if ( Shoestrap_Color::get_brightness( $navbar_bg ) < 165 ) {
+			if ( Maera_Color::get_brightness( $navbar_bg ) < 165 ) {
 				$navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
 				$navbar_link_active_bg      = 'darken(@navbar-default-bg, 6.5%)';
 				$navbar_link_disabled_color = 'darken(@navbar-default-bg, 6.5%)';
@@ -363,7 +363,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 			$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
 
 			if ( get_theme_mod( 'gradients_toggle', 0 ) ) {
-				$variables .= '@import "' . SS_FRAMEWORK_PATH . '/assets/less/gradients.less";';
+				$variables .= '@import "' . MAERA_FRAMEWORK_PATH . '/assets/less/gradients.less";';
 			}
 
 			return $variables;
@@ -383,8 +383,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 				$font_base_family = str_replace( ' ', '+', get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' ) );
 				$font_base_google_subsets = get_theme_mod( 'font_base_google_subsets', 'latin' );
 
-				wp_register_style( 'shoestrap_base_google_font', 'http://fonts.googleapis.com/css?family=' . $font_base_family . '&subset=' . $font_base_google_subsets );
-		 		wp_enqueue_style( 'shoestrap_base_google_font' );
+				wp_register_style( 'maera_base_google_font', 'http://fonts.googleapis.com/css?family=' . $font_base_family . '&subset=' . $font_base_google_subsets );
+		 		wp_enqueue_style( 'maera_base_google_font' );
 
 			}
 
@@ -394,8 +394,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 				$font_headers_family = str_replace( ' ', '+', get_theme_mod( 'headers_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' ) );
 				$font_headers_google_subsets = get_theme_mod( 'font_headers_google_subsets', 'latin' );
 
-				wp_register_style( 'shoestrap_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.'&subset='.$font_headers_google_subsets );
-		 		wp_enqueue_style( 'shoestrap_headers_google_font' );
+				wp_register_style( 'maera_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.'&subset='.$font_headers_google_subsets );
+		 		wp_enqueue_style( 'maera_headers_google_font' );
 
 			}
 
@@ -521,11 +521,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 				return $style;
 			}
 
-			$brand_primary = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_primary', '#428bca' ) ) );
-			$brand_success = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_success', '#5cb85c' ) ) );
-			$brand_warning = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) ) );
-			$brand_danger  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_danger', '#d9534f' ) ) );
-			$brand_info    = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( get_theme_mod( 'color_brand_info', '#5bc0de' ) ) );
+			$brand_primary = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_primary', '#428bca' ) ) );
+			$brand_success = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_success', '#5cb85c' ) ) );
+			$brand_warning = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) ) );
+			$brand_danger  = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_danger', '#d9534f' ) ) );
+			$brand_info    = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'color_brand_info', '#5bc0de' ) ) );
 
 			$style .= 'a { color: ' . $brand_primary . '; }';
 			$style .= '.text-primary { color: ' . $brand_primary . '; }';
@@ -568,7 +568,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Styles' ) ) {
 			$css = get_theme_mod( 'css', '' );
 
 			if ( ! empty( $css ) ) {
-				wp_add_inline_style( 'shoestrap', $css );
+				wp_add_inline_style( 'maera', $css );
 			}
 		}
 

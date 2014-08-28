@@ -4,7 +4,7 @@ Template Name: Full-Width
 */
 
 // Add a filter for the layout.
-add_filter( 'shoestrap/layout/modifier', 'shoestrap_return_0' );
+add_filter( 'maera/layout/modifier', 'maera_return_0' );
 
 $context = Timber::get_context();
 $post = new TimberPost();

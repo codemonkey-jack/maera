@@ -3,15 +3,15 @@
 /**
 * The Framework
 */
-class SS_Framework_Core {
+class Maera_Framework_Core {
 
 	private static $instance;
 
 	private function __construct() {
-		do_action( 'shoestrap/framework/include_modules' );
+		do_action( 'maera/framework/include_modules' );
 
-		if ( ! defined( 'SS_FRAMEWORK_PATH' ) ) {
-			define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
+		if ( ! defined( 'MAERA_FRAMEWORK_PATH' ) ) {
+			define( 'MAERA_FRAMEWORK_PATH', dirname( __FILE__ ) );
 		}
 
 		$compiler = null;
@@ -22,10 +22,10 @@ class SS_Framework_Core {
 		// Add the framework Timber modifications
 		add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
-		add_filter( 'shoestrap/section_class/wrapper', array( $this, 'content_wrapper_class' ) );
-		add_filter( 'shoestrap/section_class/content', array( $this, 'content_main_class' ) );
-		add_filter( 'shoestrap/section_class/primary', array( $this, 'content_primary_class' ) );
-		add_filter( 'shoestrap/section_class/secondary', array( $this, 'content_secondary_class' ) );
+		add_filter( 'maera/section_class/wrapper', array( $this, 'content_wrapper_class' ) );
+		add_filter( 'maera/section_class/content', array( $this, 'content_main_class' ) );
+		add_filter( 'maera/section_class/primary', array( $this, 'content_primary_class' ) );
+		add_filter( 'maera/section_class/secondary', array( $this, 'content_secondary_class' ) );
 
 	}
 
@@ -91,16 +91,16 @@ class SS_Framework_Core {
 /**
  * Include the framework
  */
-function shoestrap_framework_core_include( $frameworks ) {
+function maera_framework_core_include( $frameworks ) {
 
 	// Add our framework to the array of available frameworks
 	$frameworks[] = array(
 		'value' => 'core',
 		'label' => 'Core',
-		'class' => 'SS_Framework_Core',
+		'class' => 'Maera_Framework_Core',
 	);
 
 	return $frameworks;
 
 }
-add_filter( 'shoestrap/frameworks/available', 'shoestrap_framework_core_include' );
+add_filter( 'maera/frameworks/available', 'maera_framework_core_include' );

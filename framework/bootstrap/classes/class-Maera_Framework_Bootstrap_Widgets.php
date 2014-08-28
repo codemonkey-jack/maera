@@ -1,34 +1,34 @@
 <?php
 
-if ( ! class_exists( 'SS_Framework_Bootstrap_Widgets' ) ) {
+if ( ! class_exists( 'Maera_Framework_Bootstrap_Widgets' ) ) {
 
 	/**
 	* The Bootstrap Framework module
 	*/
-	class SS_Framework_Bootstrap_Widgets {
+	class Maera_Framework_Bootstrap_Widgets {
 
 		/**
 		 * Class constructor
 		 */
 		public function __construct() {
 
-			add_action( 'shoestrap/top-bar/before', array( $this, 'extra_widgets_body_top' ) );
-			add_action( 'shoestrap/wrap/before', array( $this, 'extra_widgets_pre_header' ), 3 );
-			add_action( 'shoestrap/extra_header/widgets', array( $this, 'extra_widgets_header' ) );
-			add_action( 'shoestrap/extra_header/after', array( $this, 'extra_widgets_post_header' ) );
-			add_action( 'shoestrap/jumbotron', array( $this, 'extra_widgets_jumbotron' ) );
-			add_action( 'shoestrap/wrap/before', array( $this, 'extra_widgets_pre_content' ) );
-			add_action( 'shoestrap/content/before', array( $this, 'extra_widgets_pre_main' ) );
-			add_action( 'shoestrap/content/after', array( $this, 'extra_widgets_post_main' ) );
-			add_action( 'shoestrap/footer/before', array( $this, 'extra_widgets_pre_footer' ) );
-			add_action( 'shoestrap/footer/content', array( $this, 'extra_widgets_footer' ) );
-			add_action( 'shoestrap/footer/after', array( $this, 'extra_widgets_post_footer' ) );
+			add_action( 'maera/top-bar/before', array( $this, 'extra_widgets_body_top' ) );
+			add_action( 'maera/wrap/before', array( $this, 'extra_widgets_pre_header' ), 3 );
+			add_action( 'maera/extra_header/widgets', array( $this, 'extra_widgets_header' ) );
+			add_action( 'maera/extra_header/after', array( $this, 'extra_widgets_post_header' ) );
+			add_action( 'maera/jumbotron', array( $this, 'extra_widgets_jumbotron' ) );
+			add_action( 'maera/wrap/before', array( $this, 'extra_widgets_pre_content' ) );
+			add_action( 'maera/content/before', array( $this, 'extra_widgets_pre_main' ) );
+			add_action( 'maera/content/after', array( $this, 'extra_widgets_post_main' ) );
+			add_action( 'maera/footer/before', array( $this, 'extra_widgets_pre_footer' ) );
+			add_action( 'maera/footer/content', array( $this, 'extra_widgets_footer' ) );
+			add_action( 'maera/footer/after', array( $this, 'extra_widgets_post_footer' ) );
 
 			// Widgets
 			add_action( 'widgets_init', array( $this, 'widget_areas' ), 12 );
-			add_action( 'shoestrap/widgets/class', array( $this, 'widgets_class' ) );
-			add_action( 'shoestrap/widgets/title/before', array( $this, 'widgets_before_title' ) );
-			add_action( 'shoestrap/widgets/title/after', array( $this, 'widgets_after_title' ) );
+			add_action( 'maera/widgets/class', array( $this, 'widgets_class' ) );
+			add_action( 'maera/widgets/title/before', array( $this, 'widgets_before_title' ) );
+			add_action( 'maera/widgets/title/after', array( $this, 'widgets_after_title' ) );
 		}
 
 
@@ -38,17 +38,17 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Widgets' ) ) {
 		function extra_widget_areas_array() {
 
 			$areas = array(
-				'body_top'     => array( 'name' => __( 'Body Top', 'shoestrap' ),     'default' => 0 ),
-				'pre_header'   => array( 'name' => __( 'Pre-Header', 'shoestrap' ),   'default' => 0 ),
-				'header'       => array( 'name' => __( 'Header', 'shoestrap' ),       'default' => 0 ),
-				'post_header'  => array( 'name' => __( 'Post-Header', 'shoestrap' ),  'default' => 0 ),
-				'jumbotron'    => array( 'name' => __( 'Jumbotron', 'shoestrap' ),    'default' => 0 ),
-				'pre_content'  => array( 'name' => __( 'Pre-Content', 'shoestrap' ),  'default' => 0 ),
-				'pre_main'     => array( 'name' => __( 'Pre-Main', 'shoestrap' ),     'default' => 0 ),
-				'post_main'    => array( 'name' => __( 'Post-Main', 'shoestrap' ),    'default' => 0 ),
-				'pre_footer'   => array( 'name' => __( 'Pre-Footer', 'shoestrap' ),   'default' => 0 ),
-				'footer'       => array( 'name' => __( 'Footer', 'shoestrap' ),       'default' => 0 ),
-				'post_footer'  => array( 'name' => __( 'Post-Footer', 'shoestrap' ),  'default' => 0 ),
+				'body_top'     => array( 'name' => __( 'Body Top', 'maera' ),     'default' => 0 ),
+				'pre_header'   => array( 'name' => __( 'Pre-Header', 'maera' ),   'default' => 0 ),
+				'header'       => array( 'name' => __( 'Header', 'maera' ),       'default' => 0 ),
+				'post_header'  => array( 'name' => __( 'Post-Header', 'maera' ),  'default' => 0 ),
+				'jumbotron'    => array( 'name' => __( 'Jumbotron', 'maera' ),    'default' => 0 ),
+				'pre_content'  => array( 'name' => __( 'Pre-Content', 'maera' ),  'default' => 0 ),
+				'pre_main'     => array( 'name' => __( 'Pre-Main', 'maera' ),     'default' => 0 ),
+				'post_main'    => array( 'name' => __( 'Post-Main', 'maera' ),    'default' => 0 ),
+				'pre_footer'   => array( 'name' => __( 'Pre-Footer', 'maera' ),   'default' => 0 ),
+				'footer'       => array( 'name' => __( 'Footer', 'maera' ),       'default' => 0 ),
+				'post_footer'  => array( 'name' => __( 'Post-Footer', 'maera' ),  'default' => 0 ),
 			);
 
 			return $areas;
@@ -62,7 +62,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Widgets' ) ) {
 		function widget_areas() {
 
 			register_sidebar( array(
-				'name'          => __( 'Header Area', 'shoestrap' ),
+				'name'          => __( 'Header Area', 'maera' ),
 				'id'            => 'header_area',
 				'before_widget' => '<div>',
 				'after_widget'  => '</div>',
@@ -71,9 +71,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Widgets' ) ) {
 			) );
 
 			register_sidebar( array(
-				'name'          => __( 'In-Navbar Widget Area', 'shoestrap' ),
+				'name'          => __( 'In-Navbar Widget Area', 'maera' ),
 				'id'            => 'navbar',
-				'description'   => __( 'This widget area will show up in your NavBars. This is most useful when using a static-left navbar.', 'shoestrap' ),
+				'description'   => __( 'This widget area will show up in your NavBars. This is most useful when using a static-left navbar.', 'maera' ),
 				'before_widget' => '<div id="in-navbar">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h1>',
@@ -82,9 +82,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Widgets' ) ) {
 
 			$areas = $this->extra_widget_areas_array();
 
-			$class        = apply_filters( 'shoestrap/widgets/class', '' );
-			$before_title = apply_filters( 'shoestrap/widgets/title/before', '<h3 class="widget-title">' );
-			$after_title  = apply_filters( 'shoestrap/widgets/title/after', '</h3>' );
+			$class        = apply_filters( 'maera/widgets/class', '' );
+			$before_title = apply_filters( 'maera/widgets/title/before', '<h3 class="widget-title">' );
+			$after_title  = apply_filters( 'maera/widgets/title/after', '</h3>' );
 
 			foreach ( $areas as $area => $settings ) {
 
@@ -414,7 +414,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap_Widgets' ) ) {
 
 		function extra_widgets_render_content( $areas_nr, $area, $i ) {
 
-			$class = apply_filters( 'shoestrap/extra_widgets/' . $area . '/' . $i, 'col-md-' . ( 12 / $areas_nr ) ); ?>
+			$class = apply_filters( 'maera/extra_widgets/' . $area . '/' . $i, 'col-md-' . ( 12 / $areas_nr ) ); ?>
 
 			<div class="<?php echo $area . '_' . $i . ' ' . $class; ?>">
 				<?php dynamic_sidebar( $area . '_' . $i ); ?>

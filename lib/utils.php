@@ -15,7 +15,7 @@ function is_element_empty( $element ) {
  * @param array $options
  * @return string
  */
-function shoestrap_transliterate( $str ) {
+function maera_transliterate( $str ) {
 
 	// Only process this if the mb_convert_encoding function is installed.
 	if ( function_exists( 'mb_convert_encoding' ) ) {
@@ -115,7 +115,7 @@ function shoestrap_transliterate( $str ) {
 /**
  * This is a helper function to bypass some of the quirks of twig
  */
-function shoestrap_get_post_teaser( $post_id ) {
+function maera_get_post_teaser( $post_id ) {
 
 	$mode = get_theme_mod( 'blog_post_mode', 'excerpt' );
 
@@ -124,7 +124,7 @@ function shoestrap_get_post_teaser( $post_id ) {
 
 	$content = '';
 
-	$image = Shoestrap_Image::featured_image( $post_id );
+	$image = Maera_Image::featured_image( $post_id );
 
 	if ( $image ) {
 		$content .= '<a class="featured-image" href="' . get_permalink( $post_id ) . '" style="background: url(\'' . $image['url'] . '\'); width: ' . $image['width'] . 'px; height: ' . $image['height'] . 'px;"></a>';
@@ -163,14 +163,14 @@ function shoestrap_get_post_teaser( $post_id ) {
 	return $content;
 }
 
-function shoestrap_return_0() { return 0; }
+function maera_return_0() { return 0; }
 
-function shoestrap_return_1() { return 1; }
+function maera_return_1() { return 1; }
 
-function shoestrap_return_2() { return 2; }
+function maera_return_2() { return 2; }
 
-function shoestrap_return_3() { return 3; }
+function maera_return_3() { return 3; }
 
-function shoestrap_return_4() { return 4; }
+function maera_return_4() { return 4; }
 
-function shoestrap_return_5() { return 5; }
+function maera_return_5() { return 5; }

@@ -1,11 +1,11 @@
 <?php
 
-if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
+if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 	/**
-	* The Shoestrap Compiler
+	* The Maera Compiler
 	*/
-	class Shoestrap_Compiler {
+	class Maera_Compiler {
 
 		private $compiler;
 		private $minimize_css = true;
@@ -46,10 +46,10 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 
 			}
 
-			$this->custom_styles = apply_filters( 'shoestrap/compiler/custom_styles', $this->custom_styles );
+			$this->custom_styles = apply_filters( 'maera/compiler/custom_styles', $this->custom_styles );
 
-			add_filter( 'shoestrap/stylesheet/url', array( $this, 'stylesheet_url' ) );
-			add_filter( 'shoestrap/stylesheet/ver', array( $this, 'stylesheet_ver' ) );
+			add_filter( 'maera/stylesheet/url', array( $this, 'stylesheet_url' ) );
+			add_filter( 'maera/stylesheet/ver', array( $this, 'stylesheet_ver' ) );
 			add_action( 'admin_notices', array( $this, 'file_nag' ) );
 
 		}
@@ -66,7 +66,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 
 			// No need to process this on each page load... Use transients to improve performance.
 			// Transients are valid for 24 hours, so these calculations only run once a day.
-			if ( ! get_transient( 'shoestrap_stylesheet_path' ) || ! get_transient( 'shoestrap_stylesheet_uri' ) ) {
+			if ( ! get_transient( 'maera_stylesheet_path' ) || ! get_transient( 'maera_stylesheet_uri' ) ) {
 
 				// Get the upload directory for this site.
 				$upload_dir = wp_upload_dir();
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 				} else {
 					$cssid = null;
 				}
-				$file_name = '/ss-style' . $cssid . '.css';
+				$file_name = '/maera' . $cssid . '.css';
 
 				// Define a default folder for the stylesheets.
 				$def_folder_path = get_template_directory() . '/assets/css';
@@ -141,24 +141,24 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 				$css_uri = str_replace( 'http://', '//', $css_uri );
 
 				// Set a transient for the stylesheet path and url.
-				if ( ! get_transient( 'shoestrap_stylesheet_path' ) || ! get_transient( 'shoestrap_stylesheet_uri' ) ) {
-					set_transient( 'shoestrap_stylesheet_path', $css_path, 24 * 60 *60 );
-					set_transient( 'shoestrap_stylesheet_uri', $css_uri, 24 * 60 *60 );
+				if ( ! get_transient( 'maera_stylesheet_path' ) || ! get_transient( 'maera_stylesheet_uri' ) ) {
+					set_transient( 'maera_stylesheet_path', $css_path, 24 * 60 *60 );
+					set_transient( 'maera_stylesheet_uri', $css_uri, 24 * 60 *60 );
 				}
 			}
 
-			$css_path = get_transient( 'shoestrap_stylesheet_path' );
-			$css_uri  = get_transient( 'shoestrap_stylesheet_uri' );
+			$css_path = get_transient( 'maera_stylesheet_path' );
+			$css_uri  = get_transient( 'maera_stylesheet_uri' );
 
 			$value = ( $target == 'url' ) ? $css_uri : $css_path;
 
 			// Get the file version based on its filemtime
 			if ( $target == 'ver' ) {
-				if ( ! get_transient( 'shoestrap_stylesheet_time' ) ) {
-					//set_transient( 'shoestrap_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
+				if ( ! get_transient( 'maera_stylesheet_time' ) ) {
+					//set_transient( 'maera_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
 				}
 
-				$value = get_transient( 'shoestrap_stylesheet_time' );
+				$value = get_transient( 'maera_stylesheet_time' );
 			}
 
 			if ( $echo ) {
@@ -194,18 +194,18 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 
 				if ( ! file_exists( $filename ) ) {
 					if ( ! $wp_filesystem->put_contents( $filename, ' ', FS_CHMOD_FILE ) ) {
-						$content = __( 'The following file does not exist and must be so in order to utilise this theme. Please create this file.', 'shoestrap' );
-						$content .= '<br>' . __( 'Try visiting the theme options and clicking the "Reset All" button to attempt automatically creating it.', 'shoestrap' );
+						$content = __( 'The following file does not exist and must be so in order to utilise this theme. Please create this file.', 'maera' );
+						$content .= '<br>' . __( 'Try visiting the theme options and clicking the "Reset All" button to attempt automatically creating it.', 'maera' );
 						$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
-						add_settings_error( 'shoestrap', 'create_file', $content, 'error' );
+						add_settings_error( 'maera', 'create_file', $content, 'error' );
 						settings_errors();
 					}
 				} else {
 					if ( ! is_writable( $filename ) ) {
-						$content = __( 'The following file is not writable and must be so in order to utilise this theme. Please update the permissions.', 'shoestrap' );
+						$content = __( 'The following file is not writable and must be so in order to utilise this theme. Please update the permissions.', 'maera' );
 						$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
 
-						add_settings_error( 'shoestrap', 'create_file', $content, 'error' );
+						add_settings_error( 'maera', 'create_file', $content, 'error' );
 						settings_errors();
 					}
 				}
@@ -237,7 +237,7 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 
 			}
 
-			$content .= apply_filters( 'shoestrap/compiler', '' );
+			$content .= apply_filters( 'maera/compiler', '' );
 
 			// Strip protocols
 			$content = str_replace( 'https://', '//', $content );
@@ -245,14 +245,14 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 
 			if ( is_writeable( $file ) || ( ! file_exists( $file ) && is_writeable( dirname( $file ) ) ) ) {
 				if ( ! $wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE ) ) {
-					return apply_filters( 'shoestrap/compiler/output', $content );
+					return apply_filters( 'maera/compiler/output', $content );
 				}
 			}
 
 			// Force re-building the stylesheet version transient
-			delete_transient( 'shoestrap_stylesheet_time' );
-			delete_transient( 'shoestrap_stylesheet_path' );
-			delete_transient( 'shoestrap_stylesheet_uri' );
+			delete_transient( 'maera_stylesheet_time' );
+			delete_transient( 'maera_stylesheet_path' );
+			delete_transient( 'maera_stylesheet_uri' );
 		}
 
 		/*
@@ -290,11 +290,11 @@ if ( ! class_exists( 'Shoestrap_Compiler' ) ) {
 				}
 
 				// Get the extra variables & imports
-				$extra_vars = apply_filters( 'shoestrap/compiler/variables', null );
+				$extra_vars = apply_filters( 'maera/compiler/variables', null );
 				$parser->parse( $extra_vars );
 
 				// Add a filter to the compiler
-				$parser->parse( apply_filters( 'shoestrap/compiler', '' ) );
+				$parser->parse( apply_filters( 'maera/compiler', '' ) );
 
 				$css = $parser->getCss();
 

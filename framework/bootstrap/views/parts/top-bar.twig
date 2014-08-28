@@ -2,25 +2,25 @@
 {% if theme_mods.navbar_toggle == 'none' %}
 {% elseif theme_mods.navbar_position == 'right-slide' %}
 
-	{% do action( 'shoestrap/sidebar/before' ) %}
+	{% do action( 'maera/sidebar/before' ) %}
 		<a id="menu-toggle" href="#" class="btn btn-link btn-lg toggle"><i class="el-icon-lines"></i></a>
 
 		<div id="sidebar-wrapper" role="navigation">
 
-			{% do action( 'shoestrap/sidebar/main/before' ) %}
+			{% do action( 'maera/sidebar/main/before' ) %}
 
 			<nav class="sidebar-nav" role="navigation">
 
 				<a id="menu-close" href="#" class="btn btn-links btn-lg toggle"><i class="el-icon-caret-left"></i></a>
 
 				<div class="sidebar-header">
-					<a class="sidebar-brand" href="{{ site.url }}">{{ "<div class='sitename h3'>#{ site.name }</div>"|apply_filters( 'shoestrap/sidebar/brand' ) }}</a>
+					<a class="sidebar-brand" href="{{ site.url }}">{{ "<div class='sitename h3'>#{ site.name }</div>"|apply_filters( 'maera/sidebar/brand' ) }}</a>
 				</div>
 
-				{% do action( 'shoestrap/sidebar/inside/begin' ) %}
+				{% do action( 'maera/sidebar/inside/begin' ) %}
 
-				<ul class="{{ 'nav'|apply_filters('shoestrap/sidebar/menu/class') }}">
-					
+				<ul class="{{ 'nav'|apply_filters('maera/sidebar/menu/class') }}">
+
 					{% for item in menu.primary.get_items %}
 
 						{% if item.get_children %}
@@ -42,11 +42,11 @@
 					{% endfor %}
 				</ul>
 
-				{% do action( 'shoestrap/sidebar/inside/end' ) %}
+				{% do action( 'maera/sidebar/inside/end' ) %}
 
 			</nav>
 
-			{% do action( 'shoestrap/sidebar/main/after' ) %}
+			{% do action( 'maera/sidebar/main/after' ) %}
 
 	</div>
 	<script type="text/javascript">
@@ -67,30 +67,30 @@
 		});
 	</script>
 
-	{% do action( 'shoestrap/topbar/after' ) %}
+	{% do action( 'maera/topbar/after' ) %}
 
 {% else %}
 
-	{% do action( 'shoestrap/topbar/before' ) %}
+	{% do action( 'maera/topbar/before' ) %}
 
-	<header id="banner-header" class="banner mode-{{ theme_mods.navbar_toggle }} {{ 'navbar navbar-default'|apply_filters( 'shoestrap/topbar/class' ) }}" role="navigation">
-		<div class="{{ 'container'|apply_filters( 'shoestrap/topbar/class/container' ) }}">
+	<header id="banner-header" class="banner mode-{{ theme_mods.navbar_toggle }} {{ 'navbar navbar-default'|apply_filters( 'maera/topbar/class' ) }}" role="navigation">
+		<div class="{{ 'container'|apply_filters( 'maera/topbar/class/container' ) }}">
 
 			<div class="navbar-header">
 
-				{{ '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main, .nav-extras"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>'|apply_filters( 'shoestrap/topbar/toggler' ) }}
+				{{ '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main, .nav-extras"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>'|apply_filters( 'maera/topbar/toggler' ) }}
 
-				<a class="navbar-brand" href="{{ site.url }}">{{ "<div class='sitename'>#{ site.name }</div>"|apply_filters( 'shoestrap/topbar/brand' ) }}</a>
+				<a class="navbar-brand" href="{{ site.url }}">{{ "<div class='sitename'>#{ site.name }</div>"|apply_filters( 'maera/topbar/brand' ) }}</a>
 
 			</div>
 
-			{% do action( 'shoestrap/topbar/main/before' ) %}
+			{% do action( 'maera/topbar/main/before' ) %}
 
 			<nav class="nav-main navbar-collapse collapse" role="navigation">
 
-				{% do action( 'shoestrap/topbar/inside/begin' ) %}
+				{% do action( 'maera/topbar/inside/begin' ) %}
 
-				<ul class="{{ 'nav navbar-nav navbar-main'|apply_filters('shoestrap/topbar/menu/class') }}">
+				<ul class="{{ 'nav navbar-nav navbar-main'|apply_filters('maera/topbar/menu/class') }}">
 					{% for item in menu.primary.get_items %}
 
 						{% if item.get_children %}
@@ -112,15 +112,15 @@
 					{% endfor %}
 				</ul>
 
-				{% do action( 'shoestrap/topbar/inside/end' ) %}
+				{% do action( 'maera/topbar/inside/end' ) %}
 
 			</nav>
 
-			{% do action( 'shoestrap/topbar/main/after' ) %}
+			{% do action( 'maera/topbar/main/after' ) %}
 
 		</div>
 	</header>
 
-	{% do action( 'shoestrap/topbar/after' ) %}
+	{% do action( 'maera/topbar/after' ) %}
 
 {% endif %}

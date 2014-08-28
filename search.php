@@ -11,7 +11,7 @@ $templates = array(
 
 $context = Timber::get_context();
 
-$context['title'] = __( 'Search results for ', 'shoestrap' ) . get_search_query();
+$context['title'] = __( 'Search results for ', 'maera' ) . get_search_query();
 $context['posts'] = Timber::get_posts();
 
 Timber::render( $templates, $context );

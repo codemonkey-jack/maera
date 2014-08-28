@@ -2,9 +2,9 @@
 
 
 /**
- * The configuration options for the Shoestrap Customizer
+ * The configuration options for the Maera Customizer
  */
-function shoestrap_customizer_config() {
+function maera_customizer_config() {
 
 	$args = array(
 
@@ -15,7 +15,7 @@ function shoestrap_customizer_config() {
 		'color_accent'  => '#FF5740',
 		'color_back'    => '#222',
 		'url_path'      => get_template_directory_uri() . '/lib/kirki/',
-		'stylesheet_id' => 'shoestrap',
+		'stylesheet_id' => 'maera',
 		// 'live_css'      => false,
 
 	);
@@ -23,9 +23,9 @@ function shoestrap_customizer_config() {
 	return $args;
 
 }
-add_filter( 'kirki/config', 'shoestrap_customizer_config' );
+add_filter( 'kirki/config', 'maera_customizer_config' );
 
-function shoestrap_customizer_additional_css() { ?>
+function maera_customizer_additional_css() { ?>
 
 	<style>
 		li#customize-control-widgets_mode,
@@ -45,4 +45,4 @@ function shoestrap_customizer_additional_css() { ?>
 
 	<?php
 }
-add_action( 'customize_controls_print_styles', 'shoestrap_customizer_additional_css', 999 );
+add_action( 'customize_controls_print_styles', 'maera_customizer_additional_css', 999 );
