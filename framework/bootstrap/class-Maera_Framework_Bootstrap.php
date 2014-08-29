@@ -15,6 +15,10 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 		 */
 		public function __construct() {
 
+			add_theme_support( 'kirki' );
+			add_theme_support( 'maera_image' );
+			add_theme_support( 'maera_color' );
+
 			if ( ! defined( 'MAERA_FRAMEWORK_PATH' ) ) {
 				define( 'MAERA_FRAMEWORK_PATH', dirname( __FILE__ ) );
 			}
