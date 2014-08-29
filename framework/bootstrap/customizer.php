@@ -41,8 +41,9 @@ function maera_customizer_sections( $wp_customize ) {
 		'typo_jumbo'   => array( 'title' => __( 'Jumbotron', 'maera' ),    'priority' => 30, 'panel' => 'typography' ),
 		'typo_footer'  => array( 'title' => __( 'Footer', 'maera' ),       'priority' => 35, 'panel' => 'typography' ),
 
-		'blog_options' => array( 'title' => __( 'Blog Options', 'maera' ),    'priority' => 10, 'panel' => 'blog' ),
-		'feat'         => array( 'title' => __( 'Featured Images', 'maera' ), 'priority' => 15, 'panel' => 'blog' ),
+		'blog_options' => array( 'title' => __( 'Blog Options', 'maera' ),                'priority' => 10, 'panel' => 'blog' ),
+		'feat_archive' => array( 'title' => __( 'Featured Images on archives', 'maera' ), 'priority' => 15, 'panel' => 'blog' ),
+		'feat_single'  => array( 'title' => __( 'Featured Images on posts', 'maera' ),    'priority' => 20, 'panel' => 'blog' ),
 
 		'social' => array( 'title' => __( 'Social Links', 'maera' ), 'priority' => 45, 'panel' => '' ),
 		'advanced' => array( 'title' => __( 'Advanced', 'maera' ), 'priority' => 50, 'panel' => '' ),
@@ -864,9 +865,9 @@ function maera_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'        => 'checkbox',
 		'setting'     => 'feat_img_archive',
-		'label'       => __( 'Featured Images on Archives', 'maera' ),
+		'label'       => __( 'Display Featured Images', 'maera' ),
 		'description' => __( 'Display featured Images on post archives ( such as categories, tags, month view etc ).', 'maera' ),
-		'section'     => 'feat',
+		'section'     => 'feat_archive',
 		'priority'    => 50,
 		'default'     => 0,
 	);
@@ -874,9 +875,9 @@ function maera_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'feat_img_archive_width',
-		'label'    => __( 'Archives Featured Image Width', 'maera' ),
-		'subtitle' => __( 'Select the width of your featured images on post archives. Set to -1 for max width and 0 for original width. Default: -1', 'maera' ),
-		'section'  => 'feat',
+		'label'    => __( 'Featured Image Width', 'maera' ),
+		'subtitle' => __( 'Set to -1 for max width and 0 for original width. Default: -1', 'maera' ),
+		'section'  => 'feat_archive',
 		'priority' => 52,
 		'default'  => -1,
 		'choices'  => array(
@@ -889,9 +890,9 @@ function maera_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'feat_img_archive_height',
-		'label'    => __( 'Archives Featured Image Height', 'maera' ),
-		'subtitle' => __( 'Select the height of your featured images on post archives. Set to 0 to resize the image using the original image proportions. Default: 0', 'maera' ),
-		'section'  => 'feat',
+		'label'    => __( 'Featured Image Height', 'maera' ),
+		'subtitle' => __( 'Set to 0 to resize the image using the original image proportions. Default: 0', 'maera' ),
+		'section'  => 'feat_archive',
 		'priority' => 53,
 		'default'  => 0,
 		'choices'  => array(
@@ -904,9 +905,9 @@ function maera_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'        => 'checkbox',
 		'setting'     => 'feat_img_post',
-		'label'       => __( 'Featured Images on Posts', 'maera' ),
+		'label'       => __( 'Display Featured Images', 'maera' ),
 		'subtitle'    => __( 'Display featured Images on simgle posts.', 'maera' ),
-		'section'     => 'feat',
+		'section'     => 'feat_single',
 		'priority'    => 60,
 		'default'     => 0,
 	);
@@ -914,9 +915,9 @@ function maera_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'feat_img_post_width',
-		'label'    => __( 'Posts Featured Image Width', 'maera' ),
-		'subtitle' => __( 'Select the width of your featured images on single posta. Set to -1 for max width and 0 for original width. Default: -1', 'maera' ),
-		'section'  => 'feat',
+		'label'    => __( 'Featured Image Width', 'maera' ),
+		'subtitle' => __( 'Set to -1 for max width and 0 for original width. Default: -1', 'maera' ),
+		'section'  => 'feat_single',
 		'priority' => 62,
 		'default'  => -1,
 		'choices'  => array(
@@ -929,9 +930,9 @@ function maera_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'feat_img_post_height',
-		'label'    => __( 'Posts Featured Image Height', 'maera' ),
-		'subtitle' => __( 'Select the height of your featured images on single posts. Set to 0 to use the original image proportions. Default: 0', 'maera' ),
-		'section'  => 'feat',
+		'label'    => __( 'Featured Image Height', 'maera' ),
+		'subtitle' => __( 'Set to 0 to use the original image proportions. Default: 0', 'maera' ),
+		'section'  => 'feat_single',
 		'priority' => 63,
 		'default'  => 0,
 		'choices'  => array(
@@ -946,8 +947,9 @@ function maera_customizer_settings( $controls ) {
 		'type'        => 'multicheck',
 		'mode'        => 'checkbox',
 		'setting'     => 'feat_img_per_post_type',
-		'label'       => __( 'Disable featured images per post type', 'maera' ),
-		'section'     => 'feat',
+		'label'       => __( 'Disable featured images per post type.', 'maera' ),
+		'subtitle'    => __( 'CAUTION: This setting will also disable displaying the featured images on single posts as well.', 'maera' ),
+		'section'     => 'feat_archive',
 		'priority'    => 65,
 		'default'     => '',
 		'choices'     => $post_types,

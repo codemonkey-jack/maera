@@ -94,112 +94,42 @@ class Kirki {
 		$color_accent = isset( $options['color_accent'] ) ? $options['color_accent'] : '#FF5740';
 		$color_light  = isset( $options['color_light'] ) ? $options['color_light'] : '#8cddcd';
 		$color_select = isset( $options['color_select'] ) ? $options['color_select'] : '#34495e';
-		$color_back = isset( $options['color_back'] ) ? $options['color_back'] : '#222';
+		$color_back = isset( $options['color_back'] ) ? $options['color_back'] : '#222222';
 		?>
 
 		<style>
 
-			<?php if ( kirki_get_brightness( $color_back ) > 100 ) : ?>
-				#customize-theme-controls .accordion-section-title { color: #222; }
-				.control-section.control-panel>.accordion-section-title:after {
-					background: rgba(255,255,255,0.3);
-					border-left: rgba(255,255,255,0.4);
-					color: #222;
-				}
+			<?php if ( 170 < kirki_get_brightness( $color_back ) ) : ?>
+				#customize-theme-controls .accordion-section-title { background: <?php echo $color_back; ?>; color: #222; border-bottom: 1px solid rgba(255,255,255,0.05); }
+				.control-section.control-panel>.accordion-section-title:after { background: rgba(255,255,255,0.15); border-left: rgba(255,255,255,0.2); color: #222; }
+				#customize-theme-controls .control-section .accordion-section-title, #customize-theme-controls .control-section.control-panel .accordion-section-title { color: #222; }
+				#customize-theme-controls .control-section .accordion-section-title:focus, #customize-theme-controls .control-section .accordion-section-title:hover, #customize-theme-controls .control-section.open .accordion-section-title, #customize-theme-controls .control-section:hover .accordion-section-title { background: <?php echo $color_active; ?>; color: #222; }
 			<?php else : ?>
-				#customize-theme-controls .accordion-section-title { color: #fff; }
-				.control-section.control-panel>.accordion-section-title:after {
-					background: rgba(0,0,0,0.3);
-					border-left: rgba(0,0,0,0.4);
-					color: #fff;
-				}
+				#customize-theme-controls .accordion-section-title { background: <?php echo $color_back; ?>; color: #fff; border-bottom: 1px solid rgba(0,0,0,0.05);}
+				.control-section.control-panel>.accordion-section-title:after { background: rgba(0,0,0,0.15); border-left: rgba(0,0,0,0.2); color: #fff; }
+				#customize-theme-controls .control-section .accordion-section-title, #customize-theme-controls .control-section.control-panel .accordion-section-title { color: #fff; }
+				#customize-theme-controls .control-section .accordion-section-title:focus, #customize-theme-controls .control-section .accordion-section-title:hover, #customize-theme-controls .control-section.open .accordion-section-title, #customize-theme-controls .control-section:hover .accordion-section-title { background: <?php echo $color_active; ?>; color: #fff; }
 			<?php endif; ?>
 
 			<?php if ( kirki_get_brightness( $color_accent ) > 100 ) : ?>
-				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after,
-				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
-					background: rgba(255,255,255,0.3);
-					border: none;
-					color: #222;
-				}
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after { background: rgba(255,255,255,0.3); border: none; color: #222; }
 			<?php else : ?>
-				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after,
-				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
-					background: rgba(0,0,0,0.3);
-					border: none;
-					color: #fff;
-				}
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after { background: rgba(0,0,0,0.3); border: none; color: #fff; }
 			<?php endif; ?>
 
-			.wp-core-ui .button.tooltip {
-				background: <?php echo $color_active; ?>;
-			}
+			.wp-core-ui .button.tooltip { background: <?php echo $color_active; ?>; }
+			.image.ui-buttonset label.ui-button.ui-state-active { background: <?php echo $color_accent; ?>; }
+			.wp-full-overlay-sidebar { background: <?php echo $color_back; ?>; }
+			#customize-info .accordion-section-title, #customize-info .accordion-section-title:hover { background: <?php echo $color_back; ?>; }
 
-			.image.ui-buttonset label.ui-button.ui-state-active {
-				background: <?php echo $color_accent; ?>;
-			}
-
-			.wp-full-overlay-sidebar {
-				background: <?php echo $color_back; ?>;
-			}
-
-			#customize-info .accordion-section-title, #customize-info .accordion-section-title:hover {
-				background: <?php echo $color_back; ?>;
-			}
-
-			#customize-theme-controls .accordion-section-title {
-				background: <?php echo $color_back; ?>;
-			}
-
-			#customize-theme-controls .accordion-section-title {
-				border-bottom: 1px solid <?php echo $color_back; ?>;
-			}
-
-			#customize-theme-controls .control-section .accordion-section-title {
-				background: <?php echo $color_back; ?>;
-			}
-
-			#customize-theme-controls .control-section .accordion-section-title:focus,
-			#customize-theme-controls .control-section .accordion-section-title:hover,
-			#customize-theme-controls .control-section.open .accordion-section-title,
-			#customize-theme-controls .control-section:hover .accordion-section-title {
-				background: <?php echo $color_active; ?>;
-			}
-
-			#customize-theme-controls .control-section.control-panel .accordion-section-title,
-			#customize-theme-controls .control-section.control-panel .accordion-section-title,
-			#customize-theme-controls .control-section.control-panel .accordion-section-title {
-				background: <?php echo $color_back; ?>;
-			}
-
-			#customize-theme-controls .control-section.control-panel .accordion-section-title:focus,
-			#customize-theme-controls .control-section.control-panel .accordion-section-title:hover {
-				background: <?php echo $color_active; ?>;
-			}
-
-			.wp-core-ui .button-primary {
-				background: <?php echo $color_active; ?>;
-			}
-
-			.wp-core-ui .button-primary.focus,
-			.wp-core-ui .button-primary.hover,
-			.wp-core-ui .button-primary:focus,
-			.wp-core-ui .button-primary:hover {
-				background: <?php echo $color_select; ?>;
-			}
-
-			.wp-core-ui .button-primary-disabled,
-			.wp-core-ui .button-primary.disabled,
-			.wp-core-ui .button-primary:disabled,
-			.wp-core-ui .button-primary[disabled] {
-				background: <?php echo $color_light; ?> !important;
-				color: <?php echo $color_select; ?> !important;
-			}
+			#customize-theme-controls .control-section.control-panel .accordion-section-title { background: <?php echo $color_back; ?>; }
+			#customize-theme-controls .control-section.control-panel .accordion-section-title:focus, #customize-theme-controls .control-section.control-panel .accordion-section-title:hover { background: <?php echo $color_active; ?>; }
+			.wp-core-ui .button-primary { background: <?php echo $color_active; ?>; }
+			.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover { background: <?php echo $color_select; ?>; }
+			.wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled] { background: <?php echo $color_light; ?> !important; color: <?php echo $color_select; ?> !important; }
 
 			<?php if ( isset( $options['logo_image'] ) ) : ?>
-				div.kirki-customizer {
-					background: url("<?php echo $options['logo_image']; ?>") no-repeat left center;
-				}
+				div.kirki-customizer { background: url("<?php echo $options['logo_image']; ?>") no-repeat left center; }
 			<?php endif; ?>
 		</style>
 		<?php
