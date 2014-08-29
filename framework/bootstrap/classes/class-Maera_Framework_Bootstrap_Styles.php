@@ -311,9 +311,9 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			 */
 			$font_navbar       = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
 			$font_brand        = $font_navbar;
-			$navbar_bg         = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'navbar_bg', '#f8f8f8' ) ) );
+			$navbar_bg         = Maera_Color::sanitize_hex( get_theme_mod( 'navbar_bg', '#f8f8f8' ) );
 			$navbar_height     = filter_var( get_theme_mod( 'navbar_height', 50 ), FILTER_SANITIZE_NUMBER_INT );
-			$navbar_text_color = '#' . str_replace( '#', '', get_theme_mod( 'font_menus_color', '#333333' ) );
+			$navbar_text_color = Maera_Color::text_color_calculated( $navbar_bg );
 			$brand_text_color  = $navbar_text_color;
 			$navbar_border     = ( Maera_Color::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 			$gfb = get_theme_mod( 'grid_float_breakpoint', 'screen_sm_min' );
@@ -407,10 +407,12 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 		 */
 		function header_css( $styles ) {
 
+			$header_bg = get_theme_mod( 'header_bg_color', '#ffffff' );
+
 			if ( 1 == get_theme_mod( 'header_toggle', 0 ) ) {
 
 				$el = ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) ? 'body .header-boxed' : 'body .header-wrapper';
-				$styles .= $el . ',' . $el . ' a,' . $el . ' h1,' . $el . ' h2,' . $el . ' h3,' . $el . ' h4,' . $el . ' h5,' . $el . ' h6{ color:' . get_theme_mod( 'header_color', '#333333') . ';}';
+				$styles .= $el . ',' . $el . ' a,' . $el . ' h1,' . $el . ' h2,' . $el . ' h3,' . $el . ' h4,' . $el . ' h5,' . $el . ' h6{ color:' . Maera::text_color_calculated( $header_bg ) . ';}';
 
 			}
 
@@ -422,10 +424,12 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 		 */
 		function typography_css( $style ) {
 
+			$body_bg = '#' . str_replace( '#', '', Maera_Color::sanitize_hex( get_theme_mod( 'body_bg_color', '#ffffff' ) ) );
+
 			// Base font settings
 			$font_base_family    = get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
 			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
-			$font_base_color     = get_theme_mod( 'font_base_color', '#333333' );
+			$font_base_color     = Maera_Color::text_color_calculated( $body_bg );
 			$font_base_weight    = get_theme_mod( 'font_base_weight', '#333333' );
 			$font_base_size      = get_theme_mod( 'font_base_size', ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5 );
 			$font_base_height    = get_theme_mod( 'font_base_height', 1.4 );
@@ -437,7 +441,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 
 			$style .= 'h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{';
 			$style .= 'font-family: ' . $headers_font_family . ';';
-			$style .= 'color: ' . get_theme_mod( 'font_headers_color', '#333333' ) . ';';
+			$style .= 'color: ' .$font_base_color . ';';
 			$style .= 'font-weight: ' . get_theme_mod( 'font_headers_weight', 400 ) . ';';
 			$style .= 'line-height: ' . get_theme_mod( 'font_headers_height', 1.1 ) . ';';
 			$style .= '}';

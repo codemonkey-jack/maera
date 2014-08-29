@@ -460,15 +460,6 @@ function maera_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'font_menus_color',
-		'description' => __( 'Font Color', 'maera' ),
-		'section'  => 'typo_nav',
-		'default'  => '#333333',
-		'priority' => 42,
-	);
-
-	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_menus_weight',
 		'subtitle' => __( 'Font Weight', 'maera' ),
@@ -666,16 +657,6 @@ function maera_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'color',
-		'label'    => __( 'Base font color', 'maera' ),
-		'setting'  => 'font_base_color',
-		'description' =>   __( 'Font Color', 'maera' ),
-		'section'  => 'typo_base',
-		'default'  => '#333333',
-		'priority' => 23,
-	);
-
-	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_base_weight',
 		'label'    => __( 'Base Font Weight', 'maera' ),
@@ -753,15 +734,6 @@ function maera_customizer_settings( $controls ) {
 			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'maera' ),
 			'vietnamese' 	=> __( 'Vietnamese', 'maera' ),
 		),
-	);
-
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'font_headers_color',
-		'label'    => __( 'Color', 'maera' ),
-		'section'  => 'typo_headers',
-		'default'  => '#333333',
-		'priority' => 33,
 	);
 
 	$controls[] = array(
@@ -1104,16 +1076,6 @@ function maera_customizer_settings( $controls ) {
 		'output' => 'header.page-header',
 	);
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'header_color',
-		'label'    => __( 'Header Text Color', 'maera' ),
-		'description' => __( 'Select the text color for your header. Default: #333333.', 'maera' ),
-		'section'  => 'typo_header',
-		'default'  => '#333333',
-		'priority' => 20,
-	);
-
 	//-------------------------------------------------
 	// SOCIAL
 	//-------------------------------------------------
@@ -1195,16 +1157,6 @@ function maera_customizer_settings( $controls ) {
 		),
 		'priority' => 10,
 		'output' => 'footer.page-footer',
-	);
-
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'footer_color',
-		'label'    => __( 'Footer Text Color', 'maera' ),
-		'description' => __( 'Select the text color for your footer. Default: #333333.', 'maera' ),
-		'section'  => 'typo_footer',
-		'default'  => '#333333',
-		'priority' => 10,
 	);
 
 	$controls[] = array(

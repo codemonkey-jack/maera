@@ -400,6 +400,7 @@ if ( ! class_exists( 'Maera_Color' ) ) {
 		 * A value higher than 500 is recommended for good readability.
 		 */
 		public static function color_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
+
 			$color_1 = self::sanitize_hex( $color_1 );
 			$color_2 = self::sanitize_hex( $color_2 );
 
@@ -421,6 +422,7 @@ if ( ! class_exists( 'Maera_Color' ) ) {
 			$color_diff = $r_diff + $g_diff + $b_diff;
 
 			return $color_diff;
+
 		}
 
 		/*
@@ -429,6 +431,7 @@ if ( ! class_exists( 'Maera_Color' ) ) {
 		 * Combining it with the color_difference function above might make sense.
 		 */
 		public static function brightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
+
 			$color_1 = self::sanitize_hex( $color_1 );
 			$color_2 = self::sanitize_hex( $color_2 );
 
@@ -447,6 +450,7 @@ if ( ! class_exists( 'Maera_Color' ) ) {
 			$br_2 = ( 299 * $r2 + 587 * $g2 + 114 * $b2 ) / 1000;
 
 			return abs( $br_1 - $br_2 );
+
 		}
 
 		/*
@@ -454,6 +458,7 @@ if ( ! class_exists( 'Maera_Color' ) ) {
 		 * The returned value should be bigger than 5 for best readability.
 		 */
 		public static function lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
+
 			$color_1 = self::sanitize_hex( $color_1 );
 			$color_2 = self::sanitize_hex( $color_2 );
 
@@ -476,5 +481,89 @@ if ( ! class_exists( 'Maera_Color' ) ) {
 			return $lum_diff;
 
 		}
+
+		/*
+		 * Calculate the text color based on the background color
+		 */
+		public static function text_color_calculated( $background = '#ffffff' ) {
+
+			// Calculate lumosity difference to white and black
+			$lumosity_to_white = self::lumosity_difference( $background, '#ffffff' );
+			$lumosity_to_black = self::lumosity_difference( $background, '#000000' );
+
+			// Is this dark or light?
+			$dark = $lumosity_to_black > $lumosity_to_white ? false : true;
+
+			if ( $dark ) { // The background is dark
+
+				// Try the default value of white
+				$color = 16 > $lumosity_to_white ? '#ffffff' : false;
+
+				if ( ! $color ) { // Try mixing the colors - 1st pass
+
+					$color = self::mix_colors( $background, '#ffffff', 40 );
+					$color = 16 < self::lumosity_difference( $background, $color ) ? false : $color;
+
+					if ( ! $color ) { // Try mixing the colors - 2nd pass
+
+						$color = self::mix_colors( $background, '#ffffff', 30 );
+						$color = 16 < self::lumosity_difference( $background, $color ) ? false : $color;
+
+						if ( ! $color ) { // Try mixing the colors - 3rd pass
+
+							$color = self::mix_colors( $background, '#ffffff', 20 );
+							$color = 16 < self::lumosity_difference( $background, $color ) ? false : $color;
+
+							if ( ! $color ) { // Try mixing the colors - 4th pass
+
+								$color = self::mix_colors( $background, '#ffffff', 10 );
+
+							}
+
+						}
+
+					}
+
+				}
+
+			} else { // The background is light
+
+				// Try the default value of #222222
+				$color = 16 > self::lumosity_difference( $background, '#222222' ) ? '#222222' : false;
+
+				if ( ! $color ) { // Try mixing the colors - 1st pass
+
+					$color = self::mix_colors( $background, '#000000', 20 );
+					$color = 16 < self::lumosity_difference( $background, $color ) ? false : $color;
+
+					if ( ! $color ) { // Try mixing the colors - 2nd pass
+
+						$color = self::mix_colors( $background, '#000000', 15 );
+						$color = 16 < self::lumosity_difference( $background, $color ) ? false : $color;
+
+						if ( ! $color ) { // Try mixing the colors - 3rd pass
+
+							$color = self::mix_colors( $background, '#000000', 10 );
+							$color = 16 < self::lumosity_difference( $background, $color ) ? false : $color;
+
+							if ( ! $color ) { // Try mixing the colors - 4th pass
+
+								$color = self::mix_colors( $background, '#000000', 5 );
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+			return $color;
+
+		}
+
 	}
+
 }
