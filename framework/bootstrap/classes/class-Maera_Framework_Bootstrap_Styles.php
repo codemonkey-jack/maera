@@ -39,9 +39,9 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			/**
 			 * BACKGROUND
 			 */
-			$color_obj = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
-			$body_bg   = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$body_lum  = $color_obj->toLuminosity();
+			$body_obj  = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
+			$body_bg   = '#' . str_replace( '#', '', $body_obj->toHex() );
+			$body_lum  = $body_obj->toLuminosity();
 
 			// Calculate the gray shadows based on the body background.
 			// We basically create 2 "presets": light and dark.
@@ -205,25 +205,25 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			/**
 			 * BRANDING
 			 */
-			$color_obj          = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
-			$brand_primary      = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_primary_lum  = $color_obj->toLuminosity();
+			$b_p_obj           = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
+			$brand_primary     = '#' . str_replace( '#', '', $b_p_obj->toHex() );
+			$brand_primary_lum = $b_p_obj->toLuminosity();
 
-			$color_obj          = new Jetpack_Color( get_theme_mod( 'color_brand_success', '#5cb85c' ) );
-			$brand_success      = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_success_lum  = $color_obj->toLuminosity();
+			$b_s_obj           = new Jetpack_Color( get_theme_mod( 'color_brand_success', '#5cb85c' ) );
+			$brand_success     = '#' . str_replace( '#', '', $b_s_obj->toHex() );
+			$brand_success_lum = $b_s_obj->toLuminosity();
 
-			$color_obj          = new Jetpack_Color( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) );
-			$brand_warning      = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_warning_lum  = $color_obj->toLuminosity();
+			$b_w_obj           = new Jetpack_Color( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) );
+			$brand_warning     = '#' . str_replace( '#', '', $b_w_obj->toHex() );
+			$brand_warning_lum = $b_w_obj->toLuminosity();
 
-			$color_obj         = new Jetpack_Color( get_theme_mod( 'color_brand_danger', '#d9534f' ) );
-			$brand_danger      = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_danger_lum  = $color_obj->toLuminosity();
+			$b_d_obj          = new Jetpack_Color( get_theme_mod( 'color_brand_danger', '#d9534f' ) );
+			$brand_danger     = '#' . str_replace( '#', '', $b_d_obj->toHex() );
+			$brand_danger_lum = $b_d_obj->toLuminosity();
 
-			$color_obj       = new Jetpack_Color( get_theme_mod( 'color_brand_info', '#5bc0de' ) );
-			$brand_info      = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_info_lum  = $color_obj->toLuminosity();
+			$b_i_obj        = new Jetpack_Color( get_theme_mod( 'color_brand_info', '#5bc0de' ) );
+			$brand_info     = '#' . str_replace( '#', '', $b_i_obj->toHex() );
+			$brand_info_lum = $b_i_obj->toLuminosity();
 
 			$link_hover_color = ( 0.3 < $brand_primary_lum ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
@@ -320,15 +320,14 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			$font_navbar       = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
 			$font_brand        = $font_navbar;
 
-			$color_obj   = new Jetpack_Color( get_theme_mod( 'navbar_bg', '#f8f8f8' ) );
-			$navbar_bg   = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$navbar_lum  = $color_obj->toLuminosity();
+			$nav_col_obj = new Jetpack_Color( get_theme_mod( 'navbar_bg', '#f8f8f8' ) );
+			$navbar_bg   = '#' . str_replace( '#', '', $nav_col_obj->toHex() );
+			$navbar_lum  = $nav_col_obj->toLuminosity();
 
 			$navbar_height     = filter_var( get_theme_mod( 'navbar_height', 50 ), FILTER_SANITIZE_NUMBER_INT );
 			// TODO: use getReadableContrastingColor() from Jetpack_Color class.
 			// See https://github.com/Automattic/jetpack/issues/1068
-			$navbar_text_color = '#222222';
-			$brand_text_color  = $navbar_text_color;
+			$navbar_text_color = $brand_text_color = '#' . $nav_col_obj->getGrayscaleContrastingColor(10)->toHex();
 			$navbar_border     = ( 0.3 > $navbar_lum ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 			$gfb = get_theme_mod( 'grid_float_breakpoint', 'screen_sm_min' );
 
@@ -441,16 +440,19 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 		 */
 		function typography_css( $style ) {
 
-			$color_obj = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
-			$body_bg   = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$body_lum  = $color_obj->toLuminosity();
+			$body_obj = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
+			$b_p_obj  = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
+
+			$body_bg  = '#' . str_replace( '#', '', $body_obj->toHex() );
+			$body_lum = $body_obj->toLuminosity();
 
 			// Base font settings
 			$font_base_family    = get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
 			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
 			// TODO: use getReadableContrastingColor() from Jetpack_Color class.
 			// See https://github.com/Automattic/jetpack/issues/1068
-			$font_base_color     = '#222222';
+			$font_base_color     = '#' . $body_obj->getGrayscaleContrastingColor(10)->toHex();
+
 			$font_base_weight    = get_theme_mod( 'font_base_weight', '#333333' );
 			$font_base_size      = get_theme_mod( 'font_base_size', ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5 );
 			$font_base_height    = get_theme_mod( 'font_base_height', 1.4 );
@@ -473,6 +475,23 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			$style .= 'h4, .h4 { font-size: ' . intval( ( 110 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 			$style .= 'h5, .h5 { font-size: ' . intval( ( 100 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 			$style .= 'h6, .h6 { font-size: ' . intval( ( 85 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
+
+			$links_lum = $b_p_obj->toLuminosity();
+
+			print_r($body_obj->getDistanceRgbFrom( $b_p_obj ));
+
+			if ( 200 > $body_obj->getDistanceRgbFrom( $b_p_obj ) ) { // Insufficient color difference
+
+				if ( 0.5 < $body_lum ) { // light background
+					$links_color = $b_p_obj->darken(50)->toHex();
+				} else { // dark background
+					$links_color = $b_p_obj->lighten(50)->toHex();
+				}
+
+				// Use "body a" instead of plain "a" to override the defaults
+				$style .= 'body a { color: #' . $links_color . ';}';
+
+			}
 
 			return $style;
 
