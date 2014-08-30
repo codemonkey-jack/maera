@@ -8,6 +8,39 @@ Timber::$locations = array(
 	get_template_directory() . '/views'
 );
 
+/**
+ * If we're using the color library, load it
+ */
+if ( current_theme_supports( 'maera_color' ) || current_theme_supports( 'jetpack_color' ) ) {
+	// Include the Jetpack_Color class
+	if ( function_exists( 'jetpack_require_lib' ) ) {
+		jetpack_require_lib( 'class.color' );
+	}
+
+	if ( ! class_exists( 'Jetpack_Color' ) ) {
+		require_once locate_template( '/lib/class-Jetpack_Color.php' );
+	}
+}
+
+
+/**
+ * If we're using the image library, load it
+ */
+if ( current_theme_supports( 'maera_image' ) ) {
+	require_once locate_template( '/lib/class-Maera_Image.php' );
+}
+
+/**
+ * If we're using Kirki, load it
+ */
+if ( current_theme_supports( 'kirki' ) ) {
+	// Include the Kirki Advanced Customizer
+	if ( ! class_exists( 'Kirki' ) ) {
+		require_once locate_template( '/lib/kirki/kirki.php' );
+	}
+}
+
+
 function maera_timber_global_context( $data ) {
 
 	$data['theme_mods'] = get_theme_mods();
@@ -30,6 +63,7 @@ function maera_timber_global_context( $data ) {
 
 }
 add_filter( 'timber_context', 'maera_timber_global_context' );
+
 
 /**
  * Maera initial setup and constants
@@ -65,6 +99,7 @@ function maera_setup() {
 	add_editor_style( '/assets/css/editor-style.css' );
 }
 add_action( 'after_setup_theme', 'maera_setup' );
+
 
 /**
  * Enable Twig_Extension_StringLoader.

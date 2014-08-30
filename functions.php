@@ -9,16 +9,9 @@ if ( ! class_exists( 'Timber' ) ) {
 	require_once locate_template( '/lib/timber-library/timber.php' );
 }
 
-// Include the Kirki Advanced Customizer
-if ( ! class_exists( 'Kirki' ) ) {
-	require_once locate_template( '/lib/kirki/kirki.php' );
-}
-
 require_once locate_template( '/lib/breadcrumb-trail.php' );
 require_once locate_template( '/framework/framework.php' );
 require_once locate_template( '/lib/init.php' );
-require_once locate_template( '/lib/class-Maera_Color.php' );
-require_once locate_template( '/lib/class-Maera_Image.php' );
 require_once locate_template( '/lib/class-Maera_Posts.php' );
 require_once locate_template( '/lib/widgets.php' );
 require_once locate_template( '/lib/utils.php' );
