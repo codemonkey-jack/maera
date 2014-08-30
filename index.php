@@ -22,3 +22,6 @@ if ( is_home() ) {
 }
 
 Timber::render( $templates, $context, apply_filters( 'maera/timber/cache', false ) );
+
+$color_obj = new Jetpack_Color( '#333333' );
+print_r( $color = $color_obj->getMaxContrastColor()->toHex() );
