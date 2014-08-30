@@ -40,13 +40,12 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			 * BACKGROUND
 			 */
 			$color_obj = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
-			$body_bg = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$body_bg   = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$body_lum  = $color_obj->toLuminosity();
 
 			// Calculate the gray shadows based on the body background.
 			// We basically create 2 "presets": light and dark.
-			$body_luminosity = $color_obj->toLuminosity();
-
-			if ( 0.5 < $body_luminosity ) {
+			if ( 0.4 < $body_lum ) {
 				$gray_darker  = 'lighten(#000, 13.5%)';
 				$gray_dark    = 'lighten(#000, 20%)';
 				$gray         = 'lighten(#000, 33.5%)';
@@ -60,11 +59,11 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 				$gray_lighter = 'darken(#fff, 93.5%)';
 			}
 
-			$table_bg_accent      = $body_luminosity > 0.5 ? 'darken(@body-bg, 2.5%)'    : 'lighten(@body-bg, 2.5%)';
-			$table_bg_hover       = $body_luminosity > 0.5 ? 'darken(@body-bg, 4%)'      : 'lighten(@body-bg, 4%)';
-			$table_border_color   = $body_luminosity > 0.5 ? 'darken(@body-bg, 13.35%)'  : 'lighten(@body-bg, 13.35%)';
-			$input_border         = $body_luminosity > 0.5 ? 'darken(@body-bg, 20%)'     : 'lighten(@body-bg, 20%)';
-			$dropdown_divider_top = $body_luminosity > 0.5 ? 'darken(@body-bg, 10.2%)'   : 'lighten(@body-bg, 10.2%)';
+			$table_bg_accent      = ( 0.3 < $body_lum ) ? 'darken(@body-bg, 2.5%)'    : 'lighten(@body-bg, 2.5%)';
+			$table_bg_hover       = ( 0.3 < $body_lum ) ? 'darken(@body-bg, 4%)'      : 'lighten(@body-bg, 4%)';
+			$table_border_color   = ( 0.3 < $body_lum ) ? 'darken(@body-bg, 13.35%)'  : 'lighten(@body-bg, 13.35%)';
+			$input_border         = ( 0.3 < $body_lum ) ? 'darken(@body-bg, 20%)'     : 'lighten(@body-bg, 20%)';
+			$dropdown_divider_top = ( 0.3 < $body_lum ) ? 'darken(@body-bg, 10.2%)'   : 'lighten(@body-bg, 10.2%)';
 
 			$variables = '';
 
@@ -206,44 +205,44 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			/**
 			 * BRANDING
 			 */
-			$color_obj         = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
-			$brand_primary     = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_primary_lum = $color_obj->toLuminosity();
+			$color_obj          = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
+			$brand_primary      = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$brand_primary_lum  = $color_obj->toLuminosity();
 
-			$color_obj         = new Jetpack_Color( get_theme_mod( 'color_brand_success', '#5cb85c' ) );
-			$brand_success     = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_success_lum = $color_obj->toLuminosity();
+			$color_obj          = new Jetpack_Color( get_theme_mod( 'color_brand_success', '#5cb85c' ) );
+			$brand_success      = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$brand_success_lum  = $color_obj->toLuminosity();
 
-			$color_obj         = new Jetpack_Color( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) );
-			$brand_warning     = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_warning_lum = $color_obj->toLuminosity();
+			$color_obj          = new Jetpack_Color( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) );
+			$brand_warning      = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$brand_warning_lum  = $color_obj->toLuminosity();
 
-			$color_obj        = new Jetpack_Color( get_theme_mod( 'color_brand_danger', '#d9534f' ) );
-			$brand_danger     = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_danger_lum = $color_obj->toLuminosity();
+			$color_obj         = new Jetpack_Color( get_theme_mod( 'color_brand_danger', '#d9534f' ) );
+			$brand_danger      = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$brand_danger_lum  = $color_obj->toLuminosity();
 
-			$color_obj      = new Jetpack_Color( get_theme_mod( 'color_brand_info', '#5bc0de' ) );
-			$brand_info     = '#' . str_replace( '#', '', $color_obj->toHex() );
-			$brand_info_lum = $color_obj->toLuminosity();
+			$color_obj       = new Jetpack_Color( get_theme_mod( 'color_brand_info', '#5bc0de' ) );
+			$brand_info      = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$brand_info_lum  = $color_obj->toLuminosity();
 
-			$link_hover_color = $brand_primary_lum > 0.5 ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
+			$link_hover_color = ( 0.3 < $brand_primary_lum ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
 			// Button text colors
-			$btn_primary_color  = $brand_primary_lum < 0.67 ? '#ffffff' : '#333333';
-			$btn_success_color  = $brand_success_lum < 0.67 ? '#ffffff' : '#333333';
-			$btn_warning_color  = $brand_warning_lum < 0.67 ? '#ffffff' : '#333333';
-			$btn_danger_color   = $brand_danger_lum  < 0.67 ? '#ffffff' : '#333333';
-			$btn_info_color     = $brand_info_lum    < 0.67 ? '#ffffff' : '#333333';
+			$btn_primary_color  = ( 0.6 < $brand_primary_lum ) ? '#FFFFFF' : '#333333';
+			$btn_success_color  = ( 0.6 < $brand_success_lum ) ? '#FFFFFF' : '#333333';
+			$btn_warning_color  = ( 0.6 < $brand_warning_lum ) ? '#FFFFFF' : '#333333';
+			$btn_danger_color   = ( 0.6 < $brand_danger_lum  ) ? '#FFFFFF' : '#333333';
+			$btn_info_color     = ( 0.6 < $brand_info_lum    ) ? '#FFFFFF' : '#333333';
 
 			// Button borders
-			$btn_primary_border = $brand_primary_lum < 0.67 ? 'darken(@btn-primary-bg, 5%)' : 'lighten(@btn-primary-bg, 5%)';
-			$btn_success_border = $brand_success_lum < 0.67 ? 'darken(@btn-success-bg, 5%)' : 'lighten(@btn-success-bg, 5%)';
-			$btn_warning_border = $brand_warning_lum < 0.67 ? 'darken(@btn-warning-bg, 5%)' : 'lighten(@btn-warning-bg, 5%)';
-			$btn_danger_border  = $brand_danger_lum  < 0.67 ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
-			$btn_info_border    = $brand_info_lum    < 0.67 ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
+			$btn_primary_border = ( 0.6 < $brand_primary_lum ) ? 'darken(@btn-primary-bg, 5%)' : 'lighten(@btn-primary-bg, 5%)';
+			$btn_success_border = ( 0.6 < $brand_success_lum ) ? 'darken(@btn-success-bg, 5%)' : 'lighten(@btn-success-bg, 5%)';
+			$btn_warning_border = ( 0.6 < $brand_warning_lum ) ? 'darken(@btn-warning-bg, 5%)' : 'lighten(@btn-warning-bg, 5%)';
+			$btn_danger_border  = ( 0.6 < $brand_danger_lum  ) ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
+			$btn_info_border    = ( 0.6 < $brand_info_lum    ) ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
 
-			$input_border_focus = $brand_primary_lum < 0.67 ? 'lighten(@brand-primary, 10%)' : 'darken(@brand-primary, 10%)';
-			$navbar_border      = $brand_primary_lum < 0.30 ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+			$input_border_focus = ( 0.6 < $brand_primary_lum ) ? 'lighten(@brand-primary, 10%)' : 'darken(@brand-primary, 10%)';
+			$navbar_border      = ( 0.6 < $brand_primary_lum ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 
 			// Branding colors
 			$variables .= '@brand-primary: ' . $brand_primary . ';';
@@ -318,21 +317,22 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			/**
 			 * MENUS
 			 */
-			$font_navbar = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
-			$font_brand  = $font_navbar;
+			$font_navbar       = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
+			$font_brand        = $font_navbar;
 
-			$color_obj     = new Jetpack_Color( get_theme_mod( 'navbar_bg', '#f8f8f8' ) );
-			$navbar_bg     = $color_obj->toHex();
-			$navbar_bg_lum = $color_obj->toLuminosity();
+			$color_obj   = new Jetpack_Color( get_theme_mod( 'navbar_bg', '#f8f8f8' ) );
+			$navbar_bg   = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$navbar_lum  = $color_obj->toLuminosity();
 
 			$navbar_height     = filter_var( get_theme_mod( 'navbar_height', 50 ), FILTER_SANITIZE_NUMBER_INT );
-			$navbar_text_color = '#' . $color_obj->getGrayscaleContrastingColor()->toHex();
+			// TODO: use getReadableContrastingColor() from Jetpack_Color class.
+			// See https://github.com/Automattic/jetpack/issues/1068
+			$navbar_text_color = '#222222';
 			$brand_text_color  = $navbar_text_color;
-
-			$navbar_border     = $navbar_bg_lum < 0.3 ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+			$navbar_border     = ( 0.3 > $navbar_lum ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 			$gfb = get_theme_mod( 'grid_float_breakpoint', 'screen_sm_min' );
 
-			if ( $navbar_bg_lum < 0.6 ) {
+			if ( 0.6 > $navbar_lum ) {
 				$navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
 				$navbar_link_active_bg      = 'darken(@navbar-default-bg, 6.5%)';
 				$navbar_link_disabled_color = 'darken(@navbar-default-bg, 6.5%)';
@@ -426,7 +426,10 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			if ( 1 == get_theme_mod( 'header_toggle', 0 ) ) {
 
 				$el = ( 'boxed' == get_theme_mod( 'site_style', 'wide' ) ) ? 'body .header-boxed' : 'body .header-wrapper';
-				$styles .= $el . ',' . $el . ' a,' . $el . ' h1,' . $el . ' h2,' . $el . ' h3,' . $el . ' h4,' . $el . ' h5,' . $el . ' h6{ color:#333333;}';
+				// $styles .= $el . ',' . $el . ' a,' . $el . ' h1,' . $el . ' h2,' . $el . ' h3,' . $el . ' h4,' . $el . ' h5,' . $el . ' h6{ color:' . Maera::text_color_calculated( $header_bg ) . ';}';
+				// TODO: use getReadableContrastingColor() from Jetpack_Color class.
+				// See https://github.com/Automattic/jetpack/issues/1068
+				$styles .= $el . ',' . $el . ' a,' . $el . ' h1,' . $el . ' h2,' . $el . ' h3,' . $el . ' h4,' . $el . ' h5,' . $el . ' h6{ color:' . '#222222' . ';}';
 
 			}
 
@@ -440,11 +443,14 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 
 			$color_obj = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
 			$body_bg   = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$body_lum  = $color_obj->toLuminosity();
 
 			// Base font settings
 			$font_base_family    = get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
 			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
-			$font_base_color     = $color_obj->getGrayscaleContrastingColor()->toHex();
+			// TODO: use getReadableContrastingColor() from Jetpack_Color class.
+			// See https://github.com/Automattic/jetpack/issues/1068
+			$font_base_color     = '#222222';
 			$font_base_weight    = get_theme_mod( 'font_base_weight', '#333333' );
 			$font_base_size      = get_theme_mod( 'font_base_size', ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 14 : 1.5 );
 			$font_base_height    = get_theme_mod( 'font_base_height', 1.4 );
@@ -540,20 +546,20 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 				return $style;
 			}
 
-			$color_obj = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
+			$color_obj     = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
 			$brand_primary = '#' . str_replace( '#', '', $color_obj->toHex() );
 
-			$color_obj = new Jetpack_Color( get_theme_mod( 'color_brand_success', '#5cb85c' ) );
+			$color_obj     = new Jetpack_Color( get_theme_mod( 'color_brand_success', '#5cb85c' ) );
 			$brand_success = '#' . str_replace( '#', '', $color_obj->toHex() );
 
-			$color_obj = new Jetpack_Color( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) );
+			$color_obj     = new Jetpack_Color( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) );
 			$brand_warning = '#' . str_replace( '#', '', $color_obj->toHex() );
 
-			$color_obj = new Jetpack_Color( get_theme_mod( 'color_brand_danger', '#d9534f' ) );
-			$brand_danger  = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$color_obj    = new Jetpack_Color( get_theme_mod( 'color_brand_danger', '#d9534f' ) );
+			$brand_danger = '#' . str_replace( '#', '', $color_obj->toHex() );
 
-			$color_obj = new Jetpack_Color( get_theme_mod( 'color_brand_info', '#5bc0de' ) );
-			$brand_info    = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$color_obj  = new Jetpack_Color( get_theme_mod( 'color_brand_info', '#5bc0de' ) );
+			$brand_info = '#' . str_replace( '#', '', $color_obj->toHex() );
 
 			$style .= 'a { color: ' . $brand_primary . '; }';
 			$style .= '.text-primary { color: ' . $brand_primary . '; }';
