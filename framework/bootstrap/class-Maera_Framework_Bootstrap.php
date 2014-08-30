@@ -70,7 +70,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 			add_filter( 'maera/image/display', array( $this, 'disable_feat_images_ppt' ), 99 );
 
 			// Add stylesheets caching if dev_mode is set to off.
-			if ( 1 == get_theme_mod( 'dev_mode' ) ) {
+			if ( 0 != get_theme_mod( 'dev_mode' ) ) {
 				add_filter( 'maera/styles/caching', '__return_false' );
 				TimberLoader::CACHE_NONE;
 			} else {
