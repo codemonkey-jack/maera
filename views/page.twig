@@ -9,17 +9,17 @@
 
 			{% include 'parts/single-title.twig' %}
 
-			{% do action( 'shoestrap/entry/meta' ) %}
-
-			{% do action( 'shoestrap/page/pre_content' ) %}
+			{{ post.meta_info }}
+			{{ framework.clearfix }}
+			{% do action( 'maera/page/pre_content' ) %}
 			{{ post.content }}
 			{{ framework.clearfix }}
 			{{ function( 'wp_link_pages', {
-				'before': '<div class="page-links">' . __( 'Pages:', 'shoestrap' ),
+				'before': '<div class="page-links">' . __( 'Pages:', 'maera' ),
 				'after': '</div>'
 			}) }}
 			{{ framework.clearfix }}
-			{% do action( 'shoestrap/page/after_content' ) %}
+			{% do action( 'maera/page/after_content' ) %}
 
 		</article>
 

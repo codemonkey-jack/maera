@@ -12,6 +12,7 @@
 	{% else %}
 		<title>{{ site.name }}</title>
 	{% endif %}
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="alternate" type="application/rss+xml" title="{{ function( 'get_bloginfo', 'name' ) }} Feed" href="{{ function( 'esc_url', 'get_feed_link' ) }}">
 	{{ function( 'wp_head' ) }}
@@ -20,8 +21,7 @@
 		<script src="{{ function( 'get_template_directory_uri' ) }}/assets/js/html5shiv.js"></script>
 		<script src="{{ function( 'get_template_directory_uri' ) }}/assets/js/respond.min.js"></script>
 	<![endif]-->
-	{% if theme_mods.favicon %}<link rel="icon" type="image/png" href="{{ theme_mods.favicon }}">{% endif %}
-	{% if theme_mods.apple_icon %}<link rel="apple-touch-icon" href="{{ theme_mods.apple_icon }}">{% endif %}
 
 </head>
 {% endblock %}
+

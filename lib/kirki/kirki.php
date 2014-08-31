@@ -16,9 +16,15 @@ class Kirki {
 
 	function __construct() {
 
-		// Include necessary files
+		$this->options = apply_filters( 'kirki/config', array() );
+		$options = $this->options;
+
+		// Include files
 		include_once( dirname( __FILE__ ) . '/includes/functions/color-functions.php' );
-		include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
+
+		if ( ! isset( $options['live_css'] ) || true == $options['live_css'] ) {
+			include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
+		}
 		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
 
 		// Include the controls initialization script
@@ -92,6 +98,39 @@ class Kirki {
 		?>
 
 		<style>
+
+			<?php if ( kirki_get_brightness( $color_back ) > 100 ) : ?>
+				#customize-theme-controls .accordion-section-title { color: #222; }
+				.control-section.control-panel>.accordion-section-title:after {
+					background: rgba(255,255,255,0.3);
+					border-left: rgba(255,255,255,0.4);
+					color: #222;
+				}
+			<?php else : ?>
+				#customize-theme-controls .accordion-section-title { color: #fff; }
+				.control-section.control-panel>.accordion-section-title:after {
+					background: rgba(0,0,0,0.3);
+					border-left: rgba(0,0,0,0.4);
+					color: #fff;
+				}
+			<?php endif; ?>
+
+			<?php if ( kirki_get_brightness( $color_accent ) > 100 ) : ?>
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after,
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
+					background: rgba(255,255,255,0.3);
+					border: none;
+					color: #222;
+				}
+			<?php else : ?>
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after,
+				#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
+					background: rgba(0,0,0,0.3);
+					border: none;
+					color: #fff;
+				}
+			<?php endif; ?>
+
 			.wp-core-ui .button.tooltip {
 				background: <?php echo $color_active; ?>;
 			}
@@ -124,6 +163,17 @@ class Kirki {
 			#customize-theme-controls .control-section .accordion-section-title:hover,
 			#customize-theme-controls .control-section.open .accordion-section-title,
 			#customize-theme-controls .control-section:hover .accordion-section-title {
+				background: <?php echo $color_active; ?>;
+			}
+
+			#customize-theme-controls .control-section.control-panel .accordion-section-title,
+			#customize-theme-controls .control-section.control-panel .accordion-section-title,
+			#customize-theme-controls .control-section.control-panel .accordion-section-title {
+				background: <?php echo $color_back; ?>;
+			}
+
+			#customize-theme-controls .control-section.control-panel .accordion-section-title:focus,
+			#customize-theme-controls .control-section.control-panel .accordion-section-title:hover {
 				background: <?php echo $color_active; ?>;
 			}
 

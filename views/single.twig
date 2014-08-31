@@ -7,23 +7,23 @@
 
 		<article {{ function( 'post_class' ) }} id="post-{{post.ID}}">
 
-			{% do action( 'shoestrap/single/top' ) %}
+			{% do action( 'maera/single/top', post.ID ) %}
 
 			{% include 'parts/single-title.twig' %}
 
-			{% do action( 'shoestrap/entry/meta' ) %}
+			{{ post.meta_info }}
 
 			<div class="entry-content">
 
-				{% do action( 'shoestrap/single/pre_content' ) %}
+				{% do action( 'maera/single/pre_content', post.ID ) %}
 				{{ post.content }}
 				{{ framework.clearfix }}
 				{{ function( 'wp_link_pages', {
-					'before': '<div class="page-links">' . __( 'Pages:', 'shoestrap' ),
+					'before': '<div class="page-links">' . __( 'Pages:', 'maera' ),
 					'after': '</div>'
 				}) }}
 				{{ framework.clearfix }}
-				{% do action( 'shoestrap/single/after_content' ) %}
+				{% do action( 'maera/single/after_content', post.ID ) %}
 			</div>
 
 			<footer></footer>

@@ -8,12 +8,12 @@
  */
 
 if ( ! class_exists( 'Timber' ) ) {
-	_e( 'Timber not activated. Make sure you activate the plugin.', 'shoestrap' );
+	_e( 'Timber not activated. Make sure you activate the plugin.', 'maera' );
 }
 
 $context = Timber::get_context();
 
-$context['posts'] = Timber::get_posts();
+$context['posts'] = Timber::query_posts( false, 'Maera_Post' );
 
 $templates = array( 'index.twig' );
 
@@ -21,4 +21,4 @@ if ( is_home() ) {
 	array_unshift( $templates, 'home.twig' );
 }
 
-Timber::render( $templates, $context, false );
+Timber::render( $templates, $context, apply_filters( 'maera/timber/cache', false ) );

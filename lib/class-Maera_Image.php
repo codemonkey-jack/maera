@@ -1,16 +1,16 @@
 <?php
 
-if ( ! class_exists( 'Shoestrap_Image' ) ) {
+if ( ! class_exists( 'Maera_Image' ) ) {
 
 	/**
 	* The Image handling class
 	*/
-	class Shoestrap_Image {
+	class Maera_Image {
 
 		function __construct() {}
 
 		/*
-		 * Proxy function to be called whenever an image is used. If you wish to resize, use shoestrap_image_resize()
+		 * Proxy function to be called whenever an image is used. If you wish to resize, use maera_image_resize()
 		 */
 		public static function image( $img ) {
 
@@ -26,7 +26,7 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			$img['width'] = $image[1];
 			$img['height'] = $image[2];
 
-			return shoestrap_image_resize( $img );
+			return maera_image_resize( $img );
 		}
 
 		public static function image_resize( $data ) {
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 			global $wpdb;
 
 			if ( empty( $url ) ) {
-				return new WP_Error( 'no_image_url', __( 'No image URL has been entered.', 'shoestrap' ), $url );
+				return new WP_Error( 'no_image_url', __( 'No image URL has been entered.', 'maera' ), $url );
 			}
 
 			// Get default size from database
@@ -196,9 +196,9 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 
 			$args = array();
 
-			$image_display = apply_filters( 'shoestrap/image/display', 0 );
-			$image_width   = apply_filters( 'shoestrap/image/width', -1 );
-			$image_height  = apply_filters( 'shoestrap/image/height', 0 );
+			$image_display = apply_filters( 'maera/image/display', 0 );
+			$image_width   = apply_filters( 'maera/image/width', -1 );
+			$image_height  = apply_filters( 'maera/image/height', 0 );
 
 			// Do not continuee processing if a featured image does not exist
 			if ( ! has_post_thumbnail( $post_id ) || '' == get_the_post_thumbnail( $post_id ) ) {
@@ -213,7 +213,7 @@ if ( ! class_exists( 'Shoestrap_Image' ) ) {
 				if ( -1 == $image_width ) {
 
 					// If -1 then use max width
-					$args['width'] = apply_filters( 'shoestrap/content_width', 960 );
+					$args['width'] = apply_filters( 'maera/content_width', 960 );
 
 				} else if ( 0 == $image_width ) {
 

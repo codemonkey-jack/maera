@@ -1,27 +1,28 @@
 [
     {
         "name": "composer/installers",
-        "version": "v1.0.13",
-        "version_normalized": "1.0.13.0",
+        "version": "v1.0.15",
+        "version_normalized": "1.0.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/installers.git",
-            "reference": "26d37e307f9aa6e2e81806a6525666f8ab5ba0ff"
+            "reference": "8e6a72a78f6cfd537fde3350720dfdc9ae3c5621"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/installers/zipball/26d37e307f9aa6e2e81806a6525666f8ab5ba0ff",
-            "reference": "26d37e307f9aa6e2e81806a6525666f8ab5ba0ff",
+            "url": "https://api.github.com/repos/composer/installers/zipball/8e6a72a78f6cfd537fde3350720dfdc9ae3c5621",
+            "reference": "8e6a72a78f6cfd537fde3350720dfdc9ae3c5621",
             "shasum": ""
         },
         "replace": {
+            "roundcube/plugin-installer": "*",
             "shama/baton": "*"
         },
         "require-dev": {
             "composer/composer": "1.0.*@dev",
-            "phpunit/phpunit": "3.7.*"
+            "phpunit/phpunit": "4.1.*"
         },
-        "time": "2014-04-09 16:12:43",
+        "time": "2014-06-23 16:25:28",
         "type": "composer-installer",
         "extra": {
             "class": "Composer\\Installers\\Installer",
@@ -51,12 +52,14 @@
         "homepage": "http://composer.github.com/installers/",
         "keywords": [
             "Craft",
+            "Dolibarr",
             "Hurad",
             "MODX Evo",
             "OXID",
             "WolfCMS",
             "agl",
             "annotatecms",
+            "bitrix",
             "cakephp",
             "codeigniter",
             "concrete5",
@@ -73,9 +76,11 @@
             "mako",
             "mediawiki",
             "modulework",
+            "moodle",
             "phpbb",
             "piwik",
             "ppi",
+            "roundcube",
             "shopware",
             "silverstripe",
             "symfony",
@@ -200,28 +205,28 @@
     },
     {
         "name": "symfony/yaml",
-        "version": "v2.4.5",
-        "version_normalized": "2.4.5.0",
+        "version": "v2.5.0",
+        "version_normalized": "2.5.0.0",
         "target-dir": "Symfony/Component/Yaml",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/Yaml.git",
-            "reference": "fd22bb88c3a6f73c898b39bec185a9e211b06265"
+            "reference": "b4b09c68ec2f2727574544ef0173684281a5033c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Yaml/zipball/fd22bb88c3a6f73c898b39bec185a9e211b06265",
-            "reference": "fd22bb88c3a6f73c898b39bec185a9e211b06265",
+            "url": "https://api.github.com/repos/symfony/Yaml/zipball/b4b09c68ec2f2727574544ef0173684281a5033c",
+            "reference": "b4b09c68ec2f2727574544ef0173684281a5033c",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2014-05-12 09:27:48",
+        "time": "2014-05-16 14:25:18",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.4-dev"
+                "dev-master": "2.5-dev"
             }
         },
         "installation-source": "dist",

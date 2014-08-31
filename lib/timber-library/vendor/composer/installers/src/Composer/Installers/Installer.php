@@ -15,12 +15,14 @@ class Installer extends LibraryInstaller
     private $supportedTypes = array(
         'agl'          => 'AglInstaller',
         'annotatecms'  => 'AnnotateCmsInstaller',
+        'bitrix'       => 'BitrixInstaller',
         'cakephp'      => 'CakePHPInstaller',
         'codeigniter'  => 'CodeIgniterInstaller',
         'concrete5'    => 'Concrete5Installer',
         'craft'        => 'CraftInstaller',
         'croogo'       => 'CroogoInstaller',
         'drupal'       => 'DrupalInstaller',
+        'dolibarr'     => 'DolibarrInstaller',
         'elgg'         => 'ElggInstaller',
         'piwik'        => 'PiwikInstaller',
         'fuel'         => 'FuelInstaller',
@@ -34,12 +36,16 @@ class Installer extends LibraryInstaller
         'mako'         => 'MakoInstaller',
         'modxevo'      => 'MODXEvoInstaller',
         'mediawiki'    => 'MediaWikiInstaller',
+        'microweber'    => 'MicroweberInstaller',
         'modulework'   => 'MODULEWorkInstaller',
+        'moodle'       => 'MoodleInstaller',
         'october'      => 'OctoberInstaller',
         'oxid'         => 'OxidInstaller',
         'phpbb'        => 'PhpBBInstaller',
         'piwik'        => 'PiwikInstaller',
+        'pimcore'      => 'PimcoreInstaller',
         'ppi'          => 'PPIInstaller',
+        'roundcube'    => 'RoundcubeInstaller',
         'shopware'     => 'ShopwareInstaller',
         'silverstripe' => 'SilverStripeInstaller',
         'symfony1'     => 'Symfony1Installer',
@@ -49,6 +55,7 @@ class Installer extends LibraryInstaller
         'zikula'       => 'ZikulaInstaller',
         'typo3-flow'   => 'TYPO3FlowInstaller',
         'typo3-cms'    => 'TYPO3CmsInstaller',
+        'tusk'         => 'TuskInstaller',
     );
 
     /**
@@ -95,6 +102,7 @@ class Installer extends LibraryInstaller
         }
 
         $locationPattern = $this->getLocationPattern($frameworkType);
+
         return preg_match('#' . $frameworkType . '-' . $locationPattern . '#', $packageType, $matches) === 1;
     }
 
@@ -131,10 +139,11 @@ class Installer extends LibraryInstaller
         if (!empty($this->supportedTypes[$frameworkType])) {
             $frameworkClass = 'Composer\\Installers\\' . $this->supportedTypes[$frameworkType];
             /** @var BaseInstaller $framework */
-            $framework = new $frameworkClass;
+            $framework = new $frameworkClass(null, $this->composer);
             $locations = array_keys($framework->getLocations());
             $pattern = $locations ? '(' . implode('|', $locations) . ')' : false;
         }
+
         return $pattern ? : '(\w+)';
     }
 }

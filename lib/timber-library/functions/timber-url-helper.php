@@ -1,7 +1,6 @@
 <?php
 
-class TimberURLHelper
-{
+class TimberURLHelper {
 
     /**
      * @return string
@@ -55,13 +54,19 @@ class TimberURLHelper
      * @return string
      */
     public static function get_rel_url($url, $force = false) {
-        if (!strstr($url, $_SERVER['HTTP_HOST']) && !$force) {
+        $url_info = parse_url($url);
+        if (isset($url_info['host']) && $url_info['host'] != $_SERVER['HTTP_HOST'] && !$force) {
             return $url;
         }
-        $url_info = parse_url($url);
-        $link = $url_info['path'];
+        $link = '';
+        if (isset($url_info['path'])){ 
+            $link = $url_info['path'];
+        }
         if (isset($url_info['query']) && strlen($url_info['query'])) {
             $link .= '?' . $url_info['query'];
+        }
+        if (isset($url_info['fragment']) && strlen($url_info['fragment'])) {
+            $link .= '#' . $url_info['fragment'];
         }
         $link = TimberURLHelper::remove_double_slashes($link);
         return $link;
@@ -161,11 +166,24 @@ class TimberURLHelper
     }
 
     /**
+     * Pass links through untrailingslashit unless they are a single /
+     *
+     * @param  string $link
+     * @return string
+     */
+    public static function remove_trailing_slash($link) {
+        if ( $link != "/")
+            $link = untrailingslashit( $link );
+        return $link;
+    }
+
+    /**
      * @param string $url
      * @param int $timeout
      * @return string|WP_Error
+     * @deprecated since 0.20.0
      */
-    public static function download_url($url, $timeout = 300) {
+    static function download_url($url, $timeout = 300) {
         if (!$url) {
             return new WP_Error('http_no_url', __('Invalid URL Provided.'));
         }
@@ -192,7 +210,7 @@ class TimberURLHelper
      * @param int $i
      * @return array
      */
-    public static function get_params($i = -1) {
+    public static function get_params($i = false) {
         $args = explode('/', trim(strtolower($_SERVER['REQUEST_URI'])));
         $newargs = array();
         foreach ($args as $arg) {
@@ -200,12 +218,16 @@ class TimberURLHelper
                 $newargs[] = $arg;
             }
         }
-        if ($i > -1) {
-            if (isset($newargs[$i])) {
-                return $newargs[$i];
-            }
+        if ($i === false){
+            return $newargs;
         }
-        return $newargs;
+        if ($i < 0){
+            //count from end
+            $i = count($newargs) + $i;
+        }
+        if (isset($newargs[$i])) {
+            return $newargs[$i];
+        }
     }
 
 }

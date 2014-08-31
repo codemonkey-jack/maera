@@ -1,7 +1,7 @@
 <?php
 
-if ( ! defined( 'SHOESTRAP_ASSETS_URL' ) ) {
-	define( 'SHOESTRAP_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
+if ( ! defined( 'MAERA_ASSETS_URL' ) ) {
+	define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 }
 
 // If the Timber plugin is not already installed, load it from the theme.
@@ -17,8 +17,9 @@ if ( ! class_exists( 'Kirki' ) ) {
 require_once locate_template( '/lib/breadcrumb-trail.php' );
 require_once locate_template( '/framework/framework.php' );
 require_once locate_template( '/lib/init.php' );
-require_once locate_template( '/lib/class-Shoestrap_Color.php' );
-require_once locate_template( '/lib/class-Shoestrap_Image.php' );
+require_once locate_template( '/lib/class-Maera_Color.php' );
+require_once locate_template( '/lib/class-Maera_Image.php' );
+require_once locate_template( '/lib/class-Maera_Posts.php' );
 require_once locate_template( '/lib/widgets.php' );
 require_once locate_template( '/lib/utils.php' );
 require_once locate_template( '/lib/customizer.php' );
@@ -27,19 +28,19 @@ require_once locate_template( '/lib/admin-page.php' );
 require_once locate_template( '/lib/assets.php' );
 
 if ( ! isset( $content_width ) ) {
-	$content_width = apply_filters( 'shoestrap/content_width', 960 );
+	$content_width = apply_filters( 'maera/content_width', 960 );
 }
 
 /**
  * Add and remove body_class() classes
  */
-function shoestrap_body_class( $classes ) {
+function maera_body_class( $classes ) {
 
 	// Add post/page slug
 	if ( is_single() || is_page() && ! is_front_page() ) {
 
 		$permalink = basename( get_permalink() );
-		$classes[] = shoestrap_transliterate( $permalink );
+		$classes[] = maera_transliterate( $permalink );
 
 	}
 
@@ -56,15 +57,15 @@ function shoestrap_body_class( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'shoestrap_body_class' );
+add_filter( 'body_class', 'maera_body_class' );
 
 
 /**
  * Tell WordPress to use searchform.php from the templates/ directory
  */
-function shoestrap_get_search_form( $form ) {
+function maera_get_search_form( $form ) {
 	$form = '';
 	locate_template( '/searchform.php', true, false );
 	return $form;
 }
-add_filter( 'get_search_form', 'shoestrap_get_search_form' );
+add_filter( 'get_search_form', 'maera_get_search_form' );

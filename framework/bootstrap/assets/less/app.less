@@ -34,10 +34,26 @@ img#site-logo {
 	height: auto;
 }
 
-body.container.boxed {
-	padding-left: 0;
-	padding-right: 0;
-	box-shadow: 0 0 1em 1px rgba(50,50,50,0.1)
+body {
+	overflow-x: hidden;
+	ms-word-wrap: break-word;
+	word-wrap: break-word;
+
+	&.container.boxed {
+		padding-left: 0;
+		padding-right: 0;
+		box-shadow: 0 0 1em 1px rgba(50,50,50,0.1)
+	}
+
+	&.admin-bar.body-nav-fixed-top {
+		#banner-header {
+			top: 32px;
+		}
+	}
+
+	&.body-nav-fixed-top {
+		margin-top: @navbar-height;
+	}
 }
 
 #banner-header {
@@ -50,14 +66,17 @@ body.container.boxed {
 	}
 }
 
-.post-featured-image {
+a.featured-image {
 	margin-right: 1em;
 	float: left;
+	max-width: 100%;
+	margin: @padding-base-vertical 0;
 }
 
 header.page-header {
 	margin-top: 0;
 	margin-bottom: 0;
+	border-bottom: 0;
 }
 
 #wrap-main-section {
@@ -74,4 +93,179 @@ footer.page-footer > #wrap-main-section {
 header.page-header {
     background-color: @header-bg;
     color: @header-color;
+}
+
+#comment-submit {
+	.btn;
+	.btn-primary;
+}
+
+code {
+	display: inline-block;
+	max-width: 100%;
+	white-space: normal;
+	ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+
+.jumbotron,
+.container .jumbotron {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+.post-meta-element {
+	margin-right: @grid-gutter-width;
+}
+
+@media (max-width: @screen-sm) {
+	.col-md-1,
+	.col-md-2,
+	.col-md-3,
+	.col-md-4,
+	.col-md-5,
+	.col-md-6,
+	.col-md-7,
+	.col-md-8,
+	.col-md-9,
+	.col-md-10,
+	.col-md-11,
+	.col-md-12 {
+		float: none !important;
+	}
+}
+
+@media (max-width: @screen-md) {
+	.col-md-1,
+	.col-md-2,
+	.col-md-3,
+	.col-md-4,
+	.col-md-5,
+	.col-md-6,
+	.col-md-7,
+	.col-md-8,
+	.col-md-9,
+	.col-md-10,
+	.col-md-11,
+	.col-md-12,
+	.col-lg-1,
+	.col-lg-2,
+	.col-lg-3,
+	.col-lg-4,
+	.col-lg-5,
+	.col-lg-6,
+	.col-lg-7,
+	.col-lg-8,
+	.col-lg-9,
+	.col-lg-10,
+	.col-lg-11,
+	.col-lg-12 {
+		float: none !important;
+	}
+}
+
+a.brand-logo {
+	h1 {
+		margin: 0;
+	}
+}
+
+ul.nav.navbar-nav.navbar-center {
+	text-align: center;
+	float: none;
+
+	li {
+		float: none;
+		display: inline-block;
+	}
+}
+
+.btn-group.social-share {
+	.social-link {
+		display: none;
+	}
+	&:hover {
+		.social-share-main {
+			border-bottom-right-radius: 0px !important;
+			border-top-right-radius: 0px !important;
+		}
+		a {
+			display: block;
+			width: auto;
+		}
+	}
+}
+
+.navbar-inline-socials {
+	> li {
+		display: inline-block;
+	}
+}
+
+/*---------- Side menu ----------*/
+.admin-bar {
+	#menu-toggle {
+		top: 46px;
+	}
+	#sidebar-wrapper {
+		top: 32px;
+	}
+}
+#sidebar-wrapper {
+    margin-right: -250px;
+    right: 0;
+    top: 0;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    background: @navbar-default-bg;
+}
+#sidebar-wrapper.active {
+    right: 250px;
+    width: 250px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+	-o-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
+}
+.sidebar-nav {
+    position: absolute;
+    top: 15px;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+	    line-height: 40px;
+	    text-indent: 20px;
+	    a {
+		    display: block;
+		    text-decoration: none;
+		}
+		a:hover,
+		a:active,
+		a:focus {
+		    text-decoration: none;
+		}
+	}
+	.sidebar-brand .sitename {
+	    text-align: center;
+	}
+}
+#menu-toggle {
+    top: 0;
+    right: 0;
+    position: fixed;
+    z-index: 1000;
+}
+.toggle {
+    margin: 5px 5px 0px 0px;
 }
