@@ -1,16 +1,34 @@
 @import "vendor/bootstrap/bootstrap.less";
 
-@body_bg_color:'#fff';
+// shoestrap custom LESS variables
+@boxed-container-bg-color: #fff;
+@footer-bg: #fff;
+@footer-color: #333;
+@footer-border: #e3e3e3;
+@header-bg:#fff;
+@header-color:#e3e3e3;
+@nav-font-family: inherit;
+@nav-font-weight: inherit;
+@base-font-weight: 400;
 
+body {
+  font-weight:@base-font-weight;
+}
+body.bootstrap {
+  background-color:@body-bg;
+}
 img {
 	max-width: 100%;
 	height: auto;
-
-	// The size of the logo on the main navbar
-	&#site-logo {
-		max-height: 1em;
-		width: auto;
-	}
+}
+.navbar-header, nav.nav-main {
+  font-family: @nav-font-family;
+  font-weight: @nav-font-weight;
+}
+// The size of the logo on the main navbar
+img#site-logo {
+	max-height: 1em;
+	width: auto;
 }
 
 .wp-caption {
@@ -63,9 +81,20 @@ header.page-header {
 	border-bottom: 0;
 }
 
-#wrap-main-section {
+body.bootstrap #wrap-main-section {
 	padding-top: (@grid-gutter-width / 2);
-    background-color: @body_bg_color;
+    background-color: @boxed-container-bg-color;
+}
+
+footer.page-footer > #wrap-main-section {
+    background-color: @footer-bg;
+    color: @footer-color;
+    padding-bottom: @padding-base-vertical;
+    border-color: @footer-border;
+}
+header.page-header {
+    background-color: @header-bg;
+    color: @header-color;
 }
 
 #comment-submit {
