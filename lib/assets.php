@@ -42,8 +42,6 @@ function maera_scripts() {
         // Load framework less files 
         wp_enqueue_style( 'framework-less-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/less/app.less', false, null, false );
 
-        add_filter('style_loader_tag', 'shoestrap_less_tag_loader', 5, 2);
-
         wp_enqueue_script( 'lessjs-vars' ); 
 
         // Load less.js
