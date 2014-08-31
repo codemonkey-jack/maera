@@ -1,7 +1,6 @@
 @import "vendor/bootstrap/bootstrap.less";
 
 // shoestrap custom LESS variables
-@body_bg_color:#fff;
 @boxed-container-bg-color: #fff;
 @footer-bg: #fff;
 @footer-color: #333;
@@ -12,8 +11,11 @@
 @nav-font-weight: inherit;
 @base-font-weight: 400;
 
-body{
+body {
   font-weight:@base-font-weight;
+}
+body.bootstrap {
+  background-color:@body-bg;
 }
 img {
 	max-width: 100%;
@@ -79,7 +81,7 @@ header.page-header {
 	border-bottom: 0;
 }
 
-#wrap-main-section {
+body.bootstrap #wrap-main-section {
 	padding-top: (@grid-gutter-width / 2);
     background-color: @boxed-container-bg-color;
 }
