@@ -478,8 +478,6 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 
 			$links_lum = $b_p_obj->toLuminosity();
 
-			print_r($body_obj->getDistanceRgbFrom( $b_p_obj ));
-
 			if ( 200 > $body_obj->getDistanceRgbFrom( $b_p_obj ) ) { // Insufficient color difference
 
 				if ( 0.5 < $body_lum ) { // light background
