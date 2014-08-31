@@ -92,3 +92,24 @@ function maera_reset_style_cache_on_customizer_save() {
 
 }
 add_action( 'customize_save_after', 'maera_reset_style_cache_on_customizer_save' );
+
+
+/**
+ * Add customizer scripts for lessjs
+ */
+function shoestrap_customizer_live_preview() {
+
+    global $active_framework;
+
+    // Load framework less files 
+    wp_enqueue_style( 'framework-less-vars', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/less/app.less', false, null, false );
+
+    // Load less.js
+    wp_register_script( 'lessjs', MAERA_ASSETS_URL . '/js/less.min.js', 'lessjs-vars', null, false );
+    wp_enqueue_script( 'lessjs' );
+
+    wp_enqueue_script('shoestrap-customizer-live', get_template_directory_uri() . '/framework/' . $active_framework . '/assets/js/customizer.js', array('jquery', 'customize-preview', 'underscore'), '', true);
+
+}
+
+add_action('customize_preview_init', 'shoestrap_customizer_live_preview');
