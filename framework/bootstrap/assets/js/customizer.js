@@ -13,7 +13,7 @@
         setParentLess: function(prop_name, prop_value){
             window.parent.SSCustomizer.framework_vars[prop_name] = prop_value;
         },
-        parent_customizer_base: window.parent.wp.customize.settings, 
+        parent_customizer_base: window.parent.wp.customize.settings,
         getParentControls: function(){
             return this.parent_customizer_base.controls;
         },
@@ -28,28 +28,40 @@
             var less_vars =  this.getParentLess();
             less.modifyVars(less_vars);
         },
+        triggerSavePublish: function(setting, value) {
+            parent.window.wp.customize(setting, function(obj){
+                obj.set(value);
+            });
+        },
         bindListeners: function(){
             // Get reference to kirki object literal
-            var that = this; 
+            var that = this;
             for(var setting_name in that.getParentControls()){
                 $target = parent.jQuery('input[data-customize-setting-link="'+ setting_name +'"]');
                 if($target.hasClass('kirki-color-picker')) {
                     $target.iris({
-                        change: function(event,ui){ 
+                        change: function(event,ui){
                             var less_var = $(this).data('framework-var');
-                            that.setParentLess(less_var, ui.color.toString());
+                            var _setting = $(this).data('customize-setting-link');
+                            var _val = ui.color.toString();
+                            that.setParentLess(less_var, _val);
                             that.modifyVars();
                             $(this).parent().siblings('.wp-picker-open').attr('style', 'background-color:' + ui.color.toString() + ';');
-                            }
+                            that.triggerSavePublish(_setting, _val);
+                        }
                     });
                 }
                 else if ($target.hasClass('kirki-slider')) {
                     parent.jQuery('#slider_' + setting_name).slider({
                        change:  function(event,ui){
-                            var less_var = $(this).siblings('label').children('input').data('framework-var');
+                            var $_target = $(this).siblings('label').children('input');
+                            var less_var = $_target.data('framework-var');
                             var units = (less_var.indexOf('size') != -1 /*|| less_var.indexOf('height') != -1*/) ? 'px' : '';
-                            if ( less_var !== "undefined" ) that.setParentLess(less_var, ui.value.toString() + units);
+                            var _setting =  $_target.data('customize-setting-link');
+                            var _val = ui.value.toString();
+                            if ( less_var !== "undefined" ) that.setParentLess(less_var, _val + units);
                             that.modifyVars();
+                            that.triggerSavePublish(_setting, _val);
                         }
                     });
                 }
@@ -61,7 +73,7 @@
                           clearTimeout (timer);
                           timer = setTimeout(callback, ms);
                         };
-                    })(); 
+                    })();
 
                     var duplicateFilter=(function(){
                       var lastContent;
@@ -78,19 +90,25 @@
                         delay(function(){
                             duplicateFilter($(me).val(), function(vals) {
                                 var less_var = $(me).data('framework-var');
+                                var _setting = $(me).data('customize-setting-link');
                                 // TODO make setParentLess call modifyVars directly
                                 that.setParentLess(less_var, vals);
                                 that.modifyVars();
+                                that.triggerSavePublish(_setting, vals);
                             });
                         }, 1000);
                     });
                 }
-                else if(setting_name === "gradients_toggle") {
-                    var $link = $("<link type='text/css' rel='stylesheet/less' />");
-                    $link.attr('href', that.getLessDir() + '/gradients.less');
-                    $('head').append($link);
-                    less.sheets.push($link[0]);
-                    less.refresh();
+                else if (setting_name === "gradients_toggle") { // TODO change this to a listener for all relevant toggles if necessary and then check type inside
+                    $target.on("change", function(ev){
+                        // TODO handle removing gradients if already enabled if ($(this).attr('aria-pressed') == true) return;
+                        var $link = $("<link type='text/css' rel='stylesheet/less' />");
+                        $link.attr('href', that.getLessDir() + '/gradients.less');
+                        $('head').append($link);
+                        less.sheets.push($link[0]);
+                        less.refresh();
+                        that.triggerSavePublish("gradients_toggle", "")
+                    });
                 }
             }
         },
