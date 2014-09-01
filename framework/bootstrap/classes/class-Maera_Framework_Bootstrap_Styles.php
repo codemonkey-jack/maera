@@ -394,9 +394,10 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			if ( $font_base_google == 1 ) {
 
 				$font_base_family = str_replace( ' ', '+', get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' ) );
+				$font_base_weight = get_theme_mod( 'font_base_weight', 400 );
 				$font_base_google_subsets = get_theme_mod( 'font_base_google_subsets', 'latin' );
 
-				wp_register_style( 'maera_base_google_font', 'http://fonts.googleapis.com/css?family=' . $font_base_family . '&subset=' . $font_base_google_subsets );
+				wp_register_style( 'maera_base_google_font', 'http://fonts.googleapis.com/css?family=' . $font_base_family . ':' . $font_base_weight . '&subset=latin,' . $font_base_google_subsets );
 		 		wp_enqueue_style( 'maera_base_google_font' );
 
 			}
@@ -405,9 +406,10 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			if ( $font_headers_google == 1 ) {
 
 				$font_headers_family = str_replace( ' ', '+', get_theme_mod( 'headers_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' ) );
+				$font_headers_weight = get_theme_mod( 'font_headers_weight', 400 );
 				$font_headers_google_subsets = get_theme_mod( 'font_headers_google_subsets', 'latin' );
 
-				wp_register_style( 'maera_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.'&subset='.$font_headers_google_subsets );
+				wp_register_style( 'maera_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.':' . $font_headers_weight . '&subset=latin,'.$font_headers_google_subsets );
 		 		wp_enqueue_style( 'maera_headers_google_font' );
 
 			}
