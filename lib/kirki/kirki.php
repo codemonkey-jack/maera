@@ -30,6 +30,9 @@ class Kirki {
 		// Include the controls initialization script
 		include_once( dirname( __FILE__ ) . '/includes/controls/controls-init.php' );
 
+		// Include the fonts initialization scripts.
+		include_once( dirname( __FILE__ ) . '/includes/functions/class-Kirki_Fonts.php' );
+
 		add_action( 'customize_register', array( $this, 'include_files' ), 1 );
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );

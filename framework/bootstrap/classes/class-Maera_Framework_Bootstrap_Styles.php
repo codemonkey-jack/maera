@@ -388,31 +388,24 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 		*/
 		function google_font() {
 
-			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
-			$font_headers_google = get_theme_mod( 'headers_font_google', 0 );
+			$default_font = '"Helvetica Neue",Helvetica,Arial,sans-serif';
 
-			if ( $font_base_google == 1 ) {
+			$font_families = array(
+				str_replace( ' ', '+', get_theme_mod( 'font_base_family', $default_font ) ),
+				str_replace( ' ', '+', get_theme_mod( 'headers_font_family', $default_font ) ),
+				str_replace( ' ', '+', get_theme_mod( 'font_jumbotron_font_family', $default_font ) ),
+				str_replace( ' ', '+', get_theme_mod( 'font_menus_font_family', $default_font ) ),
+			);
 
-				$font_base_family = str_replace( ' ', '+', get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' ) );
-				$font_base_weight = get_theme_mod( 'font_base_weight', 400 );
-				$font_base_google_subsets = get_theme_mod( 'font_base_google_subsets', 'latin' );
+			$font_weights = array(
+				get_theme_mod( 'font_base_weight', 400 ),
+				get_theme_mod( 'font_headers_weight', 400 ),
+			);
 
-				wp_register_style( 'maera_base_google_font', 'http://fonts.googleapis.com/css?family=' . $font_base_family . ':' . $font_base_weight . '&subset=latin,' . $font_base_google_subsets );
-		 		wp_enqueue_style( 'maera_base_google_font' );
+			$font_subsets = get_theme_mod( 'font_subsets', 'latin' );
 
-			}
-
-
-			if ( $font_headers_google == 1 ) {
-
-				$font_headers_family = str_replace( ' ', '+', get_theme_mod( 'headers_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' ) );
-				$font_headers_weight = get_theme_mod( 'font_headers_weight', 400 );
-				$font_headers_google_subsets = get_theme_mod( 'font_headers_google_subsets', 'latin' );
-
-				wp_register_style( 'maera_headers_google_font', 'http://fonts.googleapis.com/css?family='.$font_headers_family.':' . $font_headers_weight . '&subset=latin,'.$font_headers_google_subsets );
-		 		wp_enqueue_style( 'maera_headers_google_font' );
-
-			}
+			wp_register_style( 'maera_google_font', Kirki_Fonts::get_google_font_uri( $font_families, $font_weights, $font_subsets ) );
+	 		wp_enqueue_style( 'maera_google_font' );
 
 		}
 

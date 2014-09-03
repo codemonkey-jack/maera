@@ -442,22 +442,13 @@ function maera_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'text',
+		'type'     => 'select',
 		'setting'  => 'font_menus_font_family',
 		'label'    => __( 'Menus font', 'maera' ),
 		'section'  => 'typo_nav',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 40,
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'font_menus_google',
-		'label'    => __( 'Google-Font', 'maera' ),
-		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'maera' ),
-		'section'  => 'typo_nav',
-		'default'  => 0,
-		'priority' => 41,
+		'choices'  => Kirki_Fonts::get_font_choices(),
 	);
 
 	$controls[] = array(
@@ -620,41 +611,24 @@ function maera_customizer_settings( $controls ) {
 	//-------------------------------------------------
 
 	$controls[] = array(
-		'type'     => 'text',
+		'type'     => 'select',
 		'setting'  => 'font_base_family',
 		'label'    => __( 'Base font', 'maera' ),
 		'section'  => 'typo_base',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'font_base_google',
-		'label'    => __( 'Google-Font', 'maera' ),
-		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'maera' ),
-		'section'  => 'typo_base',
-		'default'  => 0,
-		'priority' => 21,
+		'choices'  => Kirki_Fonts::get_font_choices(),
 	);
 
 	$controls[] = array(
 		'type'     => 'multicheck',
-		'setting'  => 'font_base_google_subsets',
+		'setting'  => 'font_subsets',
 		'label'    => __( 'Google-Font subsets', 'maera' ),
 		'description' => __( 'The subsets used from Google\'s API.', 'maera' ),
 		'section'  => 'typo_base',
 		'default'  => 'latin',
 		'priority' => 22,
-		'choices'  => array(
-			'latin' 		=> __( 'Latin', 'maera' ),
-			'latin-ext' 	=> __( 'Latin Ext.', 'maera' ),
-			'greek' 		=> __( 'Greek', 'maera' ),
-			'greek-ext' 	=> __( 'Greek Ext.', 'maera' ),
-			'cyrillic' 		=> __( 'Cyrillic', 'maera' ),
-			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'maera' ),
-			'vietnamese' 	=> __( 'Vietnamese', 'maera' ),
-		),
+		'choices'  => Kirki_Fonts::get_google_font_subsets(),
 	);
 
 	$controls[] = array(
@@ -700,22 +674,13 @@ function maera_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'text',
+		'type'     => 'select',
 		'setting'  => 'headers_font_family',
 		'label'    => __( 'Font-Family', 'maera' ),
 		'section'  => 'typo_headers',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 30,
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'headers_font_google',
-		'label'    => __( 'Google-Font', 'maera' ),
-		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'maera' ),
-		'section'  => 'typo_headers',
-		'default'  => 0,
-		'priority' => 31,
+		'choices'  => Kirki_Fonts::get_font_choices(),
 	);
 
 	$controls[] = array(
@@ -726,15 +691,7 @@ function maera_customizer_settings( $controls ) {
 		'section'  => 'typo_headers',
 		'default'  => 'latin',
 		'priority' => 32,
-		'choices'  => array(
-			'latin' 		=> __( 'Latin', 'maera' ),
-			'latin-ext' 	=> __( 'Latin Ext.', 'maera' ),
-			'greek' 		=> __( 'Greek', 'maera' ),
-			'greek-ext' 	=> __( 'Greek Ext.', 'maera' ),
-			'cyrillic' 		=> __( 'Cyrillic', 'maera' ),
-			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'maera' ),
-			'vietnamese' 	=> __( 'Vietnamese', 'maera' ),
-		),
+		'choices'  => Kirki_Fonts::get_google_font_subsets(),
 	);
 
 	$controls[] = array(
@@ -988,12 +945,13 @@ function maera_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'text',
+		'type'     => 'select',
 		'setting'  => 'font_jumbotron_font_family',
 		'label'    => __( 'Jumbotron font', 'maera' ),
 		'section'  => 'typo_jumbo',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
+		'choices'  => Kirki_Fonts::get_font_choices(),
 	);
 
 	$controls[] = array(
