@@ -470,19 +470,29 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			$style .= 'h5, .h5 { font-size: ' . intval( ( 100 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 			$style .= 'h6, .h6 { font-size: ' . intval( ( 85 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 
-			// // Navigation font
-			// $navbar_font_family = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
-			// $navbar_obj = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
+			// Navigation font
+			$navbar_font_family = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
+			$navbar_obj = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
 
-			// $style .= '.navbar{';
-			// $style .= 'font-family: ' . $navbar_font_family . ';';
-			// $style .= 'color: ' .$font_base_color . ';';
-			// $style .= 'font-weight: ' . get_theme_mod( 'font_headers_weight', 400 ) . ';';
-			// $style .= 'line-height: ' . get_theme_mod( 'font_headers_height', 1.1 ) . ';';
-			// $style .= '}';
+			$style .= '.navbar{';
+			$style .= 'font-family: ' . $navbar_font_family . ';';
+			$style .= 'font-weight: ' . get_theme_mod( 'font_headers_weight', 400 ) . ';';
+			$style .= 'line-height: ' . get_theme_mod( 'font_headers_height', 1.1 ) . ';';
+			$style .= '}';
 
-			$links_color = $b_p_obj->getReadableContrastingColor( $body_obj, 1.7 );
+			// Navigation font
+			$jumbotron_font_family = get_theme_mod( 'font_jumbotron_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
+			$jumbotron_obj = new Jetpack_Color( get_theme_mod( 'jumbo_bg', '#ffffff' ) );
 
+			$style .= '.jumbotron{';
+			$style .= 'color: ' . '#' . $body_obj->getGrayscaleContrastingColor(10)->toHex() . ';';
+			$style .= 'font-family: ' . $navbar_font_family . ';';
+			$style .= 'font-weight: ' . get_theme_mod( 'font_jumbotron_weight', 400 ) . ';';
+			$style .= 'line-height: ' . get_theme_mod( 'font_jumbotron_height', 1.1 ) . ';';
+			$style .= '}';
+
+			// Make sure links are readable
+			$links_color = $b_p_obj->getReadableContrastingColor( $body_obj, 2 );
 			// Use "body a" instead of plain "a" to override the defaults
 			$style .= 'body a, body a:visited, body a:hover { color: #' . $links_color->toHex() . ';}';
 
