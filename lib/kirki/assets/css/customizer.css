@@ -107,3 +107,10 @@ li.customize-control.customize-control-group_title {
   border-bottom: 1px solid #dedede;
   border-top: 1px solid #dedede;
 }
+
+#maera-loader-overlay {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}

@@ -86,11 +86,13 @@ body.bootstrap #wrap-main-section {
     background-color: @boxed-container-bg-color;
 }
 
-footer.page-footer > #wrap-main-section {
+footer.page-footer {
+    &, & > #wrap-main-section {
     background-color: @footer-bg;
     color: @footer-color;
     padding-bottom: @padding-base-vertical;
     border-color: @footer-border;
+    }
 }
 header.page-header {
     background-color: @header-bg;
