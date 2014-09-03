@@ -470,20 +470,21 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			$style .= 'h5, .h5 { font-size: ' . intval( ( 100 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 			$style .= 'h6, .h6 { font-size: ' . intval( ( 85 / 215 ) * get_theme_mod( 'font_headers_size', 215 ) ) . '%; }';
 
-			$links_lum = $b_p_obj->toLuminosity();
+			// // Navigation font
+			// $navbar_font_family = get_theme_mod( 'font_menus_font_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
+			// $navbar_obj = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
 
-			if ( 200 > $body_obj->getDistanceRgbFrom( $b_p_obj ) ) { // Insufficient color difference
+			// $style .= '.navbar{';
+			// $style .= 'font-family: ' . $navbar_font_family . ';';
+			// $style .= 'color: ' .$font_base_color . ';';
+			// $style .= 'font-weight: ' . get_theme_mod( 'font_headers_weight', 400 ) . ';';
+			// $style .= 'line-height: ' . get_theme_mod( 'font_headers_height', 1.1 ) . ';';
+			// $style .= '}';
 
-				if ( 0.5 < $body_lum ) { // light background
-					$links_color = $b_p_obj->darken(50)->toHex();
-				} else { // dark background
-					$links_color = $b_p_obj->lighten(50)->toHex();
-				}
+			$links_color = $b_p_obj->getReadableContrastingColor( $body_obj, 1.7 );
 
-				// Use "body a" instead of plain "a" to override the defaults
-				$style .= 'body a { color: #' . $links_color . ';}';
-
-			}
+			// Use "body a" instead of plain "a" to override the defaults
+			$style .= 'body a, body a:visited, body a:hover { color: #' . $links_color->toHex() . ';}';
 
 			return $style;
 
