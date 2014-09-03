@@ -505,52 +505,52 @@ function maera_customizer_settings( $controls ) {
 		'section'  => 'colors',
 		'default'  => '#428bca',
 		'priority' => 1,
-        'framework_var' => '@brand-primary'
+		'framework_var' => '@brand-primary'
 	);
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'color_brand_info',
-		'label'    => __( 'Brand Colors: Info', 'maera' ),
-		'description' =>  __( 'Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \'info\' class.', 'maera' ),
-		'section'  => 'colors',
-		'default'  => '#5bc0de',
-		'priority' => 2,
-        'framework_var' => '@brand-info'
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'color_brand_info',
+	// 	'label'    => __( 'Brand Colors: Info', 'maera' ),
+	// 	'description' =>  __( 'Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \'info\' class.', 'maera' ),
+	// 	'section'  => 'colors',
+	// 	'default'  => '#5bc0de',
+	// 	'priority' => 2,
+	// 	'framework_var' => '@brand-info'
+	// );
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'color_brand_success',
-		'label'    => __( 'Brand Colors: Success', 'maera' ),
-		'description' =>  __( 'Select your branding color for success messages etc.', 'maera' ),
-		'section'  => 'colors',
-		'default'  => '#5cb85c',
-		'priority' => 3,
-        'framework_var' => '@brand-success'
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'color_brand_success',
+	// 	'label'    => __( 'Brand Colors: Success', 'maera' ),
+	// 	'description' =>  __( 'Select your branding color for success messages etc.', 'maera' ),
+	// 	'section'  => 'colors',
+	// 	'default'  => '#5cb85c',
+	// 	'priority' => 3,
+	// 	'framework_var' => '@brand-success'
+	// );
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'color_brand_warning',
-		'label'    => __( 'Brand Colors: Warning', 'maera' ),
-		'description' =>  __( 'Select your branding color for warning messages etc.', 'maera' ),
-		'section'  => 'colors',
-		'default'  => '#f0ad4e',
-		'priority' => 4,
-        'framework_var' => '@brand-warning'
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'color_brand_warning',
+	// 	'label'    => __( 'Brand Colors: Warning', 'maera' ),
+	// 	'description' =>  __( 'Select your branding color for warning messages etc.', 'maera' ),
+	// 	'section'  => 'colors',
+	// 	'default'  => '#f0ad4e',
+	// 	'priority' => 4,
+	// 	'framework_var' => '@brand-warning'
+	// );
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'color_brand_danger',
-		'label'    => __( 'Brand Colors: Danger', 'maera' ),
-		'description' =>  __( 'Select your branding color for danger messages etc.', 'maera' ),
-		'section'  => 'colors',
-		'default'  => '#d9534f',
-		'priority' => 5,
-        'framework_var' => '@brand-danger'
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'color_brand_danger',
+	// 	'label'    => __( 'Brand Colors: Danger', 'maera' ),
+	// 	'description' =>  __( 'Select your branding color for danger messages etc.', 'maera' ),
+	// 	'section'  => 'colors',
+	// 	'default'  => '#d9534f',
+	// 	'priority' => 5,
+	// 	'framework_var' => '@brand-danger'
+	// );
 
 	$controls[] = array(
 		'type'     => 'radio',
@@ -952,25 +952,6 @@ function maera_customizer_settings( $controls ) {
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
 		'choices'  => Kirki_Fonts::get_font_choices(),
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'font_jumbotron_google',
-		'label'    => __( 'Google-Font', 'maera' ),
-		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'maera' ),
-		'section'  => 'typo_jumbo',
-		'default'  => 0,
-		'priority' => 21,
-	);
-
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'font_jumbotron_color',
-		'description' =>   __( 'Font Color', 'maera' ),
-		'section'  => 'typo_jumbo',
-		'default'  => '#333333',
-		'priority' => 22,
 	);
 
 	$controls[] = array(
