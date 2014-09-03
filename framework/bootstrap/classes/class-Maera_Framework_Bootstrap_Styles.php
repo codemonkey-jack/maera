@@ -209,21 +209,25 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 			$brand_primary     = '#' . str_replace( '#', '', $b_p_obj->toHex() );
 			$brand_primary_lum = $b_p_obj->toLuminosity();
 
-			$b_s_obj           = new Jetpack_Color( get_theme_mod( 'color_brand_success', '#5cb85c' ) );
-			$brand_success     = '#' . str_replace( '#', '', $b_s_obj->toHex() );
+			$color_success     = new Jetpack_Color( '#5cb85c' );
+			$brand_success     = '#' . str_replace( '#', '', $color_success->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
+			$b_s_obj           = new Jetpack_Color( $brand_success );
 			$brand_success_lum = $b_s_obj->toLuminosity();
 
-			$b_w_obj           = new Jetpack_Color( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) );
-			$brand_warning     = '#' . str_replace( '#', '', $b_w_obj->toHex() );
+			$color_warning     = new Jetpack_Color( '#f0ad4e' );
+			$brand_warning     = '#' . str_replace( '#', '', $color_warning->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
+			$b_w_obj           = new Jetpack_Color( $brand_warning );
 			$brand_warning_lum = $b_w_obj->toLuminosity();
 
-			$b_d_obj          = new Jetpack_Color( get_theme_mod( 'color_brand_danger', '#d9534f' ) );
-			$brand_danger     = '#' . str_replace( '#', '', $b_d_obj->toHex() );
-			$brand_danger_lum = $b_d_obj->toLuminosity();
+			$color_danger      = new Jetpack_Color( '#d9534f' );
+			$brand_danger      = '#' . str_replace( '#', '', $color_danger->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
+			$b_d_obj           = new Jetpack_Color( $brand_danger );
+			$brand_danger_lum  = $b_d_obj->toLuminosity();
 
-			$b_i_obj        = new Jetpack_Color( get_theme_mod( 'color_brand_info', '#5bc0de' ) );
-			$brand_info     = '#' . str_replace( '#', '', $b_i_obj->toHex() );
-			$brand_info_lum = $b_i_obj->toLuminosity();
+			$color_info        = new Jetpack_Color( '#5bc0de' );
+			$brand_info        = '#' . str_replace( '#', '', $color_info->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
+			$b_i_obj           = new Jetpack_Color( $color_info );
+			$brand_info_lum    = $b_i_obj->toLuminosity();
 
 			$link_hover_color = ( 0.3 < $brand_primary_lum ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
@@ -568,31 +572,41 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 				return $style;
 			}
 
-			$color_obj     = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
-			$brand_primary = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$body_obj  = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
 
-			$color_obj     = new Jetpack_Color( get_theme_mod( 'color_brand_success', '#5cb85c' ) );
-			$brand_success = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$color_primary = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
+			$brand_primary = '#' . str_replace( '#', '', $color_primary->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
 
-			$color_obj     = new Jetpack_Color( get_theme_mod( 'color_brand_warning', '#f0ad4e' ) );
-			$brand_warning = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$color_success = new Jetpack_Color( '#5cb85c' );
+			$brand_success = '#' . str_replace( '#', '', $color_success->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
 
-			$color_obj    = new Jetpack_Color( get_theme_mod( 'color_brand_danger', '#d9534f' ) );
-			$brand_danger = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$color_warning = new Jetpack_Color( '#f0ad4e' );
+			$brand_warning = '#' . str_replace( '#', '', $color_warning->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
 
-			$color_obj  = new Jetpack_Color( get_theme_mod( 'color_brand_info', '#5bc0de' ) );
-			$brand_info = '#' . str_replace( '#', '', $color_obj->toHex() );
+			$color_danger = new Jetpack_Color( '#d9534f' );
+			$brand_danger = '#' . str_replace( '#', '', $color_danger->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
+
+			$color_info = new Jetpack_Color( '#5bc0de' );
+			$brand_info = '#' . str_replace( '#', '', $color_info->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
 
 			$style .= 'a { color: ' . $brand_primary . '; }';
+
 			$style .= '.text-primary { color: ' . $brand_primary . '; }';
 			$style .= '.bg-primary { background-color: ' . $brand_primary . '; }';
 			$style .= '.btn-primary { background-color: ' . $brand_primary . '; }';
 			$style .= '.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active { background-color: ' . $brand_primary . '; }';
 			$style .= '.btn-primary .badge { color: ' . $brand_primary . '; }';
+
 			$style .= '.btn-link { color: ' . $brand_primary . '; }';
 			$style .= '.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus { background-color: ' . $brand_primary . '; }';
 			$style .= '.pagination > li > a, .pagination > li > span { color: ' . $brand_primary . '; }';
 			$style .= '.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus { background-color: ' . $brand_primary . '; border-color: ' . $brand_primary . '; }';
+
+			$style .= '.text-success { color: ' . $brand_success . '; }';
+			$style .= '.bg-success { background-color: ' . $brand_success . '; }';
+			$style .= '.btn-success { background-color: ' . $brand_success . '; }';
+			$style .= '.btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success[disabled].active, fieldset[disabled] .btn-success.active { background-color: ' . $brand_success . '; }';
+			$style .= '.btn-success .badge { color: ' . $brand_success . '; }';
 
 			$style .= '.text-info { color: ' . $brand_info . '; }';
 			$style .= '.bg-info { background-color: ' . $brand_info . '; }';
