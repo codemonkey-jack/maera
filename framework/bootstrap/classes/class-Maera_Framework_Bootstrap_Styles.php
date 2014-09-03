@@ -443,7 +443,6 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 
 			// Base font settings
 			$font_base_family    = get_theme_mod( 'font_base_family', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
-			$font_base_google    = get_theme_mod( 'font_base_google', 0 );
 			// TODO: use getReadableContrastingColor() from Jetpack_Color class.
 			// See https://github.com/Automattic/jetpack/issues/1068
 			$font_base_color     = '#' . $body_obj->getGrayscaleContrastingColor(10)->toHex();
