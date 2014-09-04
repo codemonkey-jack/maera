@@ -13,10 +13,10 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Widgets' ) ) {
 		public function __construct() {
 
 			add_action( 'maera/top-bar/before', array( $this, 'extra_widgets_body_top' ) );
-			add_action( 'maera/wrap/before', array( $this, 'extra_widgets_pre_header' ), 3 );
+			add_action( 'maera/extra_header/before', array( $this, 'extra_widgets_pre_header' ), 3 );
 			add_action( 'maera/extra_header/widgets', array( $this, 'extra_widgets_header' ) );
 			add_action( 'maera/extra_header/after', array( $this, 'extra_widgets_post_header' ) );
-			add_action( 'maera/jumbotron', array( $this, 'extra_widgets_jumbotron' ) );
+			add_action( 'maera/jumbotron/content', array( $this, 'extra_widgets_jumbotron' ) );
 			add_action( 'maera/wrap/before', array( $this, 'extra_widgets_pre_content' ) );
 			add_action( 'maera/content/before', array( $this, 'extra_widgets_pre_main' ) );
 			add_action( 'maera/content/after', array( $this, 'extra_widgets_post_main' ) );

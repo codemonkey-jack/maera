@@ -532,7 +532,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Structure' ) ) {
 			$nocontainer  = get_theme_mod( 'jumbotron_nocontainer', 0 );
 
 			// $hero = ( ( ( 1 == $visibility && is_front_page() ) || 1 != $visibility ) && is_active_sidebar( 'jumbotron' ) ) ? true : false;
-			$hero = ( is_active_sidebar( 'jumbotron' ) ) ? true : false;
+			$hero = ( has_action( 'maera/jumbotron/content' ) ) ? true : false;
 
 			if ( $hero ) : ?>
 
@@ -548,7 +548,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Structure' ) ) {
 						<div class="container">
 					<?php endif; ?>
 
-						<?php do_action( 'maera/jumbotron' ); ?>
+						<?php do_action( 'maera/jumbotron/content' ); ?>
 
 					<?php if ( ( 1 != $nocontainer && 'wide' == $site_style ) || 'boxed' == $site_style ) : ?>
 						</div>
@@ -570,6 +570,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Structure' ) ) {
 		function header_html() { ?>
 
 			<?php if ( 0 != get_theme_mod( 'header_widgets_nr', 0 ) ) : ?>
+				<?php do_action( 'maera/extra_header/before' ); ?>
 
 				<header class="page-header">
 
@@ -583,7 +584,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Structure' ) ) {
 								<div class="container">
 							<?php endif; ?>
 
-							<?php do_action( 'shoetrap/extra_header/widgets' ); ?>
+							<?php do_action( 'maera/extra_header/widgets' ); ?>
 
 							<?php if ( 'wide' == get_theme_mod( 'site_style', 'wide' ) ) : ?>
 								</div>
@@ -596,10 +597,9 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Structure' ) ) {
 					<?php endif; ?>
 
 				</header>
+				<?php do_action( 'maera/extra_header/after' ); ?>
 
-			<?php endif; ?>
-
-			<?php do_action( 'shoetrap/extra_header/after' );
+			<?php endif;
 
 		}
 

@@ -32,12 +32,15 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Structure.php' );
 
 			// Instantianate addon classes
-			$widgets   = new Maera_Framework_Bootstrap_Widgets();
-			$styles    = new Maera_Framework_Bootstrap_Styles();
-			$structure = new Maera_Framework_Bootstrap_Structure();
+			global $bs_structure;
+			$bs_structure = new Maera_Framework_Bootstrap_Structure();
+			global $bs_widgets;
+			$bs_widgets   = new Maera_Framework_Bootstrap_Widgets();
+			global $bs_styles;
+			$bs_styles    = new Maera_Framework_Bootstrap_Styles();
 
 			global $extra_widget_areas;
-			$extra_widget_areas = $widgets->extra_widget_areas_array();
+			$extra_widget_areas = $bs_widgets->extra_widget_areas_array();
 
 			// Instantianate the compiler and pass the framework's properties to it
 			$compiler = new Maera_Compiler( array(
