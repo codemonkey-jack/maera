@@ -61,25 +61,6 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Widgets' ) ) {
 		 */
 		function widget_areas() {
 
-			register_sidebar( array(
-				'name'          => __( 'Header Area', 'maera' ),
-				'id'            => 'header_area',
-				'before_widget' => '<div>',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1>',
-				'after_title'   => '</h1>',
-			) );
-
-			register_sidebar( array(
-				'name'          => __( 'In-Navbar Widget Area', 'maera' ),
-				'id'            => 'navbar',
-				'description'   => __( 'This widget area will show up in your NavBars. This is most useful when using a static-left navbar.', 'maera' ),
-				'before_widget' => '<div id="in-navbar">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1>',
-				'after_title'   => '</h1>',
-			) );
-
 			$areas = $this->extra_widget_areas_array();
 
 			$class        = apply_filters( 'maera/widgets/class', '' );
