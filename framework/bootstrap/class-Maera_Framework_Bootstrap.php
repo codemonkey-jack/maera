@@ -178,7 +178,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 		 * The site logo.
 		 * If no custom logo is uploaded, use the sitename
 		 */
-		function logo( $fallback ) {
+		function logo( $fallback = null ) {
 
 			$logo = get_theme_mod( 'logo', '' );
 
