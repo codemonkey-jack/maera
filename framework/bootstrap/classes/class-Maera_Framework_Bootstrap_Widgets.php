@@ -408,3 +408,57 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Widgets' ) ) {
 	}
 
 }
+
+/**
+ * Adds Maera Logo widget.
+ */
+class Maera_Logo_Widget extends WP_Widget {
+
+	/**
+	 * Register widget with WordPress.
+	 */
+	function __construct() {
+		parent::__construct(
+			'maera_logo',
+			__( 'Logo (Maera Bootstrap)', 'maera' ),
+			array( 'description' => __( 'The logo you have specified in the Customizer', 'maera' ), )
+		);
+	}
+
+	/**
+	 * Front-end display of widget.
+	 *
+	 * @see WP_Widget::widget()
+	 *
+	 * @param array $args     Widget arguments.
+	 * @param array $instance Saved values from database.
+	 */
+	public function widget( $args, $instance ) {
+
+		$logo = get_theme_mod( 'logo', '' );
+
+		if ( $logo ) {
+			echo '<img id="brand-logo" src="' . $logo . '" alt="' . get_bloginfo( 'name' ) .'">';
+		}
+
+	}
+
+	/**
+	 * Back-end widget form.
+	 *
+	 * @see WP_Widget::form()
+	 *
+	 * @param array $instance Previously saved values from database.
+	 */
+	public function form( $instance ) {
+
+		_e( 'This widget has no options. Its only function is to print the site logo, as defined in the theme customizer. You can use this wherever you need, particularly useful in the header widget areas, or to accomplish alternative site layouts', 'maera' );
+
+	}
+
+}
+
+function register_maera_logo_widget() {
+    register_widget( 'Maera_Logo_Widget' );
+}
+add_action( 'widgets_init', 'register_maera_logo_widget' );
