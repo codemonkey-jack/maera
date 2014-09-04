@@ -13,10 +13,10 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Widgets' ) ) {
 		public function __construct() {
 
 			add_action( 'maera/top-bar/before', array( $this, 'extra_widgets_body_top' ) );
-			add_action( 'maera/wrap/before', array( $this, 'extra_widgets_pre_header' ), 3 );
+			add_action( 'maera/extra_header/before', array( $this, 'extra_widgets_pre_header' ), 3 );
 			add_action( 'maera/extra_header/widgets', array( $this, 'extra_widgets_header' ) );
 			add_action( 'maera/extra_header/after', array( $this, 'extra_widgets_post_header' ) );
-			add_action( 'maera/jumbotron', array( $this, 'extra_widgets_jumbotron' ) );
+			add_action( 'maera/jumbotron/content', array( $this, 'extra_widgets_jumbotron' ) );
 			add_action( 'maera/wrap/before', array( $this, 'extra_widgets_pre_content' ) );
 			add_action( 'maera/content/before', array( $this, 'extra_widgets_pre_main' ) );
 			add_action( 'maera/content/after', array( $this, 'extra_widgets_post_main' ) );
@@ -60,25 +60,6 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Widgets' ) ) {
 		 * Register sidebars and widgets
 		 */
 		function widget_areas() {
-
-			register_sidebar( array(
-				'name'          => __( 'Header Area', 'maera' ),
-				'id'            => 'header_area',
-				'before_widget' => '<div>',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1>',
-				'after_title'   => '</h1>',
-			) );
-
-			register_sidebar( array(
-				'name'          => __( 'In-Navbar Widget Area', 'maera' ),
-				'id'            => 'navbar',
-				'description'   => __( 'This widget area will show up in your NavBars. This is most useful when using a static-left navbar.', 'maera' ),
-				'before_widget' => '<div id="in-navbar">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1>',
-				'after_title'   => '</h1>',
-			) );
 
 			$areas = $this->extra_widget_areas_array();
 
@@ -427,3 +408,57 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Widgets' ) ) {
 	}
 
 }
+
+/**
+ * Adds Maera Logo widget.
+ */
+class Maera_Logo_Widget extends WP_Widget {
+
+	/**
+	 * Register widget with WordPress.
+	 */
+	function __construct() {
+		parent::__construct(
+			'maera_logo',
+			__( 'Logo (Maera Bootstrap)', 'maera' ),
+			array( 'description' => __( 'The logo you have specified in the Customizer', 'maera' ), )
+		);
+	}
+
+	/**
+	 * Front-end display of widget.
+	 *
+	 * @see WP_Widget::widget()
+	 *
+	 * @param array $args     Widget arguments.
+	 * @param array $instance Saved values from database.
+	 */
+	public function widget( $args, $instance ) {
+
+		$logo = get_theme_mod( 'logo', '' );
+
+		if ( $logo ) {
+			echo '<img id="brand-logo" src="' . $logo . '" alt="' . get_bloginfo( 'name' ) .'">';
+		}
+
+	}
+
+	/**
+	 * Back-end widget form.
+	 *
+	 * @see WP_Widget::form()
+	 *
+	 * @param array $instance Previously saved values from database.
+	 */
+	public function form( $instance ) {
+
+		_e( 'This widget has no options. Its only function is to print the site logo, as defined in the theme customizer. You can use this wherever you need, particularly useful in the header widget areas, or to accomplish alternative site layouts', 'maera' );
+
+	}
+
+}
+
+function register_maera_logo_widget() {
+    register_widget( 'Maera_Logo_Widget' );
+}
+add_action( 'widgets_init', 'register_maera_logo_widget' );
