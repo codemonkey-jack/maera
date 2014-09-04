@@ -531,10 +531,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Structure' ) ) {
 			// $visibility   = get_theme_mod( 'jumbotron_visibility', 1 );
 			$nocontainer  = get_theme_mod( 'jumbotron_nocontainer', 0 );
 
-			// $hero = ( ( ( 1 == $visibility && is_front_page() ) || 1 != $visibility ) && is_active_sidebar( 'jumbotron' ) ) ? true : false;
-			$hero = ( has_action( 'maera/jumbotron/content' ) ) ? true : false;
-
-			if ( $hero ) : ?>
+			if ( 0 != get_theme_mod( 'jumbotron_widgets_nr', 0 ) ) : ?>
 
 				<div class="clearfix"></div>
 
