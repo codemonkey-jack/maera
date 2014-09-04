@@ -17,6 +17,7 @@ require_once locate_template( '/lib/widgets.php' );
 require_once locate_template( '/lib/utils.php' );
 require_once locate_template( '/lib/customizer.php' );
 require_once locate_template( '/lib/admin-page.php' );
+require_once locate_template( '/lib/updater/updater.php' );
 
 require_once locate_template( '/lib/assets.php' );
 
