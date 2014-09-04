@@ -410,7 +410,6 @@ function maera_customizer_settings( $controls ) {
 		'section'  => 'nav_bg',
 		'default'  => '#f8f8f8',
 		'priority' => 30,
-        'framework_var' => '@navbar-default-bg'
 	);
 
 	$controls[] = array(
@@ -425,7 +424,6 @@ function maera_customizer_settings( $controls ) {
 			'max'  => 100,
 			'step' => 1,
 		),
-        //'framework_var' => '@navbar-bg-opacity',
 	);
 
 	$controls[] = array(
@@ -444,23 +442,13 @@ function maera_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'text',
+		'type'     => 'select',
 		'setting'  => 'font_menus_font_family',
 		'label'    => __( 'Menus font', 'maera' ),
 		'section'  => 'typo_nav',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 40,
-        'framework_var' => '@nav-font-family',
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'font_menus_google',
-		'label'    => __( 'Google-Font', 'maera' ),
-		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'maera' ),
-		'section'  => 'typo_nav',
-		'default'  => 0,
-		'priority' => 41,
+		'choices'  => Kirki_Fonts::get_font_choices(),
 	);
 
 	$controls[] = array(
@@ -475,7 +463,6 @@ function maera_customizer_settings( $controls ) {
 			'max'  => 800,
 			'step' => 100,
 		),
-        'framework_var' => '@nav-font-weight'
 	);
 
 	$controls[] = array(
@@ -518,52 +505,52 @@ function maera_customizer_settings( $controls ) {
 		'section'  => 'colors',
 		'default'  => '#428bca',
 		'priority' => 1,
-        'framework_var' => '@brand-primary'
+		'framework_var' => '@brand-primary'
 	);
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'color_brand_info',
-		'label'    => __( 'Brand Colors: Info', 'maera' ),
-		'description' =>  __( 'Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \'info\' class.', 'maera' ),
-		'section'  => 'colors',
-		'default'  => '#5bc0de',
-		'priority' => 2,
-        'framework_var' => '@brand-info'
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'color_brand_info',
+	// 	'label'    => __( 'Brand Colors: Info', 'maera' ),
+	// 	'description' =>  __( 'Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \'info\' class.', 'maera' ),
+	// 	'section'  => 'colors',
+	// 	'default'  => '#5bc0de',
+	// 	'priority' => 2,
+	// 	'framework_var' => '@brand-info'
+	// );
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'color_brand_success',
-		'label'    => __( 'Brand Colors: Success', 'maera' ),
-		'description' =>  __( 'Select your branding color for success messages etc.', 'maera' ),
-		'section'  => 'colors',
-		'default'  => '#5cb85c',
-		'priority' => 3,
-        'framework_var' => '@brand-success'
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'color_brand_success',
+	// 	'label'    => __( 'Brand Colors: Success', 'maera' ),
+	// 	'description' =>  __( 'Select your branding color for success messages etc.', 'maera' ),
+	// 	'section'  => 'colors',
+	// 	'default'  => '#5cb85c',
+	// 	'priority' => 3,
+	// 	'framework_var' => '@brand-success'
+	// );
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'color_brand_warning',
-		'label'    => __( 'Brand Colors: Warning', 'maera' ),
-		'description' =>  __( 'Select your branding color for warning messages etc.', 'maera' ),
-		'section'  => 'colors',
-		'default'  => '#f0ad4e',
-		'priority' => 4,
-        'framework_var' => '@brand-warning'
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'color_brand_warning',
+	// 	'label'    => __( 'Brand Colors: Warning', 'maera' ),
+	// 	'description' =>  __( 'Select your branding color for warning messages etc.', 'maera' ),
+	// 	'section'  => 'colors',
+	// 	'default'  => '#f0ad4e',
+	// 	'priority' => 4,
+	// 	'framework_var' => '@brand-warning'
+	// );
 
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'color_brand_danger',
-		'label'    => __( 'Brand Colors: Danger', 'maera' ),
-		'description' =>  __( 'Select your branding color for danger messages etc.', 'maera' ),
-		'section'  => 'colors',
-		'default'  => '#d9534f',
-		'priority' => 5,
-        'framework_var' => '@brand-danger'
-	);
+	// $controls[] = array(
+	// 	'type'     => 'color',
+	// 	'setting'  => 'color_brand_danger',
+	// 	'label'    => __( 'Brand Colors: Danger', 'maera' ),
+	// 	'description' =>  __( 'Select your branding color for danger messages etc.', 'maera' ),
+	// 	'section'  => 'colors',
+	// 	'default'  => '#d9534f',
+	// 	'priority' => 5,
+	// 	'framework_var' => '@brand-danger'
+	// );
 
 	$controls[] = array(
 		'type'     => 'radio',
@@ -578,7 +565,6 @@ function maera_customizer_settings( $controls ) {
 			0 => __( 'Flat', 'maera' ),
 			1 => __( 'Gradients', 'maera' ),
 		),
-        'framework_var' => '@dummy',
 	);
 	//-------------------------------------------------
 	// BACKGROUND
@@ -600,7 +586,6 @@ function maera_customizer_settings( $controls ) {
 		),
 		'priority' => 2,
 		'output' => 'body.bootstrap',
-        'framework_var' => '@body-bg',
 	);
 
 	$controls[] = array(
@@ -619,7 +604,6 @@ function maera_customizer_settings( $controls ) {
 		),
 		'priority' => 31,
 		'output' => 'body.bootstrap #wrap-main-section',
-        'framework_var' => '@boxed-container-bg-color',
 	);
 
 	//-------------------------------------------------
@@ -627,42 +611,24 @@ function maera_customizer_settings( $controls ) {
 	//-------------------------------------------------
 
 	$controls[] = array(
-		'type'     => 'text',
+		'type'     => 'select',
 		'setting'  => 'font_base_family',
 		'label'    => __( 'Base font', 'maera' ),
 		'section'  => 'typo_base',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
-        'framework_var' => '@font-family-base',
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'font_base_google',
-		'label'    => __( 'Google-Font', 'maera' ),
-		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'maera' ),
-		'section'  => 'typo_base',
-		'default'  => 0,
-		'priority' => 21,
+		'choices'  => Kirki_Fonts::get_font_choices(),
 	);
 
 	$controls[] = array(
 		'type'     => 'multicheck',
-		'setting'  => 'font_base_google_subsets',
+		'setting'  => 'font_subsets',
 		'label'    => __( 'Google-Font subsets', 'maera' ),
 		'description' => __( 'The subsets used from Google\'s API.', 'maera' ),
 		'section'  => 'typo_base',
 		'default'  => 'latin',
 		'priority' => 22,
-		'choices'  => array(
-			'latin' 		=> __( 'Latin', 'maera' ),
-			'latin-ext' 	=> __( 'Latin Ext.', 'maera' ),
-			'greek' 		=> __( 'Greek', 'maera' ),
-			'greek-ext' 	=> __( 'Greek Ext.', 'maera' ),
-			'cyrillic' 		=> __( 'Cyrillic', 'maera' ),
-			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'maera' ),
-			'vietnamese' 	=> __( 'Vietnamese', 'maera' ),
-		),
+		'choices'  => Kirki_Fonts::get_google_font_subsets(),
 	);
 
 	$controls[] = array(
@@ -677,7 +643,6 @@ function maera_customizer_settings( $controls ) {
 			'max'  => 900,
 			'step' => 100,
 		),
-        'framework_var' => '@base-font-weight'
 	);
 
 	$controls[] = array(
@@ -692,7 +657,6 @@ function maera_customizer_settings( $controls ) {
 			'max'  => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 70 : 7,
 			'step' => ( 'px' == get_theme_mod( 'font_size_units', 'px' ) ) ? 1 : 0.01,
 		),
-        'framework_var' => '@font-size-base',
 	);
 
 	$controls[] = array(
@@ -707,27 +671,16 @@ function maera_customizer_settings( $controls ) {
 			'max'  => 3,
 			'step' => 0.1,
 		),
-        'framework_var' => '@line-height-base',
 	);
 
 	$controls[] = array(
-		'type'     => 'text',
+		'type'     => 'select',
 		'setting'  => 'headers_font_family',
 		'label'    => __( 'Font-Family', 'maera' ),
 		'section'  => 'typo_headers',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 30,
-        'framework_var' => '@headings-font-family',
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'headers_font_google',
-		'label'    => __( 'Google-Font', 'maera' ),
-		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'maera' ),
-		'section'  => 'typo_headers',
-		'default'  => 0,
-		'priority' => 31,
+		'choices'  => Kirki_Fonts::get_font_choices(),
 	);
 
 	$controls[] = array(
@@ -738,15 +691,7 @@ function maera_customizer_settings( $controls ) {
 		'section'  => 'typo_headers',
 		'default'  => 'latin',
 		'priority' => 32,
-		'choices'  => array(
-			'latin' 		=> __( 'Latin', 'maera' ),
-			'latin-ext' 	=> __( 'Latin Ext.', 'maera' ),
-			'greek' 		=> __( 'Greek', 'maera' ),
-			'greek-ext' 	=> __( 'Greek Ext.', 'maera' ),
-			'cyrillic' 		=> __( 'Cyrillic', 'maera' ),
-			'cyrillic-ext' 	=> __( 'Cyrillic Ext.', 'maera' ),
-			'vietnamese' 	=> __( 'Vietnamese', 'maera' ),
-		),
+		'choices'  => Kirki_Fonts::get_google_font_subsets(),
 	);
 
 	$controls[] = array(
@@ -987,7 +932,6 @@ function maera_customizer_settings( $controls ) {
 		),
 		'priority' => 1,
 		'output' => '.jumbotron',
-        'framework_var' => 'jumbotron-bg'
 	);
 
 	$controls[] = array(
@@ -1001,32 +945,13 @@ function maera_customizer_settings( $controls ) {
 	);
 
 	$controls[] = array(
-		'type'     => 'text',
+		'type'     => 'select',
 		'setting'  => 'font_jumbotron_font_family',
 		'label'    => __( 'Jumbotron font', 'maera' ),
 		'section'  => 'typo_jumbo',
 		'default'  => '"Helvetica Neue", Helvetica, Arial, sans-serif',
 		'priority' => 20,
-	);
-
-	$controls[] = array(
-		'type'     => 'checkbox',
-		'setting'  => 'font_jumbotron_google',
-		'label'    => __( 'Google-Font', 'maera' ),
-		'description' => __( 'If you have entered the name of a google font above, then you must enable check this option to process it.', 'maera' ),
-		'section'  => 'typo_jumbo',
-		'default'  => 0,
-		'priority' => 21,
-	);
-
-	$controls[] = array(
-		'type'     => 'color',
-		'setting'  => 'font_jumbotron_color',
-		'description' =>   __( 'Font Color', 'maera' ),
-		'section'  => 'typo_jumbo',
-		'default'  => '#333333',
-		'priority' => 22,
-        'framework_var' => '@jumbotron-color'
+		'choices'  => Kirki_Fonts::get_font_choices(),
 	);
 
 	$controls[] = array(
@@ -1090,7 +1015,6 @@ function maera_customizer_settings( $controls ) {
 		),
 		'priority' => 10,
 		'output' => 'header.page-header',
-        'framework_var' => '@header-bg'
 	);
 
 	//-------------------------------------------------
@@ -1173,8 +1097,7 @@ function maera_customizer_settings( $controls ) {
 			'opacity'  => 100,
 		),
 		'priority' => 10,
-		'output' => 'footer.page-footer, footer.pager-footer > #wrap-main-section',
-        'framework_var' => '@footer-bg'
+		'output' => 'footer.page-footer',
 	);
 
 	$controls[] = array(

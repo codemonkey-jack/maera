@@ -201,7 +201,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 		/**
 		 * The "more" text
 		 */
-		function excerpt_more( $more, $post_id ) {
+		function excerpt_more( $more, $post_id = 0 ) {
 
 			$continue_text = get_theme_mod( 'post_excerpt_link_text', 'Continued' );
 			return ' &hellip; <a href="' . get_permalink( $post_id ) . '">' . $continue_text . '</a>';
