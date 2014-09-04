@@ -480,8 +480,8 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
 
 			$style .= '.navbar{';
 			$style .= 'font-family: ' . $navbar_font_family . ';';
-			$style .= 'font-weight: ' . get_theme_mod( 'font_headers_weight', 400 ) . ';';
-			$style .= 'line-height: ' . get_theme_mod( 'font_headers_height', 1.1 ) . ';';
+			$style .= 'font-weight: ' . get_theme_mod( 'font_menus_weight', 400 ) . ';';
+			$style .= 'line-height: ' . get_theme_mod( 'font_menus_height', 1.1 ) . ';';
 			$style .= '}';
 
 			// Navigation font
