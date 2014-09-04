@@ -66,7 +66,9 @@ function kirki_customizer_controls( $wp_customize ) {
 					) );
 
 				}
-			} else {
+            } else {
+
+                if ( 'textarea' == $control['type'] && 'footer_text' != $control['setting'] ) $is_ajax = 'postMessage';
 
 				// Add settings
 				$wp_customize->add_setting( $control['setting'], array(

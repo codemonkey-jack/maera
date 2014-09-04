@@ -97,6 +97,10 @@ div.kirki-customizer {
   border-bottom: 1px solid rgba( 255, 255, 255, 0.2 );
 }
 
+#customize-theme-controls .control-section.open > h3 {
+  background: #1abc9c !important;
+}
+
 .hide {
   display: none;
 }
