@@ -425,6 +425,7 @@ function maera_customizer_settings( $controls ) {
 			'max'  => 100,
 			'step' => 1,
 		),
+        //'framework_var' => '@navbar-bg-opacity',
 	);
 
 	$controls[] = array(
@@ -577,6 +578,7 @@ function maera_customizer_settings( $controls ) {
 			0 => __( 'Flat', 'maera' ),
 			1 => __( 'Gradients', 'maera' ),
 		),
+        'framework_var' => '@dummy',
 	);
 	//-------------------------------------------------
 	// BACKGROUND
@@ -1171,7 +1173,7 @@ function maera_customizer_settings( $controls ) {
 			'opacity'  => 100,
 		),
 		'priority' => 10,
-		'output' => 'footer.page-footer',
+		'output' => 'footer.page-footer, footer.pager-footer > #wrap-main-section',
         'framework_var' => '@footer-bg'
 	);
 
