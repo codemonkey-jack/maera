@@ -51,8 +51,6 @@
 	</div>
 	<script type="text/javascript">
 		var $jq = jQuery.noConflict();
-		$body = $jq('body');
-		$trig = $jq('.trigger');
 		$jq("document").ready(function() {
 			/*---------- Sidebar ----------*/
 			    $jq("#menu-close").click(function(e) {
@@ -67,7 +65,7 @@
 		});
 	</script>
 
-	{% do action( 'maera/topbar/after' ) %}
+	{% do action( 'maera/sidebar/after' ) %}
 
 {% else %}
 
