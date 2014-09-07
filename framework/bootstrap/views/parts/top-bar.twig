@@ -1,5 +1,5 @@
 {#<?php#}
-{% if theme_mods.navbar_toggle == 'none' %}
+{% if theme_mods.navbar_position == 'none' %}
 {% elseif theme_mods.navbar_position == 'right-slide' %}
 
 	{% do action( 'maera/sidebar/before' ) %}
@@ -71,7 +71,7 @@
 
 	{% do action( 'maera/topbar/before' ) %}
 
-	<header id="banner-header" class="banner mode-{{ theme_mods.navbar_toggle }} {{ 'navbar navbar-default'|apply_filters( 'maera/topbar/class' ) }}" role="navigation">
+	<header id="banner-header" class="banner mode-{{ theme_mods.navbar_position }} {{ 'navbar navbar-default'|apply_filters( 'maera/topbar/class' ) }}" role="navigation">
 		<div class="{{ 'container'|apply_filters( 'maera/topbar/class/container' ) }}">
 
 			<div class="navbar-header">

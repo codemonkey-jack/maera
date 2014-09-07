@@ -273,8 +273,12 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 				$parser = new Less_Parser( $options );
 
+				$parser->parse( apply_filters( 'maera/compiler/less/pre', null ) );
+
 				// The main app.less file
-				$parser->parseFile( $less_path . 'app.less', '' );
+				if ( ! is_null( $less_path ) && ! empty( $less_path ) ) {
+					$parser->parseFile( $less_path . 'app.less', '' );
+				}
 
 				// Include the Elusive Icons
 				$parser->parseFile( $webfont_location . 'elusive-webfont.less', '' );
@@ -284,17 +288,15 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 					$parser->parseFile( $custom_less_file );
 				}
 
+				$parser->parse( apply_filters( 'maera/compiler/less/post', null ) );
+
 				// Parse any custom less added by the user
 				if ( '' != $this->custom_styles ) {
 					$parser->parse( $this->custom_styles );
 				}
 
-				// Get the extra variables & imports
-				$extra_vars = apply_filters( 'maera/compiler/variables', null );
-				$parser->parse( $extra_vars );
-
 				// Add a filter to the compiler
-				$parser->parse( apply_filters( 'maera/compiler', '' ) );
+				$parser->parse( apply_filters( 'maera/compiler/less/final', '' ) );
 
 				$css = $parser->getCss();
 
@@ -319,6 +321,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
 		function compiler_sass() {
+			// TODO: THIS IS FAR FROM COMPLETE
 
 			$scss = new scssc();
 			$scss->setImportPaths( $this->sass_path );

@@ -30,6 +30,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Widgets.php' );
 			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Styles.php' );
 			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Structure.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Compiler.php' );
 
 			// Instantianate addon classes
 			global $bs_structure;
@@ -38,27 +39,11 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 			$bs_widgets   = new Maera_Framework_Bootstrap_Widgets();
 			global $bs_styles;
 			$bs_styles    = new Maera_Framework_Bootstrap_Styles();
+			global $bs_conpiler;
+			$bs_compiler  = new Maera_Framework_Bootstrap_Compiler();
 
 			global $extra_widget_areas;
 			$extra_widget_areas = $bs_widgets->extra_widget_areas_array();
-
-			// Instantianate the compiler and pass the framework's properties to it
-			$compiler = new Maera_Compiler( array(
-				'compiler'     => 'less_php',
-				'minimize_css' => false,
-				'less_path'    => dirname( __FILE__ ) . '/assets/less/',
-			) );
-
-			// Trigger the compiler when the customizer options are saved.
-			add_action( 'customize_save_after', array( $compiler, 'makecss' ), 77 );
-
-			// If the CSS file does not exist, attempt creating it.
-			if ( ! file_exists( $compiler->file( 'path' ) ) ) {
-				add_action( 'wp', array( $compiler, 'makecss' ) );
-			}
-
-			// Trigger the compiler the first time the theme is enabled
-			add_action( 'after_switch_theme', array( $compiler, 'makecss' ) );
 
 			// Enqueue the scripts
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );

@@ -327,22 +327,6 @@ function maera_customizer_settings( $controls ) {
 	//-------------------------------------------------
 
 	$controls[] = array(
-		'type'     => 'radio',
-		'mode'     => 'buttonset',
-		'setting'  => 'navbar_toggle',
-		'label'    => __( 'NavBar Type', 'maera' ),
-		'subtitle' => __( 'Choose the type of Navbar you want. Off completely hides the navbar. <strong>WARNING:</strong> You will have to save the option and refresh this page to see the result.', 'maera' ),
-		'section'  => 'nav',
-		'default'  => 'normal',
-		'choices'  => array(
-			'none'   => __( 'None', 'maera' ),
-			'normal' => __( 'Normal', 'maera' ),
-			'full'   => __( 'Full-Width', 'maera' ),
-		),
-		'priority' => 21,
-	);
-
-	$controls[] = array(
 		'type'     => 'select',
 		'setting'  => 'navbar_position',
 		'label'    => __( 'NavBar Positioning', 'maera' ),
@@ -350,7 +334,9 @@ function maera_customizer_settings( $controls ) {
 		'section'  => 'nav',
 		'default'  => 'normal',
 		'choices'  => array(
+			'none'          => __( 'None', 'maera' ),
 			'normal'        => __( 'Normal', 'maera' ),
+			'full'          => __( 'Full-Width', 'maera' ),
 			'fixed-top'     => __( 'Fixed (top)', 'maera' ),
 			'fixed-bottom'  => __( 'Fixed (bottom)', 'maera' ),
 			'after-headers' => __( 'After Extra Headers', 'maera' ),
@@ -664,12 +650,12 @@ function maera_customizer_settings( $controls ) {
 		'setting'  => 'font_base_height',
 		'label'    => __( 'Base Line Height', 'maera' ),
 		'section'  => 'typo_base',
-		'default'  => 1.4,
+		'default'  => 1.43,
 		'priority' => 26,
 		'choices'  => array(
 			'min'  => 0,
 			'max'  => 3,
-			'step' => 0.1,
+			'step' => 0.01,
 		),
 	);
 
@@ -699,7 +685,7 @@ function maera_customizer_settings( $controls ) {
 		'setting'  => 'font_headers_weight',
 		'label'    => __( 'Font Weight.', 'maera' ) . ' ' . __( 'Default: ', 'maera' ) . 400,
 		'section'  => 'typo_headers',
-		'default'  => 400,
+		'default'  => 500,
 		'priority' => 34,
 		'choices'  => array(
 			'min'  => 100,
@@ -711,15 +697,15 @@ function maera_customizer_settings( $controls ) {
 	$controls[] = array(
 		'type'     => 'slider',
 		'setting'  => 'font_headers_size',
-		'label'    => __( 'Font Size (%)', 'maera' ) . ' ' . __( 'Default: ', 'maera' ) . '215',
-		'description' => __( 'The size defined here applies to H2. All other header elements are calculated porportionally.', 'maera' ),
+		'label'    => __( 'Font Size', 'maera' ) . ' ' . __( 'Default: ', 'maera' ) . '1',
+		'description' => __( 'The size defined here applies to H5. All other header elements are calculated porportionally, based on the base font size.', 'maera' ),
 		'section'  => 'typo_headers',
 		'default'  => 215,
 		'priority' => 35,
 		'choices'  => array(
-			'min'  => 30,
-			'max'  => 350,
-			'step' => 1,
+			'min'  => 0.1,
+			'max'  => 3,
+			'step' => 0.01,
 		),
 	);
 
