@@ -1,11 +1,11 @@
 <?php
 
-if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
+if ( ! class_exists( 'Maera_Bootstrap' ) ) {
 
 	/**
 	* The Bootstrap Framework module
 	*/
-	class Maera_Framework_Bootstrap {
+	class Maera_Bootstrap {
 
 		private static $instance;
 
@@ -27,20 +27,20 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 			include_once( MAERA_FRAMEWORK_PATH . '/customizer.php' );
 
 			// Include other classes
-			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Widgets.php' );
-			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Styles.php' );
-			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Structure.php' );
-			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Framework_Bootstrap_Compiler.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Bootstrap_Widgets.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Bootstrap_Styles.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Bootstrap_Structure.php' );
+			include_once( MAERA_FRAMEWORK_PATH . '/classes/class-Maera_Bootstrap_Compiler.php' );
 
 			// Instantianate addon classes
 			global $bs_structure;
-			$bs_structure = new Maera_Framework_Bootstrap_Structure();
+			$bs_structure = new Maera_Bootstrap_Structure();
 			global $bs_widgets;
-			$bs_widgets   = new Maera_Framework_Bootstrap_Widgets();
+			$bs_widgets   = new Maera_Bootstrap_Widgets();
 			global $bs_styles;
-			$bs_styles    = new Maera_Framework_Bootstrap_Styles();
+			$bs_styles    = new Maera_Bootstrap_Styles();
 			global $bs_conpiler;
-			$bs_compiler  = new Maera_Framework_Bootstrap_Compiler();
+			$bs_compiler  = new Maera_Bootstrap_Compiler();
 
 			global $extra_widget_areas;
 			$extra_widget_areas = $bs_widgets->extra_widget_areas_array();
@@ -243,7 +243,7 @@ function maera_framework_bootstrap_include( $frameworks ) {
 	$frameworks[] = array(
 		'value' => 'bootstrap',
 		'label' => 'Bootstrap',
-		'class' => 'Maera_Framework_Bootstrap',
+		'class' => 'Maera_Bootstrap',
 	);
 
 	return $frameworks;

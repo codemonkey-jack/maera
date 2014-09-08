@@ -7,7 +7,7 @@ require_once locate_template( '/lib/compilers/class-Maera_Compiler.php' );
 require_once locate_template( '/framework/core/class-Maera_Framework_Core.php' );
 
 // Include Bootstrap
-require_once locate_template( '/framework/bootstrap/class-Maera_Framework_Bootstrap.php' );
+require_once locate_template( '/framework/bootstrap/class-Maera_Bootstrap.php' );
 
 /**
  * Activate the enabled framework

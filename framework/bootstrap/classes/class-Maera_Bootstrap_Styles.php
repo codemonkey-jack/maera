@@ -1,11 +1,11 @@
 <?php
 
-if ( ! class_exists( 'Maera_Framework_Bootstrap_Styles' ) ) {
+if ( ! class_exists( 'Maera_Bootstrap_Styles' ) ) {
 
 	/**
 	* The Bootstrap Framework module
 	*/
-	class Maera_Framework_Bootstrap_Styles {
+	class Maera_Bootstrap_Styles {
 
 
 		/**

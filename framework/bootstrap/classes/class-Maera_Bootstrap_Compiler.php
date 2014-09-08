@@ -4,7 +4,7 @@
 /**
 * The Meara Bootstrap variables
 */
-class Maera_Framework_Bootstrap_Compiler {
+class Maera_Bootstrap_Compiler {
 
 	/**
 	 * Class constructor
