@@ -58,15 +58,19 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 			add_filter( 'maera/image/display', array( $this, 'disable_feat_images_ppt' ), 99 );
 
 			// Add stylesheets caching if dev_mode is set to off.
-			if ( 0 != get_theme_mod( 'dev_mode' ) ) {
-				add_filter( 'maera/styles/caching', '__return_false' );
-				TimberLoader::CACHE_NONE;
-			} else {
+			$theme_options = get_option( 'maera_admin_options', array() );
+			if ( 0 == @$theme_options['dev_mode'] ) {
+
 				add_filter( 'maera/styles/caching', '__return_true' );
 				// Turn on Timber caching.
 				// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
 				Timber::$cache = true;
 				add_filter( 'maera/timber/cache', array( $this, 'timber_caching' ) );
+
+			} else {
+
+				add_filter( 'maera/styles/caching', '__return_false' );
+				TimberLoader::CACHE_NONE;
 
 			}
 
@@ -114,18 +118,19 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 		 */
 		function timber_caching() {
 
-			$caching_int = get_theme_mod( 'caching_int', 0 );
+			$theme_options = get_option( 'maera_admin_options', array() );
 
-			if ( 0 != $caching_int ) {
+			$cache_int = isset( $theme_options['cache'] ) ? intval( $theme_options['cache'] ) : 0;
 
-				// Convert minutes to seconds
-				return ( $caching_int * 60 );
+			if ( 0 == $cache_int ) {
 
-			} else {
-
+				// No need to proceed if cache=0
 				return false;
 
 			}
+
+			// Convert minutes to seconds
+			return ( $cache_int * 60 );
 
 		}
 

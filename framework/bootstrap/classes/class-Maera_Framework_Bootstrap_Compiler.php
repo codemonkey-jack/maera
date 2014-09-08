@@ -13,7 +13,9 @@ class Maera_Framework_Bootstrap_Compiler {
 
 		global $wp_customize;
 
-		if ( $wp_customize || ( 1 == get_theme_mod( 'dev_mode', 0 ) ) ) {
+		$theme_options = get_option( 'maera_admin_options', array() );
+
+		if ( $wp_customize || ( 1 == @$theme_options['dev_mode'] ) ) {
 
 			add_action( 'wp_head', array( $this, 'echo_less' ) );
 
@@ -124,7 +126,7 @@ class Maera_Framework_Bootstrap_Compiler {
 		$content .= file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/vendor/bootstrap/utilities.less' );
 		$content .= file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/vendor/bootstrap/responsive-utilities.less' );
 
-		$content .= ( $wp_customize || ( 0 != get_theme_mod( 'dev_mode', 0 ) ) ) ? file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/app.less' ) : '';
+		$content .= ( $wp_customize || ( 0 != @$theme_options['dev_mode'] ) ) ? file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/app.less' ) : '';
 		$content .= ( get_theme_mod( 'gradients_toggle', 0 ) ) ? file_get_contents( MAERA_FRAMEWORK_PATH . '/assets/less/gradients.less' ) : '';
 		$content .= ( $site_style == 'static' ) ? '@screen-xs-max: 0 !important; .container { max-width: none !important; width: @container-large-desktop; } html { overflow-x: auto !important; }' : '';
 

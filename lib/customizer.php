@@ -37,7 +37,6 @@ function maera_customizer_additional_css() { ?>
 		li#customize-control-padding_base,
 		li#customize-control-less,
 		li#customize-control-minimize_css,
-		li#customize-control-caching_int,
 		li#customize-control-navbar_bg,
 		li#customize-control-navbar_bg_opacity
 		{

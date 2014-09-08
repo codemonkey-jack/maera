@@ -47,6 +47,8 @@ class Maera_Admin_Page {
 		$maera_admin_options = apply_filters( 'maera/admin/options', array(
 			'framework'   => 'bootstrap',
 			'import_data' => '',
+			'dev_mode'    => 1,
+			'cache'       => "0"
 		) );
 
 		// Get the available frameworks
@@ -81,6 +83,22 @@ class Maera_Admin_Page {
 						</td>
 					</tr>
 
+					<tr valign="top">
+						<th scope="row"><?php _e( 'Development mode', 'maera' ); ?></th>
+						<td>
+							<input type="checkbox" name="maera_admin_options[dev_mode]" <?php checked( @$settings['dev_mode'], 1 ); ?> value='1'>
+							<label for="maera_admin_options[dev_mode]"><?php _e( 'Enable development mode. Please keep in mind that the actual implementation of the dev mode depends on the framework you have chosen', 'maera' ); ?></label><br />
+						</td>
+					</tr>
+
+					<tr valign="top">
+						<th scope="row"><?php _e( 'Caching (minutes)', 'maera' ); ?></th>
+						<td>
+							<input type="number" name="maera_admin_options[cache]" min="0" max="1440" value="<?php echo @$settings['cache']; ?>">
+							<label for="maera_admin_options[cache]"><?php _e( 'Set the time (in minutes) you want your pages cached. CAUTION: If you have any context dependent sub-views (eg. current user), this mode won\'t do. In that case, set this to 0.', 'maera' ); ?></label><br />
+						</td>
+					</tr>
+
 					<tr>
 						<th><?php _e( 'Export Customizer Options', 'maera' ); ?></th>
 						<td>
@@ -90,7 +108,7 @@ class Maera_Admin_Page {
 
 								$options = array();
 								foreach ( $theme_mods as $theme_mod => $value ) {
-									$options[$theme_mod] = maybe_unserialize( $value );
+									$options[$theme_mod] = ( 'css_cache' != $theme_mod ) ? maybe_unserialize( $value ) : '';
 								}
 
 								$json = json_encode( $options );
