@@ -206,11 +206,11 @@ class Maera_Bootstrap_Compiler {
 			'gray-light'   => ( 0.4 < $body_lum ) ? 'lighten(#000, 60%)' : 'darken(#fff, 60%)',
 			'gray-lighter' => ( 0.4 < $body_lum ) ? 'lighten(#000, 93.5%)' : 'darken(#fff, 93.5%)',
 
-			'brand-primary' => '#' . $b_p_obj->getGrayscaleContrastingColor(12)->toHex(),
-			'brand-success' => '#' . $color_success->getGrayscaleContrastingColor(12)->toHex(),
-			'brand-info'    => '#' . $color_info->getGrayscaleContrastingColor(12)->toHex(),
-			'brand-warning' => '#' . $color_warning->getGrayscaleContrastingColor(12)->toHex(),
-			'brand-danger'  => '#' . $color_danger->getGrayscaleContrastingColor(12)->toHex(),
+			'brand-primary' => '#' . $b_p_obj->getReadableContrastingColor(3)->toHex(),
+			'brand-success' => '#' . $color_success->getReadableContrastingColor(3)->toHex(),
+			'brand-info'    => '#' . $color_info->getReadableContrastingColor(3)->toHex(),
+			'brand-warning' => '#' . $color_warning->getReadableContrastingColor(3)->toHex(),
+			'brand-danger'  => '#' . $color_danger->getReadableContrastingColor(3)->toHex(),
 
 			'body-bg'          => $body_bg,
 			'text-color'       => '#' . $body_obj->getGrayscaleContrastingColor(10)->toHex(),
