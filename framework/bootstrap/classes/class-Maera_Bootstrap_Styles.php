@@ -20,7 +20,6 @@ if ( ! class_exists( 'Maera_Bootstrap_Styles' ) ) {
 			add_filter( 'maera/styles', array( $this, 'header_css' ) );
 			add_filter( 'maera/styles', array( $this, 'typography_css' ) );
 			add_filter( 'maera/styles', array( $this, 'layout_css' ) );
-			add_filter( 'maera/styles', array( $this, 'color_css' ) );
 
 			add_action( 'wp_print_styles', array( $this, 'google_font' ) );
 
@@ -170,77 +169,6 @@ if ( ! class_exists( 'Maera_Bootstrap_Styles' ) ) {
 				.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 { padding-left: ' . round( $gutter / 2 ) . 'px; padding-right: ' . round( $gutter / 2 ) . 'px; }';
 
 			}
-
-			return $style;
-
-		}
-
-
-		/**
-		 * Additional CSS rules for layout options
-		 */
-		function color_css( $style ) {
-
-			global $wp_customize;
-
-			// Customizer-only styles
-			if ( ! $wp_customize ) {
-				return $style;
-			}
-
-			$body_obj  = new Jetpack_Color( get_theme_mod( 'body_bg_color', '#ffffff' ) );
-
-			$color_primary = new Jetpack_Color( get_theme_mod( 'color_brand_primary', '#428bca' ) );
-			$brand_primary = '#' . str_replace( '#', '', $color_primary->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
-
-			$color_success = new Jetpack_Color( '#5cb85c' );
-			$brand_success = '#' . str_replace( '#', '', $color_success->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
-
-			$color_warning = new Jetpack_Color( '#f0ad4e' );
-			$brand_warning = '#' . str_replace( '#', '', $color_warning->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
-
-			$color_danger = new Jetpack_Color( '#d9534f' );
-			$brand_danger = '#' . str_replace( '#', '', $color_danger->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
-
-			$color_info = new Jetpack_Color( '#5bc0de' );
-			$brand_info = '#' . str_replace( '#', '', $color_info->getReadableContrastingColor( $body_obj, 1.5 )->toHex() );
-
-			$style .= 'a { color: ' . $brand_primary . '; }';
-
-			$style .= '.text-primary { color: ' . $brand_primary . '; }';
-			$style .= '.bg-primary { background-color: ' . $brand_primary . '; }';
-			$style .= '.btn-primary { background-color: ' . $brand_primary . '; }';
-			$style .= '.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active { background-color: ' . $brand_primary . '; }';
-			$style .= '.btn-primary .badge { color: ' . $brand_primary . '; }';
-
-			$style .= '.btn-link { color: ' . $brand_primary . '; }';
-			$style .= '.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus { background-color: ' . $brand_primary . '; }';
-			$style .= '.pagination > li > a, .pagination > li > span { color: ' . $brand_primary . '; }';
-			$style .= '.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus { background-color: ' . $brand_primary . '; border-color: ' . $brand_primary . '; }';
-
-			$style .= '.text-success { color: ' . $brand_success . '; }';
-			$style .= '.bg-success { background-color: ' . $brand_success . '; }';
-			$style .= '.btn-success { background-color: ' . $brand_success . '; }';
-			$style .= '.btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success[disabled].active, fieldset[disabled] .btn-success.active { background-color: ' . $brand_success . '; }';
-			$style .= '.btn-success .badge { color: ' . $brand_success . '; }';
-
-			$style .= '.text-info { color: ' . $brand_info . '; }';
-			$style .= '.bg-info { background-color: ' . $brand_info . '; }';
-			$style .= '.btn-info { background-color: ' . $brand_info . '; }';
-			$style .= '.btn-info.disabled, .btn-info[disabled], fieldset[disabled] .btn-info, .btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover, .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus, .btn-info.disabled:active, .btn-info[disabled]:active, fieldset[disabled] .btn-info:active, .btn-info.disabled.active, .btn-info[disabled].active, fieldset[disabled] .btn-info.active { background-color: ' . $brand_info . '; }';
-			$style .= '.btn-info .badge { color: ' . $brand_info . '; }';
-
-			$style .= '.text-warning { color: ' . $brand_warning . '; }';
-			$style .= '.bg-warning { background-color: ' . $brand_warning . '; }';
-			$style .= '.btn-warning { background-color: ' . $brand_warning . '; }';
-			$style .= '.btn-warning.disabled, .btn-warning[disabled], fieldset[disabled] .btn-warning, .btn-warning.disabled:hover, .btn-warning[disabled]:hover, fieldset[disabled] .btn-warning:hover, .btn-warning.disabled:focus, .btn-warning[disabled]:focus, fieldset[disabled] .btn-warning:focus, .btn-warning.disabled:active, .btn-warning[disabled]:active, fieldset[disabled] .btn-warning:active, .btn-warning.disabled.active, .btn-warning[disabled].active, fieldset[disabled] .btn-warning.active { background-color: ' . $brand_warning . '; }';
-			$style .= '.btn-warning .badge { color: ' . $brand_warning . '; }';
-
-			$style .= '.text-danger { color: ' . $brand_danger . '; }';
-			$style .= '.bg-danger { background-color: ' . $brand_danger . '; }';
-			$style .= '.btn-danger { background-color: ' . $brand_danger . '; }';
-			$style .= '.btn-danger.disabled, .btn-danger[disabled], fieldset[disabled] .btn-danger, .btn-danger.disabled:hover, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger:hover, .btn-danger.disabled:focus, .btn-danger[disabled]:focus, fieldset[disabled] .btn-danger:focus, .btn-danger.disabled:active, .btn-danger[disabled]:active, fieldset[disabled] .btn-danger:active, .btn-danger.disabled.active, .btn-danger[disabled].active, fieldset[disabled] .btn-danger.active { background-color: ' . $brand_danger . '; }';
-			$style .= '.btn-danger .badge { color: ' . $brand_danger . '; }';
 
 			return $style;
 
