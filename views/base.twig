@@ -8,9 +8,9 @@
 
 	{% do action( 'get_header' ) %}
 
-	{% do action( 'maera/top-bar/before', post.ID ) %}
-	{% include 'parts/top-bar.twig' %}
-	{% do action( 'maera/top-bar/after', post.ID ) %}
+	{% do action( 'maera/header/before', post.ID ) %}
+	{% include 'header.twig' %}
+	{% do action( 'maera/header/after', post.ID ) %}
 
 	{% do action( 'maera/wrap/before', post.ID ) %}
 

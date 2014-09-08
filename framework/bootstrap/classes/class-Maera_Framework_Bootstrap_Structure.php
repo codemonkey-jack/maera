@@ -404,7 +404,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap_Structure' ) ) {
 		 */
 		function container_class_modifier() {
 
-			$nav_style  = get_theme_mod( 'navbar_toggle', 'normal' );
+			$nav_style  = get_theme_mod( 'navbar_position', 'normal' );
 			$site_style = ( 'left' != $nav_style ) ? get_theme_mod( 'site_style', 'wide' ) : 'fluid';
 			$breakpoint = get_theme_mod( 'grid_float_breakpoint', 'screen_sm_min' );
 

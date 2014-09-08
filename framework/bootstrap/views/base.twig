@@ -8,18 +8,18 @@
 
 	{% do action( 'get_header' ) %}
 
-	{% do action( 'maera/top-bar/before', post.ID ) %}
+	{% do action( 'maera/header/before', post.ID ) %}
 
 	{% if theme_mods.navbar_position != 'after-headers' %}
-		{% include 'parts/top-bar.twig' %}
+		{% include 'header.twig' %}
 	{% endif %}
 
-	{% do action( 'maera/top-bar/after', post.ID ) %}
+	{% do action( 'maera/header/after', post.ID ) %}
 
 	{% do action( 'maera/wrap/before', post.ID ) %}
 
 	{% if theme_mods.navbar_position == 'after-headers' %}
-		{% include 'parts/top-bar.twig' %}
+		{% include 'header.twig' %}
 	{% endif %}
 
 	{{ framework.open_container( 'div', 'wrap-main-section', 'wrap main-section' ) }}

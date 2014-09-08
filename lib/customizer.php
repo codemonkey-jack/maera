@@ -31,13 +31,12 @@ function maera_customizer_additional_css() { ?>
 		li#customize-control-widgets_mode,
 		li#customize-control-menu_mode,
 		li#customize-control-gradients_toggle,
-		li#customize-control-navbar_toggle,
+		li#customize-control-navbar_position,
 		li#customize-control-navbar_logo,
 		li#customize-control-border_radius,
 		li#customize-control-padding_base,
 		li#customize-control-less,
 		li#customize-control-minimize_css,
-		li#customize-control-caching_int,
 		li#customize-control-navbar_bg,
 		li#customize-control-navbar_bg_opacity
 		{
