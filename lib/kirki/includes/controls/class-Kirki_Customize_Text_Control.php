@@ -5,6 +5,7 @@ class Kirki_Customize_Text_Control extends WP_Customize_Control {
 	public $type = 'text';
 	public $description = '';
 	public $subtitle = '';
+	public $framework_var = '';
 
 	public function render_content() { ?>
 
@@ -21,7 +22,7 @@ class Kirki_Customize_Text_Control extends WP_Customize_Control {
 				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
 			<?php endif; ?>
 
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="kirki-text" data-framework-var="<?php echo $this->framework_var; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
 		<?php
 

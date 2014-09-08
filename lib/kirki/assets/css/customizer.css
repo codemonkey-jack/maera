@@ -97,6 +97,10 @@ div.kirki-customizer {
   border-bottom: 1px solid rgba( 255, 255, 255, 0.2 );
 }
 
+#customize-theme-controls .control-section.open > h3 {
+  background: #1abc9c !important;
+}
+
 .hide {
   display: none;
 }
@@ -106,4 +110,11 @@ li.customize-control.customize-control-group_title {
   padding: 5px 20px 0;
   border-bottom: 1px solid #dedede;
   border-top: 1px solid #dedede;
+}
+
+#maera-loader-overlay {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
 }
