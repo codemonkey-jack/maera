@@ -12,30 +12,24 @@ class Maera_Framework_Bootstrap_Compiler {
 	function __construct() {
 
 		global $wp_customize;
-		// Trigger the compiler when the customizer options are saved.
-		add_action( 'customize_save_after', array( $this, 'trigger_compiler' ) );
-		// Trigger the compiler the first time the theme is enabled
-		add_action( 'after_switch_theme', array( $this, 'trigger_compiler' ) );
 
-		if ( $wp_customize || ( 0 != get_theme_mod( 'dev_mode', 0 ) ) ) {
+		if ( $wp_customize || ( 1 == get_theme_mod( 'dev_mode', 0 ) ) ) {
 
 			add_action( 'wp_head', array( $this, 'echo_less' ) );
 
 		}
 
-	}
-
-	function trigger_compiler() {
-
 		// Instantianate the compiler and pass the framework's properties to it
 		$compiler = new Maera_Compiler( array(
 			'compiler'     => 'less_php',
 			'minimize_css' => false,
-			'less_path'    => null,
+			'less_path'    => MAERA_FRAMEWORK_PATH . '/assets/less/',
 		) );
 
-		add_filter( 'maera/compiler/less/final', array( $this, 'less' ) );
+		add_filter( 'maera/compiler/less/post', array( $this, 'less' ) );
 
+		// Trigger the compiler the first time the theme is enabled
+		add_action( 'after_switch_theme', array( $compiler, 'makecss' ) );
 		// Trigger the compiler when the customizer options are saved.
 		add_action( 'customize_save_after', array( $compiler, 'makecss' ), 77 );
 
@@ -43,9 +37,6 @@ class Maera_Framework_Bootstrap_Compiler {
 		if ( ! file_exists( $compiler->file( 'path' ) ) ) {
 			add_action( 'wp', array( $compiler, 'makecss' ) );
 		}
-
-		// Trigger the compiler the first time the theme is enabled
-		add_action( 'after_switch_theme', array( $compiler, 'makecss' ) );
 
 	}
 
@@ -72,9 +63,11 @@ class Maera_Framework_Bootstrap_Compiler {
 	 */
 	function less() {
 
+		global $wp_customize;
+
 		$variables = $this->get_variables();
 
-		// define the $content variable to avoid PHP notices
+		// define the $content to avoid PHP notices
 		$content = '';
 
 		foreach ( $variables as $variable => $value ) {
@@ -131,23 +124,11 @@ class Maera_Framework_Bootstrap_Compiler {
 		$content .= file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/vendor/bootstrap/utilities.less' );
 		$content .= file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/vendor/bootstrap/responsive-utilities.less' );
 
-		$content .= file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/app.less' );
+		$content .= ( $wp_customize || ( 0 != get_theme_mod( 'dev_mode', 0 ) ) ) ? file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/app.less' ) : '';
+		$content .= ( get_theme_mod( 'gradients_toggle', 0 ) ) ? file_get_contents( MAERA_FRAMEWORK_PATH . '/assets/less/gradients.less' ) : '';
+		$content .= ( $site_style == 'static' ) ? '@screen-xs-max: 0 !important; .container { max-width: none !important; width: @container-large-desktop; } html { overflow-x: auto !important; }' : '';
 
 		return $content;
-
-		// if ( get_theme_mod( 'gradients_toggle', 0 ) ) {
-		// 	$variables .= '$content .= file_get_contents( MAERA_FRAMEWORK_PATH . '/assets/less/gradients.less' );';
-		// }
-
-
-
-
-		// if ( $site_style == 'static' ) {
-		// 	// disable responsiveness
-		// 	$variables .= '@screen-xs-max: 0 !important;
-		// 	.container { max-width: none !important; width: @container-large-desktop; }
-		// 	html { overflow-x: auto !important; }';
-		// }
 
 	}
 
