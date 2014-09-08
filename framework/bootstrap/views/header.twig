@@ -69,26 +69,26 @@
 
 {% else %}
 
-	{% do action( 'maera/topbar/before' ) %}
+	{% do action( 'maera/header/before' ) %}
 
-	<header id="banner-header" class="banner mode-{{ theme_mods.navbar_position }} {{ 'navbar navbar-default'|apply_filters( 'maera/topbar/class' ) }}" role="navigation">
-		<div class="{{ 'container'|apply_filters( 'maera/topbar/class/container' ) }}">
+	<header id="banner-header" class="banner mode-{{ theme_mods.navbar_position }} {{ 'navbar navbar-default'|apply_filters( 'maera/header/class' ) }}" role="navigation">
+		<div class="{{ 'container'|apply_filters( 'maera/header/class/container' ) }}">
 
 			<div class="navbar-header">
 
-				{{ '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main, .nav-extras"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>'|apply_filters( 'maera/topbar/toggler' ) }}
+				{{ '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main, .nav-extras"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>'|apply_filters( 'maera/header/toggler' ) }}
 
-				<a class="navbar-brand" href="{{ site.url }}">{{ "<div class='sitename'>#{ site.name }</div>"|apply_filters( 'maera/topbar/brand' ) }}</a>
+				<a class="navbar-brand" href="{{ site.url }}">{{ "<div class='sitename'>#{ site.name }</div>"|apply_filters( 'maera/maera/brand' ) }}</a>
 
 			</div>
 
-			{% do action( 'maera/topbar/main/before' ) %}
+			{% do action( 'maera/header/main/before' ) %}
 
 			<nav class="nav-main navbar-collapse collapse" role="navigation">
 
-				{% do action( 'maera/topbar/inside/begin' ) %}
+				{% do action( 'maera/header/inside/begin' ) %}
 
-				<ul class="{{ 'nav navbar-nav navbar-main'|apply_filters('maera/topbar/menu/class') }}">
+				<ul class="{{ 'nav navbar-nav navbar-main'|apply_filters('maera/header/menu/class') }}">
 					{% for item in menu.primary.get_items %}
 
 						{% if item.get_children %}
@@ -110,15 +110,15 @@
 					{% endfor %}
 				</ul>
 
-				{% do action( 'maera/topbar/inside/end' ) %}
+				{% do action( 'maera/header/inside/end' ) %}
 
 			</nav>
 
-			{% do action( 'maera/topbar/main/after' ) %}
+			{% do action( 'maera/header/main/after' ) %}
 
 		</div>
 	</header>
 
-	{% do action( 'maera/topbar/after' ) %}
+	{% do action( 'maera/header/after' ) %}
 
 {% endif %}

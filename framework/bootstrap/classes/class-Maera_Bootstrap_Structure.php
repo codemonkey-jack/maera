@@ -12,9 +12,9 @@ if ( ! class_exists( 'Maera_Bootstrap_Structure' ) ) {
 		 */
 		public function __construct() {
 
-			add_action( 'maera/topbar/inside/begin', array( $this, 'social_links_navbar_content' ), 10 );
-			add_filter( 'maera/topbar/menu/class', array( $this, 'navbar_links_alignment' ) );
-			add_action( 'maera/topbar/inside/begin', array( $this, 'navbar_search' ), 5 );
+			add_action( 'maera/header/inside/begin', array( $this, 'social_links_navbar_content' ), 10 );
+			add_filter( 'maera/header/menu/class', array( $this, 'navbar_links_alignment' ) );
+			add_action( 'maera/header/inside/begin', array( $this, 'navbar_search' ), 5 );
 
 			// Breadcrumbs
 			add_action( 'maera/content/before', array( $this, 'breadcrumbs' ) );
@@ -22,7 +22,7 @@ if ( ! class_exists( 'Maera_Bootstrap_Structure' ) ) {
 			add_action( 'maera/wrap/before', array( $this, 'header_html' ), 3 );
 			add_action( 'maera/wrap/before', array( $this, 'jumbotron_html' ), 5 );
 
-			add_filter( 'maera/topbar/class', array( $this, 'navbar_positioning_class' ) );
+			add_filter( 'maera/header/class', array( $this, 'navbar_positioning_class' ) );
 
 			add_filter( 'body_class', array( $this, 'body_class' ) );
 
@@ -412,18 +412,18 @@ if ( ! class_exists( 'Maera_Bootstrap_Structure' ) ) {
 
 				// Fluid mode
 				add_filter( 'maera/container_class', array( $this, 'return_container_fluid' ) );
-				add_filter( 'maera/topbar/class/container', array( $this, 'return_container_fluid' ) );
+				add_filter( 'maera/header/class/container', array( $this, 'return_container_fluid' ) );
 
 			} else {
 
 				add_filter( 'maera/container_class', array( $this, 'return_container' ) );
-				add_filter( 'maera/topbar/class/container', array( $this, 'return_container' ) );
+				add_filter( 'maera/header/class/container', array( $this, 'return_container' ) );
 
 			}
 
 			if ( 'full' == $nav_style ) {
 
-				add_filter( 'maera/topbar/class/container', array( $this, 'return_container_fluid' ) );
+				add_filter( 'maera/header/class/container', array( $this, 'return_container_fluid' ) );
 
 			}
 
