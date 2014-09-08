@@ -34,6 +34,8 @@ class Maera_Bootstrap_Compiler {
 		add_action( 'after_switch_theme', array( $compiler, 'makecss' ) );
 		// Trigger the compiler when the customizer options are saved.
 		add_action( 'customize_save_after', array( $compiler, 'makecss' ), 77 );
+		// Trigger the compiler when the options in the admin page are saved
+		add_action( 'maera/admin/save', array( $compiler, 'makecss' ) );
 
 		// If the CSS file does not exist, attempt creating it.
 		if ( ! file_exists( $compiler->file( 'path' ) ) ) {

@@ -152,6 +152,8 @@ class Maera_Admin_Page {
 
 		}
 
+		do_action( 'maera/admin/save' );
+
 		return $settings;
 
 	}
