@@ -13,9 +13,9 @@ Timber::$locations = array(
  */
 if ( current_theme_supports( 'maera_color' ) || current_theme_supports( 'jetpack_color' ) ) {
 	// Include the Jetpack_Color class
-	if ( function_exists( 'jetpack_require_lib' ) ) {
-		jetpack_require_lib( 'class.color' );
-	}
+	// if ( function_exists( 'jetpack_require_lib' ) ) {
+	// 	jetpack_require_lib( 'class.color' );
+	// }
 
 	if ( ! class_exists( 'Jetpack_Color' ) ) {
 		require_once locate_template( '/lib/class-Jetpack_Color.php' );
