@@ -128,7 +128,7 @@ class Maera_Framework_Bootstrap_Compiler {
 
 		$content .= ( $wp_customize || ( 0 != @$theme_options['dev_mode'] ) ) ? file_get_contents( MAERA_FRAMEWORK_PATH .  '/assets/less/app.less' ) : '';
 		$content .= ( get_theme_mod( 'gradients_toggle', 0 ) ) ? file_get_contents( MAERA_FRAMEWORK_PATH . '/assets/less/gradients.less' ) : '';
-		$content .= ( $site_style == 'static' ) ? '@screen-xs-max: 0 !important; .container { max-width: none !important; width: @container-large-desktop; } html { overflow-x: auto !important; }' : '';
+		$content .= ( 'static' == get_theme_mod( 'site_style' ) ) ? '@screen-xs-max: 0 !important; .container { max-width: none !important; width: @container-large-desktop; } html { overflow-x: auto !important; }' : '';
 
 		return $content;
 
