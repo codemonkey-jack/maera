@@ -74,7 +74,7 @@ if ( ! class_exists( 'Maera_Framework_Bootstrap' ) ) {
 
 			}
 
-			add_action( 'maera/topbar/brand', array( $this, 'logo' ) );
+			add_action( 'maera/header/brand', array( $this, 'logo' ) );
 
 		}
 
