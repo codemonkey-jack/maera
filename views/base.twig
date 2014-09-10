@@ -2,17 +2,25 @@
 {% import 'framework.html.twig' as framework %}
 {% include 'html-header.twig' %}
 
-<body class="{{ body_class }}">
+<body class="{{ body_class }}" data-source="base.twig">
 
 	<a href="#content" class="sr-only skip-link screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
 
 	{% do action( 'get_header' ) %}
 
 	{% do action( 'maera/header/before', post.ID ) %}
-	{% include 'header.twig' %}
+
+	{% if theme_mods.navbar_position != 'after-headers' %}
+		{% include 'header.twig' %}
+	{% endif %}
+
 	{% do action( 'maera/header/after', post.ID ) %}
 
 	{% do action( 'maera/wrap/before', post.ID ) %}
+
+	{% if theme_mods.navbar_position == 'after-headers' %}
+		{% include 'header.twig' %}
+	{% endif %}
 
 	{{ framework.open_container( 'div', 'wrap-main-section', 'wrap main-section' ) }}
 

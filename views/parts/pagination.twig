@@ -1,19 +1,17 @@
-<ul class="pagination">
+<ul class="pager">
 	{% if pagination.prev %}
-		<li><a href="{{pagination.prev.link}}" class="prev {{pagination.prev.link|length ? '' : 'invisible'}}">&laquo;</a></li>
+		<li class="previous">
+			<a href="{{pagination.prev.link}}" class="prev {{pagination.prev.link|length ? '' : 'invisible'}}">
+				{{ framework.icon('chevron-left') }} {{ __( 'Previous', 'maera' ) }}
+			</a>
+		</li>
 	{% endif %}
 
-	{% for page in pagination.pages %}
-		<li>
-			{% if page.link %}
-				<a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
-			{% else %}
-				<span class="{{ page.class }}">{{ page.title }}</span>
-			{% endif %}
-		</li>
-	{% endfor %}
-
 	{% if pagination.next %}
-		<li><a href="{{ pagination.next.link }}" class="next {{ pagination.next.link|length ? '' : 'invisible' }}">&raquo;</a></li>
+		<li class="next">
+			<a href="{{pagination.next.link}}" class="next {{pagination.next.link|length ? '' : 'invisible'}}">
+				{{ __( 'Next', 'maera' ) }} {{ framework.icon('chevron-right') }}
+			</a>
+		</li>
 	{% endif %}
 </ul>
