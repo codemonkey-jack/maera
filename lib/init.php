@@ -18,7 +18,19 @@ if ( current_theme_supports( 'maera_color' ) || current_theme_supports( 'jetpack
 	// }
 
 	if ( ! class_exists( 'Jetpack_Color' ) ) {
-		require_once locate_template( '/lib/class-Jetpack_Color.php' );
+		require_once locate_template( '/lib/jetpack/class.color.php' );
+	}
+}
+
+/**
+ * If we're using the Tonesque library, load it
+ */
+if ( current_theme_supports( 'tonesque' ) ) {
+	if ( ! class_exists( 'Jetpack_Color' ) ) {
+		require_once locate_template( '/lib/jetpack/class.color.php' );
+	}
+	if ( ! class_exists( 'Tonesque' ) ) {
+		require_once locate_template( '/lib/jetpack/tonesque.php' );
 	}
 }
 

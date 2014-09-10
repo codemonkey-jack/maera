@@ -419,7 +419,7 @@ class Jetpack_Color {
 		}
 		$rgb = $rgb_new;
 
-		//Observer. = 2°, Illuminant = D65
+		//Observer. = 2Â°, Illuminant = D65
 		$xyz = array(
 			'x' => ($rgb['red'] * 0.4124) + ($rgb['green'] * 0.3576) + ($rgb['blue'] * 0.1805),
 			'y' => ($rgb['red'] * 0.2126) + ($rgb['green'] * 0.7152) + ($rgb['blue'] * 0.0722),

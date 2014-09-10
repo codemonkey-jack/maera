@@ -1777,3 +1777,7 @@ html {
 .bs-example {
   margin-bottom: 20px;
 }
+
+body.container {
+  padding-right: 0;
+}
