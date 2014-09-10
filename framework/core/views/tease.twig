@@ -1,0 +1,18 @@
+{#<?php#}
+<article {{ function( 'post_class', 'post' ) }} id="tease-{{ post.ID }}">
+	{% block content %}
+		<section>
+			<div class="post-preview col-xs-10 no-gutter">
+				{% include 'parts/tease-title.twig' %}
+				{{ post.teaser }}
+				{{ framework.clearfix }}
+				{{ framework.clearfix }}
+				<footer class="entry-footer">
+					<p class="meta">{{ post.meta_info }}</p>
+					{{ post.footer }}
+				</footer>
+			</div>
+		</section>
+
+	{% endblock %}
+</article>

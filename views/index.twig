@@ -1,0 +1,18 @@
+{#<?php#}
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% do action( 'maera/index/begin' ) %}
+
+	{% for post in posts %}
+		{% do action( 'maera/in_loop/begin' ) %}
+		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+		{% do action( 'maera/in_loop/end' ) %}
+	{% endfor %}
+
+	{% include 'parts/pagination.twig' %}
+
+	{% do action( 'maera/index/end' ) %}
+
+{% endblock %}

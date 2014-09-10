@@ -1,0 +1,76 @@
+{#<?php#}
+{% import 'framework.html.twig' as framework %}
+{% include 'html-header.twig' %}
+
+<body class="{{ body_class }}" data-source="base.twig">
+
+	<a href="#content" class="sr-only skip-link screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
+
+	{% do action( 'get_header' ) %}
+
+	{% do action( 'maera/header/before', post.ID ) %}
+
+	{% if theme_mods.navbar_position != 'after-headers' %}
+		{% include 'header.twig' %}
+	{% endif %}
+
+	{% do action( 'maera/header/after', post.ID ) %}
+
+	{% do action( 'maera/wrap/before', post.ID ) %}
+
+	{% if theme_mods.navbar_position == 'after-headers' %}
+		{% include 'header.twig' %}
+	{% endif %}
+
+	{{ framework.open_container( 'div', 'wrap-main-section', 'wrap main-section' ) }}
+
+		{% do action( 'maera/content/before', post.ID ) %}
+
+		<div class="content" id="content">
+
+			{{ framework.open_row( 'div', null, 'bg' ) }}
+
+				<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
+					{% do action( 'maera/main/before', post.ID ) %}
+					<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
+
+						{% if title %}<h1>{{title}}</h1>{% endif %}
+						{% block content %}
+							{{ __( 'Sorry, no content', 'maera' ) }}
+						{% endblock %}
+
+					</main><!-- /.main -->
+					{% do action( 'maera/main/after', post.ID ) %}
+
+					{# PRIMARY SIDEBAR #}
+					<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/primary' ) }}" role="complementary">
+						{{ sidebar.primary }}
+					</aside>
+				</div>
+
+				{# SECONDARY SIDEBAR #}
+				<aside id="sidebar-secondary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/secondary' ) }}" role="complementary">
+					{{ sidebar.secondary }}
+				</aside>
+
+
+				{{ framework.clearfix }}
+
+			{{ framework.close_row( 'div' ) }}
+
+		</div><!-- /#content -->
+
+		{% do action( 'maera/content/after' ) %}
+
+	{{ framework.close_container( 'div' ) }}
+
+	{% do action( 'maera/footer/before', post.ID ) %}
+	<footer class="page-footer">
+		{% do action( 'maera/footer/start', post.ID ) %}
+		{% include 'footer.twig' %}
+		{% do action( 'maera/footer/end', post.ID ) %}
+	</footer>
+	{% do action( 'maera/footer/after', post.ID ) %}
+	{{ function( 'wp_footer' ) }}
+</body>
+</html>
