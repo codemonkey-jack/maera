@@ -6,9 +6,6 @@ require_once locate_template( '/lib/compilers/class-Maera_Compiler.php' );
 // Include the Core framework
 require_once locate_template( '/framework/core/class-Maera_Framework_Core.php' );
 
-// Include Bootstrap
-require_once locate_template( '/framework/bootstrap/class-Maera_Bootstrap.php' );
-
 /**
  * Activate the enabled framework
  */
@@ -17,8 +14,8 @@ require_once locate_template( '/framework/bootstrap/class-Maera_Bootstrap.php' )
 // Get the option from the database
 $options = get_option( 'maera_admin_options', 'bootstrap' );
 
-$active_framework = ( isset( $options['framework'] ) ) ? $options['framework'] : 'bootstrap';
-$active_framework = ( empty( $active_framework ) || '' == $active_framework ) ? 'bootstrap' : $active_framework;
+$active_framework = ( isset( $options['framework'] ) ) ? $options['framework'] : 'core';
+$active_framework = ( empty( $active_framework ) || '' == $active_framework ) ? 'core' : $active_framework;
 
 // Get the list of available frameworks
 $available_frameworks = apply_filters( 'maera/frameworks/available', array() );
