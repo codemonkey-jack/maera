@@ -1,21 +1,37 @@
-{#<?php#}
-<header class="header" >
-	{% block header %}
-	<div class="wrapper container">
+<div id="menu">
+	<ul>
+		{% for item in menu.primary.get_items %}
+			<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
+		{% endfor %}
+	</ul>
+</div>
 
-		<h1 class="hdr-logo" role="banner">
-			<a class="hdr-logo-link" href="/" title="Timber" rel="home">{{ bloginfo( 'name' ) }}</a>
-		</h1>
-		<nav id="access" class="main-navigation" role="navigation">
+<div class="sidebar perma col-md-5 col-sm-12 ">
+
+	<span class="menu-trigger side-writer-icon animated fadeInDown">
+		<span class="bar"></span>
+		<span class="bar"></span>
+		<span class="bar"></span>
+	</span>
+
+	<!-- if the user has javascript disabled they can still use the menu -->
+	<noscript>
+		<div class="no-js-menu">
 			<ul>
-			{% for item in menu.items %}
-				<li id="menu-item-{{item.ID}}" class="menu-item menu-item-type-{{item.type}} menu-item-object-{{item.object}} menu-item-{{item.ID}}">
-					<a href="{{item.link}}">{{ item.title }}</a>
-				</li>
-			{% endfor %}
+				{% for item in menu.primary.get_items %}
+					<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
+				{% endfor %}
 			</ul>
-		</nav><!-- #access -->
+		</div>
+	</noscript>
+	<!-- end no script -->
 
+	<div class="site-info">
+		<div class="primary-info"><h1>{{ post.title }}</h1></div>
+		<div class="secondary-info">
+			<h2><a href="{{ site.url }}">{{ site.name }}</a></h2>
+			<p>{{ site.description }}</p>
+		</div>
 	</div>
-	{% endblock %}
-</header>
+
+</div>

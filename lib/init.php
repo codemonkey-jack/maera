@@ -24,11 +24,9 @@ if ( current_theme_supports( 'maera_color' ) || current_theme_supports( 'jetpack
 
 
 /**
- * If we're using the image library, load it
+ * load the image library
  */
-if ( current_theme_supports( 'maera_image' ) ) {
-	require_once locate_template( '/lib/class-Maera_Image.php' );
-}
+require_once locate_template( '/lib/class-Maera_Image.php' );
 
 /**
  * If we're using Kirki, load it

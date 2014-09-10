@@ -22,11 +22,8 @@ class Maera_Framework_Core {
 		// Add the framework Timber modifications
 		add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
-		add_filter( 'maera/section_class/wrapper', array( $this, 'content_wrapper_class' ) );
-		add_filter( 'maera/section_class/content', array( $this, 'content_main_class' ) );
-		add_filter( 'maera/section_class/primary', array( $this, 'content_primary_class' ) );
-		add_filter( 'maera/section_class/secondary', array( $this, 'content_secondary_class' ) );
-
+		add_theme_support( 'custom-header' );
+		add_filter( 'maera/styles', array( $this, 'custom_header' ) );
 	}
 
 	public static function get_instance() {
@@ -42,11 +39,21 @@ class Maera_Framework_Core {
 	 */
 	function scripts() {
 
-		wp_register_style( 'theme_core', get_template_directory_uri() . '/framework/core/assets/css/style.css' );
-		wp_register_style( 'normalize', get_template_directory_uri() . '/framework/core/assets/css/normalize.css' );
+		wp_register_style( 'bootstrap_min', get_template_directory_uri() . '/framework/core/assets/css/bootstrap.min.css' );
+		wp_register_style( 'theme_main', get_template_directory_uri() . '/framework/core/assets/css/main.css' );
 
-		wp_enqueue_style( 'theme_core' );
-		wp_enqueue_style( 'normalize' );
+		wp_enqueue_style( 'bootstrap_min' );
+		wp_enqueue_style( 'theme_main' );
+
+		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/framework/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
+		wp_register_script( 'panel-menu', get_template_directory_uri() . '/framework/core/assets/js/vendor/jquery.jpanelmenu.min.js', false, null, true );
+		wp_register_script( 'bootstrapjs', get_template_directory_uri() . '/framework/core/assets/js/vendor/bootstrap.min.js', false, null, true );
+		wp_register_script( 'mainjs', get_template_directory_uri() . '/framework/core/assets/js/main.js', false, null, true );
+
+		wp_enqueue_script( 'modernizr-respond' );
+		wp_enqueue_script( 'panel-menu' );
+		wp_enqueue_script( 'bootstrapjs' );
+		wp_enqueue_script( 'mainjs' );
 
 	}
 
@@ -66,25 +73,22 @@ class Maera_Framework_Core {
 		return $data;
 	}
 
-	/**
-	 * Content wrapper class
-	 */
-	function content_wrapper_class( $class ) { return $class . ' column medium size-10'; }
+	function custom_header() {
 
-	/**
-	 * Content class
-	 */
-	function content_main_class( $class ) { return $class . ' column medium size-8'; }
+		$url = get_header_image();
+		if ( is_singular() && has_post_thumbnail() ) {
+			$url_array = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+			$url = $url_array[0];
+		}
 
-	/**
-	 * Primary Sidebar class
-	 */
-	function content_primary_class( $class ) { return $class . ' column medium size-4'; }
+		if ( empty( $url ) ) {
+			return;
+		} else {
+			return '.sidebar.perma { background: url("' . $url . '") no-repeat center center;';
+		}
 
-	/**
-	 * Secondary Sidebar class
-	 */
-	function content_secondary_class( $class ) { return $class . ' column medium size-2'; }
+	}
+
 
 }
 
