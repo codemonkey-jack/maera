@@ -182,7 +182,7 @@ class Maera_Framework_Core {
 				$luminosity = $color->toLuminosity();
 				$fontcolor  = ( $luminosity < 0.5 ) ? '#FFFFFF' : '#222222';
 
-				$styles .= '.entry-header h1{color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
+				$styles .= '.entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
 				$styles .= '#jPanelMenu-menu,.side-writer-icon, .writer-icon{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ' !important;}';
 				$styles .= '.sidebar.perma,.sidebar.perma a,.sidebar.perma .site-info{color:' . $fontcolor . ' !important;}';
 
