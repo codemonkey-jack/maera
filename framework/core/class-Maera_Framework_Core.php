@@ -177,7 +177,16 @@ class Maera_Framework_Core {
 			if ( empty( $color ) || empty( $contrast ) ) {
 				return $styles;
 			} else {
-				return $styles . ' html { background: #' . $color . ' !important; }';
+				$white = new Jetpack_Color( '#FFFFFF' );
+				$color = new Jetpack_Color( '#' . $color );
+				$luminosity = $color->toLuminosity();
+				$fontcolor  = ( $luminosity < 0.5 ) ? '#FFFFFF' : '#222222';
+
+				$styles .= '.entry-header h1{color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
+				$styles .= '#jPanelMenu-menu,.side-writer-icon, .writer-icon{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ' !important;}';
+				$styles .= '.sidebar.perma,.sidebar.perma a,.sidebar.perma .site-info{color:' . $fontcolor . ' !important;}';
+
+				return $styles;
 			}
 
 		}
