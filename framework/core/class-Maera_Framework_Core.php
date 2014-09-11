@@ -181,10 +181,12 @@ class Maera_Framework_Core {
 				$color = new Jetpack_Color( '#' . $color );
 				$luminosity = $color->toLuminosity();
 				$fontcolor  = ( $luminosity < 0.5 ) ? '#FFFFFF' : '#222222';
+				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)';
 
 				$styles .= '.entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
 				$styles .= '#jPanelMenu-menu,.side-writer-icon, .writer-icon{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ' !important;}';
-				$styles .= '.sidebar.perma,.sidebar.perma a,.sidebar.perma .site-info{color:' . $fontcolor . ' !important;}';
+				$styles .= '.sidebar.perma,.sidebar.perma a,.sidebar.perma .site-info, .primary-info{color:' . $fontcolor . ' !important;}';
+				$styles .= '.site-info{background: ' . $background . '; padding: 15px;}';
 
 				return $styles;
 			}
