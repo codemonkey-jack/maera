@@ -6,7 +6,7 @@
 
 	<a href="#content" class="sr-only skip-link screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
 
-	<div class="row">
+	<div id="main" class="row">
 	{% do action( 'get_header' ) %}
 	{% do action( 'maera/header/before', post.ID ) %}
 	{% include 'header.twig' %}

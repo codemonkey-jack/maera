@@ -63,3 +63,33 @@ function maera_get_search_form( $form ) {
 	return $form;
 }
 add_filter( 'get_search_form', 'maera_get_search_form' );
+
+
+/**
+ * Reset the cache when saving the customizer
+ */
+function maera_reset_style_cache_on_customizer_save() {
+
+	remove_theme_mod( 'css_cache' );
+
+}
+add_action( 'customize_save_after', 'maera_reset_style_cache_on_customizer_save' );
+
+/**
+ * adds data-pjax to internal links to make them easier to targer
+ */
+function maera_add_ajax_internal_links( $output ) {
+
+	// convert to array so we can skip the <head>
+	$output_array = explode( '</head>', $output );
+
+	// Add pjax-data to internal links
+	$output_array[1] = str_replace( 'href="/', 'data-ajax href="/', $output_array[1] );
+	$output_array[1] = str_replace( 'href="' . get_home_url(), 'data-ajax href="' . get_home_url(), $output_array[1] );
+
+	// convert array back to string
+	$output = implode( '', $output_array);
+
+	return $output;
+
+}

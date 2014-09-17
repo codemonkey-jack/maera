@@ -24,6 +24,22 @@ function maera_scripts() {
 	wp_register_script( 'fitvids', MAERA_ASSETS_URL . '/js/jquery.fitvids.js',false, null, true  );
 	wp_enqueue_script( 'fitvids' );
 
+	if ( current_theme_supports( 'ajax' ) ) {
+		// Enqueue pace
+		wp_register_script( 'jquery-address', MAERA_ASSETS_URL . '/js/jquery.address-1.5.min.js', array( 'jquery' ), null, true  );
+		wp_register_script( 'maera_ajax', MAERA_ASSETS_URL . '/js/maera-ajax.js', array( 'jquery', 'jquery-address' ), null, true  );
+		$config = array(
+			'base'            => get_home_url(),
+			'wrapper'         => 'body',
+			'loader'          => '<div class="loader></div>',
+			'main'            => '#main',
+			'loader_selector' => '.loader',
+			'search_selector' => '#search',
+			'search_text'     => 'Search...',
+		);
+		wp_localize_script( 'maera_ajax', 'config', $config );
+		wp_enqueue_script( 'maera_ajax' );
+	}
 
 	// Enqueue jQuery
 	wp_enqueue_script( 'jquery' );
@@ -67,13 +83,3 @@ function maera_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'maera_scripts', 100 );
-
-/**
- * Reset the cache when saving the customizer
- */
-function maera_reset_style_cache_on_customizer_save() {
-
-	remove_theme_mod( 'css_cache' );
-
-}
-add_action( 'customize_save_after', 'maera_reset_style_cache_on_customizer_save' );

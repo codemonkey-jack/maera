@@ -50,6 +50,12 @@ if ( current_theme_supports( 'kirki' ) ) {
 	}
 }
 
+/**
+ * If our theme supports pjax, add the filter here
+ */
+if ( current_theme_supports( 'ajax' ) ) {
+	add_filter( 'timber_output', 'maera_add_ajax_internal_links' );
+}
 
 function maera_timber_global_context( $data ) {
 
