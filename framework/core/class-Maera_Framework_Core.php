@@ -184,7 +184,7 @@ class Maera_Framework_Core {
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
 				$styles .= '.entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
-				$styles .= '#jPanelMenu-menu,.side-writer-icon, .writer-icon{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ' !important;}';
+				$styles .= 'body.container, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
 				$styles .= '.sidebar.perma,.sidebar.perma a,.sidebar.perma .site-info, .primary-info{color:' . $fontcolor . ' !important;}';
 				$styles .= '.site-info{background: ' . $background . '; padding: 15px;}';
 

@@ -48,12 +48,6 @@ img {
   left: 15px;
 }
 
-#menu {
-  position: absolute!important;
-  top: -9999px!important;
-  left: -9999px!important;
-}
-
 .sidebar.perma {
   padding: 15px;
   width: 100%;
@@ -539,7 +533,6 @@ p.form-allowed-tags {
   text-indent: 2.5em;
   font-size: 1.5em;
   color: transparent;
-  background: transparent;
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
 }
@@ -550,7 +543,7 @@ p.form-allowed-tags {
   right: 0.5em;
   bottom: 0.5em;
   left: 0.5em;
-  background: linear-gradient(#373a47 20%, transparent 20%, transparent 40%, #373a47 40%, #373a47 60%, transparent 60%, transparent 80%, #373a47 80%);
+  background: linear-gradient(#ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%);
   content: '';
 }
 
@@ -574,16 +567,6 @@ p.form-allowed-tags {
   width: 300px;
 }
 
-.menu-side a {
-  display: block;
-  padding: 1.2em;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-.menu-side a:first-child {
-  border-top: 1px solid rgba(0,0,0,0.1);
-}
-
 /* Shown menu */
 .show-menu .menu-wrap {
   opacity: 1;
@@ -594,12 +577,49 @@ p.form-allowed-tags {
   transform: translate3d(300px,60px,0);
 }
 
-.show-menu .content::before {
-  opacity: 1;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-  -webkit-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
+.page-container,
+.content-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
-.show-menu
+.content-background {
+  background: #fff;
+  position: fixed;
+}
+
+.menu-top ul {
+  list-style: none;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.menu-top ul li {
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.menu-top ul li a {
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.menu-side {
+  padding: 10px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.menu-side ul {
+  padding-left: 1rem;
+}
+
+.menu-side a {
+  color: #ededed;
+}

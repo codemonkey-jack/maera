@@ -1,7 +1,10 @@
 <div id="menu" class="menu-wrap">
-	<ul>
-		{% for item in menu.primary.get_items %}
-			<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a>
-		{% endfor %}
-	</ul>
+	<nav class="menu-top">
+		<ul>
+			{% for item in menu.primary.get_items %}
+				<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</nav>
+	<nav class="menu-side">{{ sidebar.primary }}</nav>
 </div>
