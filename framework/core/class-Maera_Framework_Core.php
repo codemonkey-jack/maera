@@ -50,14 +50,14 @@ class Maera_Framework_Core {
 		wp_enqueue_style( 'theme_main' );
 
 		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/framework/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
-		wp_register_script( 'panel-menu', get_template_directory_uri() . '/framework/core/assets/js/vendor/jquery.jpanelmenu.min.js', false, null, true );
+		wp_register_script( 'classie', get_template_directory_uri() . '/framework/core/assets/js/vendor/classie.js', false, null, true );
+		wp_register_script( 'menu', get_template_directory_uri() . '/framework/core/assets/js/vendor/menu.js', false, null, true );
 		wp_register_script( 'bootstrapjs', get_template_directory_uri() . '/framework/core/assets/js/vendor/bootstrap.min.js', false, null, true );
-		wp_register_script( 'mainjs', get_template_directory_uri() . '/framework/core/assets/js/main.js', false, null, true );
 
 		wp_enqueue_script( 'modernizr-respond' );
-		wp_enqueue_script( 'panel-menu' );
+		wp_enqueue_script( 'classie' );
+		wp_enqueue_script( 'menu' );
 		wp_enqueue_script( 'bootstrapjs' );
-		wp_enqueue_script( 'mainjs' );
 
 	}
 
@@ -184,7 +184,7 @@ class Maera_Framework_Core {
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
 				$styles .= '.entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
-				$styles .= '#jPanelMenu-menu,.side-writer-icon, .writer-icon{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ' !important;}';
+				$styles .= 'body.container, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
 				$styles .= '.sidebar.perma,.sidebar.perma a,.sidebar.perma .site-info, .primary-info{color:' . $fontcolor . ' !important;}';
 				$styles .= '.site-info{background: ' . $background . '; padding: 15px;}';
 
