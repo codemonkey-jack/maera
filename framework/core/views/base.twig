@@ -4,48 +4,29 @@
 
 <body class="container base-container {{ body_class }}" data-source="base.twig">
 
-	<a href="#content" class="sr-only skip-link screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
+	<div id="layout" class="pure-g">
+		{% do action( 'get_header' ) %}
+		{% do action( 'maera/header/before', post.ID ) %}
+		{% include 'header.twig' %}
+		{% do action( 'maera/header/after', post.ID ) %}
 
-	<div class="page-container"></div>
-
-	{% do action( 'get_header' ) %}
-	{% do action( 'maera/header/before', post.ID ) %}
-	{% include 'header.twig' %}
-	{% do action( 'maera/header/after', post.ID ) %}
-	<div class="row content-wrap">
-
-	<div class="content-background"></div>
-		<div class="sidebar perma col-md-5 col-sm-12 ">
-			<button class="menu-button" id="open-button"></button>
-			<div class="site-info">
-				<div class="primary-info">{% if title %}<h1>{{ title }}</h1>{% else %}<h1>{{ post.title }}</h1>{% endif %}</div>
-				<div class="secondary-info">
-					<h2><a href="{{ site.url }}">{{ site.name }}</a></h2>
-					<p>{{ site.description }}</p>
+		<div class="content pure-u-1 pure-u-md-3-4">
+			<div>
+				<div class="posts">
+					{% do action( 'maera/wrap/before', post.ID ) %}
+					{% do action( 'maera/content/before', post.ID ) %}
+					{% do action( 'maera/main/before', post.ID ) %}
+					{% if title %}<h1>{{title}}</h1>{% endif %}
+					{% block content %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
+					{% do action( 'maera/main/after', post.ID ) %}
 				</div>
 			</div>
 		</div>
-		{% do action( 'maera/wrap/before', post.ID ) %}
-		<div class="col-md-7 col-sm-12 col-md-offset-5 main-content content">
-			{% do action( 'maera/content/before', post.ID ) %}
-			{% do action( 'maera/main/before', post.ID ) %}
-			{% if title %}<h1>{{title}}</h1>{% endif %}
-			{% block content %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
-			{% do action( 'maera/main/after', post.ID ) %}
-		</div>
+		{{ framework.clearfix }}
 	</div>
-	{{ framework.clearfix }}
-
-			{{ framework.close_row( 'div' ) }}
-
-		</div><!-- /#content -->
-
-		{% do action( 'maera/content/after' ) %}
-
-	{{ framework.close_container( 'div' ) }}
-
+	{% do action( 'maera/content/after' ) %}
 	{% do action( 'maera/footer/before', post.ID ) %}
-	<footer class="site-footer">
+	<footer class="footer">
 		{% do action( 'maera/footer/start', post.ID ) %}
 		{% include 'footer.twig' %}
 		{% do action( 'maera/footer/end', post.ID ) %}

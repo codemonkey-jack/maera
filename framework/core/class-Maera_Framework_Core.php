@@ -43,10 +43,12 @@ class Maera_Framework_Core {
 	 */
 	function scripts() {
 
-		wp_register_style( 'bootstrap_min', get_template_directory_uri() . '/framework/core/assets/css/bootstrap.min.css' );
+		wp_register_style( 'pure', get_template_directory_uri() . '/framework/core/assets/css/pure.min.css' );
+		wp_register_style( 'pure-responsive', get_template_directory_uri() . '/framework/core/assets/css/grids-responsive-min.css' );
 		wp_register_style( 'theme_main', get_template_directory_uri() . '/framework/core/assets/css/main.css' );
 
-		wp_enqueue_style( 'bootstrap_min' );
+		wp_enqueue_style( 'pure' );
+		wp_enqueue_style( 'pure-responsive' );
 		wp_enqueue_style( 'theme_main' );
 
 		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/framework/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
@@ -84,7 +86,7 @@ class Maera_Framework_Core {
 		if ( empty( $url ) ) {
 			return;
 		} else {
-			return $styles . '.sidebar.perma { background: url("' . $url . '") no-repeat center center; }';
+			return $styles . '.sidebar{ background: url("' . $url . '") no-repeat center center; }';
 		}
 
 	}
@@ -184,8 +186,8 @@ class Maera_Framework_Core {
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
 				$styles .= '.entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
-				$styles .= 'body.container, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
-				$styles .= '.sidebar.perma,.sidebar.perma a,.sidebar.perma .site-info, .primary-info{color:' . $fontcolor . ' !important;}';
+				$styles .= '.menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
+				$styles .= '.sidebar{color:' . $fontcolor . ' !important;}';
 				$styles .= '.site-info{background: ' . $background . '; padding: 15px;}';
 
 				return $styles;
