@@ -187,8 +187,7 @@ class Maera_Framework_Core {
 
 				$styles .= '.entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
 				$styles .= '#menu, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
-				$styles .= '.sidebar{color:' . $fontcolor . ' !important;}';
-				$styles .= '.site-info{background: ' . $background . '; padding: 15px;}';
+				$styles .= '.sidebar .header{color:' . $fontcolor . ' !important; background: ' . $background . '; padding: 15px;}';
 
 				return $styles;
 			}
