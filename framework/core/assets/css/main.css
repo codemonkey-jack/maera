@@ -234,7 +234,7 @@ img {
 }
 
 #menu::-webkit-scrollbar {
-    width: .3em;
+    width: .4em;
 }
  
 #menu::-webkit-scrollbar-track {
@@ -242,8 +242,8 @@ img {
 }
  
 #menu::-webkit-scrollbar-thumb {
-  background-color: #222;
-  outline: 1px solid #222;
+  background-color: rgba(0,0,0,.3);
+  outline: 1px solid rgba(0,0,0,.3);
 }
 
 .show-menu .menu-button {
