@@ -1699,6 +1699,7 @@ img {
 
 .show-menu #menu {
   left: 0;
+  padding-bottom: 2em;
 }
 
 .menu.menu-open ul {
