@@ -23,10 +23,14 @@ class Maera_Framework_Core {
 		add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
 		add_theme_support( 'custom-header' );
+		add_theme_support( 'tonesque' );
+
 		add_filter( 'maera/styles', array( $this, 'custom_header' ) );
 		add_filter( 'maera/styles', array( $this, 'colorposts_build_css' ) );
-
-		add_theme_support( 'tonesque' );
+		add_filter( 'maera/image/display', '__return_true' );
+		add_filter( 'maera/image/width', array( $this, 'image_width' ) );
+		add_filter( 'maera/image/height', array( $this, 'image_height' ) );
+		add_action( 'maera/teaser/start', array( $this, 'teaser_image' ) );
 
 	}
 
@@ -36,6 +40,14 @@ class Maera_Framework_Core {
 		}
 
 		return self::$instance;
+	}
+
+	function image_width() {
+		return 736;
+	}
+
+	function image_height() {
+		return 368;
 	}
 
 	/**
@@ -71,6 +83,17 @@ class Maera_Framework_Core {
 		$data['archives']['image']['height'] = 300;
 
 		return $data;
+	}
+
+	function teaser_image( $post_id ) {
+
+		if ( has_post_thumbnail( $post_id ) ) {
+
+			$image = Maera_Image::featured_image( $post_id );
+			echo '<a href="' . get_permalink( $post_id ) . '"><img class="img" src="' . $image['url'] . '"></a>';
+
+		}
+
 	}
 
 	function custom_header( $styles ) {

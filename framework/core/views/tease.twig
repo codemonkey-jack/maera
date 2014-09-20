@@ -1,6 +1,7 @@
 {#<?php#}
 <section {{ function( 'post_class', 'post' ) }}>
     <header class="post-header">
+    	{% do action( 'maera/teaser/start', post.ID ) %}
         <h2 class="post-title"><a href="{{ post.link }}">{{ post.title|apply_filters( 'maera/title' ) }}</a></h2>
 
         <p class="post-meta">{{ post.meta_info }}</p>
