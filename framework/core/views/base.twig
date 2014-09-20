@@ -14,7 +14,7 @@
 					{% endfor %}
 				</ul>
 			</nav>
-			<nav class="menu-side">{{ sidebar.primary }}</nav>
+			<div class="primary-side">{{ sidebar.primary }}</div>
 		</div>
 		{% do action( 'get_header' ) %}
 		{% do action( 'maera/header/before', post.ID ) %}

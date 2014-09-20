@@ -1714,7 +1714,7 @@ img {
   display: block;
 }
 
-.menu-side {
+.primary-side {
   padding: .6em 1em;
 }
 
@@ -1724,4 +1724,13 @@ img {
 
 .comment-form-comment textarea {
   width: 100%;
+}
+
+.menu.menu-horizontal li .menu-children, .menu.menu-open {
+  background: none;
+  border: none;
+}
+
+.menu li a:focus, .menu li a:hover, .menu li.current_page_item a {
+  background: rgba(255,255,255,.15)
 }
