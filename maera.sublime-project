@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/user/Documents/VVV/www/wordpress-default/wp-content/plugins/maera-bootstrap"
+		}
+	]
+}

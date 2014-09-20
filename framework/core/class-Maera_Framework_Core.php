@@ -23,10 +23,14 @@ class Maera_Framework_Core {
 		add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
 		add_theme_support( 'custom-header' );
+		add_theme_support( 'tonesque' );
+
 		add_filter( 'maera/styles', array( $this, 'custom_header' ) );
 		add_filter( 'maera/styles', array( $this, 'colorposts_build_css' ) );
-
-		add_theme_support( 'tonesque' );
+		add_filter( 'maera/image/display', '__return_true' );
+		add_filter( 'maera/image/width', array( $this, 'image_width' ) );
+		add_filter( 'maera/image/height', array( $this, 'image_height' ) );
+		add_action( 'maera/teaser/start', array( $this, 'teaser_image' ) );
 
 	}
 
@@ -38,26 +42,30 @@ class Maera_Framework_Core {
 		return self::$instance;
 	}
 
+	function image_width() {
+		return 736;
+	}
+
+	function image_height() {
+		return 368;
+	}
+
 	/**
 	 * Register all scripts and additional stylesheets (if necessary)
 	 */
 	function scripts() {
 
-		wp_register_style( 'bootstrap_min', get_template_directory_uri() . '/framework/core/assets/css/bootstrap.min.css' );
 		wp_register_style( 'theme_main', get_template_directory_uri() . '/framework/core/assets/css/main.css' );
 
-		wp_enqueue_style( 'bootstrap_min' );
 		wp_enqueue_style( 'theme_main' );
 
 		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/framework/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
 		wp_register_script( 'classie', get_template_directory_uri() . '/framework/core/assets/js/vendor/classie.js', false, null, true );
 		wp_register_script( 'menu', get_template_directory_uri() . '/framework/core/assets/js/vendor/menu.js', false, null, true );
-		wp_register_script( 'bootstrapjs', get_template_directory_uri() . '/framework/core/assets/js/vendor/bootstrap.min.js', false, null, true );
 
 		wp_enqueue_script( 'modernizr-respond' );
 		wp_enqueue_script( 'classie' );
 		wp_enqueue_script( 'menu' );
-		wp_enqueue_script( 'bootstrapjs' );
 
 	}
 
@@ -67,14 +75,25 @@ class Maera_Framework_Core {
 	function timber_extras( $data ) {
 
 		$data['singular']['image']['switch'] = true;
-		$data['singular']['image']['width']  = 550;
+		$data['singular']['image']['width']  = 736;
 		$data['singular']['image']['height'] = 300;
 
 		$data['archives']['image']['switch'] = true;
-		$data['archives']['image']['width']  = 550;
+		$data['archives']['image']['width']  = 736;
 		$data['archives']['image']['height'] = 300;
 
 		return $data;
+	}
+
+	function teaser_image( $post_id ) {
+
+		if ( has_post_thumbnail( $post_id ) ) {
+
+			$image = Maera_Image::featured_image( $post_id );
+			echo '<a href="' . get_permalink( $post_id ) . '"><img class="img" src="' . $image['url'] . '"></a>';
+
+		}
+
 	}
 
 	function custom_header( $styles ) {
@@ -84,7 +103,7 @@ class Maera_Framework_Core {
 		if ( empty( $url ) ) {
 			return;
 		} else {
-			return $styles . '.sidebar.perma { background: url("' . $url . '") no-repeat center center; }';
+			return $styles . '.sidebar{ background: url("' . $url . '") no-repeat center center; }';
 		}
 
 	}
@@ -183,10 +202,9 @@ class Maera_Framework_Core {
 				$fontcolor  = ( $luminosity < 0.5 ) ? '#FFFFFF' : '#222222';
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
-				$styles .= '.entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
-				$styles .= 'body.container, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
-				$styles .= '.sidebar.perma,.sidebar.perma a,.sidebar.perma .site-info, .primary-info{color:' . $fontcolor . ' !important;}';
-				$styles .= '.site-info{background: ' . $background . '; padding: 15px;}';
+				$styles .= 'header.post-header a, .entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
+				$styles .= '#menu, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
+				$styles .= '.sidebar .header{color:' . $fontcolor . ' !important; background: ' . $background . '; padding: 15px;}';
 
 				return $styles;
 			}
