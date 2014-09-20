@@ -1742,3 +1742,13 @@ img {
 .search-form .search-submit {
   display: none;
 }
+
+.primary-side .widget {
+  border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+.posts .post hr {
+  background: #EDEDED;
+  height: 1px;
+  border: 0;
+}

@@ -63,11 +63,11 @@ class Maera_Framework_Core {
 	function timber_extras( $data ) {
 
 		$data['singular']['image']['switch'] = true;
-		$data['singular']['image']['width']  = 550;
+		$data['singular']['image']['width']  = 736;
 		$data['singular']['image']['height'] = 300;
 
 		$data['archives']['image']['switch'] = true;
-		$data['archives']['image']['width']  = 550;
+		$data['archives']['image']['width']  = 736;
 		$data['archives']['image']['height'] = 300;
 
 		return $data;
@@ -179,7 +179,7 @@ class Maera_Framework_Core {
 				$fontcolor  = ( $luminosity < 0.5 ) ? '#FFFFFF' : '#222222';
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
-				$styles .= '.entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
+				$styles .= 'header.post-header a, .entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
 				$styles .= '#menu, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
 				$styles .= '.sidebar .header{color:' . $fontcolor . ' !important; background: ' . $background . '; padding: 15px;}';
 
