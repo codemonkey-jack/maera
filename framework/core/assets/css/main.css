@@ -172,3 +172,12 @@ h3 {
         bottom: 0;
     }
 }
+
+.pure-paginator .pure-button {
+  height: auto;
+}
+
+.pure-paginator .pure-button a,
+.pure-paginator .pure-button a:hover {
+  text-decoration: none;
+}
