@@ -184,10 +184,10 @@ img {
   position: fixed;
   left: 0;
   z-index: 1000;
-  margin: 1em;
+  margin: 0;
   padding: 0;
-  width: 2.5em;
-  height: 2.25em;
+  width: 2em;
+  height: 1.75em;
   border: none;
   text-indent: 2.5em;
   font-size: 1.5em;
@@ -263,7 +263,11 @@ img {
 
 .show-menu .menu-top ul li a {
   width: 100%;
-  padding: 8px 15px;
+  padding: .6em 1em;
   border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
   display: block;
+}
+
+.menu-side {
+  padding: .6em 1em;
 }
