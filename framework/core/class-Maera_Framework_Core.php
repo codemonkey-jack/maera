@@ -43,12 +43,8 @@ class Maera_Framework_Core {
 	 */
 	function scripts() {
 
-		wp_register_style( 'pure', get_template_directory_uri() . '/framework/core/assets/css/pure.css' );
-		wp_register_style( 'pure-responsive', get_template_directory_uri() . '/framework/core/assets/css/grids-responsive-min.css' );
 		wp_register_style( 'theme_main', get_template_directory_uri() . '/framework/core/assets/css/main.css' );
 
-		wp_enqueue_style( 'pure' );
-		wp_enqueue_style( 'pure-responsive' );
 		wp_enqueue_style( 'theme_main' );
 
 		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/framework/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
