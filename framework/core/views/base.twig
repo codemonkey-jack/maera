@@ -5,12 +5,23 @@
 <body class="container base-container {{ body_class }}" data-source="base.twig">
 
 	<div id="layout" class="pure-g">
+		<button class="menu-button" id="open-button"></button>
+		<div id="menu" class="menu-wrap">
+			<nav class="menu-top">
+				<ul>
+					{% for item in menu.primary.get_items %}
+						<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</nav>
+			<nav class="menu-side">{{ sidebar.primary }}</nav>
+		</div>
 		{% do action( 'get_header' ) %}
 		{% do action( 'maera/header/before', post.ID ) %}
 		{% include 'header.twig' %}
 		{% do action( 'maera/header/after', post.ID ) %}
 
-		<div class="content pure-u-1 pure-u-md-3-4">
+		<div id="content" class="content pure-u-1 pure-u-md-3-4">
 			<div>
 				<div class="posts">
 					{% do action( 'maera/wrap/before', post.ID ) %}
