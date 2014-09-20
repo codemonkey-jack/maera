@@ -271,3 +271,11 @@ img {
 .menu-side {
   padding: .6em 1em;
 }
+
+.comment-form-comment label {
+  display: block;
+}
+
+.comment-form-comment textarea {
+  width: 100%;
+}

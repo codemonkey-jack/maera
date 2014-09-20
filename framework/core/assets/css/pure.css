@@ -477,7 +477,6 @@ table {
     border: 0 rgba(0,0,0,0);
     background-color: #E6E6E6;
     text-decoration: none;
-    border-radius: 2px;
 }
 
 .button-hover,.button:hover,.button:focus, input[type=submit]:hover, button:hover {
@@ -518,7 +517,7 @@ table {
     border: 0;
 }
 
-.button-primary,.button-selected,a.button-primary,a.button-selected {
+.button-primary,.button-selected,a.button-primary,a.button-selected, .comment-form-comment input[type=submit] {
     background-color: #0078e7;
     color: #fff;
 }
@@ -528,7 +527,6 @@ form input[type=text],form input[type=password],form input[type=email],form inpu
     display: inline-block;
     border: 1px solid #ccc;
     box-shadow: inset 0 1px 3px #ddd;
-    border-radius: 4px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -539,7 +537,6 @@ form input:not([type]) {
     display: inline-block;
     border: 1px solid #ccc;
     box-shadow: inset 0 1px 3px #ddd;
-    border-radius: 4px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -668,7 +665,6 @@ form.aligned .controls {
 }
 
 form input.input-rounded,form .input-rounded {
-    border-radius: 2em;
     padding: .5em 1em;
 }
 
@@ -680,7 +676,6 @@ form .group input {
     display: block;
     padding: 10px;
     margin: 0;
-    border-radius: 0;
     position: relative;
     top: -1px;
 }
@@ -691,12 +686,10 @@ form .group input:focus {
 
 form .group input:first-child {
     top: 1px;
-    border-radius: 4px 4px 0 0;
 }
 
 form .group input:last-child {
     top: -2px;
-    border-radius: 0 0 4px 4px;
 }
 
 form .group button {
@@ -988,7 +981,6 @@ form.message {
 }
 
 .paginator .button {
-    border-radius: 0;
     padding: .8em 1.4em;
     vertical-align: top;
     height: 1.1em;
@@ -1001,14 +993,6 @@ form.message {
 .paginator .prev,.paginator .next {
     color: #C0C1C3;
     text-shadow: 0 -1px 0 rgba(0,0,0,.45);
-}
-
-.paginator .prev {
-    border-radius: 2px 0 0 2px;
-}
-
-.paginator .next {
-    border-radius: 0 2px 2px 0;
 }
 
 @media (max-width:480px) {
