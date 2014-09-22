@@ -1497,11 +1497,11 @@ img {
   width: 100%;
   height: 100%;
   background-size: cover;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
+  -webkit-filter: blur(2em);
+  -moz-filter: blur(2em);
+  -o-filter: blur(2em);
+  -ms-filter: blur(2em);
+  filter: blur(2em);
 }
 
 .brand-tagline,.brand-title {
@@ -1818,4 +1818,8 @@ img {
   content: "";
   display: block;
   clear: both;
+}
+
+figure {
+  max-width: 100%;
 }

@@ -44,7 +44,7 @@ class Maera_Framework_Core {
 	}
 
 	function image_width() {
-		return 736;
+		return 912;
 	}
 
 	function image_height() {
