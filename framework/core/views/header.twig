@@ -1,14 +1,7 @@
-<banner class="sidebar u-1 u-md-1-4">
-    <div class="header">
-        <h1 class="brand-title">{{ site.name }}</h1>
-        <h2 class="brand-tagline">{{ site.description }}</h2>
-
-        <nav class="nav">
-            <ul class="nav-list">
-				<li class="nav-item {{ item.classes|join(' ') }}">
-					<a href="{{ item.get_path }}">{{ item.title }}</a>
-				</li>
-            </ul>
-        </nav>
-    </div>
-</banner>
+<div class="page-header">
+	{% if title %}
+		<h1>{{ title }}</h1>
+	{% else %}
+		{% include 'parts/single-title.twig' %}
+	{% endif %}
+</div>

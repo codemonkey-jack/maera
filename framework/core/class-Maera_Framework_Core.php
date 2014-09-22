@@ -101,7 +101,7 @@ class Maera_Framework_Core {
 		if ( empty( $url ) ) {
 			return;
 		} else {
-			return $styles . '.sidebar{ background: url("' . $url . '") no-repeat center center; }';
+			return $styles . '.page-header:before{ background: url("' . $url . '") no-repeat center center; }';
 		}
 
 	}
@@ -200,9 +200,9 @@ class Maera_Framework_Core {
 				$fontcolor  = ( $luminosity < 0.5 ) ? '#FFFFFF' : '#222222';
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
-				$styles .= 'header.post-header a, .entry-header h1, h2.entry-title a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ' !important;}';
-				$styles .= '#menu, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
-				$styles .= '.sidebar .header{color:' . $fontcolor . ' !important; background: ' . $background . '; padding: 15px;}';
+				$styles .= 'a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ';}';
+				$styles .= '#menu.menu-wrap, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
+				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . '; padding: 15px;}';
 
 				return $styles;
 			}

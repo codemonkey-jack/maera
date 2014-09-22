@@ -1202,7 +1202,7 @@ table.horizontal tbody>tr:last-child td {
 
   .u-md-1,.u-md-1-1,.u-md-24-24,.u-md-5-5 {
     width: 100%;
-  };
+  }
 }
 
 @media screen and (min-width:64em) {
@@ -1479,10 +1479,29 @@ img {
   padding: 0;
 }
 
-.header {
+.page-header {
   text-align: center;
   top: auto;
-  margin: 3em auto;
+  padding: 3em;
+  position: relative;
+}
+
+.page-header:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
 }
 
 .brand-tagline,.brand-title {
@@ -1604,20 +1623,7 @@ img {
 @media (min-width:48em) {
   .content {
     padding: 2em 3em 0;
-    margin-left: 25%;
   }
-
-  .header {
-    margin: 80% 2em 0;
-    text-align: right;
-  }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    background-size: cover;
-  };
 }
 
 .paginator .button {
@@ -1662,21 +1668,24 @@ img {
 }
 
 #menu {
-  width: 18em;
-  left: -18em;
-  z-index: 999;
-  -webkit-transition: all .1s linear;
-  -moz-transition: all .1s linear;
-  -ms-transition: all .1s linear;
-  -o-transition: all .1s linear;
-  transition: all .1s linear;
+  margin-left: -10em;
+  width: 10em;
   position: fixed;
-  overflow-y: scroll;
-  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: #191818;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-bar #menu {
+  margin-top: 32px;
 }
 
 #menu a {
-  color: #dedede;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -1694,7 +1703,7 @@ img {
 }
 
 .show-menu .menu-button {
-  left: 12em;
+  left: 6.66em;
 }
 
 .show-menu #menu {
@@ -1761,4 +1770,37 @@ img {
 
 .menu-button:focus {
   border: 2px solid #08c;
+}
+
+#content {
+  max-width:68%;
+}
+#sidebar {
+  width:30%;
+}
+
+@media screen and (min-width:64em) {
+  #menu {
+    left: 10em;
+  }
+  #main {
+    margin-left: 10em;
+  }
+  #open-button.menu-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width:64em) {
+  body.show-menu #menu {
+    left: 10em;
+  }
+  #content, #sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+#layout {
+  max-width: 90em;
 }
