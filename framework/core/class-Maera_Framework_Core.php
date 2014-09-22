@@ -30,7 +30,8 @@ class Maera_Framework_Core {
 		add_filter( 'maera/image/display', '__return_true' );
 		add_filter( 'maera/image/width', array( $this, 'image_width' ) );
 		add_filter( 'maera/image/height', array( $this, 'image_height' ) );
-		add_action( 'maera/teaser/start', array( $this, 'teaser_image' ) );
+		add_action( 'maera/teaser/start', array( $this, 'featured_image' ) );
+		add_action( 'maera/single/pre_content', array( $this, 'featured_image' ) );
 
 	}
 
@@ -83,7 +84,7 @@ class Maera_Framework_Core {
 		return $data;
 	}
 
-	function teaser_image( $post_id ) {
+	function featured_image( $post_id ) {
 
 		if ( has_post_thumbnail( $post_id ) ) {
 
@@ -201,7 +202,7 @@ class Maera_Framework_Core {
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
 				$styles .= 'a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ';}';
-				$styles .= '#menu.menu-wrap, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white, 5 )->toHex() . ';}';
+				$styles .= '#menu.menu-wrap, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
 				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . '; padding: 15px;}';
 
 				return $styles;
