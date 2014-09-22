@@ -1804,3 +1804,15 @@ img {
 #layout {
   max-width: 90em;
 }
+
+.clearfix {
+  float: none;
+  clear: both;
+}
+
+.clearfix:after,
+.clearfix:before {
+  content: "";
+  display: block;
+  clear: both;
+}

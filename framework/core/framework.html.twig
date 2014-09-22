@@ -8,7 +8,7 @@
 	Open container.
 #}
 {% macro open_container(element, id, extra_classes, properties) %}
-	<{{ element|default('div') }} class="{{ 'container'|apply_filters( 'maera/container_class' ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
+	<{{ element|default('div') }} class="{{ 'g'|apply_filters( 'maera/container_class' ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
 {% endmacro %}
 
 
@@ -24,7 +24,7 @@
 	Open row.
 #}
 {% macro open_row(element, id, extra_classes, properties) %}
-	<{{ element|default('div') }} class="row{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
+	<{{ element|default('div') }} class="g{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
 {% endmacro %}
 
 
@@ -58,10 +58,10 @@
 {% macro column_classes(sizes) %}
 	{% if sizes is iterable %}
 		{% for size in sizes %}
-			{% if size.mobile %} col-xs-{{ size.mobile }} {% endif %}
-			{% if size.tablet %} col-sm-{{ size.mobile }} {% endif %}
-			{% if size.medium %} col-md-{{ size.mobile }} {% endif %}
-			{% if size.large %} col-lg-{{ size.mobile }} {% endif %}
+			{% if size.mobile %} u-1 u-sm-{{ size.mobile }}-12 {% endif %}
+			{% if size.tablet %} u-1 u-sm-{{ size.mobile }}-12 {% endif %}
+			{% if size.medium %} u-1 u-md-{{ size.mobile }}-12 {% endif %}
+			{% if size.large %} u-1 u-lg-{{ size.mobile }}-12 {% endif %}
 		{% endfor %}
 	{% endif %}
 {% endmacro %}
@@ -77,7 +77,7 @@
 #}
 {% macro make_dropdown_button(color, size, type, extra, label, content) %}
 
-	<div class="btn-group">
+	<div class="button-group">
 		<button type="button" class="dropdown-toggle {{ _self.button_classes(color, size, type) }}" data-toggle="dropdown">
 			{{ label }} <span class="caret"></span>
 		</button>
@@ -92,13 +92,17 @@
 #}
 {% macro button_classes(color, size, type, extra) %}
 
-	btn-{{ color }}
+	{% if color == 'info' %}
+		button-secondary
+	{% else %}
+		button-{{ color }}
+	{% endif %}
 
-	{% if size == 'extra-small' %}btn-xs{% endif %}
-	{% if size == 'small' %}btn-sm{% endif %}
+	{% if size == 'extra-small' %}button-xsmall{% endif %}
+	{% if size == 'small' %}button-small{% endif %}
 	{% if size == 'medium' %}{# No need for an extra class #}{% endif %}
-	{% if size == 'large' %}btn-lg{% endif %}
-	{% if size == 'extra-large' %}btn-lg{% endif %}
+	{% if size == 'large' %}button-large{% endif %}
+	{% if size == 'extra-large' %}button-xlarge{% endif %}
 
 	{{ type }}
 	{{ extra }}
@@ -112,11 +116,11 @@
 {% macro button_group_classes(size, type, extra_classes) %}
 
 	btn-group
-	{% if size == 'extra-small' %}btn-group-xs{% endif %}
+	{% if size == 'xsmall' %}btn-group-xs{% endif %}
 	{% if size == 'small' %}btn-group-sm{% endif %}
 	{% if size == 'medium' %}{# No need for an extra class #}{% endif %}
 	{% if size == 'large' %}btn-group-lg{% endif %}
-	{% if size == 'extra-large' %}btn-group-lg{% endif %}
+	{% if size == 'xlarge' %}btn-group-lg{% endif %}
 	{{ type }}
 	{{ extra_classes }}
 
@@ -216,7 +220,7 @@
 	Pagination <ul> class
 #}
 {% macro pagination_ul_class() %}
-	pagination
+	paginator
 {% endmacro %}
 
 {#
