@@ -1733,7 +1733,12 @@ img {
 }
 
 .screen-reader-text {
-  display: none;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .search-form .search-field {
@@ -1752,4 +1757,8 @@ img {
   background: #EDEDED;
   height: 1px;
   border: 0;
+}
+
+.menu-button:focus {
+  border: 2px solid #08c;
 }

@@ -3,12 +3,13 @@
 {% include 'html-header.twig' %}
 
 <body class="container base-container {{ body_class }}" data-source="base.twig">
+<a href="#content" class="screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
 
 	<div id="layout" class="g">
 		<button class="menu-button" id="open-button"></button>
 		<div id="menu" class="menu-wrap">
 			<nav class="menu menu-open">
-				<ul>
+				<ul role="navigation">
 					{% for item in menu.primary.get_items %}
 						<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a></li>
 					{% endfor %}
@@ -23,7 +24,7 @@
 
 		<div id="content" class="content u-1 u-md-3-4">
 			<div>
-				<div class="posts">
+				<div class="posts" role="main">
 					{% do action( 'maera/wrap/before', post.ID ) %}
 					{% do action( 'maera/content/before', post.ID ) %}
 					{% do action( 'maera/main/before', post.ID ) %}
