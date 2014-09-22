@@ -722,8 +722,8 @@ form.message {
   vertical-align: middle;
 }
 
-.menu li a {
-  padding: 5px 20px;
+.menu a {
+  padding: 0.625em 1em;
 }
 
 .menu-can-have-children>.menu-label:after {
@@ -1788,6 +1788,9 @@ img {
   }
   #open-button.menu-button {
     display: none;
+  }
+  .page-header {
+    margin-left: 10em;
   }
 }
 
