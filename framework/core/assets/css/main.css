@@ -839,6 +839,7 @@ form.message {
   text-transform: uppercase;
   font-size: 90%;
   margin-top: .5em;
+  padding-bottom: .5em;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: #dfdfdf;
