@@ -31,7 +31,7 @@ class Maera_Framework_Core {
 		add_filter( 'maera/image/width', array( $this, 'image_width' ) );
 		add_filter( 'maera/image/height', array( $this, 'image_height' ) );
 		add_action( 'maera/teaser/start', array( $this, 'featured_image' ) );
-		add_action( 'maera/single/pre_content', array( $this, 'featured_image' ) );
+		// add_action( 'maera/single/pre_content', array( $this, 'featured_image' ) );
 
 	}
 
@@ -203,14 +203,7 @@ class Maera_Framework_Core {
 
 				$styles .= 'a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ';}';
 				$styles .= '#menu.menu-wrap, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
-				$styles .= '.page-header{
-					color:' . $fontcolor . ' !important;
-					background: ' . $background . ';
-					background-image: -moz-linear-gradient(135deg, rgba(0, 0, 0, 0) 45%, ' . $background . ' 49%, ' . $background . ' 51%, rgba(0, 0, 0, 0) 55%)
-					background-image: -webkit-linear-gradient(135deg, rgba(0, 0, 0, 0) 45%, ' . $background . ' 49%, ' . $background . ' 51%, rgba(0, 0, 0, 0) 55%);
-					background-image: linear-gradient(-45deg, rgba(0, 0, 0, 0) 45%, ' . $background . ' 49%, ' . $background . ' 51%, rgba(0, 0, 0, 0) 55%);
-					;}';
-
+				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . ';}';
 				return $styles;
 			}
 

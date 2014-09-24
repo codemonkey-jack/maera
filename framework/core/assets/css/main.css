@@ -1482,15 +1482,9 @@ img {
 .page-header {
   text-align: center;
   top: auto;
-  padding: 3em;
+  padding: 6em;
   position: relative;
   background-color:transparent;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAIklEQVQIW2NkwAT1jGhi9UB+I7IgWACkCCYIF4AJogiABAHNvwSF8tfFKQAAAABJRU5ErkJggg==);
-  background-size: 2px 2px;
-  padding: 15px;
-  background-image: -moz-linear-gradient(135deg, rgba(0, 0, 0, 0) 45%, #222222 49%, #222222 51%, rgba(0, 0, 0, 0) 55%);
-  background-image: -webkit-linear-gradient(135deg, rgba(0, 0, 0, 0) 45%, #222222 49%, #222222 51%, rgba(0, 0, 0, 0) 55%);
-  background-image: linear-gradient(-45deg, rgba(0, 0, 0, 0) 45%, #222222 49%, #222222 51%, rgba(0, 0, 0, 0) 55%);
 }
 
 .page-header:before {
@@ -1504,6 +1498,15 @@ img {
   width: 100%;
   height: 100%;
   background-size: cover;
+}
+
+.page-header .entry-header,
+.page-header .entry-title {
+  max-width: 30em;
+  margin: 0 auto;
+  padding: 1em;
+  color: #fff;
+  background: #333;
 }
 
 .brand-tagline,.brand-title {
@@ -1781,33 +1784,12 @@ img {
   width:30%;
 }
 
-@media screen and (min-width:64em) {
-  #menu {
-    left: 10em;
-  }
-  #main {
-    margin-left: 10em;
-  }
-  #open-button.menu-button {
-    display: none;
-  }
-  .page-header {
-    margin-left: 10em;
-  }
+body.show-menu #menu {
+  left: 10em;
 }
-
-@media screen and (max-width:64em) {
-  body.show-menu #menu {
-    left: 10em;
-  }
-  #content, #sidebar {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
 #layout {
-  max-width: 90em;
+  max-width: 80em;
+  margin: 0 auto;
 }
 
 .clearfix {
