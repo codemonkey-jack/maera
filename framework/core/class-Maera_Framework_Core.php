@@ -33,6 +33,8 @@ class Maera_Framework_Core {
 		add_action( 'maera/teaser/start', array( $this, 'featured_image' ) );
 		// add_action( 'maera/single/pre_content', array( $this, 'featured_image' ) );
 
+		// Post Meta
+		add_action( 'maera/entry/meta', array( $this, 'meta_elements' ), 10, 1 );
 	}
 
 	public static function get_instance() {
@@ -209,6 +211,41 @@ class Maera_Framework_Core {
 
 		}
 
+	}
+
+
+	/**
+	* Figure out the post meta that we want to use and inject them to our content.
+	*/
+	function meta_elements( $post_id ) {
+
+		$post = get_post( $post_id );
+
+		// Date
+		$text = sprintf( human_time_diff( get_the_time('U', $post_id ), current_time('timestamp') ) . '');
+
+		$date .= sprintf( '<span class="entry-date"><a href="%1$s" rel="bookmark"><time class="entry-date" datetime="%2$s">%3$s</time></a></span>',
+			esc_url( get_permalink( $post_id ) ),
+			esc_attr( get_the_date( 'c', $post_id ) ),
+			$text
+		);
+
+		// Author
+		$author .= sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) ),
+			esc_attr( sprintf( __( 'View all posts by %s', 'maera' ), get_the_author_meta( 'display_name', $post->post_author ) ) ),
+			get_the_author_meta( 'display_name', $post->post_author )
+		);
+
+		// Categories
+		$categories_list = has_category( '', $post_id ) ? get_the_category_list( __( ', ', 'maera' ), '', $post_id ) : false;
+		$categories .= $categories_list ? '<span>' . $categories_list . '</span>': '';
+
+		// Comments
+		$comments .= '<span><a href="' . get_comments_link( $post_id ) . '">' . get_comments_number( $post_id ) . ' </a></span>';
+
+		$content = sprintf( __( '%1$s ago by %2$s under %3$s with %4$s comments', 'maera' ), $date, $author, $categories, $comments );
+		echo $content;
 	}
 
 }
