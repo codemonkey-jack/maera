@@ -7,7 +7,7 @@ Template Name: Full-Width
 add_filter( 'maera/layout/modifier', 'maera_return_0' );
 
 $context = Timber::get_context();
-$post = new TimberPost();
+$post = new Maera_Post();
 $context['post'] = $post;
 
 $context['sidebar_primary']   = null;

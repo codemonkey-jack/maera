@@ -16,7 +16,7 @@
  */
 
 $context = Timber::get_context();
-$post = new TimberPost();
+$post = new Maera_Post();
 $context['post'] = $post;
 
 Timber::render(
