@@ -23,6 +23,13 @@ if ( current_theme_supports( 'maera_color' ) || current_theme_supports( 'jetpack
 }
 
 /**
+ * Include the site-logo plugin if not already installed
+ */
+if ( ! function_exists( 'site_logo_init' ) ) {
+	require_once locate_template( '/lib/site-logo/site-logo.php' );
+}
+
+/**
  * If we're using the Tonesque library, load it
  */
 if ( current_theme_supports( 'tonesque' ) ) {
