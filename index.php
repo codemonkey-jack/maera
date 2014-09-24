@@ -8,7 +8,7 @@
  */
 
 if ( ! class_exists( 'Timber' ) ) {
-	_e( 'Timber not activated. Make sure you activate the plugin from https://wordpress.org/plugins/timber-library/.', 'maera' );
+	// _e( 'Timber not activated. Make sure you activate the plugin from https://wordpress.org/plugins/timber-library/.', 'maera' );
 }
 
 $context = Timber::get_context();

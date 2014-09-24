@@ -24,6 +24,7 @@ class Maera_Framework_Core {
 
 		add_theme_support( 'custom-header' );
 		add_theme_support( 'tonesque' );
+		add_theme_support( 'site-logo' );
 
 		add_filter( 'maera/styles', array( $this, 'custom_header' ) );
 		add_filter( 'maera/styles', array( $this, 'colorposts_build_css' ) );
