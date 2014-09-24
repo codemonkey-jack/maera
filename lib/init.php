@@ -107,6 +107,16 @@ function maera_setup() {
 
 	// Tell the TinyMCE editor to use a custom stylesheet
 	add_editor_style( '/assets/css/editor-style.css' );
+
+	$lang_dir    = get_template_directory() . '/languages';
+	$custom_path = WP_LANG_DIR . '/maera-' . get_locale() . '.mo';
+
+	if ( file_exists( $custom_path ) ) {
+		load_textdomain( 'maera', $custom_path );
+	} else {
+		load_theme_textdomain( 'maera', false, $lang_dir );
+	}
+
 }
 add_action( 'after_setup_theme', 'maera_setup' );
 
