@@ -1484,6 +1484,13 @@ img {
   top: auto;
   padding: 3em;
   position: relative;
+  background-color:transparent;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAIklEQVQIW2NkwAT1jGhi9UB+I7IgWACkCCYIF4AJogiABAHNvwSF8tfFKQAAAABJRU5ErkJggg==);
+  background-size: 2px 2px;
+  padding: 15px;
+  background-image: -moz-linear-gradient(135deg, rgba(0, 0, 0, 0) 45%, #222222 49%, #222222 51%, rgba(0, 0, 0, 0) 55%);
+  background-image: -webkit-linear-gradient(135deg, rgba(0, 0, 0, 0) 45%, #222222 49%, #222222 51%, rgba(0, 0, 0, 0) 55%);
+  background-image: linear-gradient(-45deg, rgba(0, 0, 0, 0) 45%, #222222 49%, #222222 51%, rgba(0, 0, 0, 0) 55%);
 }
 
 .page-header:before {
@@ -1497,11 +1504,6 @@ img {
   width: 100%;
   height: 100%;
   background-size: cover;
-  -webkit-filter: blur(2em);
-  -moz-filter: blur(2em);
-  -o-filter: blur(2em);
-  -ms-filter: blur(2em);
-  filter: blur(2em);
 }
 
 .brand-tagline,.brand-title {

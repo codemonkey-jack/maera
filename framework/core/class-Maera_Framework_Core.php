@@ -203,7 +203,13 @@ class Maera_Framework_Core {
 
 				$styles .= 'a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ';}';
 				$styles .= '#menu.menu-wrap, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
-				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . '; padding: 15px;}';
+				$styles .= '.page-header{
+					color:' . $fontcolor . ' !important;
+					background: ' . $background . ';
+					background-image: -moz-linear-gradient(135deg, rgba(0, 0, 0, 0) 45%, ' . $background . ' 49%, ' . $background . ' 51%, rgba(0, 0, 0, 0) 55%)
+					background-image: -webkit-linear-gradient(135deg, rgba(0, 0, 0, 0) 45%, ' . $background . ' 49%, ' . $background . ' 51%, rgba(0, 0, 0, 0) 55%);
+					background-image: linear-gradient(-45deg, rgba(0, 0, 0, 0) 45%, ' . $background . ' 49%, ' . $background . ' 51%, rgba(0, 0, 0, 0) 55%);
+					;}';
 
 				return $styles;
 			}
