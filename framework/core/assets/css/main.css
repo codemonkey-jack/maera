@@ -1673,8 +1673,8 @@ img {
 }
 
 #menu {
-  margin-left: -10em;
-  width: 10em;
+  margin-left: -15em;
+  width: 15em;
   position: fixed;
   top: 0;
   left: 0;
@@ -1708,7 +1708,7 @@ img {
 }
 
 .show-menu .menu-button {
-  left: 6.66em;
+  left: 10em;
 }
 
 .show-menu #menu {
@@ -1785,7 +1785,7 @@ img {
 }
 
 body.show-menu #menu {
-  left: 10em;
+  left: 15em;
 }
 #layout {
   max-width: 80em;
