@@ -1506,7 +1506,7 @@ img {
   margin: 0 auto;
   padding: 1em;
   color: #fff;
-  background: #333;
+  background: rgba(0,0,0,.75);
 }
 
 .brand-tagline,.brand-title {
