@@ -50,7 +50,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 			add_filter( 'maera/stylesheet/url', array( $this, 'stylesheet_url' ) );
 			add_filter( 'maera/stylesheet/ver', array( $this, 'stylesheet_ver' ) );
-			add_action( 'admin_notices', array( $this, 'file_nag' ) );
+			// add_action( 'admin_notices', array( $this, 'file_nag' ) );
 
 		}
 
