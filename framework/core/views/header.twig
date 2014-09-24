@@ -2,6 +2,10 @@
 	{% if title %}
 		<h1>{{ title }}</h1>
 	{% else %}
-		{% include 'parts/single-title.twig' %}
+		{% if function( 'is_singular' ) %}
+			{% include 'parts/single-title.twig' %}
+		{% else %}
+			<h1>{{ site.name }}</h1>
+		{% endif %}
 	{% endif %}
 </div>

@@ -1501,9 +1501,8 @@ img {
   background-attachment: fixed;
 }
 
-.page-header .entry-header,
-.page-header .entry-title {
-  max-width: 30em;
+.page-header h1 {
+  max-width: 20em;
   margin: 0 auto;
   padding: 1em;
   color: #fff;
