@@ -1683,6 +1683,11 @@ img {
   background: #191818;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  -webkit-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -ms-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  transition: all .1s linear;
 }
 
 .admin-bar #menu {
