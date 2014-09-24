@@ -1748,10 +1748,6 @@ img {
   background: rgba(255,255,255,.15)
 }
 
-.primary-side {
-  color: #fff;
-}
-
 .screen-reader-text {
   position: absolute;
   left: -10000px;
