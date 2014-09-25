@@ -1,17 +1,17 @@
 <?php
 
 /**
-* The Framework
+* The Shell
 */
-class Maera_Framework_Core {
+class Maera_Shell_Core {
 
 	private static $instance;
 
 	private function __construct() {
-		do_action( 'maera/framework/include_modules' );
+		do_action( 'maera/shell/include_modules' );
 
-		if ( ! defined( 'MAERA_FRAMEWORK_PATH' ) ) {
-			define( 'MAERA_FRAMEWORK_PATH', dirname( __FILE__ ) );
+		if ( ! defined( 'MAERA_SHELL_PATH' ) ) {
+			define( 'MAERA_SHELL_PATH', dirname( __FILE__ ) );
 		}
 
 		$compiler = null;
@@ -19,7 +19,7 @@ class Maera_Framework_Core {
 		// Enqueue the scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );
 
-		// Add the framework Timber modifications
+		// Add the shell Timber modifications
 		add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
 		add_theme_support( 'custom-header' );
@@ -59,12 +59,12 @@ class Maera_Framework_Core {
 	 */
 	function scripts() {
 
-		wp_register_style( 'theme_main', get_template_directory_uri() . '/framework/core/assets/css/main.css' );
+		wp_register_style( 'theme_main', get_template_directory_uri() . '/shell/core/assets/css/main.css' );
 
 		wp_enqueue_style( 'theme_main' );
 
-		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/framework/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
-		wp_register_script( 'menu', get_template_directory_uri() . '/framework/core/assets/js/vendor/menu.js', false, null, true );
+		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/shell/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
+		wp_register_script( 'menu', get_template_directory_uri() . '/shell/core/assets/js/vendor/menu.js', false, null, true );
 
 		wp_enqueue_script( 'modernizr-respond' );
 		wp_enqueue_script( 'menu' );
@@ -252,18 +252,18 @@ class Maera_Framework_Core {
 }
 
 /**
- * Include the framework
+ * Include the shell
  */
-function maera_framework_core_include( $frameworks ) {
+function maera_shell_core_include( $shells ) {
 
-	// Add our framework to the array of available frameworks
-	$frameworks[] = array(
+	// Add our shell to the array of available shells
+	$shells[] = array(
 		'value' => 'core',
 		'label' => 'Core',
-		'class' => 'Maera_Framework_Core',
+		'class' => 'Maera_Shell_Core',
 	);
 
-	return $frameworks;
+	return $shells;
 
 }
-add_filter( 'maera/frameworks/available', 'maera_framework_core_include' );
+add_filter( 'maera/shells/available', 'maera_shell_core_include' );

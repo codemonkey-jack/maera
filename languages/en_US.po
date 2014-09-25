@@ -124,7 +124,7 @@ msgstr ""
 
 #: lib/admin-page.php:77
 #@ maera
-msgid "Choose a framework"
+msgid "Choose a shell"
 msgstr ""
 
 #: lib/admin-page.php:80
@@ -139,7 +139,7 @@ msgstr ""
 
 #: lib/admin-page.php:90
 #@ maera
-msgid "Enable development mode. Please keep in mind that the actual implementation of the dev mode depends on the framework you have chosen"
+msgid "Enable development mode. Please keep in mind that the actual implementation of the dev mode depends on the shell you have chosen"
 msgstr ""
 
 #: lib/admin-page.php:95

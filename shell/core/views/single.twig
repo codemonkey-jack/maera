@@ -14,12 +14,12 @@
 
 				{% do action( 'maera/single/pre_content', post.ID ) %}
 				{{ post.content }}
-				{{ framework.clearfix }}
+				{{ shell.clearfix }}
 				{{ function( 'wp_link_pages', {
 					'before': '<div class="page-links">' . __( 'Pages:', 'maera' ),
 					'after': '</div>'
 				}) }}
-				{{ framework.clearfix }}
+				{{ shell.clearfix }}
 				{% do action( 'maera/single/after_content', post.ID ) %}
 			</div>
 

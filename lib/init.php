@@ -1,9 +1,9 @@
 <?php
 
 Timber::$locations = array(
-	MAERA_FRAMEWORK_PATH . '/macros',
-	MAERA_FRAMEWORK_PATH . '/views',
-	MAERA_FRAMEWORK_PATH,
+	MAERA_SHELL_PATH . '/macros',
+	MAERA_SHELL_PATH . '/views',
+	MAERA_SHELL_PATH,
 	get_stylesheet_directory() . '/views',
 	get_template_directory() . '/views'
 );

@@ -10,15 +10,15 @@
 			{% include 'parts/single-title.twig' %}
 
 			{{ post.meta_info }}
-			{{ framework.clearfix }}
+			{{ shell.clearfix }}
 			{% do action( 'maera/page/pre_content' ) %}
 			{{ post.content }}
-			{{ framework.clearfix }}
+			{{ shell.clearfix }}
 			{{ function( 'wp_link_pages', {
 				'before': '<div class="page-links">' . __( 'Pages:', 'maera' ),
 				'after': '</div>'
 			}) }}
-			{{ framework.clearfix }}
+			{{ shell.clearfix }}
 			{% do action( 'maera/page/after_content' ) %}
 
 		</article>

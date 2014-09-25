@@ -3,8 +3,8 @@
 /**
 * The theme options class.
 * This can hold options like import/export and layout selection.
-* Things that in general don't belong to a CSS framework but the theme in general.
-* CSS-Framework-Specific options should use the customizer instead.
+* Things that in general don't belong to a shell but the theme in general.
+* Shell-Specific options should use the customizer instead.
 */
 class Maera_Admin_Page {
 
@@ -45,14 +45,14 @@ class Maera_Admin_Page {
 
 		// The available options
 		$maera_admin_options = apply_filters( 'maera/admin/options', array(
-			'framework'   => 'bootstrap',
+			'shell'       => 'bootstrap',
 			'import_data' => '',
 			'dev_mode'    => 1,
 			'cache'       => "0"
 		) );
 
-		// Get the available frameworks
-		$available_frameworks = apply_filters( 'maera/frameworks/available', array() );
+		// Get the available shells
+		$available_shells = apply_filters( 'maera/shells/available', array() );
 
 		// This checks whether the form has just been submitted.
 		if ( ! isset( $_REQUEST['updated'] ) ) {
@@ -74,11 +74,11 @@ class Maera_Admin_Page {
 				<table class="form-table">
 
 					<tr valign="top">
-						<th scope="row"><?php _e( 'Choose a framework', 'maera' ); ?></th>
+						<th scope="row"><?php _e( 'Choose a shell', 'maera' ); ?></th>
 						<td>
-							<?php foreach( $available_frameworks as $available_framework ) : ?>
-								<input type="radio" id="<?php echo $available_framework['value']; ?>" name="maera_admin_options[framework]" value="<?php esc_attr_e( $available_framework['value'] ); ?>" <?php checked( $settings['framework'], $available_framework['value'] ); ?> />
-								<label for="<?php echo $available_framework['value']; ?>"><?php echo $available_framework['label']; ?></label><br />
+							<?php foreach( $available_shells as $available_shell ) : ?>
+								<input type="radio" id="<?php echo $available_shell['value']; ?>" name="maera_admin_options[shell]" value="<?php esc_attr_e( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />
+								<label for="<?php echo $available_shell['value']; ?>"><?php echo $available_shell['label']; ?></label><br />
 							<?php endforeach; ?>
 						</td>
 					</tr>
@@ -87,7 +87,7 @@ class Maera_Admin_Page {
 						<th scope="row"><?php _e( 'Development mode', 'maera' ); ?></th>
 						<td>
 							<input type="checkbox" name="maera_admin_options[dev_mode]" <?php checked( @$settings['dev_mode'], 1 ); ?> value='1'>
-							<label for="maera_admin_options[dev_mode]"><?php _e( 'Enable development mode. Please keep in mind that the actual implementation of the dev mode depends on the framework you have chosen', 'maera' ); ?></label><br />
+							<label for="maera_admin_options[dev_mode]"><?php _e( 'Enable development mode. Please keep in mind that the actual implementation of the dev mode depends on the shell you have chosen', 'maera' ); ?></label><br />
 						</td>
 					</tr>
 

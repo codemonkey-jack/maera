@@ -1,5 +1,5 @@
 {#<?php#}
-{% import 'framework.html.twig' as framework %}
+{% import 'shell.html.twig' as shell %}
 {% include 'html-header.twig' %}
 
 <body class="{{ body_class }}">
@@ -14,13 +14,13 @@
 
 	{% do action( 'maera/wrap/before', post.ID ) %}
 
-	{{ framework.open_container( 'div', 'wrap-main-section', 'wrap main-section' ) }}
+	{{ shell.open_container( 'div', 'wrap-main-section', 'wrap main-section' ) }}
 
 		{% do action( 'maera/content/before', post.ID ) %}
 
 		<div class="content" id="content">
 
-			{{ framework.open_row( 'div', null, 'bg' ) }}
+			{{ shell.open_row( 'div', null, 'bg' ) }}
 
 				<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
 					{% do action( 'maera/main/before', post.ID ) %}
@@ -46,15 +46,15 @@
 				</aside>
 
 
-				{{ framework.clearfix }}
+				{{ shell.clearfix }}
 
-			{{ framework.close_row( 'div' ) }}
+			{{ shell.close_row( 'div' ) }}
 
 		</div><!-- /#content -->
 
 		{% do action( 'maera/content/after' ) %}
 
-	{{ framework.close_container( 'div' ) }}
+	{{ shell.close_container( 'div' ) }}
 
 	{% do action( 'maera/footer/before', post.ID ) %}
 	<footer class="page-footer">
