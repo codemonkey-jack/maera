@@ -168,14 +168,10 @@ class Maera_Shell_Core {
 		$src = $this->custom_header_url();
 
 		if ( $src ) {
-			if ( is_singular() && has_post_thumbnail() ) {
-				$context_id = $post_id;
-			} else {
-				$context_id = $this->pn_get_attachment_id_from_url( $src );
-			}
+			$attachment_id = $this->pn_get_attachment_id_from_url( $src );
 
 			// Grab color from post meta
-			$tonesque = get_post_meta( $context_id, '_post_colors', true );
+			$tonesque = get_post_meta( $attachment_id, '_post_colors', true );
 
 			// No color? Let's get one
 			if ( empty( $tonesque ) ) {
