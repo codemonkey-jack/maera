@@ -2,3 +2,4 @@
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 
 lib/timber-library/cache
+maera.sublime-project
