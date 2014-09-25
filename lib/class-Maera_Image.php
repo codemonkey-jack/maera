@@ -47,7 +47,7 @@ if ( ! class_exists( 'Maera_Image' ) ) {
 			}
 
 			// Generate the @2x file if retina is enabled
-			if ( current_theme_supports( 'retina' ) && empty( $settings['retina'] ) ) {
+			if ( current_theme_supports( 'retina' ) ) {
 				$results['retina'] = self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], true );
 			}
 

@@ -9,7 +9,13 @@
 		<button class="menu-button" id="open-button"></button>
 		<div id="menu" class="menu-wrap">
 			<nav class="menu menu-open">
-			<a class="menu-heading" href="{{ site.url }}">{{ site.name }}</a>
+
+				{% if function( 'get_site_logo' ) %}
+					<a class="menu-heading site-logo" href="{{ site.url }}"><img src="{{ function( 'get_site_logo' ) }}"></a>
+				{% else %}
+					<a class="menu-heading" href="{{ site.url }}">{{ site.name }}</a>
+				{% endif %}
+
 				<ul role="navigation">
 					{% for item in menu.primary.get_items %}
 						<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a></li>
