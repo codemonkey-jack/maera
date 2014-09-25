@@ -202,7 +202,7 @@ class Maera_Shell_Core {
 
 				$styles .= 'a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ';}';
 				$styles .= '#menu.menu-wrap, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
-				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . ';}';
+				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . ';box-shadow:0px 0px 5px ' . $color . ';}';
 				return $styles;
 			}
 
