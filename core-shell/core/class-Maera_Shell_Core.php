@@ -60,12 +60,12 @@ class Maera_Shell_Core {
 	 */
 	function scripts() {
 
-		wp_register_style( 'theme_main', get_template_directory_uri() . '/shell/core/assets/css/main.css' );
+		wp_register_style( 'theme_main', get_template_directory_uri() . '/core-shell/core/assets/css/main.css' );
 
 		wp_enqueue_style( 'theme_main' );
 
-		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/shell/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
-		wp_register_script( 'menu', get_template_directory_uri() . '/shell/core/assets/js/vendor/menu.js', false, null, true );
+		wp_register_script( 'modernizr-respond', get_template_directory_uri() . '/core-shell/core/assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, null, false );
+		wp_register_script( 'menu', get_template_directory_uri() . '/core-shell/core/assets/js/vendor/menu.js', false, null, true );
 
 		wp_enqueue_script( 'modernizr-respond' );
 		wp_enqueue_script( 'menu' );
