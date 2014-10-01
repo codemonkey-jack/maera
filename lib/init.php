@@ -41,6 +41,13 @@ if ( current_theme_supports( 'tonesque' ) ) {
 	}
 }
 
+/**
+ * If we're using the Custom Widget Areas builder, include it here
+ */
+if ( current_theme_supports( 'maera_cwa' ) ) {
+	require_once locate_template( '/lib/class-Maera_CWA.php' );
+}
+
 
 /**
  * load the image library
