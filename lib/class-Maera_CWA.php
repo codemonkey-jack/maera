@@ -15,7 +15,7 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 			$extra_widget_areas = $this->extra_widget_areas_array();
 
 			foreach ( $extra_widget_areas as $ewa ) {
-				add_action( $ewa['action'], array( $this, 'extra_widget_areas_wrapper', 2 ) );
+				add_action( $ewa['action'], array( $this, 'extra_widget_areas_wrapper'), $ewa['priority'], 2 );
 			}
 
 		}
