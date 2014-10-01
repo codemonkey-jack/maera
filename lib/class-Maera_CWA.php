@@ -19,6 +19,8 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 			}
 
 			add_action( 'widgets_init', array( $this, 'widget_areas' ), 12 );
+			add_filter( 'kirki/controls', array( $this, 'customizer_controls' ) );
+			add_action( 'customize_register', array( $this, 'customizer_section' ) );
 
 		}
 
@@ -51,6 +53,46 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 			 */
 
 			return apply_filters( 'maera/widgets/areas', $defaults );
+
+		}
+
+
+		/**
+		 * Customizer section
+		 */
+		function customizer_section( $wp_customize ) {
+			$wp_customize->add_section( 'custom_widget_areas' , array(
+				'title'      => __( 'Custom Widget Areas', 'maera' ),
+				'priority'   => 999,
+			) );
+		}
+
+
+		/**
+		 * Customizer controls for custom widget areas
+		 */
+		function customizer_controls( $controls ) {
+
+			$extra_widget_areas = $this->extra_widget_areas_array();
+
+			$i = 1;
+
+			foreach ( $extra_widget_areas as $area => $settings ) {
+
+				$controls[] = array(
+					'type'     => 'select',
+					'setting'  => $area . '_widgets_nr',
+					'label'    => sprintf( __( 'Number of widget areas in %s', 'maera' ), $settings['name'] ),
+					'section'  => 'custom_widget_areas',
+					'default'  => $settings['default'],
+					'choices'  => apply_filters( 'maera/widgets/areas/values', array( 0, 1, 2, 3, 4, 6 ) ),
+					'priority' => $i,
+				);
+
+				$i++;
+			}
+
+			return $controls;
 
 		}
 
