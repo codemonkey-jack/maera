@@ -4,7 +4,7 @@
 require_once locate_template( '/lib/compilers/class-Maera_Compiler.php' );
 
 // Include the Core shell
-require_once locate_template( '/shell/core/class-Maera_Shell_Core.php' );
+require_once locate_template( '/core-shell/core/class-Maera_Shell_Core.php' );
 
 /**
  * Activate the enabled shell
