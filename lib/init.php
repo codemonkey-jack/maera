@@ -48,6 +48,11 @@ if ( current_theme_supports( 'tonesque' ) ) {
 require_once locate_template( '/lib/class-Maera_Image.php' );
 
 /**
+ * Load the Extended posts widget
+ */
+require_once locate_template( '/lib/widgets/extended-posts/extended-posts.php' );
+
+/**
  * If we're using Kirki, load it
  */
 if ( current_theme_supports( 'kirki' ) ) {
