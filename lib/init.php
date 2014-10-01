@@ -46,6 +46,7 @@ if ( current_theme_supports( 'tonesque' ) ) {
  */
 if ( current_theme_supports( 'maera_cwa' ) ) {
 	require_once locate_template( '/lib/class-Maera_CWA.php' );
+	$extra_widget_areas = new Maera_CWA();
 }
 
 

@@ -18,6 +18,8 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 				add_action( $ewa['action'], array( $this, 'extra_widget_areas_wrapper'), $ewa['priority'], 2 );
 			}
 
+			add_action( 'widgets_init', array( $this, 'widget_areas' ), 12 );
+
 		}
 
 
