@@ -8,6 +8,44 @@ Timber::$locations = array(
 	get_template_directory() . '/views'
 );
 
+// Add caching if dev_mode is set to off.
+$theme_options = get_option( 'maera_admin_options', array() );
+if ( 0 == @$theme_options['dev_mode'] ) {
+
+	add_filter( 'maera/styles/caching', '__return_true' );
+	// Turn on Timber caching.
+	// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
+	Timber::$cache = true;
+	add_filter( 'maera/timber/cache', 'maera_timber_caching' );
+
+} else {
+
+	add_filter( 'maera/styles/caching', '__return_false' );
+	TimberLoader::CACHE_NONE;
+
+}
+
+/**
+ * Timber caching
+ */
+function maera_timber_caching() {
+
+	$theme_options = get_option( 'maera_admin_options', array() );
+
+	$cache_int = isset( $theme_options['cache'] ) ? intval( $theme_options['cache'] ) : 0;
+
+	if ( 0 == $cache_int ) {
+
+		// No need to proceed if cache=0
+		return false;
+
+	}
+
+	// Convert minutes to seconds
+	return ( $cache_int * 60 );
+
+}
+
 /**
  * If we're using the color library, load it
  */
