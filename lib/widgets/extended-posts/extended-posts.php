@@ -1,40 +1,45 @@
 <?php
-/*
-Plugin Name: Maera extended posts
-Plugin URI: http://wpmu.io
-Description: Adds some extra widgets, primarily useful for News Sites.
-Version: 0.1
-Author: Aristeides Stathopoulos
-Author URI:  http://aristeides.com
-*/
 
-// plugin folder url
+/**
+ * @package     Maera/Extended Posts Widget/Loader
+ * @version     1.0.0
+ * @author      Aristeides Stathopoulos, Brian Welch
+ * @copyright   2014
+ * @link        https://wpmu.io
+ * @license     http://opensource.org/licenses/MIT
+ * @uses        Adds some extra widgets, primarily useful for News Sites.
+ *
+ */
+
+// Widget folder url
 if ( ! defined( 'MAERA_EXT_POSTS_URL' ) ) {
 	define( 'MAERA_EXT_POSTS_URL', get_template_directory_uri() . '/lib/widgets/extended-posts/' );
 }
 
-// plugin folder path
+// Widget folder path
 if ( ! defined( 'MAERA_EXT_POSTS_PATH' ) ) {
 	define( 'MAERA_EXT_POSTS_PATH', dirname( __FILE__ ) );
 }
 
-// plugin root file
+// Widget root file
 if ( ! defined( 'MAERA_EXT_POSTS_FILE' ) ) {
 	define( 'MAERA_EXT_POSTS_FILE', __FILE__ );
 }
 
 /**
- * Include plugin files
+ * Include the extended widget class.
  */
+include_once( MAERA_EXT_POSTS_PATH . '/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php' );
 
-include_once( MAERA_EXT_POSTS_PATH . '/includes/widget.posts-query.php' );
-include_once( MAERA_EXT_POSTS_PATH . '/includes/functions.loop.php' );
-include_once( MAERA_EXT_POSTS_PATH . '/includes/functions.excerpts.php' );
 
+/**
+ * Register the widget.
+ */
 function maera_ext_posts_widgets() {
-	register_widget( 'maera_ext_posts_widget_latest_articles' );
+	register_widget( 'Maera_Ext_Posts_Widget_Latest_Articles' );
 }
 add_action( 'widgets_init', 'maera_ext_posts_widgets' );
+
 
 /**
  * Enqueue styles
