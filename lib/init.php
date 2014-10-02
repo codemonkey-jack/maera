@@ -23,6 +23,9 @@ if ( 0 == @$theme_options['dev_mode'] ) {
 	add_filter( 'maera/styles/caching', '__return_false' );
 	TimberLoader::CACHE_NONE;
 
+	$_SERVER['QUICK_CACHE_ALLOWED'] = FALSE;
+	define( 'DONOTCACHEPAGE', TRUE );
+
 }
 
 /**
