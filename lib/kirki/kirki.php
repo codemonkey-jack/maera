@@ -30,6 +30,9 @@ class Kirki {
 		// Include the controls initialization script
 		include_once( dirname( __FILE__ ) . '/includes/controls/controls-init.php' );
 
+		// Include the fonts class
+		include_once( dirname( __FILE__ ) . '/includes/functions/class-Kirki_Fonts.php' );
+
 		add_action( 'customize_register', array( $this, 'include_files' ), 1 );
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
@@ -87,102 +90,41 @@ class Kirki {
 	 * Add custom CSS rules to the head, applying our custom styles
 	 */
 	function custom_css() {
+		
+		// Get the active admin theme
+		global $_wp_admin_css_colors;
+
+		// Get the user's admin colors
+		$color = get_user_option( 'admin_color' );
+		// If no theme is active set it to 'fresh'
+		if ( empty( $color ) || ! isset( $_wp_admin_css_colors[$color] ) ) {
+			$color = 'fresh';
+		}
+
+		$color = (array) $_wp_admin_css_colors[$color];
 
 		$admin_theme = get_user_meta( get_current_user_id(), 'admin_color', true ); //Find out which theme the user has selected.
 
 		$options = apply_filters( 'kirki/config', array() );
 
-		switch ( $admin_theme ){
-			// Light theme
-			case 'light':
-				$color_font = '#999';
-				$color_active = '#999';
-				$color_light = '#04a4cc';
-				$color_select = '#f1f1f1';
-				$color_accent = '#f1f1f1';
-				$color_content = '#fff';
-				$color_back = '#e5e5e5';
-			break;
-			// Blue theme
-			case 'blue':
-				$color_font = '#fff';
-				$color_active = '#096484';
-				$color_light = '#096484';
-				$color_select = '#fff';
-				$color_accent = '#fff';
-				$color_content = '#f1f1f1';
-				$color_back = '#74B6CE';
-			break;
-			// Coffee theme
-			case 'coffee':
-				$color_font = '#fff';
-				$color_active = '#c7a589';
-				$color_light = '#c7a589';
-				$color_select = '#fff';
-				$color_accent = '#fff';
-				$color_content = '#f1f1f1';
-				$color_back = '#59524c';
-			break;
-			// Ectoplasm theme
-			case 'ectoplasm':
-				$color_font = '#fff';
-				$color_active = '#a3b745';
-				$color_light = '#a3b745';
-				$color_select = '#fff';
-				$color_accent = '#fff';
-				$color_content = '#f1f1f1';
-				$color_back = '#523f6d';
-			break;
-			// Midnight theme
-			case 'midnight':
-				$color_font = '#fff';
-				$color_active = '#e14d43';
-				$color_light = '#e14d43';
-				$color_select = '#fff';
-				$color_accent = '#fff';
-				$color_content = '#f1f1f1';
-				$color_back = '#363b3f';
-			break;
-			// Ocean theme
-			case 'ocean':
-				$color_font = '#fff';
-				$color_active = '#9ebaa0';
-				$color_light = '#9ebaa0';
-				$color_select = '#fff';
-				$color_accent = '#fff';
-				$color_content = '#f1f1f1';
-				$color_back = '#738e96';
-			break;
-			// Sunrise theme
-			case 'sunrise':
-				$color_font = '#fff';
-				$color_active = '#dd823b';
-				$color_light = '#dd823b';
-				$color_select = '#fff';
-				$color_accent = '#fff';
-				$color_content = '#f1f1f1';
-				$color_back = '#cf4944';
-			break;
-			// Default WordPress theme "Fresh"
-			default:
-				$color_font = isset( $options['color_font'] ) ? $options['color_font'] : '#fff';
-				$color_active = isset( $options['color_active'] ) ? $options['color_active'] : '#2ea2cc';
-				$color_light  = isset( $options['color_light'] ) ? $options['color_light'] : '#2ea2cc';
-				$color_select = isset( $options['color_select'] ) ? $options['color_select'] : '#fff';
-				$color_accent = isset( $options['color_accent'] ) ? $options['color_accent'] : '#fff';
-				$color_content = isset( $options['color_content'] ) ? $options['color_content'] : '#f1f1f1';
-				$color_back = isset( $options['color_back'] ) ? $options['color_back'] : '#222';
-		}
+		$color_font    = isset( $options['color_font'] )    ? $options['color_font']    : null;
+		$color_active  = isset( $options['color_active'] )  ? $options['color_active']  : null;
+		$color_light   = isset( $options['color_light'] )   ? $options['color_light']   : null;
+		$color_select  = isset( $options['color_select'] )  ? $options['color_select']  : $color['colors'][2];
+		$color_accent  = isset( $options['color_accent'] )  ? $options['color_accent']  : $color['icon_colors']['focus'];
+		$color_content = isset( $options['color_content'] ) ? $options['color_content'] : null;
+		$color_back    = isset( $options['color_back'] )    ? $options['color_back']    : null;
 
 		?>
 
 		<style>
 			.wp-core-ui .button.tooltip {
-				background: <?php echo $color_active; ?>;
+				background: <?php echo $color_select; ?>;
+				color: #fff;
 			}
 
 			.image.ui-buttonset label.ui-button.ui-state-active {
-				background: <?php echo $color_accent; ?>;
+				background: <?php echo $color_select; ?>;
 			}
 
 			.wp-full-overlay-sidebar {
@@ -198,7 +140,7 @@ class Kirki {
 			}
 
 			#customize-theme-controls .accordion-section-title {
-				border-bottom: 1px solid <?php echo $color_back; ?>;
+				border-bottom: 1px solid rgba(0,0,0,.1) ?>;
 			}
 
 			#customize-theme-controls .control-section .accordion-section-title {

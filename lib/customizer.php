@@ -9,13 +9,6 @@ function maera_customizer_config() {
 	$args = array(
 
 		// 'logo_image'    => get_template_directory_uri() . '/assets/images/customizer-logo.png',
-		'color_font'    => '#111',
-		'color_active'  => '#2ECC71',
-		'color_light'   => '#F1C40F',
-		'color_select'  => '#3498DB',
-		'color_accent'  => '#E74C3C',
-		'color_content' => '#f1f1f1',
-		'color_back'    => '#FFFFFF',
 		'url_path'      => get_template_directory_uri() . '/lib/kirki/',
 		'stylesheet_id' => 'maera',
 		// 'live_css'      => false,
