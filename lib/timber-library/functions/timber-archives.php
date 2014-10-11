@@ -25,6 +25,7 @@ class TimberArchives extends TimberCore
      * @return mixed
      */
     function get_archives_link($url, $text) {
+        $ret = array();
         $ret['text'] = $ret['title'] = $ret['name'] = wptexturize($text);
         $ret['url'] = $ret['link'] = esc_url(TimberURLHelper::prepend_to_url($url, $this->base));
         return $ret;
@@ -204,6 +205,7 @@ class TimberArchives extends TimberCore
             $key = "wp_get_archives:$key:$last_changed";
             if (!$results = wp_cache_get($key, 'posts')) {
                 $results = $wpdb->get_results($query);
+                $cache = array();
                 $cache[$key] = $results;
                 wp_cache_set($key, $results, 'posts');
             }
