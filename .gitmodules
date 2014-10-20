@@ -2,3 +2,7 @@
 	path = lib/kirki
 	url = https://github.com/wpmu/kirki.git
 	branch = master
+[submodule "lib/timber-library"]
+	path = lib/timber-library
+	url = https://github.com/jarednova/timber.git
+	branch = master
