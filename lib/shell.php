@@ -12,7 +12,7 @@ require_once locate_template( '/core-shell/class-Maera_Shell_Core.php' );
 
 
 // Get the option from the database
-$options = get_option( 'maera_admin_options', 'core' );
+$options = get_option( 'maera_admin_options', 'bootstrap' );
 
 $active_shell = ( isset( $options['shell'] ) ) ? $options['shell'] : 'core';
 $active_shell = ( empty( $active_shell ) || '' == $active_shell ) ? 'core' : $active_shell;
