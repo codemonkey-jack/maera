@@ -23,29 +23,3 @@ function maera_customizer_config() {
 
 }
 add_filter( 'kirki/config', 'maera_customizer_config' );
-
-function maera_customizer_additional_css() { ?>
-
-	<style>
-		li#customize-control-widgets_mode,
-		li#customize-control-menu_mode,
-		li#customize-control-gradients_toggle,
-		li#customize-control-navbar_position,
-		li#customize-control-navbar_logo,
-		li#customize-control-border_radius,
-		li#customize-control-padding_base,
-		li#customize-control-less,
-		li#customize-control-minimize_css,
-		li#customize-control-navbar_bg,
-		li#customize-control-navbar_bg_opacity
-		{
-			margin-left: -20px;
-			margin-right: -20px;
-			background: #D1D5D8;
-			padding: 10px 20px;
-		}
-	</style>
-
-	<?php
-}
-add_action( 'customize_controls_print_styles', 'maera_customizer_additional_css', 999 );
