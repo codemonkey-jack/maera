@@ -10,7 +10,7 @@ if ( ! class_exists( 'Timber' ) ) {
 }
 
 require_once locate_template( '/lib/breadcrumb-trail.php' );
-require_once locate_template( '/core-shell/shell.php' );
+require_once locate_template( '/lib/shell.php' );
 require_once locate_template( '/lib/init.php' );
 require_once locate_template( '/lib/class-Maera_Posts.php' );
 require_once locate_template( '/lib/widgets.php' );
@@ -38,7 +38,7 @@ function maera_body_class( $classes ) {
 
 	}
 
-	$classes[] = get_theme_mod( 'shell', 'bootstrap' );;
+	$classes[] = get_theme_mod( 'shell', 'core' );
 
 	// Remove unnecessary classes
 	$home_id_class  = 'page-id-' . get_option( 'page_on_front' );

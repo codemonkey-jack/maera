@@ -45,10 +45,10 @@ class Maera_Admin_Page {
 
 		// The available options
 		$maera_admin_options = apply_filters( 'maera/admin/options', array(
-			'shell'       => 'bootstrap',
+			'shell'       => 'core',
 			'import_data' => '',
 			'dev_mode'    => 1,
-			'cache'       => "0"
+			'cache'       => '0'
 		) );
 
 		// Get the available shells

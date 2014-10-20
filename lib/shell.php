@@ -4,7 +4,7 @@
 require_once locate_template( '/lib/compilers/class-Maera_Compiler.php' );
 
 // Include the Core shell
-require_once locate_template( '/core-shell/core/class-Maera_Shell_Core.php' );
+require_once locate_template( '/core-shell/class-Maera_Shell_Core.php' );
 
 /**
  * Activate the enabled shell
@@ -12,7 +12,7 @@ require_once locate_template( '/core-shell/core/class-Maera_Shell_Core.php' );
 
 
 // Get the option from the database
-$options = get_option( 'maera_admin_options', 'bootstrap' );
+$options = get_option( 'maera_admin_options', 'core' );
 
 $active_shell = ( isset( $options['shell'] ) ) ? $options['shell'] : 'core';
 $active_shell = ( empty( $active_shell ) || '' == $active_shell ) ? 'core' : $active_shell;
