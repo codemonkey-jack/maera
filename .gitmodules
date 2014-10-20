@@ -1,0 +1,3 @@
+[submodule "kirki"]
+	path = kirki
+	url = https://github.com/wpmu/kirki.git
