@@ -1,0 +1,4 @@
+[submodule "lib/kirki"]
+	path = lib/kirki
+	url = https://github.com/wpmu/kirki.git
+	branch = master
