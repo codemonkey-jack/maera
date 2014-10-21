@@ -18,26 +18,20 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 			$args = wp_parse_args( $args, array(
 				'compiler'      => null,
 				'minimize_css'  => true,
-				'less_path'     => '',
-				'sass_path'     => '',
-				'custom_styles' => '',
 			) );
 			extract( $args );
 
 			$this->compiler      = $compiler;
 			$this->minimize_css  = $minimize_css;
-			$this->less_path     = $less_path;
-			$this->sass_path     = $sass_path;
-			$this->custom_styles = $custom_styles;
 
-			if ( 'less_php' == $this->compiler ) {
+			if ( 'less' == $this->compiler ) {
 
 				// Require the less parser
 				if ( ! class_exists( 'Less_Parser' ) ) {
 					require_once( 'less-php/less.php' );
 				}
 
-			} elseif ( 'sass_php' == $this->compiler ) {
+			} elseif ( 'sass' == $this->compiler ) {
 
 				// Require the less parser
 				if ( ! class_exists( 'scssc' ) ) {
@@ -45,8 +39,6 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 				}
 
 			}
-
-			$this->custom_styles = apply_filters( 'maera/compiler/custom_styles', $this->custom_styles );
 
 			add_filter( 'maera/stylesheet/url', array( $this, 'stylesheet_url' ) );
 			add_filter( 'maera/stylesheet/ver', array( $this, 'stylesheet_ver' ) );
@@ -227,17 +219,15 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 			';
 
-			if ( 'less_php' == $this->compiler ) {
+			if ( 'less' == $this->compiler ) {
 
 				$content = $this->compiler_less();
 
-			} elseif ( 'sass_php' == $this->compiler ) {
+			} elseif ( 'sass' == $this->compiler ) {
 
 				$content = $this->compiler_sass();
 
 			}
-
-			$content .= apply_filters( 'maera/compiler', '' );
 
 			// Strip protocols
 			$content = str_replace( 'https://', '//', $content );
@@ -261,11 +251,6 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 		public function compiler_less() {
 
 			$options   = array( 'compress' => $this->minimize_css );
-			$less_path = $this->less_path;
-
-			$webfont_location   = get_template_directory() . '/assets/fonts/';
-
-			$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
 
 			$css = '';
 
@@ -273,27 +258,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 				$parser = new Less_Parser( $options );
 
-				$parser->parse( apply_filters( 'maera/compiler/less/pre', null ) );
-
-				// The main app.less file
-				if ( ! is_null( $less_path ) && ! empty( $less_path ) ) {
-					$parser->parseFile( $less_path . 'app.less', '' );
-				}
-
-				// The custom.less file
-				if ( is_writable( $custom_less_file ) ) {
-					$parser->parseFile( $custom_less_file );
-				}
-
-				$parser->parse( apply_filters( 'maera/compiler/less/post', null ) );
-
-				// Parse any custom less added by the user
-				if ( '' != $this->custom_styles ) {
-					$parser->parse( $this->custom_styles );
-				}
-
-				// Add a filter to the compiler
-				$parser->parse( apply_filters( 'maera/compiler/less/final', '' ) );
+				$parser->parse( apply_filters( 'maera/compiler', null ) );
 
 				$css = $parser->getCss();
 
@@ -323,7 +288,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 			$scss = new scssc();
 			$scss->setImportPaths( $this->sass_path );
 
-			$css =  $scss->compile( apply_filters( 'foundation_scss', '@import "app.scss";' ) );
+			$css = $scss->compile( apply_filters( 'maera/compiler', null ) );
 
 			return $css;
 		}
