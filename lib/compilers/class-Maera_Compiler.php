@@ -280,9 +280,6 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 					$parser->parseFile( $less_path . 'app.less', '' );
 				}
 
-				// Include the Elusive Icons
-				$parser->parseFile( $webfont_location . 'elusive-webfont.less', '' );
-
 				// The custom.less file
 				if ( is_writable( $custom_less_file ) ) {
 					$parser->parseFile( $custom_less_file );
@@ -327,9 +324,6 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 			$scss->setImportPaths( $this->sass_path );
 
 			$css =  $scss->compile( apply_filters( 'foundation_scss', '@import "app.scss";' ) );
-
-			// Ugly hack to properly set the path to webfonts
-			$css = str_replace( "url('Elusive-Icons", "url('" . get_template_directory_uri() . '/assets/fonts/' . "Elusive-Icons", $css );
 
 			return $css;
 		}
