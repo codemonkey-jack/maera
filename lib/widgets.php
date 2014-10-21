@@ -29,4 +29,3 @@ function maera_widgets_init() {
 
 }
 add_action( 'widgets_init', 'maera_widgets_init' );
-

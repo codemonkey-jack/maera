@@ -1,12 +1,13 @@
 <?php
 
-Timber::$locations = array(
+$locations = array(
 	MAERA_SHELL_PATH . '/macros',
 	MAERA_SHELL_PATH . '/views',
 	MAERA_SHELL_PATH,
 	get_stylesheet_directory() . '/views',
 	get_template_directory() . '/views'
 );
+Timber::$locations = apply_filters( 'maera/timber/locations', $locations );
 
 // Add caching if dev_mode is set to off.
 $theme_options = get_option( 'maera_admin_options', array() );
