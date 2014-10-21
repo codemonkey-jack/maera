@@ -8,19 +8,22 @@
 		<article {{ function( 'post_class' ) }} id="post-{{post.ID}}">
 
 			{% do action( 'maera/single/top', post.ID ) %}
-	        <p class="post-meta">
-	        	{{ post.date }}
-	        	{{ __( 'under', 'maera' ) }}
-	        	{% for category in post.get_categories %}
-	        		<a href="{{ category.get_path }}">{{ category.name }}</a>
-	        	{% endfor %}
-	        	{{ __( 'by', 'maera' ) }}
-	        	<a href="{{ post.author.link }}">{{ post.author.name }}</a>
-	        	{% if post.comments %}
-	        		{{ __( 'with', 'maera' ) }}
-	        		<a href="{{ post.link }}#comments">{{ post.comment_count }} {{ __( 'comments', 'maera' ) }}</a>
-	        	{% endif %}
-	        </p>
+			
+			{% include 'parts/single-title.twig' %}
+
+			<p class="post-meta">
+				{{ post.date }}
+				{{ __( 'under', 'maera' ) }}
+				{% for category in post.get_categories %}
+					<a href="{{ category.get_path }}">{{ category.name }}</a>
+				{% endfor %}
+				{{ __( 'by', 'maera' ) }}
+				<a href="{{ post.author.link }}">{{ post.author.name }}</a>
+				{% if post.comments %}
+					{{ __( 'with', 'maera' ) }}
+					<a href="{{ post.link }}#comments">{{ post.comment_count }} {{ __( 'comments', 'maera' ) }}</a>
+				{% endif %}
+			</p>
 
 			<div class="entry-content">
 
