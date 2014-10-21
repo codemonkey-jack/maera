@@ -7,8 +7,8 @@ if ( ! class_exists( 'EDD_SL_Theme_Updater' ) ) {
 function maera_theme_updater() {
 
 	$edd_updater = new EDD_SL_Theme_Updater( array(
-			'remote_api_url' 	=> 'http://shoestrap.org',
-			'version' 			=> '1.0-alpha2',
+			'remote_api_url' 	=> 'http://press.codes',
+			'version' 			=> '1.0-beta1',
 			'license' 			=> 'c5305a091a9e61268c5be6096bfa3d38',
 			'item_name' 		=> 'Maera',
 			'author'			=> 'aristath, fovoc'
