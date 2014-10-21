@@ -64,16 +64,14 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 				$upload_dir = wp_upload_dir();
 
 				// If this is a multisite installation, append the blogid to the filename
-				if ( is_multisite() && $blog_id > 1 ) {
-					$cssid = '_id-' . $blog_id;
-				} else {
-					$cssid = null;
-				}
+				$cssid = ( is_multisite() && $blog_id > 1 ) ? '_id-' . $blog_id : null;
+
 				$file_name = '/maera' . $cssid . '.css';
 
 				// Define a default folder for the stylesheets.
 				$def_folder_path = get_template_directory() . '/assets/css';
 
+				$folder_path = $def_folder_path;
 				// The folder path for the stylesheet.
 				// We try to first write to the uploads folder.
 				// If we can write there, then use that folder for the stylesheet.
@@ -83,9 +81,6 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 				} elseif ( is_writable( ABSPATH . '/css' . $file_name ) || is_writable( ABSPATH . '/css' ) ) {
 					// Fallback to the WordPress root folder /css
 					$folder_path = ABSPATH . '/css';
-				} else {
-					// Fallback to the theme's default folder.
-					$folder_path = $def_folder_path;
 				}
 
 				// The complete path to the file.
@@ -98,12 +93,8 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 				} elseif ( $folder_path == ABSPATH . '/css' ) {
 					// Path is set to WordPress root /css
-					$css_uri_folder = site_url() . '/css';
-
 					// On multisites use network_site_url() instead of site_url()
-					if ( is_multisite() ) {
-						$css_uri_folder = network_site_url() . '/css';
-					}
+					$css_uri_folder = ( is_multisite() ) ? network_site_url() . '/css' : site_url() . '/css';
 
 				} else {
 					// Fallback to the theme's assets/css folder.
@@ -112,11 +103,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 				}
 
 				// If the CSS file does not exist, use the default file.
-				if ( file_exists( $file_path ) ) {
-					$css_uri = $css_uri_folder . $file_name;
-				} else {
-					$css_uri = get_template_directory_uri() . '/assets/css/style-default.css';
-				}
+				$css_uri = ( file_exists( $file_path ) ) ? $css_uri_folder . $file_name : get_template_directory_uri() . '/assets/css/style-default.css';
 
 				// If a style.css file exists in the assets/css folder, use that file instead.
 				// This is mostly for backwards-compatibility with previous versions.
@@ -147,7 +134,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 			// Get the file version based on its filemtime
 			if ( $target == 'ver' ) {
 				if ( ! get_transient( 'maera_stylesheet_time' ) ) {
-					//set_transient( 'maera_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
+					set_transient( 'maera_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
 				}
 
 				$value = get_transient( 'maera_stylesheet_time' );
