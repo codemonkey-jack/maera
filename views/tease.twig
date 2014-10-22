@@ -2,8 +2,7 @@
 {% include ['tease-'~post.post_type~'-open.twig', 'tease-open.twig'] %}
 	{% block content %}
 		{% do action('maera/in_article/top', post.ID) %}
-		{% include ['tease-'~post.post_type~'-title.twig', 'tease-title.twig'] %}
-		{% include ['tease-'~post.post_type~'-meta.twig', 'tease-meta.twig'] %}
+		{% include ['tease-'~post.post_type~'-head.twig', 'tease-head.twig'] %}
 		{% include ['tease-'~post.post_type~'-content.twig', 'tease-content.twig'] %}
 		{% include ['tease-'~post.post_type~'-footer.twig', 'tease-footer.twig'] %}
 	{% endblock %}

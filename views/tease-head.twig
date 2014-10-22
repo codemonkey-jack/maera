@@ -1,0 +1,5 @@
+<header class="post-header">
+	{% do action( 'maera/teaser/start', post.ID ) %}
+	{% include ['tease-'~post.post_type~'-title.twig', 'tease-title.twig'] %}
+	{% include ['tease-'~post.post_type~'-meta.twig', 'tease-meta.twig'] %}
+</header>

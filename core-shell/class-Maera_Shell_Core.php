@@ -35,8 +35,6 @@ class Maera_Shell_Core {
 		add_action( 'maera/teaser/start', array( $this, 'featured_image' ) );
 		// add_action( 'maera/single/pre_content', array( $this, 'featured_image' ) );
 
-		// Post Meta
-		add_action( 'maera/entry/meta', array( $this, 'meta_elements' ), 10, 1 );
 	}
 
 	public static function get_instance() {
