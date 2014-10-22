@@ -8,7 +8,7 @@
 
 	<div class="responses">
 		{% for cmt in post.get_comments() %}
-			{% include "comment.twig" with {comment:cmt} %}
+			{% include ['parts/single-'~post.post_type~'-comment.twig', 'single-comments.twig'] with {comment:cmt} %}
 		{% endfor %}
 	</div>
 
