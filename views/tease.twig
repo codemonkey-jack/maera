@@ -1,10 +1,10 @@
 {#<?php#}
-{% include ['parts/tease-'~post.post_type~'-open.twig', 'tease-open.twig'] %}
+{% include ['tease-'~post.post_type~'-open.twig', 'tease-open.twig'] %}
 	{% block content %}
 		{{ post.top }}
-		{% include ['parts/tease-'~post.post_type~'-title.twig', 'tease-title.twig'] %}
-		{% include ['parts/tease-'~post.post_type~'-meta.twig', 'tease-meta.twig'] %}
-		{% include ['parts/tease-'~post.post_type~'-content.twig', 'tease-content.twig'] %}
-		{% include ['parts/tease-'~post.post_type~'-footer.twig', 'tease-footer.twig'] %}
+		{% include ['tease-'~post.post_type~'-title.twig', 'tease-title.twig'] %}
+		{% include ['tease-'~post.post_type~'-meta.twig', 'tease-meta.twig'] %}
+		{% include ['tease-'~post.post_type~'-content.twig', 'tease-content.twig'] %}
+		{% include ['tease-'~post.post_type~'-footer.twig', 'tease-footer.twig'] %}
 	{% endblock %}
-{% include ['parts/tease-'~post.post_type~'-close.twig', 'tease-close.twig'] %}
+{% include ['tease-'~post.post_type~'-close.twig', 'tease-close.twig'] %}
