@@ -1,0 +1,22 @@
+{#<?php#}
+{% extends "base.twig" %}
+{% block content %}
+	{% include ['parts/single-'~post.post_type~'-open.twig', 'single-open.twig'] %}
+	{% do action( 'maera/single/top', post.ID ) %}
+	{% include 'parts/single-title.twig' %}
+	{% include ['parts/single-'~post.post_type~'-meta.twig', 'single-meta.twig'] %}
+	<div class="entry-content" itemprop="text">
+		{% do action( 'maera/single/pre_content', post.ID ) %}
+		{{ post.content }}
+		{{ shell.clearfix }}
+		{{ function( 'wp_link_pages', {
+			'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ),
+			'after': '</div>'
+		}) }}
+		{{ shell.clearfix }}
+		{% do action( 'maera/single/after_content', post.ID ) %}
+	</div>
+	{% include ['parts/single-'~post.post_type~'-footer.twig', 'single-footer.twig'] %}
+	{% include ['parts/single-'~post.post_type~'-comments.twig', 'single-comments.twig'] %}
+	{% include ['parts/single-'~post.post_type~'-close.twig', 'single-close.twig'] %}
+{% endblock %}
