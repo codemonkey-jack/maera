@@ -1,10 +1,10 @@
 {#<?php#}
 {% extends "base.twig" %}
 {% block content %}
-	{% include ['parts/single-'~post.post_type~'-open.twig', 'single-open.twig'] %}
+	{% include ['single-'~post.post_type~'-open.twig', 'single-open.twig'] %}
 	{% do action( 'maera/single/top', post.ID ) %}
-	{% include 'parts/single-title.twig' %}
-	{% include ['parts/single-'~post.post_type~'-meta.twig', 'single-meta.twig'] %}
+	{% include 'single-title.twig' %}
+	{% include ['single-'~post.post_type~'-meta.twig', 'single-meta.twig'] %}
 	<div class="entry-content" itemprop="text">
 		{% do action( 'maera/single/pre_content', post.ID ) %}
 		{{ post.content }}
@@ -16,7 +16,7 @@
 		{{ shell.clearfix }}
 		{% do action( 'maera/single/after_content', post.ID ) %}
 	</div>
-	{% include ['parts/single-'~post.post_type~'-footer.twig', 'single-footer.twig'] %}
+	{% include ['single-'~post.post_type~'-footer.twig', 'single-footer.twig'] %}
 	{% include [post.post_type~'-comments.twig', 'comments.twig'] %}
-	{% include ['parts/single-'~post.post_type~'-close.twig', 'single-close.twig'] %}
+	{% include ['single-'~post.post_type~'-close.twig', 'single-close.twig'] %}
 {% endblock %}

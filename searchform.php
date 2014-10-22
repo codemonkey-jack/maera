@@ -4,7 +4,7 @@
  */
 
 $templates = array(
-	'parts/searchform.twig',
+	'searchform.twig',
 );
 
 $context = Timber::get_context();
