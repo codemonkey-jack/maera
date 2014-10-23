@@ -110,8 +110,9 @@ if ( current_theme_supports( 'kirki' ) ) {
 
 function maera_timber_global_context( $data ) {
 
-	$data['theme_mods'] = get_theme_mods();
-	$data['teaser_mode'] = apply_filters( 'maera/teaser/mode', 'excerpt' );
+	$data['theme_mods']   = get_theme_mods();
+	$data['site_options'] = wp_load_alloptions();
+	$data['teaser_mode']  = apply_filters( 'maera/teaser/mode', 'excerpt' );
 
 	$data['thumbnail']['width'] = apply_filters( 'maera/image/width', 600 );
 	$data['thumbnail']['height'] = apply_filters( 'maera/image/height', 371 );
