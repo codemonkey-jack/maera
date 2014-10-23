@@ -132,6 +132,8 @@ function maera_timber_global_context( $data ) {
 	$data['pagination'] = Timber::get_pagination();
 	$data['comment_form'] = TimberHelper::get_comment_form();
 
+	$data['site_logo'] = get_option( 'site_logo', false );
+
 	return $data;
 
 }
