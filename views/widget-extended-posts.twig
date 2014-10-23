@@ -1,0 +1,25 @@
+{{ widget.before_widget }}
+{% if widget.title %}
+	{{ widget.before_title }}
+	{{ widget.title }}
+	{{ widget.after_title }}
+{% endif %}
+<div class="post-list list {{ shell.clearfix }}">
+	{% for post in posts %}
+		<article class="maera_latest_posts_article">
+			<header class="title">
+				<a href="{{ post.link }}"><{{ widget.post_title_size }}>{{ post.title }}</{{widget.post_title_size}}></a>
+			</header>
+			<div class="post-content">
+				{% if post.thumbnail %}
+					<a href="{{ post.link }}" {% if widget.thumb_float %}class="{{ shell.float_class('left') }}"{% endif %}>
+						<img src="{{ post.get_thumbnail.get_src|resize(widget.thumb_width, widget.thumb_height) }}">
+					</a>
+				{% endif %}
+				{{ post.get_preview(widget.excerpt_length, false, widget.more_text) }}
+
+			</div>
+		</article>
+	{% endfor %}
+</div>
+{{ widget.after_widget }}

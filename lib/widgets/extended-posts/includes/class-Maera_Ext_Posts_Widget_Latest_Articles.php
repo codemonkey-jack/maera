@@ -12,182 +12,6 @@
 class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 
 	/**
-	 * Loop through pages, posts and attachments and add them to the widget.
-	 * @todo TODO
-	 * @since 1.0.0
-	 */
-	function maera_posts_loop( $post_type = 'post', $taxonomy = '', $term = '', $posts_per_page = 5, $offset = 0, $thumb = false, $thumb_float = true, $thumb_width = 150, $thumb_height = 100, $excerpt_length = 20, $read_more_text = '...', $post_title_size = 'h4' ) {
-
-		// Set-Up the taxonomy query
-		if ( 'maera_all_terms' != $term ) {
-
-			$tax_query = array(
-					array(
-						'taxonomy' => $taxonomy,
-						'field'    => 'id',
-						'terms'    => array( $term ),
-					),
-			);
-
-		} else {
-
-			$tax_query = '';
-
-		}
-
-		// Start the arguments
-		$args = array(
-			'post_type'      => $post_type,
-			'tax_query'      => $tax_query,
-			'taxonomy'       => $taxonomy,
-			'terms'          => $term,
-			'posts_per_page' => $posts_per_page,
-			'offset'         => $offset,
-		);
-
-		$thumb_class = ( $thumb_float ) ? 'class="pull-left"' : '';
-
-		// The Query
-		$the_query = new WP_Query( $args );
-
-		// The Loop
-		$i = 0;
-		while ( $the_query->have_posts() ) : $i++;
-			$the_query->the_post();
-
-			$image_args['width']  = $thumb_width;
-			$image_args['url']    = wp_get_attachment_url( get_post_thumbnail_id() );
-			$image_args['height'] = $thumb_height;
-
-			$image = Maera_Image::image_resize( $image_args );
-			?>
-
-			<div class="media">
-
-				<?php if ( $thumb && has_post_thumbnail() ) : ?>
-
-					<?php if ( ! $thumb_float ) : ?>
-
-						<div class="media-body">
-							<a href="<?php the_permalink(); ?>">
-
-								<?php if ( $post_title_size == 'h3' ) : ?>
-									<h3 class="media-heading">
-								<?php elseif ( $post_title_size == 'h4' ) : ?>
-									<h4 class="media-heading">
-								<?php else : ?>
-									<strong class="media-heading">
-								<?php endif; ?>
-
-									<?php the_title(); ?>
-
-								<?php if ( $post_title_size == 'h3' ) : ?>
-									</h3>
-								<?php elseif ( $post_title_size == 'h4' ) : ?>
-									</h4>
-								<?php else : ?>
-									</strong><br />
-								<?php endif; ?>
-
-							</a>
-
-					<?php endif; ?>
-
-					<a <?php echo esc_html( $thumb_class ); ?> href="<?php the_permalink(); ?>">
-						<img class="media-object" src="<?php echo esc_html( $image['url'] ); ?>" alt="<?php the_title(); ?>">
-					</a>
-
-				<?php endif; ?>
-
-				<?php if ( $thumb && has_post_thumbnail() && ! $thumb_float ) : ?>
-
-					<?php echo self::maera_ext_posts_excerpt( $excerpt_length, $read_more_text ); ?>
-
-				<?php else : ?>
-
-					<div class="media-body">
-						<a href="<?php the_permalink(); ?>">
-
-							<?php if ( $post_title_size == 'h3' ) : ?>
-								<h3 class="media-heading">
-							<?php elseif ( $post_title_size == 'h4' ) : ?>
-								<h4 class="media-heading">
-							<?php else : ?>
-								<strong class="media-heading">
-							<?php endif; ?>
-
-								<?php the_title(); ?>
-
-							<?php if ( $post_title_size == 'h3' ) : ?>
-								</h3>
-							<?php elseif ( $post_title_size == 'h4' ) : ?>
-								</h4>
-							<?php else : ?>
-								</strong><br />
-							<?php endif; ?>
-
-						</a>
-
-						<?php echo self::maera_ext_posts_excerpt( $excerpt_length, $read_more_text ); ?>
-
-				<?php endif; ?>
-
-				</div>
-			</div>
-			<?php
-		endwhile;
-
-		/* Restore original Post Data
-		 * NB: Because we are using new WP_Query we aren't stomping on the
-		 * original $wp_query and it does not need to be reset.
-		*/
-		wp_reset_postdata();
-	}
-
-
-	/**
-	 * Post excerpt
-	 * @todo TODO
-	 * @since 1.0.0
-	 */
-	function maera_ext_posts_excerpt( $limit = 20, $read_more_text ) {
-		$excerpt = explode( ' ', get_the_excerpt(), $limit );
-
-		if ( count( $excerpt ) >= $limit ) :
-			array_pop( $excerpt );
-			$excerpt = implode( ' ', $excerpt ) . ' <a href="' . get_post_permalink() . '">' . $read_more_text . '</a>';
-		else :
-			$excerpt = implode( ' ', $excerpt );
-		endif;
-
-		$excerpt = preg_replace( '`\[[^\]]*\]`', '', $excerpt );
-		return $excerpt;
-	}
-
-
-	/**
-	 * Post content
-	 * @todo TODO
-	 * @since 1.0.0
-	 */
-	function maera_ext_posts_content( $limit, $read_more_text ) {
-		$content = explode( ' ', get_the_content(), $limit );
-
-		if ( count( $content ) >= $limit ) :
-			array_pop( $content );
-			$content = implode( ' ', $content ) . ' <a href="' . get_post_permalink() . '">' . $read_more_text . '</a>';
-		else :
-			$content = implode( ' ', $content );
-		endif;
-
-		$content = preg_replace( '/\[.+\]/', '', $content );
-		$content = apply_filters( 'the_content', $content );
-		$content = str_replace( ']]>', ']]&gt;', $content );
-		return $content;
-	}
-
-
-	/**
 	 * Add the widget to the back end.
 	 * @todo TODO
 	 * @since 1.0.0
@@ -223,52 +47,56 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 
 		extract( $args );
 
-		$title           = apply_filters( 'widget_title', $instance['title'] );
-		$post_type       = $instance['post_type'];
-		$taxonomy        = $instance['taxonomy'];
-		$term            = $instance['term'];
-		$per_page        = $instance['per_page'];
-		$offset          = $instance['offset'];
-		$thumb           = $instance['thumb'];
-		$thumb_float     = $instance['thumb_float'];
-		$thumb_width     = $instance['thumb_width'];
-		$thumb_height    = $instance['thumb_height'];
-		$excerpt_length  = $instance['excerpt_length'];
-		$more_text       = $instance['more_text'];
-		$post_title_size = $instance['post_title_size'];
-
-		echo $before_widget;
-
-		if ( $title ) {
-			echo $before_title;
-			echo '<h3>' . $title . '</h3>';
-			echo $after_title;
+		if ( 'any' != $instance['term'] ) {
+			$tax_query = array(
+				array(
+					'taxonomy' => $instance['taxonomy'],
+					'field'    => 'slug',
+					'terms'    => $instance['term'],
+				),
+			);
+		} else {
+			$tax_query = '';
 		}
 
-		echo '<div class="post-list list clearfix">';
+		$query_args = array(
+			'post_type'        => $instance['post_type'],
+			'tax_query'        => $tax_query,
+			'posts_per_page'   => $instance['per_page'],
+			'offset'           => $instance['offset'],
+		);
 
-		// Call our custom Loop Function and pass all the arguments from the widget options.
+		$widget = array(
+			'title'           => apply_filters( 'widget_title', $instance['title'] ),
+			'thumb'           => $instance['thumb'],
+			'thumb_float'     => $instance['thumb_float'],
+			'thumb_width'     => $instance['thumb_width'],
+			'thumb_height'    => $instance['thumb_height'],
+			'excerpt_length'  => $instance['excerpt_length'],
+			'more_text'       => $instance['more_text'],
+			'post_title_size' => $instance['post_title_size'],
+			'before_widget'   => $before_widget,
+			'after_widget'    => $after_widget,
+			'before_title'    => $before_title,
+			'after_title'     => $after_title,
 
-			self::maera_posts_loop(
-				$instance['post_type'],
-				$instance['taxonomy'],
-				$instance['term'],
-				$instance['per_page'],
-				$instance['offset'],
-				$instance['thumb'],
-				$instance['thumb_float'],
-				$instance['thumb_width'],
-				$instance['thumb_height'],
-				$instance['excerpt_length'],
-				$instance['more_text'],
-				$instance['post_title_size']
-			);
+		);
 
-		echo '</div>';
+		$context = Timber::get_context();
+		$context['post']   = Timber::query_post();
+		$context['posts']  = Timber::get_posts( $query_args );
+		$context['widget'] = $widget;
+
+		Timber::render(
+			array(
+				'widget-extended-posts.twig',
+			),
+			$context,
+			apply_filters( 'maera/timber/cache', false )
+		);
 
 		wp_reset_query();
 
-		echo $after_widget;
 	}
 
 
@@ -310,7 +138,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 			'title'           => 'Latest Articles',
 			'post_type'       => 'post',
 			'taxonomy'        => 'category',
-			'term'            => 'maera_all_terms',
+			'term'            => 'any',
 			'per_page'        => 5,
 			'offset'          => 0,
 			'thumb'           => true,
@@ -363,8 +191,8 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 					<td><?php _e( 'Term:','maera' ); ?></td>
 					<td>
 						<select name="<?php echo $this->get_field_name( 'term' ); ?>">
-							<?php $selected = ( $instance['term'] == 'maera_all_terms' ) ? 'selected' : ''; ?>
-							<option <?php echo $selected; ?> value="maera_all_terms"><?php _e( 'All Terms', 'maera' ); ?></option>
+							<?php $selected = ( $instance['term'] == 'any' ) ? 'selected' : ''; ?>
+							<option <?php echo $selected; ?> value="any"><?php _e( 'Any Term', 'maera' ); ?></option>
 							<?php
 								$terms_args = array(
 									'orderby'    => 'name',
