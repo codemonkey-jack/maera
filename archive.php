@@ -55,6 +55,6 @@ if ( is_day() ) {
 	$data['title'] = __( 'Archives', 'maera' );
 }
 
-$data['posts'] = Timber::query_posts( false, 'Maera_Post' );
+$data['posts'] = Timber::query_posts( false, 'TimberPost' );
 
 Timber::render( $templates, $data, apply_filters( 'maera/timber/cache', false ) );

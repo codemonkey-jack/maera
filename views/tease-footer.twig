@@ -1,3 +1,3 @@
 <footer class="entry-footer">
-	{{ post.footer }}
+	{% do action('maera/entry/footer', post.ID) %}
 </footer>

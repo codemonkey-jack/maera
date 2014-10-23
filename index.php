@@ -13,7 +13,7 @@ if ( ! class_exists( 'Timber' ) ) {
 
 $context = Timber::get_context();
 
-$context['posts'] = Timber::query_posts( false, 'Maera_Post' );
+$context['posts'] = Timber::query_posts( false, 'TimberPost' );
 
 $templates = array( 'index.twig' );
 

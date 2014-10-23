@@ -12,7 +12,6 @@ if ( ! class_exists( 'Timber' ) ) {
 require_once locate_template( '/lib/breadcrumb-trail.php' );
 require_once locate_template( '/lib/shell.php' );
 require_once locate_template( '/lib/init.php' );
-require_once locate_template( '/lib/class-Maera_Posts.php' );
 require_once locate_template( '/lib/widgets.php' );
 require_once locate_template( '/lib/utils.php' );
 require_once locate_template( '/lib/customizer.php' );
