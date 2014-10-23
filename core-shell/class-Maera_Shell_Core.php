@@ -32,8 +32,6 @@ class Maera_Shell_Core {
 		add_filter( 'maera/image/display', '__return_true' );
 		add_filter( 'maera/image/width', array( $this, 'image_width' ) );
 		add_filter( 'maera/image/height', array( $this, 'image_height' ) );
-		add_action( 'maera/teaser/start', array( $this, 'featured_image' ) );
-		// add_action( 'maera/single/pre_content', array( $this, 'featured_image' ) );
 
 	}
 
@@ -84,17 +82,6 @@ class Maera_Shell_Core {
 		$data['archives']['image']['height'] = 300;
 
 		return $data;
-	}
-
-	function featured_image( $post_id ) {
-
-		if ( has_post_thumbnail( $post_id ) ) {
-
-			$image = Maera_Image::featured_image( $post_id );
-			echo '<a href="' . get_permalink( $post_id ) . '"><img class="img" src="' . $image['url'] . '"></a>';
-
-		}
-
 	}
 
 	function custom_header( $styles ) {

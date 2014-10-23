@@ -93,11 +93,6 @@ if ( current_theme_supports( 'maera_cwa' ) ) {
 
 
 /**
- * load the image library
- */
-require_once locate_template( '/lib/class-Maera_Image.php' );
-
-/**
  * Load the Extended posts widget
  */
 require_once locate_template( '/lib/widgets/extended-posts/extended-posts.php' );
@@ -116,6 +111,11 @@ if ( current_theme_supports( 'kirki' ) ) {
 function maera_timber_global_context( $data ) {
 
 	$data['theme_mods'] = get_theme_mods();
+	$data['teaser_mode'] = apply_filters( 'maera/teaser/mode', 'excerpt' );
+
+	$data['thumbnail']['width'] = apply_filters( 'maera/image/width', 600 );
+	$data['thumbnail']['height'] = apply_filters( 'maera/image/height', 371 );
+
 	$data['menu']['primary']   = has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null;
 
 	$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
