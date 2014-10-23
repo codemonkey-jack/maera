@@ -97,6 +97,13 @@ if ( current_theme_supports( 'maera_cwa' ) ) {
  */
 require_once locate_template( '/lib/widgets/extended-posts/extended-posts.php' );
 
+
+/**
+ * Load the Logo widget
+ */
+require_once locate_template( '/lib/widgets/logo/logo.php' );
+
+
 /**
  * If we're using Kirki, load it
  */
