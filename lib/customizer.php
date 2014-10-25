@@ -14,7 +14,7 @@ function maera_customizer_config() {
 		// 'color_select'  => '#3498DB',
 		// 'color_accent'  => '#E74C3C',
 		// 'color_back'    => '#444',
-		'url_path'      => get_template_directory_uri() . '/lib/kirki/',
+		// 'url_path'      => get_template_directory_uri() . '/lib/kirki/',
 		'stylesheet_id' => 'maera',
 
 	);
