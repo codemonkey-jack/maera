@@ -6,8 +6,10 @@ if ( ! defined( 'MAERA_ASSETS_URL' ) ) {
 
 // If the Timber plugin is not already installed, load it from the theme.
 if ( ! class_exists( 'Timber' ) ) {
-	require_once locate_template( '/lib/timber-library/timber.php' );
+	// TODO: ERROR MESSAGE
 }
+// Require TGM to install required plugins.
+require_once locate_template( '/lib/tgm-requires.php' );
 
 require_once locate_template( '/lib/breadcrumb-trail.php' );
 require_once locate_template( '/lib/shell.php' );

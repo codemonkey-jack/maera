@@ -1,5 +1,10 @@
 <?php
 
+// Early exit if Timber is not
+if ( ! class_exists( 'Timber' ) ) {
+	return;
+}
+
 $locations = array(
 	MAERA_SHELL_PATH . '/macros',
 	MAERA_SHELL_PATH . '/views',

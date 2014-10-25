@@ -1,4 +1,4 @@
-[submodule "lib/kirki"]
-	path = lib/kirki
-	url = https://github.com/wpmu/kirki.git
-	branch = master
+[submodule "lib/TGM-Plugin-Activation"]
+	path = lib/TGM-Plugin-Activation
+	url = https://github.com/thomasgriffin/TGM-Plugin-Activation.git
+	branch = develop
