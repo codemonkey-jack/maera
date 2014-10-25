@@ -7,8 +7,9 @@
  * E.g., it puts together the home page when no home.php file
  */
 
-if ( ! class_exists( 'Timber' ) ) {
-	// _e( 'Timber not activated. Make sure you activate the plugin from https://wordpress.org/plugins/timber-library/.', 'maera' );
+if ( ! class_exists( 'Timber' ) || ! class_exists( 'Kirki' ) ) {
+	get_template_part( 'lib/required-error' );
+	return;
 }
 
 $context = Timber::get_context();
