@@ -116,21 +116,34 @@ function maera_transliterate( $str ) {
  * Return the value of an echo.
  * example: maera_get_echo( 'function' );
  */
-function maera_get_echo( $function ) {
+function maera_get_echo( $function, $args ) {
 
 	ob_start();
-	$function();
+	$function( $args );
 	$get_echo = ob_get_clean();
 	return $get_echo;
 
 }
 
 /**
- * Return .twig file name.
- * example: maera_return_twig('filename.twig');
+ * Get the contents of a .twig file.
+ * This is just a helper function used by the maera_get_twig() function
  */
-function maera_return_twig( $file ) {
-	return $file;
+function _maera_get_twig( $file ) {
+
+	$context = Timber::get_context();
+	Timber::render( array( $file, ), $context, apply_filters( 'maera/timber/cache', false ) );
+
+}
+
+/**
+ * Return the rendered twig file.
+ */
+function maera_get_twig( $file ) {
+
+	$value = maera_get_echo( '_maera_get_twig', $file );
+	return $value;
+
 }
 
 
