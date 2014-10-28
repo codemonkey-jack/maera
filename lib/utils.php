@@ -112,6 +112,19 @@ function maera_transliterate( $str ) {
 	}
 }
 
+/**
+ * Return the value of an echo.
+ * example: maera_get_echo( 'function' );
+ */
+function maera_get_echo( $function ) {
+
+	ob_start();
+	$function();
+	$get_echo = ob_get_clean();
+	return $get_echo;
+
+}
+
 function maera_return_0() { return 0; }
 
 function maera_return_1() { return 1; }
