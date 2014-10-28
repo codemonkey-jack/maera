@@ -125,6 +125,15 @@ function maera_get_echo( $function ) {
 
 }
 
+/**
+ * Return .twig file name.
+ * example: maera_return_twig('filename.twig');
+ */
+function maera_return_twig( $file ) {
+	return $file;
+}
+
+
 function maera_return_0() { return 0; }
 
 function maera_return_1() { return 1; }
@@ -136,3 +145,5 @@ function maera_return_3() { return 3; }
 function maera_return_4() { return 4; }
 
 function maera_return_5() { return 5; }
+
+
