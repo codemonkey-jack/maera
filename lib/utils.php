@@ -116,7 +116,7 @@ function maera_transliterate( $str ) {
  * Return the value of an echo.
  * example: maera_get_echo( 'function' );
  */
-function maera_get_echo( $function, $args ) {
+function maera_get_echo( $function, $args = '' ) {
 
 	ob_start();
 	$function( $args );
