@@ -23,5 +23,3 @@ if ( is_home() ) {
 }
 
 Timber::render( $templates, $context, apply_filters( 'maera/timber/cache', false ) );
-
-echo maera_get_shell( 'float_class', array('left') );

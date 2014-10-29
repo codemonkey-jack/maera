@@ -146,23 +146,6 @@ function maera_get_twig( $file ) {
 
 }
 
-function maera_print_shell( $args = array() ) {
-
-	$context = Timber::get_context();
-	$context['macro'] = $args['macro'];
-	$context['args']  = $args;
-	Timber::render( array( 'twig-macros.twig' ), $context, apply_filters( 'maera/timber/cache', false ) );
-
-}
-
-function maera_get_shell( $macro = '', $args = array() ) {
-
-	$args['macro'] = $macro;
-	return maera_get_echo( 'maera_print_shell', $args );
-
-}
-
-
 function maera_return_0() { return 0; }
 
 function maera_return_1() { return 1; }
@@ -174,5 +157,3 @@ function maera_return_3() { return 3; }
 function maera_return_4() { return 4; }
 
 function maera_return_5() { return 5; }
-
-
