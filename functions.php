@@ -11,8 +11,11 @@ if ( ! class_exists( 'Timber' ) ) {
 // Require TGM to install required plugins.
 require_once locate_template( '/lib/tgm-requires.php' );
 
+require_once locate_template( '/lib/class-Maera_Shell.php' );
+global $maera_shell;
+$maera_shell = new Maera_Shell();
+
 require_once locate_template( '/lib/breadcrumb-trail.php' );
-require_once locate_template( '/lib/shell.php' );
 require_once locate_template( '/lib/init.php' );
 require_once locate_template( '/lib/widgets.php' );
 require_once locate_template( '/lib/utils.php' );
