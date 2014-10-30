@@ -59,9 +59,9 @@
 	{% if sizes is iterable %}
 		{% for size in sizes %}
 			{% if size.mobile %} u-1 u-sm-{{ size.mobile }}-12 {% endif %}
-			{% if size.tablet %} u-1 u-sm-{{ size.mobile }}-12 {% endif %}
-			{% if size.medium %} u-1 u-md-{{ size.mobile }}-12 {% endif %}
-			{% if size.large %} u-1 u-lg-{{ size.mobile }}-12 {% endif %}
+			{% if size.tablet %} u-1 u-sm-{{ size.tablet }}-12 {% endif %}
+			{% if size.medium %} u-1 u-md-{{ size.medium }}-12 {% endif %}
+			{% if size.large %} u-1 u-lg-{{ size.large }}-12 {% endif %}
 		{% endfor %}
 	{% endif %}
 {% endmacro %}
