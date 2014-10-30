@@ -77,17 +77,25 @@ if ( ! function_exists( 'site_logo_init' ) ) {
 }
 
 /**
- * If we're using the Tonesque library, load it
+ * If we're using the Tonesque library, load it.
+ * If Jetpack is installed, load it from there.
+ * If not, then include it from the theme's lib folder.
  */
-if ( current_theme_supports( 'tonesque' ) ) {
-	if ( ! class_exists( 'Jetpack_Color' ) ) {
-		require_once locate_template( '/lib/jetpack/class.color.php' );
-	}
-	if ( ! class_exists( 'Tonesque' ) ) {
-		require_once locate_template( '/lib/jetpack/tonesque.php' );
+function maera_include_tonesque() {
+	if ( current_theme_supports( 'tonesque' ) ) {
+		if ( function_exists( 'jetpack_require_lib' ) ) {
+			jetpack_require_lib( 'tonesque' );
+		} else {
+			if ( ! class_exists( 'Jetpack_Color' ) ) {
+				require_once locate_template( '/lib/jetpack/class.color.php' );
+			}
+			if ( ! class_exists( 'Tonesque' ) ) {
+				require_once locate_template( '/lib/jetpack/tonesque.php' );
+			}
+		}
 	}
 }
-
+add_action('init', 'maera_include_tonesque');
 /**
  * If we're using the Custom Widget Areas builder, include it here
  */
