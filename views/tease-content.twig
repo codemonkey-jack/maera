@@ -1,6 +1,6 @@
 <div class="entry-summary" itemprop="description">
 	{% if post.thumbnail %}
-		<a class="featured-image" href="{{ post.link }}'" style="background: url('{{ post.thumbnail.src|resize(thumbnail.width, thumbnail.height) }}'); width: {{ thumbnail.width }}px; height: {{ thumbnail.height }}px; display: block; max-width: 100%; margin: 1em 0;"></a>
+		<a class="featured-image" href="{{ post.link }}" style="background: url('{{ post.thumbnail.src|resize(thumbnail.width, thumbnail.height) }}'); width: {{ thumbnail.width }}px; height: {{ thumbnail.height }}px; display: block; max-width: 100%; margin: 1em 0;"></a>
 	{% endif %}
 
 	{% if teaser_mode == 'full' %}
