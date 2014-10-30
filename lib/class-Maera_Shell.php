@@ -14,7 +14,7 @@ class Maera_Shell {
 
 		$this->enable_shell();
 
-		// add_filter( 'timber_output', array( $this, 'do_twig_replacements' ) );
+		add_filter( 'timber_output', array( $this, 'do_twig_replacements' ) );
 
 	}
 
@@ -111,7 +111,7 @@ class Maera_Shell {
 			'maera_button_link_extra_large',
 		);
 
-		return $replacements;
+		return apply_filters( 'maera/twig/placeholders', $replacements );
 
 	}
 
@@ -119,7 +119,12 @@ class Maera_Shell {
 	 * Get the twig file and pass the replacement to it.
 	 * This function is just a helper for the do_twig_replacements function.
 	 */
-	function twig_replacements( $replacement ) {
+	public static function twig_replacements( $replacement = false ) {
+
+		// If no replacement has been defined, exit.
+		if ( ! $replacement ) {
+			return;
+		}
 
 		$context = Timber::get_context();
 		$context['element'] = $replacement;
@@ -137,8 +142,12 @@ class Maera_Shell {
 
 		foreach ( $replacements as $replacement => $value ) {
 
-			$replaced = maera_get_echo( array( $this, 'twig_replacements' ), $value );
-			$content  = str_replace( '[' . $value . ']', $replaced, $content );
+			if ( false !== strpos( $content, '[' . $value . ']' ) ) {
+
+				$replaced = maera_get_echo( array( $this, 'twig_replacements' ), $value );
+				$content  = str_replace( '[' . $value . ']', $replaced, $content );
+
+			}
 
 		}
 
