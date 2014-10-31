@@ -33,6 +33,9 @@ class Maera_Shell_Core {
 		add_filter( 'maera/image/width', array( $this, 'image_width' ) );
 		add_filter( 'maera/image/height', array( $this, 'image_height' ) );
 
+		global $content_width;
+		$content_width = 913;
+
 	}
 
 	public static function get_instance() {
