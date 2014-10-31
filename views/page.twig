@@ -14,7 +14,7 @@
 			{{ post.content }}
 			{{ shell.clearfix }}
 			{{ function( 'wp_link_pages', {
-				'before': '<div class="page-links">' . __( 'Pages:', 'maera' ),
+				'before': '<div class="page-links">' . i18n.pages,
 				'after': '</div>'
 			}) }}
 			{{ shell.clearfix }}

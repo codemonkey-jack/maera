@@ -4,7 +4,7 @@
 
 <body class="{{ body_class }}">
 
-	<a href="#content" class="sr-only skip-link screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
+	<a href="#content" class="sr-only skip-link screen-reader-text">{{ i18n.skiptomaincontent }}</a>
 
 	{% do action( 'get_header' ) %}
 
@@ -28,7 +28,7 @@
 
 						{% if title %}<h1>{{ title }}</h1>{% endif %}
 						{% block content %}
-							{{ __( 'Sorry, no content', 'maera' ) }}
+							{{ i18n.sorrynocontent }}
 						{% endblock %}
 
 					</main><!-- /.main -->

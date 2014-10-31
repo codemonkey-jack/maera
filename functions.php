@@ -39,6 +39,7 @@ class Maera {
 		require_once locate_template( '/lib/class-Maera_Init.php' );
 
 		require_once locate_template( '/lib/widgets.php' );
+		require_once locate_template( '/lib/i18n.php' );
 		require_once locate_template( '/lib/utils.php' );
 		require_once locate_template( '/lib/admin-page.php' );
 		require_once locate_template( '/lib/updater/updater.php' );

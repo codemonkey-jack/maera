@@ -13,16 +13,18 @@ $templates = array(
 	'index.twig'
 );
 
+global $maera_i18n;
+
 $data = Timber::get_context();
 
 $data['title'] = 'Archive';
 
 if ( is_day() ) {
-	$data['title'] = sprintf( __( 'Day: %s', 'maera' ), '<span>' . get_the_date() . '</span>' );
+	$data['title'] = sprintf( $maera_i18n['day_s'], '<span>' . get_the_date() . '</span>' );
 } else if ( is_month() ) {
-	$data['title'] = sprintf( __( 'Month: %s', 'maera' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'maera' ) ) . '</span>' );
+	$data['title'] = sprintf( $maera_i18n['month_s'], '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'maera' ) ) . '</span>' );
 } else if ( is_year() ) {
-	$data['title'] = sprintf( __( 'Year: %s', 'maera' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'maera' ) ) . '</span>' );
+	$data['title'] = sprintf( $maera_i18n['year_s'], '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'maera' ) ) . '</span>' );
 } else if ( is_tag() ) {
 	$data['title'] = single_tag_title( '', false );
 } else if ( is_category() ) {
@@ -32,27 +34,27 @@ if ( is_day() ) {
 	$data['title'] = post_type_archive_title( '', false );
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 } else if ( is_author() ) {
-	$data['title'] = sprintf( __( 'Author: %s', 'maera' ), '<span class="vcard">' . get_the_author() . '</span>' );
+	$data['title'] = sprintf( $maera_i18n['author_s'], '<span class="vcard">' . get_the_author() . '</span>' );
 } else if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-	$data['title'] = __( 'Asides', 'maera' );
+	$data['title'] = $maera_i18n['asides'];
 } else if ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-	$data['title'] = __( 'Galleries', 'maera');
+	$data['title'] = $maera_i18n['galleries'];
 } else if ( is_tax( 'post_format', 'post-format-image' ) ) {
-	$data['title'] = __( 'Images', 'maera');
+	$data['title'] = $maera_i18n['images'];
 } else if ( is_tax( 'post_format', 'post-format-video' ) ) {
-	$data['title'] = __( 'Videos', 'maera' );
+	$data['title'] = $maera_i18n['videos'];
 } else if ( is_tax( 'post_format', 'post-format-quote' ) ) {
-	$data['title'] = __( 'Quotes', 'maera' );
+	$data['title'] = $maera_i18n['quotes'];
 } else if ( is_tax( 'post_format', 'post-format-link' ) ) {
-	$data['title'] = __( 'Links', 'maera' );
+	$data['title'] = $maera_i18n['links'];
 } else if ( is_tax( 'post_format', 'post-format-status' ) ) {
-	$data['title'] = __( 'Statuses', 'maera' );
+	$data['title'] = $maera_i18n['statuses'];
 } else if ( is_tax( 'post_format', 'post-format-audio' ) ) {
-	$data['title'] = __( 'Audios', 'maera' );
+	$data['title'] = $maera_i18n['audios'];
 } else if ( is_tax( 'post_format', 'post-format-chat' ) ) {
-	$data['title'] = __( 'Chats', 'maera' );
+	$data['title'] = $maera_i18n['chats'];
 } else {
-	$data['title'] = __( 'Archives', 'maera' );
+	$data['title'] = $maera_i18n['archives'];
 }
 
 $data['posts'] = Timber::query_posts( false, 'TimberPost' );

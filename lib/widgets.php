@@ -4,13 +4,14 @@
  * Register sidebars and widgets
  */
 function maera_widgets_init() {
+	global $maera_i18n;
 	$class        = apply_filters( 'maera/widgets/class', '' );
 	$before_title = apply_filters( 'maera/widgets/title/before', '<h3 class="widget-title">' );
 	$after_title  = apply_filters( 'maera/widgets/title/after', '</h3>' );
 
 	// Sidebars
 	register_sidebar( array(
-		'name'          => __( 'Primary Sidebar', 'maera' ),
+		'name'          => $maera_i18n['primarysidebar'],
 		'id'            => 'sidebar_primary',
 		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
 		'after_widget'  => '</section>',
@@ -19,7 +20,7 @@ function maera_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Secondary Sidebar', 'maera' ),
+		'name'          => $maera_i18n['secondarysidebar'],
 		'id'            => 'sidebar_secondary',
 		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
 		'after_widget'  => '</section>',

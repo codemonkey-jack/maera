@@ -14,7 +14,6 @@ class Maera_Init {
 		add_filter( 'timber_context',    array( $this, 'timber_global_context' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup' ) );
 		add_filter( 'get_twig',          array( $this, 'add_to_twig' ) );
-		// add_filter( 'wp_title',          array( $this, 'wp_title', 10, 2 ) );
 
 	}
 
@@ -116,7 +115,7 @@ class Maera_Init {
 
 	function timber_global_context( $data ) {
 
-		global $content_width;
+		global $content_width, $maera_i18n;
 
 		$data['theme_mods']   = get_theme_mods();
 		$data['site_options'] = wp_load_alloptions();
@@ -142,6 +141,8 @@ class Maera_Init {
 
 		$data['site_logo'] = get_option( 'site_logo', false );
 		$data['content_width'] = $content_width;
+
+		$data['i18n'] = $maera_i18n;
 
 		return $data;
 
@@ -206,42 +207,5 @@ class Maera_Init {
 		$twig->addExtension( new Twig_Extension_StringLoader() );
 		return $twig;
 	}
-
-	// /**
-	//  * Create a nicely formatted and more specific title element text for output
-	//  * in head of document, based on current view.
-	//  *
-	//  * @since Twenty Fourteen 1.0
-	//  *
-	//  * @global int $paged WordPress archive pagination page count.
-	//  * @global int $page  WordPress paginated post page count.
-	//  *
-	//  * @param string $title Default title text for current view.
-	//  * @param string $sep Optional separator.
-	//  * @return string The filtered title.
-	//  */
-	// function wp_title( $title, $sep = '|' ) {
-	// 	global $paged, $page;
-	//
-	// 	if ( is_feed() ) {
-	// 		return $title;
-	// 	}
-	//
-	// 	// Add the site name.
-	// 	$title .= get_bloginfo( 'name', 'display' );
-	//
-	// 	// Add the site description for the home/front page.
-	// 	$site_description = get_bloginfo( 'description', 'display' );
-	// 	if ( $site_description && ( is_home() || is_front_page() ) ) {
-	// 		$title = "$title $sep $site_description";
-	// 	}
-	//
-	// 	// Add a page number if necessary.
-	// 	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-	// 		$title = "$title $sep " . sprintf( __( 'Page %s', 'maera' ), max( $paged, $page ) );
-	// 	}
-	//
-	// 	return $title;
-	// }
 
 }

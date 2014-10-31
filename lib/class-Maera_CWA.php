@@ -31,27 +31,6 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 		function extra_widget_areas_array() {
 
 			$defaults = array();
-
-			/**
-			 * The array should have a format like this:
-			 *	array(
-			 * 		'area_wrapper_id_1' => array(
-			 * 			'name'     => __( 'Human Readable name 1', 'maera' ),
-			 * 			'default'  => 0, 			// The default number of widget areas on this area
-			 * 			'action'   => 'the_action_where_this_is_inserted',
-			 * 			'priority' => 10, 			// An integer. This is the priority of the action.
-			 * 			'class'    => 'my-class', 	// The css class that will be used for this. For example 'row' for bootstrap
-			 * 		),
-			 * 		'area_wrapper_id_2' => array(
-			 * 			'name'     => __( 'Human Readable name 2', 'maera' ),
-			 * 			'default'  => 0, 			// The default number of widget areas on this area
-			 * 			'action'   => 'the_action_where_this_is_inserted',
-			 * 			'priority' => 10, 			// An integer. This is the priority of the action.
-			 * 			'class'    => 'my-class', 	// The css class that will be used for this. For example 'row' for bootstrap
-			 * 		),
-			 * 	);
-			 */
-
 			return apply_filters( 'maera/widgets/areas', $defaults );
 
 		}
@@ -61,9 +40,10 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 		 * Customizer section
 		 */
 		function customizer_section( $wp_customize ) {
+			global $maera_i18n;
 			$wp_customize->add_section( 'custom_widget_areas' , array(
-				'title'      => __( 'Custom Widget Areas', 'maera' ),
-				'priority'   => 999,
+				'title'    => $maera_i18n['customwidgetareas'],
+				'priority' => 999,
 			) );
 		}
 
@@ -72,6 +52,8 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 		 * Customizer controls for custom widget areas
 		 */
 		function customizer_controls( $controls ) {
+
+			global $maera_i18n;
 
 			$extra_widget_areas = $this->extra_widget_areas_array();
 
@@ -82,7 +64,7 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 				$controls[] = array(
 					'type'     => 'select',
 					'setting'  => $area . '_widgets_nr',
-					'label'    => sprintf( __( 'Number of widget areas in %s', 'maera' ), $settings['name'] ),
+					'label'    => sprintf( $maera_i18n['numberofwidgetareasin'], $settings['name'] ),
 					'section'  => 'custom_widget_areas',
 					'default'  => $settings['default'],
 					'choices'  => apply_filters( 'maera/widgets/areas/values', array( 0, 1, 2, 3, 4, 6 ) ),

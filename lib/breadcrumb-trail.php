@@ -167,21 +167,22 @@ class Maera_Breadcrumb_Trail {
 	 */
 	public function default_labels() {
 
+		global $maera_i18n;
+
 		$labels = array(
-			'browse'              => __( 'Browse:',                 'maera' ),
-			'home'                => __( 'Home',                    'maera' ),
-			'search'              => __( 'Search results for "%s"', 'maera' ),
-			'error_404'           => __( '404 Not Found',           'maera' ),
-			'paged'               => __( 'Page %d',                 'maera' ),
-			'archives'            => __( 'Archives',                'maera' ),
-			'archive_minute_hour' => __( 'g:i a',                   'maera' ),
-			'archive_minute'      => __( 'Minute %d',               'maera' ),
-			'archive_hour'        => __( 'g a',                     'maera' ),
-			'archive_day'         => __( 'd',                       'maera' ),
-			'archive_week'        => __( 'Week %d',                 'maera' ),
-			'archive_month'       => __( 'F',                       'maera' ),
-			'archive_year'        => __( 'Y',                       'maera' ),
-		//	'edit'                => __( 'Edit',                    'maera' ), // @todo Implement edit link
+			'browse'              => $maera_i18n['browse'],
+			'home'                => $maera_i18n['home'],
+			'search'              => $maera_i18n['search'],
+			'error_404'           => $maera_i18n['error_404'],
+			'paged'               => $maera_i18n['paged'],
+			'archives'            => $maera_i18n['archives'],
+			'archive_minute_hour' => $maera_i18n['archive_minute_hour'],
+			'archive_minute'      => $maera_i18n['archive_minute'],
+			'archive_hour'        => $maera_i18n['archive_hour'],
+			'archive_day'         => $maera_i18n['archive_day'],
+			'archive_week'        => $maera_i18n['archive_week'],
+			'archive_month'       => $maera_i18n['archive_month'],
+			'archive_year'        => $maera_i18n['archive_year'],
 		);
 
 		return $labels;
@@ -1082,6 +1083,7 @@ class Maera_bbPress_Breadcrumb_Trail extends Maera_Breadcrumb_Trail {
 	 * @return void
 	 */
 	public function do_trail_items() {
+		global $maera_i18n;
 
 		/* Add the network and site home links. */
 		$this->do_network_home_link();
@@ -1120,7 +1122,7 @@ class Maera_bbPress_Breadcrumb_Trail extends Maera_Breadcrumb_Trail {
 			$this->items[] = '<a href="' . bbp_get_topic_tag_link() . '">' . bbp_get_topic_tag_name() . '</a>';
 
 			if ( true === $this->args['show_title'] )
-				$this->items[] = __( 'Edit', 'maera' );
+				$this->items[] = $maera_i18n['edit'];
 		}
 
 		/* If viewing a "view" page. */
@@ -1148,15 +1150,15 @@ class Maera_bbPress_Breadcrumb_Trail extends Maera_Breadcrumb_Trail {
 
 			/* If viewing a topic split page. */
 			if ( bbp_is_topic_split() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Split', 'maera' );
+				$this->items[] = $maera_i18n['split'];
 
 			/* If viewing a topic merge page. */
 			elseif ( bbp_is_topic_merge() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Merge', 'maera' );
+				$this->items[] = $maera_i18n['merge'];
 
 			/* If viewing a topic edit page. */
 			elseif ( bbp_is_topic_edit() && true === $this->args['show_title'] )
-				$this->items[] = __( 'Edit', 'maera' );
+				$this->items[] = $maera_i18n['edit'];
 		}
 
 		/* If viewing a single reply page. */
@@ -1173,7 +1175,7 @@ class Maera_bbPress_Breadcrumb_Trail extends Maera_Breadcrumb_Trail {
 				$this->items[] = '<a href="' . bbp_get_reply_url( $reply_id ) . '">' . bbp_get_reply_title( $reply_id ) . '</a>';
 
 				if ( true === $this->args['show_title'] )
-					$this->items[] = __( 'Edit', 'maera' );
+					$this->items[] = $maera_i18n['edit'];
 
 			} elseif ( true === $this->args['show_title'] ) {
 				$this->items[] = bbp_get_reply_title( $reply_id );
@@ -1204,7 +1206,7 @@ class Maera_bbPress_Breadcrumb_Trail extends Maera_Breadcrumb_Trail {
 				$this->items[] = '<a href="' . bbp_get_user_profile_url() . '">' . bbp_get_displayed_user_field( 'display_name' ) . '</a>';
 
 				if ( true === $this->args['show_title'] )
-					$this->items[] = __( 'Edit', 'maera' );
+					$this->items[] = $maera_i18n['edit'];
 			} elseif ( true === $this->args['show_title'] ) {
 				$this->items[] = bbp_get_displayed_user_field( 'display_name' );
 			}

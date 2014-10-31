@@ -11,7 +11,7 @@
 		{{ post.content }}
 		{{ shell.clearfix }}
 		{{ function( 'wp_link_pages', {
-			'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ),
+			'before': '<div class="page-links" itemprop="pagination">' . i18n.pages,
 			'after': '</div>'
 		}) }}
 		{{ shell.clearfix }}

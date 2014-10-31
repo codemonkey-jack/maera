@@ -165,7 +165,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 		 * Admin notice if css is not writable
 		 */
 		function file_nag( $array ) {
-			global $current_screen, $wp_filesystem;
+			global $current_screen, $wp_filesystem, $maera_i18n;
 
 			if ( $current_screen->parent_base == 'themes' ) {
 				$filename = self::file();
@@ -173,19 +173,23 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 				if ( ! file_exists( $filename ) ) {
 					if ( ! $wp_filesystem->put_contents( $filename, ' ', FS_CHMOD_FILE ) ) {
-						$content = __( 'The following file does not exist and must be so in order to utilise this theme. Please create this file.', 'maera' );
-						$content .= '<br>' . __( 'Try visiting the theme options and clicking the "Reset All" button to attempt automatically creating it.', 'maera' );
-						$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
-						add_settings_error( 'maera', 'create_file', $content, 'error' );
-						settings_errors();
+						// TODO: error message
+
+						// $content = $maera_i18n['filedoesnotexist'];
+						// $content .= '<br>' . __( 'Try visiting the theme options and clicking the "Reset All" button to attempt automatically creating it.', 'maera' );
+						// $content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
+						// add_settings_error( 'maera', 'create_file', $content, 'error' );
+						// settings_errors();
 					}
 				} else {
 					if ( ! is_writable( $filename ) ) {
-						$content = __( 'The following file is not writable and must be so in order to utilise this theme. Please update the permissions.', 'maera' );
-						$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
+						// TODO: error message
 
-						add_settings_error( 'maera', 'create_file', $content, 'error' );
-						settings_errors();
+						// $content = __( 'The following file is not writable and must be so in order to utilise this theme. Please update the permissions.', 'maera' );
+						// $content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
+						//
+						// add_settings_error( 'maera', 'create_file', $content, 'error' );
+						// settings_errors();
 					}
 				}
 			}

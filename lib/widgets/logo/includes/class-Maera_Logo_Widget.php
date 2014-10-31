@@ -18,10 +18,11 @@ class Maera_Logo_Widget extends WP_Widget {
 	 * @since 1.0.0
 	 */
 	function __construct() {
+		global $maera_i18n;
 		parent::__construct(
 			'maera_logo_widget',
-			__( 'Maera Logo', 'maera' ),
-			array( 'description' => __( 'Maera logo widget.', 'maera' ), )
+			$maera_i18n['maeralogo'],
+			array( 'description' => $maera_i18n['maeralogowidget'], )
 		);
 	}
 

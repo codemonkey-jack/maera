@@ -43,6 +43,7 @@ class EDD_SL_Theme_Updater {
 	}
 
 	function update_nag() {
+		global $maera_i18n;
 		$theme = wp_get_theme( $this->theme_slug );
 
 		$api_response = get_transient( $this->response_key );
@@ -51,7 +52,7 @@ class EDD_SL_Theme_Updater {
 			return;
 
 		$update_url = wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=' . urlencode( $this->theme_slug ), 'upgrade-theme_' . $this->theme_slug );
-		$update_onclick = ' onclick="if ( confirm(\'' . esc_js( __( "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update." ) ) . '\') ) {return true;}return false;"';
+		$update_onclick = ' onclick="if ( confirm(\'' . esc_js( $maera_i18n['cancelorclick'] ) . '\') ) {return true;}return false;"';
 
 		if ( version_compare( $this->version, $api_response->new_version, '<' ) ) {
 

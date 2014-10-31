@@ -60,7 +60,7 @@ class Maera_Admin_Page {
 		} ?>
 
 		<div class="wrap">
-			<h2><?php echo __( 'Maera Theme Options', 'maera' ); ?></h2>
+			<h2><?php echo $maera_i18n['maerathemeoptions']; ?></h2>
 
 			<?php if ( false !== $_REQUEST['updated'] ) : ?>
 				<div class="updated fade"><p><?php _e( 'Options saved', 'maera' ); ?></p></div>
