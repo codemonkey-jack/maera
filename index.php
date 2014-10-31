@@ -7,7 +7,7 @@
  * E.g., it puts together the home page when no home.php file
  */
 
-if ( ! class_exists( 'Timber' ) || ! class_exists( 'Kirki' ) ) {
+if ( ! class_exists( 'Timber' ) || ! class_exists( 'Kirki' ) || ! class_exists( 'Jetpack' ) ) {
 	get_template_part( 'lib/required-error' );
 	return;
 }
