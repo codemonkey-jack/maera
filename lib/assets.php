@@ -16,11 +16,6 @@ function maera_scripts() {
 
 	wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-	if ( current_theme_supports( 'retina' ) ) {
-		wp_register_script( 'retinajs', MAERA_ASSETS_URL . '/js/retina.js', false, null, false );
-		wp_enqueue_script( 'retinajs' );
-	}
-
 	// Enqueue Modernizr
 	wp_register_script( 'modernizr', MAERA_ASSETS_URL . '/js/modernizr-2.7.0.min.js', false, null, false );
 	wp_enqueue_script( 'modernizr' );
