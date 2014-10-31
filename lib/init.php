@@ -119,6 +119,8 @@ require_once locate_template( '/lib/widgets/logo/logo.php' );
 
 function maera_timber_global_context( $data ) {
 
+	global $content_width;
+
 	$data['theme_mods']   = get_theme_mods();
 	$data['site_options'] = wp_load_alloptions();
 	$data['teaser_mode']  = apply_filters( 'maera/teaser/mode', 'excerpt' );
@@ -142,6 +144,7 @@ function maera_timber_global_context( $data ) {
 	$data['comment_form'] = TimberHelper::get_comment_form();
 
 	$data['site_logo'] = get_option( 'site_logo', false );
+	$data['content_width'] = $content_width;
 
 	return $data;
 
