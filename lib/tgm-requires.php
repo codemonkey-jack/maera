@@ -27,6 +27,11 @@ function maera_register_required_plugins() {
 	$plugins = array(
 
 		array(
+			'name'      => 'Jetpack',
+			'slug'      => 'jetpack',
+			'required'  => true,
+		),
+		array(
 			'name'      => 'Timber',
 			'slug'      => 'timber-library',
 			'required'  => true,
@@ -84,4 +89,3 @@ function maera_register_required_plugins() {
 	tgmpa( $plugins, $config );
 
 }
-
