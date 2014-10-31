@@ -80,10 +80,6 @@ class Maera_Init {
 			// if ( function_exists( 'jetpack_require_lib' ) ) {
 			// 	jetpack_require_lib( 'class.color' );
 			// }
-
-			if ( ! class_exists( 'Jetpack_Color' ) ) {
-				require_once locate_template( '/lib/jetpack/class.color.php' );
-			}
 		}
 		/**
 		* If we're using the Tonesque library, load it from jetpack
