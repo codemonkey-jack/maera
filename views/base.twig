@@ -1,5 +1,7 @@
 {#<?php#}
-{% import 'shell.html.twig' as shell %}
+{% extends "shell.twig" %}
+
+{% block html %}
 {% include 'html-header.twig' %}
 
 <body class="{{ body_class }}">
@@ -66,3 +68,4 @@
 	{{ function( 'wp_footer' ) }}
 </body>
 </html>
+{% endblock %}
