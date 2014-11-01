@@ -22,9 +22,12 @@ class Maera_Init {
 		$locations = array(
 			MAERA_SHELL_PATH . '/macros',
 			MAERA_SHELL_PATH . '/views',
+			MAERA_SHELL_PATH . '/views/macros',
 			MAERA_SHELL_PATH,
 			get_stylesheet_directory() . '/views',
-			get_template_directory() . '/views'
+			get_stylesheet_directory() . '/views/macros',
+			get_template_directory() . '/views',
+			get_template_directory() . '/views/macros',
 		);
 		Timber::$locations = apply_filters( 'maera/timber/locations', $locations );
 
@@ -77,14 +80,15 @@ class Maera_Init {
 		*/
 		if ( current_theme_supports( 'maera_color' ) || current_theme_supports( 'jetpack_color' ) ) {
 			// Include the Jetpack_Color class
-			// if ( function_exists( 'jetpack_require_lib' ) ) {
-			// 	jetpack_require_lib( 'class.color' );
-			// }
+			if ( function_exists( 'jetpack_require_lib' ) ) {
+				jetpack_require_lib( 'class.color' );
+			}
 		}
 		/**
 		* If we're using the Tonesque library, load it from jetpack
 		*/
 		if ( current_theme_supports( 'tonesque' ) && function_exists( 'jetpack_require_lib' ) ) {
+			jetpack_require_lib( 'class.color' );
 			jetpack_require_lib( 'tonesque' );
 		}
 

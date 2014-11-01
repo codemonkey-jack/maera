@@ -1,5 +1,6 @@
 {#<?php#}
-{% import 'shell.html.twig' as shell %}
+{% block html %}
+
 {% include 'html-header.twig' %}
 
 <body class="container base-container {{ body_class }}" data-source="base.twig">
@@ -52,3 +53,4 @@
 	</div>
 </body>
 </html>
+{% endblock %}
