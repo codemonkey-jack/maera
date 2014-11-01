@@ -1,7 +1,8 @@
+{% import 'button_classes.html.twig' as button_classes %}
 {% macro make_dropdown_button(color, size, type, extra, label, content) %}
 
 	<div class="button-group">
-		<button type="button" class="dropdown-toggle {{ _self.button_classes(color, size, type) }}" data-toggle="dropdown">
+		<button type="button" class="dropdown-toggle {{ button_classes(color, size, type) }}" data-toggle="dropdown">
 			{{ label }} <span class="caret"></span>
 		</button>
 
