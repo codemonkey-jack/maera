@@ -43,6 +43,8 @@ class Maera_Admin_Page {
 	 */
 	function admin_page() {
 
+		global $maera_i18n;
+
 		// The available options
 		$maera_admin_options = apply_filters( 'maera/admin/options', array(
 			'shell'       => 'core',
