@@ -119,13 +119,12 @@ class Maera {
 		wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 		// Enqueue Modernizr
-		wp_register_script( 'modernizr', MAERA_ASSETS_URL . '/js/modernizr-2.7.0.min.js', false, null, false );
+		wp_register_script( 'modernizr', MAERA_ASSETS_URL . '/js/modernizr.min.js', false, null, false );
 		wp_enqueue_script( 'modernizr' );
 
 		// Enqueue fitvids
 		wp_register_script( 'fitvids', MAERA_ASSETS_URL . '/js/jquery.fitvids.js',false, null, true  );
 		wp_enqueue_script( 'fitvids' );
-
 
 		// Enqueue jQuery
 		wp_enqueue_script( 'jquery' );
