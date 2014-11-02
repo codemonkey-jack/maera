@@ -22,6 +22,9 @@ class Maera {
 
 		$this->requires();
 
+		global $maera_i18n;
+		$maera_i18n = maera_i18n_strings();
+
 		global $maera_shell;
 		$maera_shell = new Maera_Shell();
 		$maera_init  = new Maera_Init();
@@ -30,16 +33,12 @@ class Maera {
 
 	function requires() {
 
-		// Require TGM to install required plugins.
+		require_once locate_template( '/lib/i18n.php' );
 		require_once locate_template( '/lib/tgm-requires.php' );
-
 		require_once locate_template( '/lib/breadcrumb-trail.php' );
-
 		require_once locate_template( '/lib/class-Maera_Shell.php' );
 		require_once locate_template( '/lib/class-Maera_Init.php' );
-
 		require_once locate_template( '/lib/widgets.php' );
-		require_once locate_template( '/lib/i18n.php' );
 		require_once locate_template( '/lib/utils.php' );
 		require_once locate_template( '/lib/admin-page.php' );
 		require_once locate_template( '/lib/updater/updater.php' );

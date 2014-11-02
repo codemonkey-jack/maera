@@ -61,7 +61,7 @@ class Maera_Admin_Page {
 			$_REQUEST['updated'] = false;
 		} ?>
 
-		<div class="wrap">
+		<div class="wrap metabox-holder">
 			<h2><?php echo $maera_i18n['maerathemeoptions']; ?></h2>
 
 			<?php if ( false !== $_REQUEST['updated'] ) : ?>
@@ -73,63 +73,52 @@ class Maera_Admin_Page {
 				<?php $settings = get_option( 'maera_admin_options', $maera_admin_options ); ?>
 				<?php settings_fields( 'maera_admin_options' ); ?>
 
-				<table class="form-table">
+				<div id="maera_shell_select" class="postbox ">
+					<h3 class="hndle"><span><?php echo $maera_i18n['shellselection']; ?></span></h3>
+					<div class="inside">
+						<?php echo apply_filters( 'maera/admin/shell_select_description', $maera_i18n['shellselectdescr'] ); ?>
+						<br><br>
+						<?php foreach( $available_shells as $available_shell ) : ?>
+							<input type="radio" id="<?php echo $available_shell['value']; ?>" name="maera_admin_options[shell]" value="<?php esc_attr_e( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />
+							<label for="<?php echo $available_shell['value']; ?>"><?php echo $available_shell['label']; ?></label><br />
+						<?php endforeach; ?>
+					</div>
+				</div>
 
-					<tr valign="top">
-						<th scope="row"><?php _e( 'Choose a shell', 'maera' ); ?></th>
-						<td>
-							<?php foreach( $available_shells as $available_shell ) : ?>
-								<input type="radio" id="<?php echo $available_shell['value']; ?>" name="maera_admin_options[shell]" value="<?php esc_attr_e( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />
-								<label for="<?php echo $available_shell['value']; ?>"><?php echo $available_shell['label']; ?></label><br />
-							<?php endforeach; ?>
-						</td>
-					</tr>
+				<div id="maera_dev_mode" class="postbox">
+					<h3 class="hndle"><span><?php echo $maera_i18n['devandcache']; ?></span></h3>
+					<div class="inside">
+						<p><h4><?php echo $maera_i18n['developmentmode']; ?></h4></p>
+						<input type="checkbox" name="maera_admin_options[dev_mode]" <?php checked( @$settings['dev_mode'], 1 ); ?> value='1'>
+						<label for="maera_admin_options[dev_mode]"><?php echo $maera_i18n['enabledevmode']; ?></label>
+						<p><h4><?php echo $maera_i18n['cachingminutes']; ?></h4></p>
+						<input type="number" name="maera_admin_options[cache]" min="0" max="1440" value="<?php echo @$settings['cache']; ?>">
+						<label for="maera_admin_options[cache]"><?php echo $maera_i18n['setcacheminutes']; ?></label>
+					</div>
+				</div>
 
-					<tr valign="top">
-						<th scope="row"><?php _e( 'Development mode', 'maera' ); ?></th>
-						<td>
-							<input type="checkbox" name="maera_admin_options[dev_mode]" <?php checked( @$settings['dev_mode'], 1 ); ?> value='1'>
-							<label for="maera_admin_options[dev_mode]"><?php _e( 'Enable development mode. Please keep in mind that the actual implementation of the dev mode depends on the shell you have chosen', 'maera' ); ?></label><br />
-						</td>
-					</tr>
+				<div id="maera_exporter_importer" class="postbox">
+					<h3 class="hndle"><span><?php echo $maera_i18n['exportimport']; ?></span></h3>
+					<div class="inside">
+						<p><h4><?php echo $maera_i18n['exportcustomizer']; ?></h4></p>
+						<?php
+							// Get an array of all the theme mods
+							$theme_mods = get_theme_mods();
 
-					<tr valign="top">
-						<th scope="row"><?php _e( 'Caching (minutes)', 'maera' ); ?></th>
-						<td>
-							<input type="number" name="maera_admin_options[cache]" min="0" max="1440" value="<?php echo @$settings['cache']; ?>">
-							<label for="maera_admin_options[cache]"><?php _e( 'Set the time (in minutes) you want your pages cached. CAUTION: If you have any context dependent sub-views (eg. current user), this mode won\'t do. In that case, set this to 0.', 'maera' ); ?></label><br />
-						</td>
-					</tr>
+							$options = array();
+							foreach ( $theme_mods as $theme_mod => $value ) {
+								$options[$theme_mod] = ( 'css_cache' != $theme_mod ) ? maybe_unserialize( $value ) : '';
+							}
 
-					<tr>
-						<th><?php _e( 'Export Customizer Options', 'maera' ); ?></th>
-						<td>
-							<?php
-								// Get an array of all the theme mods
-								$theme_mods = get_theme_mods();
+							$json = json_encode( $options );
 
-								$options = array();
-								foreach ( $theme_mods as $theme_mod => $value ) {
-									$options[$theme_mod] = ( 'css_cache' != $theme_mod ) ? maybe_unserialize( $value ) : '';
-								}
+							echo '<textarea rows="3" cols="50" disabled style="width: 100%;">' . $json . '</textarea>';
+						?>
 
-								$json = json_encode( $options );
-
-								echo '<textarea rows="10" cols="50" disabled>' . $json . '</textarea>';
-							?>
-						</td>
-					</tr>
-
-					<tr>
-						<th><?php _e( 'Import Customizer Options', 'maera' ); ?></th>
-						<td>
-							<textarea id="import_data" name="maera_admin_options[import_data]" rows="10" cols="50"><?php echo stripslashes($settings['import_data']); ?></textarea>
-						</td>
-					</tr>
-
-
-				</table>
-
+						<p><h4><?php echo $maera_i18n['importcustomizer']; ?></h4></p>
+						<textarea id="import_data" name="maera_admin_options[import_data]" rows="3" cols="50" style="width: 100%;"><?php echo stripslashes($settings['import_data']); ?></textarea>
+					</div>
+				</div>
 				<p class="submit"><input type="submit" class="button-primary" value="Save Options" /></p>
 
 			</form>

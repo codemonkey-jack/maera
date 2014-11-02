@@ -65,9 +65,21 @@ function maera_i18n_strings() {
 		'maeralatestposts' => __( 'Maera Latest Posts', $textdomain ),
 		'readmore'         => __( 'Read More', $textdomain ),
 		'maeralogo'        => __( 'Maera Logo', $textdomain ),
-		'maeralogowidget'  => __( 'Maera logo widget.', $textdomain )
-	);
-}
+		'maeralogowidget'  => __( 'Maera logo widget.', $textdomain ),
 
-global $maera_i18n;
-$maera_i18n = maera_i18n_strings();
+		'shellselection'   => __( 'Select a Shell', $textdomain ),
+		'shellselectdescr' => __( 'You can select the shell that you want to activate here. Please note that when changing shells all your settings are lost so you should keep a backup of them.', $textdomain ),
+		'devandcache'      => __( 'Development Mode & Caching', $textdomain ),
+		'developmentmode'  => __( 'Development Mode', $textdomain ),
+		'enabledevmode'    => __( 'Enable development mode. Please keep in mind that the actual implementation of the dev mode depends on the shell you have chosen', $textdomain ),
+		'cachingminutes'   => __( 'Caching (minutes)', $textdomain ),
+		'setcacheminutes'  => __( 'Set the time (in minutes) you want your pages cached. CAUTION: If you have any context dependent sub-views (eg. current user), this mode won\'t do. In that case, set this to 0.', $textdomain ),
+		'exportimport'     => __( 'Export/Import customizer options', $textdomain ),
+		'exportcustomizer' => __( 'Export Customizer options', $textdomain ),
+		'importcustomizer' => __( 'Import Customizer options', $textdomain ),
+
+	);
+
+	return $strings;
+
+}
