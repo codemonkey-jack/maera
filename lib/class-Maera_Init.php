@@ -20,15 +20,16 @@ class Maera_Init {
 	function timber_customizations() {
 
 		$locations = array(
+			MAERA_SHELL_PATH,
 			MAERA_SHELL_PATH . '/macros',
 			MAERA_SHELL_PATH . '/views',
 			MAERA_SHELL_PATH . '/views/macros',
-			MAERA_SHELL_PATH,
 			get_stylesheet_directory() . '/views',
 			get_stylesheet_directory() . '/views/macros',
 			get_template_directory() . '/views',
 			get_template_directory() . '/views/macros',
 		);
+		var_dump($locations);
 		Timber::$locations = apply_filters( 'maera/timber/locations', $locations );
 
 		// Add caching if dev_mode is set to off.
@@ -47,7 +48,9 @@ class Maera_Init {
 			TimberLoader::CACHE_NONE;
 
 			$_SERVER['QUICK_CACHE_ALLOWED'] = FALSE;
-			define( 'DONOTCACHEPAGE', TRUE );
+			if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+				define( 'DONOTCACHEPAGE', TRUE );
+			}
 
 		}
 
@@ -59,7 +62,6 @@ class Maera_Init {
 	function timber_caching() {
 
 		$theme_options = get_option( 'maera_admin_options', array() );
-
 		$cache_int = isset( $theme_options['cache'] ) ? intval( $theme_options['cache'] ) : 0;
 
 		if ( 0 == $cache_int ) {

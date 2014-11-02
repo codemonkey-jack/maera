@@ -1,12 +1,12 @@
 {% if element == 'maera_grid_container_open' %}
-    {{ shell.open_container() }}
+    {{ shell.container_open() }}
 {% elseif element == 'maera_grid_container_close' %}
-    {{ shell.close_container() }}
+    {{ shell.container_close() }}
 
 {% elseif element == 'maera_grid_row_open' %}
-    {{ shell.open_row() }}
+    {{ shell.row_open() }}
 {% elseif element == 'maera_grid_row_close' %}
-    {{ shell.close_row() }}
+    {{ shell.row_close() }}
 
 {% elseif element == 'maera_grid_col_1' %}
     {{ shell.column_classes( [{'medium':1}] ) }}

@@ -16,13 +16,13 @@
 
 	{% do action( 'maera/wrap/before', post.ID ) %}
 
-	{{ shell.open_container( 'div', 'wrap-main-section', 'wrap main-section' ) }}
+	{{ shell.container_open( 'div', 'wrap-main-section', 'wrap main-section' ) }}
 
 		{% do action( 'maera/content/before', post.ID ) %}
 
 		<div class="content" id="content" itemprop="mainContentOfPage">
 
-			{{ shell.open_row( 'div', null, 'bg' ) }}
+			{{ shell.row_open( 'div', null, 'bg' ) }}
 
 				<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
 					{% do action( 'maera/main/before', post.ID ) %}
@@ -50,13 +50,13 @@
 
 				{{ shell.clearfix }}
 
-			{{ shell.close_row( 'div' ) }}
+			{{ shell.row_close( 'div' ) }}
 
 		</div><!-- /#content -->
 
 		{% do action( 'maera/content/after' ) %}
 
-	{{ shell.close_container( 'div' ) }}
+	{{ shell.container_close( 'div' ) }}
 
 	{% do action( 'maera/footer/before', post.ID ) %}
 	<footer class="page-footer">

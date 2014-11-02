@@ -1,4 +1,4 @@
 {% import 'column_classes.html.twig' as column_classes %}
-{% macro open_col(element, sizes, id, extra_classes, properties) %}
+{% macro column_open(element, sizes, id, extra_classes, properties) %}
 	<{{ element|default('div') }} class="{{ shell.column_classes( sizes ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
 {% endmacro %}
