@@ -44,7 +44,9 @@ class Maera_Init {
 			TimberLoader::CACHE_NONE;
 
 			$_SERVER['QUICK_CACHE_ALLOWED'] = FALSE;
-			define( 'DONOTCACHEPAGE', TRUE );
+			if ( ! defined ( 'DONOTCACHEPAGE' ) ) {
+				define( 'DONOTCACHEPAGE', TRUE );
+			}
 
 		}
 

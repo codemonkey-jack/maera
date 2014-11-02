@@ -25,7 +25,7 @@ class Maera_Shell {
 	function enable_shell() {
 
 		// Get the option from the database
-		$options = get_option( 'maera_admin_options', 'bootstrap' );
+		$options = get_option( 'maera_admin_options', array() );
 
 		$active_shell = ( isset( $options['shell'] ) ) ? $options['shell'] : 'core';
 		$active_shell = ( empty( $active_shell ) || '' == $active_shell ) ? 'core' : $active_shell;
