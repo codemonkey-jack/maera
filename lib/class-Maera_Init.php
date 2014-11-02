@@ -29,7 +29,6 @@ class Maera_Init {
 			get_template_directory() . '/views',
 			get_template_directory() . '/views/macros',
 		);
-		var_dump($locations);
 		Timber::$locations = apply_filters( 'maera/timber/locations', $locations );
 
 		// Add caching if dev_mode is set to off.
