@@ -9,12 +9,12 @@
 		{% do action( 'maera/single/pre_content', post.ID ) %}
 		{% include ['single-'~post.post_type~'-top.twig', 'single-top.twig'] %}
 		{{ post.content }}
-		{{ shell.clearfix }}
+		<div class="clearfix"></div>
 		{{ function( 'wp_link_pages', {
 			'before': '<div class="page-links" itemprop="pagination">' . i18n.pages,
 			'after': '</div>'
 		}) }}
-		{{ shell.clearfix }}
+		<div class="clearfix"></div>
 		{% include ['single-'~post.post_type~'-bottom.twig', 'single-bottom.twig'] %}
 		{% do action( 'maera/single/after_content', post.ID ) %}
 	</div>

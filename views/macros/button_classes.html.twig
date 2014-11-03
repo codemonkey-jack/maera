@@ -1,0 +1,18 @@
+{% macro button_classes(color, size, type, extra) %}
+
+	{% if color == 'info' %}
+		button-secondary
+	{% else %}
+		button-{{ color }}
+	{% endif %}
+
+	{% if size == 'extra-small' %}button-xsmall{% endif %}
+	{% if size == 'small' %}button-small{% endif %}
+	{% if size == 'medium' %}{# No need for an extra class #}{% endif %}
+	{% if size == 'large' %}button-large{% endif %}
+	{% if size == 'extra-large' %}button-xlarge{% endif %}
+
+	{{ type }}
+	{{ extra }}
+
+{% endmacro %}

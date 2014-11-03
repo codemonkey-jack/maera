@@ -1,0 +1,12 @@
+{% macro button_group_classes(size, type, extra_classes) %}
+
+	btn-group
+	{% if size == 'xsmall' %}btn-group-xs{% endif %}
+	{% if size == 'small' %}btn-group-sm{% endif %}
+	{% if size == 'medium' %}{# No need for an extra class #}{% endif %}
+	{% if size == 'large' %}btn-group-lg{% endif %}
+	{% if size == 'xlarge' %}btn-group-lg{% endif %}
+	{{ type }}
+	{{ extra_classes }}
+
+{% endmacro %}

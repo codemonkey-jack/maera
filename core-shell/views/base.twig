@@ -1,5 +1,3 @@
-{#<?php#}
-{% import 'shell.html.twig' as shell %}
 {% include 'html-header.twig' %}
 
 <body class="container base-container {{ body_class }}" data-source="base.twig">
@@ -38,7 +36,7 @@
 			<div id="sidebar" class="sidebar u-1 u-md-10-12 u-lg-3-12">
 				<div class="primary-side">{{ sidebar.primary }}</div>
 			</div>
-			{{ shell.clearfix }}
+			<div class="clearfix"></div>
 			{% do action( 'maera/content/after' ) %}
 			{% do action( 'maera/footer/before', post.ID ) %}
 			<footer class="footer">
