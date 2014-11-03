@@ -74,29 +74,26 @@ class Maera_Init {
 	}
 
 	function require_libs() {
+
 		/**
-		* If we're using the color library, load it
+		* Load the color library from jetpack
 		*/
-		if ( current_theme_supports( 'maera_color' ) || current_theme_supports( 'jetpack_color' ) ) {
-			// Include the Jetpack_Color class
-			// if ( function_exists( 'jetpack_require_lib' ) ) {
-			// 	jetpack_require_lib( 'class.color' );
-			// }
+		if ( function_exists( 'jetpack_require_lib' ) ) {
+			jetpack_require_lib( 'class.color' );
 		}
+
 		/**
-		* If we're using the Tonesque library, load it from jetpack
+		* Load the Tonesque library from jetpack
 		*/
-		if ( current_theme_supports( 'tonesque' ) && function_exists( 'jetpack_require_lib' ) ) {
+		if ( function_exists( 'jetpack_require_lib' ) ) {
 			jetpack_require_lib( 'tonesque' );
 		}
 
 		/**
-		* If we're using the Custom Widget Areas builder, include it here
+		* Include the Custom Widget Areas builder
 		*/
-		if ( current_theme_supports( 'maera_cwa' ) ) {
-			require_once locate_template( '/lib/class-Maera_CWA.php' );
-			$extra_widget_areas = new Maera_CWA();
-		}
+		require_once locate_template( '/lib/class-Maera_CWA.php' );
+		$extra_widget_areas = new Maera_CWA();
 
 		/**
 		* Load the Extended posts widget

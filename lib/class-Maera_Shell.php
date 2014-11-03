@@ -15,6 +15,7 @@ class Maera_Shell {
 		$this->enable_shell();
 
 		add_filter( 'timber_output', array( $this, 'do_twig_replacements' ) );
+		add_action( 'init', array( $this, 'fallback_shell' ) );
 
 	}
 
@@ -42,6 +43,25 @@ class Maera_Shell {
 				$ss_shell = $available_shell['class']::get_instance();
 			}
 
+		}
+
+	}
+
+	/**
+	 * Make sure the active shell exists.
+	 * If the active shell is not in the array of available shells
+	 * then fallback to the core shell.
+	 */
+	function fallback_shell() {
+
+		$options = get_option( 'maera_admin_options', array() );
+		$active  = ( isset( $options['shell'] ) ) ? $options['shell'] : 'core';
+		$shells  = apply_filters( 'maera/shells/available', array() );
+		$values  = array_column( $available_shells, 'value' );
+
+		if ( ! in_array( $options['shell'], $shells_values ) ) {
+			$options['shell'] = 'core';
+			update_option( 'maera_admin_options', $options );
 		}
 
 	}
