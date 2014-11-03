@@ -57,9 +57,9 @@ class Maera_Shell {
 		$options = get_option( 'maera_admin_options', array() );
 		$active  = ( isset( $options['shell'] ) ) ? $options['shell'] : 'core';
 		$shells  = apply_filters( 'maera/shells/available', array() );
-		$values  = array_column( $available_shells, 'value' );
+		$values  = array_column( $shells, 'value' );
 
-		if ( ! in_array( $options['shell'], $shells_values ) ) {
+		if ( ! in_array( $options['shell'], $values ) ) {
 			$options['shell'] = 'core';
 			update_option( 'maera_admin_options', $options );
 		}

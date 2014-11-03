@@ -21,10 +21,17 @@ class Maera_Init {
 
 		$locations = array(
 			MAERA_SHELL_PATH . '/macros',
+			MAERA_SHELL_PATH . '/views/macros',
 			MAERA_SHELL_PATH . '/views',
 			MAERA_SHELL_PATH,
+			get_stylesheet_directory() . '/macros',
+			get_stylesheet_directory() . '/views/macros',
 			get_stylesheet_directory() . '/views',
-			get_template_directory() . '/views'
+			get_stylesheet_directory(),
+			get_template_directory() . '/macros',
+			get_template_directory() . '/views/macros',
+			get_template_directory() . '/views',
+			get_template_directory(),
 		);
 		Timber::$locations = apply_filters( 'maera/timber/locations', $locations );
 
