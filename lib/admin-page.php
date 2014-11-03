@@ -77,7 +77,7 @@ class Maera_Admin_Page {
 					<h3 class="hndle"><span><?php echo $maera_i18n['shellselection']; ?></span></h3>
 					<div class="inside">
 						<?php echo apply_filters( 'maera/admin/shell_select_description', $maera_i18n['shellselectdescr'] ); ?>
-						<br><br>
+						<br>
 						<?php foreach( $available_shells as $available_shell ) : ?>
 							<input type="radio" id="<?php echo $available_shell['value']; ?>" name="maera_admin_options[shell]" value="<?php esc_attr_e( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />
 							<label for="<?php echo $available_shell['value']; ?>"><?php echo $available_shell['label']; ?></label><br />
