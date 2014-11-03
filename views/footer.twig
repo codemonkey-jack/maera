@@ -1,4 +1,5 @@
-{#<?php#}
-{{ shell.open_container( 'div', 'wrap-footer-section', 'wrap footer-section' ) }}
+{% from 'container_open.html.twig' import container_open as container_open %}
+{% from 'container_close.html.twig' import row_open as row_open %}
+{{ container_open( 'div', 'wrap-footer-section', 'wrap footer-section' ) }}
 	{% do action( 'maera/footer/content' ) %}
-{{ shell.close_container( 'div' ) }}
+{{ container_close( 'div' ) }}

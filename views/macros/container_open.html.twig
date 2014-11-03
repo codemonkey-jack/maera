@@ -1,0 +1,3 @@
+{% macro container_open(element, id, extra_classes, properties) %}
+	<{{ element|default('div') }} class="{{ 'g'|apply_filters( 'maera/container_class' ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
+{% endmacro %}
