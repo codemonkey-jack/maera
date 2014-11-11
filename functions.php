@@ -29,6 +29,10 @@ class Maera {
 		$maera_shell = new Maera_Shell();
 		$maera_init  = new Maera_Init();
 
+		if ( class_exists( 'BuddyPress' ) ) {
+			add_action( 'bp_include', array( $this, 'bp_include' ) );
+		}
+
 	}
 
 	function requires() {
@@ -43,6 +47,10 @@ class Maera {
 		require_once locate_template( '/lib/admin-page.php' );
 		require_once locate_template( '/lib/updater/updater.php' );
 
+	}
+
+	function bp_include() {
+		require_once locate_template( '/lib/timber-bp.php' );
 	}
 
 	function content_width() {
