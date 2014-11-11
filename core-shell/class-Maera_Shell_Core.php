@@ -22,7 +22,9 @@ class Maera_Shell_Core {
 		// Add the shell Timber modifications
 		add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
-		add_theme_support( 'custom-header' );
+		$header_args = array( 'default-image' => get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' );
+		add_theme_support( 'custom-header', $header_args );
+
 		add_theme_support( 'tonesque' );
 		add_theme_support( 'site-logo' );
 
@@ -155,8 +157,12 @@ class Maera_Shell_Core {
 
 		$src = $this->custom_header_url();
 
-		if ( $src ) {
+		if ( $src && get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' != $src ) {
 			$attachment_id = $this->pn_get_attachment_id_from_url( $src );
+
+			if ( ! $attachment_id ) {
+
+			}
 
 			// Grab color from post meta
 			$tonesque = get_post_meta( $attachment_id, '_post_colors', true );
@@ -189,12 +195,17 @@ class Maera_Shell_Core {
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
 				$styles .= 'a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ';}';
-				$styles .= '#menu.menu-wrap, .menu-button{background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
+				$styles .= '#menu.menu-wrap, .menu-button, {background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
 				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . ';box-shadow:0px 0px 5px ' . $color . ';}';
-				return $styles;
 			}
 
+		} else {
+
+			$styles = '.page-header:before{background-color:#0C6890;background-image:url("' . get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' . '");background-size:auto !important;}';
+
 		}
+
+		return $styles;
 
 	}
 
