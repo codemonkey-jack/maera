@@ -7,7 +7,7 @@ if ( ! class_exists( 'EDD_SL_Theme_Updater' ) ) {
 function maera_theme_updater() {
 
 	$edd_updater = new EDD_SL_Theme_Updater( array(
-			'remote_api_url' 	=> 'http://press.codes',
+			'remote_api_url' 	=> 'http://press.codes/',
 			'version' 			=> '1.0-beta1',
 			'license' 			=> 'c5305a091a9e61268c5be6096bfa3d38',
 			'item_name' 		=> 'Maera',
@@ -33,7 +33,7 @@ function maera_theme_activate_license() {
 	);
 
 	// Get the server response
-	$response = wp_remote_get( add_query_arg( $api_params, 'http://shoestrap.org' ), array( 'timeout' => 15, 'sslverify' => false ) );
+	$response = wp_remote_get( add_query_arg( $api_params, 'http://press.codes/' ), array( 'timeout' => 15, 'sslverify' => false ) );
 
 	// Make sure no error has occured
 	if ( is_wp_error( $response ) ) {
