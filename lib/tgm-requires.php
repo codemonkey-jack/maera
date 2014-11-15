@@ -41,13 +41,16 @@ function maera_register_required_plugins() {
 			'slug'      => 'kirki',
 			'required'  => true,
 		),
-		// array(
-		// 	'name'      => 'Jetpack by WordPress.com',
-		// 	'slug'      => 'Jetpack',
-		// 	'required'  => true,
-		// ),
 
 	);
+
+	if ( current_theme_supports( 'breadcrumbs' ) ) {
+		$plugins[] = array(
+			'name'     => 'Breadcrumb Trail',
+			'slug'     => 'breadcrumb-trail',
+			'required' => true,
+		);
+	}
 
 	/**
 	 * Array of configuration settings. Amend each line as needed.

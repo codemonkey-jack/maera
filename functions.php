@@ -42,7 +42,6 @@ class Maera {
 		require_once locate_template( '/lib/i18n.php' );
 		require_once locate_template( '/lib/utils.php' );
 		require_once locate_template( '/lib/tgm-requires.php' );
-		require_once locate_template( '/lib/breadcrumb-trail.php' );
 		require_once locate_template( '/lib/class-Maera_Shell.php' );
 		require_once locate_template( '/lib/class-Maera_Init.php' );
 		require_once locate_template( '/lib/widgets.php' );
