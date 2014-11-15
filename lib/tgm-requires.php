@@ -52,6 +52,14 @@ function maera_register_required_plugins() {
 		);
 	}
 
+	if ( current_theme_supports( 'less_compiler' ) || current_theme_supports( 'sass_compiler' ) ) {
+		$plugins[] = array(
+			'name'     => 'Less & scss compilers',
+			'slug'     => 'lessphp',
+			'required' => true
+		);
+	}
+
 	/**
 	 * Array of configuration settings. Amend each line as needed.
 	 * If you want the default strings to be available under your own theme domain,

@@ -25,19 +25,9 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 			$this->minimize_css  = $minimize_css;
 
 			if ( 'less' == $this->compiler ) {
-
-				// Require the less parser
-				if ( ! class_exists( 'Less_Parser' ) ) {
-					require_once( 'less-php/less.php' );
-				}
-
+				add_theme_support( 'less_compiler' );
 			} elseif ( 'sass' == $this->compiler ) {
-
-				// Require the less parser
-				if ( ! class_exists( 'scssc' ) ) {
-					require_once( 'sass-php/scss.inc.php' );
-				}
-
+				add_theme_support( 'sass_compiler' );
 			}
 
 			add_filter( 'maera/stylesheet/url', array( $this, 'stylesheet_url' ) );
