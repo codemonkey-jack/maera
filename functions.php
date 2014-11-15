@@ -156,8 +156,7 @@ itemprop="', ' itemprop="', $html );
 	*/
 	function scripts() {
 
-		global $wp_customize;
-		global $active_shell;
+		global $wp_customize, $active_shell;
 
 		// Get the stylesheet path and version
 		$stylesheet_url = apply_filters( 'maera/stylesheet/url', MAERA_ASSETS_URL . '/css/style.css' );
