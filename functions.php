@@ -37,14 +37,20 @@ class Maera {
 
 	function requires() {
 
-		require_once locate_template( '/lib/i18n.php' );
-		require_once locate_template( '/lib/utils.php' );
-		require_once locate_template( '/lib/tgm-requires.php' );
-		require_once locate_template( '/lib/class-Maera_Shell.php' );
-		require_once locate_template( '/lib/class-Maera_Init.php' );
-		require_once locate_template( '/lib/widgets.php' );
-		require_once locate_template( '/lib/admin-page.php' );
-		require_once locate_template( '/lib/updater/updater.php' );
+		$files = array(
+			'/lib/i18n.php',
+			'/lib/utils.php',
+			'/lib/tgm-requires.php',
+			'/lib/class-Maera_Shell.php',
+			'/lib/class-Maera_Init.php',
+			'/lib/widgets.php',
+			'/lib/admin-page.php',
+			'/lib/updater/updater.php',
+		);
+
+		foreach ( $files as $file ) {
+			require_once locate_template( $file );
+		}
 
 		if ( ! class_exists( 'Minify_HTML' ) ) {
 			require_once locate_template( '/lib/class-Minify_HTML.php' );
