@@ -114,7 +114,7 @@ itemprop="', ' itemprop="', $html );
 		if ( is_single() || is_page() && ! is_front_page() ) {
 
 			$permalink = basename( get_permalink() );
-			$classes[] = maera_transliterate( $permalink );
+			$classes[] = sanitize_html_class( $permalink );
 
 		}
 
