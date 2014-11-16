@@ -150,43 +150,35 @@ class Maera_Shell_Core {
 	* @since Color Posts 1.0
 	*/
 	function colorposts_build_css( $styles ) {
-		$post_id = get_the_ID();
 
 		$src = $this->custom_header_url();
 
 		if ( $src && get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' != $src ) {
+
 			$attachment_id = $this->pn_get_attachment_id_from_url( $src );
-
-			if ( ! $attachment_id ) {
-
-			}
-
 			// Grab color from post meta
 			$tonesque = get_post_meta( $attachment_id, '_post_colors', true );
-
 			// No color? Let's get one
 			if ( empty( $tonesque ) ) {
-
 				$tonesque = new Tonesque( $src );
 				$tonesque = array(
 					'color'    => $tonesque->color(),
 					'contrast' => $tonesque->contrast(),
 				);
-
 				if ( $tonesque['color'] ) {
-					update_post_meta( $post_id, '_post_colors', $tonesque );
-				} else {
-					return;
+					update_post_meta( get_the_ID(), '_post_colors', $tonesque );
 				}
+
 			}
 
 			// Add the CSS to our page
 			extract( $tonesque );
-			if ( empty( $color ) || empty( $contrast ) ) {
-				return $styles;
-			} else {
+
+			if ( ! empty( $color ) && @ empty( $contrast ) ) {
+
 				$white = new Jetpack_Color( '#FFFFFF' );
 				$color = new Jetpack_Color( '#' . $color );
+
 				$luminosity = $color->toLuminosity();
 				$fontcolor  = ( $luminosity < 0.5 ) ? '#FFFFFF' : '#222222';
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
@@ -194,11 +186,12 @@ class Maera_Shell_Core {
 				$styles .= 'a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ';}';
 				$styles .= '#menu.menu-wrap, .menu-button, {background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
 				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . ';box-shadow:0px 0px 5px ' . $color . ';}';
+
 			}
 
 		} else {
 
-			$styles = '.page-header:before{background-color:#0C6890;background-image:url("' . get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' . '");background-size:auto !important;}';
+			$styles .= '.page-header:before{background-color:#0C6890;background-image:url("' . get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' . '");background-size:auto !important;}';
 
 		}
 
