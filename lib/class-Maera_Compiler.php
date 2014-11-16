@@ -43,7 +43,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 		 *
 		 * If echo = true then print the path or url.
 		 */
-		public static function file( $target = 'path', $echo = false ) {
+		public static function file( $target = 'path' ) {
 			global $blog_id;
 
 			// No need to process this on each page load... Use transients to improve performance.
@@ -60,8 +60,8 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 				// Define a default folder for the stylesheets.
 				$def_folder_path = get_template_directory() . '/assets/css';
+				$folder_path     = $def_folder_path;
 
-				$folder_path = $def_folder_path;
 				// The folder path for the stylesheet.
 				// We try to first write to the uploads folder.
 				// If we can write there, then use that folder for the stylesheet.
@@ -71,6 +71,8 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 				} elseif ( is_writable( ABSPATH . '/css' . $file_name ) || is_writable( ABSPATH . '/css' ) ) {
 					// Fallback to the WordPress root folder /css
 					$folder_path = ABSPATH . '/css';
+				} else { // No file is writable, so exit.
+					return
 				}
 
 				// The complete path to the file.
@@ -80,30 +82,25 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 				if ( $folder_path == $upload_dir['basedir'] ) {
 					// Path is set to WordPress uploads dir
 					$css_uri_folder = $upload_dir['baseurl'];
-
 				} elseif ( $folder_path == ABSPATH . '/css' ) {
 					// Path is set to WordPress root /css
 					// On multisites use network_site_url() instead of site_url()
 					$css_uri_folder = ( is_multisite() ) ? network_site_url() . '/css' : site_url() . '/css';
-
-				} else {
-					// Fallback to the theme's assets/css folder.
-					$css_uri_folder = get_template_directory_uri() . '/assets/css';
-
 				}
 
-				// If the CSS file does not exist, use the default file.
-				$css_uri = ( file_exists( $file_path ) ) ? $css_uri_folder . $file_name : get_template_directory_uri() . '/assets/css/style-default.css';
-
-				// If a style.css file exists in the assets/css folder, use that file instead.
-				// This is mostly for backwards-compatibility with previous versions.
-				// Also if the stylesheet is compiled using grunt, this will make sure the correct file is used.
-				if ( ! file_exists( $file_path . $file_name ) && file_exists( $def_folder_path . $file_name) ) {
-					$css_uri   = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
-					$file_path = $def_folder_path . '/style' . $cssid . '.css';
-				}
-
+				$css_uri = $css_uri_folder . $file_name;
 				$css_path = $file_path;
+
+				// Take care of domain mapping
+				if ( defined( 'DOMAIN_MAPPING' ) && 1 == DOMAIN_MAPPING ) {
+					if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
+
+						$mapped   = domain_mapping_siteurl( false );
+						$original = get_original_url( 'siteurl' );
+						$css_uri  = str_replace( $original, $mapped, $css_uri );
+
+					}
+				}
 
 				// Strip protocols
 				$css_uri = str_replace( 'https://', '//', $css_uri );
@@ -130,11 +127,8 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 				$value = get_transient( 'maera_stylesheet_time' );
 			}
 
-			if ( $echo ) {
-				echo $value;
-			} else {
-				return $value;
-			}
+			return $value;
+
 		}
 
 		/**
@@ -208,6 +202,23 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 
 				$content = $this->compiler_sass();
 
+			}
+
+			// Take care of domain mapping
+			if ( defined( 'DOMAIN_MAPPING' ) && 1 == DOMAIN_MAPPING ) {
+				if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
+
+					$mapped = domain_mapping_siteurl( false );
+					$mapped = str_replace( 'https://', '//', $mapped );
+					$mapped = str_replace( 'http://', '//', $mapped );
+
+					$original = get_original_url( 'siteurl' );
+					$original = str_replace( 'https://', '//', $original );
+					$original = str_replace( 'http://', '//', $original );
+
+					$content = str_replace( $original, $mapped, $content );
+
+				}
 			}
 
 			// Strip protocols
