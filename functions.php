@@ -44,7 +44,7 @@ class Maera {
 			'/lib/class-Maera_Shell.php',
 			'/lib/class-Maera_Init.php',
 			'/lib/widgets.php',
-			'/lib/admin-page.php',
+			'/lib/admin/class-Maera_Admin.php',
 			'/lib/updater/updater.php',
 		);
 
