@@ -12,20 +12,11 @@
  */
 
 // Widget folder url
-if ( ! defined( 'MAERA_LOGO_WIDGET_URL' ) ) {
-	define( 'MAERA_LOGO_WIDGET_URL', get_template_directory_uri() . '/lib/widgets/logo/' );
-}
-
+Maera::define( 'MAERA_LOGO_WIDGET_URL', get_template_directory_uri() . '/lib/widgets/logo/' );
 // Widget folder path
-if ( ! defined( 'MAERA_LOGO_WIDGET_PATH' ) ) {
-	define( 'MAERA_LOGO_WIDGET_PATH', dirname( __FILE__ ) );
-}
-
+Maera::define( 'MAERA_LOGO_WIDGET_PATH', dirname( __FILE__ ) );
 //Widget root file
-if ( ! defined( 'MAERA_LOGO_WIDGET_FILE' ) ) {
-	define( 'MAERA_LOGO_WIDGET_FILE', __FILE__ );
-}
-
+Maera::define( 'MAERA_LOGO_WIDGET_FILE', __FILE__ );
 /**
  * Include the logo widget class.
  */

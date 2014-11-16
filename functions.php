@@ -4,9 +4,7 @@ class Maera {
 
 	function __construct() {
 
-		if ( ! defined( 'MAERA_ASSETS_URL' ) ) {
-			define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
-		}
+		self::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 
 		// If the Timber plugin is not already installed, load it from the theme.
 		if ( ! class_exists( 'Timber' ) ) {
@@ -213,6 +211,15 @@ itemprop="', ' itemprop="', $html );
 	*/
 	function reset_style_cache_on_customizer_save() {
 		remove_theme_mod( 'css_cache' );
+	}
+
+	/**
+	* Check if a constand is already defined, and if not then give it a value
+	*/
+	public static function define( $define, $value ) {
+		if ( ! defined( $define ) ) {
+			define( $define, $value );
+		}
 	}
 
 }

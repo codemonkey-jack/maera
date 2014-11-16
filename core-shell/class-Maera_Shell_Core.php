@@ -10,9 +10,7 @@ class Maera_Shell_Core {
 	private function __construct() {
 		do_action( 'maera/shell/include_modules' );
 
-		if ( ! defined( 'MAERA_SHELL_PATH' ) ) {
-			define( 'MAERA_SHELL_PATH', dirname( __FILE__ ) );
-		}
+		Maera::define( 'MAERA_SHELL_PATH', dirname( __FILE__ ) );
 
 		$compiler = null;
 
