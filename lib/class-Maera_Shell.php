@@ -7,8 +7,6 @@ class Maera_Shell {
 
 	function __construct() {
 
-		// Include the compiler class
-		require_once locate_template( '/lib/class-Maera_Compiler.php' );
 		// Include the Core shell
 		require_once locate_template( '/core-shell/class-Maera_Shell_Core.php' );
 

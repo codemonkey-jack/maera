@@ -12,8 +12,6 @@ class Maera_Shell_Core {
 
 		Maera::define( 'MAERA_SHELL_PATH', dirname( __FILE__ ) );
 
-		$compiler = null;
-
 		// Enqueue the scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );
 
