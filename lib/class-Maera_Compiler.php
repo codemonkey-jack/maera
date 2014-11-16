@@ -72,7 +72,7 @@ if ( ! class_exists( 'Maera_Compiler' ) ) {
 					// Fallback to the WordPress root folder /css
 					$folder_path = ABSPATH . '/css';
 				} else { // No file is writable, so exit.
-					return
+					return;
 				}
 
 				// The complete path to the file.
