@@ -1,10 +1,11 @@
 <?php
 
 $docs_tabs = array(
-		'general'       => 'General',
-		'templating'    => 'Templating',
-		'shells'        => 'Shells',
-		'actions-hooks' => 'Actions & Hooks',
+		'general'        => 'General & FAQ',
+		'templating'     => 'Templating',
+		'shells'         => 'Shells',
+		'theme-supports' => 'Theme Supports',
+		'actions-hooks'  => 'Actions & Hooks',
 );
 ?>
 <div id="docs_header">
