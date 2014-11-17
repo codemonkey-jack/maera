@@ -10,14 +10,14 @@ class Maera_Admin {
 
 	function __construct() {
 
-		// Load only if we are viewing an admin page
-		if ( ! is_admin() ) {
+		// Load only if we are viewing the admin page
+		if ( ! is_admin() || ! isset ( $_GET['page'] ) || ! 'theme_options' == $_GET['page'] ) {
 			return;
 		}
 
 		add_action( 'admin_init', array( $this, 'register_settings') );
 		add_action( 'admin_menu', array( $this, 'maera_admin_options' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 
 	}
 
@@ -43,7 +43,14 @@ class Maera_Admin {
 	 * Enqueue necessary scripts and styles
 	 */
 	function scripts() {
-		wp_enqueue_style( 'dashicons' );
+
+		// wp_enqueue_style( 'dashicons' );
+		wp_enqueue_scripts( 'jquery-ui-core' );
+		wp_enqueue_scripts( 'jquery-ui-tabs' );
+
+		wp_register_style( 'maera-admin-css', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
+		wp_enqueue_style( 'maera-admin-css' );
+
 	}
 
 	/**
