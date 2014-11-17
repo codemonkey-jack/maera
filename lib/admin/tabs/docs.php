@@ -1,9 +1,3 @@
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"> -->
-<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
-<script>
-jQuery(document).ready(function($) { $( "#tabs" ).tabs(); });
-</script>
-
 <!-- Begin Header -->
 <div id="docs_header">
 	<h2>This tab will contain the theme documentation.</h2>
@@ -12,7 +6,7 @@ jQuery(document).ready(function($) { $( "#tabs" ).tabs(); });
 <!-- End Header -->
 
 <!-- Begin Tabs -->
-<div id="tabs">
+<div id="tabs-vertical">
 	<!-- Begin Tab Titles -->
 	<ul>
 		<li><a href="#tab-1">Topic 1</a></li>
@@ -46,4 +40,9 @@ jQuery(document).ready(function($) { $( "#tabs" ).tabs(); });
 </div>
 <!-- End Tabs -->
 
-<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script>
+jQuery(document).ready(function($) {
+	$( "#tabs-vertical" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+	$( "#tabs-vertical li" ).tabs().removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+});
+</script>
