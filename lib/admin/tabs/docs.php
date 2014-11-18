@@ -6,6 +6,7 @@ $docs_tabs = array(
 		'shells'         => 'Shells',
 		'theme-supports' => 'Theme Supports',
 		'actions-hooks'  => 'Actions & Hooks',
+		'filters'        => 'Filters',
 );
 ?>
 <div id="docs_header">
