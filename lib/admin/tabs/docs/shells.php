@@ -1,10 +1,12 @@
 <?php
 
 $shell_tabs = array(
-    'building-shell-class'  => 'Building the shell Class',
-    'defining-shell'        => 'Defining a shell',
-    'shell-macros'          => 'Shell Macros',
-    'custom-templates'      => 'Adding custom templates (views) to our shell',
+    'building-shell-class'   => 'Building the shell Class',
+    'defining-shell'         => 'Defining a shell',
+    'custom-templates'       => 'Adding custom templates (views) to our shell',
+    'shell-macros'           => 'Shell Macros',
+    'how-to-use-macros'      => 'How to use Shell Macros',
+    'using-shell-macros-php' => 'Using shell macros in PHP',
 );
 ?>
 
