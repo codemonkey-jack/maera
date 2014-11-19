@@ -214,7 +214,7 @@ You may want to use this filter to change the width of the container or to appen
 <span class="pl-s2"><span class="pl-st">function</span> <span class="pl-en">my_stylesheet_version</span>() {</span>
 <span class="pl-s2">    <span class="pl-k">return</span> <span class="pl-s3">filemtime</span>( get_stylesheet_directory() <span class="pl-k">.</span> <span class="pl-s1"><span class="pl-pds">'</span>/assets/style.css<span class="pl-pds">'</span></span> );</span>
 <span class="pl-s2">}</span>
-<span class="pl-s2">add_filter( <span class="pl-s1"><span class="pl-pds">'</span>maera/stylesheet/url<span class="pl-pds">'</span></span>, <span class="pl-s3">array</span>( <span class="pl-vo">$this</span>, <span class="pl-s1"><span class="pl-pds">'</span>my_stylesheet_version<span class="pl-pds">'</span></span> ) );</span>
+<span class="pl-s2">add_filter( <span class="pl-s1"><span class="pl-pds">'</span>maera/stylesheet/ver<span class="pl-pds">'</span></span>, <span class="pl-s3">array</span>( <span class="pl-vo">$this</span>, <span class="pl-s1"><span class="pl-pds">'</span>my_stylesheet_version<span class="pl-pds">'</span></span> ) );</span>
 <span class="pl-s2"></span><span class="pl-pse"><span class="pl-s2">?</span>&gt;</span></pre></div>
 
 <h3>
@@ -229,12 +229,21 @@ You may want to use this filter to change the width of the container or to appen
 <li>maera_breadcrumb_trail_items</li>
 <li>maera_breadcrumb_trail_get_bbpress_items</li>
 <li>maera/timber/cache</li>
+<li>maera/timber/locations</li>
 <li>maera/title</li>
+<li>maera/teaser/mode</li>
 <li>maera/widgets/class</li>
 <li>maera/widgets/title/after</li>
 <li>maera/widgets/title/before</li>
+<li>maera/widgets/areas</li>
+<li>maera/widgets/areas/values</li>
+<li>maera/extra_widgets/{area}/{i}</li>
+<li>maera/twig/replacements</li>
 </ul>
 
     </div>
 
+    <div id="wiki-footer">
+      <a href="/presscodes/maera/wiki/_new?wiki%5Bname%5D=_Footer" class="wiki-empty-box"><span class="octicon octicon-plus"></span> Add a custom footer</a>
+    </div>
   </div>

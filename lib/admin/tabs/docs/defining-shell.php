@@ -11,7 +11,9 @@
 ├── views
 |   └── shell-specific templates
 ├── class-Maera_Example.php
-├── shell.html.twig
+├── macros
+|   └── our macros files go here. You can see the available macros here:
+|       https://github.com/presscodes/maera/tree/master/views/macros
 └── shell.php
 </code></pre>
 
@@ -62,7 +64,11 @@ It would be best if you could keep the same file structure in your own shells to
 <span class="pl-s2">add_filter( <span class="pl-s1"><span class="pl-pds">'</span>maera/shells/available<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>maera_shell_bootstrap_include<span class="pl-pds">'</span></span> );</span>
 <span class="pl-s2"></span><span class="pl-pse"><span class="pl-s2">?</span>&gt;</span></pre></div>
 
+<p>Next step: <a class="internal absent" href="/presscodes/maera/wiki/Shell-Macros">adding our shell macros</a>.</p>
 
     </div>
 
+    <div id="wiki-footer">
+      <a href="/presscodes/maera/wiki/_new?wiki%5Bname%5D=_Footer" class="wiki-empty-box"><span class="octicon octicon-plus"></span> Add a custom footer</a>
+    </div>
   </div>
