@@ -1,12 +1,8 @@
 <?php
 
 $shell_tabs = array(
-    'building-shell-class'   => 'Building the shell Class',
-    'defining-shell'         => 'Defining a shell',
-    'custom-templates'       => 'Adding custom templates (views) to our shell',
-    'shell-macros'           => 'Shell Macros',
-    'how-to-use-macros'      => 'How to use Shell Macros',
-    'using-shell-macros-php' => 'Using shell macros in PHP',
+    'creating-shells'   => 'Creating Shells',
+    'macros'           => 'Macros',
 );
 ?>
 
@@ -16,6 +12,7 @@ $shell_tabs = array(
       <p>If needed, you can override the default templates by <a href="/docs/shells/views/">adding your own template views</a>.
       If you would like to learn more about Shells, you can read the docs below:</p>
 </div>
+<hr>
 
 <div id="shell-tabs">
   <ul>
@@ -32,7 +29,8 @@ $shell_tabs = array(
 </div>
 
 <script>
-  jQuery(document).ready(function($) {
-    $( "#shell-tabs" ).tabs();
-  });
+	jQuery(document).ready(function($) {
+		$( "#shell-tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+		$( "#shell-tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+	});
 </script>
