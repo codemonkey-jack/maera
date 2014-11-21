@@ -188,51 +188,35 @@ class Maera {
 	 */
 	function required_plugins() {
 
-		$plugins = array();
-
-		$plugins[] = array(
-			'name' => 'Timber',
-			'file' => 'timber.php',
-			'slug' => 'timber-library',
-		);
-
-		$plugins[] = array(
-			'name' => 'Jetpack',
-			'file' => 'jetpack.php',
-			'slug' => 'jetpack',
-		);
-
-		$plugins[] = array(
-			'name' => 'Kirki',
-			'file' => 'kirki.php',
-			'slug' => 'kirki',
+		$plugins = array(
+			array(
+				'name' => 'Timber',
+				'file' => 'timber.php',
+				'slug' => 'timber-library',
+			),
+			array(
+				'name' => 'Jetpack',
+				'file' => 'jetpack.php',
+				'slug' => 'jetpack',
+			),
+			array(
+				'name' => 'Kirki',
+				'file' => 'kirki.php',
+				'slug' => 'kirki',
+			),
 		);
 
 		if ( current_theme_supports( 'breadcrumbs' ) ) {
-			$plugins[] = array(
-				'name' => 'Breadcrumb Trail',
-				'file' => 'breadcrumb-trail.php',
-				'slug' => 'breadcrumb-trail',
-			);
+			$plugins[] = array( 'name' => 'Breadcrumb Trail', 'file' => 'breadcrumb-trail.php', 'slug' => 'breadcrumb-trail' );
 		}
 
 		if ( current_theme_supports( 'less_compiler' ) || current_theme_supports( 'sass_compiler' ) ) {
-			$plugins[] = array(
-				'name' => 'Less & scss compilers',
-				'file' => 'less-plugin.php',
-				'slug' => 'lessphp',
-			);
+			$plugins[] = array( 'name' => 'Less & scss compilers', 'file' => 'less-plugin.php', 'slug' => 'lessphp' );
 		}
 
 		$jetpack_active_modules = get_option( 'jetpack_active_modules' );
-
 		if ( isset( $jetpack_active_modules['photon'] ) && $jetpack_active_modules['photon'] ) {
-			$plugins[] = array(
-				'name' => 'Timber with Jetpack Photon',
-				'file' => 'TimberPhoton.php',
-				'slug' => 'timber-with-jetpack-photon',
-			);
-
+			$plugins[] = array( 'name' => 'Timber with Jetpack Photon', 'file' => 'TimberPhoton.php', 'slug' => 'timber-with-jetpack-photon' );
 		}
 
 		$plugins = new Maera_Required_Plugins( $plugins );
