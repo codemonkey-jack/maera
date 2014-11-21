@@ -76,6 +76,11 @@ function maera_required_plugins_notices() {
 			$plugin_url  = 'https://wordpress.org/plugins/' . $plugin['slug'] . '/';
 			$install_url = self_admin_url( 'update.php?action=install-plugin&plugin=' . $plugin['slug'] . '&_wpnonce=install-plugin_' . $plugin['slug'] );
 			$plugin_messages[] = 'This theme requires you to install and activate the ' . $plugin['name'] . ' plugin, ' . $install_link . '.';
+
+			// Force auto-activating required plugins
+			if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin['slug'] . '/' . $plugin['file'] ) ) {
+				activate_plugin( $plugin['slug'] . '/' . $plugin['file'] );
+			}
 		}
 	}
 
