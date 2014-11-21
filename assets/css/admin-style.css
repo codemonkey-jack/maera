@@ -515,22 +515,10 @@ span.no-nl-marker {
     color: #969896;
 }
 
-.maera-general-title {
-  font-size: 4em;
-  font-weight: 100;
-}
+div.maera-required-plugins { padding: 1.3em; background: #dd3d36; }
+div.maera-required-plugins p { font-size: 1.2em; color: #fff; }
+div.maera-required-plugins p a { color: #fff; font-weight: 900; }
 
-div.maera-required-plugins {
-  padding: 1.3em;
-  background: #dd3d36;
-}
-
-div.maera-required-plugins p {
-  font-size: 1.2em;
-  color: #fff;
-}
-
-div.maera-required-plugins p a {
-  color: #fff;
-  font-weight: 900;
-}
+div.maera-general-content, div.maera-general-content p { font-size: 1.1em;}
+div.maera-general-content h1 { font-size: 3em; font-weight: 100; }
+div.maera-general-content p.big { font-size: 1.5em; }
