@@ -42,6 +42,17 @@ function maera_required_plugins() {
 		);
 	}
 
+	$jetpack_active_modules = get_option( 'jetpack_active_modules' );
+
+	if ( isset( $jetpack_active_modules['photon'] ) && $jetpack_active_modules['photon'] ) {
+		$plugins[] = array(
+			'name' => 'Timber with Jetpack Photon',
+			'file' => 'TimberPhoton.php',
+			'slug' => 'timber-with-jetpack-photon',
+		);
+
+	}
+
 	return apply_filters( 'maera/required_plugins', $plugins );
 
 }
