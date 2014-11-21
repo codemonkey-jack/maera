@@ -1,4 +1,0 @@
-[submodule "lib/TGM-Plugin-Activation"]
-	path = lib/TGM-Plugin-Activation
-	url = https://github.com/thomasgriffin/TGM-Plugin-Activation.git
-	branch = develop

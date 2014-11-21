@@ -34,7 +34,7 @@ class Maera {
 		$files = array(
 			'/lib/i18n.php',
 			'/lib/utils.php',
-			'/lib/tgm-requires.php',
+			'/lib/required-plugins.php',
 			'/lib/class-Maera_Shell.php',
 			'/lib/class-Maera_Init.php',
 			'/lib/widgets.php',
