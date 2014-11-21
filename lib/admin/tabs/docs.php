@@ -10,8 +10,8 @@ $docs_tabs = array(
 );
 ?>
 <div id="docs_header">
-	<h2>This tab will contain the theme documentation.</h2>
-	<p>For the time being you can see partial docs in the <a href="https://github.com/presscodes/maera/wiki">Repository's Wiki</a> on github.</p>
+	<h2>Theme documentation.</h2>
+	<p>You can also access the most recent docs in the <a href="https://github.com/presscodes/maera/wiki">Repository's Wiki</a> on github.</p>
 </div>
 
 <div id="docs-tabs">

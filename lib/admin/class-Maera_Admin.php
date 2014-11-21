@@ -17,7 +17,15 @@ class Maera_Admin {
 
 		add_action( 'admin_init', array( $this, 'register_settings') );
 		add_action( 'admin_menu', array( $this, 'maera_admin_options' ) );
+		add_action( 'after_switch_theme', array( $this, 'activation' ) );
 
+	}
+
+	/**
+	 * Go to the theme options page after theme activation
+	 */
+	function activation() {
+		wp_redirect( self_admin_url( 'themes.php?page=theme_options' ) );
 	}
 
 	/**
@@ -57,6 +65,7 @@ class Maera_Admin {
 	function tabs() {
 
 		return apply_filters( 'maera/admin/tabs', array(
+			'general'  => __( 'General', 'maera' ),
 			'settings' => __( 'Settings', 'maera' ),
 			'addons'   => __( 'Addons', 'maera' ),
 			'docs'     => __( 'Documentation', 'maera' )
@@ -90,7 +99,7 @@ class Maera_Admin {
 		global $maera_i18n, $pagenow;
 
 		$tabs    = $this->tabs();
-		$current = ( isset ( $_GET['tab'] ) ) ? $_GET['tab'] : 'settings';
+		$current = ( isset ( $_GET['tab'] ) ) ? $_GET['tab'] : 'general';
 
 		// This checks whether the form has just been submitted.
 		if ( ! isset( $_REQUEST['updated'] ) ) {
@@ -98,8 +107,6 @@ class Maera_Admin {
 		} ?>
 
 		<div class="wrap metabox-holder">
-			<h2><?php echo $maera_i18n['maerathemeoptions']; ?></h2>
-
 			<?php if ( false !== $_REQUEST['updated'] ) : ?>
 				<div class="updated fade"><p><?php _e( 'Options saved', 'maera' ); ?></p></div>
 			<?php endif; ?>
