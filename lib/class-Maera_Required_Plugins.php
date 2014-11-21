@@ -9,7 +9,7 @@ class Maera_Required_Plugins {
 		$this->plugins = $plugins;
 
 		add_action( 'admin_notices', array( $this, 'required_plugins_notices' ) );
-		add_action( 'wp', array( $this, 'auto_activate_plugins' ) );
+		add_action( 'admin_init', array( $this, 'auto_activate_plugins' ) );
 		add_action( 'switch_theme', array( $this, 'auto_deactivate_plugins' ) );
 
 	}
