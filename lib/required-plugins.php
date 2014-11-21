@@ -85,10 +85,10 @@ function maera_required_plugins_notices() {
 	}
 
 	if ( 0 < count( $plugin_messages ) ) {
-		echo '<div id="message" class="error">';
+		echo '<div id="message" class="error maera-required-plugins">';
 
 		foreach( $plugin_messages as $message ) {
-			echo '<p><strong>' . $message . '</strong></p>';
+			echo '<p>' . $message . '</p>';
 		}
 
 		echo '</div>';

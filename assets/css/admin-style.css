@@ -514,3 +514,23 @@ span.no-nl-marker {
 .highlight .pl-mo {
     color: #969896;
 }
+
+.maera-general-title {
+  font-size: 4em;
+  font-weight: 100;
+}
+
+div.maera-required-plugins {
+  padding: 1.3em;
+  background: #dd3d36;
+}
+
+div.maera-required-plugins p {
+  font-size: 1.2em;
+  color: #fff;
+}
+
+div.maera-required-plugins p a {
+  color: #fff;
+  font-weight: 900;
+}
