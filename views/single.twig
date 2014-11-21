@@ -19,6 +19,6 @@
 		{% do action( 'maera/single/after_content', post.ID ) %}
 	</div>
 	{% include ['single-'~post.post_type~'-footer.twig', 'single-footer.twig'] %}
-	{% include [post.post_type~'-comments.twig', 'comments.twig'] %}
+	{{ function('comments_template') }}
 	{% include ['single-'~post.post_type~'-close.twig', 'single-close.twig'] %}
 {% endblock %}
