@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="columns3 third">
-		<span class="title-icon dashicons dashicons-editor-code"></span>
+		<span class="title-icon dashicons dashicons-media-code"></span>
 		<h2>Documentation</h2>
 		<p>We have extended documentation both in the [repository wiki on github](https://github.com/presscodes/maera/wiki) as well as embeded in the theme options page. Just click on the <strong>Documentation</strong> tab on the top and you'll be able to learn more.
 	</div>
