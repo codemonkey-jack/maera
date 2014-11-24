@@ -23,6 +23,7 @@ class Maera_Shell_Core {
 
 		add_theme_support( 'tonesque' );
 		add_theme_support( 'site-logo' );
+		add_theme_support( 'infinite-scroll', array( 'container' => 'content' ) );
 
 		add_filter( 'maera/styles', array( $this, 'custom_header' ) );
 		add_filter( 'maera/styles', array( $this, 'colorposts_build_css' ) );
