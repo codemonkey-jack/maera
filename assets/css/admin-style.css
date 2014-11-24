@@ -519,6 +519,12 @@ div.maera-required-plugins { padding: 1.3em; background: #dd3d36; }
 div.maera-required-plugins p { font-size: 1.2em; color: #fff; }
 div.maera-required-plugins p a { color: #fff; font-weight: 900; }
 
+div.maera-general-content { width: 90%; }
 div.maera-general-content, div.maera-general-content p { font-size: 1.1em;}
 div.maera-general-content h1 { font-size: 3em; font-weight: 100; }
 div.maera-general-content p.big { font-size: 1.5em; }
+
+.maera-general-content .columns3 { width: 31%; padding-right: 3%; float: left; }
+.maera-general-content .columns3 h2 { text-align: center; }
+.maera-general-content .columns3.third { padding-right: 0; }
+.maera-general-content .title-icon { font-size: 4em; width: 100%; line-height: 1.3em; height: 1em; color: #d54e21; }
