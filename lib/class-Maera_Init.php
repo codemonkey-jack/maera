@@ -121,30 +121,22 @@ class Maera_Init {
 		$sidebar_secondary = Timber::get_widgets( 'sidebar_secondary' );
 		$sidebar_footer    = Timber::get_widgets( 'sidebar_footer' );
 
-		$maera_data = array(
-			'theme_mods'    => get_theme_mods(),
-			'site_options'  => wp_load_alloptions(),
-			'teaser_mode'   => apply_filters( 'maera/teaser/mode', 'excerpt' ),
-			'thumbnail'     => array(
-				'width'     => apply_filters( 'maera/image/width', 600 ),
-				'height'    => apply_filters( 'maera/image/height', 371 ),
-			),
-			'menu' => array(
-				'primary'   => has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null,
-			),
-			'sidebar' => array(
-				'primary'   => apply_filters( 'maera/sidebar/primary', $sidebar_primary ),
-				'secondary' => apply_filters( 'maera/sidebar/secondary', $sidebar_secondary ),
-				'footer'    => apply_filters( 'maera/sidebar/footer', $sidebar_footer ),
-			),
-			'pagination'    => Timber::get_pagination(),
-			'comment_form'  => TimberHelper::get_comment_form(),
-			'site_logo'     => get_option( 'site_logo', false ),
-			'content_width' => $content_width,
-			'i18n'          => $maera_i18n,
-		);
+		$data['theme_mods']           = get_theme_mods();
+		$data['site_options']         = wp_load_alloptions();
+		$data['teaser_mode']          = apply_filters( 'maera/teaser/mode', 'excerpt' );
+		$data['thumbnail']['width']   = apply_filters( 'maera/image/width', 600 );
+		$data['thumbnail']['height']  = apply_filters( 'maera/image/height', 371 );
+		$data['menu']['primary']      = has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null;
+		$data['sidebar']['primary']   = apply_filters( 'maera/sidebar/primary', $sidebar_primary );
+		$data['sidebar']['secondary'] = apply_filters( 'maera/sidebar/secondary', $sidebar_secondary );
+		$data['sidebar']['footer']    = apply_filters( 'maera/sidebar/footer', $sidebar_footer );
+		$data['pagination']           = Timber::get_pagination();
+		$data['comment_form']         = TimberHelper::get_comment_form();
+		$data['site_logo']            = get_option( 'site_logo', false );
+		$data['content_width']        = $content_width;
+		$data['i18n']                 = $maera_i18n;
 
-		return array_merge( $data, $maera_data );
+		return $data;
 
 	}
 
