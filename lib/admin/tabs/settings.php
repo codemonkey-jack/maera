@@ -18,17 +18,19 @@ $available_shells = apply_filters( 'maera/shells/available', array() ); ?>
 	<?php $settings = get_option( 'maera_admin_options', $maera_admin_options ); ?>
 	<?php settings_fields( 'maera_admin_options' ); ?>
 
-	<div id="maera_shell_select" class="postbox ">
-		<h3 class="hndle"><span><?php echo $maera_i18n['shellselection']; ?></span></h3>
-		<div class="inside">
-			<?php echo apply_filters( 'maera/admin/shell_select_description', $maera_i18n['shellselectdescr'] ); ?>
-			<br>
-			<?php foreach( $available_shells as $available_shell ) : ?>
-				<input type="radio" id="<?php echo $available_shell['value']; ?>" name="maera_admin_options[shell]" value="<?php esc_attr_e( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />
-				<label for="<?php echo $available_shell['value']; ?>"><?php echo $available_shell['label']; ?></label><br />
-			<?php endforeach; ?>
+	<?php if ( 1 < count( $available_shells ) ) : ?>
+		<div id="maera_shell_select" class="postbox ">
+			<h3 class="hndle"><span><?php echo $maera_i18n['shellselection']; ?></span></h3>
+			<div class="inside">
+				<?php echo apply_filters( 'maera/admin/shell_select_description', $maera_i18n['shellselectdescr'] ); ?>
+				<br>
+				<?php foreach( $available_shells as $available_shell ) : ?>
+					<input type="radio" id="<?php echo $available_shell['value']; ?>" name="maera_admin_options[shell]" value="<?php esc_attr_e( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />
+					<label for="<?php echo $available_shell['value']; ?>"><?php echo $available_shell['label']; ?></label><br />
+				<?php endforeach; ?>
+			</div>
 		</div>
-	</div>
+	<?php endif; ?>
 
 	<div id="maera_dev_mode" class="postbox">
 		<h3 class="hndle"><span><?php echo $maera_i18n['devandcache']; ?></span></h3>
