@@ -866,6 +866,10 @@ form.message {
   word-spacing: -.43em;
 }
 
+.infinite-scroll .paginator {
+  display: none;
+}
+
 .paginator li {
   display: inline-block;
   zoom: 1;
