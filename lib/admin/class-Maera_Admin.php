@@ -132,12 +132,17 @@ class Maera_Admin {
 	function validate( $settings ) {
 
 		// Import the imported options
-		if ( ! empty( $settings['import_data'] ) ) {
+		if ( isset( $settings['import_data'] ) && ! empty( $settings['import_data'] ) ) {
 
-			$theme_mods = json_decode( $settings['import_data'], true );
+			if ( 'RESET' == $settings['import_data'] ) {
+				remove_theme_mods();
+				return;
+			} else {
+				$theme_mods = json_decode( $settings['import_data'], true );
 
-			foreach ( $theme_mods as $theme_mod => $value ) {
-				set_theme_mod( $theme_mod, $value );
+				foreach ( $theme_mods as $theme_mod => $value ) {
+					set_theme_mod( $theme_mod, $value );
+				}
 			}
 
 			// The import data should not be saved, save the field as empty.

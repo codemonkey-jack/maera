@@ -53,17 +53,21 @@ $available_shells = apply_filters( 'maera/shells/available', array() ); ?>
 				$theme_mods = get_theme_mods();
 
 				$options = array();
-				foreach ( $theme_mods as $theme_mod => $value ) {
-					$options[$theme_mod] = ( 'css_cache' != $theme_mod ) ? maybe_unserialize( $value ) : '';
-				}
+				if ( ! empty( $theme_mods ) ) {
+					foreach ( $theme_mods as $theme_mod => $value ) {
+						$options[$theme_mod] = ( 'css_cache' != $theme_mod ) ? maybe_unserialize( $value ) : '';
+					}
 
-				$json = json_encode( $options );
+					$json = json_encode( $options );
+				} else {
+					$json = '[]';
+				}
 
 				echo '<textarea rows="3" cols="50" disabled style="width: 100%;">' . $json . '</textarea>';
 			?>
 
 			<p><h4><?php echo $maera_i18n['importcustomizer']; ?></h4></p>
-			<textarea id="import_data" name="maera_admin_options[import_data]" rows="3" cols="50" style="width: 100%;"><?php echo stripslashes($settings['import_data']); ?></textarea>
+			<textarea id="import_data" name="maera_admin_options[import_data]" rows="3" cols="50" style="width: 100%;"><?php echo stripslashes( @$settings['import_data'] ); ?></textarea>
 		</div>
 	</div>
 	<p class="submit"><input type="submit" class="button-primary" value="Save Options" /></p>

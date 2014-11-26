@@ -76,7 +76,7 @@ function maera_i18n_strings() {
 		'setcacheminutes'  => __( 'Set the time (in minutes) you want your pages cached. CAUTION: If you have any context dependent sub-views (eg. current user), this mode won\'t do. In that case, set this to 0.', $textdomain ),
 		'exportimport'     => __( 'Export/Import customizer options', $textdomain ),
 		'exportcustomizer' => __( 'Export Customizer options', $textdomain ),
-		'importcustomizer' => __( 'Import Customizer options', $textdomain ),
+		'importcustomizer' => __( 'Import Customizer options. If you want to reset the customizer, you will have to simply enter RESET in the import field (all capitals).', $textdomain ),
 
 	);
 
