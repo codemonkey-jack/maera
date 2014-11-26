@@ -1812,3 +1812,9 @@ body.show-menu #menu {
 figure {
   max-width: 100%;
 }
+
+.featured-image img {
+  display: block; 
+  max-width: 100%; 
+  margin: 1em 0;
+}
