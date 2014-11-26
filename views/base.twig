@@ -2,6 +2,7 @@
 {% from 'container_close.html.twig' import container_close as container_close %}
 {% from 'row_open.html.twig' import row_open as row_open %}
 {% from 'row_close.html.twig' import row_close as row_close %}
+{% from 'clearfix.html.twig' import clearfix as clearfix %}
 
 {% include 'html-header.twig' %}
 
@@ -43,13 +44,7 @@
 					</aside>
 				</div>
 
-				{# SECONDARY SIDEBAR #}
-				<aside id="sidebar-secondary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/secondary' ) }}" role="complementary">
-					{{ sidebar.secondary }}
-				</aside>
-
-
-				<div class="clearfix"></div>
+				{{ clearfix() }}
 
 			{{ row_close( 'div' ) }}
 

@@ -118,7 +118,6 @@ class Maera_Init {
 		global $content_width, $maera_i18n;
 
 		$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
-		$sidebar_secondary = Timber::get_widgets( 'sidebar_secondary' );
 		$sidebar_footer    = Timber::get_widgets( 'sidebar_footer' );
 
 		$data['theme_mods']           = get_theme_mods();
@@ -128,7 +127,6 @@ class Maera_Init {
 		$data['thumbnail']['height']  = apply_filters( 'maera/image/height', 371 );
 		$data['menu']['primary']      = has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null;
 		$data['sidebar']['primary']   = apply_filters( 'maera/sidebar/primary', $sidebar_primary );
-		$data['sidebar']['secondary'] = apply_filters( 'maera/sidebar/secondary', $sidebar_secondary );
 		$data['sidebar']['footer']    = apply_filters( 'maera/sidebar/footer', $sidebar_footer );
 		$data['pagination']           = Timber::get_pagination();
 		$data['comment_form']         = TimberHelper::get_comment_form();

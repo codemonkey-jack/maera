@@ -19,14 +19,5 @@ function maera_widgets_init() {
 		'after_title'   => $after_title,
 	) );
 
-	register_sidebar( array(
-		'name'          => $maera_i18n['secondarysidebar'],
-		'id'            => 'sidebar_secondary',
-		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => $before_title,
-		'after_title'   => $after_title,
-	) );
-
 }
 add_action( 'widgets_init', 'maera_widgets_init' );
