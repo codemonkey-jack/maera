@@ -136,7 +136,6 @@ class Maera_Admin {
 
 			if ( 'RESET' == $settings['import_data'] ) {
 				remove_theme_mods();
-				return;
 			} else {
 				$theme_mods = json_decode( $settings['import_data'], true );
 
