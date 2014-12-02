@@ -17,7 +17,10 @@ class Maera_Init {
 
 	}
 
-	function timber_customizations() {
+	/**
+	 * Returns an array of paths where our twig files are located.
+	 */
+	public static function twig_locations() {
 
 		$locations = array(
 			MAERA_SHELL_PATH . '/macros',
@@ -33,7 +36,18 @@ class Maera_Init {
 			get_template_directory() . '/views',
 			get_template_directory(),
 		);
-		Timber::$locations = apply_filters( 'maera/timber/locations', $locations );
+
+		return apply_filters( 'maera/timber/locations', $locations );
+
+	}
+
+	/**
+	 * Apply global Timber customizations
+	 */
+	function timber_customizations() {
+
+		$locations = self::twig_locations();
+		Timber::$locations = $locations;
 
 		// Add caching if dev_mode is set to off.
 		$theme_options = get_option( 'maera_admin_options', array() );
