@@ -9,9 +9,10 @@ class Maera_Init {
 			return;
 		}
 
-		add_action( 'init',              array( $this, 'require_libs' ) );
+		add_action( 'init',              array( $this, 'require_libs_init' ) );
 		add_action( 'init',              array( $this, 'timber_customizations' ) );
 		add_filter( 'timber_context',    array( $this, 'timber_global_context' ) );
+		add_action( 'after_setup_theme', array( $this, 'require_libs_after_setup_theme' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup' ) );
 		add_filter( 'get_twig',          array( $this, 'add_to_twig' ) );
 
@@ -92,38 +93,42 @@ class Maera_Init {
 
 	}
 
-	function require_libs() {
+	function require_libs_after_setup_theme() {
 
 		/**
-		* Load the color library from jetpack
-		*/
+		 * Include the Custom Widget Areas builder
+		 */
+		require_once locate_template( '/lib/class-Maera_CWA.php' );
+		$extra_widget_areas = new Maera_CWA();
+
+		/**
+		 * Load the Extended posts widget
+		 */
+		require_once locate_template( '/lib/widgets/extended-posts/extended-posts.php' );
+
+
+		/**
+		 * Load the Logo widget
+		 */
+		require_once locate_template( '/lib/widgets/logo/logo.php' );
+
+	}
+
+	function require_libs_init() {
+
+		/**
+		 * Load the color library from jetpack
+		 */
 		if ( function_exists( 'jetpack_require_lib' ) ) {
 			jetpack_require_lib( 'class.color' );
 		}
 
 		/**
-		* Load the Tonesque library from jetpack
-		*/
+		 * Load the Tonesque library from jetpack
+		 */
 		if ( function_exists( 'jetpack_require_lib' ) ) {
 			jetpack_require_lib( 'tonesque' );
 		}
-
-		/**
-		* Include the Custom Widget Areas builder
-		*/
-		require_once locate_template( '/lib/class-Maera_CWA.php' );
-		$extra_widget_areas = new Maera_CWA();
-
-		/**
-		* Load the Extended posts widget
-		*/
-		require_once locate_template( '/lib/widgets/extended-posts/extended-posts.php' );
-
-
-		/**
-		* Load the Logo widget
-		*/
-		require_once locate_template( '/lib/widgets/logo/logo.php' );
 
 	}
 
