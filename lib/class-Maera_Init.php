@@ -51,7 +51,7 @@ class Maera_Init {
 
 		// Add caching if dev_mode is set to off.
 		$theme_options = get_option( 'maera_admin_options', array() );
-		if ( 0 == @$theme_options['dev_mode'] ) {
+		if ( isset( $theme_options['dev_mode'] ) && 0 == $theme_options['dev_mode'] ) {
 
 			add_filter( 'maera/styles/caching', '__return_true' );
 			// Turn on Timber caching.
