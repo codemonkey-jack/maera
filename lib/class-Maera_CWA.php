@@ -8,8 +8,8 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 	class Maera_CWA {
 
 		/**
-		 * Class constructor
-		 */
+		* Class constructor
+		*/
 		public function __construct() {
 
 			$extra_widget_areas = $this->extra_widget_areas_array();
@@ -26,34 +26,52 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 
 
 		/**
-		 * Return an array of the extra widget area regions
-		 */
+		* Return an array of the extra widget area regions
+		*/
 		function extra_widget_areas_array() {
 
 			$defaults = array();
+
+			/**
+			* The array should have a format like this:
+			*	array(
+			* 		'area_wrapper_id_1' => array(
+			* 			'name'     => __( 'Human Readable name 1', 'maera' ),
+			* 			'default'  => 0, 			// The default number of widget areas on this area
+			* 			'action'   => 'the_action_where_this_is_inserted',
+			* 			'priority' => 10, 			// An integer. This is the priority of the action.
+			* 			'class'    => 'my-class', 	// The css class that will be used for this. For example 'row' for bootstrap
+			* 		),
+			* 		'area_wrapper_id_2' => array(
+			* 			'name'     => __( 'Human Readable name 2', 'maera' ),
+			* 			'default'  => 0, 			// The default number of widget areas on this area
+			* 			'action'   => 'the_action_where_this_is_inserted',
+			* 			'priority' => 10, 			// An integer. This is the priority of the action.
+			* 			'class'    => 'my-class', 	// The css class that will be used for this. For example 'row' for bootstrap
+			* 		),
+			* 	);
+			*/
+
 			return apply_filters( 'maera/widgets/areas', $defaults );
 
 		}
 
 
 		/**
-		 * Customizer section
-		 */
+		* Customizer section
+		*/
 		function customizer_section( $wp_customize ) {
-			global $maera_i18n;
 			$wp_customize->add_section( 'custom_widget_areas' , array(
-				'title'    => $maera_i18n['customwidgetareas'],
-				'priority' => 999,
+			'title'      => __( 'Custom Widget Areas', 'maera' ),
+			'priority'   => 999,
 			) );
 		}
 
 
 		/**
-		 * Customizer controls for custom widget areas
-		 */
+		* Customizer controls for custom widget areas
+		*/
 		function customizer_controls( $controls ) {
-
-			global $maera_i18n;
 
 			$extra_widget_areas = $this->extra_widget_areas_array();
 
@@ -64,7 +82,7 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 				$controls[] = array(
 					'type'     => 'select',
 					'setting'  => $area . '_widgets_nr',
-					'label'    => sprintf( $maera_i18n['numberofwidgetareasin'], $settings['name'] ),
+					'label'    => sprintf( __( 'Number of widget areas in %s', 'maera' ), $settings['name'] ),
 					'section'  => 'custom_widget_areas',
 					'default'  => $settings['default'],
 					'choices'  => apply_filters( 'maera/widgets/areas/values', array( 0, 1, 2, 3, 4, 6 ) ),
@@ -80,8 +98,8 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 
 
 		/**
-		 * Register sidebars and widgets
-		 */
+		* Register sidebars and widgets
+		*/
 		function widget_areas() {
 
 			$areas = $this->extra_widget_areas_array();
@@ -94,7 +112,7 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 
 				$areas_nr = get_theme_mod( $area . '_widgets_nr', $settings['default'] );
 
-				if ( 0 < $areas_nr ) {
+				if ( $areas_nr ) {
 
 					for ( $i = 0;  $i < $areas_nr;  $i++ ) {
 
@@ -102,9 +120,9 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 							'name'          => $settings['name'] . ' ' . $i,
 							'id'            => $area . '_' . $i,
 							'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
-							'after_widget'  => '</section>',
-							'before_title'  => $before_title,
-							'after_title'   => $after_title,
+								'after_widget'  => '</section>',
+								'before_title'  => $before_title,
+								'after_title'   => $after_title,
 						) );
 
 					}
@@ -117,8 +135,8 @@ if ( ! class_exists( 'Maera_CWA' ) ) {
 
 
 		/**
-		 * Extra widget areas wrapper
-		 */
+		* Extra widget areas wrapper
+		*/
 		function extra_widget_areas_wrapper( $area = null, $class = '' ) {
 
 			// Do not proceed if we have not specified an area
