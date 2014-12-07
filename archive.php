@@ -8,13 +8,9 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  */
 
-$templates = array(
-	'archive.twig',
-	'index.twig'
-);
-
 global $maera_i18n;
 
+$templates = Maera_Init::twig_archive_templates();
 $data = Timber::get_context();
 
 $data['title'] = 'Archive';
@@ -29,10 +25,8 @@ if ( is_day() ) {
 	$data['title'] = single_tag_title( '', false );
 } else if ( is_category() ) {
 	$data['title'] = single_cat_title( '', false );
-	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
 } else if ( is_post_type_archive() ) {
 	$data['title'] = post_type_archive_title( '', false );
-	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 } else if ( is_author() ) {
 	$data['title'] = sprintf( $maera_i18n['author_s'], '<span class="vcard">' . get_the_author() . '</span>' );
 } else if ( is_tax( 'post_format', 'post-format-aside' ) ) {

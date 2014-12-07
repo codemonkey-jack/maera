@@ -13,10 +13,7 @@ $data['author'] = $author;
 $data['title']  = 'Author Archives: ' . $author->name();
 
 Timber::render(
-	array(
-		'author.twig',
-		'archive.twig'
-	),
+	Maera_Init::twig_archive_templates(),
 	$data,
 	apply_filters( 'maera/timber/cache', false )
 );

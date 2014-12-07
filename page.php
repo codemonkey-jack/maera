@@ -22,6 +22,7 @@ $context['post'] = $post;
 Timber::render(
 	array(
 		'page-' . $post->post_name . '.twig',
+		'page-' . $post->slug . '.twig',
 		'page-' . $post->ID . '.twig',
 		'page.twig'
 	),

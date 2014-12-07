@@ -10,8 +10,11 @@ $context['wp_title'] .= ' - ' . $post->title();
 
 Timber::render(
 	array(
+		'content-' . $post->ID . '.twig',
+		'content-' . $post->post_type . '.twig',
 		'tease-' . $post->ID . '.twig',
 		'tease-' . $post->post_type . '.twig',
+		'content.twig'
 		'tease.twig'
 	),
 	$context,
