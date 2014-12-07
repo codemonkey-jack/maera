@@ -13,8 +13,8 @@ function maera_widgets_init() {
 	register_sidebar( array(
 		'name'          => $maera_i18n['primarysidebar'],
 		'id'            => 'sidebar_primary',
-		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
-		'after_widget'  => '</section>',
+		'before_widget' => apply_filters( 'maera/widgets/before', '<section id="%1$s" class="' . $class . ' widget %2$s">' ),
+		'after_widget'  => apply_filters( 'maera/widgets/after', '</section>' ),
 		'before_title'  => $before_title,
 		'after_title'   => $after_title,
 	) );
