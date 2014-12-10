@@ -253,11 +253,11 @@ textarea {
   vertical-align: top;
   text-rendering: auto;
 }
-
+/*
 .g [class*="u"] {
   font-family: sans-serif;
 }
-
+*/
 .u-1,.u-1-1,.u-1-12,.u-1-2,.u-1-24,.u-1-3,.u-1-4,.u-1-5,.u-1-6,.u-1-8,.u-10-24,.u-11-12,.u-11-24,.u-12-24,.u-13-24,.u-14-24,.u-15-24,.u-16-24,.u-17-24,.u-18-24,.u-19-24,.u-2-24,.u-2-3,.u-2-5,.u-20-24,.u-21-24,.u-22-24,.u-23-24,.u-24-24,.u-3-24,.u-3-4,.u-3-5,.u-3-8,.u-4-24,.u-4-5,.u-5-12,.u-5-24,.u-5-5,.u-5-6,.u-5-8,.u-6-24,.u-7-12,.u-7-24,.u-7-8,.u-8-24,.u-9-24 {
   display: inline-block;
   zoom: 1;
@@ -510,6 +510,7 @@ form input[type=checkbox]:focus:invalid:focus,form input[type=file]:focus:invali
 form select {
   border: 1px solid #ccc;
   background-color: #fff;
+  width: 100%;
 }
 
 form select[multiple] {
@@ -1122,7 +1123,7 @@ table.horizontal tbody>tr:last-child td {
   }
 
   .u-md-1-4,.u-md-6-24 {
-    width: 25%;
+    width: 24.5%;
   }
 
   .u-md-7-24 {
@@ -1150,7 +1151,7 @@ table.horizontal tbody>tr:last-child td {
   }
 
   .u-md-1-2,.u-md-12-24 {
-    width: 50%;
+    width: 49%;
   }
 
   .u-md-13-24 {
@@ -1170,7 +1171,7 @@ table.horizontal tbody>tr:last-child td {
   }
 
   .u-md-16-24,.u-md-2-3 {
-    width: 66.6667%;
+    width: 66%;
   }
 
   .u-md-17-24 {
@@ -1178,7 +1179,7 @@ table.horizontal tbody>tr:last-child td {
   }
 
   .u-md-18-24,.u-md-3-4 {
-    width: 75%;
+    width: 74.9%;
   }
 
   .u-md-19-24 {
