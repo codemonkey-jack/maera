@@ -16,7 +16,7 @@ $context = Timber::get_context();
 
 $context['posts'] = Timber::query_posts( false, 'TimberPost' );
 
-$templates = Maera_Init::twig_archive_templates();
+$templates = Maera_Timber::twig_archive_templates();
 
 if ( is_home() ) {
 	array_unshift( $templates, 'home.twig' );

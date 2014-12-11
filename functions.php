@@ -22,7 +22,9 @@ class Maera {
 
 		global $maera_shell;
 		$maera_shell = new Maera_Shell();
-		$maera_init  = new Maera_Init();
+
+		$maera_timber = new Maera_Timber();
+		$maera_init   = new Maera_Init();
 
 		$this->required_plugins();
 
@@ -34,6 +36,7 @@ class Maera {
 			'/lib/class-Maera_Required_Plugins.php',
 			'/lib/utils.php',
 			'/lib/class-Maera_Shell.php',
+			'/lib/class-Maera_Timber.php',
 			'/lib/class-Maera_Init.php',
 			'/lib/widgets.php',
 			'/lib/admin/class-Maera_Admin.php',
