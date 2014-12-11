@@ -6,14 +6,9 @@
 <code>{{ foo }}</code>
 <p>You can learn more about the syntax and naming conventions by reading the <a href="https://github.com/jarednova/timber/wiki">Timber Docs</a>.
 
-You can put your own template files in your theme's <code>views</code> folder following this naming convention:
+To add your own templates you can create a <a href="http://codex.wordpress.org/Child_Themes">Child Theme</a> and either create custom php template files, or custom twig files. The template gierarchy of the twig files is the same as the <a href="http://wphierarchy.com/">default WordPress templates structure</a>, simply by replacing the <code>.php</code> suffix with <code>.twig</code>. You can keep your <code>.twig</code> files in the root of your child theme, or a <code>/views</code> folder.
 
-<h4>Single posts:</h4>
-<code>single-{post_id}.twig'</code>, <code>single-{post_type}.twig</code>, <code>single.twig</code>.
-<p>You can also use template parts for these:</p>
-<code>single-{post_type}-open.twig</code>, <code>single-{post_type}-meta.twig</code>, <code>single-{post_type}-top.twig</code>, <code>single-{post_type}-bottom.twig</code>, <code>single-{post_type}-footer.twig</code>, <code>single-{post_type}-close.twig</code>
-<h4>Pages:</h4>
-<code>page-{post_name}.twig</code>, <code>page-{post_id}.twig</code>, <code>page.twig</code>.
+<hr>
 
 <h2>Post properties in twig files</h2>
 <pre>
