@@ -98,7 +98,7 @@ class Maera_Admin {
 	 */
 	function admin_page() {
 
-		global $maera_i18n, $pagenow;
+		global $pagenow;
 
 		$tabs    = $this->tabs();
 		$current = ( isset ( $_GET['tab'] ) ) ? $_GET['tab'] : 'general';

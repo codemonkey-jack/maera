@@ -2,7 +2,6 @@
 /**
  * Search results page
  */
-global $maera_i18n;
 
 $templates = array(
 	'search.twig',
@@ -12,7 +11,7 @@ $templates = array(
 
 $context = Timber::get_context();
 
-$context['title'] = $maera_i18n['searchresultsfor'] . get_search_query();
+$context['title'] = __( 'Search results for ', 'maera' ) . get_search_query();
 $context['posts'] = Timber::get_posts();
 
 Timber::render( $templates, $context, apply_filters( 'maera/timber/cache', false ) );

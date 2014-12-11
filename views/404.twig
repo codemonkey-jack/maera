@@ -2,6 +2,6 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	{{ i18n.nothingfound }}
+	{{ __( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'maera' ) }}
 	{{ function('get_search_form', false) }}
 {% endblock %}

@@ -1,7 +1,8 @@
+{#<?php#}
 {% include 'html-header.twig' %}
 
 <body class="container base-container {{ body_class }}" data-source="base.twig">
-	<a href="#content" class="screen-reader-text">{{ i18n.skiptomaincontent }}</a>
+	<a href="#content" class="screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
 
 	{% if function( 'has_nav_menu', 'primary_navigation' ) %}
 		<button class="menu-button" id="open-button"></button>
@@ -27,7 +28,7 @@
 					{% do action( 'maera/wrap/before', post.ID ) %}
 					{% do action( 'maera/content/before', post.ID ) %}
 					{% do action( 'maera/main/before', post.ID ) %}
-					{% block content %}{{ i18n.sorrynocontent }}{% endblock %}
+					{% block content %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
 					{% do action( 'maera/main/after', post.ID ) %}
 				</div>
 			</div>

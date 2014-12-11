@@ -1,13 +1,14 @@
+{#<?php#}
 <p class="post-meta">
 	<span itemprop="datePublished">{{ post.date }}</span>
-	{{ i18n.under }}
+	{{ __( 'under', 'maera' ) }}
 	{% for category in post.get_categories %}
 		<a href="{{ category.get_path }}" itemprop="articleSection">{{ category.name }}</a>
 	{% endfor %}
-	{{ i18n.by }}
+	{{ __( 'by', 'maera' ) }}
 	<a href="{{ post.author.link }}" itemprop="author">{{ post.author.name }}</a>
 	{% if post.comments %}
-		{{ i18n.with }}
-		<a href="{{ post.link }}#comments">{{ post.comment_count }} {{ i18n.comments_lower }}</a>
+		{{ __( 'with', 'maera' ) }}
+		<a href="{{ post.link }}#comments">{{ post.comment_count }} {{ __( 'comments', 'maera' ) }}</a>
 	{% endif %}
 </p>

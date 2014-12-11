@@ -186,7 +186,7 @@ class Maera_Init {
 
 	function timber_global_context( $data ) {
 
-		global $content_width, $maera_i18n;
+		global $content_width;
 
 		$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
 		$sidebar_footer    = Timber::get_widgets( 'sidebar_footer' );
@@ -203,7 +203,6 @@ class Maera_Init {
 		$data['comment_form']         = TimberHelper::get_comment_form();
 		$data['site_logo']            = get_option( 'site_logo', false );
 		$data['content_width']        = $content_width;
-		$data['i18n']                 = $maera_i18n;
 
 		return $data;
 

@@ -11,7 +11,7 @@
 		{{ post.content }}
 		<div class="clearfix"></div>
 		{{ function( 'wp_link_pages', {
-			'before': '<div class="page-links" itemprop="pagination">' . i18n.pages,
+			'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ),
 			'after': '</div>'
 		}) }}
 		<div class="clearfix"></div>

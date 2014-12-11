@@ -1,3 +1,4 @@
+{#<?php#}
 {% from 'container_open.html.twig' import container_open as container_open %}
 {% from 'container_close.html.twig' import container_close as container_close %}
 {% from 'row_open.html.twig' import row_open as row_open %}
@@ -8,7 +9,7 @@
 
 <body class="{{ body_class }}">
 
-	<a href="#content" class="sr-only skip-link screen-reader-text">{{ i18n.skiptomaincontent }}</a>
+	<a href="#content" class="sr-only skip-link screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
 
 	{% do action( 'get_header' ) %}
 
@@ -32,7 +33,7 @@
 
 						{% if title %}<h1>{{ title }}</h1>{% endif %}
 						{% block content %}
-							{{ i18n.sorrynocontent }}
+							{{ __( 'Sorry, no content', 'maera' ) }}
 						{% endblock %}
 
 					</main><!-- /.main -->

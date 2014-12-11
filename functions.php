@@ -20,9 +20,6 @@ class Maera {
 
 		$this->requires();
 
-		global $maera_i18n;
-		$maera_i18n = maera_i18n_strings();
-
 		global $maera_shell;
 		$maera_shell = new Maera_Shell();
 		$maera_init  = new Maera_Init();
@@ -34,7 +31,6 @@ class Maera {
 	function requires() {
 
 		$files = array(
-			'/lib/i18n.php',
 			'/lib/class-Maera_Required_Plugins.php',
 			'/lib/utils.php',
 			'/lib/class-Maera_Shell.php',
