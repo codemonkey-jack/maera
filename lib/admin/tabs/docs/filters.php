@@ -243,7 +243,4 @@ You may want to use this filter to change the width of the container or to appen
 
     </div>
 
-    <div id="wiki-footer">
-      <a href="/presscodes/maera/wiki/_new?wiki%5Bname%5D=_Footer" class="wiki-empty-box"><span class="octicon octicon-plus"></span> Add a custom footer</a>
-    </div>
   </div>

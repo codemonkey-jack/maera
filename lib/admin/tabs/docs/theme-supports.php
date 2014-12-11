@@ -76,7 +76,4 @@ or<br>
 
 </div>
 
-<div id="wiki-footer">
-<a href="/presscodes/maera/wiki/_new?wiki%5Bname%5D=_Footer" class="wiki-empty-box"><span class="octicon octicon-plus"></span> Add a custom footer</a>
-</div>
 </div>
