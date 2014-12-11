@@ -29,7 +29,7 @@ if ( ! defined( 'MAERA_EXT_POSTS_FILE' ) ) {
 /**
  * Include the extended widget class.
  */
-include_once( MAERA_EXT_POSTS_PATH . '/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php' );
+include_once( MAERA_EXT_POSTS_PATH . '/class-Maera_Ext_Posts_Widget_Latest_Articles.php' );
 
 
 /**
