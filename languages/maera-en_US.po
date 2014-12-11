@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maera\n"
-"POT-Creation-Date: 2014-12-11 21:33+0200\n"
-"PO-Revision-Date: 2014-12-11 21:37+0200\n"
+"POT-Creation-Date: 2014-12-11 21:37+0200\n"
+"PO-Revision-Date: 2014-12-11 21:41+0200\n"
 "Last-Translator: Stathopoulos Aristeides\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -104,10 +104,6 @@ msgstr "Documentation"
 msgid "Options saved"
 msgstr "Options saved"
 
-#: lib/admin/tabs/settings.php:21
-msgid "Select a Shell"
-msgstr "Select a Shell"
-
 #: lib/admin/tabs/settings.php:23
 msgid ""
 "You can select the shell that you want to activate here. Please note that when changing "
@@ -115,50 +111,6 @@ msgid ""
 msgstr ""
 "You can select the shell that you want to activate here. Please note that when changing "
 "shells all your settings are lost so you should keep a backup of them."
-
-#: lib/admin/tabs/settings.php:34
-msgid "Development Mode & Caching"
-msgstr "Development Mode & Caching"
-
-#: lib/admin/tabs/settings.php:36
-msgid "Development Mode"
-msgstr "Development Mode"
-
-#: lib/admin/tabs/settings.php:38
-msgid ""
-"Enable development mode. Please keep in mind that the actual implementation of the dev "
-"mode depends on the shell you have chosen"
-msgstr ""
-"Enable development mode. Please keep in mind that the actual implementation of the dev "
-"mode depends on the shell you have chosen"
-
-#: lib/admin/tabs/settings.php:39
-msgid "Caching (minutes)"
-msgstr "Caching (minutes)"
-
-#: lib/admin/tabs/settings.php:41
-msgid ""
-"Set the time (in minutes) you want your pages cached. CAUTION: If you have any context "
-"dependent sub-views (eg. current user), this mode won't do. In that case, set this to 0."
-msgstr ""
-"Set the time (in minutes) you want your pages cached. CAUTION: If you have any context "
-"dependent sub-views (eg. current user), this mode won't do. In that case, set this to 0."
-
-#: lib/admin/tabs/settings.php:46
-msgid "Export/Import customizer options"
-msgstr "Export/Import customizer options"
-
-#: lib/admin/tabs/settings.php:48
-msgid "Export Customizer options"
-msgstr "Export Customizer options"
-
-#: lib/admin/tabs/settings.php:67
-msgid ""
-"Import Customizer options. If you want to reset the customizer, you will have to simply "
-"enter RESET in the import field (all capitals)."
-msgstr ""
-"Import Customizer options. If you want to reset the customizer, you will have to simply "
-"enter RESET in the import field (all capitals)."
 
 #: lib/class-Maera_CWA.php:65
 msgid "Custom Widget Areas"
@@ -278,11 +230,11 @@ msgstr "This widget has no options to set"
 msgid "Search results for "
 msgstr "Search results for "
 
-#: core-shell/views/base.twig:4 views/base.twig:12
+#: core-shell/views/base.twig:5 views/base.twig:12
 msgid "Skip to main content"
 msgstr "Skip to main content"
 
-#: core-shell/views/base.twig:30 views/base.twig:36
+#: core-shell/views/base.twig:31 views/base.twig:36
 msgid "Sorry, no content"
 msgstr "Sorry, no content"
 
@@ -317,6 +269,47 @@ msgstr "with"
 #: views/single-meta.twig:12 views/tease-meta.twig:12
 msgid "comments"
 msgstr "comments"
+
+#~ msgid "Select a Shell"
+#~ msgstr "Select a Shell"
+
+#~ msgid "Development Mode & Caching"
+#~ msgstr "Development Mode & Caching"
+
+#~ msgid "Development Mode"
+#~ msgstr "Development Mode"
+
+#~ msgid ""
+#~ "Enable development mode. Please keep in mind that the actual implementation of the "
+#~ "dev mode depends on the shell you have chosen"
+#~ msgstr ""
+#~ "Enable development mode. Please keep in mind that the actual implementation of the "
+#~ "dev mode depends on the shell you have chosen"
+
+#~ msgid "Caching (minutes)"
+#~ msgstr "Caching (minutes)"
+
+#~ msgid ""
+#~ "Set the time (in minutes) you want your pages cached. CAUTION: If you have any "
+#~ "context dependent sub-views (eg. current user), this mode won't do. In that case, set "
+#~ "this to 0."
+#~ msgstr ""
+#~ "Set the time (in minutes) you want your pages cached. CAUTION: If you have any "
+#~ "context dependent sub-views (eg. current user), this mode won't do. In that case, set "
+#~ "this to 0."
+
+#~ msgid "Export/Import customizer options"
+#~ msgstr "Export/Import customizer options"
+
+#~ msgid "Export Customizer options"
+#~ msgstr "Export Customizer options"
+
+#~ msgid ""
+#~ "Import Customizer options. If you want to reset the customizer, you will have to "
+#~ "simply enter RESET in the import field (all capitals)."
+#~ msgstr ""
+#~ "Import Customizer options. If you want to reset the customizer, you will have to "
+#~ "simply enter RESET in the import field (all capitals)."
 
 #~ msgid "Browse:"
 #~ msgstr "Browse:"
