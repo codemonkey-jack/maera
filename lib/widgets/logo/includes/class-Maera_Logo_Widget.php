@@ -45,7 +45,7 @@ class Maera_Logo_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		$context = Timber::get_context();
+		$context = Maera_Timber::get_context();
 		Timber::render(
 			array(
 				'site-logo.twig',

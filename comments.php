@@ -3,7 +3,7 @@
  * The Template for displaying comments
  */
 
-$context = Timber::get_context();
+$context = Maera_Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
 

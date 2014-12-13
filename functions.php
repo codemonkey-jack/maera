@@ -13,9 +13,8 @@ class Maera {
 
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_action( 'init', array( $this, 'content_width' ) );
-        add_filter( 'get_search_form', array( $this, 'maera_get_search_form' ) );
+        add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
 		add_action( 'customize_save_after', array( $this, 'reset_style_cache_on_customizer_save' ) );
 
 		$this->requires();
@@ -25,6 +24,7 @@ class Maera {
 
 		$maera_timber = new Maera_Timber();
 		$maera_init   = new Maera_Init();
+		$maera_styles = new Maera_Styles();
 
 		$this->required_plugins();
 
@@ -38,6 +38,7 @@ class Maera {
 			'/lib/class-Maera_Shell.php',
 			'/lib/class-Maera_Timber.php',
 			'/lib/class-Maera_Init.php',
+			'/lib/class-Maera_Styles.php',
 			'/lib/widgets.php',
 			'/lib/admin/class-Maera_Admin.php',
 			'/lib/updater/updater.php',
@@ -92,7 +93,7 @@ class Maera {
 	/**
 	 * Tell WordPress to use searchform.php from the templates/ directory
 	 */
-	function maera_get_search_form( $form ) {
+	function get_search_form( $form ) {
 		$form = '';
 		locate_template( '/searchform.php', true, false );
 		return $form;
@@ -105,63 +106,6 @@ class Maera {
 
 		$args = array( 'stylesheet_id' => 'maera' );
 		return $args;
-
-	}
-
-	/**
-	* Enqueue scripts and stylesheets
-	*/
-	function scripts() {
-
-		global $wp_customize, $active_shell;
-
-		// Get the stylesheet path and version
-		$stylesheet_url = apply_filters( 'maera/stylesheet/url', MAERA_ASSETS_URL . '/css/style.css' );
-		$stylesheet_ver = apply_filters( 'maera/stylesheet/ver', null );
-
-		// Enqueue the theme's stylesheet
-		wp_enqueue_style( 'maera', $stylesheet_url, false, $stylesheet_ver );
-
-		wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
-
-		// Enqueue Modernizr
-		wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.min.js', false, null, false );
-		wp_enqueue_script( 'modernizr' );
-
-		// Enqueue fitvids
-		wp_register_script( 'fitvids', get_template_directory_uri() . '/assets/js/jquery.fitvids.js',false, null, true  );
-		wp_enqueue_script( 'fitvids' );
-
-		// Enqueue jQuery
-		wp_enqueue_script( 'jquery' );
-
-		// If needed, add the comment-reply script.
-		if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
-
-		$caching = apply_filters( 'maera/styles/caching', false );
-
-		if ( ! $caching ) {
-			// Get our styles using the maera/styles filter
-			$data = apply_filters( 'maera/styles', null );
-		} else {
-			// Get the cached CSS from the database
-			$cache = get_theme_mod( 'css_cache', '' );
-			// If the transient does not exist, then create it.
-			if ( $cache === false || empty( $cache ) || '' == $cache ) {
-				// Get our styles using the maera/styles filter
-				$data = apply_filters( 'maera/styles', null );
-				// Set the transient for 24 hours.
-				set_theme_mod( 'css_cache', $data );
-			} else {
-				$data = $cache;
-			}
-		}
-
-		// Add the CSS inline.
-		// See http://codex.wordpress.org/Function_Reference/wp_add_inline_style#Examples
-		wp_add_inline_style( 'maera', $data );
 
 	}
 
@@ -225,3 +169,11 @@ class Maera {
 }
 
 $maera = new Maera();
+
+/**
+ * Helpre function.
+ * See Maera_Timber for more details.
+ */
+function timber_get_template_part( $slug, $name = null, $context = array() ) {
+	Maera_Timber::get_template_part( $slug, $name = null, $context = array() );
+}

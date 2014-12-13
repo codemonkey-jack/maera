@@ -9,7 +9,7 @@
  */
 
 $templates = Maera_Timber::twig_archive_templates();
-$data = Timber::get_context();
+$data = Maera_Timber::get_context();
 
 $data['title'] = 'Archive';
 

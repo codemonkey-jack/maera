@@ -15,7 +15,7 @@
  * (in which case you'll want to duplicate this file and save to the above path)
  */
 
-$context = Timber::get_context();
+$context = Maera_Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
 

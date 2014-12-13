@@ -12,7 +12,7 @@ if ( ! class_exists( 'Timber' ) || ! class_exists( 'Kirki' ) || ! class_exists( 
 	return;
 }
 
-$context = Timber::get_context();
+$context = Maera_Timber::get_context();
 
 $context['posts'] = Timber::query_posts( false, 'TimberPost' );
 
