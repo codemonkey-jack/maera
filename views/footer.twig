@@ -1,6 +1,18 @@
 {#<?php#}
 {% from 'container_open.html.twig' import container_open as container_open %}
 {% from 'container_close.html.twig' import container_close as container_close %}
-{{ container_open( 'div', 'wrap-footer-section', 'wrap footer-section' ) }}
-	{% do action( 'maera/footer/content' ) %}
-{{ container_close( 'div' ) }}
+
+{% do action( 'maera/wrap/after' ) %}
+
+{% do action( 'maera/footer/before', post.ID ) %}
+<footer class="page-footer">
+	{% do action( 'maera/footer/start', post.ID ) %}
+	{{ container_open( 'div', 'wrap-footer-section', 'wrap footer-section' ) }}
+		{% do action( 'maera/footer/content' ) %}
+	{{ container_close( 'div' ) }}
+	{% do action( 'maera/footer/end', post.ID ) %}
+</footer>
+{% do action( 'maera/footer/after', post.ID ) %}
+{{ function( 'wp_footer' ) }}
+</body>
+</html>

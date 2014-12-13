@@ -1,21 +1,56 @@
 {#<?php#}
-<header class="header" >
-	{% block header %}
-	<div class="wrapper">
+<!DOCTYPE html>
+<html class="no-js" {{ site.language_attributes }}>
+    {% block head %}
+        <head>
+            <meta charset="{{ site.charset }}" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+            <meta name="description" content="{{ site.description }}">
+            {% if wp_title %}
+                <title>{{ function( 'wp_title', '|', true, 'right' ) }}</title>
+            {% else %}
+                <title>{{ site.name }}</title>
+            {% endif %}
 
-		<h1 class="hdr-logo" role="banner">
-			<a class="hdr-logo-link" href="/" title="Timber" rel="home">{{ bloginfo( 'name' ) }}</a>
-		</h1>
-		<nav id="access" class="main-navigation" role="navigation">
-			<ul>
-			{% for item in menu.items %}
-				<li id="menu-item-{{item.ID}}" class="menu-item menu-item-type-{{item.type}} menu-item-object-{{item.object}} menu-item-{{item.ID}}">
-					<a href="{{item.link}}">{{ item.title }}</a>
-				</li>
-			{% endfor %}
-			</ul>
-		</nav><!-- #access -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="alternate" type="application/rss+xml" title="{{ function( 'get_bloginfo', 'name' ) }} Feed" href="{{ function( 'esc_url', 'get_feed_link' ) }}">
+            {{ function( 'wp_head' ) }}
+            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+            <script src="{{ function( 'get_template_directory_uri' ) }}/assets/js/html5shiv.js"></script>
+            <script src="{{ function( 'get_template_directory_uri' ) }}/assets/js/respond.min.js"></script>
+            <![endif]-->
 
-	</div>
-	{% endblock %}
-</header>
+        </head>
+    {% endblock %}
+    <body class="{{ body_class }}">
+
+        <a href="#content" class="sr-only skip-link screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
+
+        {% do action( 'get_header' ) %}
+
+        {% do action( 'maera/header/before', post.ID ) %}
+        {% include 'header.twig' %}
+        {% do action( 'maera/header/after', post.ID ) %}
+
+        <header class="header" >
+        	{% block header %}
+        	<div class="wrapper">
+
+        		<h1 class="hdr-logo" role="banner">
+        			<a class="hdr-logo-link" href="/" title="Timber" rel="home">{{ bloginfo( 'name' ) }}</a>
+        		</h1>
+        		<nav id="access" class="main-navigation" role="navigation">
+        			<ul>
+        			{% for item in menu.items %}
+        				<li id="menu-item-{{item.ID}}" class="menu-item menu-item-type-{{item.type}} menu-item-object-{{item.object}} menu-item-{{item.ID}}">
+        					<a href="{{item.link}}">{{ item.title }}</a>
+        				</li>
+        			{% endfor %}
+        			</ul>
+        		</nav><!-- #access -->
+
+        	</div>
+        	{% endblock %}
+        </header>

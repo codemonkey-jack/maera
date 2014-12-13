@@ -1,0 +1,48 @@
+{#<?php#}
+<article {{ function( 'post_class' ) }} id="post-{{ post.ID }}" itemscope itemtype="http://schema.org/Article">
+	{% block content %}
+		{% do action('maera/in_article/top', post.ID) %}
+		<header class="entry-header">
+			{% do action( 'maera/teaser/start', post.ID ) %}
+			<title itemprop="name">{{ post.title }}</title>
+			<h2 class="entry-title"><a href="{{ post.link }}">{{ post.title|apply_filters( 'maera/title' ) }}</a></h2>
+			{% if post.post_type == 'post' %}
+				<div class="entry-meta">
+					{% if function('get_the_time', 'U', post) is same as(post.get_modified_time('U')) %}
+						<time class="entry-date published" datetime="{{ post.date('c') }}">
+							<span itemprop="datePublished">{{ post.date }}</span>
+						</time>
+					{% else %}
+						<time class="updated" datetime="{{ post.modified_date('c') }}">
+							<span itemprop="datePublished">{{ post.modified_date }}</span>
+						</time>
+					{% endif %}
+					{{ __( 'under', 'maera' ) }}
+					{% for category in post.get_categories %}<a href="{{ category.get_path }}" itemprop="articleSection">{{ category.name }}</a>{% endfor %}
+					<span class="byline">{{ __( 'by', 'maera' ) }} <span class="author vcard"><a class="url fn n" href="{{ post.author.link }}">{{ post.author.name }}</a></span></span>
+					{% if post.comments %}{{ __( 'with', 'maera' ) }} <a href="{{ post.link }}#comments">{{ post.comment_count }} {{ __( 'comments', 'maera' ) }}</a>{% endif %}
+				</div>
+			{% endif %}
+		</header>
+
+		<div class="entry-content" itemprop="description">
+			{% if post.thumbnail %}
+				<a class="featured-image" href="{{ post.link }}" title="{{ post.title }}">
+					<img class="featured-image" src="{{ post.thumbnail.src|resize(thumbnail.width, thumbnail.height) }}" srcset="{{ post.thumbnail.src|resize(thumbnail.width, thumbnail.height)|retina(1) }} 1x, {{ post.thumbnail.src|resize(thumbnail.width, thumbnail.height)|retina(2) }}  2x">
+				</a>
+			{% endif %}
+
+			{% if teaser_mode == 'full' %}
+				{{ post.content }}
+			{% else %}
+				{{ post.get_preview }}
+			{% endif %}
+			{{ shell.clearfix }}
+		</div>
+
+		<footer class="entry-footer">
+			{% do action('maera/entry/footer', post.ID) %}
+		</footer>
+
+	{% endblock %}
+</article>

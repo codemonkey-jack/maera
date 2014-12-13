@@ -5,63 +5,40 @@
 {% from 'row_close.html.twig' import row_close as row_close %}
 {% from 'clearfix.html.twig' import clearfix as clearfix %}
 
-{% include 'html-header.twig' %}
+{% do action( 'maera/wrap/before', post.ID ) %}
 
-<body class="{{ body_class }}">
+{{ container_open( 'div', 'wrap-main-section', 'wrap main-section' ) }}
 
-	<a href="#content" class="sr-only skip-link screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
+	{% do action( 'maera/content/before', post.ID ) %}
 
-	{% do action( 'get_header' ) %}
+	<div class="content" id="content" itemprop="mainContentOfPage">
 
-	{% do action( 'maera/header/before', post.ID ) %}
-	{% include 'header.twig' %}
-	{% do action( 'maera/header/after', post.ID ) %}
+		{{ row_open( 'div', null, 'bg' ) }}
 
-	{% do action( 'maera/wrap/before', post.ID ) %}
+			<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
+				{% do action( 'maera/main/before', post.ID ) %}
+				<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
 
-	{{ container_open( 'div', 'wrap-main-section', 'wrap main-section' ) }}
+					{% if title %}<h1>{{ title }}</h1>{% endif %}
+					{% block content %}
+						{{ __( 'Sorry, no content', 'maera' ) }}
+					{% endblock %}
 
-		{% do action( 'maera/content/before', post.ID ) %}
+				</main><!-- /.main -->
+				{% do action( 'maera/main/after', post.ID ) %}
 
-		<div class="content" id="content" itemprop="mainContentOfPage">
+				{# PRIMARY SIDEBAR #}
+				<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/primary' ) }}" role="complementary">
+					{{ sidebar.primary }}
+				</aside>
+			</div>
 
-			{{ row_open( 'div', null, 'bg' ) }}
+			{{ clearfix() }}
 
-				<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
-					{% do action( 'maera/main/before', post.ID ) %}
-					<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
+		{{ row_close( 'div' ) }}
 
-						{% if title %}<h1>{{ title }}</h1>{% endif %}
-						{% block content %}
-							{{ __( 'Sorry, no content', 'maera' ) }}
-						{% endblock %}
+	</div><!-- /#content -->
 
-					</main><!-- /.main -->
-					{% do action( 'maera/main/after', post.ID ) %}
+	{% do action( 'maera/content/after' ) %}
 
-					{# PRIMARY SIDEBAR #}
-					<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/primary' ) }}" role="complementary">
-						{{ sidebar.primary }}
-					</aside>
-				</div>
-
-				{{ clearfix() }}
-
-			{{ row_close( 'div' ) }}
-
-		</div><!-- /#content -->
-
-		{% do action( 'maera/content/after' ) %}
-
-	{{ container_close( 'div' ) }}
-
-	{% do action( 'maera/footer/before', post.ID ) %}
-	<footer class="page-footer">
-		{% do action( 'maera/footer/start', post.ID ) %}
-		{% include 'footer.twig' %}
-		{% do action( 'maera/footer/end', post.ID ) %}
-	</footer>
-	{% do action( 'maera/footer/after', post.ID ) %}
-	{{ function( 'wp_footer' ) }}
-</body>
-</html>
+{{ container_close( 'div' ) }}
