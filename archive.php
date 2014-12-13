@@ -8,7 +8,6 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  */
 
-$templates = Maera_Timber::twig_archive_templates();
 $data = Maera_Timber::get_context();
 
 $data['title'] = 'Archive';
@@ -50,5 +49,8 @@ if ( is_day() ) {
 }
 
 $data['posts'] = Timber::query_posts( false, 'TimberPost' );
-
-Timber::render( $templates, $data, apply_filters( 'maera/timber/cache', false ) );
+Maera_Timber::render(
+	Maera_Timber::twig_archive_templates(),
+	$data,
+	apply_filters( 'maera/timber/cache', false )
+);

@@ -1,10 +1,14 @@
 <?php
 /**
- * The main template file
+ * The main template file.
+ *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
  * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file
+ * E.g., it puts together the home page when no home.php file exists.
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package maera
  */
 
 if ( ! class_exists( 'Timber' ) || ! class_exists( 'Kirki' ) || ! class_exists( 'Jetpack' ) ) {
@@ -13,13 +17,14 @@ if ( ! class_exists( 'Timber' ) || ! class_exists( 'Kirki' ) || ! class_exists( 
 }
 
 $context = Maera_Timber::get_context();
-
-$context['posts'] = Timber::query_posts( false, 'TimberPost' );
-
-$templates = Maera_Timber::twig_archive_templates();
+$context['posts'] = Timber::get_posts();
 
 if ( is_home() ) {
 	array_unshift( $templates, 'home.twig' );
 }
 
-Timber::render( $templates, $context, apply_filters( 'maera/timber/cache', false ) );
+Maera_Timber::render(
+	Maera_Timber::twig_archive_templates(),
+	$context,
+	apply_filters( 'maera/timber/cache', false )
+);
