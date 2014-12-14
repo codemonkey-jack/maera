@@ -21,7 +21,7 @@ $context = Maera_Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
 
-Timber::render(
+Maera_Timber::render(
 	array(
 		'page-' . $post->post_name . '.twig',
 		'page-' . $post->slug . '.twig',

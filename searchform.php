@@ -3,10 +3,8 @@
  * Search Form
  */
 
-$templates = array(
+Maera_Timber::render(
 	'searchform.twig',
+	Maera_Timber::get_context(),
+	apply_filters( 'maera/timber/cache', false )
 );
-
-$context = Maera_Timber::get_context();
-
-Timber::render( $templates, $context, apply_filters( 'maera/timber/cache', false ) );
