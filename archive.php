@@ -8,6 +8,16 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  */
 
+/**
+* Test if all required plugins are installed.
+* If they are not then then do not proceed with the template loading.
+* Instead display a custom template file that urges users to visit their dashboard to install them.
+*/
+if ( 'bad' == Maera::test_missing() ) {
+	get_template_part( 'lib/required-error' );
+	return;
+}
+
 $data = Maera_Timber::get_context();
 
 $data['title'] = 'Archive';

@@ -4,7 +4,12 @@ class Maera {
 
 	function __construct() {
 
+		require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
+
 		self::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
+
+		$this->required_plugins();
+		$this->requires();
 
 		// If the Timber plugin is not already installed, load it from the theme.
 		if ( ! class_exists( 'Timber' ) ) {
@@ -17,8 +22,6 @@ class Maera {
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
 		add_action( 'customize_save_after', array( $this, 'reset_style_cache_on_customizer_save' ) );
 
-		$this->requires();
-
 		global $maera_shell;
 		$maera_shell = new Maera_Shell();
 
@@ -26,14 +29,11 @@ class Maera {
 		$maera_init   = new Maera_Init();
 		$maera_styles = new Maera_Styles();
 
-		$this->required_plugins();
-
 	}
 
 	function requires() {
 
 		$files = array(
-			'/lib/class-Maera_Required_Plugins.php',
 			'/lib/utils.php',
 			'/lib/class-Maera_Shell.php',
 			'/lib/class-Maera_Timber.php',
@@ -47,6 +47,37 @@ class Maera {
 		foreach ( $files as $file ) {
 			require_once locate_template( $file );
 		}
+
+	}
+
+	/**
+	 * Test if all required plugins are active or not.
+	 * If they are not, returns true;
+	 */
+	public static function test_missing() {
+
+		$plugins = apply_filters( 'maera/plugins/required', array() );
+		$status  = get_transient( 'maera_required_plugins_status' );
+
+		// If the transient exists and is set to 'ok' then no need to proceed.
+		if ( false === $status && 'ok' == $status ) {
+			return 'ok';
+		}
+
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+
+		foreach ( $plugins as $plugin ) {
+			if ( ! is_plugin_active( $plugin['slug'] . '/' . $plugin['file'] ) ) {
+				return 'bad';
+			}
+		}
+
+		// If we're good to go, set the transient value to 'ok' for 2 minutes
+		set_transient( 'maera_required_plugins_status', 'ok', 60 * 2 );
+
+		return 'ok';
 
 	}
 
