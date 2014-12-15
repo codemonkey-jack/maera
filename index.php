@@ -24,10 +24,6 @@ if ( 'bad' == Maera::test_missing() ) {
 $context = Maera_Timber::get_context();
 $context['posts'] = Timber::get_posts();
 
-if ( is_home() ) {
-	array_unshift( $templates, 'home.twig' );
-}
-
 Maera_Timber::render(
 	Maera_Timber::twig_archive_templates(),
 	$context,

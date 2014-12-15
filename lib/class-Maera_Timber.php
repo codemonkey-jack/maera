@@ -128,6 +128,10 @@ class Maera_Timber extends Maera {
 
 		$templates = array();
 
+		if ( is_home() ) {
+			$templates[] = 'home.twig';
+		}
+
 		if ( is_author() ) { // Author
 
 			$templates[] = 'author-' . get_the_author_meta( 'user_nicename' ) . '.twig';
