@@ -12,10 +12,10 @@
  */
 
 /**
-* Test if all required plugins are installed.
-* If they are not then then do not proceed with the template loading.
-* Instead display a custom template file that urges users to visit their dashboard to install them.
-*/
+ * Test if all required plugins are installed.
+ * If they are not then then do not proceed with the template loading.
+ * Instead display a custom template file that urges users to visit their dashboard to install them.
+ */
 if ( 'bad' == Maera::test_missing() ) {
 	get_template_part( 'lib/required-error' );
 	return;

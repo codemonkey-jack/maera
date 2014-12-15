@@ -5,7 +5,7 @@
  */
 
 $context = Maera_Timber::get_context();
-$post    = new TimberPost();
+$post = ( is_home() ) ? new TimberPost( TimberPostGetter::loop_to_id() ) : new TimberPost();
 $context['post'] = $post;
 $context['wp_title'] .= ' - ' . $post->title();
 
