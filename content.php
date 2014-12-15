@@ -13,7 +13,7 @@ Timber::render(
 	array(
 		'content-' . $post->ID . '.twig',
 		'content-' . $post->post_type . '.twig',
-		'content-single.twig',
+		// 'content-single.twig',
 		'content.twig'
 	),
 	$context,

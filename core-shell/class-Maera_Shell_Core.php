@@ -24,8 +24,9 @@ class Maera_Shell_Core {
 		add_theme_support( 'tonesque' );
 		add_theme_support( 'site-logo' );
 		add_theme_support( 'infinite-scroll', array(
+			'type'      => 'click',
 		    'container' => 'content',
-		    'footer' => false,
+		    'footer'    => false,
 		) );
 
 		add_filter( 'maera/styles', array( $this, 'custom_header' ) );
