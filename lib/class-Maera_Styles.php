@@ -4,6 +4,7 @@ class Maera_Styles {
 
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'custom_css_cached' ), 101 );
 	}
 
 	/**
@@ -38,6 +39,10 @@ class Maera_Styles {
 			wp_enqueue_script( 'comment-reply' );
 		}
 
+	}
+
+	function custom_css_cached() {
+
 		$caching = apply_filters( 'maera/styles/caching', false );
 
 		if ( ! $caching ) {
@@ -47,7 +52,7 @@ class Maera_Styles {
 			// Get the cached CSS from the database
 			$cache = get_theme_mod( 'css_cache', '' );
 			// If the transient does not exist, then create it.
-			if ( $cache === false || empty( $cache ) || '' == $cache ) {
+			if ( ! $cache || empty( $cache ) || '' == $cache ) {
 				// Get our styles using the maera/styles filter
 				$data = apply_filters( 'maera/styles', null );
 				// Set the transient for 24 hours.
