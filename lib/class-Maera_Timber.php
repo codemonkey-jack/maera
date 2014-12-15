@@ -16,7 +16,7 @@ class Maera_Timber extends Maera {
 
 	/**
 	 * Custom implementation for get_context method.
-	 * Implements caching and timber_get_template_part
+	 * Implements caching
 	 */
 	public static function get_context() {
 
@@ -44,8 +44,6 @@ class Maera_Timber extends Maera {
 		$context['comment_form']         = TimberHelper::get_comment_form();
 		$context['site_logo']            = get_option( 'site_logo', false );
 		$context['content_width']        = $content_width;
-
-		TimberHelper::function_wrapper( 'timber_get_template_part' );
 
 		wp_cache_set( 'context', $context, 'maera' );
 		return $context;
@@ -84,27 +82,6 @@ class Maera_Timber extends Maera {
 		$locations[] = get_template_directory();
 
 		return apply_filters( 'maera/timber/locations', $locations );
-
-	}
-
-	public static function get_template_part( $slug, $name = null, $context = array() ) {
-
-		do_action( "get_template_part_{$slug}", $slug, $name );
-		$context = apply_filters( "timber_get_template_part_{$slug}", $context, $slug, $name );
-
-		$templates = array();
-		$name = (string) $name;
-
-		if ( ! empty ( $name ) || '' != $name ) {
-			$templates[] = "{$slug}-{$name}.php";
-		}
-
-		$templates[] = "{$slug}.php";
-
-		global $timber_template_part_context;
-		$timber_template_part_context = $context;
-
-		locate_template( $templates, true, false );
 
 	}
 

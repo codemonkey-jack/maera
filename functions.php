@@ -204,11 +204,3 @@ class Maera {
 }
 
 $maera = new Maera();
-
-/**
- * Helper function.
- * See Maera_Timber for more details.
- */
-function timber_get_template_part( $slug, $name = null, $context = array() ) {
-	Maera_Timber::get_template_part( $slug, $name = null, $context = array() );
-}

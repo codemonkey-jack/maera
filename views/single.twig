@@ -3,7 +3,7 @@
 
 <div class="content-wrapper">
     {% for post in posts %}
-        {{ timber_get_template_part('content', 'single', { 'post': post }) }}
+        {% include 'content-single.twig' %}
         {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
         <div class="clearfix"></div>
         {# If comments are open or we have at least one comment, load up the comment template #}
