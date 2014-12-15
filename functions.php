@@ -31,6 +31,9 @@ class Maera {
 
 	}
 
+	/**
+	 * Include all the necessary files for the theme here
+	 */
 	function requires() {
 
 		$files = array(
@@ -119,6 +122,7 @@ class Maera {
 		$classes = array_diff( $classes, $remove_classes );
 
 		return $classes;
+
 	}
 
 	/**
@@ -131,8 +135,8 @@ class Maera {
 	}
 
 	/**
-	* The configuration options for the Kirki Customizer
-	*/
+	 * The configuration options for the Kirki Customizer
+	 */
 	function customizer_config() {
 
 		$args = array( 'stylesheet_id' => 'maera' );
@@ -141,15 +145,15 @@ class Maera {
 	}
 
 	/**
-	* Reset the cache when saving the customizer
-	*/
+	 * Reset the cache when saving the customizer
+	 */
 	function reset_style_cache_on_customizer_save() {
 		remove_theme_mod( 'css_cache' );
 	}
 
 	/**
-	* Check if a constand is already defined, and if not then give it a value
-	*/
+	 * Check if a constand is already defined, and if not then give it a value
+	 */
 	public static function define( $define, $value ) {
 		if ( ! defined( $define ) ) {
 			define( $define, $value );
@@ -202,7 +206,7 @@ class Maera {
 $maera = new Maera();
 
 /**
- * Helpre function.
+ * Helper function.
  * See Maera_Timber for more details.
  */
 function timber_get_template_part( $slug, $name = null, $context = array() ) {

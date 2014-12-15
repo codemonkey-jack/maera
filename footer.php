@@ -5,9 +5,8 @@
  * @package maera
  */
 
-$context = Maera_Timber::get_context();
 Maera_Timber::render(
 	'footer.twig',
-	$context,
+	Maera_Timber::get_context(),
 	apply_filters( 'maera/timber/cache', false )
 );

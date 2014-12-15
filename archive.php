@@ -9,10 +9,10 @@
  */
 
 /**
-* Test if all required plugins are installed.
-* If they are not then then do not proceed with the template loading.
-* Instead display a custom template file that urges users to visit their dashboard to install them.
-*/
+ * Test if all required plugins are installed.
+ * If they are not then then do not proceed with the template loading.
+ * Instead display a custom template file that urges users to visit their dashboard to install them.
+ */
 if ( 'bad' == Maera::test_missing() ) {
 	get_template_part( 'lib/required-error' );
 	return;
@@ -20,7 +20,7 @@ if ( 'bad' == Maera::test_missing() ) {
 
 $data = Maera_Timber::get_context();
 
-$data['title'] = 'Archive';
+$data['title'] = __( 'Archive', 'maera' );
 
 if ( is_day() ) {
 	$data['title'] = sprintf( __( 'Day: %s', 'maera' ), '<span>' . get_the_date() . '</span>' );
