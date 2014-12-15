@@ -19,7 +19,7 @@ if ( post_password_required( $post ) ) {
 	return;
 }
 
-Maera_Timber::render(
+Timber::render(
 	array(
 		'comments-' . $post->ID . '.twig',
 		$post->post_type . '-comments.twig',

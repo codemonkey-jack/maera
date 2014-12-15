@@ -28,7 +28,7 @@ function maera_get_echo( $function, $args = '' ) {
 function _maera_get_twig( $file ) {
 
 	$context = Maera_Timber::get_context();
-	Maera_Timber::render( array( $file ), $context, apply_filters( 'maera/timber/cache', false ) );
+	Timber::render( array( $file ), $context, apply_filters( 'maera/timber/cache', false ) );
 
 }
 

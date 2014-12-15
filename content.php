@@ -9,7 +9,7 @@ $post = ( is_home() ) ? new TimberPost( TimberPostGetter::loop_to_id() ) : new T
 $context['post'] = $post;
 $context['wp_title'] .= ' - ' . $post->title();
 
-Maera_Timber::render(
+Timber::render(
 	array(
 		'content-' . $post->ID . '.twig',
 		'content-' . $post->post_type . '.twig',

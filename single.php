@@ -15,12 +15,17 @@ if ( 'bad' == Maera::test_missing() ) {
 	return;
 }
 
+
 $context = Maera_Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
 $context['wp_title'] .= ' - ' . $post->title();
 
-Maera_Timber::render(
+// Header
+get_header();
+
+// Content
+Timber::render(
 	array(
 		'single-' . $post->ID . '.twig',
 		'single-' . $post->post_type . '.twig',
@@ -29,3 +34,6 @@ Maera_Timber::render(
 	$context,
 	apply_filters( 'maera/timber/cache', false )
 );
+
+// Footer
+get_footer();

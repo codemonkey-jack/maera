@@ -32,7 +32,11 @@ $context = Maera_Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
 
-Maera_Timber::render(
+// Header
+get_header();
+
+// Content
+Timber::render(
 	array(
 		'page-' . $post->post_name . '.twig',
 		'page-' . $post->slug . '.twig',
@@ -42,3 +46,6 @@ Maera_Timber::render(
 	$context,
 	apply_filters( 'maera/timber/cache', false )
 );
+
+// Footer
+get_footer();

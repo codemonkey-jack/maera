@@ -24,8 +24,15 @@ $author = new TimberUser( $wp_query->query_vars['author'] );
 $data['author'] = $author;
 $data['title']  = __( 'Author Archives: ', 'maera' ) . $author->name();
 
-Maera_Timber::render(
+// Header
+get_header();
+
+// Content
+Timber::render(
 	Maera_Timber::twig_archive_templates(),
 	$data,
 	apply_filters( 'maera/timber/cache', false )
 );
+
+// Footer
+get_footer();

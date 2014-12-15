@@ -24,8 +24,15 @@ if ( 'bad' == Maera::test_missing() ) {
 $context = Maera_Timber::get_context();
 $context['posts'] = Timber::get_posts();
 
-Maera_Timber::render(
+// Header
+get_header();
+
+// Content
+Timber::render(
 	Maera_Timber::twig_archive_templates(),
 	$context,
 	apply_filters( 'maera/timber/cache', false )
 );
+
+// Footer
+get_footer();

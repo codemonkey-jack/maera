@@ -17,8 +17,15 @@ if ( 'bad' == Maera::test_missing() ) {
 	return;
 }
 
-Maera_Timber::render(
+// Header
+get_header();
+
+// Content
+Timber::render(
 	'404.twig',
 	Maera_Timber::get_context(),
 	apply_filters( 'maera/timber/cache', false )
 );
+
+// Footer
+get_footer();

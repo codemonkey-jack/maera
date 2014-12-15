@@ -15,22 +15,6 @@ class Maera_Timber extends Maera {
 	}
 
 	/**
-	 * Custom render method.
-	 * Using this method we can call get_header() and get_footer()
-	 * and ensure compatibility with all plugins.
-	 */
-	public static function render( $view, $context = array() ) {
-
-		// Header
-		get_header();
-		// Content
-		Timber::render( $view, $context );
-		// Footer
-		get_footer();
-
-	}
-
-	/**
 	 * Custom implementation for get_context method.
 	 * Implements caching and timber_get_template_part
 	 */
