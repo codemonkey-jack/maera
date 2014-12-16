@@ -1,7 +1,19 @@
 {#<?php#}
 {% from 'container_open.html.twig' import container_open as container_open %}
 {% from 'container_close.html.twig' import container_close as container_close %}
+{% from 'row_open.html.twig' import row_open as row_open %}
+{% from 'row_close.html.twig' import row_close as row_close %}
+{% from 'clearfix.html.twig' import clearfix as clearfix %}
 
+</div>
+
+{{ clearfix() }}
+
+{{ row_close( 'div' ) }}
+
+</div><!-- /#content -->
+{% do action( 'maera/content/after' ) %}
+{{ container_close( 'div' ) }}
 {% do action( 'maera/wrap/after' ) %}
 
 {% do action( 'maera/footer/before', post.ID ) %}

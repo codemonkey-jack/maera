@@ -1,13 +1,16 @@
-{% extends "base.twig" %}
-{% block content %}
+{% do action( 'maera/main/before', post.ID ) %}
+<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
 
-<div class="content-wrapper">
-    {% for post in posts %}
-        {% include 'content-page.twig' %}
-        {{ function( 'wp_link_pages', { 'before': '<div class="page-links">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
-        {% if function('comments_open') or post.comments|length > 0 %}
-            {{ function('comments_template') }}
-        {% endif %}
-    {% endfor %}
-</div>
-{% endblock %}
+    {% if title %}<h1>{{ title }}</h1>{% endif %}
+    <div class="content-wrapper">
+        {% for post in posts %}
+            {% include 'content-page.twig' %}
+            {{ function( 'wp_link_pages', { 'before': '<div class="page-links">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+            {% if function('comments_open') or post.comments|length > 0 %}
+                {{ function('comments_template') }}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+</main><!-- /.main -->
+{% do action( 'maera/main/after', post.ID ) %}

@@ -1,9 +1,15 @@
 {#<?php#}
-{% extends "base.twig" %}
-{% block content %}
+{% do action( 'maera/main/before', post.ID ) %}
+<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
 
-{% for post in posts %}
-	{% include ["content-"~post.post_type~".twig", "content.twig"] %}
-{% endfor %}
+	{% if title %}<h1>{{ title }}</h1>{% endif %}
+	{% if posts %}
+		{% for post in posts %}
+			{% include ["content-"~post.post_type~".twig", "content.twig"] %}
+		{% endfor %}
+	{% else %}
+		{{ __( 'Sorry, no content', 'maera' ) }}
+	{% endif %}
 
-{% endblock %}
+</main><!-- /.main -->
+{% do action( 'maera/main/after', post.ID ) %}

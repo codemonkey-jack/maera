@@ -1,7 +1,10 @@
 {#<?php#}
-{% extends "base.twig" %}
+{% do action( 'maera/main/before', post.ID ) %}
+<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
 
-{% block content %}
+	{% if title %}<h1>{{ title }}</h1>{% endif %}
 	{{ __( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'maera' ) }}
 	{{ function('get_search_form', false) }}
-{% endblock %}
+	
+</main><!-- /.main -->
+{% do action( 'maera/main/after', post.ID ) %}
