@@ -8,37 +8,17 @@
 {% do action( 'maera/wrap/before', post.ID ) %}
 
 {{ container_open( 'div', 'wrap-main-section', 'wrap main-section' ) }}
-
 	{% do action( 'maera/content/before', post.ID ) %}
-
 	<div class="content" id="content" itemprop="mainContentOfPage">
-
 		{{ row_open( 'div', null, 'bg' ) }}
-
 			<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
 				{% do action( 'maera/main/before', post.ID ) %}
-				<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
-
-					{% if title %}<h1>{{ title }}</h1>{% endif %}
-					{% block content %}
-						{{ __( 'Sorry, no content', 'maera' ) }}
-					{% endblock %}
-
-				</main><!-- /.main -->
+				{% include 'main.twig' %}
 				{% do action( 'maera/main/after', post.ID ) %}
-
-				{# PRIMARY SIDEBAR #}
-				<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/primary' ) }}" role="complementary">
-					{{ sidebar.primary }}
-				</aside>
+				{% include 'sidebar.twig' %}
 			</div>
-
 			{{ clearfix() }}
-
 		{{ row_close( 'div' ) }}
-
 	</div><!-- /#content -->
-
 	{% do action( 'maera/content/after' ) %}
-
 {{ container_close( 'div' ) }}
