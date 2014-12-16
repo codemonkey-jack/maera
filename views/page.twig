@@ -3,7 +3,7 @@
 
 <div class="content-wrapper">
     {% for post in posts %}
-        {{ timber_get_template_part('content', 'page', { 'post': post }) }}
+        {% include 'content-page.twig' %}
         {{ function( 'wp_link_pages', { 'before': '<div class="page-links">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
         {% if function('comments_open') or post.comments|length > 0 %}
             {{ function('comments_template') }}
