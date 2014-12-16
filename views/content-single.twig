@@ -1,7 +1,7 @@
 {#<?php#}
 <article {{ function( 'post_class' ) }} id="post-{{post.ID}}" itemscope itemtype="http://schema.org/Article">
     {% do action( 'maera/single/top', post.ID ) %}
-    {% include 'entry-header.twig' %}
-    {% include 'entry-meta.twig' %}
-    {% include 'entry-content.twig' %}
+    {% include 'content-single-entry-header.twig' %}
+    {% include 'content-single-entry-meta.twig' %}
+    {% include 'content-single-entry-content.twig' %}
 </article>
