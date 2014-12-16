@@ -12,6 +12,12 @@ class Maera_Required_Plugins {
 		add_action( 'admin_init', array( $this, 'auto_activate_plugins' ) );
 		add_action( 'switch_theme', array( $this, 'auto_deactivate_plugins' ) );
 
+		add_filter( 'maera/plugins/required', array( $this, 'add_filter' ) );
+
+	}
+
+	function add_filter( $required_plugins ) {
+		return array_merge( $required_plugins, $this->plugins );
 	}
 
 	/**

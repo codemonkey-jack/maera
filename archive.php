@@ -8,10 +8,19 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  */
 
-$templates = Maera_Timber::twig_archive_templates();
-$data = Timber::get_context();
+/**
+ * Test if all required plugins are installed.
+ * If they are not then then do not proceed with the template loading.
+ * Instead display a custom template file that urges users to visit their dashboard to install them.
+ */
+if ( 'bad' == Maera::test_missing() ) {
+	get_template_part( 'lib/required-error' );
+	return;
+}
 
-$data['title'] = 'Archive';
+$data = Maera_Timber::get_context();
+
+$data['title'] = __( 'Archive', 'maera' );
 
 if ( is_day() ) {
 	$data['title'] = sprintf( __( 'Day: %s', 'maera' ), '<span>' . get_the_date() . '</span>' );
@@ -51,4 +60,15 @@ if ( is_day() ) {
 
 $data['posts'] = Timber::query_posts( false, 'TimberPost' );
 
-Timber::render( $templates, $data, apply_filters( 'maera/timber/cache', false ) );
+// Header
+get_header();
+
+// Content
+Timber::render(
+	Maera_Timber::twig_archive_templates(),
+	$data,
+	apply_filters( 'maera/timber/cache', false )
+);
+
+// Footer
+get_footer();

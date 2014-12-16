@@ -1,32 +1,85 @@
 <?php
 
-class Maera_Timber {
+class Maera_Timber extends Maera {
 
 	function __construct() {
-		add_filter( 'timber_context',    array( $this, 'timber_global_context' ) );
+
+		// early exit if timber is not installed.
+		if ( ! class_exists( 'TImber' ) ) {
+			return;
+		}
+
 		add_filter( 'get_twig',          array( $this, 'add_to_twig' ) );
 		add_action( 'init',              array( $this, 'timber_customizations' ) );
+
 	}
 
 	/**
-	 * Returns an array of paths where our twig files are located.
+	 * Custom implementation for get_context method.
+	 * Implements caching
+	 */
+	public static function get_context() {
+
+		global $content_width;
+
+		$cache = wp_cache_get( 'context', 'maera' );
+		if ( $cache ) {
+			return $cache;
+		}
+
+		$context = Timber::get_context();
+
+		$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
+		$sidebar_footer    = Timber::get_widgets( 'sidebar_footer' );
+
+		$context['theme_mods']           = get_theme_mods();
+		$context['site_options']         = wp_load_alloptions();
+		$context['teaser_mode']          = apply_filters( 'maera/teaser/mode', 'excerpt' );
+		$context['thumbnail']['width']   = apply_filters( 'maera/image/width', 600 );
+		$context['thumbnail']['height']  = apply_filters( 'maera/image/height', 371 );
+		$context['menu']['primary']      = has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null;
+		$context['sidebar']['primary']   = apply_filters( 'maera/sidebar/primary', $sidebar_primary );
+		$context['sidebar']['footer']    = apply_filters( 'maera/sidebar/footer', $sidebar_footer );
+		$context['pagination']           = Timber::get_pagination();
+		$context['comment_form']         = TimberHelper::get_comment_form();
+		$context['site_logo']            = get_option( 'site_logo', false );
+		$context['content_width']        = $content_width;
+
+		wp_cache_set( 'context', $context, 'maera' );
+		return $context;
+
+	}
+
+	/**
+	 * An array of paths containing our twig files.
+	 * First we search in the childtheme if one is active.
+	 * Then we continue looking for the twig file in the active shell
+	 * and finally fallback to the core twig files.
 	 */
 	public static function twig_locations() {
 
-		$locations = array(
-			MAERA_SHELL_PATH . '/macros',
-			MAERA_SHELL_PATH . '/views/macros',
-			MAERA_SHELL_PATH . '/views',
-			MAERA_SHELL_PATH,
-			get_stylesheet_directory() . '/macros',
-			get_stylesheet_directory() . '/views/macros',
-			get_stylesheet_directory() . '/views',
-			get_stylesheet_directory(),
-			get_template_directory() . '/macros',
-			get_template_directory() . '/views/macros',
-			get_template_directory() . '/views',
-			get_template_directory(),
-		);
+		$locations = array();
+
+		// Are we using a child theme?
+		// If yes, then first look in there.
+		if ( is_child_theme() ) {
+			$locations[] = get_stylesheet_directory() . '/macros';
+			$locations[] = get_stylesheet_directory() . '/views/macros';
+			$locations[] = get_stylesheet_directory() . '/views';
+			$locations[] = get_stylesheet_directory();
+		}
+
+		// Active shell
+		$locations[] = MAERA_SHELL_PATH . '/macros';
+		$locations[] = MAERA_SHELL_PATH . '/views/macros';
+		$locations[] = MAERA_SHELL_PATH . '/views';
+		$locations[] = MAERA_SHELL_PATH;
+
+		// Core twig locations.
+		$locations[] = get_template_directory() . '/macros';
+		$locations[] = get_template_directory() . '/views/macros';
+		$locations[] = get_template_directory() . '/views';
+		$locations[] = get_template_directory();
 
 		return apply_filters( 'maera/timber/locations', $locations );
 
@@ -35,6 +88,10 @@ class Maera_Timber {
 	public static function twig_archive_templates() {
 
 		$templates = array();
+
+		if ( is_home() ) {
+			$templates[] = 'home.twig';
+		}
 
 		if ( is_author() ) { // Author
 
@@ -132,30 +189,6 @@ class Maera_Timber {
 
 		// Convert minutes to seconds
 		return ( $cache_int * 60 );
-
-	}
-
-	function timber_global_context( $data ) {
-
-		global $content_width;
-
-		$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
-		$sidebar_footer    = Timber::get_widgets( 'sidebar_footer' );
-
-		$data['theme_mods']           = get_theme_mods();
-		$data['site_options']         = wp_load_alloptions();
-		$data['teaser_mode']          = apply_filters( 'maera/teaser/mode', 'excerpt' );
-		$data['thumbnail']['width']   = apply_filters( 'maera/image/width', 600 );
-		$data['thumbnail']['height']  = apply_filters( 'maera/image/height', 371 );
-		$data['menu']['primary']      = has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null;
-		$data['sidebar']['primary']   = apply_filters( 'maera/sidebar/primary', $sidebar_primary );
-		$data['sidebar']['footer']    = apply_filters( 'maera/sidebar/footer', $sidebar_footer );
-		$data['pagination']           = Timber::get_pagination();
-		$data['comment_form']         = TimberHelper::get_comment_form();
-		$data['site_logo']            = get_option( 'site_logo', false );
-		$data['content_width']        = $content_width;
-
-		return $data;
 
 	}
 

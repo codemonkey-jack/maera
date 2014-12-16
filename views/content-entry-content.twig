@@ -1,5 +1,4 @@
-{#<?php#}
-<div class="entry-summary" itemprop="description">
+<div class="entry-content" itemprop="description">
 	{% if post.thumbnail %}
 		<a class="featured-image" href="{{ post.link }}" title="{{ post.title }}">
 			<img class="featured-image" src="{{ post.thumbnail.src|resize(thumbnail.width, thumbnail.height) }}" srcset="{{ post.thumbnail.src|resize(thumbnail.width, thumbnail.height)|retina(1) }} 1x, {{ post.thumbnail.src|resize(thumbnail.width, thumbnail.height)|retina(2) }}  2x">
@@ -11,5 +10,5 @@
 	{% else %}
 		{{ post.get_preview }}
 	{% endif %}
-	{{ shell.clearfix }}
+	<div class="clearfix"></div>
 </div>

@@ -1,27 +1,13 @@
-{#<?php#}
 {% extends "base.twig" %}
-
 {% block content %}
 
-	<div class="content-wrapper">
-
-		<article {{ function( 'post_class' ) }} id="tease-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
-
-			{% include 'single-title.twig' %}
-
-			{{ shell.clearfix }}
-			{% do action( 'maera/page/pre_content' ) %}
-			{{ post.content }}
-			{{ shell.clearfix }}
-			{{ function( 'wp_link_pages', {
-				'before': '<div class="page-links">' . __( 'Pages:', 'maera' ),
-				'after': '</div>'
-			}) }}
-			{{ shell.clearfix }}
-			{% do action( 'maera/page/after_content' ) %}
-
-		</article>
-
-	</div> <!-- /content-wrapper -->
-
+<div class="content-wrapper">
+    {% for post in posts %}
+        {% include 'content-page.twig' %}
+        {{ function( 'wp_link_pages', { 'before': '<div class="page-links">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+        {% if function('comments_open') or post.comments|length > 0 %}
+            {{ function('comments_template') }}
+        {% endif %}
+    {% endfor %}
+</div>
 {% endblock %}

@@ -24,8 +24,9 @@ class Maera_Shell_Core {
 		add_theme_support( 'tonesque' );
 		add_theme_support( 'site-logo' );
 		add_theme_support( 'infinite-scroll', array(
+			'type'      => 'click',
 		    'container' => 'content',
-		    'footer' => false,
+		    'footer'    => false,
 		) );
 
 		add_filter( 'maera/styles', array( $this, 'custom_header' ) );
@@ -174,7 +175,7 @@ class Maera_Shell_Core {
 			// Add the CSS to our page
 			extract( $tonesque );
 
-			if ( ! empty( $color ) && @ empty( $contrast ) ) {
+			if ( ! empty( $color ) ) {
 
 				$white = new Jetpack_Color( '#FFFFFF' );
 				$color = new Jetpack_Color( '#' . $color );
@@ -184,7 +185,7 @@ class Maera_Shell_Core {
 				$background = $fontcolor == '#FFFFFF' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
 
 				$styles .= 'a{color:#' . $color->getReadableContrastingColor( $white, 6 )->toHex() . ';}';
-				$styles .= '#menu.menu-wrap, .menu-button, {background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
+				$styles .= '#menu.menu-wrap, .menu-button {background-color:#' . $color->getReadableContrastingColor( $white )->toHex() . ';}';
 				$styles .= '.page-header{color:' . $fontcolor . ' !important; background: ' . $background . ';box-shadow:0px 0px 5px ' . $color . ';}';
 
 			}

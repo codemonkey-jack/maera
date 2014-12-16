@@ -1,24 +1,16 @@
-{#<?php#}
 {% extends "base.twig" %}
 {% block content %}
-	{% include ['single-'~post.post_type~'-open.twig', 'single-open.twig'] %}
-	{% do action( 'maera/single/top', post.ID ) %}
-	{% include 'single-title.twig' %}
-	{% include ['single-'~post.post_type~'-meta.twig', 'single-meta.twig'] %}
-	<div class="entry-content" itemprop="text">
-		{% do action( 'maera/single/pre_content', post.ID ) %}
-		{% include ['single-'~post.post_type~'-top.twig', 'single-top.twig'] %}
-		{{ post.content }}
-		<div class="clearfix"></div>
-		{{ function( 'wp_link_pages', {
-			'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ),
-			'after': '</div>'
-		}) }}
-		<div class="clearfix"></div>
-		{% include ['single-'~post.post_type~'-bottom.twig', 'single-bottom.twig'] %}
-		{% do action( 'maera/single/after_content', post.ID ) %}
-	</div>
-	{% include ['single-'~post.post_type~'-footer.twig', 'single-footer.twig'] %}
-	{{ function('comments_template') }}
-	{% include ['single-'~post.post_type~'-close.twig', 'single-close.twig'] %}
+
+<div class="content-wrapper">
+    {% for post in posts %}
+        {% include 'content-single.twig' %}
+        {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+        <div class="clearfix"></div>
+        {# If comments are open or we have at least one comment, load up the comment template #}
+        {% if function('comments_open') or function('get_comments_number', post.ID) > 0 %}
+            {{ function('comments_template') }}
+        {% endif %}
+    {% endfor %}
+</div>
+
 {% endblock %}

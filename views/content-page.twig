@@ -1,0 +1,7 @@
+{#<?php#}
+<article {{ function( 'post_class' ) }} id="content-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
+	{% include 'content-single-entry-header.twig' %}
+	{% do action( 'maera/page/pre_content' ) %}
+	{{ post.content }}
+	{% do action( 'maera/page/after_content' ) %}
+</article>

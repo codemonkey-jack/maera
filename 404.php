@@ -2,12 +2,30 @@
 /**
  * The template for displaying 404 pages (Not Found)
  *
- * Methods for TimberHelper can be found in the /functions sub-directory
- *
  * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
+ * @subpackage  Maera
+ * @since    Maera 0.1
  */
 
-$context = Timber::get_context();
-Timber::render( '404.twig', $context, apply_filters( 'maera/timber/cache', false ) );
+/**
+ * Test if all required plugins are installed.
+ * If they are not then then do not proceed with the template loading.
+ * Instead display a custom template file that urges users to visit their dashboard to install them.
+ */
+if ( 'bad' == Maera::test_missing() ) {
+	get_template_part( 'lib/required-error' );
+	return;
+}
+
+// Header
+get_header();
+
+// Content
+Timber::render(
+	'404.twig',
+	Maera_Timber::get_context(),
+	apply_filters( 'maera/timber/cache', false )
+);
+
+// Footer
+get_footer();

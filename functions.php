@@ -4,7 +4,12 @@ class Maera {
 
 	function __construct() {
 
+		require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
+
 		self::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
+
+		$this->required_plugins();
+		$this->requires();
 
 		// If the Timber plugin is not already installed, load it from the theme.
 		if ( ! class_exists( 'Timber' ) ) {
@@ -13,31 +18,30 @@ class Maera {
 
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_action( 'init', array( $this, 'content_width' ) );
-        add_filter( 'get_search_form', array( $this, 'maera_get_search_form' ) );
+        add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
 		add_action( 'customize_save_after', array( $this, 'reset_style_cache_on_customizer_save' ) );
-
-		$this->requires();
 
 		global $maera_shell;
 		$maera_shell = new Maera_Shell();
 
 		$maera_timber = new Maera_Timber();
 		$maera_init   = new Maera_Init();
-
-		$this->required_plugins();
+		$maera_styles = new Maera_Styles();
 
 	}
 
+	/**
+	 * Include all the necessary files for the theme here
+	 */
 	function requires() {
 
 		$files = array(
-			'/lib/class-Maera_Required_Plugins.php',
 			'/lib/utils.php',
 			'/lib/class-Maera_Shell.php',
 			'/lib/class-Maera_Timber.php',
 			'/lib/class-Maera_Init.php',
+			'/lib/class-Maera_Styles.php',
 			'/lib/widgets.php',
 			'/lib/admin/class-Maera_Admin.php',
 			'/lib/updater/updater.php',
@@ -46,6 +50,37 @@ class Maera {
 		foreach ( $files as $file ) {
 			require_once locate_template( $file );
 		}
+
+	}
+
+	/**
+	 * Test if all required plugins are active or not.
+	 * If they are not, returns true;
+	 */
+	public static function test_missing() {
+
+		$plugins = apply_filters( 'maera/plugins/required', array() );
+		$status  = get_transient( 'maera_required_plugins_status' );
+
+		// If the transient exists and is set to 'ok' then no need to proceed.
+		if ( false === $status && 'ok' == $status ) {
+			return 'ok';
+		}
+
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+
+		foreach ( $plugins as $plugin ) {
+			if ( ! is_plugin_active( $plugin['slug'] . '/' . $plugin['file'] ) ) {
+				return 'bad';
+			}
+		}
+
+		// If we're good to go, set the transient value to 'ok' for 2 minutes
+		set_transient( 'maera_required_plugins_status', 'ok', 60 * 2 );
+
+		return 'ok';
 
 	}
 
@@ -87,20 +122,21 @@ class Maera {
 		$classes = array_diff( $classes, $remove_classes );
 
 		return $classes;
+
 	}
 
 	/**
 	 * Tell WordPress to use searchform.php from the templates/ directory
 	 */
-	function maera_get_search_form( $form ) {
+	function get_search_form( $form ) {
 		$form = '';
 		locate_template( '/searchform.php', true, false );
 		return $form;
 	}
 
 	/**
-	* The configuration options for the Kirki Customizer
-	*/
+	 * The configuration options for the Kirki Customizer
+	 */
 	function customizer_config() {
 
 		$args = array( 'stylesheet_id' => 'maera' );
@@ -109,72 +145,15 @@ class Maera {
 	}
 
 	/**
-	* Enqueue scripts and stylesheets
-	*/
-	function scripts() {
-
-		global $wp_customize, $active_shell;
-
-		// Get the stylesheet path and version
-		$stylesheet_url = apply_filters( 'maera/stylesheet/url', MAERA_ASSETS_URL . '/css/style.css' );
-		$stylesheet_ver = apply_filters( 'maera/stylesheet/ver', null );
-
-		// Enqueue the theme's stylesheet
-		wp_enqueue_style( 'maera', $stylesheet_url, false, $stylesheet_ver );
-
-		wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
-
-		// Enqueue Modernizr
-		wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.min.js', false, null, false );
-		wp_enqueue_script( 'modernizr' );
-
-		// Enqueue fitvids
-		wp_register_script( 'fitvids', get_template_directory_uri() . '/assets/js/jquery.fitvids.js',false, null, true  );
-		wp_enqueue_script( 'fitvids' );
-
-		// Enqueue jQuery
-		wp_enqueue_script( 'jquery' );
-
-		// If needed, add the comment-reply script.
-		if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
-
-		$caching = apply_filters( 'maera/styles/caching', false );
-
-		if ( ! $caching ) {
-			// Get our styles using the maera/styles filter
-			$data = apply_filters( 'maera/styles', null );
-		} else {
-			// Get the cached CSS from the database
-			$cache = get_theme_mod( 'css_cache', '' );
-			// If the transient does not exist, then create it.
-			if ( $cache === false || empty( $cache ) || '' == $cache ) {
-				// Get our styles using the maera/styles filter
-				$data = apply_filters( 'maera/styles', null );
-				// Set the transient for 24 hours.
-				set_theme_mod( 'css_cache', $data );
-			} else {
-				$data = $cache;
-			}
-		}
-
-		// Add the CSS inline.
-		// See http://codex.wordpress.org/Function_Reference/wp_add_inline_style#Examples
-		wp_add_inline_style( 'maera', $data );
-
-	}
-
-	/**
-	* Reset the cache when saving the customizer
-	*/
+	 * Reset the cache when saving the customizer
+	 */
 	function reset_style_cache_on_customizer_save() {
 		remove_theme_mod( 'css_cache' );
 	}
 
 	/**
-	* Check if a constand is already defined, and if not then give it a value
-	*/
+	 * Check if a constand is already defined, and if not then give it a value
+	 */
 	public static function define( $define, $value ) {
 		if ( ! defined( $define ) ) {
 			define( $define, $value );

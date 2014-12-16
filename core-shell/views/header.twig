@@ -1,12 +1,58 @@
-{#<?php#}
-<div class="page-header">
-	{% if title %}
-		<h1>{{ title }}</h1>
-	{% else %}
-		{% if function( 'is_singular' ) %}
-			{% include 'single-title.twig' %}
+<html class="no-js" {{ site.language_attributes }}>
+	{% block head %}
+	<head>
+		<meta charset="{{ site.charset }}" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="{{ site.description }}">
+		{% if wp_title %}
+			<title>{{ function( 'wp_title', '|', true, 'right' ) }}</title>
 		{% else %}
-			<h1>{{ site.name }}</h1>
+			<title>{{ site.name }}</title>
 		{% endif %}
-	{% endif %}
-</div>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="alternate" type="application/rss+xml" title="{{ function( 'get_bloginfo', 'name' ) }} Feed" href="{{ function( 'esc_url', 'get_feed_link' ) }}">
+		{{ function( 'wp_head' ) }}
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="{{ function( 'get_template_directory_uri' ) }}/assets/js/html5shiv.js"></script>
+		<script src="{{ function( 'get_template_directory_uri' ) }}/assets/js/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	{% endblock %}
+
+	<body class="container base-container {{ body_class }}" data-source="base.twig">
+		<a href="#content" class="screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
+
+		{% if function( 'has_nav_menu', 'primary_navigation' ) %}
+			<button class="menu-button" id="open-button"></button>
+			<div id="menu" class="menu-wrap">
+				<nav class="menu menu-open">
+					{% include 'site-logo.twig' %}
+					<ul role="navigation">
+						{% for item in menu.primary.get_items %}
+							<li class="{{ item.classes|join(' ') }}"><a href="{{ item.get_path }}">{{ item.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</nav>
+			</div>
+		{% endif %}
+		{% do action( 'get_header' ) %}
+		{% do action( 'maera/header/before', post.ID ) %}
+		<div class="page-header">
+			{% if title %}
+				<h1>{{ title }}</h1>
+			{% else %}
+				{% if function( 'is_singular' ) %}
+					<header class="entry-header">
+						<title itemprop="name">{{ post.title }}</title>
+						<h1 class="entry-title">{{ post.title|apply_filters( 'maera/title' ) }}</h1>
+					</header>
+				{% else %}
+					<h1>{{ site.name }}</h1>
+				{% endif %}
+			{% endif %}
+		</div>
+		{% do action( 'maera/header/after', post.ID ) %}
