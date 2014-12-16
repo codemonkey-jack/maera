@@ -1,16 +1,17 @@
-{% extends "base.twig" %}
-{% block content %}
+{% do action( 'maera/main/before', post.ID ) %}
+<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
 
-<div class="content-wrapper">
-    {% for post in posts %}
-        {% include 'content-single.twig' %}
-        {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
-        <div class="clearfix"></div>
-        {# If comments are open or we have at least one comment, load up the comment template #}
-        {% if function('comments_open') or function('get_comments_number', post.ID) > 0 %}
-            {{ function('comments_template') }}
-        {% endif %}
-    {% endfor %}
-</div>
-
-{% endblock %}
+    {% if title %}<h1>{{ title }}</h1>{% endif %}
+    <div class="content-wrapper">
+        {% for post in posts %}
+            {% include 'content-single.twig' %}
+            {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+            <div class="clearfix"></div>
+            {# If comments are open or we have at least one comment, load up the comment template #}
+            {% if function('comments_open') or function('get_comments_number', post.ID) > 0 %}
+                {{ function('comments_template') }}
+            {% endif %}
+        {% endfor %}
+    </div>    
+</main><!-- /.main -->
+{% do action( 'maera/main/after', post.ID ) %}

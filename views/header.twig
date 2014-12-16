@@ -1,4 +1,9 @@
 {#<?php#}
+{% from 'container_open.html.twig' import container_open as container_open %}
+{% from 'container_close.html.twig' import container_close as container_close %}
+{% from 'row_open.html.twig' import row_open as row_open %}
+{% from 'row_close.html.twig' import row_close as row_close %}
+{% from 'clearfix.html.twig' import clearfix as clearfix %}
 <!DOCTYPE html>
 {% include 'head.twig' %}
 <body class="{{ body_class }}">
@@ -29,3 +34,9 @@
         {% endblock %}
     </header>
     {% do action( 'maera/header/after', post.ID ) %}
+    {% do action( 'maera/wrap/before', post.ID ) %}
+    {{ container_open( 'div', 'wrap-main-section', 'wrap main-section' ) }}
+    {% do action( 'maera/content/before', post.ID ) %}
+    <div class="content" id="content" itemprop="mainContentOfPage">
+        {{ row_open( 'div', null, 'bg' ) }}
+            <div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">

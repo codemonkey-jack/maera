@@ -1,18 +1,20 @@
 {#<?php#}
-{% extends "base.twig" %}
+{% do action( 'maera/main/before', post.ID ) %}
+<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
 
-{% block content %}
-
+	{% if title %}<h1>{{ title }}</h1>{% endif %}
 	{% do action( 'maera/index/begin' ) %}
 
-	{% for post in posts %}
-		{% do action( 'maera/in_loop/begin' ) %}
-		{% include ['content-'~post.post_type~'.twig', 'content.twig'] %}
-		{% do action( 'maera/in_loop/end' ) %}
-	{% endfor %}
-
-	{% include 'pagination.twig' %}
-
-	{% do action( 'maera/index/end' ) %}
-
-{% endblock %}
+	{% if posts %}
+		{% for post in posts %}
+			{% do action( 'maera/in_loop/begin' ) %}
+			{% include ['content-'~post.post_type~'.twig', 'content.twig'] %}
+			{% do action( 'maera/in_loop/end' ) %}
+		{% endfor %}
+		{% include 'pagination.twig' %}
+		{% do action( 'maera/index/end' ) %}
+	{% else %}
+		{{ __( 'Sorry, no content', 'maera' ) }}
+	{% endif %}
+</main><!-- /.main -->
+{% do action( 'maera/main/after', post.ID ) %}
