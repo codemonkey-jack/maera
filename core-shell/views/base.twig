@@ -6,7 +6,7 @@
 				{% do action( 'maera/wrap/before', post.ID ) %}
 				{% do action( 'maera/content/before', post.ID ) %}
 				{% do action( 'maera/main/before', post.ID ) %}
-				{% block content %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
+				{% block main %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
 				{% do action( 'maera/main/after', post.ID ) %}
 			</div>
 		</div>

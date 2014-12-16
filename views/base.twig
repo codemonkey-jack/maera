@@ -13,7 +13,7 @@
 		{{ row_open( 'div', null, 'bg' ) }}
 			<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
 				{% do action( 'maera/main/before', post.ID ) %}
-				{% include 'main.twig' %}
+				{% block main %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
 				{% do action( 'maera/main/after', post.ID ) %}
 				{% include 'sidebar.twig' %}
 			</div>
