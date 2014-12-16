@@ -1,12 +1,7 @@
 {#<?php#}
 <article {{ function( 'post_class' ) }} id="post-{{post.ID}}" itemscope itemtype="http://schema.org/Article">
     {% do action( 'maera/single/top', post.ID ) %}
-
-    <header class="entry-header">
-        <title itemprop="name">{{ post.title }}</title>
-        <h1 class="entry-title">{{ post.title|apply_filters( 'maera/title' ) }}</h1>
-    </header>
-
+    {% include 'entry-header.twig' %}
     {% include 'entry-meta.twig' %}
     <div class="entry-content" itemprop="text">
         {% do action( 'maera/single/pre_content', post.ID ) %}
