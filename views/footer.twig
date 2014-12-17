@@ -1,15 +1,14 @@
 {#<?php#}
-{% from 'container_open.html.twig' import container_open as container_open %}
-{% from 'container_close.html.twig' import container_close as container_close %}
+{% import 'grid_classes.html.twig' as grid %}
 
 {% do action( 'maera/wrap/after' ) %}
 
 {% do action( 'maera/footer/before', post.ID ) %}
 <footer class="page-footer">
 	{% do action( 'maera/footer/start', post.ID ) %}
-	{{ container_open( 'div', 'wrap-footer-section', 'wrap footer-section' ) }}
+	<div class="{{ grid.container() }} wrap footer-section" id="wrap-footer-section">
 		{% do action( 'maera/footer/content' ) %}
-	{{ container_close( 'div' ) }}
+	</div>
 	{% do action( 'maera/footer/end', post.ID ) %}
 </footer>
 {% do action( 'maera/footer/after', post.ID ) %}
