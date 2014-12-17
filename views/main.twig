@@ -1,0 +1,9 @@
+{% extends "base.twig" %}
+{% block main %}
+<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
+	{% if title %}<h1>{{ title }}</h1>{% endif %}
+	{% block content %}
+		{{ __( 'Sorry, no content', 'maera' ) }}
+	{% endblock %}
+</main><!-- /.main -->
+{% endblock %}
