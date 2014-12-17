@@ -1,4 +1,3 @@
-{% import 'grid_classes.html.twig' as grid %}
 {% macro row_open(element, id, extra_classes, properties) %}
-	<{{ element|default('div') }} class="{{ grid.row() }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
+	<{{ element|default('div') }} class="row{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>
 {% endmacro %}
