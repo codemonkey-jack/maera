@@ -1,11 +1,10 @@
-{% import 'grid_classes.html.twig' as grid %}
 {% macro column_classes(sizes) %}
 	{% if sizes is iterable %}
 		{% for size in sizes %}
-			{% if size.mobile %}{{ grid.column() }}-xs-{{ size.mobile }}{% endif %}
-			{% if size.tablet %}{{ grid.column() }}-sm-{{ size.tablet }}{% endif %}
-			{% if size.medium %}{{ grid.column() }}-md-{{ size.medium }}{% endif %}
-			{% if size.large %}{{ grid.column() }}-lg-{{ size.large }}{% endif %}
+			{% if size.mobile %}column column-xs-{{ size.mobile }}{% endif %}
+			{% if size.tablet %}column column-sm-{{ size.tablet }}{% endif %}
+			{% if size.medium %}column column-md-{{ size.medium }}{% endif %}
+			{% if size.large %}column column-lg-{{ size.large }}{% endif %}
 		{% endfor %}
 	{% endif %}
 {% endmacro %}
