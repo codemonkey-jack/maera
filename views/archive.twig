@@ -1,0 +1,16 @@
+{% extends "main.twig" %}
+{% block content %}
+
+<div class="content-wrapper">
+	{% for post in posts %}
+		{% include ['content-'~post.post_type~'.twig', 'content.twig'] %}
+		{{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+		<div class="clearfix"></div>
+		{# If comments are open or we have at least one comment, load up the comment template #}
+		{% if function('comments_open') or function('get_comments_number', post.ID) > 0 %}
+			{{ function('comments_template') }}
+		{% endif %}
+	{% endfor %}
+</div>
+
+{% endblock %}
