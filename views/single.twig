@@ -3,7 +3,7 @@
 
 <div class="content-wrapper">
     {% for post in posts %}
-        {% include 'content-single.twig' %}
+        {% include ['content-single-'~post.post_type~'.twig', 'content-single.twig'] %}
         {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
         <div class="clearfix"></div>
         {# If comments are open or we have at least one comment, load up the comment template #}

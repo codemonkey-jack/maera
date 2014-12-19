@@ -7,7 +7,7 @@
 
 		<article {{ function( 'post_class' ) }} id="content-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
 
-			{% include 'single-title.twig' %}
+			{% include ['single-'~post.post_type~'-title.twig', 'single-title.twig'] %}
 
 			{{ shell.clearfix }}
 			{{ bp_content }}
