@@ -165,6 +165,7 @@ class Maera_Timber extends Maera {
 
 			add_filter( 'maera/styles/caching', '__return_false' );
 			TimberLoader::CACHE_NONE;
+			Timber::$cache = false;
 
 			$_SERVER['QUICK_CACHE_ALLOWED'] = FALSE;
 			Maera::define( 'DONOTCACHEPAGE', TRUE );
