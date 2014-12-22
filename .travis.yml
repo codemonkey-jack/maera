@@ -41,11 +41,10 @@ before_script:
     - cd ..
     - mv $theme_slug $theme_dir
 
-    - cd $WP_DEVELOP_DIR/
-    - wp core config --dbname=testing --dbuser=wp --dbpass=securepswd --skip-check
-    - wp plugin install jetpack
-    - wp plugin install timber-library
-    - wp plugin install kirki
+    - cd $WP_DEVELOP_DIR/wp-content/plugins
+    - git clone https://github.com/Automattic/jetpack.git
+    - git clone https://github.com/jarednova/timber.git
+    - git clone https://github.com/presscodes/kirki.git
 
     - cd $theme_dir
 
