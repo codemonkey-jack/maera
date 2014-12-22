@@ -32,8 +32,8 @@ before_script:
 
     # Set up theme information.
     - theme_slug=$(basename $(pwd))
-    - theme_dir=$WP_DEVELOP_DIR/src/wp-content/themes/$theme_slug
-    - cd /tmp/wordpress/wp-content/plugins
+    - theme_dir=$WP_DEVELOP_DIR/wp-content/themes/$theme_slug
+    - cd /tmp/wordpress/wp-content/themes
     - mv $theme_slug $theme_dir
     # Hop into themes directory.
     - cd $theme_dir
