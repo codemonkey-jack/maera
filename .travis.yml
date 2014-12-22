@@ -29,6 +29,7 @@ before_script:
 
     # Set up theme information.
     - theme_slug=$(basename $(pwd))
+    - cd ..
     - mv $theme_slug /tmp/wordpress/src/wp-content/themes/$theme_slug
     - cd /tmp/wordpress/src/wp-content/themes/
 
