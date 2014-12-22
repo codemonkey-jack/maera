@@ -79,6 +79,7 @@ before_script:
 script:
     # Search for PHP syntax errors.
     - find . \( -name '*.php' \) -exec php -lf {} \;
+    - phpunit
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
