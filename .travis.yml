@@ -25,7 +25,7 @@ matrix:
     fast_finish: true
 
 before_install:
-    sudo pip install codecov
+    - sudo pip install codecov
 
 before_script:
     - mkdir -p build/logs
@@ -47,4 +47,4 @@ script:
     - phpunit
 
 after_success:
-    codecov
+    - codecov
