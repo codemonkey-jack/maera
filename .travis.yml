@@ -40,6 +40,10 @@ before_script:
     - theme_dir=$WP_DEVELOP_DIR/wp-content/themes/$theme_slug
     - cd ..
     - mv $theme_slug $theme_dir
+
+    - cd $WP_DEVELOP_DIR
+    - wp plugin install timber-library --activate
+
     - cd $theme_dir
 
 script:
