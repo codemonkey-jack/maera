@@ -35,6 +35,7 @@ before_script:
     - theme_dir=$WP_DEVELOP_DIR/wp-content/themes/$theme_slug
     - cd ..
     - mv $theme_slug $theme_dir
+    - cd $theme_dir
 
 script:
     # Search for PHP syntax errors.
