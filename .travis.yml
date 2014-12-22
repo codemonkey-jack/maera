@@ -41,8 +41,11 @@ before_script:
     - cd ..
     - mv $theme_slug $theme_dir
 
-    - cd $WP_DEVELOP_DIR
+    - cd $WP_DEVELOP_DIR/
+    - cd ..
+    - wp plugin install jetpack --activate
     - wp plugin install timber-library --activate
+    - wp plugin install kirki --activate
 
     - cd $theme_dir
 
