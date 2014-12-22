@@ -39,4 +39,4 @@ before_script:
 script:
     # Search for PHP syntax errors.
     - find . \( -name '*.php' \) -exec php -lf {} \;
-    - phpunit --coverage-clover=coverage.clover
+    - phpunit --debug .
