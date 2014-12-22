@@ -11,8 +11,8 @@ if ( !$_tests_dir ) $_tests_dir = '/tmp/wordpress-tests-lib';
 // }
 // tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
-require WP_PLUGIN_DIR . '/jetpack/jetpack.php'
-require WP_PLUGIN_DIR . '/timber/timber.php'
-require WP_PLUGIN_DIR . '/kirki/kirki.php'
+require WP_PLUGIN_DIR . '/jetpack/jetpack.php';
+require WP_PLUGIN_DIR . '/timber/timber.php';
+require WP_PLUGIN_DIR . '/kirki/kirki.php';
 
 require $_tests_dir . '/includes/bootstrap.php';
