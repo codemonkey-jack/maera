@@ -12,7 +12,7 @@
 				{% do action( 'maera/main/before', post.ID ) %}
 				{% block main %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
 				{% do action( 'maera/main/after', post.ID ) %}
-				{% include ['sidebar-'~post.post_type~'.twig', 'sidebar.twig'] %}
+				{% block sidebar %}{{ sidebar }}{% endblock %}
 			</div>
 			<div class="clearfix"></div>
 		</div>

@@ -11,7 +11,9 @@
 			</div>
 		</div>
 		<div id="sidebar" class="sidebar u-1 u-md-10-12 u-lg-3-12">
-			<div class="primary-side">{{ sidebar.primary }}</div>
+			<div class="primary-side">
+				{% block sidebar %}{{ widget_area.primary }}{% endblock %}
+			</div>
 		</div>
 		<div class="clearfix"></div>
 		{% do action( 'maera/content/after' ) %}
