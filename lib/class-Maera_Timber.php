@@ -87,64 +87,6 @@ class Maera_Timber extends Maera {
 
 	}
 
-	public static function twig_archive_templates() {
-
-		$templates = array();
-
-		if ( is_home() ) {
-			$templates[] = 'home.twig';
-		}
-
-		if ( is_author() ) { // Author
-
-			$templates[] = 'author-' . get_the_author_meta( 'user_nicename' ) . '.twig';
-			$templates[] = 'author-' . get_the_author_meta( 'ID' ) . '.twig';
-			$templates[] = 'author.twig';
-
-		} elseif ( is_category() ) { // Category
-
-			$cat = get_category( get_query_var( 'cat' ) );
-			$cat_id = $cat->cat_ID;
-			$cat_slug = $cat->slug;
-
-			$templates[] = 'category-' . $cat_slug . '.twig';
-			$templates[] = 'category-' . $cat_id . '.twig';
-			$templates[] = 'category.twig';
-
-		} elseif ( is_post_type_archive() ) {
-
-			$templates[] = 'archive-' . get_post_type() . '.twig';
-
-		} elseif ( is_tax() ) {
-
-			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-
-			$templates[] = 'taxonomy-' . $term->taxonomy . '-' . $term->slug . '.twig';
-			$templates[] = 'taxonomy-' . $term->taxonomy . '.twig';
-			$templates[] = 'taxonomy.twig';
-
-		} elseif ( is_date() ) {
-
-			$templates[] = 'date.twig';
-
-		} elseif ( is_tag() ) {
-
-			$tag = get_tag( get_query_var( 'tag' ) );
-			$tag_id = get_query_var( 'tag_id' );
-			$tag_slug = $tag->slug;
-
-			$templates[] = 'tag-' . $tag_slug . '.twig';
-			$templates[] = 'tag-' . $tag_id . '.twig';
-			$templates[] = 'tag.twig';
-
-		}
-
-		$templates[] = 'archive.twig';
-		$templates[] = 'index.twig';
-
-		return $templates;
-	}
-
 	/**
 	 * Apply global Timber customizations
 	 */

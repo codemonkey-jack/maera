@@ -38,6 +38,7 @@ class Maera {
 
 		$files = array(
 			'/lib/utils.php',
+			'/lib/class-Maera_Template.php',
 			'/lib/class-Maera_Shell.php',
 			'/lib/class-Maera_Timber.php',
 			'/lib/class-Maera_Init.php',

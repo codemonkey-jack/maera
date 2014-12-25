@@ -10,7 +10,7 @@
 			{% include ['single-'~post.post_type~'-title.twig', 'single-title.twig'] %}
 
 			{{ shell.clearfix }}
-			{{ bbp_content }}
+			{{ content }}
 			{{ shell.clearfix }}
 			{% do action( 'maera/page/after_content' ) %}
 
