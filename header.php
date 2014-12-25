@@ -5,8 +5,4 @@
  * @package maera
  */
 
-Timber::render(
-	'header.twig',
-	Maera_Template::context(),
-	apply_filters( 'maera/timber/cache', false )
-);
+Maera_Template::content( 'header.twig' );
