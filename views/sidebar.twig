@@ -1,7 +1,7 @@
 {# PRIMARY SIDEBAR #}
 {% extends "base.twig" %}
-{% block sidebar %}
+{% block sidebars %}
 <aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/primary' ) }}" role="complementary">
-	{{ widget_area.primary }}
+	{{ sidebar.primary }}
 </aside>
 {% endblock %}

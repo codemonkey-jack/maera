@@ -12,7 +12,7 @@
 				{% do action( 'maera/main/before', post.ID ) %}
 				{% block main %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
 				{% do action( 'maera/main/after', post.ID ) %}
-				{% block sidebar %}{{ sidebar }}{% endblock %}
+				{% block sidebar %}{% endblock %}
 			</div>
 			<div class="clearfix"></div>
 		</div>
