@@ -4,6 +4,8 @@
 # For use with the Maera WordPress theme
 # @link https://github.com/presscodes/maera
 
+sudo: false
+
 # Declare project language.
 # @link http://about.travis-ci.org/docs/user/languages/php/
 language: php
