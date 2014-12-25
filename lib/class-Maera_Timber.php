@@ -109,6 +109,7 @@ class Maera_Timber extends Maera {
 
 			$templates[] = 'category-' . $cat_slug . '.twig';
 			$templates[] = 'category-' . $cat_id . '.twig';
+			$templates[] = 'category.twig';
 
 		} elseif ( is_post_type_archive() ) {
 
@@ -134,6 +135,7 @@ class Maera_Timber extends Maera {
 
 			$templates[] = 'tag-' . $tag_slug . '.twig';
 			$templates[] = 'tag-' . $tag_id . '.twig';
+			$templates[] = 'tag.twig';
 
 		}
 
