@@ -5,4 +5,4 @@
  * @package maera
  */
 
-Maera_Template::content( 'footer.twig' );
+Maera_Template::main( 'footer.twig' );

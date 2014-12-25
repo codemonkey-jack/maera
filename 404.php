@@ -9,6 +9,6 @@
 
 Maera_Template::dependencies();
 
-Maera_Template::get_header();
-Maera_Template::content( '404.twig' );
-Maera_Template::get_footer();
+Maera_Template::header();
+Maera_Template::main( '404.twig' );
+Maera_Template::footer();
