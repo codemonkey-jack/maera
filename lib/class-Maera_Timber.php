@@ -47,6 +47,8 @@ class Maera_Timber extends Maera {
 		$context['site_logo']            = get_option( 'site_logo', false );
 		$context['content_width']        = $content_width;
 
+		$context['sidebar_template']     = maera_templates_sidebar();
+
 		wp_cache_set( 'context', $context, 'maera' );
 		return $context;
 

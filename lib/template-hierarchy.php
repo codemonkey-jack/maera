@@ -196,13 +196,15 @@ add_filter( 'maera/templates', 'maera_templates_author' );
 /**
  * Get the templates for sidebars
  */
-function maera_templates_sidebar( $templates = array() ) {
+function maera_templates_sidebar() {
+
+	$templates = array();
 
 	if ( is_singular() ) {
 
 		/**
 		 * Use post-specific sidebars per-post or post-type:
-		 *     sindebar-{post-ID}.twig
+		 *     sidebar-{post-ID}.twig
 		 *     sidebar-{post-type}.twig
 		 *     sidebar-single.twig
 		 */
@@ -268,4 +270,4 @@ function maera_templates_sidebar( $templates = array() ) {
 	return $templates;
 
 }
-// add_filter( 'maera/templates', 'maera_templates_sidebar' );
+add_filter( 'maera/sidebar_template', 'maera_templates_sidebar' );

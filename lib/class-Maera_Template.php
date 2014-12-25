@@ -127,15 +127,12 @@ class Maera_Template {
 	 */
 	public static function plugins_compatibility() {
 
-		// bbPress
-		if ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
-			return true;
-		}
+		$compatibility = false;
 
+		// bbPress
+		$compatibility = function_exists( 'is_bbpress' ) && is_bbpress() ? true : $compatibility;
 		// BuddyPress
-		if ( function_exists( 'is_buddypress' ) && is_buddypress() ) {
-			return true;
-		}
+		$compatibility = function_exists( 'is_buddypress' ) && is_buddypress() ? true : $compatibility;
 
 		return apply_filters( 'maera/template/plugin_compatibility', false );
 
