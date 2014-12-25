@@ -73,17 +73,27 @@ class Maera_Template {
 		$post = new TimberPost();
 		$templates = array();
 
-		if ( is_singular() ) {
-			$templates[] = 'single-' . $post->ID . '.twig';
-			$templates[] = 'single-' . $post->post_type . '.twig';
-			$templates[] = 'single.twig';
-		}
-
 		if ( is_search() ) {
 			$templates[] = 'search.twig';
 			$templates[] = 'archive.twig';
 			$templates[] = 'index.twig';
 		}
+
+		if ( is_page() ) {
+
+			$templates[] = 'page-' . $post->post_name . '.twig';
+			$templates[] = 'page-' . $post->slug . '.twig';
+			$templates[] = 'page-' . $post->ID . '.twig';
+			$templates[] = 'page.twig';
+
+		} else if ( is_singular() ) {
+
+			$templates[] = 'single-' . $post->ID . '.twig';
+			$templates[] = 'single-' . $post->post_type . '.twig';
+			$templates[] = 'single.twig';
+
+		}
+
 
 		return $templates;
 
