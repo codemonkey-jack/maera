@@ -27,10 +27,14 @@ class Maera_Template {
 	 * Get the content.
 	 * This will render the necessary twig template
 	 */
-	public static function content() {
+	public static function content( $templates = null ) {
+
+		if ( is_null( $templates ) ) {
+			$templates = self::twig_templates();
+		}
 
 		Timber::render(
-			self::twig_template(),
+			$templates,
 			self::context(),
 			apply_filters( 'maera/timber/cache', false )
 		);
@@ -68,7 +72,7 @@ class Maera_Template {
 	/**
 	 * Build the array of templates that will be used.
 	 */
-	public static function twig_template() {
+	public static function twig_templates() {
 
 		$post = new TimberPost();
 		$templates = array();
