@@ -1,17 +1,7 @@
 <?php
 
-$context = Maera_Timber::get_context();
-$post    = Timber::query_post();
+Maera_Template::dependencies();
 
-$context['post']       = $post;
-$context['bbp_content'] = maera_get_echo( 'the_content' );
-
-// Header
-get_header();
-
-// Content
-Timber::render(
-	'bbp.twig',
-	$context,
-	apply_filters( 'maera/timber/cache', false )
-);
+Maera_Template::get_header();
+Maera_Template::content( 'bbp.twig' );
+Maera_Template::get_footer();

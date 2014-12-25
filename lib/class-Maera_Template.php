@@ -60,6 +60,13 @@ class Maera_Template {
 		$context['post'] = $post;
 		$context['posts'] = Timber::get_posts();
 
+		// bbPress mods
+		if ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
+			$post = Timber::query_post();
+			$context['post'] = $post;
+			$context['bbp_content'] = maera_get_echo( 'the_content' );
+		}
+
 		if ( is_singular() ) {
 			$context['wp_title'] .= ' - ' . $post->title();
 		}
