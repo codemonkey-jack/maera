@@ -60,11 +60,11 @@ class Maera_Template {
 		$context['post'] = $post;
 		$context['posts'] = Timber::get_posts();
 
-		// bbPress mods
-		if ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
+		// Compatibility hack or plugins that change the content.
+		if ( self::plugins_compatibility() ) {
 			$post = Timber::query_post();
 			$context['post'] = $post;
-			$context['bbp_content'] = maera_get_echo( 'the_content' );
+			$context['content'] = maera_get_echo( 'the_content' );
 		}
 
 		if ( is_singular() ) {
@@ -207,6 +207,22 @@ class Maera_Template {
 
 		return $templates;
 
+
+	}
+
+	public static function plugins_compatibility() {
+
+		// bbPress
+		if ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
+			return true;
+		}
+
+		// BuddyPress
+		if ( function_exists( 'is_buddypress' ) && is_buddypress() ) {
+			return true;
+		}
+
+		return apply_filters( 'maera/template/plugin_compatibility', false );
 
 	}
 
