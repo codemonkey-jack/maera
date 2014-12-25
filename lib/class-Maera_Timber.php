@@ -38,8 +38,10 @@ class Maera_Timber extends Maera {
 		$context['thumbnail']['width']   = apply_filters( 'maera/image/width', 600 );
 		$context['thumbnail']['height']  = apply_filters( 'maera/image/height', 371 );
 		$context['menu']['primary']      = has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null;
+
 		$context['sidebar']['primary']   = apply_filters( 'maera/sidebar/primary', $sidebar_primary );
 		$context['sidebar']['footer']    = apply_filters( 'maera/sidebar/footer', $sidebar_footer );
+
 		$context['pagination']           = Timber::get_pagination();
 		$context['comment_form']         = TimberHelper::get_comment_form();
 		$context['site_logo']            = get_option( 'site_logo', false );
