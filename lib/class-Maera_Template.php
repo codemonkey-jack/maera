@@ -19,7 +19,7 @@ class Maera_Template {
 	/**
 	 * Get the header.
 	 */
-	public static function get_header() {
+	public static function header() {
 		get_header();
 	}
 
@@ -27,7 +27,7 @@ class Maera_Template {
 	 * Get the content.
 	 * This will render the necessary twig template
 	 */
-	public static function content( $templates = null ) {
+	public static function main( $templates = null ) {
 
 		if ( is_null( $templates ) ) {
 			$templates = self::twig_templates();
@@ -44,7 +44,7 @@ class Maera_Template {
 	/**
 	 * Get the footer
 	 */
-	public static function get_footer() {
+	public static function footer() {
 		get_footer();
 	}
 

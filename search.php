@@ -8,6 +8,6 @@
 
 Maera_Template::dependencies();
 
-Maera_Template::get_header();
-Maera_Template::content();
-Maera_Template::get_footer();
+Maera_Template::header();
+Maera_Template::main();
+Maera_Template::footer();
