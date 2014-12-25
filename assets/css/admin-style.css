@@ -528,3 +528,21 @@ div.maera-general-content p.big { font-size: 21px; background: #d54e21; color: #
 .maera-general-content .columns3 h2 { text-align: center; }
 .maera-general-content .columns3.third { padding-right: 0; }
 .maera-general-content .title-icon { font-size: 72px; width: 100%; line-height: 80px; height: 90px; color: #d54e21; }
+
+table.maera-docs-bordered {
+  width: 100%;
+}
+
+table.maera-docs-bordered td {
+  border-bottom: 1px solid #ccc;
+}
+
+table.maera-docs-bordered th {
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  vertical-align: top;
+}
+
+ul.maera-indented, ul.maera-indented ul {
+  margin-left: 3em;
+}

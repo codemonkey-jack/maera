@@ -10,6 +10,103 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 
 <hr>
 
+<h2>Template hierarchy on the Maera theme:</h2>
+<table class="maera-docs-bordered">
+	<tr>
+		<th>Author Archives</th>
+		<td>
+			<ul>
+				<li><code>author-{nicename}.twig</code></li>
+				<li><code>author-{ID}.twig</code></li>
+				<li><code>author.twig</code></li>
+				<li><code>archive.twig</code></li>
+				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th>Category Archives</th>
+		<td>
+			<ul>
+				<li><code>category-{slug}.twig</code></li>
+				<li><code>category-{ID}.twig</code></li>
+				<li><code>category.twig</code></li>
+				<li><code>archive.twig</code></li>
+				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th>Custom Post Type Archives</th>
+		<td>
+			<ul>
+				<li><code>archive-{post_type}.twig</code></li>
+				<li><code>archive.twig</code></li>
+				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th>Custom Taxonomy Archives</th>
+		<td>
+			<ul>
+				<li><code>taxonomy-{term}.twig</code></li>
+				<li><code>taxonomy-{taxonomy}.twig</code></li>
+				<li><code>archive.twig</code></li>
+				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th>Date Archives</th>
+		<td>
+			<ul>
+				<li><code>date.twig</code></li>
+				<li><code>archive.twig</code></li>
+				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th>Tag Archives</th>
+		<td>
+			<ul>
+				<li><code>tag-{slug}.twig</code></li>
+				<li><code>tag-{ID}.twig</code></li>
+				<li><code>tag.twig</code></li>
+				<li><code>archive.twig</code></li>
+				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th>Single Post</th>
+		<td>
+			<ul>
+				<li><code>single-post.twig</code></li>
+				<li><code>single.twig</code></li>
+				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th>Single Page</th>
+		<td>
+			<ul>
+				<li><code>page-{slug}.twig</code></li>
+				<li><code>page-{ID}.twig</code></li>
+				<li><code>page.twig</code></li>
+				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+<h2>The stucture of a rendered page</h2>
+<p>We divided the pages in sub-files in ordet to make them more modular.
+You can see the usual workflow on the diagram below:</p>
+<img src="<?php echo get_template_directory_uri(); ?>/assets/images/page-structure.png" style="max-width: 100%;">
+
 <h2>Post properties in twig files</h2>
 <pre>
 {{ post.ID }}                 // ID of the post
