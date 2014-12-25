@@ -77,49 +77,61 @@ class Maera_Template {
 
 		if ( is_archive() || is_home() ) {
 			$context['posts'] = Timber::query_posts( false, 'TimberPost' );
-			$context['title'] = __( 'Archive', 'maera' );
+			$context['title'] = self::context_archives_title();
 
-			if ( is_day() ) {
-				$context['title'] = sprintf( __( 'Day: %s', 'maera' ), '<span>' . get_the_date() . '</span>' );
-			} else if ( is_month() ) {
-				$context['title'] = sprintf( __( 'Month: %s', 'maera' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'maera' ) ) . '</span>' );
-			} else if ( is_year() ) {
-				$context['title'] = sprintf( __( 'Year: %s', 'maera' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'maera' ) ) . '</span>' );
-			} else if ( is_tag() ) {
-				$context['title'] = single_tag_title( '', false );
-			} else if ( is_category() ) {
-				$context['title'] = single_cat_title( '', false );
-			} else if ( is_post_type_archive() ) {
-				$context['title'] = post_type_archive_title( '', false );
-			} else if ( is_author() ) {
+			if ( is_author() ) {
 				$author = new TimberUser( $wp_query->query_vars['author'] );
 				$context['author'] = $author;
-				$context['title'] = sprintf( __( 'Author: %s', 'maera' ), '<span class="vcard">' . get_the_author() . '</span>' );
-			} else if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-				$context['title'] = __( 'Asides', 'maera' );
-			} else if ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-				$context['title'] = __( 'Galleries', 'maera' );
-			} else if ( is_tax( 'post_format', 'post-format-image' ) ) {
-				$context['title'] = __( 'Images', 'maera');
-			} else if ( is_tax( 'post_format', 'post-format-video' ) ) {
-				$context['title'] = __( 'Videos', 'maera' );
-			} else if ( is_tax( 'post_format', 'post-format-quote' ) ) {
-				$context['title'] = __( 'Quotes', 'maera' );
-			} else if ( is_tax( 'post_format', 'post-format-link' ) ) {
-				$context['title'] = __( 'Links', 'maera' );
-			} else if ( is_tax( 'post_format', 'post-format-status' ) ) {
-				$context['title'] = __( 'Statuses', 'maera' );
-			} else if ( is_tax( 'post_format', 'post-format-audio' ) ) {
-				$context['title'] = __( 'Audios', 'maera' );
-			} else if ( is_tax( 'post_format', 'post-format-chat' ) ) {
-				$context['title'] = __( 'Chats', 'maera' );
-			} else {
-				$context['title'] = __( 'Archives', 'maera' );
 			}
 
 		}
 
 		return $context;
+	}
+
+	/**
+	 * Determine the context that will be used by the content() method
+	 */
+	public static function context_archives_title() {
+
+		if ( is_day() ) {
+			return sprintf( __( 'Day: %s', 'maera' ), '<span>' . get_the_date() . '</span>' );
+		} elseif ( is_month() ) {
+			return sprintf( __( 'Month: %s', 'maera' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'maera' ) ) . '</span>' );
+		} elseif ( is_year() ) {
+			return sprintf( __( 'Year: %s', 'maera' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'maera' ) ) . '</span>' );
+		} elseif ( is_tag() ) {
+			return single_tag_title( '', false );
+		} elseif ( is_category() ) {
+			return single_cat_title( '', false );
+		} elseif ( is_post_type_archive() ) {
+			return post_type_archive_title( '', false );
+		} elseif ( is_author() ) {
+			return sprintf( __( 'Author: %s', 'maera' ), '<span class="vcard">' . get_the_author() . '</span>' );
+		} elseif ( is_tax( 'post_format' ) ) {
+			if ( is_tax( 'post_format', 'post-format-aside' ) ) {
+				return __( 'Asides', 'maera' );
+			} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
+				return __( 'Galleries', 'maera' );
+			} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
+				return __( 'Images', 'maera');
+			} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
+				return __( 'Videos', 'maera' );
+			} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
+				return __( 'Quotes', 'maera' );
+			} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
+				return __( 'Links', 'maera' );
+			} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
+				return __( 'Statuses', 'maera' );
+			} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
+				return __( 'Audios', 'maera' );
+			} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
+				return __( 'Chats', 'maera' );
+			}
+		} else {
+			return __( 'Archive', 'maera' );
+		}
+
 	}
 
 	/**
