@@ -65,7 +65,7 @@ get_header();
 
 // Content
 Timber::render(
-	Maera_Timber::twig_archive_templates(),
+	Maera_Template::twig_template(),
 	$data,
 	apply_filters( 'maera/timber/cache', false )
 );
