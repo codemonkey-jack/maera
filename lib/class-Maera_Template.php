@@ -49,13 +49,17 @@ class Maera_Template {
 	 */
 	public static function context() {
 
+		$context = Maera_Timber::get_context();
+		$post = new TimberPost();
+		$context['post'] = $post;
+		$context['posts'] = Timber::get_posts();
+
 		if ( is_singular() ) {
-
-			$context = Maera_Timber::get_context();
-			$post = new TimberPost();
-			$context['post'] = $post;
 			$context['wp_title'] .= ' - ' . $post->title();
+		}
 
+		if ( is_search() ) {
+			$context['title'] = __( 'Search results for ', 'maera' ) . get_search_query();
 		}
 
 		return $context;
@@ -73,6 +77,12 @@ class Maera_Template {
 			$templates[] = 'single-' . $post->ID . '.twig';
 			$templates[] = 'single-' . $post->post_type . '.twig';
 			$templates[] = 'single.twig';
+		}
+
+		if ( is_search() ) {
+			$templates[] = 'search.twig';
+			$templates[] = 'archive.twig';
+			$templates[] = 'index.twig';
 		}
 
 		return $templates;
