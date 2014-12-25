@@ -7,6 +7,6 @@
 
 Timber::render(
 	'footer.twig',
-	Maera_Timber::get_context(),
+	Maera_Template::context(),
 	apply_filters( 'maera/timber/cache', false )
 );
