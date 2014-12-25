@@ -30,7 +30,6 @@ class Maera_Template {
 	public static function main( $templates = null ) {
 
 		if ( is_null( $templates ) ) {
-			require_once locate_template( '/lib/template-hierarchy.php' );
 			$templates = apply_filters( 'maera/templates', array( 'index.twig' ) );
 		}
 
