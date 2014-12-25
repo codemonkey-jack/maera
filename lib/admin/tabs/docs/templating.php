@@ -12,6 +12,10 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 
 <h2>Template hierarchy on the Maera theme:</h2>
 <table class="maera-docs-bordered">
+	<th>
+		<td>Content Template</td>
+		<td>Sidebar Template</td>
+	</th>
 	<tr>
 		<th>Author Archives</th>
 		<td>
@@ -21,6 +25,11 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 				<li><code>author.twig</code></li>
 				<li><code>archive.twig</code></li>
 				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li><code>sidebar.twig</code></li>
 			</ul>
 		</td>
 	</tr>
@@ -35,6 +44,13 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 				<li><code>index.twig</code></li>
 			</ul>
 		</td>
+		<td>
+			<ul>
+				<li><code>sidebar-category-{term_id}.twig</code></li>
+				<li><code>sidebar-category.twig</code></li>
+				<li><code>sidebar.twig</code></li>
+			</ul>
+		</td>
 	</tr>
 	<tr>
 		<th>Custom Post Type Archives</th>
@@ -43,6 +59,12 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 				<li><code>archive-{post_type}.twig</code></li>
 				<li><code>archive.twig</code></li>
 				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li><code>sidebar-archive-{post_type}.twig</code></li>
+				<li><code>sidebar.twig</code></li>
 			</ul>
 		</td>
 	</tr>
@@ -56,6 +78,14 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 				<li><code>index.twig</code></li>
 			</ul>
 		</td>
+		<td>
+			<ul>
+				<li><code>sidebar-term-{term_id}.twig</code></li>
+				<li><code>sidebar-taxonomy-{taxonomy}.twig</code></li>
+				<li><code>sidebar-taxonomy.twig</code></li>
+				<li><code>sidebar.twig</code></li>
+			</ul>
+		</td>
 	</tr>
 	<tr>
 		<th>Date Archives</th>
@@ -64,6 +94,12 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 				<li><code>date.twig</code></li>
 				<li><code>archive.twig</code></li>
 				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li><code>sidebar-date.twig</code></li>
+				<li><code>sidebar.twig</code></li>
 			</ul>
 		</td>
 	</tr>
@@ -78,6 +114,13 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 				<li><code>index.twig</code></li>
 			</ul>
 		</td>
+		<td>
+			<ul>
+				<li><code>sidebar-tag-{term_id}.twig</code></li>
+				<li><code>sidebar-tag.twig</code></li>
+				<li><code>sidebar.twig</code></li>
+			</ul>
+		</td>
 	</tr>
 	<tr>
 		<th>Single Post</th>
@@ -86,6 +129,14 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 				<li><code>single-post.twig</code></li>
 				<li><code>single.twig</code></li>
 				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li><code>sidebar-{post-ID}.twig</code></li>
+				<li><code>sidebar-post.twig</code></li>
+				<li><code>sidebar-single.twig</code></li>
+				<li><code>sidebar.twig</code></li>
 			</ul>
 		</td>
 	</tr>
@@ -97,6 +148,14 @@ To add your own templates you can create a <a href="http://codex.wordpress.org/C
 				<li><code>page-{ID}.twig</code></li>
 				<li><code>page.twig</code></li>
 				<li><code>index.twig</code></li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li><code>sidebar-{post-ID}.twig</code></li>
+				<li><code>sidebar-page.twig</code></li>
+				<li><code>sidebar-single.twig</code></li>
+				<li><code>sidebar.twig</code></li>
 			</ul>
 		</td>
 	</tr>

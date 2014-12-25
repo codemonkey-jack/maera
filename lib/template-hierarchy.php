@@ -262,6 +262,14 @@ function maera_templates_sidebar() {
 		 */
 		$templates[] = 'sidebar-' . $wp_query->query['post_type'] . '.twig';
 
+	} else if ( is_date() ) {
+
+		/**
+		 * If this is a date archive:
+		 *     sidebar-date.twig
+		 */
+		$templates[] = 'sidebar-date.twig';
+
 	}
 
 	// Fallback to the default sidebar.twig file
