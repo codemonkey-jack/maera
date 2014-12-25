@@ -3,7 +3,7 @@
 /**
  * Archives
  */
-function maera_templates_archives( $templates ) {
+function maera_templates_archives( $templates = array() ) {
 
 	if ( is_archive() || is_home() || is_search() ) {
 
@@ -20,7 +20,7 @@ add_filter( 'maera/templates', 'maera_templates_archives', 100 );
 /**
  * Page templates
  */
-function maera_templates_page( $templates ) {
+function maera_templates_page( $templates = array() ) {
 
 	if ( is_page() ) {
 
@@ -41,7 +41,7 @@ add_filter( 'maera/templates', 'maera_templates_page' );
 /**
  * Singular templates
  */
-function maera_templates_singular( $templates ) {
+function maera_templates_singular( $templates = array() ) {
 
 	if ( is_singular() ) {
 
@@ -61,7 +61,7 @@ add_filter( 'maera/templates', 'maera_templates_singular' );
 /**
  * Home templates
  */
-function maera_templates_home( $templates ) {
+function maera_templates_home( $templates = array() ) {
 
 	if ( is_home() ) {
 		$templates[] = 'home.twig';
@@ -75,7 +75,7 @@ add_filter( 'maera/templates', 'maera_templates_home' );
 /**
  * Search templates
  */
-function maera_templates_search( $templates ) {
+function maera_templates_search( $templates = array() ) {
 
 	if ( is_search() ) {
 		$templates[] = 'search.twig';
@@ -88,7 +88,7 @@ add_filter( 'maera/templates', 'maera_templates_search' );
 /**
  * Category templates
  */
-function maera_templates_category( $templates ) {
+function maera_templates_category( $templates = array() ) {
 
 	if ( is_category() ) {
 
@@ -110,7 +110,7 @@ add_filter( 'maera/templates', 'maera_templates_category' );
 /**
  * Taxonomy templates
  */
-function maera_template_taxonomy( $templates ) {
+function maera_template_taxonomy( $templates = array() ) {
 
 	if ( is_tax() ) {
 
@@ -130,7 +130,7 @@ add_filter( 'maera/templates', 'maera_template_taxonomy' );
 /**
  * Tag templates
  */
-function maera_template_tax( $templates ) {
+function maera_template_tax( $templates = array() ) {
 
  	if ( is_tag() ) {
 
@@ -152,7 +152,7 @@ add_filter( 'maera/templates', 'maera_template_tax' );
 /**
  * Date templates
  */
-function maera_template_date( $templates ) {
+function maera_template_date( $templates = array() ) {
 
 	if ( is_date() ) {
 		$templates[] = 'date.twig';
@@ -166,7 +166,7 @@ add_filter( 'maera/templates', 'maera_template_date' );
 /**
  * Custom post type archive templates
  */
-function maera_templates_cpt_archive( $templates ) {
+function maera_templates_cpt_archive( $templates = array() ) {
 
 	if ( is_post_type_archive() ) {
 		$templates[] = 'archive-' . get_post_type() . '.twig';
@@ -180,7 +180,7 @@ add_filter( 'maera/templates', 'maera_templates_cpt_archive' );
 /**
  * Get the templates for authors
  */
-function maera_templates_author( $templates ) {
+function maera_templates_author( $templates = array() ) {
 
 	if ( is_author() ) {
 		$templates[] = 'author-' . get_the_author_meta( 'user_nicename' ) . '.twig';
@@ -196,17 +196,19 @@ add_filter( 'maera/templates', 'maera_templates_author' );
 /**
  * Get the templates for sidebars
  */
-function maera_templates_sidebar( $templates ) {
+function maera_templates_sidebar() {
+
+	$templates = array();
 
 	if ( is_singular() ) {
 
 		/**
 		 * Use post-specific sidebars per-post or post-type:
-		 *     sindebar-{post-ID}.twig
+		 *     sidebar-{post-ID}.twig
 		 *     sidebar-{post-type}.twig
 		 *     sidebar-single.twig
 		 */
-		$templates[] = 'sidebar-' . the_ID() . '.twig';
+		$templates[] = 'sidebar-' . get_the_ID() . '.twig';
 		$templates[] = 'sidebar-' . get_post_type() . '.twig';
 		$templates[] = 'sidebar-single.twig';
 
@@ -268,4 +270,4 @@ function maera_templates_sidebar( $templates ) {
 	return $templates;
 
 }
-// add_filter( 'maera/templates', 'maera_templates_sidebar' );
+add_filter( 'maera/sidebar_template', 'maera_templates_sidebar' );

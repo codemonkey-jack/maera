@@ -37,6 +37,7 @@ class Maera {
 	function requires() {
 
 		$files = array(
+			'/lib/template-hierarchy.php',
 			'/lib/utils.php',
 			'/lib/class-Maera_Template.php',
 			'/lib/class-Maera_Shell.php',

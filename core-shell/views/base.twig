@@ -12,7 +12,7 @@
 		</div>
 		<div id="sidebar" class="sidebar u-1 u-md-10-12 u-lg-3-12">
 			<div class="primary-side">
-				{% block sidebar %}{% endblock %}
+				{% include 'sidebar.twig'|apply_filters('maera/sidebar_template') %}
 			</div>
 		</div>
 		<div class="clearfix"></div>
