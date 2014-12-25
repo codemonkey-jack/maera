@@ -53,6 +53,8 @@ class Maera_Template {
 	 */
 	public static function context() {
 
+		global $wp_query;
+
 		$context = Maera_Timber::get_context();
 		$post = new TimberPost();
 		$context['post'] = $post;
@@ -83,6 +85,8 @@ class Maera_Template {
 			} else if ( is_post_type_archive() ) {
 				$context['title'] = post_type_archive_title( '', false );
 			} else if ( is_author() ) {
+				$author = new TimberUser( $wp_query->query_vars['author'] );
+				$context['author'] = $author;
 				$context['title'] = sprintf( __( 'Author: %s', 'maera' ), '<span class="vcard">' . get_the_author() . '</span>' );
 			} else if ( is_tax( 'post_format', 'post-format-aside' ) ) {
 				$context['title'] = __( 'Asides', 'maera' );
