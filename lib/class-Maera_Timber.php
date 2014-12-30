@@ -23,7 +23,7 @@ class Maera_Timber extends Maera {
 		global $content_width;
 		$caching = apply_filters( 'maera/styles/caching', false );
 
-		if ( $caching ) {
+		if ( ! $caching ) {
 			$cache = wp_cache_get( 'context', 'maera' );
 			if ( $cache ) {
 				return $cache;
@@ -52,7 +52,7 @@ class Maera_Timber extends Maera {
 
 		$context['sidebar_template']     = maera_templates_sidebar();
 
-		if ( $caching ) {
+		if ( ! $caching ) {
 			wp_cache_set( 'context', $context, 'maera' );
 		}
 
