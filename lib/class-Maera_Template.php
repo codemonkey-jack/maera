@@ -27,15 +27,19 @@ class Maera_Template {
 	 * Get the content.
 	 * This will render the necessary twig template
 	 */
-	public static function main( $templates = null ) {
+	public static function main( $templates = null, $context = null ) {
 
 		if ( is_null( $templates ) ) {
 			$templates = apply_filters( 'maera/templates', array( 'index.twig' ) );
 		}
 
+		if ( is_null( $context ) ) {
+			$context = self::context();
+		}
+
 		Timber::render(
 			$templates,
-			self::context(),
+			$context,
 			apply_filters( 'maera/timber/cache', false )
 		);
 
@@ -62,8 +66,6 @@ class Maera_Template {
 
 		// Compatibility hack or plugins that change the content.
 		if ( self::plugins_compatibility() ) {
-			$post = Timber::query_post();
-			$context['post'] = $post;
 			$context['content'] = maera_get_echo( 'the_content' );
 		}
 
@@ -146,7 +148,7 @@ class Maera_Template {
 		// BuddyPress
 		$compatibility = function_exists( 'is_buddypress' ) && is_buddypress() ? true : $compatibility;
 
-		return apply_filters( 'maera/template/plugin_compatibility', false );
+		return apply_filters( 'maera/template/plugin_compatibility', $compatibility );
 
 	}
 

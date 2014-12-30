@@ -21,10 +21,13 @@ class Maera_Timber extends Maera {
 	public static function get_context() {
 
 		global $content_width;
+		$caching = apply_filters( 'maera/styles/caching', false );
 
-		$cache = wp_cache_get( 'context', 'maera' );
-		if ( $cache ) {
-			return $cache;
+		if ( ! $caching ) {
+			$cache = wp_cache_get( 'context', 'maera' );
+			if ( $cache ) {
+				return $cache;
+			}
 		}
 
 		$context = Timber::get_context();
@@ -49,7 +52,10 @@ class Maera_Timber extends Maera {
 
 		$context['sidebar_template']     = maera_templates_sidebar();
 
-		wp_cache_set( 'context', $context, 'maera' );
+		if ( ! $caching ) {
+			wp_cache_set( 'context', $context, 'maera' );
+		}
+
 		return $context;
 
 	}
