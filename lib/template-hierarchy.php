@@ -43,7 +43,7 @@ add_filter( 'maera/templates', 'maera_templates_page' );
  */
 function maera_templates_singular( $templates = array() ) {
 
-	if ( is_singular() ) {
+	if ( is_single() || is_singular( get_post_type() ) ) {
 
 		$post = new TimberPost();
 
