@@ -5,9 +5,6 @@
     {% for post in posts %}
         {% include 'content-page.twig' %}
         {{ function( 'wp_link_pages', { 'before': '<div class="page-links">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
-        {% if function('comments_open') or post.comments|length > 0 %}
-            {{ function('comments_template') }}
-        {% endif %}
     {% endfor %}
 </div>
 {% endblock %}
