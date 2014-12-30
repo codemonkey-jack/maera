@@ -198,6 +198,7 @@ add_filter( 'maera/templates', 'maera_templates_author' );
  */
 function maera_templates_sidebar() {
 
+	global $wp_query;
 	$templates = array();
 
 	if ( is_singular() ) {
