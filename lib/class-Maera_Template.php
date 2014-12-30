@@ -66,7 +66,6 @@ class Maera_Template {
 
 		// Compatibility hack or plugins that change the content.
 		if ( self::plugins_compatibility() ) {
-			$context['post'] = $post;
 			$context['content'] = maera_get_echo( 'the_content' );
 		}
 
