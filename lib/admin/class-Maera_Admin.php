@@ -54,10 +54,15 @@ class Maera_Admin {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 
+		wp_register_script( 'edd_ri_script', get_template_directory_uri() . '/assets/js/edd-ri.js', array( 'jquery' ) );
+		wp_enqueue_script( 'edd_ri_script' );
+
 		wp_register_style( 'maera-admin-css', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
 		wp_enqueue_style( 'maera-admin-css' );
 
 		wp_enqueue_style( 'dashicons' );
+
+		add_thickbox();
 
 	}
 
