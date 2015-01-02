@@ -7,6 +7,5 @@
 Maera_Template::main( array(
 	'content-' . $post->ID . '.twig',
 	'content-' . $post->post_type . '.twig',
-	'content-single.twig',
 	'content.twig'
 ));
