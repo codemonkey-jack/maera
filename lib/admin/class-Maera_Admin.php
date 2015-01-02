@@ -12,7 +12,14 @@ class Maera_Admin {
 
 		// Load only if we are viewing the admin page
 		if ( is_admin() && isset ( $_GET['page'] ) && 'theme_options' == $_GET['page'] ) {
+
 			add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
+
+			// load the remote installer
+			require_once( locate_template( '/lib/admin/remote-installer/class-EDD_RI_Client.php' ) );
+			global $maera_remote_installer;
+			$maera_remote_installer = new EDD_RI_Client( 'http://press.codes' );
+
 		}
 
 		add_action( 'admin_init', array( $this, 'register_settings') );

@@ -12,8 +12,12 @@ class EDD_RI_Client {
 		add_action( 'wp_ajax_edd_ri_install', array( $this, 'install') );
 
 		include( dirname( __FILE__ ) . '/class-EDD_RI_Client_Admin.php' );
-		$admin_page = new EDD_RI_Client_Admin( $this->api_url );
+		$this->admin_page();
 
+	}
+
+	function admin_page() {
+		return new EDD_RI_Client_Admin( $this->api_url );
 	}
 
 	/**
