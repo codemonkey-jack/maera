@@ -86,7 +86,7 @@ function maera_templates_home( $templates = array() ) {
 		$templates[] = 'front-page.twig';
 
 		// Check if we're displaying a static page on the front.
-		if ( 'page' == get_option( 'show_on_front' ) {
+		if ( 'page' == get_option( 'show_on_front' ) ) {
 			if ( is_page() ) {
 
 				$post = new TimberPost();
