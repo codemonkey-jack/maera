@@ -546,3 +546,19 @@ table.maera-docs-bordered th {
 ul.maera-indented, ul.maera-indented ul {
   margin-left: 3em;
 }
+
+.edd-ri-item {
+  width: 32%;
+  margin-right: 1%;
+  float: left;
+  min-width: 250px;
+}
+
+.metabox-holder .edd-ri-item h3 {
+  font-size: 16px;
+}
+
+.edd-ri-item img {
+  width: 100%;
+  height: auto;
+}
