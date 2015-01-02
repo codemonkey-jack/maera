@@ -30,7 +30,7 @@ class Maera_Template {
 	public static function main( $templates = null, $context = null ) {
 
 		if ( is_null( $templates ) ) {
-			$templates = apply_filters( 'maera/templates', array( 'index.twig' ) );
+			$templates = apply_filters( 'maera/templates', array() );
 		}
 
 		if ( is_null( $context ) ) {

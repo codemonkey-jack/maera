@@ -1,21 +1,40 @@
 <?php
 
 /**
- * Archives
+ * Always fallback to index.twix.
+ * We're using a priority of 999 to make that load last.
+ */
+function maera_templates_index( $templates = array() ) {
+	$templates[] = 'index.twig';
+}
+add_filter( 'maera/templates', 'maera_templates_index', 999 );
+
+/**
+ * Archives.
+ * Fallback to archive.twig (use a priority of 100)
  */
 function maera_templates_archives( $templates = array() ) {
 
-	if ( is_archive() || is_home() || is_search() ) {
-
+	if ( is_archive() ) {
 		$templates[] = 'archive.twig';
-		$templates[] = 'index.twig';
-
 	}
 
 	return $templates;
 
 }
 add_filter( 'maera/templates', 'maera_templates_archives', 100 );
+
+/**
+ * The 404 template
+ */
+function maera_templates_404( $templates = array() ) {
+
+	if ( is_404() ) {
+		$templates = '404.twig';
+	}
+
+}
+add_filter( 'maera/templates', 'maera_templates_404' );
 
 /**
  * Page templates
@@ -62,6 +81,24 @@ add_filter( 'maera/templates', 'maera_templates_singular' );
  * Home templates
  */
 function maera_templates_home( $templates = array() ) {
+
+	if ( is_front_page() ) {
+		$templates[] = 'front-page.twig';
+
+		// Check if we're displaying a static page on the front.
+		if ( 'page' == get_option( 'show_on_front' ) {
+			if ( is_page() ) {
+
+				$post = new TimberPost();
+
+				$templates[] = 'page-' . $post->slug . '.twig';
+				$templates[] = 'page-' . $post->ID . '.twig';
+				$templates[] = 'page.twig';
+
+			}
+		}
+
+	}
 
 	if ( is_home() ) {
 		$templates[] = 'home.twig';
@@ -186,6 +223,7 @@ function maera_templates_author( $templates = array() ) {
 		$templates[] = 'author-' . get_the_author_meta( 'user_nicename' ) . '.twig';
 		$templates[] = 'author-' . get_the_author_meta( 'ID' ) . '.twig';
 		$templates[] = 'author.twig';
+		// archive.twig is added on the maera_templates_archives function.
 	}
 
 	return $templates;
