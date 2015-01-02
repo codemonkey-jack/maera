@@ -1,15 +1,6 @@
 <?php
 
 /**
- * Always fallback to index.twix.
- * We're using a priority of 999 to make that load last.
- */
-function maera_templates_index( $templates = array() ) {
-	$templates[] = 'index.twig';
-}
-add_filter( 'maera/templates', 'maera_templates_index', 999 );
-
-/**
  * Archives.
  * Fallback to archive.twig (use a priority of 100)
  */
@@ -18,6 +9,8 @@ function maera_templates_archives( $templates = array() ) {
 	if ( is_archive() ) {
 		$templates[] = 'archive.twig';
 	}
+
+	$templates[] = 'index.twig';
 
 	return $templates;
 
@@ -32,6 +25,8 @@ function maera_templates_404( $templates = array() ) {
 	if ( is_404() ) {
 		$templates = '404.twig';
 	}
+
+	$templates[] = 'index.twig';
 
 }
 add_filter( 'maera/templates', 'maera_templates_404' );
@@ -52,6 +47,8 @@ function maera_templates_page( $templates = array() ) {
 
 	}
 
+	$templates[] = 'index.twig';
+
 	return $templates;
 
 }
@@ -71,6 +68,8 @@ function maera_templates_singular( $templates = array() ) {
 		$templates[] = 'single.twig';
 
 	}
+
+	$templates[] = 'index.twig';
 
 	return $templates;
 
@@ -104,6 +103,8 @@ function maera_templates_home( $templates = array() ) {
 		$templates[] = 'home.twig';
 	}
 
+	$templates[] = 'index.twig';
+
 	return $templates;
 
 }
@@ -117,6 +118,8 @@ function maera_templates_search( $templates = array() ) {
 	if ( is_search() ) {
 		$templates[] = 'search.twig';
 	}
+
+	$templates[] = 'index.twig';
 
 	return $templates;
 }
@@ -139,6 +142,8 @@ function maera_templates_category( $templates = array() ) {
 
 	}
 
+	$templates[] = 'index.twig';
+
 	return $templates;
 
 }
@@ -158,6 +163,8 @@ function maera_template_taxonomy( $templates = array() ) {
 		$templates[] = 'taxonomy.twig';
 
 	}
+
+	$templates[] = 'index.twig';
 
 	return $templates;
 
@@ -181,6 +188,8 @@ function maera_template_tax( $templates = array() ) {
 
 	}
 
+	$templates[] = 'index.twig';
+
 	return $templates;
 
 }
@@ -195,6 +204,8 @@ function maera_template_date( $templates = array() ) {
 		$templates[] = 'date.twig';
 	}
 
+	$templates[] = 'index.twig';
+
 	return $templates;
 
 }
@@ -208,6 +219,8 @@ function maera_templates_cpt_archive( $templates = array() ) {
 	if ( is_post_type_archive() ) {
 		$templates[] = 'archive-' . get_post_type() . '.twig';
 	}
+
+	$templates[] = 'index.twig';
 
 	return $templates;
 
@@ -225,6 +238,8 @@ function maera_templates_author( $templates = array() ) {
 		$templates[] = 'author.twig';
 		// archive.twig is added on the maera_templates_archives function.
 	}
+
+	$templates[] = 'index.twig';
 
 	return $templates;
 
