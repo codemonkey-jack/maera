@@ -12,17 +12,6 @@ class EDD_RI_Client_Admin extends EDD_RI_Client {
 
 		$this->api_url = trailingslashit( $store_url );
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );
-
-	}
-
-	public function register_scripts() {
-
-		wp_register_script( 'edd_ri_script', get_template_directory_uri() . '/assets/js/edd-ri.js', array( 'jquery' ) );
-		wp_enqueue_script( 'edd_ri_script' );
-
-		add_thickbox();
-
 	}
 
 	function get_downloads() {

@@ -1,5 +1,7 @@
 <?php
 
+add_thickbox();
+
 require_once( locate_template( '/lib/admin/remote-installer/class-EDD_RI_Client.php' ) );
 require_once( locate_template( '/lib/admin/remote-installer/class-EDD_RI_Client_Admin.php' ) );
 
