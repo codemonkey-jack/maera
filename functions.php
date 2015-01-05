@@ -28,6 +28,7 @@ class Maera {
 		$maera_timber = new Maera_Timber();
 		$maera_init   = new Maera_Init();
 		$maera_styles = new Maera_Styles();
+		$maera_dev    = new Maera_Development();
 
 	}
 
@@ -47,6 +48,7 @@ class Maera {
 			'/lib/widgets.php',
 			'/lib/admin/class-Maera_Admin.php',
 			'/lib/updater/updater.php',
+			'/lib/class-Maera_Development.php'
 		);
 
 		foreach ( $files as $file ) {
