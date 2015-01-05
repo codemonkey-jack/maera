@@ -14,6 +14,11 @@ function is_element_empty( $element ) {
  */
 function maera_get_echo( $function, $args = '' ) {
 
+	// Early exit if function does not exist
+	if ( ! function_exists( $function ) ) {
+		return;
+	}
+
 	ob_start();
 	$function( $args );
 	$get_echo = ob_get_clean();
