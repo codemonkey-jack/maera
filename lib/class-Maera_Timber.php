@@ -24,27 +24,29 @@ class Maera_Timber extends Maera {
 
 		$context = Timber::get_context();
 
-		$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
-		$sidebar_footer    = Timber::get_widgets( 'sidebar_footer' );
+		$context_mods = array(
+			'theme_mods'       => get_theme_mods(),
+			'site_options'     => wp_load_alloptions(),
+			'teaser_mode'      => apply_filters( 'maera/teaser/mode', 'excerpt' ),
+			'thumbnail'        => array(
+				'width'        => apply_filters( 'maera/image/width', 600 ),
+				'height'       => apply_filters( 'maera/image/height', 371 ),
+			),
+			'menu'             => array(
+				'primary'      => has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null,
+			),
+			'sidebar'          => array(
+				'primary'      => apply_filters( 'maera/sidebar/primary', Timber::get_widgets( 'sidebar_primary' ) ),
+				'footer'       => apply_filters( 'maera/sidebar/footer', Timber::get_widgets( 'sidebar_footer' ) ),
+			),
+			'pagination'       => Timber::get_pagination(),
+			'comment_form'     => TimberHelper::get_comment_form(),
+			'site_logo'        => get_option( 'site_logo', false ),
+			'content_width'    => $content_width,
+			'sidebar_template' => maera_templates_sidebar(),
+		);
 
-		$context['theme_mods']           = get_theme_mods();
-		$context['site_options']         = wp_load_alloptions();
-		$context['teaser_mode']          = apply_filters( 'maera/teaser/mode', 'excerpt' );
-		$context['thumbnail']['width']   = apply_filters( 'maera/image/width', 600 );
-		$context['thumbnail']['height']  = apply_filters( 'maera/image/height', 371 );
-		$context['menu']['primary']      = has_nav_menu( 'primary_navigation' ) ? new TimberMenu( 'primary_navigation' ) : null;
-
-		$context['sidebar']['primary']   = apply_filters( 'maera/sidebar/primary', $sidebar_primary );
-		$context['sidebar']['footer']    = apply_filters( 'maera/sidebar/footer', $sidebar_footer );
-
-		$context['pagination']           = Timber::get_pagination();
-		$context['comment_form']         = TimberHelper::get_comment_form();
-		$context['site_logo']            = get_option( 'site_logo', false );
-		$context['content_width']        = $content_width;
-
-		$context['sidebar_template']     = maera_templates_sidebar();
-
-		return $context;
+		return array_merge( $context, $context_mods );
 
 	}
 
