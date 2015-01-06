@@ -57,27 +57,26 @@ class Maera_Timber extends Maera {
 	public static function twig_locations() {
 
 		$locations = array();
+		$location_roots = array();
 
 		// Are we using a child theme?
 		// If yes, then first look in there.
 		if ( is_child_theme() ) {
-			$locations[] = get_stylesheet_directory() . '/macros';
-			$locations[] = get_stylesheet_directory() . '/views/macros';
-			$locations[] = get_stylesheet_directory() . '/views';
-			$locations[] = get_stylesheet_directory();
+			$location_roots[] = get_stylesheet_directory();
 		}
-
 		// Active shell
-		$locations[] = MAERA_SHELL_PATH . '/macros';
-		$locations[] = MAERA_SHELL_PATH . '/views/macros';
-		$locations[] = MAERA_SHELL_PATH . '/views';
-		$locations[] = MAERA_SHELL_PATH;
-
+		$location_roots[] = MAERA_SHELL_PATH;
 		// Core twig locations.
-		$locations[] = get_template_directory() . '/macros';
-		$locations[] = get_template_directory() . '/views/macros';
-		$locations[] = get_template_directory() . '/views';
-		$locations[] = get_template_directory();
+		$location_roots[] = get_template_directory();
+		// Allow modifying they location roots using a filter
+		$location_roots = apply_filters( 'maera/timber/locations/roots', $location_roots );
+
+		foreach ( $location_roots as $location_root ) {
+			$locations[] = $location_root . '/macros';
+			$locations[] = $location_root . '/views/macros';
+			$locations[] = $location_root . '/views';
+			$locations[] = $location_root;
+		}
 
 		return apply_filters( 'maera/timber/locations', $locations );
 
