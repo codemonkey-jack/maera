@@ -20,7 +20,6 @@ class Maera {
 		add_action( 'init', array( $this, 'content_width' ) );
         add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
-		add_action( 'customize_save_after', array( $this, 'reset_style_cache_on_customizer_save' ) );
 
 		global $maera_shell;
 		$maera_shell = new Maera_Shell();
@@ -29,6 +28,7 @@ class Maera {
 		$maera_init   = new Maera_Init();
 		$maera_styles = new Maera_Styles();
 		$maera_dev    = new Maera_Development();
+		$maera_cache  = new Maera_Caching();
 
 	}
 
@@ -48,7 +48,8 @@ class Maera {
 			'/lib/widgets.php',
 			'/lib/admin/class-Maera_Admin.php',
 			'/lib/updater/updater.php',
-			'/lib/class-Maera_Development.php'
+			'/lib/class-Maera_Development.php',
+			'/lib/class-Maera_Caching.php',
 		);
 
 		foreach ( $files as $file ) {
@@ -146,13 +147,6 @@ class Maera {
 		$args = array( 'stylesheet_id' => 'maera' );
 		return $args;
 
-	}
-
-	/**
-	 * Reset the cache when saving the customizer
-	 */
-	function reset_style_cache_on_customizer_save() {
-		remove_theme_mod( 'css_cache' );
 	}
 
 	/**

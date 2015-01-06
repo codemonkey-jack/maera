@@ -9,8 +9,8 @@ class Maera_Timber extends Maera {
 			return;
 		}
 
-		add_filter( 'get_twig',          array( $this, 'add_to_twig' ) );
-		add_action( 'init',              array( $this, 'timber_customizations' ) );
+		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
+		add_action( 'init', array( $this, 'timber_customizations' ) );
 
 	}
 
@@ -21,14 +21,6 @@ class Maera_Timber extends Maera {
 	public static function get_context() {
 
 		global $content_width;
-		$caching = apply_filters( 'maera/styles/caching', false );
-
-		if ( ! $caching ) {
-			$cache = wp_cache_get( 'context', 'maera' );
-			if ( $cache ) {
-				return $cache;
-			}
-		}
 
 		$context = Timber::get_context();
 
@@ -51,10 +43,6 @@ class Maera_Timber extends Maera {
 		$context['content_width']        = $content_width;
 
 		$context['sidebar_template']     = maera_templates_sidebar();
-
-		if ( ! $caching ) {
-			wp_cache_set( 'context', $context, 'maera' );
-		}
 
 		return $context;
 
@@ -104,48 +92,6 @@ class Maera_Timber extends Maera {
 
 		$locations = self::twig_locations();
 		Timber::$locations = $locations;
-
-		// Add caching if dev_mode is set to off.
-		$theme_options = get_option( 'maera_admin_options', array() );
-		if ( Maera_Development::dev_mode() ) {
-
-			add_filter( 'maera/styles/caching', '__return_true' );
-			// Turn on Timber caching.
-			// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
-			Timber::$cache = true;
-			add_filter( 'maera/timber/cache', array( $this, 'timber_caching' ) );
-
-		} else {
-
-			add_filter( 'maera/styles/caching', '__return_false' );
-			TimberLoader::CACHE_NONE;
-			Timber::$cache = false;
-
-			$_SERVER['QUICK_CACHE_ALLOWED'] = FALSE;
-			Maera::define( 'DONOTCACHEPAGE', TRUE );
-
-		}
-
-	}
-
-	/**
-	 * Timber caching
-	 */
-	function timber_caching() {
-
-		$theme_options = get_option( 'maera_admin_options', array() );
-
-		$cache_int = isset( $theme_options['cache'] ) ? intval( $theme_options['cache'] ) : 0;
-
-		if ( 0 == $cache_int ) {
-
-			// No need to proceed if cache=0
-			return false;
-
-		}
-
-		// Convert minutes to seconds
-		return ( $cache_int * 60 );
 
 	}
 
