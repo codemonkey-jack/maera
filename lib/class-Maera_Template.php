@@ -34,7 +34,7 @@ class Maera_Template {
 		}
 
 		if ( is_null( $context ) ) {
-			$context = self::context();
+			$context = Maera_Caching::context();
 		}
 
 		Timber::render(
