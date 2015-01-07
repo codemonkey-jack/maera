@@ -43,7 +43,7 @@ class Maera_Timber extends Maera {
 
 		$context['sidebar_template']     = maera_templates_sidebar();
 
-		return $context;
+		return apply_filters( 'maera/timber/context', $context );
 
 	}
 

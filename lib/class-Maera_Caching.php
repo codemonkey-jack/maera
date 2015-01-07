@@ -117,4 +117,13 @@ class Maera_Caching {
 
 	}
 
+	public static function cache_mode() {
+
+		if ( Maera_Development::dev_mode() ) {
+			return TimberLoader::CACHE_NONE;
+		} else {
+			return TimberLoader::CACHE_USE_DEFAULT;
+		}
+	}
+
 }

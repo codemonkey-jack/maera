@@ -6,7 +6,6 @@ class Maera_Development {
 
 		if ( self::dev_mode() ) {
 			$this->jetpack_dev_mode();
-			$this->no_timber_caching();
 		}
 
 	}
@@ -37,16 +36,6 @@ class Maera_Development {
 			define( 'JETPACK_DEV_DEBUG', true);
 		}
 
-	}
-
-	function no_timber_caching() {
-
-		// Early exit if TimberLoader does not exist
-		if ( ! class_exists( 'TimberLoader' ) ) {
-			return;
-		}
-
-		TimberLoader::CACHE_NONE;
 	}
 
 }
