@@ -146,7 +146,7 @@ class Maera_Shell {
 
 		$context = Timber::get_context();
 		$context['element'] = $replacement;
-		Timber::render( array( 'twig-str_replace.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
+		Timber::render( array( 'twig-str_replace.twig', ), $context, Maera_Caching::cache_duration() );
 
 	}
 
@@ -162,7 +162,7 @@ class Maera_Shell {
 
 			if ( false !== strpos( $content, '[' . $value . ']' ) ) {
 
-				$replaced = maera_get_echo( array( $this, 'twig_replacements' ), $value );
+				$replaced = maera_get_echo( 'maera_helper_get_replacements', $value );
 				$content  = str_replace( '[' . $value . ']', $replaced, $content );
 
 			}
@@ -173,4 +173,11 @@ class Maera_Shell {
 
 	}
 
+}
+
+/**
+ * Helper function to avoid a fatal error on WPEngine hosting
+ */
+function maera_helper_get_replacements( $replacement = false ) {
+	Maera_Shell::twig_replacements( $replacement );
 }

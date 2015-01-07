@@ -9,26 +9,17 @@ class Maera_Timber extends Maera {
 			return;
 		}
 
-		add_filter( 'get_twig',          array( $this, 'add_to_twig' ) );
-		add_action( 'init',              array( $this, 'timber_customizations' ) );
+		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
+		add_action( 'init', array( $this, 'timber_customizations' ) );
 
 	}
 
 	/**
 	 * Custom implementation for get_context method.
-	 * Implements caching
 	 */
 	public static function get_context() {
 
 		global $content_width;
-		$caching = apply_filters( 'maera/styles/caching', false );
-
-		if ( ! $caching ) {
-			$cache = wp_cache_get( 'context', 'maera' );
-			if ( $cache ) {
-				return $cache;
-			}
-		}
 
 		$context = Timber::get_context();
 
@@ -52,11 +43,7 @@ class Maera_Timber extends Maera {
 
 		$context['sidebar_template']     = maera_templates_sidebar();
 
-		if ( ! $caching ) {
-			wp_cache_set( 'context', $context, 'maera' );
-		}
-
-		return $context;
+		return apply_filters( 'maera/timber/context', $context );
 
 	}
 
@@ -69,27 +56,26 @@ class Maera_Timber extends Maera {
 	public static function twig_locations() {
 
 		$locations = array();
+		$location_roots = array();
 
 		// Are we using a child theme?
 		// If yes, then first look in there.
 		if ( is_child_theme() ) {
-			$locations[] = get_stylesheet_directory() . '/macros';
-			$locations[] = get_stylesheet_directory() . '/views/macros';
-			$locations[] = get_stylesheet_directory() . '/views';
-			$locations[] = get_stylesheet_directory();
+			$location_roots[] = get_stylesheet_directory();
 		}
-
 		// Active shell
-		$locations[] = MAERA_SHELL_PATH . '/macros';
-		$locations[] = MAERA_SHELL_PATH . '/views/macros';
-		$locations[] = MAERA_SHELL_PATH . '/views';
-		$locations[] = MAERA_SHELL_PATH;
-
+		$location_roots[] = MAERA_SHELL_PATH;
 		// Core twig locations.
-		$locations[] = get_template_directory() . '/macros';
-		$locations[] = get_template_directory() . '/views/macros';
-		$locations[] = get_template_directory() . '/views';
-		$locations[] = get_template_directory();
+		$location_roots[] = get_template_directory();
+		// Allow modifying they location roots using a filter
+		$location_roots = apply_filters( 'maera/timber/locations/roots', $location_roots );
+
+		foreach ( $location_roots as $location_root ) {
+			$locations[] = $location_root . '/macros';
+			$locations[] = $location_root . '/views/macros';
+			$locations[] = $location_root . '/views';
+			$locations[] = $location_root;
+		}
 
 		return apply_filters( 'maera/timber/locations', $locations );
 
@@ -104,48 +90,6 @@ class Maera_Timber extends Maera {
 
 		$locations = self::twig_locations();
 		Timber::$locations = $locations;
-
-		// Add caching if dev_mode is set to off.
-		$theme_options = get_option( 'maera_admin_options', array() );
-		if ( isset( $theme_options['dev_mode'] ) && 0 == $theme_options['dev_mode'] && ! isset( $wp_customize ) ) {
-
-			add_filter( 'maera/styles/caching', '__return_true' );
-			// Turn on Timber caching.
-			// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
-			Timber::$cache = true;
-			add_filter( 'maera/timber/cache', array( $this, 'timber_caching' ) );
-
-		} else {
-
-			add_filter( 'maera/styles/caching', '__return_false' );
-			TimberLoader::CACHE_NONE;
-			Timber::$cache = false;
-
-			$_SERVER['QUICK_CACHE_ALLOWED'] = FALSE;
-			Maera::define( 'DONOTCACHEPAGE', TRUE );
-
-		}
-
-	}
-
-	/**
-	 * Timber caching
-	 */
-	function timber_caching() {
-
-		$theme_options = get_option( 'maera_admin_options', array() );
-
-		$cache_int = isset( $theme_options['cache'] ) ? intval( $theme_options['cache'] ) : 0;
-
-		if ( 0 == $cache_int ) {
-
-			// No need to proceed if cache=0
-			return false;
-
-		}
-
-		// Convert minutes to seconds
-		return ( $cache_int * 60 );
 
 	}
 

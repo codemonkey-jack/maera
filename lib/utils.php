@@ -14,6 +14,11 @@ function is_element_empty( $element ) {
  */
 function maera_get_echo( $function, $args = '' ) {
 
+	// Early exit if function does not exist
+	if ( ! function_exists( $function ) ) {
+		return;
+	}
+
 	ob_start();
 	$function( $args );
 	$get_echo = ob_get_clean();
@@ -27,8 +32,8 @@ function maera_get_echo( $function, $args = '' ) {
  */
 function _maera_get_twig( $file ) {
 
-	$context = Maera_Timber::get_context();
-	Timber::render( array( $file ), $context, apply_filters( 'maera/timber/cache', false ) );
+	$context = Maera_Caching::get_context();
+	Timber::render( array( $file ), $context, Maera_Caching::cache_duration() );
 
 }
 

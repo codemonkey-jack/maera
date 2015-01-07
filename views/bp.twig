@@ -7,11 +7,7 @@
 
 		<article {{ function( 'post_class' ) }} id="content-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
 
-			{% include ['single-'~post.post_type~'-title.twig', 'single-title.twig'] %}
-
-			{{ shell.clearfix }}
 			{{ content }}
-			{{ shell.clearfix }}
 			{% do action( 'maera/page/after_content' ) %}
 
 		</article>
