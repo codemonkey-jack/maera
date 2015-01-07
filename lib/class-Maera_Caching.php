@@ -49,6 +49,10 @@ class Maera_Caching {
 	 */
 	function timber_customizations() {
 
+		// Early exit if Timber is not installed
+		if ( ! class_exists( 'Timber' ) ) {
+			return;
+		}
 		global $wp_customize;
 
 		// Add caching if dev_mode is set to off.
