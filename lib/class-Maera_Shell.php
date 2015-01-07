@@ -178,6 +178,6 @@ class Maera_Shell {
 /**
  * Helper function to avoid a fatal error on WPEngine hosting
  */
-function maera_helper_get_replacements() {
-	return Maera_Shell::twig_replacements();
+function maera_helper_get_replacements( $replacement = false ) {
+	Maera_Shell::twig_replacements( $replacement );
 }
