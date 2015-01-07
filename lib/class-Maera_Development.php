@@ -40,6 +40,12 @@ class Maera_Development {
 	}
 
 	function no_timber_caching() {
+
+		// Early exit if TimberLoader does not exist
+		if ( ! class_exists( 'TimberLoader' ) ) {
+			return;
+		}
+
 		TimberLoader::CACHE_NONE;
 	}
 
