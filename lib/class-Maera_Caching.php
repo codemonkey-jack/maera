@@ -19,9 +19,7 @@ class Maera_Caching {
 
 	function custom_css_cached() {
 
-		$caching = apply_filters( 'maera/styles/caching', false );
-
-		if ( ! $caching ) {
+		if ( Maera_Development::dev_mode() ) {
 			// Get our styles using the maera/styles filter
 			$data = apply_filters( 'maera/styles', null );
 		} else {
@@ -55,19 +53,14 @@ class Maera_Caching {
 		}
 		global $wp_customize;
 
-		// Add caching if dev_mode is set to off.
-		$theme_options = get_option( 'maera_admin_options', array() );
-		if ( Maera_Development::dev_mode() ) {
+		if ( ! Maera_Development::dev_mode() ) {
 
-			add_filter( 'maera/styles/caching', '__return_true' );
 			// Turn on Timber caching.
 			// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
 			Timber::$cache = true;
-			add_filter( 'maera/timber/cache', array( $this, 'timber_caching' ) );
 
 		} else {
 
-			add_filter( 'maera/styles/caching', '__return_false' );
 			TimberLoader::CACHE_NONE;
 			Timber::$cache = false;
 
@@ -81,7 +74,7 @@ class Maera_Caching {
 	/**
 	 * Timber caching
 	 */
-	function timber_caching() {
+	public static function cache_duration() {
 
 		$theme_options = get_option( 'maera_admin_options', array() );
 
@@ -105,23 +98,22 @@ class Maera_Caching {
 	 */
 	public static function get_context() {
 
-		$caching = apply_filters( 'maera/styles/caching', false );
-
 		if ( Maera_Development::dev_mode() ) {
+
 			return Maera_Timber::get_context();
-		}
 
-		if ( ! $caching ) {
+		} else {
+
 			$cache = wp_cache_get( 'context', 'maera' );
-			return $cache;
-		}
+			if ( $cache ) {
+				return $cache;
+			} else {
+				$context = Maera_Timber::get_context();
+				wp_cache_set( 'context', $context, 'maera' );
+				return $context;
+			}
 
-		$context = Maera_Timber::get_context();
-		if ( ! $caching ) {
-			wp_cache_set( 'context', $context, 'maera' );
 		}
-
-		return $context;
 
 	}
 

@@ -87,11 +87,9 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 		$context['widget'] = $widget;
 
 		Timber::render(
-			array(
-				'widget-extended-posts.twig',
-			),
+			'widget-extended-posts.twig',
 			$context,
-			apply_filters( 'maera/timber/cache', false )
+			Maera_Caching::cache_duration()
 		);
 
 		wp_reset_query();

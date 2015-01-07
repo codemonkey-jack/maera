@@ -40,7 +40,7 @@ class Maera_Template {
 		Timber::render(
 			$templates,
 			$context,
-			apply_filters( 'maera/timber/cache', false )
+			Maera_Caching::cache_duration()
 		);
 
 	}

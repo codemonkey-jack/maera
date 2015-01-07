@@ -146,7 +146,7 @@ class Maera_Shell {
 
 		$context = Timber::get_context();
 		$context['element'] = $replacement;
-		Timber::render( array( 'twig-str_replace.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
+		Timber::render( array( 'twig-str_replace.twig', ), $context, Maera_Caching::cache_duration() );
 
 	}
 

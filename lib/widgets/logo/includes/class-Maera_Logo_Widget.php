@@ -48,7 +48,7 @@ class Maera_Logo_Widget extends WP_Widget {
 		Timber::render(
 			'site-logo.twig',
 			Maera_Caching::get_context(),
-			apply_filters( 'maera/timber/cache', false )
+			Maera_Caching::cache_duration()
 		);
 	}
 
