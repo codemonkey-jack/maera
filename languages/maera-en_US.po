@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maera\n"
-"POT-Creation-Date: 2015-01-08 02:26+0200\n"
-"PO-Revision-Date: 2015-01-08 02:26+0200\n"
+"POT-Creation-Date: 2015-01-08 02:30+0200\n"
+"PO-Revision-Date: 2015-01-08 02:30+0200\n"
 "Last-Translator: Stathopoulos Aristeides <info@aristeides.com>\n"
-"Language-Team: \n"
+"Language-Team: Stathopoulos Aristeides <info@aristeides.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -289,107 +289,3 @@ msgstr "with"
 #: views/content-single-entry-meta.twig:14
 msgid "comments"
 msgstr "comments"
-
-#~ msgid "Day: %s"
-#~ msgstr "Day: %s"
-
-#~ msgid "Month: %s"
-#~ msgstr "Month: %s"
-
-#~ msgctxt "monthly archives date format"
-#~ msgid "F Y"
-#~ msgstr "F Y"
-
-#~ msgid "Year: %s"
-#~ msgstr "Year: %s"
-
-#~ msgctxt "yearly archives date format"
-#~ msgid "Y"
-#~ msgstr "Y"
-
-#~ msgid "Author: %s"
-#~ msgstr "Author: %s"
-
-#~ msgid "Asides"
-#~ msgstr "Asides"
-
-#~ msgid "Galleries"
-#~ msgstr "Galleries"
-
-#~ msgid "Images"
-#~ msgstr "Images"
-
-#~ msgid "Videos"
-#~ msgstr "Videos"
-
-#~ msgid "Quotes"
-#~ msgstr "Quotes"
-
-#~ msgid "Links"
-#~ msgstr "Links"
-
-#~ msgid "Statuses"
-#~ msgstr "Statuses"
-
-#~ msgid "Audios"
-#~ msgstr "Audios"
-
-#~ msgid "Chats"
-#~ msgstr "Chats"
-
-#~ msgid "Archives"
-#~ msgstr "Archives"
-
-#~ msgid "Browse:"
-#~ msgstr "Browse:"
-
-#~ msgid "Home"
-#~ msgstr "Home"
-
-#~ msgid "Search results for \"%s\""
-#~ msgstr "Search results for \"%s\""
-
-#~ msgid "404 Not Found"
-#~ msgstr "404 Not Found"
-
-#~ msgid "Page %d"
-#~ msgstr "Page %d"
-
-#~ msgid "g:i a"
-#~ msgstr "g:i a"
-
-#~ msgid "Minute %d"
-#~ msgstr "Minute %d"
-
-#~ msgid "g a"
-#~ msgstr "g a"
-
-#~ msgid "d"
-#~ msgstr "d"
-
-#~ msgid "Week %d"
-#~ msgstr "Week %d"
-
-#~ msgid "F"
-#~ msgstr "F"
-
-#~ msgid "Y"
-#~ msgstr "Y"
-
-#~ msgid "Edit"
-#~ msgstr "Edit"
-
-#~ msgid "Split"
-#~ msgstr "Split"
-
-#~ msgid "Merge"
-#~ msgstr "Merge"
-
-#~ msgid "Maera Theme Options"
-#~ msgstr "Maera Theme Options"
-
-#~ msgid "Secondary Sidebar"
-#~ msgstr "Secondary Sidebar"
-
-#~ msgid "'Cancel' to stop, 'OK' to update."
-#~ msgstr "'Cancel' to stop, 'OK' to update."
