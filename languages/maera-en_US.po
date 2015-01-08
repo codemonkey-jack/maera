@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maera\n"
-"POT-Creation-Date: 2014-12-11 21:37+0200\n"
-"PO-Revision-Date: 2014-12-11 21:41+0200\n"
-"Last-Translator: Stathopoulos Aristeides\n"
+"POT-Creation-Date: 2015-01-08 02:26+0200\n"
+"PO-Revision-Date: 2015-01-08 02:26+0200\n"
+"Last-Translator: Stathopoulos Aristeides <info@aristeides.com>\n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -12,105 +12,125 @@ msgstr ""
 "X-Generator: Poedit 1.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;"
-"esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;"
-"__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: archive.php:17
-#, php-format
-msgid "Day: %s"
-msgstr "Day: %s"
-
-#: archive.php:19
-#, php-format
-msgid "Month: %s"
-msgstr "Month: %s"
-
-#: archive.php:19
-msgctxt "monthly archives date format"
-msgid "F Y"
-msgstr "F Y"
-
-#: archive.php:21
-#, php-format
-msgid "Year: %s"
-msgstr "Year: %s"
-
-#: archive.php:21
-msgctxt "yearly archives date format"
-msgid "Y"
-msgstr "Y"
-
-#: archive.php:29
-#, php-format
-msgid "Author: %s"
-msgstr "Author: %s"
-
-#: archive.php:31
-msgid "Asides"
-msgstr "Asides"
-
-#: archive.php:33
-msgid "Galleries"
-msgstr "Galleries"
-
-#: archive.php:35
-msgid "Images"
-msgstr "Images"
-
-#: archive.php:37
-msgid "Videos"
-msgstr "Videos"
-
-#: archive.php:39
-msgid "Quotes"
-msgstr "Quotes"
-
-#: archive.php:41
-msgid "Links"
-msgstr "Links"
-
-#: archive.php:43
-msgid "Statuses"
-msgstr "Statuses"
-
-#: archive.php:45
-msgid "Audios"
-msgstr "Audios"
-
-#: archive.php:47
-msgid "Chats"
-msgstr "Chats"
-
-#: archive.php:49
-msgid "Archives"
-msgstr "Archives"
-
-#: lib/admin/class-Maera_Admin.php:70
+#: lib/admin/class-Maera_Admin.php:66
 msgid "General"
 msgstr "General"
 
-#: lib/admin/class-Maera_Admin.php:71
+#: lib/admin/class-Maera_Admin.php:67
 msgid "Settings"
 msgstr "Settings"
 
-#: lib/admin/class-Maera_Admin.php:73
+#: lib/admin/class-Maera_Admin.php:68
 msgid "Documentation"
 msgstr "Documentation"
 
-#: lib/admin/class-Maera_Admin.php:113
+#: lib/admin/class-Maera_Admin.php:108
 msgid "Options saved"
 msgstr "Options saved"
 
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client.php:70
+msgid "An Error Occured"
+msgstr "An Error Occured"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client.php:95
+msgid "Invalid License"
+msgstr "Invalid License"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client.php:169
+msgid "Already Installed"
+msgstr "Already Installed"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client_Admin.php:22
+msgid "Maera Addons"
+msgstr "Maera Addons"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client_Admin.php:70
+msgid "EDD Remote Installer"
+msgstr "EDD Remote Installer"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client_Admin.php:88
+msgid "Installed"
+msgstr "Installed"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client_Admin.php:88
+msgid "Install"
+msgstr "Install"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client_Admin.php:112
+msgid "Details"
+msgstr "Details"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client_Admin.php:125
+msgid "Enter your license"
+msgstr "Enter your license"
+
+#: lib/admin/remote-installer/includes/class-Maera_EDD_RI_Client_Admin.php:128
+msgid "Submit"
+msgstr "Submit"
+
+#: lib/admin/tabs/settings.php:21
+msgid "Select a Shell"
+msgstr "Select a Shell"
+
 #: lib/admin/tabs/settings.php:23
 msgid ""
-"You can select the shell that you want to activate here. Please note that when changing "
-"shells all your settings are lost so you should keep a backup of them."
+"You can select the shell that you want to activate here. Please note that when "
+"changing shells all your settings are lost so you should keep a backup of them."
 msgstr ""
-"You can select the shell that you want to activate here. Please note that when changing "
-"shells all your settings are lost so you should keep a backup of them."
+"You can select the shell that you want to activate here. Please note that when "
+"changing shells all your settings are lost so you should keep a backup of them."
+
+#: lib/admin/tabs/settings.php:34
+msgid "Development Mode & Caching"
+msgstr "Development Mode & Caching"
+
+#: lib/admin/tabs/settings.php:36
+msgid "Development Mode"
+msgstr "Development Mode"
+
+#: lib/admin/tabs/settings.php:38
+msgid ""
+"Enable development mode. Please keep in mind that the actual implementation of "
+"the dev mode depends on the shell you have chosen"
+msgstr ""
+"Enable development mode. Please keep in mind that the actual implementation of "
+"the dev mode depends on the shell you have chosen"
+
+#: lib/admin/tabs/settings.php:39
+msgid "Caching (minutes)"
+msgstr "Caching (minutes)"
+
+#: lib/admin/tabs/settings.php:41
+msgid ""
+"Set the time (in minutes) you want your pages cached. CAUTION: If you have any "
+"context dependent sub-views (eg. current user), this mode won't do. In that "
+"case, set this to 0."
+msgstr ""
+"Set the time (in minutes) you want your pages cached. CAUTION: If you have any "
+"context dependent sub-views (eg. current user), this mode won't do. In that "
+"case, set this to 0."
+
+#: lib/admin/tabs/settings.php:46
+msgid "Export/Import customizer options"
+msgstr "Export/Import customizer options"
+
+#: lib/admin/tabs/settings.php:48
+msgid "Export Customizer options"
+msgstr "Export Customizer options"
+
+#: lib/admin/tabs/settings.php:67
+msgid ""
+"Import Customizer options. If you want to reset the customizer, you will have "
+"to simply enter RESET in the import field (all capitals)."
+msgstr ""
+"Import Customizer options. If you want to reset the customizer, you will have "
+"to simply enter RESET in the import field (all capitals)."
 
 #: lib/class-Maera_CWA.php:65
 msgid "Custom Widget Areas"
@@ -121,96 +141,100 @@ msgstr "Custom Widget Areas"
 msgid "Number of widget areas in %s"
 msgstr "Number of widget areas in %s"
 
-#: lib/class-Maera_Init.php:223
+#: lib/class-Maera_Init.php:69
 msgid "Primary Navigation"
 msgstr "Primary Navigation"
 
+#: lib/class-Maera_Template.php:78
+msgid "Search results for "
+msgstr "Search results for "
+
 #: lib/required-error.php:20
 msgid ""
-"This theme requires some plugins to be installed on your site. Please visit your "
-"dashboard and install those before proceeding any further."
+"This theme requires some plugins to be installed on your site. Please visit "
+"your dashboard and install those before proceeding any further."
 msgstr ""
-"This theme requires some plugins to be installed on your site. Please visit your "
-"dashboard and install those before proceeding any further."
+"This theme requires some plugins to be installed on your site. Please visit "
+"your dashboard and install those before proceeding any further."
 
 #: lib/widgets.php:14
 msgid "Primary Sidebar"
 msgstr "Primary Sidebar"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:22
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:34
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:22
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:34
 msgid "Maera Latest Posts"
 msgstr "Maera Latest Posts"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:148
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:146
 msgid "Read More"
 msgstr "Read More"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:154
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:152
 msgid "Title:"
 msgstr "Title:"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:159
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:157
 msgid "Post Type:"
 msgstr "Post Type:"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:176
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:174
 msgid "Taxonomy:"
 msgstr "Taxonomy:"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:190
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:188
 msgid "Term:"
 msgstr "Term:"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:194
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:192
 msgid "Any Term"
 msgstr "Any Term"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:214
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:212
 msgid "Number of Posts to display"
 msgstr "Number of Posts to display"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:219
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:217
 msgid "Offset"
 msgstr "Offset"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:224
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:222
 msgid "Post Title Size:"
 msgstr "Post Title Size:"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:227
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:225
 msgid "Large (H3)"
 msgstr "Large (H3)"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:230
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:228
 msgid "Normal (H4)"
 msgstr "Normal (H4)"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:233
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:231
 msgid "Small (H5)"
 msgstr "Small (H5)"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:238
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:236
 msgid "Excerpt Length"
 msgstr "Excerpt Length"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:243
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:241
 msgid "Read More text:"
 msgstr "Read More text:"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:250
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:248
 msgid "Display thumbs"
 msgstr "Display thumbs"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:259
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:257
 msgid "Float Tumbnails Left"
 msgstr "Float Tumbnails Left"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:264
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:262
 msgid "Thumbnail Width"
 msgstr "Thumbnail Width"
 
-#: lib/widgets/extended-posts/includes/class-Maera_Ext_Posts_Widget_Latest_Articles.php:269
+#: lib/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:267
 msgid "Thumbnail Height"
 msgstr "Thumbnail Height"
 
@@ -226,90 +250,95 @@ msgstr "Maera logo widget."
 msgid "This widget has no options to set"
 msgstr "This widget has no options to set"
 
-#: search.php:14
-msgid "Search results for "
-msgstr "Search results for "
-
-#: core-shell/views/base.twig:5 views/base.twig:12
-msgid "Skip to main content"
-msgstr "Skip to main content"
-
-#: core-shell/views/base.twig:31 views/base.twig:36
+#: core-shell/views/base.twig:9 views/base.twig:13 views/main.twig:6
 msgid "Sorry, no content"
 msgstr "Sorry, no content"
 
+#: core-shell/views/header.twig:27 views/header.twig:6
+msgid "Skip to main content"
+msgstr "Skip to main content"
+
 #: views/404.twig:5
 msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links below or a "
-"search?"
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
 msgstr ""
-"It looks like nothing was found at this location. Maybe try one of the links below or a "
-"search?"
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+
+#: views/archive.twig:7 views/page.twig:7 views/single.twig:7
+msgid "Pages:"
+msgstr "Pages:"
 
 #: views/comments.twig:5
 msgid "Comments"
 msgstr "Comments"
 
-#: views/page.twig:17 views/single.twig:14
-msgid "Pages:"
-msgstr "Pages:"
-
-#: views/single-meta.twig:4 views/tease-meta.twig:4
+#: views/content-single-entry-meta.twig:11
 msgid "under"
 msgstr "under"
 
-#: views/single-meta.twig:8 views/tease-meta.twig:8
+#: views/content-single-entry-meta.twig:13
 msgid "by"
 msgstr "by"
 
-#: views/single-meta.twig:11 views/tease-meta.twig:11
+#: views/content-single-entry-meta.twig:14
 msgid "with"
 msgstr "with"
 
-#: views/single-meta.twig:12 views/tease-meta.twig:12
+#: views/content-single-entry-meta.twig:14
 msgid "comments"
 msgstr "comments"
 
-#~ msgid "Select a Shell"
-#~ msgstr "Select a Shell"
+#~ msgid "Day: %s"
+#~ msgstr "Day: %s"
 
-#~ msgid "Development Mode & Caching"
-#~ msgstr "Development Mode & Caching"
+#~ msgid "Month: %s"
+#~ msgstr "Month: %s"
 
-#~ msgid "Development Mode"
-#~ msgstr "Development Mode"
+#~ msgctxt "monthly archives date format"
+#~ msgid "F Y"
+#~ msgstr "F Y"
 
-#~ msgid ""
-#~ "Enable development mode. Please keep in mind that the actual implementation of the "
-#~ "dev mode depends on the shell you have chosen"
-#~ msgstr ""
-#~ "Enable development mode. Please keep in mind that the actual implementation of the "
-#~ "dev mode depends on the shell you have chosen"
+#~ msgid "Year: %s"
+#~ msgstr "Year: %s"
 
-#~ msgid "Caching (minutes)"
-#~ msgstr "Caching (minutes)"
+#~ msgctxt "yearly archives date format"
+#~ msgid "Y"
+#~ msgstr "Y"
 
-#~ msgid ""
-#~ "Set the time (in minutes) you want your pages cached. CAUTION: If you have any "
-#~ "context dependent sub-views (eg. current user), this mode won't do. In that case, set "
-#~ "this to 0."
-#~ msgstr ""
-#~ "Set the time (in minutes) you want your pages cached. CAUTION: If you have any "
-#~ "context dependent sub-views (eg. current user), this mode won't do. In that case, set "
-#~ "this to 0."
+#~ msgid "Author: %s"
+#~ msgstr "Author: %s"
 
-#~ msgid "Export/Import customizer options"
-#~ msgstr "Export/Import customizer options"
+#~ msgid "Asides"
+#~ msgstr "Asides"
 
-#~ msgid "Export Customizer options"
-#~ msgstr "Export Customizer options"
+#~ msgid "Galleries"
+#~ msgstr "Galleries"
 
-#~ msgid ""
-#~ "Import Customizer options. If you want to reset the customizer, you will have to "
-#~ "simply enter RESET in the import field (all capitals)."
-#~ msgstr ""
-#~ "Import Customizer options. If you want to reset the customizer, you will have to "
-#~ "simply enter RESET in the import field (all capitals)."
+#~ msgid "Images"
+#~ msgstr "Images"
+
+#~ msgid "Videos"
+#~ msgstr "Videos"
+
+#~ msgid "Quotes"
+#~ msgstr "Quotes"
+
+#~ msgid "Links"
+#~ msgstr "Links"
+
+#~ msgid "Statuses"
+#~ msgstr "Statuses"
+
+#~ msgid "Audios"
+#~ msgstr "Audios"
+
+#~ msgid "Chats"
+#~ msgstr "Chats"
+
+#~ msgid "Archives"
+#~ msgstr "Archives"
 
 #~ msgid "Browse:"
 #~ msgstr "Browse:"
