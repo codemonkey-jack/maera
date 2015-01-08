@@ -67,7 +67,7 @@ class Maera_EDD_RI_Client {
 
 		$download = $_POST['download'];
 		$license  = $_POST['license'];
-		$message  = __( 'An Error Occured', 'edd_ri' );
+		$message  = __( 'An Error Occured', 'maera' );
 		$download_type = $this->_check_download($download);
 
 		/**
@@ -92,7 +92,7 @@ class Maera_EDD_RI_Client {
 			$installed = $this->_install_plugin( $download, $license );
 			wp_send_json_success( $installed );
 		} else {
-			wp_send_json_error( __( 'Invalid License', 'edd_ri' ) );
+			wp_send_json_error( __( 'Invalid License', 'maera' ) );
 		}
 
 
@@ -166,7 +166,7 @@ class Maera_EDD_RI_Client {
 		// Check the user's capabilities before proceeding
 		$this->check_capabilities();
 
-		if ( $this->is_plugin_installed( $download ) ) die( json_encode( __( 'Already Installed', 'edd_ri' ) ) );
+		if ( $this->is_plugin_installed( $download ) ) die( json_encode( __( 'Already Installed', 'maera' ) ) );
 
 		$api_params = array(
 			'edd_action' => 'check_download',

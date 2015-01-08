@@ -67,7 +67,7 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 	function settings_page() { ?>
 
 		<div class="wrap metabox-holder">
-			<h2><?php _e( 'EDD Remote Installer', 'edd_ri' ); ?></h2>
+			<h2><?php _e( 'EDD Remote Installer', 'maera' ); ?></h2>
 
 			<?php
 			$downloads = $this->get_downloads();
@@ -85,7 +85,7 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 					<?php
 					$data_free   = (int) $download['free'];
 					$disabled    = $this->is_plugin_installed( $download['title'] ) ? ' disabled="disabled" ' : '';
-					$button_text = $this->is_plugin_installed( $download['title'] ) ? __( 'Installed', 'edd_ri' ) : __( 'Install', 'edd_ri' );
+					$button_text = $this->is_plugin_installed( $download['title'] ) ? __( 'Installed', 'maera' ) : __( 'Install', 'maera' );
 
 					$i = $i == 3 ? 0 : $i;
 					?>
@@ -109,7 +109,7 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 								<p class="edd-ri-actions">
 									<span class="spinner"></span>
 									<button class="button button-primary" data-free="<?php echo $data_free; ?>"<?php echo $disabled; ?> data-edd-ri="<?php echo $download['title']; ?>"><?php echo $button_text; ?></button>
-									<a class="button" target="_blank" href="<?php echo trailingslashit( $this->api_url ) . '?p=' . $download['id']; ?>"><?php _e( 'Details', 'edd_ri' ); ?></a>
+									<a class="button" target="_blank" href="<?php echo trailingslashit( $this->api_url ) . '?p=' . $download['id']; ?>"><?php _e( 'Details', 'maera' ); ?></a>
 								</p>
 							</div>
 						</div>
@@ -122,10 +122,10 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 			<?php endforeach; ?>
 
 			<div id="edd_ri_license_thickbox" style="display:none;">
-				<h3><?php _e( 'Enter your license', 'edd_ri' ); ?></h3>
+				<h3><?php _e( 'Enter your license', 'maera' ); ?></h3>
 				<form action="" method="post" id="edd_ri_license_form">
 					<input style="width: 100%" type="text" id="edd_ri_license"/>
-					<button style="margin-top: 10px" type="submit" class="button button-primary"><?php _e( 'Submit', 'edd_ri' ); ?></button>
+					<button style="margin-top: 10px" type="submit" class="button button-primary"><?php _e( 'Submit', 'maera' ); ?></button>
 				</form>
 			</div>
 			<div class="message-popup" id="MessagePopup" style="display:none;"></div>
