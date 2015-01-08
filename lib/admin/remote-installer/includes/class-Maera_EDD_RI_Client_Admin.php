@@ -19,7 +19,7 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 
 	function admin_menu () {
 
-		add_theme_page( __( 'Maera Addons', 'maera' ), __( 'Maera Addons', 'maera' ), 'install_plugins', 'edd-ri-demo', array( $this, 'settings_page' ) );
+		add_theme_page( __( 'Maera Addons', 'maera' ), __( 'Maera Addons', 'maera' ), 'install_plugins', 'maera-ri', array( $this, 'settings_page' ) );
 	}
 
 	public function register_scripts() {
@@ -67,7 +67,7 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 	function settings_page() { ?>
 
 		<div class="wrap metabox-holder">
-			<h2><?php _e( 'EDD Remote Installer', 'maera' ); ?></h2>
+			<h2><?php _e( 'Maera Addons Installer', 'maera' ); ?></h2>
 
 			<?php
 			$downloads = $this->get_downloads();
