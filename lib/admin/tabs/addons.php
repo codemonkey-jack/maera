@@ -1,3 +1,6 @@
-This is under construction.
+<?php
 
-You will eventually be able to download and automatically install addon plugins from this tab.
+global $maera_remote_installer;
+
+// Get the content
+$maera_remote_installer->admin_page()->settings_page();

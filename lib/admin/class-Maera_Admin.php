@@ -1,11 +1,11 @@
 <?php
 
 /**
-* The theme options class.
-* This can hold options like import/export and layout selection.
-* Things that in general don't belong to a shell but the theme in general.
-* Shell-Specific options should use the customizer instead.
-*/
+ * The theme options class.
+ * This can hold options like import/export and layout selection.
+ * Things that in general don't belong to a shell but the theme in general.
+ * Shell-Specific options should use the customizer instead.
+ */
 class Maera_Admin {
 
 	function __construct() {
@@ -32,18 +32,14 @@ class Maera_Admin {
 	 * Register our settings
 	 */
 	function register_settings() {
-
 		register_setting( 'maera_admin_options', 'maera_admin_options', array( $this, 'validate' ) );
-
 	}
 
 	/**
 	 * Add the admin page
 	 */
 	function maera_admin_options() {
-
 		add_theme_page( 'Theme Options', 'Theme Options', 'edit_theme_options', 'theme_options', array( $this, 'admin_page' ) );
-
 	}
 
 	/**
@@ -69,7 +65,6 @@ class Maera_Admin {
 		return apply_filters( 'maera/admin/tabs', array(
 			'general'  => __( 'General', 'maera' ),
 			'settings' => __( 'Settings', 'maera' ),
-			// 'addons'   => __( 'Addons', 'maera' ),
 			'docs'     => __( 'Documentation', 'maera' )
 		) );
 
@@ -80,12 +75,12 @@ class Maera_Admin {
 		$tabs    = $this->tabs();
 		$content = '<h2 class="nav-tab-wrapper">';
 
-	    foreach( $tabs as $tab => $name ){
+		foreach( $tabs as $tab => $name ){
 
-	        $class = ( $tab == $current ) ? ' nav-tab-active' : '';
+			$class = ( $tab == $current ) ? ' nav-tab-active' : '';
 			$content .= '<a class="nav-tab' . $class . '" href="?page=theme_options&tab=' . $tab . '">' . $name . '</a>';
 
-	    }
+		}
 
 		$content .= '</h2>';
 
