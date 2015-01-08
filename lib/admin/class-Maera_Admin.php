@@ -1,25 +1,18 @@
 <?php
 
 /**
-* The theme options class.
-* This can hold options like import/export and layout selection.
-* Things that in general don't belong to a shell but the theme in general.
-* Shell-Specific options should use the customizer instead.
-*/
+ * The theme options class.
+ * This can hold options like import/export and layout selection.
+ * Things that in general don't belong to a shell but the theme in general.
+ * Shell-Specific options should use the customizer instead.
+ */
 class Maera_Admin {
 
 	function __construct() {
 
 		// Load only if we are viewing the admin page
 		if ( is_admin() && isset ( $_GET['page'] ) && 'theme_options' == $_GET['page'] ) {
-
 			add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
-
-			// load the remote installer
-			require_once( locate_template( '/lib/admin/remote-installer/class-EDD_RI_Client.php' ) );
-			global $maera_remote_installer;
-			$maera_remote_installer = new EDD_RI_Client( 'http://press.codes' );
-
 		}
 
 		add_action( 'admin_init', array( $this, 'register_settings') );
@@ -39,18 +32,14 @@ class Maera_Admin {
 	 * Register our settings
 	 */
 	function register_settings() {
-
 		register_setting( 'maera_admin_options', 'maera_admin_options', array( $this, 'validate' ) );
-
 	}
 
 	/**
 	 * Add the admin page
 	 */
 	function maera_admin_options() {
-
 		add_theme_page( 'Theme Options', 'Theme Options', 'edit_theme_options', 'theme_options', array( $this, 'admin_page' ) );
-
 	}
 
 	/**
@@ -61,15 +50,10 @@ class Maera_Admin {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 
-		wp_register_script( 'edd_ri_script', get_template_directory_uri() . '/assets/js/edd-ri.js', array( 'jquery' ) );
-		wp_enqueue_script( 'edd_ri_script' );
-
 		wp_register_style( 'maera-admin-css', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
 		wp_enqueue_style( 'maera-admin-css' );
 
 		wp_enqueue_style( 'dashicons' );
-
-		add_thickbox();
 
 	}
 
@@ -81,7 +65,6 @@ class Maera_Admin {
 		return apply_filters( 'maera/admin/tabs', array(
 			'general'  => __( 'General', 'maera' ),
 			'settings' => __( 'Settings', 'maera' ),
-			'addons'   => __( 'Addons', 'maera' ),
 			'docs'     => __( 'Documentation', 'maera' )
 		) );
 
@@ -92,12 +75,12 @@ class Maera_Admin {
 		$tabs    = $this->tabs();
 		$content = '<h2 class="nav-tab-wrapper">';
 
-	    foreach( $tabs as $tab => $name ){
+		foreach( $tabs as $tab => $name ){
 
-	        $class = ( $tab == $current ) ? ' nav-tab-active' : '';
+			$class = ( $tab == $current ) ? ' nav-tab-active' : '';
 			$content .= '<a class="nav-tab' . $class . '" href="?page=theme_options&tab=' . $tab . '">' . $name . '</a>';
 
-	    }
+		}
 
 		$content .= '</h2>';
 

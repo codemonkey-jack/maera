@@ -50,6 +50,7 @@ class Maera {
 			'/lib/updater/updater.php',
 			'/lib/class-Maera_Development.php',
 			'/lib/class-Maera_Caching.php',
+			'/lib/admin/remote-installer/client.php'
 		);
 
 		foreach ( $files as $file ) {

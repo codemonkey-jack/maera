@@ -1,6 +1,6 @@
 <?php
 
-class EDD_RI_Client_Admin extends EDD_RI_Client {
+class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 
 	private $api_url;
 
@@ -11,6 +11,26 @@ class EDD_RI_Client_Admin extends EDD_RI_Client {
 		}
 
 		$this->api_url = trailingslashit( $store_url );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );
+		add_action( 'admin_menu',   array( $this, 'admin_menu' ) );
+
+	}
+
+	function admin_menu () {
+
+		add_theme_page( __( 'Maera Addons', 'maera' ), __( 'Maera Addons', 'maera' ), 'install_plugins', 'edd-ri-demo', array( $this, 'settings_page' ) );
+	}
+
+	public function register_scripts() {
+
+		wp_register_script( 'edd_ri_script', EDD_RI_PLUGIN_URL . 'assets/js/edd-ri.js', array( 'jquery' ) );
+		wp_enqueue_script( 'edd_ri_script' );
+
+		wp_register_style( 'edd_ri_css', EDD_RI_PLUGIN_URL . 'assets/css/style.css', false );
+        wp_enqueue_style( 'edd_ri_css' );
+
+		add_thickbox();
 
 	}
 

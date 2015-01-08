@@ -1,6 +1,6 @@
 <?php
 
-class EDD_RI_Client {
+class Maera_EDD_RI_Client {
 
 	private $api_url;
 
@@ -11,13 +11,9 @@ class EDD_RI_Client {
 		add_action( 'plugins_api', array( $this, 'plugins_api' ), 99, 3 );
 		add_action( 'wp_ajax_edd_ri_install', array( $this, 'install') );
 
-		include( dirname( __FILE__ ) . '/class-EDD_RI_Client_Admin.php' );
-		$this->admin_page();
+		include( dirname( __FILE__ ) . '/class-Maera_EDD_RI_Client_Admin.php' );
+		$admin_page = new Maera_EDD_RI_Client_Admin( $this->api_url );
 
-	}
-
-	function admin_page() {
-		return new EDD_RI_Client_Admin( $this->api_url );
 	}
 
 	/**
