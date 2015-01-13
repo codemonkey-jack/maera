@@ -69,9 +69,11 @@ class Maera_Shell {
 		$replacements = array(
 			'maera_grid_container_open',
 			'maera_grid_container_close',
+			'maera_grid_container_class',
 
 			'maera_grid_row_open',
 			'maera_grid_row_close',
+			'maera_grid_row_class',
 
 			'maera_grid_col_1',
 			'maera_grid_col_2',

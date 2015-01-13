@@ -4,6 +4,9 @@
 {% elseif element == 'maera_grid_container_close' %}
     {% from 'container_close.html.twig' import container_close as container_close %}
     {{ container_close() }}
+{% elseif element == 'maera_grid_container_class' %}
+    {% from 'grid_classes.html.twig' import container as container %}
+    {{ container() }}
 
 {% elseif element == 'maera_grid_row_open' %}
     {% from 'row_open.html.twig' import row_open as row_open %}
@@ -11,6 +14,9 @@
 {% elseif element == 'maera_grid_row_close' %}
     {% from 'row_close.html.twig' import row_close as row_close %}
     {{ row_close() }}
+{% elseif element == 'maera_grid_row_class' %}
+    {% from 'grid_classes.html.twig' import row as row %}
+    {{ row() }}
 
 {% elseif element == 'maera_grid_col_1' %}
     {% from 'column_classes.html.twig' import column_classes as column_classes %}
