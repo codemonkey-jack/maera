@@ -19,4 +19,4 @@ if ( ! defined( 'EDD_RI_PLUGIN_URL' ) ) {
 }
 
 include( dirname( __FILE__ ) . '/includes/class-Maera_EDD_RI_Client.php' );
-$remote_installer = new Maera_EDD_RI_Client( 'http://press.codes' );
+$remote_installer = new Maera_EDD_RI_Client( 'https://press.codes' );
