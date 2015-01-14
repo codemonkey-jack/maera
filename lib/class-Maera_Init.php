@@ -9,9 +9,10 @@ class Maera_Init {
 			return;
 		}
 
-		add_action( 'init',              array( $this, 'require_libs_init' ) );
+		add_action( 'init', array( $this, 'require_libs_init' ) );
 		add_action( 'after_setup_theme', array( $this, 'require_libs_after_setup_theme' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup' ) );
+		add_action( 'wp_head', array( $this, 'render_title' ) );
 
 	}
 
@@ -101,6 +102,12 @@ class Maera_Init {
 		} else {
 			load_theme_textdomain( 'maera', false, $lang_dir );
 		}
+	}
+
+	function render_title() {
+		if ( ! function_exists( '_wp_render_title_tag' ) ) : ?>
+			<title><?php wp_title( '|', true, 'right' ); ?></title>
+		<?php endif;
 	}
 
 }
