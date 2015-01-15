@@ -2,8 +2,8 @@
 <article {{ function( 'post_class' ) }} id="post-{{ post.ID }}" itemscope itemtype="http://schema.org/Article">
 	{% block content %}
 		{% do action('maera/in_article/top', post.ID) %}
-		{% include ['content-entry-'~post.post_type~'-header.twig', 'content-entry-header.twig'] %}
-		{% include ['content-entry-'~post.post_type~'-content.twig', 'content-entry-content.twig'] %}
-		{% include ['content-entry-'~post.post_type~'-footer.twig', 'content-entry-footer.twig'] %}
+		{% include ['content-entry-'~post.ID~'-header.twig', 'content-entry-'~post.post_type~'-header.twig', 'content-entry-header.twig'] %}
+		{% include ['content-entry-'~post.ID~'-content.twig', 'content-entry-'~post.post_type~'-content.twig', 'content-entry-content.twig'] %}
+		{% include ['content-entry-'~post.ID~'-footer.twig', 'content-entry-'~post.post_type~'-footer.twig', 'content-entry-footer.twig'] %}
 	{% endblock %}
 </article>

@@ -7,7 +7,7 @@
 
 	{% for post in posts %}
 		{% do action( 'maera/in_loop/begin' ) %}
-		{% include ['content-'~post.post_type~'.twig', 'content.twig'] %}
+		{% include ['content-'~post.ID~'.twig', 'content-'~post.post_type~'.twig', 'content.twig'] %}
 		{% do action( 'maera/in_loop/end' ) %}
 	{% endfor %}
 

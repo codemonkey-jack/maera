@@ -3,6 +3,6 @@
 	<title itemprop="name">{{ post.title }}</title>
 	<h2 class="entry-title"><a href="{{ post.link }}">{{ post.title|apply_filters( 'maera/title' ) }}</a></h2>
 	{% if post.post_type == 'post' %}
-		{% include ['content-single-entry-'~post.post_type~'-meta.twig', 'content-single-entry-meta.twig'] %}
+		{% include ['content-single-entry-'~post.ID~'-meta.twig', 'content-single-entry-'~post.post_type~'-meta.twig', 'content-single-entry-meta.twig'] %}
 	{% endif %}
 </header>
