@@ -4,14 +4,11 @@ class Maera_Core_Customizer {
 
 	function __construct() {
 
-		// early exit if we MAERA_HIDE_CORE_CUSTOMIZER is defined and true.
 		if ( defined( 'MAERA_HIDE_CORE_CUSTOMIZER' ) && MAERA_HIDE_CORE_CUSTOMIZER ) {
-			return;
+			add_action( 'customize_register', array( $this, 'add_section' ) );
+			add_action( 'customize_register', array( $this, 'add_settings' ) );
+			add_action( 'customize_register', array( $this, 'add_controls' ) );
 		}
-
-		add_action( 'customize_register', array( $this, 'add_section' ) );
-		add_action( 'customize_register', array( $this, 'add_settings' ) );
-		add_action( 'customize_register', array( $this, 'add_controls' ) );
 
 	}
 
