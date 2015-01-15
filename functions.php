@@ -29,6 +29,14 @@ class Maera {
 		$maera_styles = new Maera_Styles();
 		$maera_dev    = new Maera_Development();
 		$maera_cache  = new Maera_Caching();
+		$maera_cc     = new Maera_Core_Customizer();
+
+		// This is not ready yet so hide it.
+		// For dev you can add this line to your wp-config.php file:
+		// define( 'MAERA_HIDE_CORE_CUSTOMIZER', false );
+		if ( ! defined( 'MAERA_HIDE_CORE_CUSTOMIZER' ) ) {
+			define( 'MAERA_HIDE_CORE_CUSTOMIZER', true );
+		}
 
 	}
 
@@ -50,6 +58,7 @@ class Maera {
 			'/lib/updater/updater.php',
 			'/lib/class-Maera_Development.php',
 			'/lib/class-Maera_Caching.php',
+			'/lib/class-Maera_Core_Customizer.php',
 			'/lib/admin/remote-installer/client.php'
 		);
 
