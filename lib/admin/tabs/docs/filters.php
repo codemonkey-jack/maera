@@ -1,18 +1,11 @@
 <div id="wiki-body" class="gollum-markdown-content instapaper_body">
-    <div class="markdown-body">
-      <h3>
+<div class="markdown-body">
+<h3>
 <a id="user-content-maeraadminoptions" class="anchor" href="#maeraadminoptions" aria-hidden="true"><span class="octicon octicon-link"></span></a>maera/admin/options</h3>
 
 <p>This filter will add items to the Admin Theme Options page.</p>
 
 <p>You may want to use this filter to add aditional options. However, theme specific customization options should use the customizer and not the options page.</p>
-
-<h3>
-<a id="user-content-maeracompiler" class="anchor" href="#maeracompiler" aria-hidden="true"><span class="octicon octicon-link"></span></a>maera/compiler</h3>
-
-<p>This filter will add custom LESS and SASS to the compiler (depending on which one your shell is using - if it's using any).</p>
-
-<p>You may want to use this filter to define your own LESS variables, and add them to the compiler so your styles are compiled with the main stylesheet.</p>
 
 <h3>
 <a id="user-content-maeracontainer_class" class="anchor" href="#maeracontainer_class" aria-hidden="true"><span class="octicon octicon-link"></span></a>maera/container_class</h3>
@@ -141,7 +134,7 @@ You may want to use this filter to change the width of the container or to appen
 <span class="pl-s2"></span>
 <span class="pl-s2"></span><span class="pl-pse"><span class="pl-s2">?</span>&gt;</span></pre></div>
 
-<p>More info can be found on the <a class="internal present" href="/presscodes/maera/wiki/Defining-a-shell">Defining a shell</a> page.</p>
+<p>More info can be found on the <a class="internal absent" href="/presscodes/maera/wiki/Defining-a-shell">Defining a shell</a> page.</p>
 
 <h3>
 <a id="user-content-maerastyles" class="anchor" href="#maerastyles" aria-hidden="true"><span class="octicon octicon-link"></span></a>maera/styles</h3>
@@ -169,19 +162,6 @@ You may want to use this filter to change the width of the container or to appen
 <span class="pl-s2">add_action( <span class="pl-s1"><span class="pl-pds">'</span>maera/styles<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>custom_header_css<span class="pl-pds">'</span></span> );</span>
 <span class="pl-s2"></span>
 <span class="pl-s2"></span><span class="pl-pse"><span class="pl-s2">?</span>&gt;</span></pre></div>
-
-<h3>
-<a id="user-content-maerastylescaching" class="anchor" href="#maerastylescaching" aria-hidden="true"><span class="octicon octicon-link"></span></a>maera/styles/caching</h3>
-
-<p>Enables or disables caching of styles added using the <a href="#maerastyles">maera/styles</a> action.</p>
-
-<p>To enable caching:</p>
-
-<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> add_filter( <span class="pl-s1"><span class="pl-pds">'</span>maera/styles/caching<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>__return_true<span class="pl-pds">'</span></span> ); </span><span class="pl-pse"><span class="pl-s2">?</span>&gt;</span></pre></div>
-
-<p>To disable caching:</p>
-
-<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> add_filter( <span class="pl-s1"><span class="pl-pds">'</span>maera/styles/caching<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>__return_false<span class="pl-pds">'</span></span> ); </span><span class="pl-pse"><span class="pl-s2">?</span>&gt;</span></pre></div>
 
 <h3>
 <a id="user-content-maerastylesheeturl" class="anchor" href="#maerastylesheeturl" aria-hidden="true"><span class="octicon octicon-link"></span></a>maera/stylesheet/url</h3>
@@ -224,23 +204,24 @@ You may want to use this filter to change the width of the container or to appen
 <li>maera/sidebar/footer</li>
 <li>maera/sidebar/primary</li>
 <li>maera/sidebar/secondary</li>
-<li>maera_breadcrumb_trail</li>
-<li>maera_breadcrumb_trail_args</li>
-<li>maera_breadcrumb_trail_items</li>
-<li>maera_breadcrumb_trail_get_bbpress_items</li>
-<li>maera/timber/cache</li>
 <li>maera/timber/locations</li>
 <li>maera/title</li>
 <li>maera/teaser/mode</li>
 <li>maera/widgets/class</li>
 <li>maera/widgets/title/after</li>
 <li>maera/widgets/title/before</li>
-<li>maera/widgets/areas</li>
-<li>maera/widgets/areas/values</li>
-<li>maera/extra_widgets/{area}/{i}</li>
-<li>maera/twig/replacements</li>
+<li>maera/plugins/required</li>
+<li>maera/twig/placeholders</li>
+<li>maera/templates</li>
+<li>maera/template/plugin_compatibility</li>
+<li>maera/timber/context</li>
+<li>maera/timber/locations/roots</li>
+<li>maera/timber/locations</li>
+<li>maera/sidebar_template</li>
+<li>maera/admin/tabs</li>
+<li>maera/section_class/content</li>
 </ul>
 
-    </div>
+</div>
 
-  </div>
+</div>

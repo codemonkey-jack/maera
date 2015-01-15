@@ -5,7 +5,7 @@ $docs_tabs = array(
 		'templating'     => 'Templating',
 		'shells'         => 'Shells',
 		'theme-supports' => 'Theme Supports',
-		'actions-hooks'  => 'Actions & Hooks',
+		'actions'        => 'Actions & Hooks',
 		'filters'        => 'Filters',
 );
 ?>
