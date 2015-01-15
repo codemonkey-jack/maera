@@ -21,8 +21,8 @@ class Maera_Init {
 		/**
 		 * Include the Custom Widget Areas builder
 		 */
-		require_once locate_template( '/lib/class-Maera_CWA.php' );
-		$extra_widget_areas = new Maera_CWA();
+		// require_once locate_template( '/lib/class-Maera_CWA.php' );
+		// $extra_widget_areas = new Maera_CWA();
 
 		/**
 		 * Load the Extended posts widget
