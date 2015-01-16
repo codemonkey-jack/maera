@@ -1,0 +1,21 @@
+<div id="bbpress-forums">
+
+    {% if function('bbp_allow_search') %}
+        <div class="bbp-search-form">
+            {{ function('bbp_get_template_part', 'form', 'search') }}
+        </div>
+    {% endif %}
+
+    {{ function('bbp_breadcrumb') }}
+    {{ function('bbp_forum_subscription_link') }}
+
+    {% do action('bbp_template_before_forums_index') %}
+
+    {% if function('bbp_has_forums') %}
+        {{ function('bbp_get_template_part', 'loop', 'forums') }}
+    {% else %}
+        {{ function('bbp_get_template_part', 'feedback', 'no-forums') }}
+    {% endif %}
+	{% do action('bbp_template_after_forums_index') %}
+
+</div>
