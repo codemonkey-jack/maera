@@ -99,20 +99,18 @@ class Maera_Caching {
 	public static function get_context() {
 
 		if ( Maera_Development::dev_mode() ) {
-
-			return Maera_Timber::get_context();
-
+			$cached = false;
 		} else {
+			$cache  = wp_cache_get( 'context', 'maera' );
+			$cached = ( $cache ) ? true : false;
+		}
 
-			$cache = wp_cache_get( 'context', 'maera' );
-			if ( $cache ) {
-				return $cache;
-			} else {
-				$context = Maera_Timber::get_context();
-				wp_cache_set( 'context', $context, 'maera' );
-				return $context;
-			}
-
+		if ( $cached && $cache ) {
+			return $cache;
+		} else {
+			$context = Maera_Timber::get_context();
+			wp_cache_set( 'context', $context, 'maera' );
+			return $context;
 		}
 
 	}
