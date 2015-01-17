@@ -74,6 +74,11 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 
 			$i = 0;
 
+			// Early exit if no downloads found
+			if ( ! isset( $downloads['plugins'] ) || empty( $downloads['plugins'] ) ) {
+				return;
+			}
+
 			$plugins = $downloads['plugins'];
 			$themes  = $downloads['themes'];
 			?>
