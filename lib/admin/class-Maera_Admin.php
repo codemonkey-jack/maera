@@ -19,6 +19,10 @@ class Maera_Admin {
 		add_action( 'admin_menu', array( $this, 'maera_admin_options' ) );
 		add_action( 'after_switch_theme', array( $this, 'activation' ) );
 
+		if ( isset ( $_GET['tab'] ) && 'addons' == $_GET['tab'] ) {
+			wp_safe_redirect( admin_url( 'themes.php?page=maera-ri' ) );
+		}
+
 	}
 
 	/**
@@ -63,9 +67,11 @@ class Maera_Admin {
 	function tabs() {
 
 		return apply_filters( 'maera/admin/tabs', array(
-			'general'  => __( 'General', 'maera' ),
-			'settings' => __( 'Settings', 'maera' ),
-			'docs'     => __( 'Documentation', 'maera' )
+			'general'   => __( 'General', 'maera' ),
+			'settings'  => __( 'Settings', 'maera' ),
+			'licensing' => __( 'Licensing', 'maera' ),
+			'addons'    => __( 'Addons', 'maera' ),
+			'docs'      => __( 'Documentation', 'maera' ),
 		) );
 
 	}
@@ -97,6 +103,8 @@ class Maera_Admin {
 
 		$tabs    = $this->tabs();
 		$current = ( isset ( $_GET['tab'] ) ) ? $_GET['tab'] : 'general';
+		$current = ( isset ( $_GET['page'] ) && 'maera-ri' == $_GET['page'] ) ? 'addons' : $current;
+
 
 		// This checks whether the form has just been submitted.
 		if ( ! isset( $_REQUEST['updated'] ) ) {
@@ -111,7 +119,10 @@ class Maera_Admin {
 			<?php echo $this->tabs_head( $current ); ?>
 			<?php foreach ( $tabs as $tab => $label ) : ?>
 				<?php if ( $current == $tab ) : ?>
-					<?php include( dirname( __FILE__ ) . '/tabs/' . $tab . '.php' ); ?>
+					<?php if ( file_exists( dirname( __FILE__ ) . '/tabs/' . $tab . '.php' ) ) : ?>
+						<?php include( dirname( __FILE__ ) . '/tabs/' . $tab . '.php' ); ?>
+					<?php endif; ?>
+					<?php do_action( 'maera/admin/' . $tab ); ?>
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</div>
@@ -151,4 +162,3 @@ class Maera_Admin {
 	}
 
 }
-$maera_admin = new Maera_Admin();

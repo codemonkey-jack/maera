@@ -546,3 +546,36 @@ table.maera-docs-bordered th {
 ul.maera-indented, ul.maera-indented ul {
   margin-left: 3em;
 }
+
+.maera.licensing.item .title{
+  padding-left: 0;
+}
+
+.maera.licensing.item .content{
+  margin-bottom: 15px;
+}
+
+.maera.license.indicator {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 26px;
+  height: 28px;
+  margin: 0px;
+  padding: 0px 10px 1px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: #333;
+  color: #fff;
+}
+
+.maera.active.license.indicator {
+  background: #4CAF50;
+}
+
+.maera.inactive.license.indicator {
+  background: #FF5722;
+}
