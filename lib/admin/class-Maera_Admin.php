@@ -63,9 +63,10 @@ class Maera_Admin {
 	function tabs() {
 
 		return apply_filters( 'maera/admin/tabs', array(
-			'general'  => __( 'General', 'maera' ),
-			'settings' => __( 'Settings', 'maera' ),
-			'docs'     => __( 'Documentation', 'maera' )
+			'general'   => __( 'General', 'maera' ),
+			'settings'  => __( 'Settings', 'maera' ),
+			'licensing' => __( 'Licensing', 'maera' ),
+			'docs'      => __( 'Documentation', 'maera' )
 		) );
 
 	}
@@ -111,7 +112,10 @@ class Maera_Admin {
 			<?php echo $this->tabs_head( $current ); ?>
 			<?php foreach ( $tabs as $tab => $label ) : ?>
 				<?php if ( $current == $tab ) : ?>
-					<?php include( dirname( __FILE__ ) . '/tabs/' . $tab . '.php' ); ?>
+					<?php if ( file_exists( dirname( __FILE__ ) . '/tabs/' . $tab . '.php' ) ) : ?>
+						<?php include( dirname( __FILE__ ) . '/tabs/' . $tab . '.php' ); ?>
+					<?php endif; ?>
+					<?php do_action( 'maera/admin/' . $tab ); ?>
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</div>

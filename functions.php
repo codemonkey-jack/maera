@@ -55,6 +55,7 @@ class Maera {
 			'/lib/class-Maera_Styles.php',
 			'/lib/widgets.php',
 			'/lib/admin/class-Maera_Admin.php',
+			'/lib/updater/class-Maera_Plugin_Updater.php',
 			'/lib/updater/updater.php',
 			'/lib/class-Maera_Development.php',
 			'/lib/class-Maera_Caching.php',
