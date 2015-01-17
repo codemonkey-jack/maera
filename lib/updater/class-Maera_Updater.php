@@ -41,7 +41,6 @@ class Maera_Updater {
 		}
 		add_action( 'admin_init', array( $this, 'register_option' ) );
 		add_action( 'admin_init', array( $this, 'activate_license') );
-		add_action( 'admin_init', array( $this, 'deactivate_license' ) );
 
 		add_action( 'maera/admin/licensing', array( $this, 'form' ) );
 
@@ -75,37 +74,26 @@ class Maera_Updater {
 	function form() { ?>
 
 		<div class="maera licensing item">
-			<h2 class="title"><?php echo $this->item_name ?></h2>
+			<h3 class="title"><?php echo $this->item_name ?></h3>
 			<div class="content">
 				<form method="post" action="options.php">
 					<?php settings_fields( $this->item_shortname ); ?>
-					<table class="form-table">
-						<tbody>
-							<tr valign="top">
-								<th scope="row" valign="top"><?php _e( 'License Key', 'maera' ); ?></th>
-								<td>
-									<input id="<?php echo $this->item_shortname . '_license_key'; ?>" name="<?php echo $this->item_shortname . '_license_key'; ?>" type="text" class="regular-text" value="<?php esc_attr_e( $this->license ); ?>" />
-									<label class="description" for="<?php echo $this->item_shortname . '_license_key'; ?>"><?php _e( 'Enter your license key', 'maera' ); ?></label>
-								</td>
-							</tr>
-							<?php if ( false !== $this->license ) { ?>
-								<tr valign="top">
-									<th scope="row" valign="top"><?php _e( 'Activate License', 'maera' ); ?></th>
-									<td>
-										<?php if ( false !== $this->license_status && 'valid' == $this->license_status ) { ?>
-											<span style="color:green;"><?php _e( 'active', 'maera' ); ?></span>
-											<?php wp_nonce_field( $this->item_shortname . '_nonce', $this->item_shortname . '_nonce' ); ?>
-											<input type="submit" class="button-secondary" name="<?php echo $this->item_shortname . '_deactivate'; ?>" value="<?php _e( 'Deactivate License', 'maera' ); ?>"/>
-										<?php } else {
-											wp_nonce_field( $this->item_shortname . '_nonce', $this->item_shortname . '_nonce' ); ?>
-											<input type="submit" class="button-secondary" name="<?php echo $this->item_shortname . '_activate'; ?>" value="<?php _e( 'Activate License', 'maera' ); ?>"/>
-										<?php } ?>
-									</td>
-								</tr>
-							<?php } ?>
-						</tbody>
-					</table>
-					<?php submit_button(); ?>
+					<label class="description" for="<?php echo $this->item_shortname . '_license_key'; ?>"><?php _e( 'Enter your license key', 'maera' ); ?></label>
+					<input id="<?php echo $this->item_shortname . '_license_key'; ?>" name="<?php echo $this->item_shortname . '_license_key'; ?>" type="text" class="regular-text" value="<?php esc_attr_e( $this->license ); ?>" />
+
+					<?php submit_button( __( 'Save', 'maera' ), 'primary', 'submit', false ) ?>
+
+					<?php if ( false !== $this->license ) : ?>
+						<?php if ( 'valid' == $this->license_status ) : ?>
+							<span class="maera active license indicator"><?php _e( 'active', 'maera' ); ?></span>
+						<?php elseif ( 'invalid' == $this->license_status ) : ?>
+							<span class="maera inactive license indicator"><?php _e( 'invalid', 'maera' ); ?></span>
+						<?php else : ?>
+							<?php wp_nonce_field( $this->item_shortname . '_nonce', $this->item_shortname . '_nonce' ); ?>
+							<input type="submit" class="button-secondary" name="<?php echo $this->item_shortname . '_activate'; ?>" value="<?php _e( 'Activate License', 'maera' ); ?>"/>
+						<?php endif; ?>
+					<?php endif; ?>
+
 				</form>
 			</div>
 		</div>
@@ -118,7 +106,7 @@ class Maera_Updater {
 
 	function sanitize_license( $new ) {
 
-		$old = get_option( $this->license );
+		$old = $this->license;
 
 		if ( $old && $old != $new ) {
 			// new license has been entered, so must reactivate
@@ -160,44 +148,6 @@ class Maera_Updater {
 			// $license_data->license will be either "valid" or "invalid"
 
 			update_option( $this->item_shortname . '_license_status', $license_data->license );
-
-		}
-
-	}
-
-	function deactivate_license() {
-
-		// listen for our activate button to be clicked
-		if ( isset( $_POST[$this->item_shortname . '_deactivate'] ) ) {
-
-			// run a quick security check
-			if ( ! check_admin_referer( $this->item_shortname . '_nonce', $this->item_shortname . '_nonce' ) ) {
-				return; // get out if we didn't click the Deactivate button
-			}
-
-			// data to send in our API request
-			$api_params = array(
-				'edd_action' => 'deactivate_license',
-				'license'    => $this->license,
-				'item_name'  => urlencode( $this->item_name ),
-				'url'        => home_url()
-			);
-
-			// Call the custom API.
-			$response = wp_remote_get( add_query_arg( $api_params, $this->api_url ), array( 'timeout' => 15, 'sslverify' => false ) );
-
-			// make sure the response came back okay
-			if ( is_wp_error( $response ) ) {
-				return false;
-			}
-
-			// decode the license data
-			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
-			// $license_data->license will be either "deactivated" or "failed"
-
-			if ( 'deactivated' == $license_data->license ) {
-				delete_option( $this->item_shortname . '_license_status' );
-			}
 
 		}
 
