@@ -1,77 +1,65 @@
-<?php
-
-/**
- * Statistics Content Part
- *
- * @package bbPress
- * @subpackage Theme
- */
-
-// Get the statistics
-$stats = bbp_get_statistics(); ?>
+{% set stats = function('bbp_get_statistics') %}
 
 <dl role="main">
 
-	<?php do_action( 'bbp_before_statistics' ); ?>
+	{% do action('bbp_before_statistics') %}
 
-	<dt><?php _e( 'Registered Users', 'bbpress' ); ?></dt>
+	<dt>{{ __('Registered Users', 'bbpress') }}</dt>
 	<dd>
-		<strong><?php echo esc_html( $stats['user_count'] ); ?></strong>
+		<strong>{{- stats.user_count -}}</strong>
 	</dd>
 
-	<dt><?php _e( 'Forums', 'bbpress' ); ?></dt>
+	<dt>{{ __('Forums', 'bbpress') }}</dt>
 	<dd>
-		<strong><?php echo esc_html( $stats['forum_count'] ); ?></strong>
+		<strong>{{- stats.forum_count -}}</strong>
 	</dd>
 
-	<dt><?php _e( 'Topics', 'bbpress' ); ?></dt>
+	<dt>{{ __('Topics', 'bbpress') }}</dt>
 	<dd>
-		<strong><?php echo esc_html( $stats['topic_count'] ); ?></strong>
+		<strong>{{- stats.topic_count -}}</strong>
 	</dd>
 
-	<dt><?php _e( 'Replies', 'bbpress' ); ?></dt>
+	<dt>{{ __('Replies', 'bbpress') }}</dt>
 	<dd>
-		<strong><?php echo esc_html( $stats['reply_count'] ); ?></strong>
+		<strong>{{- stats.reply_count -}}</strong>
 	</dd>
 
-	<dt><?php _e( 'Topic Tags', 'bbpress' ); ?></dt>
+	<dt>{{ __('Topic Tags', 'bbpress') }}</dt>
 	<dd>
-		<strong><?php echo esc_html( $stats['topic_tag_count'] ); ?></strong>
+		<strong>{{- stats.tag_count -}}</strong>
 	</dd>
 
-	<?php if ( !empty( $stats['empty_topic_tag_count'] ) ) : ?>
+	{% if stats.empty_topic_tag_count > 1 %}
 
-		<dt><?php _e( 'Empty Topic Tags', 'bbpress' ); ?></dt>
+		<dt>{{ __('Empty Topic Tags', 'bbpress') }}</dt>
 		<dd>
-			<strong><?php echo esc_html( $stats['empty_topic_tag_count'] ); ?></strong>
+			<strong>{{- stats.empty_topic_tag_count -}}</strong>
 		</dd>
 
-	<?php endif; ?>
+	{% endif %}
 
-	<?php if ( !empty( $stats['topic_count_hidden'] ) ) : ?>
+	{% if stats.topic_count_hidden > 1 %}
 
-		<dt><?php _e( 'Hidden Topics', 'bbpress' ); ?></dt>
+		<dt>{{ __('Hidden Topics', 'bbpress') }}</dt>
 		<dd>
 			<strong>
-				<abbr title="<?php echo esc_attr( $stats['hidden_topic_title'] ); ?>"><?php echo esc_html( $stats['topic_count_hidden'] ); ?></abbr>
+				<abbr title="{{- stats.hidden_topic_title -}}">{{- stats.hidden_topic_title -}}</abbr>
 			</strong>
 		</dd>
 
-	<?php endif; ?>
+	{% endif %}
 
-	<?php if ( !empty( $stats['reply_count_hidden'] ) ) : ?>
+	{% if stats.reply_count_hidden > 1 %}
 
-		<dt><?php _e( 'Hidden Replies', 'bbpress' ); ?></dt>
+		<dt>{{ __('Hidden', 'bbpress') }}</dt>
 		<dd>
 			<strong>
-				<abbr title="<?php echo esc_attr( $stats['hidden_reply_title'] ); ?>"><?php echo esc_html( $stats['reply_count_hidden'] ); ?></abbr>
+				<abbr title="{{- stats.hidden_reply_title -}}">{{- stats.hidden_reply_title -}}</abbr>
 			</strong>
 		</dd>
 
-	<?php endif; ?>
+	{% endif %}
 
-	<?php do_action( 'bbp_after_statistics' ); ?>
+	{% do action('bbp_after_statistics') %}
 
 </dl>
-
-<?php unset( $stats );

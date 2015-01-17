@@ -1,50 +1,27 @@
-<?php
-
-/**
- * Single Topic Content Part
- *
- * @package bbPress
- * @subpackage Theme
- */
-
-?>
-
 <div id="bbpress-forums">
+	{{ function('bbp_breadcrumb') }}
+	{% do action('bbp_template_before_single_topic') %}
 
-	<?php bbp_breadcrumb(); ?>
+	{% if function('post_password_required') %}
+		{{ function('bbp_get_template_part', 'form', 'protected') }}
+	{% else %}
 
-	<?php do_action( 'bbp_template_before_single_topic' ); ?>
+		{{ function('bbp_topic_tag_list') }}
+		{{ function('bbp_single_topic_description') }}
 
-	<?php if ( post_password_required() ) : ?>
+		{% if function('bbp_show_lead_topic') %}
+			{{ function('bbp_get_template_part', 'content', 'single-topic-lead') }}
+		{% endif %}
 
-		<?php bbp_get_template_part( 'form', 'protected' ); ?>
+		{% if function('bbp_has_replies') %}
+			{{ function('bbp_get_template_part', 'pagination', 'replies') }}
+			{{ function('bbp_get_template_part', 'loop', 'replies') }}
+			{{ function('bbp_get_template_part', 'pagination', 'replies') }}
+		{% endif %}
 
-	<?php else : ?>
+		{{ function('bbp_get_template_part', 'form', 'reply') }}
 
-		<?php bbp_topic_tag_list(); ?>
+	{% endif %}
 
-		<?php bbp_single_topic_description(); ?>
-
-		<?php if ( bbp_show_lead_topic() ) : ?>
-
-			<?php bbp_get_template_part( 'content', 'single-topic-lead' ); ?>
-
-		<?php endif; ?>
-
-		<?php if ( bbp_has_replies() ) : ?>
-
-			<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
-
-			<?php bbp_get_template_part( 'loop',       'replies' ); ?>
-
-			<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
-
-		<?php endif; ?>
-
-		<?php bbp_get_template_part( 'form', 'reply' ); ?>
-
-	<?php endif; ?>
-
-	<?php do_action( 'bbp_template_after_single_topic' ); ?>
-
+	{% do action('bbp_template_after_single_topic') %}
 </div>

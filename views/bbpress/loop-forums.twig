@@ -1,47 +1,29 @@
-<?php
+{% do action('bbp_template_before_forums_loop') %}
 
-/**
- * Forums Loop
- *
- * @package bbPress
- * @subpackage Theme
- */
-
-?>
-
-<?php do_action( 'bbp_template_before_forums_loop' ); ?>
-
-<ul id="forums-list-<?php bbp_forum_id(); ?>" class="bbp-forums">
-
+<ul id="forums-list-{{ function('bbp_forum_id') }}" class="bbp-forums">
 	<li class="bbp-header">
-
 		<ul class="forum-titles">
-			<li class="bbp-forum-info"><?php _e( 'Forum', 'bbpress' ); ?></li>
-			<li class="bbp-forum-topic-count"><?php _e( 'Topics', 'bbpress' ); ?></li>
-			<li class="bbp-forum-reply-count"><?php bbp_show_lead_topic() ? _e( 'Replies', 'bbpress' ) : _e( 'Posts', 'bbpress' ); ?></li>
-			<li class="bbp-forum-freshness"><?php _e( 'Freshness', 'bbpress' ); ?></li>
+			<li class="bbp-forum-info">{{ __('Forum', 'bbpress') }}</li>
+			<li class="bbp-forum-topic-count">{{ __('Topics', 'bbpress') }}</li>
+			<li class="bbp-forum-reply-count">
+				{{ function('bbp_show_lead_topic') ? __('Replies', 'bbpress') : __('Posts', 'bbpress') }}
+			</li>
+			<li class="bbp-forum-freshness">{{ __('Freshness', 'bbpress') }}</li>
 		</ul>
-
 	</li><!-- .bbp-header -->
 
 	<li class="bbp-body">
-
-		<?php while ( bbp_forums() ) : bbp_the_forum(); ?>
-
-			<?php bbp_get_template_part( 'loop', 'single-forum' ); ?>
-
-		<?php endwhile; ?>
-
+		{% for post in posts %}
+			{{ function('bbp_get_template_part', 'loop', 'single-forum') }}
+		{% endfor %}
 	</li><!-- .bbp-body -->
 
 	<li class="bbp-footer">
-
 		<div class="tr">
 			<p class="td colspan4">&nbsp;</p>
 		</div><!-- .tr -->
-
 	</li><!-- .bbp-footer -->
 
 </ul><!-- .forums-directory -->
 
-<?php do_action( 'bbp_template_after_forums_loop' ); ?>
+{% do action('bbp_template_after_forums_loop') %}
