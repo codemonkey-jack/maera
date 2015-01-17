@@ -19,7 +19,11 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 
 	function admin_menu () {
 
+		// Add the theme page
 		add_theme_page( __( 'Maera Addons', 'maera' ), __( 'Maera Addons', 'maera' ), 'install_plugins', 'maera-ri', array( $this, 'settings_page' ) );
+		// Remove the menu item for that page
+		remove_submenu_page( 'themes.php', 'maera-ri' );
+
 	}
 
 	public function register_scripts() {
@@ -64,9 +68,11 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 
 	}
 
-	function settings_page() { ?>
+	function settings_page() {
+		global $maera_admin; ?>
 
 		<div class="wrap metabox-holder">
+			<?php echo $maera_admin->tabs_head( 'addons' ); ?>
 			<h2><?php _e( 'Maera Addons Installer', 'maera' ); ?></h2>
 
 			<?php

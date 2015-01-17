@@ -33,6 +33,9 @@ class Maera {
 		$maera_cache  = new Maera_Caching();
 		$maera_cc     = new Maera_Core_Customizer();
 
+		global $maera_admin;
+		$maera_admin  = new Maera_Admin();
+
 		// This is not ready yet so hide it.
 		// For dev you can add this line to your wp-config.php file:
 		// define( 'MAERA_HIDE_CORE_CUSTOMIZER', false );
@@ -63,7 +66,7 @@ class Maera {
 			'/lib/class-Maera_Development.php',
 			'/lib/class-Maera_Caching.php',
 			'/lib/class-Maera_Core_Customizer.php',
-			'/lib/admin/remote-installer/client.php'
+			'/lib/remote-installer/client.php'
 		);
 
 		foreach ( $files as $file ) {

@@ -66,7 +66,8 @@ class Maera_Admin {
 			'general'   => __( 'General', 'maera' ),
 			'settings'  => __( 'Settings', 'maera' ),
 			'licensing' => __( 'Licensing', 'maera' ),
-			'docs'      => __( 'Documentation', 'maera' )
+			'addons'    => __( 'Addons', 'maera' ),
+			'docs'      => __( 'Documentation', 'maera' ),
 		) );
 
 	}
@@ -98,6 +99,8 @@ class Maera_Admin {
 
 		$tabs    = $this->tabs();
 		$current = ( isset ( $_GET['tab'] ) ) ? $_GET['tab'] : 'general';
+		$current = ( isset ( $_GET['page'] ) && 'maera-ri' == $_GET['page'] ) ? 'addons' : $current;
+
 
 		// This checks whether the form has just been submitted.
 		if ( ! isset( $_REQUEST['updated'] ) ) {
@@ -155,4 +158,3 @@ class Maera_Admin {
 	}
 
 }
-$maera_admin = new Maera_Admin();
