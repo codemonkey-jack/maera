@@ -4,6 +4,8 @@ class Maera {
 
 	function __construct() {
 
+		define( 'MAERA_VERSION', '1.0-beta1' );
+
 		require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
 
 		self::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
@@ -37,6 +39,8 @@ class Maera {
 		if ( ! defined( 'MAERA_HIDE_CORE_CUSTOMIZER' ) ) {
 			define( 'MAERA_HIDE_CORE_CUSTOMIZER', true );
 		}
+
+		add_action( 'init', array( $this, 'licensing' ) );
 
 	}
 
@@ -207,6 +211,14 @@ class Maera {
 		}
 
 		$plugins = new Maera_Required_Plugins( $plugins );
+
+	}
+
+	function licensing() {
+
+		if ( is_admin() && class_exists( 'Maera_Updater' ) ) {
+			$maera_md_license = new Maera_Updater( 'theme', __FILE__, 'Maera', MAERA_VERSION );
+		}
 
 	}
 
