@@ -4,7 +4,7 @@ class Maera {
 
 	function __construct() {
 
-		define( 'MAERA_VERSION', '1.0-beta1' );
+		define( 'MAERA_VER', '1.0.0' );
 
 		require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
 
