@@ -19,6 +19,10 @@ class Maera_Admin {
 		add_action( 'admin_menu', array( $this, 'maera_admin_options' ) );
 		add_action( 'after_switch_theme', array( $this, 'activation' ) );
 
+		if ( isset ( $_GET['tab'] ) && 'addons' == $_GET['tab'] ) {
+			wp_safe_redirect( admin_url( 'themes.php?page=maera-ri' ) );
+		}
+
 	}
 
 	/**
