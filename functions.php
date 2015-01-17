@@ -60,7 +60,6 @@ class Maera {
 			'/lib/widgets.php',
 			'/lib/admin/class-Maera_Admin.php',
 			'/lib/updater/class-Maera_Updater.php',
-			'/lib/updater/updater.php',
 			'/lib/class-Maera_Development.php',
 			'/lib/class-Maera_Caching.php',
 			'/lib/class-Maera_Core_Customizer.php',
