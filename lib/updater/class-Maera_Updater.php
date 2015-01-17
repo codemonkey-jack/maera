@@ -171,7 +171,7 @@ class Maera_Updater {
 		if ( isset( $_POST[$this->item_shortname . '_deactivate'] ) ) {
 
 			// run a quick security check
-			if ( ! check_admin_referer( $this->options_id . '_nonce', $this->item_shortname . '_nonce' ) ) {
+			if ( ! check_admin_referer( $this->item_shortname . '_nonce', $this->item_shortname . '_nonce' ) ) {
 				return; // get out if we didn't click the Deactivate button
 			}
 
