@@ -546,3 +546,19 @@ table.maera-docs-bordered th {
 ul.maera-indented, ul.maera-indented ul {
   margin-left: 3em;
 }
+
+.maera.licensing.item {
+  margin-top: 20px;
+  border: 1px solid #dedede;
+}
+
+.maera.licensing.item .title{
+  background: #f7f7f7;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 5px 20px;
+}
+
+.maera.licensing.item .content{
+  background: #fff;
+  padding: 20px;
+}
