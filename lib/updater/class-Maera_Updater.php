@@ -1,6 +1,6 @@
 <?php
 
-class Maera_Plugin_Updater {
+class Maera_Updater {
 
 	private $file;
 	private $license;
