@@ -34,7 +34,7 @@
 		<p class="bbp-topic-meta">
 			{% do action('bbp_theme_before_topic_author') %}
 			<span class="bbp-topic-freshness-author">
-				{{ function('bbp_author_link', [{'post_id':function('bbp_get_forum_last_active_id')}, {'size':'14'}) }}
+				{{ function('bbp_author_link', [{'post_id':function('bbp_get_forum_last_active_id')}, {'size':'14'}]) }}
 			</span>
 			{% do action('bbp_theme_after_topic_author') %}
 		</p>
