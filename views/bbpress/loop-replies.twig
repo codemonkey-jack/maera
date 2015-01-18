@@ -1,37 +1,25 @@
-<?php
-
-/**
- * Replies Loop
- *
- * @package bbPress
- * @subpackage Theme
- */
-
-?>
-
-<?php do_action( 'bbp_template_before_replies_loop' ); ?>
-
-<ul id="topic-<?php bbp_topic_id(); ?>-replies" class="forums bbp-replies">
+{% do action('bbp_template_before_replies_loop') %}
+<ul id="topic-{{ function('bbp_topic_id') }}-replies" class="forums bbp-replies">
 
 	<li class="bbp-header">
 
-		<div class="bbp-reply-author"><?php  _e( 'Author',  'bbpress' ); ?></div><!-- .bbp-reply-author -->
+		<div class="bbp-reply-author">{{ __('Author', 'bbpress') }}</div><!-- .bbp-reply-author -->
 
 		<div class="bbp-reply-content">
 
-			<?php if ( !bbp_show_lead_topic() ) : ?>
+			{% if function('bbp_show_lead_topic') < 1 %}
 
-				<?php _e( 'Posts', 'bbpress' ); ?>
+				{{ __('Posts', 'bbpress') }}
 
-				<?php bbp_topic_subscription_link(); ?>
+				{{ function('bbp_topic_subscription_link') }}
 
-				<?php bbp_user_favorites_link(); ?>
+				{{ function('bbp_user_favorites_link') }}
 
-			<?php else : ?>
+			{% else %}
 
-				<?php _e( 'Replies', 'bbpress' ); ?>
+				{{ __('Replies', 'bbpress') }}
 
-			<?php endif; ?>
+			{% endif %}
 
 		</div><!-- .bbp-reply-content -->
 
@@ -39,42 +27,43 @@
 
 	<li class="bbp-body">
 
-		<?php if ( bbp_thread_replies() ) : ?>
+		{% if function('bbp_thread_replies') %}
 
-			<?php bbp_list_replies(); ?>
+			{{ function('bbp_list_replies') }}
 
-		<?php else : ?>
+		{% else %}
 
-			<?php while ( bbp_replies() ) : bbp_the_reply(); ?>
+			{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
+			<?php /* while ( bbp_replies() ) : bbp_the_reply();*/ //ORIGINAL LOOP ?>
+				{{ function('bbp_get_template_part', 'loop', 'single-reply') }}
 
-				<?php bbp_get_template_part( 'loop', 'single-reply' ); ?>
+			<?php /*endwhile;*/ ?>
+			{% endfor %}
 
-			<?php endwhile; ?>
-
-		<?php endif; ?>
+		{% endif %}
 
 	</li><!-- .bbp-body -->
 
 	<li class="bbp-footer">
 
-		<div class="bbp-reply-author"><?php  _e( 'Author',  'bbpress' ); ?></div>
+		<div class="bbp-reply-author">{{ __('Author', 'bbpress') }}</div>
 
 		<div class="bbp-reply-content">
 
-			<?php if ( !bbp_show_lead_topic() ) : ?>
+			{% if function('bbp_show_lead_topic') < 1 %}
 
-				<?php _e( 'Posts', 'bbpress' ); ?>
+				{{ __('Posts', 'bbpress') }}
 
-			<?php else : ?>
+			{% else %}
 
-				<?php _e( 'Replies', 'bbpress' ); ?>
+				{{ __('Replies', 'bbpress') }}
 
-			<?php endif; ?>
+			{% endif %}
 
 		</div><!-- .bbp-reply-content -->
 
 	</li><!-- .bbp-footer -->
 
-</ul><!-- #topic-<?php bbp_topic_id(); ?>-replies -->
+</ul><!-- #topic-{{ function('bbp_topic_id') }}-replies -->
 
-<?php do_action( 'bbp_template_after_replies_loop' ); ?>
+{% do action('bbp_template_after_replies_loop') %}

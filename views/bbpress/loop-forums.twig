@@ -13,9 +13,13 @@
 	</li><!-- .bbp-header -->
 
 	<li class="bbp-body">
+
 		{% for post in posts %}
+		<?php /* while ( bbp_forums() ) : bbp_the_forum();*/ //ORIGINAL LOOP ?>
 			{{ function('bbp_get_template_part', 'loop', 'single-forum') }}
+		<?php /*endwhile;*/ ?>
 		{% endfor %}
+
 	</li><!-- .bbp-body -->
 
 	<li class="bbp-footer">
