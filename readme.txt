@@ -28,6 +28,10 @@ Chrome, Firefox, Safari and IE10+ are supported. IE7, IE8 and IE9 are not suppor
 
 More detail on the theme [commit page](https://github.com/presscodes/maera/commits).
 
+= 1.0.3 =
+
+* Fix: Jetpack was being forced to Dev mode some hosts even when dev mode was disabled from the theme options dashboard.
+
 = 1.0.2 =
 
 * Fix: remote-installer scripts were not loading properly
