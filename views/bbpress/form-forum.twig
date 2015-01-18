@@ -31,7 +31,7 @@
 
 				{% do action('bbp_theme_before_forum_form_notices') %}
 
-				{% if function('bbp_is_forum_edit') < 1 and function('bbp_is_forum_closed') %}
+				{% if function('bbp_is_forum_edit') == false and function('bbp_is_forum_closed') %}
 
 					<div class="bbp-template-notice">
 						<p>{{ __('This forum is closed to new content, however your account still allows you to do so.', 'bbpress') }}</p>
@@ -66,7 +66,7 @@
 
 					{% do action('bbp_theme_after_forum_form_content') %}
 
-					{% if function('bbp_use_wp_editor') < 1 or function('current_user_can', 'unfiltered_html' )%}
+					{% if function('bbp_use_wp_editor') or function('current_user_can', 'unfiltered_html' )%}
 
 						<p class="form-allowed-tags">
 							<label>{{ __('You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'bbpress') }}</label><br />
