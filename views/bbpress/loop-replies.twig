@@ -34,10 +34,10 @@
 		{% else %}
 
 			{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
-			<?php /* while ( bbp_replies() ) : bbp_the_reply();*/ //ORIGINAL LOOP ?>
+			<?php while ( bbp_replies() ) : bbp_the_reply(); ?><!--Original Loop Begin-->
 				{{ function('bbp_get_template_part', 'loop', 'single-reply') }}
 
-			<?php /*endwhile;*/ ?>
+			<?php endwhile; ?><!--Original Loop End-->
 			{% endfor %}
 
 		{% endif %}

@@ -1,6 +1,6 @@
 <ul id="bbp-forum-{{ function('bbp_forum_id') }}" {{ function('bbp_forum_class') }}>
 	<li class="bbp-forum-info">
-		{% if function('bbp_is_user_home') and function('bbp_is_subscriptions')%}
+		{% if function('bbp_is_user_home') and function('bbp_is_subscriptions') %}
 			<span class="bbp-row-actions">
 				{% do action('bbp_theme_before_forum_subscription_action') %}
 				{{ function('bbp_list_forums', [{'before':''}, {'subscribe':'+'}, {'unsubscribe':'&times;'} ]) }}

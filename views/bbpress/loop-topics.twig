@@ -1,25 +1,26 @@
-<?php do_action( 'bbp_template_before_topics_loop' ); ?>
+{% do action('bbp_template_before_topics_loop') %}
 
-<ul id="bbp-forum-<?php bbp_forum_id(); ?>" class="bbp-topics">
+<ul id="bbp-forum-{{ function('bbp_forum_id') }}" class="bbp-topics">
 
 	<li class="bbp-header">
 
 		<ul class="forum-titles">
-			<li class="bbp-topic-title"><?php _e( 'Topic', 'bbpress' ); ?></li>
-			<li class="bbp-topic-voice-count"><?php _e( 'Voices', 'bbpress' ); ?></li>
-			<li class="bbp-topic-reply-count"><?php bbp_show_lead_topic() ? _e( 'Replies', 'bbpress' ) : _e( 'Posts', 'bbpress' ); ?></li>
-			<li class="bbp-topic-freshness"><?php _e( 'Freshness', 'bbpress' ); ?></li>
+			<li class="bbp-topic-title">{{ __('Topic', 'bbpress') }}</li>
+			<li class="bbp-topic-voice-count">{{ __('Voices', 'bbpress') }}</li>
+			<li class="bbp-topic-reply-count">{{ function('bbp_show_lead_topic') ? __('Replies', 'bbpress') : __('Posts', 'bbpress') }}</li>
+			<li class="bbp-topic-freshness">{{ __('Freshness', 'bbpress') }}</li>
 		</ul>
 
 	</li>
 
 	<li class="bbp-body">
+		{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
+		<?php while ( bbp_topics() ) : bbp_the_topic(); ?><!--Original Loop Begin-->
 
-		<?php while ( bbp_topics() ) : bbp_the_topic(); ?>
+			{{ function('bbp_get_template_part', 'loop', 'single-topic') }}
 
-			<?php bbp_get_template_part( 'loop', 'single-topic' ); ?>
-
-		<?php endwhile; ?>
+		<?php endwhile; ?><!--Original Loop End-->
+		{% endfor %}
 
 	</li>
 
@@ -33,6 +34,6 @@
 
 	</li>
 
-</ul><!-- #bbp-forum-<?php bbp_forum_id(); ?> -->
+</ul><!-- #bbp-forum-{{ function('bbp_forum_id') }} -->
 
-<?php do_action( 'bbp_template_after_topics_loop' ); ?>
+{% do action('bbp_template_after_topics_loop') %}
