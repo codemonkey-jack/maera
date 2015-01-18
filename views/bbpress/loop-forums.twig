@@ -14,7 +14,7 @@
 
 	<li class="bbp-body">
 
-		{% for post in posts %}
+		{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
 		<?php /* while ( bbp_forums() ) : bbp_the_forum();*/ //ORIGINAL LOOP ?>
 			{{ function('bbp_get_template_part', 'loop', 'single-forum') }}
 		<?php /*endwhile;*/ ?>

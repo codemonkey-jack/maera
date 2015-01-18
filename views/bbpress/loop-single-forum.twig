@@ -3,7 +3,7 @@
 		{% if function('bbp_is_user_home') and function('bbp_is_subscriptions')%}
 			<span class="bbp-row-actions">
 				{% do action('bbp_theme_before_forum_subscription_action') %}
-				{{ function('bbp_list_forums', '', '+', '&times;' ) }}
+				{{ function('bbp_list_forums', [{'before':''}, {'subscribe':'+'}, {'unsubscribe':'&times;'} ]) }}
 				{% do action('bbp_theme_after_forum_subscription_action') %}
 			</span>
 		{% endif %}

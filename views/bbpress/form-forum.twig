@@ -19,33 +19,33 @@
 
 			<fieldset class="bbp-form">
 				<legend>
+					{% if function('bbp_is_forum_edit') %}
 
-					<?php
-						if ( bbp_is_forum_edit() )
-							printf( __( 'Now Editing &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_forum_title() );
-						else
-							bbp_is_single_forum() ? printf( __( 'Create New Forum in &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_forum_title() ) : _e( 'Create New Forum', 'bbpress' );
-					?>
+						{{ __('Now Editing &ldquo;%s&rdquo;', 'bbpress')|format(function('bbp_get_forum_title')) }}
+
+					{% else %}
+
+						{{ function('bbp_is_single_forum') ? __('Create New Forum in &ldquo;%s&rdquo;', 'bbpress')|format(function('bbp_get_forum_title')) : {{ __('Create New Forum', 'bbpress') }} }}
 
 				</legend>
 
 				{% do action('bbp_theme_before_forum_form_notices') %}
 
-				<?php if ( !bbp_is_forum_edit() && bbp_is_forum_closed() ) : ?>
+				{% if function('bbp_is_forum_edit') < 1 and function('bbp_is_forum_closed') %}
 
 					<div class="bbp-template-notice">
-						<p><?php _e( 'This forum is closed to new content, however your account still allows you to do so.', 'bbpress' ); ?></p>
+						<p>{{ __('This forum is closed to new content, however your account still allows you to do so.', 'bbpress') }}</p>
 					</div>
 
-				<?php endif; ?>
+				{% endif %}
 
-				<?php if ( current_user_can( 'unfiltered_html' ) ) : ?>
+				{% if function('current_user_can', 'unfiltered_html') %}
 
 					<div class="bbp-template-notice">
-						<p><?php _e( 'Your account has the ability to post unrestricted HTML content.', 'bbpress' ); ?></p>
+						<p>{{ __('Your account has the ability to post unrestricted HTML content.', 'bbpress') }}</p>
 					</div>
 
-				<?php endif; ?>
+				{% endif %}
 
 				{% do action('bbp_template_notices') %}
 
@@ -54,32 +54,32 @@
 					{% do action('bbp_theme_before_forum_form_title') %}
 
 					<p>
-						<label for="bbp_forum_title"><?php printf( __( 'Forum Name (Maximum Length: %d):', 'bbpress' ), bbp_get_title_max_length() ); ?></label><br />
-						<input type="text" id="bbp_forum_title" value="<?php bbp_form_forum_title(); ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_forum_title" maxlength="<?php bbp_title_max_length(); ?>" />
+						<label for="bbp_forum_title">{{ __('Forum Name (Maximum Length: %d):', 'bbpress')|format(function('bbp_get_title_max_length')) }}</label><br />
+						<input type="text" id="bbp_forum_title" value="{{ function('bbp_form_forum_title') }}" tabindex="{{ function('bbp_tab_index') }}" size="40" name="bbp_forum_title" maxlength="{{ function('bbp_title_max_length') }}" />
 					</p>
 
 					{% do action('bbp_theme_after_forum_form_title') %}
 
 					{% do action('bbp_theme_before_forum_form_content') %}
 
-					<?php bbp_the_content( array( 'context' => 'forum' ) ); ?>
+					{{ function('bbp_the_content', [{'context':'forum'}]) }}
 
 					{% do action('bbp_theme_after_forum_form_content') %}
 
-					<?php if ( ! ( bbp_use_wp_editor() || current_user_can( 'unfiltered_html' ) ) ) : ?>
+					{% if function('bbp_use_wp_editor') < 1 or function('current_user_can', 'unfiltered_html' )%}
 
 						<p class="form-allowed-tags">
-							<label><?php _e( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:','bbpress' ); ?></label><br />
-							<code><?php bbp_allowed_tags(); ?></code>
+							<label>{{ __('You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'bbpress') }}</label><br />
+							<code>{{ function('bbp_allowed_tags') }}</code>
 						</p>
 
-					<?php endif; ?>
+					{% endif %}
 
 					{% do action('bbp_theme_before_forum_form_type') %}
 
 					<p>
-						<label for="bbp_forum_type"><?php _e( 'Forum Type:', 'bbpress' ); ?></label><br />
-						<?php bbp_form_forum_type_dropdown(); ?>
+						<label for="bbp_forum_type">{{ __('Forum Type:', 'bbpress') }}</label><br />
+						{{ function('bbp_form_forum_type_dropdown') }}
 					</p>
 
 					{% do action('bbp_theme_after_forum_form_type') %}
@@ -87,8 +87,8 @@
 					{% do action('bbp_theme_before_forum_form_status') %}
 
 					<p>
-						<label for="bbp_forum_status"><?php _e( 'Status:', 'bbpress' ); ?></label><br />
-						<?php bbp_form_forum_status_dropdown(); ?>
+						<label for="bbp_forum_status">{{ __('Status:', 'bbpress') }}</label><br />
+						{{ function('bbp_form_forum_status_dropdown') }}
 					</p>
 
 					{% do action('bbp_theme_after_forum_form_status') %}
@@ -96,8 +96,8 @@
 					{% do action('bbp_theme_before_forum_form_status') %}
 
 					<p>
-						<label for="bbp_forum_visibility"><?php _e( 'Visibility:', 'bbpress' ); ?></label><br />
-						<?php bbp_form_forum_visibility_dropdown(); ?>
+						<label for="bbp_forum_visibility">{{ __('Visibility:', 'bbpress') }}</label><br />
+						{{ function('bbp_form_forum_visibility_dropdown') }}
 					</p>
 
 					{% do action('bbp_theme_after_forum_visibility_status') %}
@@ -105,16 +105,10 @@
 					{% do action('bbp_theme_before_forum_form_parent') %}
 
 					<p>
-						<label for="bbp_forum_parent_id"><?php _e( 'Parent Forum:', 'bbpress' ); ?></label><br />
+						<label for="bbp_forum_parent_id">{{ __('Parent Forum:', 'bbpress') }}</label><br />
 
-						<?php
-							bbp_dropdown( array(
-								'select_id' => 'bbp_forum_parent_id',
-								'show_none' => __( '(No Parent)', 'bbpress' ),
-								'selected'  => bbp_get_form_forum_parent(),
-								'exclude'   => bbp_get_forum_id()
-							) );
-						?>
+						{{ function('bbp_dropdown', [{'select_id':'bbp_forum_parent_id'}, {'show_none':{{ __('(No Parent)', 'bbpress')}} }, {'selected',function('bbp_get_form_forum_parent')}, {'exclude',function('bbp_get_forum_id')}]) }}
+
 					</p>
 
 					{% do action('bbp_theme_after_forum_form_parent') %}
@@ -125,7 +119,7 @@
 
 						{% do action('bbp_theme_before_forum_form_submit_button') %}
 
-						<button type="submit" tabindex="<?php bbp_tab_index(); ?>" id="bbp_forum_submit" name="bbp_forum_submit" class="button submit"><?php _e( 'Submit', 'bbpress' ); ?></button>
+						<button type="submit" tabindex="{{ function('bbp_tab_index') }}" id="bbp_forum_submit" name="bbp_forum_submit" class="button submit">{{ __('Submit', 'bbpress') }}</button>
 
 						{% do action('bbp_theme_after_forum_form_submit_button') %}
 
@@ -135,7 +129,7 @@
 
 				</div>
 
-				<?php bbp_forum_form_fields(); ?>
+				{{ function('bbp_forum_form_fields') }}
 
 			</fieldset>
 				{% do action('bbp_theme_after_forum_form') %}
@@ -144,17 +138,17 @@
 
 {% elseif function('bbp_is_forum_closed') %}
 
-	<div id="no-forum-<?php bbp_forum_id(); ?>" class="bbp-no-forum">
+	<div id="no-forum-{{ function('bbp_forum_id') }}" class="bbp-no-forum">
 		<div class="bbp-template-notice">
-			<p><?php printf( __( 'The forum &#8216;%s&#8217; is closed to new content.', 'bbpress' ), bbp_get_forum_title() ); ?></p>
+			<p>{{ __('The forum &#8216;%s&#8217; is closed to new content.', 'bbpress')|format(function('bbp_get_forum_title')) }}</p>
 		</div>
 	</div>
 
 {% else %}
 
-	<div id="no-forum-<?php bbp_forum_id(); ?>" class="bbp-no-forum">
+	<div id="no-forum-{{ function('bbp_forum_id') }}" class="bbp-no-forum">
 		<div class="bbp-template-notice">
-			<p><?php is_user_logged_in() ? _e( 'You cannot create new forums.', 'bbpress' ) : _e( 'You must be logged in to create new forums.', 'bbpress' ); ?></p>
+			<p>{% if function('is_user_logged_in') ? {{ __('You cannot create new forums.', 'bbpress') }} : {{ __('You must be logged in to create new forums.', 'bbpress') }}%}</p>
 		</div>
 	</div>
 
