@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'EDD_RI_PLUGIN_URL' ) ) {
-	define( 'EDD_RI_PLUGIN_URL', get_template_directory_uri() . '/lib/admin/remote-installer' );
+	define( 'EDD_RI_PLUGIN_URL', get_template_directory_uri() . '/lib/remote-installer/' );
 }
 
 include( dirname( __FILE__ ) . '/includes/class-Maera_EDD_RI_Client.php' );
