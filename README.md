@@ -2,6 +2,8 @@ Maera
 =====
 
 ![Maera Logo](http://press.codes/wp-content/uploads/maera-logo.png)
+
+
 [![Code Climate](https://codeclimate.com/github/presscodes/maera/badges/gpa.svg)](https://codeclimate.com/github/presscodes/maera)
 
 **Maera** is a developer-friendly theme that allows you to quickly prototype sites and extend it with your own custom plugins.
