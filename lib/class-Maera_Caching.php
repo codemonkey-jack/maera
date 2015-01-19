@@ -57,7 +57,11 @@ class Maera_Caching {
 
 			// Turn on Timber caching.
 			// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
-			Timber::$cache = true;
+
+			// This is a bit buggy right now on some hosts so we're disabling it.
+			// Timber::$cache = true;
+			self::cache_mode();
+
 
 		} else {
 
