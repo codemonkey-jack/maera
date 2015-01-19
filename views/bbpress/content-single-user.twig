@@ -11,7 +11,7 @@
 			{% if function('bbp_is_subscriptions') %} {{ function('bbp_get_template_part', 'user', 'subscriptions') }} {% endif %}
 			{% if function('bbp_is_single_user_topics') %} {{ function('bbp_get_template_part', 'user', 'topics-created') }} {% endif %}
 			{% if function('bbp_is_single_user_replies') %} {{ function('bbp_get_template_part', 'user', 'replies-created') }} {% endif %}
-			{% if function('bbp_is_single_user_edit') %} {{ function('bbp_get_template_part', 'user', 'user-edit') }} {% endif %}
+			{% if function('bbp_is_single_user_edit') %} {{ function('bbp_get_template_part', 'form', 'user-edit') }} {% endif %}
 			{% if function('bbp_is_single_user_profile') %} {{ function('bbp_get_template_part', 'user', 'profile') }} {% endif %}
 		</div>
 	</div>

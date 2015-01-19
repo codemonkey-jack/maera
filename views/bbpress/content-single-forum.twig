@@ -20,14 +20,14 @@
 
 	{% endif %}
 
-		{% if function('bbp_is_forum_category') < 1 and function('bbp_has_topics') %}
+		{% if function('bbp_is_forum_category') == false and function('bbp_has_topics') %}
 
 			{{ function('bbp_get_template_part', 'pagination', 'topics') }}
 			{{ function('bbp_get_template_part', 'loop', 'topics') }}
 			{{ function('bbp_get_template_part', 'pagination', 'topics') }}
 			{{ function('bbp_get_template_part', 'form', 'topic') }}
 
-		{% elseif function('bbp_is_forum_category') > 1 %}
+		{% elseif function('bbp_is_forum_category') == true %}
 
 			{{ function('bbp_get_template_part', 'feedback', 'no-topics') }}
 			{{ function('bbp_get_template_part', 'form', 'topic') }}

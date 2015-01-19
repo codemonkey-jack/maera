@@ -55,7 +55,7 @@
 
 				{% do action('bbp_theme_before_topic_started_in') %}
 
-				<span class="bbp-topic-started-in">{{ __('in: <a href="%1$s">%2$s</a>', 'bbpress')|format(function('bbp_get_forum_permalink', function('bbp_get_topic_forum_id')))|function('bbp_get_forum_title', function('bbp_get_topic_forum_id')) }}</span>
+				<span class="bbp-topic-started-in">{{ __('in: <a href="%1$s">%2$s</a>', 'bbpress')|format(function('bbp_get_forum_permalink',function('bbp_get_topic_forum_id')),function('bbp_get_forum_title',function('bbp_get_topic_forum_id'))) }}</span>
 
 				{% do action('bbp_theme_after_topic_started_in') %}
 

@@ -28,7 +28,7 @@
 
 		<div class="tr">
 			<p>
-				<span class="td colspan<?php echo ( bbp_is_user_home() && ( bbp_is_favorites() || bbp_is_subscriptions() ) ) ? '5' : '4'; ?>">&nbsp;</span>
+				<span class="td colspan{{ __( function('bbp_is_user_home') and function('bbp_is_favorites') or function('bbp_is_subscriptions') ? '5' : '4') }}">&nbsp;</span>
 			</p>
 		</div><!-- .tr -->
 

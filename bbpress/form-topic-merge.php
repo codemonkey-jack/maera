@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/form-merge.twig' );
+Maera_Template::main( 'bbpress/form-topic-merge.twig' );
