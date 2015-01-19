@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maera\n"
-"POT-Creation-Date: 2015-01-18 01:03+0200\n"
-"PO-Revision-Date: 2015-01-18 01:04+0200\n"
+"POT-Creation-Date: 2015-01-19 02:47+0200\n"
+"PO-Revision-Date: 2015-01-19 02:47+0200\n"
 "Last-Translator: Stathopoulos Aristeides <info@aristeides.com>\n"
 "Language-Team: Stathopoulos Aristeides <info@aristeides.com>\n"
 "Language: en_US\n"
@@ -42,11 +42,27 @@ msgstr "Documentation"
 msgid "Options saved"
 msgstr "Options saved"
 
-#: lib/admin/tabs/settings.php:21
+#: lib/admin/tabs/settings.php:16
+msgid "No Caching"
+msgstr "No Caching"
+
+#: lib/admin/tabs/settings.php:17
+msgid "WP Object Caching"
+msgstr "WP Object Caching"
+
+#: lib/admin/tabs/settings.php:18
+msgid "Transients"
+msgstr "Transients"
+
+#: lib/admin/tabs/settings.php:19
+msgid "Default"
+msgstr "Default"
+
+#: lib/admin/tabs/settings.php:29
 msgid "Select a Shell"
 msgstr "Select a Shell"
 
-#: lib/admin/tabs/settings.php:23
+#: lib/admin/tabs/settings.php:31
 msgid ""
 "You can select the shell that you want to activate here. Please note that when "
 "changing shells all your settings are lost so you should keep a backup of them."
@@ -54,15 +70,15 @@ msgstr ""
 "You can select the shell that you want to activate here. Please note that when "
 "changing shells all your settings are lost so you should keep a backup of them."
 
-#: lib/admin/tabs/settings.php:34
+#: lib/admin/tabs/settings.php:42
 msgid "Development Mode & Caching"
 msgstr "Development Mode & Caching"
 
-#: lib/admin/tabs/settings.php:36
+#: lib/admin/tabs/settings.php:44
 msgid "Development Mode"
 msgstr "Development Mode"
 
-#: lib/admin/tabs/settings.php:38
+#: lib/admin/tabs/settings.php:46
 msgid ""
 "Enable development mode. Please keep in mind that the actual implementation of "
 "the dev mode depends on the shell you have chosen"
@@ -70,11 +86,11 @@ msgstr ""
 "Enable development mode. Please keep in mind that the actual implementation of "
 "the dev mode depends on the shell you have chosen"
 
-#: lib/admin/tabs/settings.php:39
+#: lib/admin/tabs/settings.php:47
 msgid "Caching (minutes)"
 msgstr "Caching (minutes)"
 
-#: lib/admin/tabs/settings.php:41
+#: lib/admin/tabs/settings.php:49
 msgid ""
 "Set the time (in minutes) you want your pages cached. CAUTION: If you have any "
 "context dependent sub-views (eg. current user), this mode won't do. In that "
@@ -84,15 +100,19 @@ msgstr ""
 "context dependent sub-views (eg. current user), this mode won't do. In that "
 "case, set this to 0."
 
-#: lib/admin/tabs/settings.php:46
+#: lib/admin/tabs/settings.php:52
+msgid "Choose a caching mode for your theme templates"
+msgstr "Choose a caching mode for your theme templates"
+
+#: lib/admin/tabs/settings.php:61
 msgid "Export/Import customizer options"
 msgstr "Export/Import customizer options"
 
-#: lib/admin/tabs/settings.php:48
+#: lib/admin/tabs/settings.php:63
 msgid "Export Customizer options"
 msgstr "Export Customizer options"
 
-#: lib/admin/tabs/settings.php:67
+#: lib/admin/tabs/settings.php:82
 msgid ""
 "Import Customizer options. If you want to reset the customizer, you will have "
 "to simply enter RESET in the import field (all capitals)."

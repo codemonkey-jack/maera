@@ -117,11 +117,21 @@ class Maera_Caching {
 
 	public static function cache_mode() {
 
-		if ( Maera_Development::dev_mode() ) {
-			return TimberLoader::CACHE_NONE;
+		$options    = get_option( 'maera_admin_options', array() );
+		$cache_mode = isset( $options['cache_mode'] ) ? $options['cache_mode'] : 'default';
+
+		if ( 'none' == $cache_mode ) {
+			$mode = TimberLoader::CACHE_NONE;
+		} else if ( 'object' == $cache_mode ) {
+			$mode = TimberLoader::CACHE_OBJECT;
+		} else if ( 'transient' == $cache_mode ) {
+			$mode = TimberLoader::CACHE_TRANSIENT;
 		} else {
-			return TimberLoader::CACHE_USE_DEFAULT;
+			$mode = TimberLoader::CACHE_USE_DEFAULT;
 		}
+
+		return $mode;
+
 	}
 
 }
