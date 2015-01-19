@@ -5,12 +5,20 @@ $maera_admin_options = apply_filters( 'maera/admin/options', array(
 	'shell'       => 'core',
 	'import_data' => '',
 	'dev_mode'    => 1,
-	'cache'       => '0'
+	'cache'       => '0',
+	'cache_mode'  => 'default',
 ) );
 
 // Get the available shells
-$available_shells = apply_filters( 'maera/shells/available', array() ); ?>
+$available_shells = apply_filters( 'maera/shells/available', array() );
 
+$cache_modes = array(
+	array( 'value' => 'none',      'label' => __( 'No Caching', 'maera' ) ),
+	array( 'value' => 'object',    'label' => __( 'WP Object Caching', 'maera' ) ),
+	array( 'value' => 'transient', 'label' => __( 'Transients', 'maera' ) ),
+	array( 'value' => 'default',   'label' => __( 'Default', 'maera' ) ),
+);
+?>
 <form method="post" action="options.php">
 
 	<?php $settings = get_option( 'maera_admin_options', $maera_admin_options ); ?>
@@ -39,6 +47,13 @@ $available_shells = apply_filters( 'maera/shells/available', array() ); ?>
 			<p><h4><?php _e( 'Caching (minutes)', 'maera' ); ?></h4></p>
 			<input type="number" name="maera_admin_options[cache]" min="0" max="1440" value="<?php echo @$settings['cache']; ?>">
 			<label for="maera_admin_options[cache]"><?php _e( 'Set the time (in minutes) you want your pages cached. CAUTION: If you have any context dependent sub-views (eg. current user), this mode won\'t do. In that case, set this to 0.', 'maera' ); ?></label>
+			<br>
+			<hr>
+			<p><?php _e( 'Choose a caching mode for your theme templates', 'maera' ); ?></p>
+			<?php foreach( $cache_modes as $cache_mode ) : ?>
+				<input type="radio" id="<?php echo $cache_mode['value']; ?>" name="maera_admin_options[cache_mode]" value="<?php esc_attr_e( $cache_mode['value'] ); ?>" <?php checked( $settings['cache_mode'], $cache_mode['value'] ); ?> />
+				<label for="<?php echo $cache_mode['value']; ?>"><?php echo $cache_mode['label']; ?></label>
+			<?php endforeach; ?>
 		</div>
 	</div>
 

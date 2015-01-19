@@ -57,7 +57,11 @@ class Maera_Caching {
 
 			// Turn on Timber caching.
 			// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
-			Timber::$cache = true;
+
+			// This is a bit buggy right now on some hosts so we're disabling it.
+			// Timber::$cache = true;
+			self::cache_mode();
+
 
 		} else {
 
@@ -117,11 +121,21 @@ class Maera_Caching {
 
 	public static function cache_mode() {
 
-		if ( Maera_Development::dev_mode() ) {
-			return TimberLoader::CACHE_NONE;
+		$options    = get_option( 'maera_admin_options', array() );
+		$cache_mode = isset( $options['cache_mode'] ) ? $options['cache_mode'] : 'default';
+
+		if ( 'none' == $cache_mode ) {
+			$mode = TimberLoader::CACHE_NONE;
+		} else if ( 'object' == $cache_mode ) {
+			$mode = TimberLoader::CACHE_OBJECT;
+		} else if ( 'transient' == $cache_mode ) {
+			$mode = TimberLoader::CACHE_TRANSIENT;
 		} else {
-			return TimberLoader::CACHE_USE_DEFAULT;
+			$mode = TimberLoader::CACHE_USE_DEFAULT;
 		}
+
+		return $mode;
+
 	}
 
 }
