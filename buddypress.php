@@ -1,6 +1,6 @@
 <?php
 
-Maera_Template::dependencies();
+Maera()->template->dependencies();
 
 $context = Maera_Timber::get_context();
 $post = Timber::query_post();

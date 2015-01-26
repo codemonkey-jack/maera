@@ -7,7 +7,7 @@ class Maera_Template {
 	 * If they are not then then do not proceed with the template loading.
 	 * Instead display a custom template file that urges users to visit their dashboard to install them.
 	 */
-	public static function dependencies() {
+	public function dependencies() {
 
 		if ( 'bad' == Maera_Required_Plugins::test_missing() ) {
 			get_template_part( 'lib/required-error' );

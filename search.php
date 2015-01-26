@@ -6,7 +6,7 @@
  * @package maera
  */
 
-Maera_Template::dependencies();
+Maera()->template->dependencies();
 
 Maera_Template::header();
 Maera_Template::main();
