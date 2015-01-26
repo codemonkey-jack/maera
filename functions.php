@@ -2,9 +2,15 @@
 
 class Maera {
 
+	private static $instance;
+
+	public $template;
+
 	function __construct() {
 
-		define( 'MAERA_VERSION', '1.0.3' );
+		if ( ! defined( 'MAERA_VERSION' ) ) {
+			define( 'MAERA_VERSION', '1.0.3' );
+		}
 
 		require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
 
@@ -20,18 +26,19 @@ class Maera {
 
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_action( 'init', array( $this, 'content_width' ) );
-        add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
+		add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
 
 		global $maera_shell;
-		$maera_shell = new Maera_Shell();
+		$maera_shell    = new Maera_Shell();
+		$maera_init     = new Maera_Init();
 
-		$maera_timber = new Maera_Timber();
-		$maera_init   = new Maera_Init();
-		$maera_styles = new Maera_Styles();
-		$maera_dev    = new Maera_Development();
-		$maera_cache  = new Maera_Caching();
-		$maera_cc     = new Maera_Core_Customizer();
+		$this->timber   = new Maera_Timber();
+		$this->styles   = new Maera_Styles();
+		$this->dev      = new Maera_Development();
+		$this->cache    = new Maera_Caching();
+		$this->cc       = new Maera_Core_Customizer();
+		$this->template = new Maera_Template();
 
 		global $maera_admin;
 		$maera_admin  = new Maera_Admin();
@@ -45,6 +52,14 @@ class Maera {
 
 		add_action( 'init', array( $this, 'licensing' ) );
 
+	}
+
+	public static function get_instance() {
+		if ( null == self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -226,4 +241,10 @@ class Maera {
 
 }
 
-$maera = new Maera();
+function Maera() {
+	return Maera::get_instance();
+}
+
+// Global for backwards compatibility.
+$GLOBALS['maera'] = maera();
+global $maera;
