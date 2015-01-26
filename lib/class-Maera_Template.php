@@ -9,7 +9,7 @@ class Maera_Template {
 	 */
 	public function dependencies() {
 
-		if ( 'bad' == Maera_Required_Plugins::test_missing() ) {
+		if ( 'bad' == Maera()->plugins->test_missing() ) {
 			get_template_part( 'lib/required-error' );
 			return;
 		}

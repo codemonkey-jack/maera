@@ -27,10 +27,9 @@ class Maera {
 	public $styles;
 	public $dev;
 	public $cache;
+	public $plugins;
 
 	function __construct() {
-
-		$this->required_plugins();
 
 		Maera_Helper::define( 'MAERA_VERSION', '1.0.3' );
 		Maera_Helper::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
@@ -50,6 +49,7 @@ class Maera {
 		$this->cache    = new Maera_Caching();
 		$this->cc       = new Maera_Core_Customizer();
 		$this->template = new Maera_Template();
+		$this->plugins  = new Maera_Required_Plugins( $this->required_plugins() );
 
 		global $maera_admin;
 		$maera_admin  = new Maera_Admin();
@@ -170,7 +170,7 @@ class Maera {
 			$plugins[] = array( 'name' => 'Timber with Jetpack Photon', 'file' => 'TimberPhoton.php', 'slug' => 'timber-with-jetpack-photon' );
 		}
 
-		$plugins = new Maera_Required_Plugins( $plugins );
+		return $plugins;
 
 	}
 

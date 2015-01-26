@@ -24,7 +24,7 @@ class Maera_Required_Plugins {
 	 * Test if all required plugins are active or not.
 	 * If they are not, returns true;
 	 */
-	public static function test_missing() {
+	public function test_missing() {
 
 		$plugins = apply_filters( 'maera/plugins/required', array() );
 		$status  = get_transient( 'maera_required_plugins_status' );
