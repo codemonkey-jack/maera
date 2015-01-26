@@ -78,7 +78,7 @@ class Maera_Caching {
 	/**
 	 * Timber caching
 	 */
-	public static function cache_duration() {
+	public function cache_duration() {
 
 		$theme_options = get_option( 'maera_admin_options', array() );
 
