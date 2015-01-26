@@ -4,7 +4,7 @@ class Maera_Development {
 
 	function __construct() {
 
-		if ( self::dev_mode() ) {
+		if ( $this->dev_mode() ) {
 			$this->jetpack_dev_mode();
 		}
 
@@ -14,7 +14,7 @@ class Maera_Development {
 	 * Detect if dev mode is active OR if we're on the customizer
 	 * @return bool
 	 */
-	public static function dev_mode() {
+	public function dev_mode() {
 
 		global $wp_customize;
 		$options = get_option( 'maera_admin_options', array() );

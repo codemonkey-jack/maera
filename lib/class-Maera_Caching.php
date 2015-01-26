@@ -19,7 +19,7 @@ class Maera_Caching {
 
 	function custom_css_cached() {
 
-		if ( Maera_Development::dev_mode() ) {
+		if ( Maera()->dev->dev_mode() ) {
 			// Get our styles using the maera/styles filter
 			$data = apply_filters( 'maera/styles', null );
 		} else {
@@ -53,7 +53,7 @@ class Maera_Caching {
 		}
 		global $wp_customize;
 
-		if ( ! Maera_Development::dev_mode() ) {
+		if ( ! Maera()->dev->dev_mode() ) {
 
 			// Turn on Timber caching.
 			// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
@@ -102,7 +102,7 @@ class Maera_Caching {
 	 */
 	public function get_context() {
 
-		if ( Maera_Development::dev_mode() ) {
+		if ( Maera()->dev->dev_mode() ) {
 			$cached = false;
 		} else {
 			$cache  = wp_cache_get( 'context', 'maera' );
