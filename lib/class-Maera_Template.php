@@ -19,7 +19,7 @@ class Maera_Template {
 	/**
 	 * Get the header.
 	 */
-	public static function header() {
+	public function header() {
 		get_header();
 	}
 

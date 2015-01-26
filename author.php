@@ -6,6 +6,6 @@
 
 Maera()->template->dependencies();
 
-Maera_Template::header();
+Maera()->template->header();
 Maera_Template::main();
 Maera_Template::footer();
