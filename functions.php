@@ -35,7 +35,6 @@ class Maera {
 		Maera_Helper::define( 'MAERA_VERSION', '1.0.3' );
 		Maera_Helper::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 
-		add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
 
 		global $maera_shell;
@@ -71,15 +70,6 @@ class Maera {
 		}
 
 		return self::$instance;
-	}
-
-	/**
-	 * Tell WordPress to use searchform.php from the templates/ directory
-	 */
-	function get_search_form( $form ) {
-		$form = '';
-		locate_template( '/searchform.php', true, false );
-		return $form;
 	}
 
 	/**

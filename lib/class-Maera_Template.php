@@ -2,6 +2,10 @@
 
 class Maera_Template {
 
+	function __construct() {
+		add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
+	}
+
 	/**
 	 * Test if all required plugins are installed.
 	 * If they are not then then do not proceed with the template loading.
@@ -106,6 +110,15 @@ class Maera_Template {
 
 		return apply_filters( 'maera/template/plugin_compatibility', $compatibility );
 
+	}
+
+	/**
+	 * Tell WordPress to use searchform.php from the templates/ directory
+	 */
+	function get_search_form( $form ) {
+		$form = '';
+		locate_template( '/searchform.php', true, false );
+		return $form;
 	}
 
 }
