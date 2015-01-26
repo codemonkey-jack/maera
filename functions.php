@@ -8,13 +8,10 @@ class Maera {
 
 	function __construct() {
 
-		if ( ! defined( 'MAERA_VERSION' ) ) {
-			define( 'MAERA_VERSION', '1.0.3' );
-		}
+		self::define( 'MAERA_VERSION', '1.0.3' );
+		self::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 
 		require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
-
-		self::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 
 		$this->required_plugins();
 		$this->requires();
