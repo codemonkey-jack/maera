@@ -41,7 +41,7 @@ class Maera_Template {
 			$templates,
 			$context,
 			Maera()->cache->cache_duration(),
-			Maera_Caching::cache_mode()
+			Maera()->cache->cache_mode()
 		);
 
 	}

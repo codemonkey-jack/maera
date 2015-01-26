@@ -60,7 +60,7 @@ class Maera_Caching {
 
 			// This is a bit buggy right now on some hosts so we're disabling it.
 			// Timber::$cache = true;
-			self::cache_mode();
+			$this->cache_mode();
 
 
 		} else {
@@ -119,7 +119,7 @@ class Maera_Caching {
 
 	}
 
-	public static function cache_mode() {
+	public function cache_mode() {
 
 		$options    = get_option( 'maera_admin_options', array() );
 		$cache_mode = isset( $options['cache_mode'] ) ? $options['cache_mode'] : 'default';
