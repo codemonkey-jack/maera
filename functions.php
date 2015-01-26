@@ -1,5 +1,23 @@
 <?php
 
+// Require all necessary files
+require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
+require_once( locate_template( '/lib/class-Maera_Helper.php' ) );
+require_once( locate_template( '/lib/template-hierarchy.php' ) );
+require_once( locate_template( '/lib/utils.php' ) );
+require_once( locate_template( '/lib/class-Maera_Template.php' ) );
+require_once( locate_template( '/lib/class-Maera_Shell.php' ) );
+require_once( locate_template( '/lib/class-Maera_Timber.php' ) );
+require_once( locate_template( '/lib/class-Maera_Init.php' ) );
+require_once( locate_template( '/lib/class-Maera_Styles.php' ) );
+require_once( locate_template( '/lib/widgets.php' ) );
+require_once( locate_template( '/lib/admin/class-Maera_Admin.php' ) );
+require_once( locate_template( '/lib/updater/class-Maera_Updater.php' ) );
+require_once( locate_template( '/lib/class-Maera_Development.php' ) );
+require_once( locate_template( '/lib/class-Maera_Caching.php' ) );
+require_once( locate_template( '/lib/class-Maera_Core_Customizer.php' ) );
+require_once( locate_template( '/lib/remote-installer/client.php' ) );
+
 class Maera {
 
 	private static $instance;
@@ -8,10 +26,7 @@ class Maera {
 
 	function __construct() {
 
-		require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
-
 		$this->required_plugins();
-		$this->requires();
 
 		Maera_Helper::define( 'MAERA_VERSION', '1.0.3' );
 		Maera_Helper::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
@@ -52,35 +67,6 @@ class Maera {
 		}
 
 		return self::$instance;
-	}
-
-	/**
-	 * Include all the necessary files for the theme here
-	 */
-	function requires() {
-
-		$files = array(
-			'/lib/class-Maera_Helper.php',
-			'/lib/template-hierarchy.php',
-			'/lib/utils.php',
-			'/lib/class-Maera_Template.php',
-			'/lib/class-Maera_Shell.php',
-			'/lib/class-Maera_Timber.php',
-			'/lib/class-Maera_Init.php',
-			'/lib/class-Maera_Styles.php',
-			'/lib/widgets.php',
-			'/lib/admin/class-Maera_Admin.php',
-			'/lib/updater/class-Maera_Updater.php',
-			'/lib/class-Maera_Development.php',
-			'/lib/class-Maera_Caching.php',
-			'/lib/class-Maera_Core_Customizer.php',
-			'/lib/remote-installer/client.php'
-		);
-
-		foreach ( $files as $file ) {
-			require_once locate_template( $file );
-		}
-
 	}
 
 	/**
