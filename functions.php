@@ -23,6 +23,10 @@ class Maera {
 	private static $instance;
 
 	public $template;
+	public $timber;
+	public $styles;
+	public $dev;
+	public $cache;
 
 	function __construct() {
 
