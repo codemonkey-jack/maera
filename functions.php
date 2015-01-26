@@ -35,7 +35,6 @@ class Maera {
 		Maera_Helper::define( 'MAERA_VERSION', '1.0.3' );
 		Maera_Helper::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 
-		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
 
@@ -72,34 +71,6 @@ class Maera {
 		}
 
 		return self::$instance;
-	}
-
-	/**
-	 * Add and remove body_class() classes
-	 */
-	function body_class( $classes ) {
-
-		// Add post/page slug
-		if ( is_single() || is_page() && ! is_front_page() ) {
-
-			$permalink = basename( get_permalink() );
-			$classes[] = sanitize_html_class( $permalink );
-
-		}
-
-		$classes[] = get_theme_mod( 'shell', 'core' );
-
-		// Remove unnecessary classes
-		$home_id_class  = 'page-id-' . get_option( 'page_on_front' );
-		$remove_classes = array(
-			'page-template-default',
-			$home_id_class
-		);
-
-		$classes = array_diff( $classes, $remove_classes );
-
-		return $classes;
-
 	}
 
 	/**
