@@ -11,5 +11,5 @@
 Maera()->template->dependencies();
 
 Maera()->template->header();
-Maera_Template::main();
+Maera()->template->main();
 Maera_Template::footer();

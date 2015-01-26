@@ -27,7 +27,7 @@ class Maera_Template {
 	 * Get the content.
 	 * This will render the necessary twig template
 	 */
-	public static function main( $templates = null, $context = null ) {
+	public function main( $templates = null, $context = null ) {
 
 		if ( is_null( $templates ) ) {
 			$templates = apply_filters( 'maera/templates', array() );
