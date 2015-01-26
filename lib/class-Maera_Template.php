@@ -34,7 +34,7 @@ class Maera_Template {
 		}
 
 		if ( is_null( $context ) ) {
-			$context = self::context();
+			$context = $this->context();
 		}
 
 		Timber::render(
@@ -56,7 +56,7 @@ class Maera_Template {
 	/**
 	 * Determine the context that will be used by the content() method
 	 */
-	public static function context() {
+	public function context() {
 
 		global $wp_query;
 
