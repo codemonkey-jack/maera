@@ -139,7 +139,7 @@ class Maera_Shell {
 	 * Get the twig file and pass the replacement to it.
 	 * This function is just a helper for the do_twig_replacements function.
 	 */
-	public static function twig_replacements( $replacement = false ) {
+	public function twig_replacements( $replacement = false ) {
 
 		// If no replacement has been defined, exit.
 		if ( ! $replacement ) {
@@ -181,5 +181,5 @@ class Maera_Shell {
  * Helper function to avoid a fatal error on WPEngine hosting
  */
 function maera_helper_get_replacements( $replacement = false ) {
-	Maera_Shell::twig_replacements( $replacement );
+	Maera()->shell->twig_replacements( $replacement );
 }

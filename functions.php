@@ -22,6 +22,7 @@ class Maera {
 
 	private static $instance;
 
+	public $shell;
 	public $template;
 	public $timber;
 	public $styles;
@@ -43,6 +44,7 @@ class Maera {
 		$maera_shell    = new Maera_Shell();
 		$maera_init     = new Maera_Init();
 
+		$this->shell    = $maera_shell;
 		$this->timber   = new Maera_Timber();
 		$this->styles   = new Maera_Styles();
 		$this->dev      = new Maera_Development();
