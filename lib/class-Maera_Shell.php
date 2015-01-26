@@ -64,7 +64,7 @@ class Maera_Shell {
 
 	}
 
-	public static function replacements() {
+	public function replacements() {
 
 		$replacements = array(
 			'maera_grid_container_open',
@@ -158,7 +158,7 @@ class Maera_Shell {
 	 */
 	function do_twig_replacements( $content ) {
 
-		$replacements = self::replacements();
+		$replacements = $this->replacements();
 
 		foreach ( $replacements as $replacement => $value ) {
 
