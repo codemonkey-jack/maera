@@ -36,7 +36,6 @@ class Maera {
 		Maera_Helper::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 
 		add_filter( 'body_class', array( $this, 'body_class' ) );
-		add_action( 'init', array( $this, 'content_width' ) );
 		add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
 
@@ -73,19 +72,6 @@ class Maera {
 		}
 
 		return self::$instance;
-	}
-
-	/*
-	 * Set the content width
-	 * Uses the 'maera/content_width' filter.
-	 */
-	function content_width() {
-
-		global $content_width;
-		if ( ! isset( $content_width ) ) {
-			$content_width = apply_filters( 'maera/content_width', 960 );
-		}
-
 	}
 
 	/**

@@ -3,7 +3,23 @@
 class Maera_Styles {
 
 	function __construct() {
+
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
+		add_action( 'init', array( $this, 'content_width' ) );
+
+	}
+
+	/*
+	 * Set the content width
+	 * Uses the 'maera/content_width' filter.
+	 */
+	function content_width() {
+
+		global $content_width;
+		if ( ! isset( $content_width ) ) {
+			$content_width = apply_filters( 'maera/content_width', 960 );
+		}
+
 	}
 
 	/**
