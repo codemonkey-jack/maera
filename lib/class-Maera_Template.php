@@ -66,7 +66,7 @@ class Maera_Template {
 		$context['posts'] = Timber::get_posts();
 
 		// Compatibility hack or plugins that change the content.
-		if ( self::plugins_compatibility() ) {
+		if ( $this->plugins_compatibility() ) {
 			$context['content'] = maera_get_echo( 'the_content' );
 		}
 
@@ -95,7 +95,7 @@ class Maera_Template {
 	/**
 	 * Add compatibility for some plugins.
 	 */
-	public static function plugins_compatibility() {
+	public function plugins_compatibility() {
 
 		$compatibility = false;
 
