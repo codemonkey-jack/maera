@@ -69,37 +69,6 @@ class Maera {
 		return self::$instance;
 	}
 
-	/**
-	 * Test if all required plugins are active or not.
-	 * If they are not, returns true;
-	 */
-	public static function test_missing() {
-
-		$plugins = apply_filters( 'maera/plugins/required', array() );
-		$status  = get_transient( 'maera_required_plugins_status' );
-
-		// If the transient exists and is set to 'ok' then no need to proceed.
-		if ( false === $status && 'ok' == $status ) {
-			return 'ok';
-		}
-
-		if ( ! function_exists( 'is_plugin_active' ) ) {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		}
-
-		foreach ( $plugins as $plugin ) {
-			if ( ! is_plugin_active( $plugin['slug'] . '/' . $plugin['file'] ) ) {
-				return 'bad';
-			}
-		}
-
-		// If we're good to go, set the transient value to 'ok' for 2 minutes
-		set_transient( 'maera_required_plugins_status', 'ok', 60 * 2 );
-
-		return 'ok';
-
-	}
-
 	/*
 	 * Set the content width
 	 * Uses the 'maera/content_width' filter.
