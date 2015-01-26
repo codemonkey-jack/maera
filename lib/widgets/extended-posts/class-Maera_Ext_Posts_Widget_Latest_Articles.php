@@ -81,7 +81,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 
 		);
 
-		$context = Maera_Caching::get_context();
+		$context = Maera()->cache->get_context();
 		$context['post']   = Timber::query_post();
 		$context['posts']  = Timber::get_posts( $query_args );
 		$context['widget'] = $widget;

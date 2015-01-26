@@ -100,7 +100,7 @@ class Maera_Caching {
 	 * Custom implementation for get_context method.
 	 * Implements caching
 	 */
-	public static function get_context() {
+	public function get_context() {
 
 		if ( Maera_Development::dev_mode() ) {
 			$cached = false;

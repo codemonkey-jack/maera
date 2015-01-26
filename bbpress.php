@@ -2,7 +2,7 @@
 
 Maera()->template->dependencies();
 
-$context = Maera_Caching::get_context();
+$context = Maera()->cache->get_context();
 $post = Timber::query_post();
 $context['post'] = $post;
 $context['content'] = maera_get_echo( 'the_content' );

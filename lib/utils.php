@@ -32,7 +32,7 @@ function maera_get_echo( $function, $args = '' ) {
  */
 function _maera_get_twig( $file ) {
 
-	$context = Maera_Caching::get_context();
+	$context = Maera()->cache->get_context();
 	Timber::render( array( $file ), $context, Maera()->cache->cache_duration() );
 
 }

@@ -60,7 +60,7 @@ class Maera_Template {
 
 		global $wp_query;
 
-		$context = Maera_Caching::get_context();
+		$context = Maera()->cache->get_context();
 		$post = new TimberPost();
 		$context['post'] = $post;
 		$context['posts'] = Timber::get_posts();
