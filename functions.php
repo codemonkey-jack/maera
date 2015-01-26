@@ -16,11 +16,6 @@ class Maera {
 		$this->required_plugins();
 		$this->requires();
 
-		// If the Timber plugin is not already installed, load it from the theme.
-		if ( ! class_exists( 'Timber' ) ) {
-			// TODO: ERROR MESSAGE
-		}
-
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_action( 'init', array( $this, 'content_width' ) );
 		add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
