@@ -69,7 +69,7 @@ class Maera_Caching {
 			Timber::$cache = false;
 
 			$_SERVER['QUICK_CACHE_ALLOWED'] = FALSE;
-			Maera::define( 'DONOTCACHEPAGE', TRUE );
+			Maera_Helper::define( 'DONOTCACHEPAGE', TRUE );
 
 		}
 

@@ -10,7 +10,7 @@ class Maera_Shell_Core {
 	private function __construct() {
 		do_action( 'maera/shell/include_modules' );
 
-		Maera::define( 'MAERA_SHELL_PATH', dirname( __FILE__ ) );
+		Maera_Helper::define( 'MAERA_SHELL_PATH', dirname( __FILE__ ) );
 
 		// Enqueue the scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 110 );

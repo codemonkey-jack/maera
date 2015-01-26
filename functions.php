@@ -8,13 +8,13 @@ class Maera {
 
 	function __construct() {
 
-		self::define( 'MAERA_VERSION', '1.0.3' );
-		self::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
-
 		require_once( locate_template( '/lib/class-Maera_Required_Plugins.php' ) );
 
 		$this->required_plugins();
 		$this->requires();
+
+		Maera_Helper::define( 'MAERA_VERSION', '1.0.3' );
+		Maera_Helper::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_action( 'init', array( $this, 'content_width' ) );
@@ -60,6 +60,7 @@ class Maera {
 	function requires() {
 
 		$files = array(
+			'/lib/class-Maera_Helper.php',
 			'/lib/template-hierarchy.php',
 			'/lib/utils.php',
 			'/lib/class-Maera_Template.php',
@@ -171,15 +172,6 @@ class Maera {
 		$args = array( 'stylesheet_id' => 'maera' );
 		return $args;
 
-	}
-
-	/**
-	 * Check if a constand is already defined, and if not then give it a value
-	 */
-	public static function define( $define, $value ) {
-		if ( ! defined( $define ) ) {
-			define( $define, $value );
-		}
 	}
 
 	/**
