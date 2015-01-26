@@ -112,7 +112,7 @@ class Maera_Caching {
 		if ( $cached && $cache ) {
 			return $cache;
 		} else {
-			$context = Maera_Timber::get_context();
+			$context = Maera()->timber->get_context();
 			wp_cache_set( 'context', $context, 'maera' );
 			return $context;
 		}

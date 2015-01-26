@@ -17,7 +17,7 @@ class Maera_Timber extends Maera {
 	/**
 	 * Custom implementation for get_context method.
 	 */
-	public static function get_context() {
+	public function get_context() {
 
 		global $content_width;
 
