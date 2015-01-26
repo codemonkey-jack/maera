@@ -2,9 +2,12 @@
 
 class Maera_Development {
 
+	public $dev_mode = false;
+
 	function __construct() {
 
 		if ( $this->dev_mode() ) {
+			$this->dev_mode = true;
 			$this->jetpack_dev_mode();
 		}
 
