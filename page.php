@@ -21,4 +21,4 @@ Maera()->template->dependencies();
 
 Maera()->template->header();
 Maera()->template->main( maera_templates_page() );
-Maera_Template::footer();
+Maera()->template->footer();

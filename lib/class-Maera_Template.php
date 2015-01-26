@@ -49,7 +49,7 @@ class Maera_Template {
 	/**
 	 * Get the footer
 	 */
-	public static function footer() {
+	public function footer() {
 		get_footer();
 	}
 

@@ -8,4 +8,4 @@ Maera()->template->dependencies();
 
 Maera()->template->header();
 Maera()->template->main();
-Maera_Template::footer();
+Maera()->template->footer();

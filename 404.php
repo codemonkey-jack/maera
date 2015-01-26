@@ -11,4 +11,4 @@ Maera()->template->dependencies();
 
 Maera()->template->header();
 Maera()->template->main( '404.twig' );
-Maera_Template::footer();
+Maera()->template->footer();

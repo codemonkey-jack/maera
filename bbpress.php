@@ -9,4 +9,4 @@ $context['content'] = maera_get_echo( 'the_content' );
 
 Maera()->template->header();
 Maera()->template->main( 'bbp.twig', $context );
-Maera_Template::footer();
+Maera()->template->footer();
