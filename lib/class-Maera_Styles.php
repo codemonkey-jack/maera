@@ -3,7 +3,51 @@
 class Maera_Styles {
 
 	function __construct() {
+
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
+		add_action( 'init', array( $this, 'content_width' ) );
+
+	}
+
+	/**
+	 * Add and remove body_class() classes
+	 */
+	function body_class( $classes ) {
+
+		// Add post/page slug
+		if ( is_single() || is_page() && ! is_front_page() ) {
+
+			$permalink = basename( get_permalink() );
+			$classes[] = sanitize_html_class( $permalink );
+
+		}
+
+		$classes[] = get_theme_mod( 'shell', 'core' );
+
+		// Remove unnecessary classes
+		$home_id_class  = 'page-id-' . get_option( 'page_on_front' );
+		$remove_classes = array(
+			'page-template-default',
+			$home_id_class
+		);
+
+		$classes = array_diff( $classes, $remove_classes );
+
+		return $classes;
+
+	}
+
+	/*
+	 * Set the content width
+	 * Uses the 'maera/content_width' filter.
+	 */
+	function content_width() {
+
+		global $content_width;
+		if ( ! isset( $content_width ) ) {
+			$content_width = apply_filters( 'maera/content_width', 960 );
+		}
+
 	}
 
 	/**

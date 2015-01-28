@@ -64,7 +64,7 @@ class Maera_Shell {
 
 	}
 
-	public static function replacements() {
+	public function replacements() {
 
 		$replacements = array(
 			'maera_grid_container_open',
@@ -139,7 +139,7 @@ class Maera_Shell {
 	 * Get the twig file and pass the replacement to it.
 	 * This function is just a helper for the do_twig_replacements function.
 	 */
-	public static function twig_replacements( $replacement = false ) {
+	public function twig_replacements( $replacement = false ) {
 
 		// If no replacement has been defined, exit.
 		if ( ! $replacement ) {
@@ -148,7 +148,7 @@ class Maera_Shell {
 
 		$context = Timber::get_context();
 		$context['element'] = $replacement;
-		Timber::render( array( 'twig-str_replace.twig', ), $context, Maera_Caching::cache_duration() );
+		Timber::render( array( 'twig-str_replace.twig', ), $context, Maera()->cache->cache_duration() );
 
 	}
 
@@ -158,7 +158,7 @@ class Maera_Shell {
 	 */
 	function do_twig_replacements( $content ) {
 
-		$replacements = self::replacements();
+		$replacements = $this->replacements();
 
 		foreach ( $replacements as $replacement => $value ) {
 
@@ -181,5 +181,5 @@ class Maera_Shell {
  * Helper function to avoid a fatal error on WPEngine hosting
  */
 function maera_helper_get_replacements( $replacement = false ) {
-	Maera_Shell::twig_replacements( $replacement );
+	Maera()->shell->twig_replacements( $replacement );
 }

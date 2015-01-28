@@ -44,7 +44,7 @@ class Maera_Logo_Widget extends WP_Widget {
 	 * @since 1.0.0
 	 */
 	public function widget( $args, $instance ) {
-		Maera_Template::main( 'site-logo.twig' );
+		Maera()->template->main( 'site-logo.twig' );
 	}
 
 

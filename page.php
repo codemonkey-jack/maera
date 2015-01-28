@@ -17,8 +17,8 @@
  * @package maera
  */
 
-Maera_Template::dependencies();
+Maera()->template->dependencies();
 
-Maera_Template::header();
-Maera_Template::main( maera_templates_page() );
-Maera_Template::footer();
+Maera()->template->header();
+Maera()->template->main( maera_templates_page() );
+Maera()->template->footer();

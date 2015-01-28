@@ -2,14 +2,18 @@
 
 class Maera_Template {
 
+	function __construct() {
+		add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
+	}
+
 	/**
 	 * Test if all required plugins are installed.
 	 * If they are not then then do not proceed with the template loading.
 	 * Instead display a custom template file that urges users to visit their dashboard to install them.
 	 */
-	public static function dependencies() {
+	public function dependencies() {
 
-		if ( 'bad' == Maera::test_missing() ) {
+		if ( 'bad' == Maera()->plugins->test_missing() ) {
 			get_template_part( 'lib/required-error' );
 			return;
 		}
@@ -19,29 +23,36 @@ class Maera_Template {
 	/**
 	 * Get the header.
 	 */
-	public static function header() {
+	public function header() {
 		get_header();
 	}
 
 	/**
-	 * Get the content.
+	 * Old, naming, this is just a fallback to the render() method.
+	 */
+	public function main( $templates = null, $context = null ) {
+		$this->render( $templates, $context );
+	}
+
+	/**
+	 * Render a template
 	 * This will render the necessary twig template
 	 */
-	public static function main( $templates = null, $context = null ) {
+	public function render( $templates = null, $context = null ) {
 
 		if ( is_null( $templates ) ) {
 			$templates = apply_filters( 'maera/templates', array() );
 		}
 
 		if ( is_null( $context ) ) {
-			$context = self::context();
+			$context = $this->context();
 		}
 
 		Timber::render(
 			$templates,
 			$context,
-			Maera_Caching::cache_duration(),
-			Maera_Caching::cache_mode()
+			Maera()->cache->cache_duration(),
+			Maera()->cache->cache_mode()
 		);
 
 	}
@@ -49,24 +60,24 @@ class Maera_Template {
 	/**
 	 * Get the footer
 	 */
-	public static function footer() {
+	public function footer() {
 		get_footer();
 	}
 
 	/**
 	 * Determine the context that will be used by the content() method
 	 */
-	public static function context() {
+	public function context() {
 
 		global $wp_query;
 
-		$context = Maera_Caching::get_context();
+		$context = Maera()->cache->get_context();
 		$post = new TimberPost();
 		$context['post'] = $post;
 		$context['posts'] = Timber::get_posts();
 
 		// Compatibility hack or plugins that change the content.
-		if ( self::plugins_compatibility() ) {
+		if ( $this->plugins_compatibility() ) {
 			$context['content'] = maera_get_echo( 'the_content' );
 		}
 
@@ -95,7 +106,7 @@ class Maera_Template {
 	/**
 	 * Add compatibility for some plugins.
 	 */
-	public static function plugins_compatibility() {
+	public function plugins_compatibility() {
 
 		$compatibility = false;
 
@@ -106,6 +117,15 @@ class Maera_Template {
 
 		return apply_filters( 'maera/template/plugin_compatibility', $compatibility );
 
+	}
+
+	/**
+	 * Tell WordPress to use searchform.php from the templates/ directory
+	 */
+	function get_search_form( $form ) {
+		$form = '';
+		locate_template( '/searchform.php', true, false );
+		return $form;
 	}
 
 }
