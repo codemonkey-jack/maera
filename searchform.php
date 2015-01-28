@@ -3,4 +3,4 @@
  * Search Form
  */
 
-Maera()->template->main( 'searchform.twig' );
+Maera()->template->render( 'searchform.twig' );

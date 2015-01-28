@@ -8,5 +8,5 @@
 Maera()->template->dependencies();
 
 Maera()->template->header();
-Maera()->template->main( maera_templates_singular() );
+Maera()->template->render( maera_templates_singular() );
 Maera()->template->footer();

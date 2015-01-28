@@ -8,5 +8,5 @@ $context['post'] = $post;
 $context['content'] = maera_get_echo( 'the_content' );
 
 Maera()->template->header();
-Maera()->template->main( 'bbp.twig', $context );
+Maera()->template->render( 'bbp.twig', $context );
 Maera()->template->footer();

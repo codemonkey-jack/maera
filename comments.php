@@ -17,7 +17,7 @@ if ( post_password_required( $post ) ) {
 	return;
 }
 
-Maera()->template->main( array(
+Maera()->template->render( array(
 	'comments-' . $post->ID . '.twig',
 	$post->post_type . '-comments.twig',
 	'comments.twig'

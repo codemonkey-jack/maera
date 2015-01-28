@@ -5,4 +5,4 @@
  * @package maera
  */
 
-Maera()->template->main( 'header.twig' );
+Maera()->template->render( 'header.twig' );
