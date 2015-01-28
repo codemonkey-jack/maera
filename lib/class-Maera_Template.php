@@ -28,10 +28,17 @@ class Maera_Template {
 	}
 
 	/**
-	 * Get the content.
-	 * This will render the necessary twig template
+	 * Old, naming, this is just a fallback to the render() method.
 	 */
 	public function main( $templates = null, $context = null ) {
+		$this->render( $templates, $context );
+	}
+
+	/**
+	 * Render a template
+	 * This will render the necessary twig template
+	 */
+	public function render( $templates = null, $context = null ) {
 
 		if ( is_null( $templates ) ) {
 			$templates = apply_filters( 'maera/templates', array() );
