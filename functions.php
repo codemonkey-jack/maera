@@ -29,6 +29,7 @@ class Maera {
 	public $dev;
 	public $cache;
 	public $plugins;
+	public $admin;
 
 	function __construct() {
 
@@ -37,11 +38,9 @@ class Maera {
 
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
 
-		global $maera_shell;
-		$maera_shell    = new Maera_Shell();
 		$maera_init     = new Maera_Init();
 
-		$this->shell    = $maera_shell;
+		$this->shell    = new Maera_Shell();
 		$this->timber   = new Maera_Timber();
 		$this->styles   = new Maera_Styles();
 		$this->dev      = new Maera_Development();
@@ -49,9 +48,7 @@ class Maera {
 		$this->cc       = new Maera_Core_Customizer();
 		$this->template = new Maera_Template();
 		$this->plugins  = new Maera_Required_Plugins( $this->required_plugins() );
-
-		global $maera_admin;
-		$maera_admin  = new Maera_Admin();
+		$this->admin    = new Maera_Admin();
 
 		// This is not ready yet so hide it.
 		// For dev you can add this line to your wp-config.php file:
@@ -128,3 +125,6 @@ function Maera() {
 // Global for backwards compatibility.
 $GLOBALS['maera'] = maera();
 global $maera;
+
+
+var_dump( Maera()->shell->instance->data->colors() );

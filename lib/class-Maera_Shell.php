@@ -5,15 +5,17 @@
  */
 class Maera_Shell {
 
+	public $instance;
+
 	function __construct() {
 
 		// Include the Core shell
 		require_once locate_template( '/core-shell/class-Maera_Shell_Core.php' );
 
-		$this->enable_shell();
-
 		add_filter( 'timber_output', array( $this, 'do_twig_replacements' ) );
 		add_action( 'init', array( $this, 'fallback_shell' ) );
+
+		$this->instance = $this->instantiate();
 
 	}
 
@@ -21,7 +23,7 @@ class Maera_Shell {
 	/**
 	 * Activate the enabled shell
 	 */
-	function enable_shell() {
+	function instantiate() {
 
 		// Get the option from the database
 		$options = get_option( 'maera_admin_options', array() );
@@ -37,11 +39,12 @@ class Maera_Shell {
 
 			if ( $active_shell == $available_shell['value'] ) {
 				// Instantianate the active shell
-				global $ss_shell;
 				$ss_shell = $available_shell['class']::get_instance();
 			}
 
 		}
+
+		return ( isset( $ss_shell ) ) ? $ss_shell : false;
 
 	}
 
