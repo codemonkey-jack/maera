@@ -125,6 +125,3 @@ function Maera() {
 // Global for backwards compatibility.
 $GLOBALS['maera'] = maera();
 global $maera;
-
-
-var_dump( Maera()->shell->instance->data->colors() );
