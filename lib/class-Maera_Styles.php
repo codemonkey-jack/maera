@@ -58,11 +58,14 @@ class Maera_Styles {
 		global $wp_customize, $active_shell;
 
 		// Get the stylesheet path and version
-		$stylesheet_url = apply_filters( 'maera/stylesheet/url', MAERA_ASSETS_URL . '/css/style.css' );
+		$stylesheet_url = apply_filters( 'maera/stylesheet/url', null );
 		$stylesheet_ver = apply_filters( 'maera/stylesheet/ver', null );
 
 		// Enqueue the theme's stylesheet
-		wp_enqueue_style( 'maera', $stylesheet_url, false, $stylesheet_ver );
+		if ( ! is_null( $stylesheet_url ) ) {
+			wp_enqueue_style( 'shell', $stylesheet_url, false, $stylesheet_ver );
+		}
+		wp_enqueue_style( 'maera', get_stylesheet_uri(), false, MAERA_VERSION );
 
 		wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
