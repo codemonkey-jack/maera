@@ -17,6 +17,7 @@ require_once( locate_template( '/lib/class-Maera_Development.php' ) );
 require_once( locate_template( '/lib/class-Maera_Caching.php' ) );
 require_once( locate_template( '/lib/class-Maera_Core_Customizer.php' ) );
 require_once( locate_template( '/lib/remote-installer/client.php' ) );
+require_once( locate_template( '/lib/class-Maera_Widget_Dropdown_Class.php' ) );
 
 class Maera {
 
