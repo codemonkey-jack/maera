@@ -18,10 +18,18 @@ $cache_modes = array(
 	array( 'value' => 'transient', 'label' => __( 'Transients', 'maera' ) ),
 	array( 'value' => 'default',   'label' => __( 'Default', 'maera' ) ),
 );
+
+$settings = get_option( 'maera_admin_options', $maera_admin_options );
+
+$settings['shell']       = ! isset( $settings['shell'] )       ? 'core' : $settings['shell'];
+$settings['import_data'] = ! isset( $settings['import_data'] ) ? ''     : $settings['import_data'];
+$settings['dev_mode']    = ! isset( $settings['dev_mode'] )    ? 0      : $settings['dev_mode'];
+$settings['cache']       = ! isset( $settings['cache'] )       ? 0      : $settings['cache'];
+$settings['cache_mode']  = ! isset( $settings['cache_mode'] )  ? 'none' : $settings['cache_mode'];
+
 ?>
 <form method="post" action="options.php">
 
-	<?php $settings = get_option( 'maera_admin_options', $maera_admin_options ); ?>
 	<?php settings_fields( 'maera_admin_options' ); ?>
 
 	<?php if ( 1 < count( $available_shells ) ) : ?>
