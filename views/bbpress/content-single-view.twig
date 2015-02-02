@@ -6,15 +6,15 @@
 
 	{% if function('bbp_view_query') %}
 
-		{{ function('bbp_get_template_part', 'pagination', 'topics') }}
+		{% include 'bbpress/pagination-topics.twig' %}
 
-		{{ function('bbp_get_template_part', 'loop', 'topics') }}
+		{% include 'bbpress/loop-topics.twig' %}
 
-		{{ function('bbp_get_template_part', 'pagination', 'topics') }}
+		{% include 'bbpress/pagination-topics.twig' %}
 
 	{% elseif %}
 
-		{{ function('bbp_get_template_part', 'feedback', 'no-topics') }}
+		{% include 'bbpress/feedback-no-topics.twig' %}
 
 	{% endif %}
 

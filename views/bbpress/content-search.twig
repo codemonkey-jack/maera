@@ -7,13 +7,13 @@
 	{% do action('bbp_template_before_search') %}
 
 	{% if function('bbp_has_search_results') %}
-		{{ function('bbp_get_template_part', 'pagination', 'search') }}
-		{{ function('bbp_get_template_part', 'loop', 'search') }}
-		{{ function('bbp_get_template_part', 'pagination', 'search') }}
+		{% include 'bbpress/pagination-search.twig' %}
+		{% include 'bbpress/loop-search.twig' %}
+		{% include 'bbpress/pagination-search.twig' %}
 	{% elseif function('bbp_get_search_terms') %}
-		{{ function('bbp_get_template_part', 'feedback', 'no-search') }}
+		{% include 'bbpress/feedback-no-search.twig' %}
 	{% else %}
-		{{ function('bbp_get_template_part', 'form', 'search') }}
+		{% include 'bbpress/form-search.twig' %}
 	{% endif %}
 
 	{% do action('bbp_template_after_search_results') %}

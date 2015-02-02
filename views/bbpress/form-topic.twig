@@ -59,7 +59,7 @@
 
 				<div>
 
-					{{ function('bbp_get_template_part', 'form', 'anonymous') }}
+					{% include 'bbpress/form-anonymous.twig' %}
 
 					{% do action('bbp_theme_before_topic_form_title') %}
 

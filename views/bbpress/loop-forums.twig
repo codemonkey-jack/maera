@@ -17,7 +17,7 @@
 
 		{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
 		<?php while ( bbp_forums() ) : bbp_the_forum(); ?><!--Original Loop Begin-->
-			{{ function('bbp_get_template_part', 'loop', 'single-forum') }}
+			{% include 'bbpress/loop-single-forum.twig' %}
 		<?php endwhile; ?><!--Original Loop End-->
 		{% endfor %}
 

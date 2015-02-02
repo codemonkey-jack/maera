@@ -18,7 +18,7 @@
 		{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
 		<?php while ( bbp_search_results() ) : bbp_the_search_result(); ?><!--Original Loop Begin-->
 
-			{{ function('bbp_get_template_part', 'loop', 'search-', function('get_post_type') ) }}
+			{% include 'bbpress/loop-search-'~post.post_type~'.twig' %}
 
 		<?php endwhile; ?><!--Original Loop End-->
 		{% endfor %}

@@ -6,7 +6,7 @@
 
 	{% do action('bbp_template_before_topic_tag_edit') %}
 
-	{{ function('bbp_get_template_part', 'form', 'topic-tag') }}
+	{% include 'bbpress/form-topic-tag.twig' %}
 
 	{% do action('bbp_template_after_topic_tag_edit') %}
 

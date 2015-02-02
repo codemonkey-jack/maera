@@ -6,11 +6,11 @@
 
 			{% if function('bbp_get_user_replies_created') %}
 
-				{{ function('bbp_get_template_part', 'pagination', 'replies') }}
+				{% include 'bbpress/pagination-replies.twig' %}
 
-				{{ function('bbp_get_template_part', 'loop', 'replies') }}
+				{% include 'bbpress/loop-replies.twig' %}
 
-				{{ function('bbp_get_template_part', 'pagination', 'replies') }}
+				{% include 'bbpress/pagination-replies.twig' %}
 
 			{% else %}
 

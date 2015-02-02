@@ -3,23 +3,23 @@
 	{% do action('bbp_template_before_single_topic') %}
 
 	{% if function('post_password_required') %}
-		{{ function('bbp_get_template_part', 'form', 'protected') }}
+		{% include 'bbpress/form-protected.twig' %}
 	{% else %}
 
 		{{ function('bbp_topic_tag_list') }}
 		{{ function('bbp_single_topic_description') }}
 
 		{% if function('bbp_show_lead_topic') %}
-			{{ function('bbp_get_template_part', 'content', 'single-topic-lead') }}
+			{% include 'bbpress/content-single-topic-lead.twig' %}
 		{% endif %}
 
 		{% if function('bbp_has_replies') %}
-			{{ function('bbp_get_template_part', 'pagination', 'replies') }}
-			{{ function('bbp_get_template_part', 'loop', 'replies') }}
-			{{ function('bbp_get_template_part', 'pagination', 'replies') }}
+			{% include 'bbpress/pagination-replies.twig' %}
+			{% include 'bbpress/loop-replies.twig' %}
+			{% include 'bbpress/pagination-replies.twig' %}
 		{% endif %}
 
-		{{ function('bbp_get_template_part', 'form', 'reply') }}
+		{% include 'bbpress/form-reply.twig' %}
 
 	{% endif %}
 

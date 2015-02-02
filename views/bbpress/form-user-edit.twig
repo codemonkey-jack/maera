@@ -151,7 +151,7 @@
 
 			{% endif %}
 
-			{{ function('bbp_get_template_part', 'form', 'user-roles') }}
+			{% include 'bbpress/form-user-roles.twig' %}
 
 			{% do action('bbp_user_edit_after_role') %}
 

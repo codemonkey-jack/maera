@@ -6,11 +6,11 @@
 
 	{% if function('post_password_required') %}
 
-		{{ function('bbp_get_template_part', 'form', 'protected') }}
+		{% include 'bbpress/form-protected.twig' %}
 
 	{% else %}
 
-		{{ function('bbp_get_template_part', 'loop', 'single-reply') }}
+		{% include 'bbpress/loop-single-reply.twig' %}
 
 	{% endif %}
 
