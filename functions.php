@@ -31,6 +31,7 @@ class Maera {
 	public $cache;
 	public $plugins;
 	public $admin;
+	public $views;
 
 	function __construct() {
 
@@ -47,7 +48,8 @@ class Maera {
 		$this->dev      = new Maera_Development();
 		$this->cache    = new Maera_Caching();
 		$this->cc       = new Maera_Core_Customizer();
-		$this->template = new Maera_Template();
+		$this->views    = new Maera_Template();
+		$this->template = $this->views;
 		$this->plugins  = new Maera_Required_Plugins( $this->required_plugins() );
 		$this->admin    = new Maera_Admin();
 
