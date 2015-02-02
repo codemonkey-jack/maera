@@ -12,7 +12,7 @@ class Maera_Updater {
 	private $api_url = 'https://press.codes/';
 	private $license_status;
 
-	function __construct( $context = 'plugin', $_file, $_item_name, $_version, $_author = null, $_optname = null, $_api_url = null ) {
+	function __construct( $context = 'plugin', $_file, $_item_name, $_version, $license = '', $_author = null, $_optname = null, $_api_url = null ) {
 
 		$this->context        = $context;
 		$this->slug           = $_file;
@@ -20,6 +20,9 @@ class Maera_Updater {
 		$this->item_shortname = is_null( $_optname ) ? preg_replace( '/[^a-zA-Z0-9_\s]/', '', str_replace( ' ', '_', strtolower( $this->item_name ) ) ) : $_optname;
 		$this->version        = $_version;
 		$this->license        = trim( get_option( $this->item_shortname . '_license_key' ) );
+		if ( false !== $this->license || empty( $this->license ) ) {
+			$this->license = $license;
+		}
 		$this->author         = is_null( $_author ) ? $this->author : $_author;
 		$this->api_url        = is_null( $_api_url ) ? $this->api_url : $_api_url;
 		$this->license_status = get_option( $this->item_shortname . '_license_status', '' );
