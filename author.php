@@ -4,8 +4,8 @@
  */
 
 
-Maera()->template->dependencies();
+Maera()->views->dependencies();
 
-Maera()->template->header();
-Maera()->template->render();
-Maera()->template->footer();
+Maera()->views->header();
+Maera()->views->render();
+Maera()->views->footer();

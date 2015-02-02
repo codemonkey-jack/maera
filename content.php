@@ -4,7 +4,7 @@
  * @package maera
  */
 
-Maera()->template->render( array(
+Maera()->views->render( array(
 	'content-' . $post->ID . '.twig',
 	'content-' . $post->post_type . '.twig',
 	'content.twig'

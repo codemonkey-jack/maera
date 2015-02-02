@@ -5,8 +5,8 @@
  * @package maera
  */
 
-Maera()->template->dependencies();
+Maera()->views->dependencies();
 
-Maera()->template->header();
-Maera()->template->render( maera_templates_singular() );
-Maera()->template->footer();
+Maera()->views->header();
+Maera()->views->render( maera_templates_singular() );
+Maera()->views->footer();
