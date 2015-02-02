@@ -7,6 +7,7 @@ class Maera_Caching {
 		add_action( 'customize_save_after', array( $this, 'reset_style_cache_on_customizer_save' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'custom_css_cached' ), 101 );
 		add_action( 'init', array( $this, 'timber_customizations' ) );
+		add_filter( 'timber/cache/location', array( $this, 'change_twig_cache_dir' ) );
 
 	}
 
@@ -137,5 +138,13 @@ class Maera_Caching {
 		return $mode;
 
 	}
+	
+	/**
+	 * Change Timber's cache folder.
+	 * We want to use wp-content/cache/timber
+	 */
+	 function change_twig_cache_dir() {
+	 	return WP_CONTENT_DIR . '/cache/timber';
+	 }
 
 }
