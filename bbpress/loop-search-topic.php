@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/loop-search-topic.twig' );
+Maera()->views->render( 'bbpress/loop-search-topic.twig' );

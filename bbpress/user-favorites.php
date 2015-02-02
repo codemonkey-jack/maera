@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/user-favorites.twig' );
+Maera()->views->render( 'bbpress/user-favorites.twig' );

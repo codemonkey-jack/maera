@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/user-replies-created.twig' );
+Maera()->views->render( 'bbpress/user-replies-created.twig' );

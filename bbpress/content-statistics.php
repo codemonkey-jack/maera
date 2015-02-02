@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/content-statistics.twig' );
+Maera()->views->render( 'bbpress/content-statistics.twig' );

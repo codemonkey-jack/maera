@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/form-protected.twig' );
+Maera()->views->render( 'bbpress/form-protected.twig' );

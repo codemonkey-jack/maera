@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/content-single-topic-lead.twig' );
+Maera()->views->render( 'bbpress/content-single-topic-lead.twig' );

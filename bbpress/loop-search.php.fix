@@ -5,4 +5,4 @@
 //       See lines 18-24.
 
 
-Maera_Template::main( 'bbpress/loop-search.twig' );
+Maera()->views->render( 'bbpress/loop-search.twig' );

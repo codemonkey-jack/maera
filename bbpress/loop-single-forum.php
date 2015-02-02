@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/loop-single-forum.twig' );
+Maera()->views->render( 'bbpress/loop-single-forum.twig' );

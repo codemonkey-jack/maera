@@ -4,4 +4,4 @@
 //       Find a workaround for loop-replies.twig to support the loop.
 //       See lines 36-41.
 
-Maera_Template::main( 'bbpress/loop-replies.twig' );
+Maera()->views->render( 'bbpress/loop-replies.twig' );

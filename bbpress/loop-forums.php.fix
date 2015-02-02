@@ -5,4 +5,4 @@
 //       See lines 17-21.
 
 
-Maera_Template::main( 'bbpress/loop-forums.twig' );
+Maera()->views->render( 'bbpress/loop-forums.twig' );

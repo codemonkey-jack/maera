@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/form-topic-tag.twig' );
+Maera()->views->render( 'bbpress/form-topic-tag.twig' );

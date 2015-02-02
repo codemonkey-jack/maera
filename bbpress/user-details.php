@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/user-details.twig' );
+Maera()->views->render( 'bbpress/user-details.twig' );

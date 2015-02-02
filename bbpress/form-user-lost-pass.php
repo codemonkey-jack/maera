@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/form-user-lost-pass.twig' );
+Maera()->views->render( 'bbpress/form-user-lost-pass.twig' );

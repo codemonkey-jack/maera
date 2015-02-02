@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/feedback-no-search.twig' );
+Maera()->views->render( 'bbpress/feedback-no-search.twig' );

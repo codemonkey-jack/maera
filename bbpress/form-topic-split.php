@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/form-topic-split.twig' );
+Maera()->views->render( 'bbpress/form-topic-split.twig' );

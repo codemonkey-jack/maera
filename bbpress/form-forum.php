@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/form-forum.twig' );
+Maera()->views->render( 'bbpress/form-forum.twig' );

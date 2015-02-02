@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/content-search.twig' );
+Maera()->views->render( 'bbpress/content-search.twig' );

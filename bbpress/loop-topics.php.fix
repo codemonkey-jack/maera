@@ -4,4 +4,4 @@
 //       Find a workaround for loop-topics.twig to support the loop.
 //       See lines 17-23.
 
-Maera_Template::main( 'bbpress/loop-topics.twig' );
+Maera()->views->render( 'bbpress/loop-topics.twig' );

@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/content-archive-topic.twig' );
+Maera()->views->render( 'bbpress/content-archive-topic.twig' );

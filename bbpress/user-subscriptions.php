@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/user-subscriptions.twig' );
+Maera()->views->render( 'bbpress/user-subscriptions.twig' );

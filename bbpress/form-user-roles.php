@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/form-user-roles.twig' );
+Maera()->views->render( 'bbpress/form-user-roles.twig' );

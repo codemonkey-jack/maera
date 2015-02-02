@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/feedback-logged-in.twig' );
+Maera()->views->render( 'bbpress/feedback-logged-in.twig' );

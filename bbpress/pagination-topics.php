@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/pagination-topics.twig' );
+Maera()->views->render( 'bbpress/pagination-topics.twig' );

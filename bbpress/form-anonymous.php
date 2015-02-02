@@ -1,3 +1,3 @@
 <?php
 
-Maera_Template::main( 'bbpress/form-anonymous.twig' );
+Maera()->views->render( 'bbpress/form-anonymous.twig' );
