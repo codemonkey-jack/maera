@@ -28,6 +28,24 @@ Chrome, Firefox, Safari and IE10+ are supported. IE7, IE8 and IE9 are not suppor
 
 More detail on the theme [commit page](https://github.com/presscodes/maera/commits).
 
+= 1.1.0 =
+
+* Fix: Most methods are not non-static.
+* New: The theme is now more OOP.
+* New: You can now choose a caching method from the admin options.
+* Fix: Disabling file caches (there were issues on sites hosted on WPEngine).
+* Fix: Updating the Maera_Logo_Widget rendering method.
+* Fix: Typo preventing proper template rendering for tag archives.
+* Fix: Added check for MAERA_VERSION constant.
+* Fix: Code cleanup.
+* New: Introducing a Maera_Helper class.
+* Fix: Move file requires outside the main Maera object.
+* Fix: Moved test_missing method to the Maera_Required_Plugins class.
+* Fix: Moved get_search_form method to the Maera_Template class.
+* Fix: Moved body_class method to the Maera_Styles class.
+* Fix: Renamed the Maera_Template->main method to Maera_Template->render.
+* New: Introducing new "screen-reader-text" classes as per https://make.wordpress.org/accessibility/2015/01/27/test-chat-summary-januari-26/
+
 = 1.0.3 =
 
 * Fix: Jetpack was being forced to Dev mode some hosts even when dev mode was disabled from the theme options dashboard.

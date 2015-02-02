@@ -8,8 +8,8 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  */
 
-Maera_Template::dependencies();
+Maera()->template->dependencies();
 
-Maera_Template::header();
-Maera_Template::main();
-Maera_Template::footer();
+Maera()->template->header();
+Maera()->template->render();
+Maera()->template->footer();

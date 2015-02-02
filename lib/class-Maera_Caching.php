@@ -7,6 +7,7 @@ class Maera_Caching {
 		add_action( 'customize_save_after', array( $this, 'reset_style_cache_on_customizer_save' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'custom_css_cached' ), 101 );
 		add_action( 'init', array( $this, 'timber_customizations' ) );
+		add_filter( 'timber/cache/location', array( $this, 'change_twig_cache_dir' ) );
 
 	}
 
@@ -19,7 +20,7 @@ class Maera_Caching {
 
 	function custom_css_cached() {
 
-		if ( Maera_Development::dev_mode() ) {
+		if ( Maera()->dev->dev_mode() ) {
 			// Get our styles using the maera/styles filter
 			$data = apply_filters( 'maera/styles', null );
 		} else {
@@ -53,14 +54,14 @@ class Maera_Caching {
 		}
 		global $wp_customize;
 
-		if ( ! Maera_Development::dev_mode() ) {
+		if ( ! Maera()->dev->dev_mode() ) {
 
 			// Turn on Timber caching.
 			// See https://github.com/jarednova/timber/wiki/Performance#cache-the-twig-file-but-not-the-data
 
 			// This is a bit buggy right now on some hosts so we're disabling it.
 			// Timber::$cache = true;
-			self::cache_mode();
+			$this->cache_mode();
 
 
 		} else {
@@ -69,7 +70,7 @@ class Maera_Caching {
 			Timber::$cache = false;
 
 			$_SERVER['QUICK_CACHE_ALLOWED'] = FALSE;
-			Maera::define( 'DONOTCACHEPAGE', TRUE );
+			Maera_Helper::define( 'DONOTCACHEPAGE', TRUE );
 
 		}
 
@@ -78,7 +79,7 @@ class Maera_Caching {
 	/**
 	 * Timber caching
 	 */
-	public static function cache_duration() {
+	public function cache_duration() {
 
 		$theme_options = get_option( 'maera_admin_options', array() );
 
@@ -100,9 +101,9 @@ class Maera_Caching {
 	 * Custom implementation for get_context method.
 	 * Implements caching
 	 */
-	public static function get_context() {
+	public function get_context() {
 
-		if ( Maera_Development::dev_mode() ) {
+		if ( Maera()->dev->dev_mode() ) {
 			$cached = false;
 		} else {
 			$cache  = wp_cache_get( 'context', 'maera' );
@@ -112,14 +113,14 @@ class Maera_Caching {
 		if ( $cached && $cache ) {
 			return $cache;
 		} else {
-			$context = Maera_Timber::get_context();
+			$context = Maera()->timber->get_context();
 			wp_cache_set( 'context', $context, 'maera' );
 			return $context;
 		}
 
 	}
 
-	public static function cache_mode() {
+	public function cache_mode() {
 
 		$options    = get_option( 'maera_admin_options', array() );
 		$cache_mode = isset( $options['cache_mode'] ) ? $options['cache_mode'] : 'default';
@@ -137,5 +138,13 @@ class Maera_Caching {
 		return $mode;
 
 	}
+	
+	/**
+	 * Change Timber's cache folder.
+	 * We want to use wp-content/cache/timber
+	 */
+	 function change_twig_cache_dir() {
+	 	return WP_CONTENT_DIR . '/cache/timber';
+	 }
 
 }

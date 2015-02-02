@@ -286,7 +286,7 @@ function maera_templates_sidebar() {
 		 */
 		$taxonomy  = $wp_query->tax_query->queries[0]['taxonomy'];
 		$term_slug = $wp_query->tax_query->queries[0]['terms'][0];
-		$term      = get_term_by( 'slug', $slug, $taxonomy );
+		$term      = get_term_by( 'slug', $term_slug, $taxonomy );
 		$term_id   = intval( $term->term_id );
 
 		if ( is_category() ) {

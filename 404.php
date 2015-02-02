@@ -7,8 +7,8 @@
  * @since    Maera 0.1
  */
 
-Maera_Template::dependencies();
+Maera()->template->dependencies();
 
-Maera_Template::header();
-Maera_Template::main( '404.twig' );
-Maera_Template::footer();
+Maera()->template->header();
+Maera()->template->render( '404.twig' );
+Maera()->template->footer();

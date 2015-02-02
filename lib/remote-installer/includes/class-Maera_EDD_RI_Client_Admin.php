@@ -68,11 +68,10 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 
 	}
 
-	function settings_page() {
-		global $maera_admin; ?>
+	function settings_page() { ?>
 
 		<div class="wrap metabox-holder">
-			<?php echo $maera_admin->tabs_head( 'addons' ); ?>
+			<?php echo Maera()->admin->tabs_head( 'addons' ); ?>
 			<h2><?php _e( 'Maera Addons Installer', 'maera' ); ?></h2>
 
 			<?php

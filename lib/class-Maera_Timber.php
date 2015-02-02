@@ -17,7 +17,7 @@ class Maera_Timber extends Maera {
 	/**
 	 * Custom implementation for get_context method.
 	 */
-	public static function get_context() {
+	public function get_context() {
 
 		global $content_width;
 
@@ -53,7 +53,7 @@ class Maera_Timber extends Maera {
 	 * Then we continue looking for the twig file in the active shell
 	 * and finally fallback to the core twig files.
 	 */
-	public static function twig_locations() {
+	public function twig_locations() {
 
 		$locations = array();
 		$location_roots = array();
@@ -88,7 +88,7 @@ class Maera_Timber extends Maera {
 
 		global $wp_customize;
 
-		$locations = self::twig_locations();
+		$locations = $this->twig_locations();
 		Timber::$locations = $locations;
 
 	}
