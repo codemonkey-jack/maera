@@ -35,7 +35,7 @@ class Maera {
 
 	function __construct() {
 
-		Maera_Helper::define( 'MAERA_VERSION', '1.1.0' );
+		Maera_Helper::define( 'MAERA_VERSION', '1.1.1' );
 		Maera_Helper::define( 'MAERA_ASSETS_URL', get_stylesheet_directory_uri() . '/assets' );
 
 		add_filter( 'kirki/config', array( $this, 'customizer_config' ) );
