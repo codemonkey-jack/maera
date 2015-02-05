@@ -10,5 +10,5 @@
 Maera()->views->dependencies();
 
 Maera()->views->header();
-Maera()->views->render( '404.twig' );
+Maera()->views->render();
 Maera()->views->footer();

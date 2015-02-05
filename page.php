@@ -20,5 +20,5 @@
 Maera()->views->dependencies();
 
 Maera()->views->header();
-Maera()->views->render( maera_templates_page() );
+Maera()->views->render();
 Maera()->views->footer();
