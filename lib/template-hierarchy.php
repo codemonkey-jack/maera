@@ -1,86 +1,8 @@
 <?php
 
-/**
- * Archives.
- * Fallback to archive.twig (use a priority of 100)
- */
-function maera_templates_archives( $templates = array() ) {
+function maera_templates_hierarchy( $templates = array() ) {
 
-	if ( is_archive() ) {
-		$templates[] = 'archive.twig';
-	}
-
-	$templates[] = 'index.twig';
-
-	return $templates;
-
-}
-add_filter( 'maera/templates', 'maera_templates_archives', 100 );
-
-/**
- * The 404 template
- */
-function maera_templates_404( $templates = array() ) {
-
-	if ( is_404() ) {
-		$templates = '404.twig';
-	}
-
-	$templates[] = 'index.twig';
-
-}
-add_filter( 'maera/templates', 'maera_templates_404' );
-
-/**
- * Page templates
- */
-function maera_templates_page( $templates = array() ) {
-
-	if ( is_page() ) {
-
-		$post = new TimberPost();
-
-		$templates[] = 'page-' . $post->post_name . '.twig';
-		$templates[] = 'page-' . $post->slug . '.twig';
-		$templates[] = 'page-' . $post->ID . '.twig';
-		$templates[] = 'page.twig';
-
-	}
-
-	$templates[] = 'index.twig';
-
-	return $templates;
-
-}
-add_filter( 'maera/templates', 'maera_templates_page' );
-
-/**
- * Singular templates
- */
-function maera_templates_singular( $templates = array() ) {
-
-	if ( is_single() || is_singular( get_post_type() ) ) {
-
-		$post = new TimberPost();
-
-		$templates[] = 'single-' . $post->ID . '.twig';
-		$templates[] = 'single-' . $post->post_type . '.twig';
-		$templates[] = 'single.twig';
-
-	}
-
-	$templates[] = 'index.twig';
-
-	return $templates;
-
-}
-add_filter( 'maera/templates', 'maera_templates_singular' );
-
-/**
- * Home templates
- */
-function maera_templates_home( $templates = array() ) {
-
+	// Home templates
 	if ( is_front_page() ) {
 		$templates[] = 'front-page.twig';
 
@@ -103,33 +25,40 @@ function maera_templates_home( $templates = array() ) {
 		$templates[] = 'home.twig';
 	}
 
-	$templates[] = 'index.twig';
+	// The 404 template
+	if ( is_404() ) {
+		$templates = '404.twig';
+	}
 
-	return $templates;
+	// Page templates
+	if ( is_page() ) {
 
-}
-add_filter( 'maera/templates', 'maera_templates_home' );
+		$post = new TimberPost();
 
-/**
- * Search templates
- */
-function maera_templates_search( $templates = array() ) {
+		$templates[] = 'page-' . $post->post_name . '.twig';
+		$templates[] = 'page-' . $post->slug . '.twig';
+		$templates[] = 'page-' . $post->ID . '.twig';
+		$templates[] = 'page.twig';
 
+	}
+
+ 	// Singular templates
+	if ( is_single() || is_singular( get_post_type() ) ) {
+
+		$post = new TimberPost();
+
+		$templates[] = 'single-' . $post->ID . '.twig';
+		$templates[] = 'single-' . $post->post_type . '.twig';
+		$templates[] = 'single.twig';
+
+	}
+
+ 	// Search templates
 	if ( is_search() ) {
 		$templates[] = 'search.twig';
 	}
 
-	$templates[] = 'index.twig';
-
-	return $templates;
-}
-add_filter( 'maera/templates', 'maera_templates_search' );
-
-/**
- * Category templates
- */
-function maera_templates_category( $templates = array() ) {
-
+	// Category templates
 	if ( is_category() ) {
 
 		$cat = get_category( get_query_var( 'cat' ) );
@@ -141,19 +70,7 @@ function maera_templates_category( $templates = array() ) {
 		$templates[] = 'category.twig';
 
 	}
-
-	$templates[] = 'index.twig';
-
-	return $templates;
-
-}
-add_filter( 'maera/templates', 'maera_templates_category' );
-
-/**
- * Taxonomy templates
- */
-function maera_template_taxonomy( $templates = array() ) {
-
+	// Taxonomy templates
 	if ( is_tax() ) {
 
 		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
@@ -164,18 +81,7 @@ function maera_template_taxonomy( $templates = array() ) {
 
 	}
 
-	$templates[] = 'index.twig';
-
-	return $templates;
-
-}
-add_filter( 'maera/templates', 'maera_template_taxonomy' );
-
-/**
- * Tag templates
- */
-function maera_template_tax( $templates = array() ) {
-
+ 	// Tag templates
  	if ( is_tag() ) {
 
 		$tag = get_tag( get_query_var( 'tag' ) );
@@ -188,55 +94,26 @@ function maera_template_tax( $templates = array() ) {
 
 	}
 
-	$templates[] = 'index.twig';
-
-	return $templates;
-
-}
-add_filter( 'maera/templates', 'maera_template_tax' );
-
-/**
- * Date templates
- */
-function maera_template_date( $templates = array() ) {
-
+	// Date templates
 	if ( is_date() ) {
 		$templates[] = 'date.twig';
 	}
 
-	$templates[] = 'index.twig';
-
-	return $templates;
-
-}
-add_filter( 'maera/templates', 'maera_template_date' );
-
-/**
- * Custom post type archive templates
- */
-function maera_templates_cpt_archive( $templates = array() ) {
-
+	// Custom post type archive templates
 	if ( is_post_type_archive() ) {
 		$templates[] = 'archive-' . get_post_type() . '.twig';
 	}
 
-	$templates[] = 'index.twig';
-
-	return $templates;
-
-}
-add_filter( 'maera/templates', 'maera_templates_cpt_archive' );
-
-/**
- * Get the templates for authors
- */
-function maera_templates_author( $templates = array() ) {
-
+ 	// Get the templates for authors
 	if ( is_author() ) {
 		$templates[] = 'author-' . get_the_author_meta( 'user_nicename' ) . '.twig';
 		$templates[] = 'author-' . get_the_author_meta( 'ID' ) . '.twig';
 		$templates[] = 'author.twig';
-		// archive.twig is added on the maera_templates_archives function.
+	}
+
+	// archives
+	if ( is_archive() ) {
+		$templates[] = 'archive.twig';
 	}
 
 	$templates[] = 'index.twig';
@@ -244,7 +121,7 @@ function maera_templates_author( $templates = array() ) {
 	return $templates;
 
 }
-add_filter( 'maera/templates', 'maera_templates_author' );
+add_filter( 'maera/templates', 'maera_templates_hierarchy' );
 
 /**
  * Get the templates for sidebars
