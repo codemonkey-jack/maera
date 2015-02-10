@@ -14,7 +14,7 @@
 			<div class="post-content">
 				{% if post.thumbnail %}
 					<a href="{{ post.link }}" {% if widget.thumb_float %}class="{{ shell.float_class('left') }}"{% endif %}>
-						<img src="{{ post.get_thumbnail.get_src|resize(widget.thumb_width, widget.thumb_height) }}">
+						<img {% if widget.thumb_float %}class="alignleft" {% endif %}src="{{ post.get_thumbnail.get_src|resize(widget.thumb_width, widget.thumb_height) }}">
 					</a>
 				{% endif %}
 				{{ post.get_preview(widget.excerpt_length, false, widget.more_text) }}
