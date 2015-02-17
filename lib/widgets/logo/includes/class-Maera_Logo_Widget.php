@@ -44,7 +44,15 @@ class Maera_Logo_Widget extends WP_Widget {
 	 * @since 1.0.0
 	 */
 	public function widget( $args, $instance ) {
+		echo $args['before_widget'];
+
+		if ( ! empty($instance['title'] ) ) {
+			echo $args['before_title'] . $instance['title'] . $args['after_title'];
+		}
 		Maera()->views->render( 'site-logo.twig' );
+
+		echo $args['after_widget'];
+
 	}
 
 
