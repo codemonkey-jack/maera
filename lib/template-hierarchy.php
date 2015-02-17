@@ -2,6 +2,10 @@
 
 function maera_templates_hierarchy( $templates = array() ) {
 
+	if ( ! isset( $templates ) ) {
+		$templates = array();
+	}
+
 	// Home templates
 	if ( is_front_page() ) {
 		$templates[] = 'front-page.twig';

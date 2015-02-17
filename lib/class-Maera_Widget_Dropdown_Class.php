@@ -57,7 +57,7 @@ class Maera_Widget_Dropdown_Class {
 		$widget_num = $widget_obj['params'][0]['number'];
 
 		$option = ( isset( $widget_opt[$widget_num][$this->id] ) ) ? $widget_opt[$widget_num][$this->id] : $this->default;
-		$value  = $this->choices[$option]['classes'];
+		$value  = isset( $this->choices[$option]['classes'] ) ? $this->choices[$option]['classes'] : '';
 
 		preg_match( '/(\<[a-zA-Z]+)(.*?)(\>)/', $params[0]['before_widget'], $mat );
 
