@@ -47,7 +47,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 
 		extract( $args );
 
-		if ( 'any' != $instance['term'] ) {
+		if ( isset( $instance['term'] ) && 'any' != $instance['term'] ) {
 			$tax_query = array(
 				array(
 					'taxonomy' => $instance['taxonomy'],
