@@ -77,7 +77,15 @@ class Maera {
 	 */
 	function customizer_config() {
 
-		$args = array( 'stylesheet_id' => 'maera' );
+		$args = array(
+			'stylesheet_id' => 'maera',
+			'color_active'  => '#ffab00',
+			'color_light'   => '#ffc107',
+			'color_select'  => '#ff9800',
+			'color_accent'  => '#ff5722',
+			'color_back'    => '#222',
+		);
+
 		return $args;
 
 	}
