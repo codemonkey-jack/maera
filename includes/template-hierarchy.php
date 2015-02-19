@@ -5,6 +5,11 @@ function maera_templates_hierarchy( $templates = array() ) {
 	if ( ! isset( $templates ) ) {
 		$templates = array();
 	}
+	
+	if ( ! empty( $templates ) && ! is_array( $templates ) ) {
+		$templates = explode( ',', $templates );
+		$templates = array_map( 'trim', $templates );
+	}
 
 	// Home templates
 	if ( is_front_page() ) {
