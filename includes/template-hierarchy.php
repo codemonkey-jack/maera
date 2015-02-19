@@ -31,7 +31,7 @@ function maera_templates_hierarchy( $templates = array() ) {
 
 	// The 404 template
 	if ( is_404() ) {
-		$templates = '404.twig';
+		$templates[] = '404.twig';
 	}
 
 	// Page templates
