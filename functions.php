@@ -62,6 +62,8 @@ class Maera {
 
 		add_action( 'init', array( $this, 'licensing' ) );
 
+		add_action( 'wp', array( $this, 'updates' ) );
+
 	}
 
 	public static function get_instance() {
@@ -123,6 +125,17 @@ class Maera {
 
 		if ( is_admin() && class_exists( 'Maera_Updater' ) ) {
 			$maera_md_license = new Maera_Updater( 'theme', __FILE__, 'Maera', MAERA_VERSION, '3ac52694580f66e9a3de48b56692dd45' );
+		}
+
+	}
+
+	/**
+	 * We can handle any db updates here for backwards-compatibility
+	 */
+	function updates() {
+
+		if ( ! get_option( 'maera_version' ) ) {
+			update_option( 'maera_version', MAERA_VERSION );
 		}
 
 	}
