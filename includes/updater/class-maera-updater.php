@@ -118,7 +118,7 @@ class Maera_Updater {
 					__( 'A valid licence for <strong>%1$s</strong> has not been activated. Please visit the <a href="%2$s">licensing page</a> and activate your licence to get automatic updates. | <a href="%3$s">Hide this notice</a>' ),
 					$this->item_name,
 					admin_url( 'themes.php?page=theme_options&tab=licensing' ),
-					'?example_nag_ignore=0'
+					'?' . $this->item_shortname . '_licensing_nag_ignore=0'
 				); ?></p>
 			</div>
 		<?php endif;
@@ -131,7 +131,7 @@ class Maera_Updater {
 		global $current_user;
 		$user_id = $current_user->ID;
 		// If user clicks to ignore the notice, add that to their user meta
-		if ( isset( $_GET['example_nag_ignore'] ) && '0' == $_GET['example_nag_ignore'] ) {
+		if ( isset( $_GET[$this->item_shortname . '_licensing_nag_ignore'] ) && '0' == $_GET[$this->item_shortname . '_licensing_nag_ignore'] ) {
 			add_user_meta( $user_id, $this->item_shortname . '_license_key_notice', 'true', true );
 		}
 

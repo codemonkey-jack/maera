@@ -23,6 +23,9 @@ class Maera_Admin {
 			wp_safe_redirect( admin_url( 'themes.php?page=maera-ri' ) );
 		}
 
+		add_action('admin_notices', array( $this, 'admin_notice' ) );
+		add_action('admin_init', array( $this, 'nag_ignore' ) );
+
 	}
 
 	/**
@@ -158,6 +161,72 @@ class Maera_Admin {
 		do_action( 'maera/admin/save' );
 
 		return $settings;
+
+	}
+
+	function admin_notice() {
+
+		global $current_user ;
+		$user_id = $current_user->ID;
+
+		$maera_admin_options = apply_filters( 'maera/admin/options', array(
+			'shell'       => 'core',
+			'import_data' => '',
+			'dev_mode'    => 1,
+			'cache'       => '0',
+			'cache_mode'  => 'default',
+		) );
+
+		// Get the available shells
+		$available_shells = apply_filters( 'maera/shells/available', array() );
+
+		$cache_modes = array(
+			array( 'value' => 'none',      'label' => __( 'No Caching', 'maera' ) ),
+			array( 'value' => 'object',    'label' => __( 'WP Object Caching', 'maera' ) ),
+			array( 'value' => 'transient', 'label' => __( 'Transients', 'maera' ) ),
+			array( 'value' => 'default',   'label' => __( 'Default', 'maera' ) ),
+		);
+
+		$settings = get_option( 'maera_admin_options', $maera_admin_options );
+
+		$display_core_notification  = ( 1 >= count( $available_shells ) ) ? true : false;
+		$display_shell_notification = ( 1 < count( $available_shells ) && 'core' == $settings['shell'] ) ? true : false;
+
+		if ( ! get_user_meta( $user_id, 'maera_core_shell_notification_ignore' ) && $display_core_notification ) : ?>
+			<div class="updated">
+				<p><?php printf(
+					__( 'We have detected that you are using Maera with the <strong>Core shell</strong> active. Did you know there are more shells you can use to extend the Maera Framework? Visit the <a href="%1$s">Addons</a> tab in your theme options to explore more options. | <a href="%2$s">Hide this notice</a>' ),
+					admin_url( 'themes.php?page=maera-ri' ),
+					'?maera_core_shell_notification_ignore=0'
+				); ?></p>
+			</div>
+		<?php endif;
+
+		if ( ! get_user_meta( $user_id, 'maera_multiple_shells_notification_ignore' ) && $display_shell_notification ) : ?>
+			<div class="updated">
+				<p><?php printf(
+					__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>' ),
+					admin_url( 'themes.php?page=theme_options&tab=settings' ),
+					'?maera_multiple_shells_notification_ignore=0'
+				); ?></p>
+			</div>
+		<?php endif;
+
+	}
+
+
+	function nag_ignore() {
+
+		global $current_user;
+		$user_id = $current_user->ID;
+		// If user clicks to ignore the notice, add that to their user meta
+		if ( isset( $_GET['maera_core_shell_notification_ignore'] ) && '0' == $_GET['maera_core_shell_notification_ignore'] ) {
+			add_user_meta( $user_id, 'maera_core_shell_notification_ignore', 'true', true );
+		}
+
+		if ( isset( $_GET['maera_multiple_shells_notification_ignore'] ) && '0' == $_GET['maera_multiple_shells_notification_ignore'] ) {
+			add_user_meta( $user_id, 'maera_multiple_shells_notification_ignore', 'true', true );
+		}
 
 	}
 
