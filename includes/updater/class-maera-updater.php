@@ -47,6 +47,10 @@ class Maera_Updater {
 
 		add_action( 'maera/admin/licensing', array( $this, 'form' ) );
 
+		add_action('admin_notices', array( $this, 'admin_notice' ) );
+		add_action('admin_init', array( $this, 'nag_ignore' ) );
+
+
 	}
 
 
@@ -101,6 +105,36 @@ class Maera_Updater {
 			</div>
 		</div>
 		<?php
+	}
+
+	function admin_notice() {
+
+		global $current_user ;
+		$user_id = $current_user->ID;
+		// Check that the user hasn't already clicked to ignore the message and the licence is not valid.
+		if ( ! get_user_meta( $user_id, $this->item_shortname . '_license_key_notice' ) && 'valid' != $this->license_status ) : ?>
+			<div class="updated">
+				<p><?php printf(
+					__( 'A valid licence for <strong>%1$s</strong> has not been activated. Please visit the <a href="%2$s">licensing page</a> and activate your licence to get automatic updates. | <a href="%3$s">Hide this notice</a>' ),
+					$this->item_name,
+					admin_url( 'themes.php?page=theme_options&tab=licensing' ),
+					'?example_nag_ignore=0'
+				); ?></p>
+			</div>
+		<?php endif;
+
+	}
+
+
+	function nag_ignore() {
+
+		global $current_user;
+		$user_id = $current_user->ID;
+		// If user clicks to ignore the notice, add that to their user meta
+		if ( isset( $_GET['example_nag_ignore'] ) && '0' == $_GET['example_nag_ignore'] ) {
+			add_user_meta( $user_id, $this->item_shortname . '_license_key_notice', 'true', true );
+		}
+
 	}
 
 	function register_option() {
