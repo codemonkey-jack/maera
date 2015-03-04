@@ -17,7 +17,9 @@
 						<img {% if widget.thumb_float %}class="alignleft" {% endif %}src="{{ post.get_thumbnail.get_src|resize(widget.thumb_width, widget.thumb_height) }}">
 					</a>
 				{% endif %}
-				{{ post.get_preview(widget.excerpt_length, false, widget.more_text) }}
+				<div class="inner">
+					{{ post.get_preview(widget.excerpt_length, false, widget.more_text) }}
+				</div>
 			</div>
 		</article>
 		<div class="clearfix"></div>
