@@ -5,7 +5,7 @@ function maera_templates_hierarchy( $templates = array() ) {
 	if ( ! isset( $templates ) ) {
 		$templates = array();
 	}
-	
+
 	if ( ! empty( $templates ) && ! is_array( $templates ) ) {
 		$templates = explode( ',', $templates );
 		$templates = array_map( 'trim', $templates );
@@ -200,7 +200,10 @@ function maera_templates_sidebar() {
 		 * If this is a post-type archive:
 		 *     sidebar-archive-{post_type}.twig
 		 */
-		$templates[] = 'sidebar-' . $wp_query->query['post_type'] . '.twig';
+		$post_type_query = $wp_query->query;
+		if ( isset( $post_type_query['post_type'] ) ) {
+			$templates[] = 'sidebar-' . $wp_query->query['post_type'] . '.twig';
+		}
 
 	} else if ( is_date() ) {
 
