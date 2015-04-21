@@ -1,5 +1,5 @@
 {#<?php#}
-<div class="blog-comment {{ comment.comment_type }}" id="blog-comment-{{ comment.ID }}" itemprop="comment">
+<div class="blog-comment {{ comment.comment_type }} comment-order-{{loop.index}}" id="blog-comment-{{ comment.ID }}" itemprop="comment">
 	<h5 class="comment-author">{{ comment.author.name }}</h5>
 	<div class="comment-content">{{ comment.comment_content|wpautop }}</div>
 </div>
