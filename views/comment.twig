@@ -1,7 +1,0 @@
-{#<?php#}
-<div class="blog-comment {{ comment.comment_type }} comment-order-{{ loop.index }}" id="blog-comment-{{ comment.ID }}" itemprop="comment">
-	<img src="{{ comment.avatar }}" width="60px" class="comment-avatar" />
-	<h4><a href="{{ comment.author.link }}" class="comment-author"> {{ comment.author.name }}</a></h4>
-	<small><time>{{ comment.comment_date|time_ago }}</time></small>
-	<div class="comment-content">{{ comment.comment_content|wpautop }}</div>
-</div>
