@@ -116,7 +116,7 @@ class Maera_EDD_RI_Client {
 		);
 
 		// Get a response from our EDD server
-		$response = wp_remote_get( add_query_arg( $api_args, $this->api_url ), array( 'timeout' => 15, 'sslverify' => false ) );
+		$response = wp_remote_get( esc_url_raw( add_query_arg( $api_args, $this->api_url ), array( 'timeout' => 15, 'sslverify' => false ) ) );
 
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) ) {
@@ -144,7 +144,7 @@ class Maera_EDD_RI_Client {
 			'license'	 => $license,
 		);
 
-		$download_link = add_query_arg( $api_args, $this->api_url );
+		$download_link = esc_url_raw( add_query_arg( $api_args, $this->api_url ) );
 
 		if ( ! class_exists( 'Plugin_Upgrader' ) ) {
 			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
