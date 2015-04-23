@@ -9,7 +9,7 @@
 			{% if page.link %}
 				<a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
 			{% else %}
-				<span class="{{ page.class }}">{{ page.title }}</span>
+				<a href="#" class="{{ page.class }}">{{ page.title }}</a>
 			{% endif %}
 		</li>
 	{% endfor %}
