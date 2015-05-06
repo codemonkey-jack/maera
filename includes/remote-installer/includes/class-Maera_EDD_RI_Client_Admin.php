@@ -118,7 +118,7 @@ class Maera_EDD_RI_Client_Admin extends Maera_EDD_RI_Client {
 
 								<p class="edd-ri-actions">
 									<span class="spinner"></span>
-									<button class="button button-primary" data-free="<?php echo $data_free; ?>"<?php echo $disabled; ?> data-edd-ri="<?php echo $download['title']; ?>"><?php echo $button_text; ?></button>
+									<!-- <button class="button button-primary" data-free="<?php echo $data_free; ?>"<?php echo $disabled; ?> data-edd-ri="<?php echo $download['title']; ?>"><?php echo $button_text; ?></button> -->
 									<a class="button" target="_blank" href="<?php echo trailingslashit( $this->api_url ) . '?p=' . $download['id']; ?>"><?php _e( 'Details', 'maera' ); ?></a>
 								</p>
 							</div>
