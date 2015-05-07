@@ -161,6 +161,16 @@ if (!function_exists('array_column')) {
 
 }
 
+/**
+ * WooCommerce hack
+ */
+function maera_set_product( $post ) {
+    global $product;
+    if ( is_woocommerce() ) {
+        $product = get_product( $post->ID );
+    }
+}
+
 function maera_return_0() { return 0; }
 
 function maera_return_1() { return 1; }

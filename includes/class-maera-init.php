@@ -94,6 +94,9 @@ class Maera_Init {
 		// site-logo is included in Jetpack 3.2 and above
 		add_theme_support( 'site-logo' );
 
+		// Add WooCommerce support
+		add_theme_support('woocommerce' );
+
 		$lang_dir    = get_template_directory() . '/languages';
 		$custom_path = WP_LANG_DIR . '/maera-' . get_locale() . '.mo';
 
