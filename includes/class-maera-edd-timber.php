@@ -7,7 +7,6 @@ class Maera_EDD_Timber {
 
 	function __construct() {
 
-		add_filter( 'maera/timber/locations', array( $this, 'twigs_location' ), 1 );
 		add_filter( 'timber_context',         array( $this, 'timber_global_context' ) );
 
 	}
@@ -23,19 +22,9 @@ class Maera_EDD_Timber {
 		$data['download_categories'] = Timber::get_terms( 'download_category' );
 		$data['download_tags']       = Timber::get_terms( 'download_tag' );
 
-		$data['default_image'] = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
+		$data['default_image'] = new TimberImage( get_template_directory_uri() . '/assets/images/default.png' );
 
 		return $data;
-
-	}
-
-	/**
-	 * Add the /views folder for our custom twigs
-	 */
-	function twigs_location( $locations ) {
-
-		$locations[] = MAERA_EDD_PATH . '/views';
-		return $locations;
 
 	}
 
