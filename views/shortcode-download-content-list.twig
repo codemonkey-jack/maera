@@ -1,0 +1,51 @@
+{% set width  = content_width // columns %}
+{% set height = width // 1.618 %}
+
+<div id="post-{{ post.ID }}" {{ function('post_class', download_classes) }}>
+	[maera_grid_row_open]
+		<div class="[maera_grid_col_3]">
+			<a class="download-featured-image" title="{{ __( 'View', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
+				{% if post.thumbnail %}
+					<img src="{{ post.thumbnail.src|resize( width, height ) }}">
+				{% else %}
+					<img src="{{ default_image.src|resize( width, height, 'center' ) }}">
+				{% endif %}
+			</a>
+		</div>
+		<div class="[maera_grid_col_9]">
+			{% if display_buy_btn == 'yes' %}
+				[maera_grid_row_open]
+					<div class="[maera_grid_col_8]">
+			{% endif %}
+						<div class="content">
+							<a title="{{ __( 'View', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}"><h5 class="title clearfix">{{ post.title|striptags }}</h5></a>
+								{% if display_excerpt == 'yes' %}
+									{{ post.get_preview(20|apply_filters(excerpt_length)) }}
+								{% elseif display_full == 'yes' %}
+									{{ post.content }}
+								{% endif %}
+				{% if display_buy_btn == 'yes' %}
+						</div>
+					</div>
+					<div class="[maera_grid_col_4]">
+						<div class="content edd_download_buy_button">
+							{% if post.edd_coming_soon %}
+								<a class="button [maera_button_default_small] {{ theme_mods.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
+									{% if post.edd_coming_soon_text %}{{ post.edd_coming_soon_text }}
+									{% else %}{{ __('Coming Soon', 'maera_edd') }}{% endif %}
+								</a>
+							{% else %}
+								{% if variable_priced %}
+									<a class="button [maera_button_default_small] {{ theme_mods.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
+								{% else %}
+									{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+<hr>

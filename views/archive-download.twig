@@ -1,0 +1,23 @@
+{% extends "main.twig" %}
+{% block content %}
+	<div class="content-wrapper">
+
+		{% include ['filter-'~theme_mods.filter_mode~'.twig', 'filter-php.twig'] %}
+
+		<article {{ function( 'post_class', in_cart, variable_priced, categories, tags ) }} id="tease-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
+
+			{% do action( 'maera/page/pre_content' ) %}
+			{% filter shortcodes %}[downloads columns="2"]{% endfilter %}
+			{{ shell.clearfix }}
+			{{ function( 'wp_link_pages', {
+				'before': '<div class="page-links">' . i18n.pages,
+				'after': '</div>'
+			}) }}
+			{{ shell.clearfix }}
+			{% do action( 'maera/page/after_content' ) %}
+
+		</article>
+
+	</div> <!-- /content-wrapper -->
+
+{% endblock %}

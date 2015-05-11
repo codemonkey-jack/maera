@@ -1,0 +1,14 @@
+{% from 'panel_open.html.twig' import panel_open as panel_open %}
+{% from 'panel_close.html.twig' import panel_close as panel_close %}
+{% from 'panel_heading_open.html.twig' import panel_heading_open as panel_heading_open %}
+{% from 'panel_heading_close.html.twig' import panel_heading_close as panel_heading_close %}
+
+{{ panel_open('content') }}
+	{{ panel_heading_open() }}
+		<a title="{{ __( 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ post.title }}</a>
+	{{ panel_heading_close }}
+	{{ post.get_preview(20|apply_filters(excerpt_length)) }}
+	<div class="edd_download_buy_button">
+		{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+	</div>
+{{ panel_close() }}

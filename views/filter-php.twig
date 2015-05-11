@@ -1,0 +1,80 @@
+{#<?php #}
+{% from 'row_open.html.twig' import row_open as row_open %}
+{% from 'row_close.html.twig' import row_close as row_close %}
+{% from 'clearfix.html.twig' import clearfix as clearfix %}
+
+{{ row_open('form', '', 'edd-filters-form', 'action="/" method="get"') }}
+
+	<div class="[maera_grid_col_3]">
+		<label for="download_category_dropdown">{{ __( 'Choose a category', 'maera_edd' ) }}
+			<select class="postform" name="download_category_dropdown" id="download_category_dropdown">
+				<option value="-1">{{ __( 'All', 'maera_edd' ) }}</option>
+				{% for download_category in download_categories %}
+					{% if download_category.get_posts %}
+						<option class="level-0" value="{{ download_category.slug }}"{{ query.download_category == download_category.slug ? ' selected' : '' }}>
+							{{ download_category.name }}
+						</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</label>
+	</div>
+
+	<div class="[maera_grid_col_3] end">
+		<label for="download_tag_dropdown">{{ __( 'Choose a tag', 'maera_edd' ) }}
+			<select class="postform" name="download_tag_dropdown" id="download_tag_dropdown">
+				<option value="-1">{{ __( 'All', 'maera_edd' ) }}</option>
+				{% for download_tag in download_tags %}
+					{% if download_tag.get_posts %}
+						<option class="level-0" value="{{ download_tag.slug }}"{{ query.download_tag == download_tag.slug ? ' selected' : '' }}>
+							{{ download_tag.name }}
+						</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</label>
+	</div>
+
+{{ row_close('form') }}
+<script type="text/javascript">
+	<!--
+	var cat_dropdown = document.getElementById("download_category_dropdown");
+	var tag_dropdown = document.getElementById("download_tag_dropdown");
+
+	function onCatChange() { if ( cat_dropdown.options[cat_dropdown.selectedIndex].value > '' ) {
+		if ( cat_dropdown.options[cat_dropdown.selectedIndex].value != '-1' ) {
+			{% if query.download_tag %}
+				location.href = "{{ site.link }}/?download_tag={{ query.download_tag }}&download_category="+cat_dropdown.options[cat_dropdown.selectedIndex].value;
+			{% else %}
+				location.href = "{{ site.link }}/?download_category="+cat_dropdown.options[cat_dropdown.selectedIndex].value;
+			{% endif %}
+		} else {
+			{% if query.download_tag %}
+				location.href = "{{ site.link }}/?download_tag={{ query.download_tag }}";
+			{% else %}
+				location.href = "{{ site.link }}/?post_type=download";
+			{% endif %}
+		}
+	}}
+
+	function onTagChange() { if ( tag_dropdown.options[tag_dropdown.selectedIndex].value > '' ) {
+		if ( tag_dropdown.options[tag_dropdown.selectedIndex].value != '-1' ) {
+			{% if query.download_category %}
+				location.href = "{{ site.link }}/?download_category={{ query.download_category }}&download_tag="+tag_dropdown.options[tag_dropdown.selectedIndex].value;
+			{% else %}
+				location.href = "{{ site.link }}/?download_tag="+tag_dropdown.options[tag_dropdown.selectedIndex].value;
+			{% endif %}
+		} else {
+			{% if query.download_category %}
+				location.href = "{{ site.link }}/?download_category={{ query.download_category }}";
+			{% else %}
+				location.href = "{{ site.link }}/?post_type=download";
+			{% endif %}
+		}
+	}}
+
+	cat_dropdown.onchange = onCatChange;
+	tag_dropdown.onchange = onTagChange;
+	-->
+</script>
+{{ clearfix() }}
