@@ -24,6 +24,12 @@ function Maera() {
 	return Maera::get_instance();
 }
 
-// Global for backwards compatibility.
+// Global
 $GLOBALS['maera'] = maera();
 global $maera;
+
+
+// Load our Maera_EDD class if EDD is installed
+if ( class_exists( 'Easy_Digital_Downloads' ) ) {
+	Maera_EDD::get_instance();
+}

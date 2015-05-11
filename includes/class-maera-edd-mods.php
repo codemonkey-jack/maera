@@ -6,25 +6,11 @@ class Maera_EDD_Mods {
 
 		add_filter( 'edd_purchase_link_defaults', array( $this, 'add_button_class' ) );
 		add_action( 'wp', array( $this, 'checkout_no_sidebars' ) );
-		add_filter( 'template_include', array( $this, 'templates' ), 99 );
-		add_filter( 'edd_template_paths',     array( $this, 'templates_path' ) );
 
 		if ( 1 == get_theme_mod( 'edd_variables_dropdown', 0 ) ) {
 			remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
 			add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
 		}
-
-	}
-
-	/**
-	 * Add the /templates folder for our custom templates
-	 */
-	function templates_path( $file_paths ) {
-
-		$file_paths[50] = MAERA_EDD_PATH . '/templates';
-		ksort( $file_paths, SORT_NUMERIC );
-
-		return $file_paths;
 
 	}
 
@@ -52,19 +38,6 @@ class Maera_EDD_Mods {
 			add_filter( 'maera/sidebar/secondary', '__return_false' );
 		}
 
-	}
-
-	function templates( $template ) {
-
-		if ( is_post_type_archive( 'download' ) || is_tax( 'download_category' ) || is_tax( 'download_tag' ) ) {
-			$new_template = MAERA_EDD_PATH . '/templates/archive-download.php';
-			if ( '' != $new_template ) {
-				return $new_template;
-			}
-
-		}
-
-		return $template;
 	}
 
 	/*
