@@ -2,7 +2,7 @@
 {% block content %}
 	<div class="content-wrapper">
 
-		{% include ['filter-'~theme.theme_mod('filter_mode', 'isotope')~'.twig', 'filter-php.twig'] %}
+		{% include ['filter-'~theme.theme_mod('filter_mode', 'php')~'.twig', 'filter-php.twig'] %}
 
 		<article {{ function( 'post_class', in_cart, variable_priced, categories, tags ) }} id="tease-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
 

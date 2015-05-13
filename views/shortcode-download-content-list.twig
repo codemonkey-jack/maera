@@ -38,7 +38,7 @@
 								{% if variable_priced %}
 									<a class="button [maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
 								{% else %}
-									{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+									{{ function('edd_get_purchase_link', [{'download_id':post.ID}]) }}
 								{% endif %}
 							{% endif %}
 						</div>

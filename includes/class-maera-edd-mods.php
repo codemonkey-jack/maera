@@ -25,6 +25,7 @@ class Maera_EDD_Mods {
 			$class = '[maera_button_default_extra_large]';
 		}
 
+		$defaults['color'] = get_theme_mod( 'checkout_color', 'blue' );
 		$defaults['class'] = $class . ' radius';
 		return $defaults;
 

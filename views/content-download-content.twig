@@ -9,6 +9,6 @@
 	{{ panel_heading_close }}
 	{{ post.get_preview(20|apply_filters(excerpt_length)) }}
 	<div class="edd_download_buy_button">
-		{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+		{{ function('edd_get_purchase_link', [{'download_id':post.ID}]) }}
 	</div>
 {{ panel_close() }}
