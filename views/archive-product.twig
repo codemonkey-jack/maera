@@ -15,7 +15,7 @@
 		{{ function('woocommerce_product_subcategories') }}
 
 		{% for post in posts %}
-			{{ function('wc_get_template_part', 'content', 'product') }}
+			{% include 'content-product.twig' %}
 		{% endfor %}
 		{{ function('woocommerce_product_loop_end') }}
 		{% do action( 'woocommerce_after_shop_loop' ) %}

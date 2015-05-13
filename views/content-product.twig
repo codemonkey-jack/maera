@@ -8,7 +8,7 @@
             <div class="Media-figure {% if not post.thumbnail %}placeholder{% endif %}">
                 <a href="{{post.link}}">
                     {% if post.thumbnail %}
-                        <img src="{{ post.thumbnail.src|resize(post_thumb_size[0], post_thumb_size[1]) }}" />
+						<img src="{{ post.thumbnail.src|resize(shop_thumbnail_image_size) }}" />
                     {% else %}
                         <span class="thumb-placeholder"><i class="icon-camera"></i></span>
                     {% endif %}
