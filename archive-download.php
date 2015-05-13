@@ -17,7 +17,7 @@ $data['posts'] = Timber::query_posts( false, 'TimberPost' );
 $data['query'] = $wp_query->query_vars;
 
 // The in-cart class
-$data['in_cart'] = ( function_exists( 'edd_item_in_cart' ) && edd_item_in_cart( $post->ID ) && !edd_has_variable_prices( $post->ID ) ) ? 'in-cart' : '';
+$data['in_cart'] = ( function_exists( 'edd_item_in_cart' ) && edd_item_in_cart( $post->ID ) && ! edd_has_variable_prices( $post->ID ) ) ? 'in-cart' : '';
 
 // The variable-priced class
 $data['variable_priced'] = ( function_exists( 'edd_has_variable_prices' ) && edd_has_variable_prices( $post->ID ) ) ? 'variable-priced' : '';
