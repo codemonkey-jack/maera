@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+{% block main %}
+<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
+	{% do action( 'woocommerce_before_main_content' ) %}
+	{% if true|apply_filters('woocommerce_show_page_title') %}
+		<h1 class="page-title">{{ function('woocommerce_page_title') }}</h1>
+	{% endif %}
+
+	{% do action( 'woocommerce_archive_description' ) %}
+
+	{% if function('have_posts') %}
+
+		{% do action( 'woocommerce_before_shop_loop' ) %}
+		{{ function('woocommerce_product_loop_start') }}
+		{{ function('woocommerce_product_subcategories') }}
+
+		{% for post in posts %}
+			{% include 'content-product.twig' %}
+		{% endfor %}
+		{{ function('woocommerce_product_loop_end') }}
+		{% do action( 'woocommerce_after_shop_loop' ) %}
+
+	{% else %}
+		{{ function('wc_get_template', 'loop/no-products-found.php') }}
+	{% endif %}
+	{% do action( 'woocommerce_after_main_content' ) %}
+</main><!-- /.main -->
+{% endblock %}
