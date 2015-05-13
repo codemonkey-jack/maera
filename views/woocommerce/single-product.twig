@@ -1,0 +1,24 @@
+{% extends "main.twig" %}
+{% block content %}
+
+	{% do action( 'woocommerce_before_main_content' ) %}
+
+	{% for post in posts %}
+		{% do action( 'woocommerce_before_single_product' ) %}
+		{% if function('post_password_required') %}
+			{{ function('get_the_password_form') }}
+		{% else %}
+			<div itemscope itemtype="{{ function('woocommerce_get_product_schema') }}" id="product-{{ post.ID }}" {{ function('post_class') }}>
+				{% do action( 'woocommerce_before_single_product_summary' ) %}
+				<div class="summary entry-summary">
+					{% do action( 'woocommerce_single_product_summary' ) %}
+				</div>
+				{% do action( 'woocommerce_after_single_product_summary' ) %}
+				<meta itemprop="url" content="{{ function('the_permalink') }}" />
+			</div>
+			{% do action( 'woocommerce_after_single_product' ) %}
+		{% endif %}
+	{% endfor %}
+	{% do action( 'woocommerce_after_main_content' ) %}
+
+{% endblock %}
