@@ -33,6 +33,8 @@ class Maera_EDD_Customizer {
 	 */
 	function create_settings( $controls ) {
 
+		global $edd_options;
+
 		$controls[] = array(
 			'type'     => 'select',
 			'setting'  => 'checkout_color',
@@ -40,7 +42,7 @@ class Maera_EDD_Customizer {
 			'subtitle' => __( 'Select the button color for the purchase/buynow button.', 'maera_edd' ) . ' ' . __( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera_edd' ),
 			'section'  => 'maera_edd',
 			'priority' => 12,
-			'default'  => 'primary',
+			'default'  => $edd_options['checkout_color'],
 			'choices'  => array(
 				'white'     => __( 'White', 'edd' ),
 				'gray'      => __( 'Gray', 'edd' ),
@@ -85,7 +87,7 @@ class Maera_EDD_Customizer {
 			'label'    => __( 'Downloads filter mode', 'textdomain' ),
 			'subtitle' => __( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera_edd' ),
 			'section'  => 'maera_edd',
-			'default'  => 'isotope',
+			'default'  => 'php',
 			'priority' => 1,
 			'choices'  => array(
 				'isotope' => __( 'Isotope', 'maera_edd' ),

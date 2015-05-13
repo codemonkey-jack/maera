@@ -30,13 +30,13 @@
 					<div class="[maera_grid_col_4]">
 						<div class="content edd_download_buy_button">
 							{% if post.edd_coming_soon %}
-								<a class="button [maera_button_default_small] {{ theme_mods.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
+								<a class="button [maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
 									{% if post.edd_coming_soon_text %}{{ post.edd_coming_soon_text }}
 									{% else %}{{ __('Coming Soon', 'maera_edd') }}{% endif %}
 								</a>
 							{% else %}
 								{% if variable_priced %}
-									<a class="button [maera_button_default_small] {{ theme_mods.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
+									<a class="button [maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
 								{% else %}
 									{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
 								{% endif %}
