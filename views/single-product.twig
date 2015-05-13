@@ -1,19 +1,25 @@
 {% extends "main.twig" %}
 {% block content %}
 
-{% do action('woocommerce_before_single_product') %}
+	{% do action( 'woocommerce_before_main_content' ) %}
 
-<article itemscope itemtype="http://schema.org/Product" class="content-wrapper single-product-details {{post.class}}">
-	<div class="entry-images">
-		{% do action('woocommerce_before_single_product_summary') %}
-		<img src="{{ post.thumbnail.src('shop_single') }}" />
-	</div>
-	<div class="summary entry-summary">
-		{% do action('woocommerce_single_product_summary') %}
-	</div>
-	{% do action('woocommerce_after_single_product_summary') %}
-	<meta itemprop="url" content="{{ post.link }}" />
-</article>
-{% do action('woocommerce_after_single_product') %}
+	{% for post in posts %}
+		{% do action( 'woocommerce_before_single_product' ) %}
+		{% if function('post_password_required') %}
+			{{ function('get_the_password_form') }}
+		{% else %}
+			<div itemscope itemtype="{{ function('woocommerce_get_product_schema') }}" id="product-{{ post.ID }}" {{ function('post_class') }}>
+				{% do action( 'woocommerce_before_single_product_summary' ) %}
+				<div class="summary entry-summary">
+					{% do action( 'woocommerce_single_product_summary' ) %}
+				</div>
+				{% do action( 'woocommerce_after_single_product_summary' ) %}
+				<meta itemprop="url" content="{{ function('the_permalink') }}" />
+			</div>
+			{% do action( 'woocommerce_after_single_product' ) %}
+		{% endif %}
+	{% endfor %}
+	{% do action( 'woocommerce_after_main_content' ) %}
+	{% do action( 'woocommerce_after_main_content' ) %}
 
 {% endblock %}
