@@ -85,10 +85,10 @@ class Maera_Timber extends Maera {
 
 		foreach ( $location_roots as $location_root ) {
 			if ( class_exists( 'Easy_Digital_Downloads' ) ) {
-				$locations[] = $location_root . '/edd';
+				$locations[] = $location_root . '/views/edd';
 			}
 			if ( class_exists( 'WooCommerce' ) ) {
-				$locations[] = $location_root . '/woocommerce';
+				$locations[] = $location_root . '/views/woocommerce';
 			}
 			$locations[] = $location_root . '/macros';
 			$locations[] = $location_root . '/views/macros';

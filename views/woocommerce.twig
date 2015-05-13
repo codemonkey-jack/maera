@@ -1,0 +1,17 @@
+{#<?php#}
+{% extends "main.twig" %}
+
+{% block content %}
+
+	<div class="content-wrapper">
+
+		<article {{ function( 'post_class' ) }} id="content-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
+
+			{{ content }}
+			{% do action( 'maera/page/after_content' ) %}
+
+		</article>
+
+	</div> <!-- /content-wrapper -->
+
+{% endblock %}
