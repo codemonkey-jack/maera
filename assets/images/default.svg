@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: IcoMoon.io -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   data-tags="remove-circle, cancel, close, remove, delete"
+   height="1000"
+   width="1000"
+   data-du=""
+   viewBox="0 0 1000 1000"
+   inkscape:version="0.91+devel+osxmenu r12832"
+   sodipodi:docname="default.svg">
+  <defs
+     id="defs32" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1080"
+     inkscape:window-height="675"
+     id="namedview30"
+     showgrid="false"
+     inkscape:zoom="0.093123438"
+     inkscape:cx="-2898.9877"
+     inkscape:cy="-1037.7632"
+     inkscape:window-x="39"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata62">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect
+     style="fill:#000000;fill-opacity:0.0610687;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect4325"
+     width="1000"
+     height="1000"
+     x="4.9999999e-06"
+     y="4.9999999e-06"
+     inkscape:export-filename="/Users/aristath/Desktop/default.png"
+     inkscape:export-xdpi="81"
+     inkscape:export-ydpi="81" />
+  <path
+     inkscape:connector-curvature="0"
+     d="m 500,300 c -110.4565,0 -200,89.5434 -200,200 0,110.4566 89.5434,200 200,200 110.4565,0 200,-89.5435 200,-200 0,-110.4566 -89.5435,-200 -200,-200 z m 0,356.5217 c -86.4565,0 -156.5217,-70.0869 -156.5217,-156.5217 0,-86.4348 70.0652,-156.5217 156.5217,-156.5217 86.4565,0 156.5218,70.0869 156.5218,156.5217 0,86.4348 -70.0653,156.5217 -156.5218,156.5217 z m 39.1304,-240.2174 -78.2609,0 0,88.913 -48.913,0 88.0434,82.8261 88.0435,-82.8261 -48.9131,0 0,-88.913 z"
+     id="path5643"
+     style="fill:#000000;fill-opacity:0.19473685"
+     inkscape:export-filename="/Users/aristath/Desktop/default.png"
+     inkscape:export-xdpi="81"
+     inkscape:export-ydpi="81" />
+</svg>

@@ -1,0 +1,7 @@
+{% if not function('edd_has_variable_prices', post.ID) %}
+	<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+		<div itemprop="price" class="edd_price">
+			{{ function('edd_price', post.ID) }}
+		</div>
+	</div>
+{% endif %}
