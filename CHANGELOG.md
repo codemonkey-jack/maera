@@ -1,3 +1,22 @@
+## HEAD
+
+* New: Easy-Digital-Downloads integration
+* New: WooCommerce integration
+* Fix: Core shell CSS tweaks
+* Fix: Change sr-only class to screen-reader-text
+* New: Implemented a class autoloader
+* Tweak: Deactivate auto-installer
+* Tweak: Use dashicons instead of elusive icons
+* Tweak: Keep pagination links as anchors
+* Fix: Properly use add_query_arg()
+* Tweak: Comments template
+* Fix: fix incorrect path URLs
+* Tweak: better template-hierarchy.php
+* Tweak: WordPress coding standards
+* Fix: Other minor bugfixes
+* Tweak: Add before_widget & after_widget to the logo widget
+* Fix: Align left images on the extended-posts widget
+
 ## 1.1.1
 
 * Fix: Added a default license key
