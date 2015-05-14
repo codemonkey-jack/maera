@@ -1,0 +1,22 @@
+	{{ ''|apply_filters('woocommerce_stock_html', availability_html, availability.availability, product) }}
+
+	{% if product.is_in_stock %}
+
+		{% do action('woocommerce_before_add_to_cart_form') %}
+
+		<form class="cart" method="post" enctype='multipart/form-data'>
+			{% do action('woocommerce_before_add_to_cart_button') %}
+
+			{% if not product.is_sold_individually %}
+				{{ function('woocommerce_quantity_input', [{'min_value': min_value}, {'max_value': max_value}])  }}
+			{% endif %}
+
+			<input type="hidden" name="add-to-cart" value="{{ function('esc_attr', product.id) }}" />
+			<button type="submit" class="single_add_to_cart_button button [maera_button_primary_medium] alt">{{ product.single_add_to_cart_text }}</button>
+
+			{% do action('woocommerce_after_add_to_cart_button') %}
+		</form>
+
+		{% do action('woocommerce_after_add_to_cart_form') %}
+
+	{% endif %}

@@ -100,6 +100,11 @@ class Maera_Template {
 
 		}
 
+		if ( class_exists( 'WooCommerce' ) ) {
+			global $product;
+			$context['product'] = $product;
+		}
+
 		return $context;
 	}
 
