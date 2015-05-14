@@ -190,7 +190,7 @@ button,select {
   text-transform: none;
 }
 
-button,html input[type=button],input[type=reset],input[type=submit] {
+button,html input[type=button],input[type=reset],input[type=submit],a.button-primary {
   -webkit-appearance: button;
   cursor: pointer;
 }
@@ -215,7 +215,7 @@ input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-sea
   -webkit-appearance: none;
 }
 
-button::-moz-focus-inner,input::-moz-focus-inner {
+button::-moz-focus-inner,input::-moz-focus-inner,a.button-primary::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
@@ -381,7 +381,7 @@ textarea {
   width: 100%;
 }
 
-.button,button,input[type=submit] {
+.button,button,input[type=submit],a.button-primary {
   display: inline-block;
   zoom: 1;
   line-height: normal;
@@ -396,12 +396,12 @@ textarea {
   user-select: none;
 }
 
-.button::-moz-focus-inner,button::-moz-focus-inner,input[type=submit]::-moz-focus-inner {
+.button::-moz-focus-inner,button::-moz-focus-inner,input[type=submit]::-moz-focus-inner,a.button-primary::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 
-.button,button,input[type=submit] {
+.button,button,input[type=submit],a.button-primary {
   font-family: inherit;
   font-size: 100%;
   padding: .5em 1em;
@@ -413,7 +413,7 @@ textarea {
   text-decoration: none;
 }
 
-.button-hover,.button:focus,.button:hover,button:hover,input[type=submit]:hover {
+.button-hover,.button:focus,.button:hover,button:hover,input[type=submit]:hover,a.button-primary:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000', GradientType=0);
   background-image: -webkit-gradient(linear,0 0,0 100%,from(transparent),color-stop(40%,rgba(0,0,0,.05)),to(rgba(0,0,0,.1)));
   background-image: -webkit-linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
@@ -422,11 +422,11 @@ textarea {
   background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
 }
 
-.button:focus,button:focus,input[type=submit]:focus {
+.button:focus,button:focus,input[type=submit]:focus,a.button-primary:focus {
   outline: 0;
 }
 
-.button-active,.button:active {
+.button-active,.button:active,a.button-primary:active {
   box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
 }
 
@@ -446,7 +446,7 @@ textarea {
   display: none;
 }
 
-.button::-moz-focus-inner {
+.button::-moz-focus-inner,a.button-primary::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
