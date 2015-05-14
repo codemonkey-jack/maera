@@ -128,3 +128,6 @@ a img.aligncenter {
 .clearfix:after {
   clear: both;
 }
+.pp_woocommerce {
+  top: 0 !important;
+}
