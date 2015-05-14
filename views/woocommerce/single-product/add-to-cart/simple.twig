@@ -1,12 +1,3 @@
-{% if product.is_purchasable %}
-
-	{% set availability = product.get_availability %}
-	{% if '' == availability.availability %}
-		{% set availability_html = '' %}
-	{% else %}
-	 	{% set availability_html = '<p class="stock '~function('esc_attr', availability.class)~'">'~function('esc_html', availability.availability)~'</p>' %}
-	{% endif %}
-
 	{{ ''|apply_filters('woocommerce_stock_html', availability_html, availability.availability, product) }}
 
 	{% if product.is_in_stock %}
@@ -17,19 +8,11 @@
 			{% do action('woocommerce_before_add_to_cart_button') %}
 
 			{% if not product.is_sold_individually %}
-				{% set min_value = 1|apply_filters('woocommerce_quantity_input_min', 1, product) %}
-				{% if product.backorders_allowed %}
-					{% set dummy_max_value = '' %}
-				{% else %}
-					{% set dummy_max_value = product.get_stock_quantity %}
-				{% endif %}
-				{% set max_value = product.get_stock_quantity|apply_filters('woocommerce_quantity_input_max', dummy_max_value, product) %}
-
 				{{ function('woocommerce_quantity_input', [{'min_value': min_value}, {'max_value': max_value}])  }}
 			{% endif %}
 
 			<input type="hidden" name="add-to-cart" value="{{ function('esc_attr', product.id) }}" />
-			<button type="submit" class="single_add_to_cart_button [maera_button_primary_medium] alt">{{ product.single_add_to_cart_text }}</button>
+			<button type="submit" class="single_add_to_cart_button button [maera_button_primary_medium] alt">{{ product.single_add_to_cart_text }}</button>
 
 			{% do action('woocommerce_after_add_to_cart_button') %}
 		</form>
@@ -37,5 +20,3 @@
 		{% do action('woocommerce_after_add_to_cart_form') %}
 
 	{% endif %}
-
-{% endif %}
