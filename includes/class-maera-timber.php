@@ -21,6 +21,10 @@ class Maera_Timber extends Maera {
 
 		global $content_width;
 
+		if ( class_exists( 'Easy_Digital_Downloads' ) ) {
+			global $edd_options;
+		}
+
 		$context = Timber::get_context();
 
 		$sidebar_primary   = Timber::get_widgets( 'sidebar_primary' );
@@ -43,6 +47,14 @@ class Maera_Timber extends Maera {
 		$context['content_width']        = $content_width;
 
 		$context['sidebar_template']     = maera_templates_sidebar();
+
+		if ( class_exists( 'Easy_Digital_Downloads' ) ) {
+			$data['edd_options']         = $edd_options;
+			$data['download_categories'] = Timber::get_terms( 'download_category' );
+			$data['download_tags']       = Timber::get_terms( 'download_tag' );
+			$data['default_image']       = new TimberImage( get_template_directory_uri() . '/assets/images/default.png' );
+
+		}
 
 		return apply_filters( 'maera/timber/context', $context );
 
@@ -72,6 +84,12 @@ class Maera_Timber extends Maera {
 		$location_roots = apply_filters( 'maera/timber/locations/roots', $location_roots );
 
 		foreach ( $location_roots as $location_root ) {
+			if ( class_exists( 'Easy_Digital_Downloads' ) ) {
+				$locations[] = $location_root . '/views/edd';
+			}
+			if ( class_exists( 'WooCommerce' ) ) {
+				$locations[] = $location_root . '/views/woocommerce';
+			}
 			$locations[] = $location_root . '/macros';
 			$locations[] = $location_root . '/views/macros';
 			$locations[] = $location_root . '/views';

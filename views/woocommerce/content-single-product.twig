@@ -1,0 +1,7 @@
+<article {{ function( 'post_class' ) }} id="post-{{post.ID}}" itemscope itemtype="http://schema.org/Article">
+    {% do action( 'maera/single/top', post.ID ) %}
+    {% include ['content-single-entry-'~post.ID~'-header.twig', 'content-single-entry-'~post.post_type~'-header.twig', 'content-single-entry-header.twig'] %}
+    {% include ['content-single-entry-'~post.ID~'-meta.twig', 'content-single-entry-'~post.post_type~'-meta.twig', 'content-single-entry-meta.twig'] %}
+    {% include ['content-single-entry-'~post.ID~'-content.twig', 'content-single-entry-'~post.post_type~'-content.twig', 'content-single-entry-content.twig'] %}
+    {% include ['content-single-entry-'~post.ID~'-footer.twig', 'content-single-entry-'~post.post_type~'-footer.twig', 'content-single-entry-footer.twig'] %}
+</article>
