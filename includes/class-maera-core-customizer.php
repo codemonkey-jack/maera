@@ -4,7 +4,7 @@ class Maera_Core_Customizer {
 
 	function __construct() {
 
-		if ( defined( 'MAERA_HIDE_CORE_CUSTOMIZER' ) && MAERA_HIDE_CORE_CUSTOMIZER ) {
+		if ( defined( 'MAERA_SHOW_CORE_CUSTOMIZER' ) && MAERA_SHOW_CORE_CUSTOMIZER ) {
 			add_action( 'customize_register', array( $this, 'add_section' ) );
 			add_action( 'customize_register', array( $this, 'add_settings' ) );
 			add_action( 'customize_register', array( $this, 'add_controls' ) );
