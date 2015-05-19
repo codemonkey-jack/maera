@@ -35,6 +35,24 @@ class Maera_Core_Customizer {
 			'capability'     => 'edit_theme_options',
 		) );
 
+		$wp_customize->add_setting( 'maera_admin_options[dev_mode]', array(
+			'default'        => 'core',
+			'type'           => 'option',
+			'capability'     => 'edit_theme_options',
+		) );
+
+		$wp_customize->add_setting( 'maera_admin_options[cache]', array(
+			'default'        => 'core',
+			'type'           => 'option',
+			'capability'     => 'edit_theme_options',
+		) );
+
+		$wp_customize->add_setting( 'maera_admin_options[cache_mode]', array(
+			'default'        => 'core',
+			'type'           => 'option',
+			'capability'     => 'edit_theme_options',
+		) );
+
 	}
 
 	/**
@@ -50,11 +68,33 @@ class Maera_Core_Customizer {
 		}
 
 		$wp_customize->add_control( 'maera_shell', array(
-			'label'      => __( 'Shell', 'themename' ),
-			'section'    => 'maera_options',
-			'settings'   => 'maera_admin_options[shell]',
-			'type'       => 'radio',
-			'choices'    => $shells,
+			'label'       => __( 'Shell', 'themename' ),
+			'section'     => 'maera_options',
+			'settings'    => 'maera_admin_options[shell]',
+			'description' => __( 'You can change the active shell here. Please note that the changes will not take effect immediately. You will have to save and your selection and then refresh this page. All current options will be lost, so we advise you to first export them from the "Theme Options" page on your dashboard.', 'maera' ),
+			'type'        => 'radio',
+			'choices'     => $shells,
+		) );
+
+		$wp_customize->add_control( 'maera_dev_mode', array(
+			'label'       => __( 'Enable Development Mode', 'themename' ),
+			'section'     => 'maera_options',
+			'settings'    => 'maera_admin_options[dev_mode]',
+			'type'        => 'checkbox',
+		) );
+
+		$wp_customize->add_control( 'maera_cache_mode', array(
+			'label'       => __( 'Cache mode.', 'maera' ),
+			'section'     => 'maera_options',
+			'settings'    => 'maera_admin_options[cache_mode]',
+			'type'        => 'select',
+			'default'     => 'none',
+			'choices'     => array(
+				'none'      => __( 'No Caching', 'maera' ),
+				'object'    => __( 'WP Object Caching', 'maera' ),
+				'transient' => __( 'Transients', 'maera' ),
+				'default'   => __( 'Default', 'maera' ),
+			),
 		) );
 
 	}

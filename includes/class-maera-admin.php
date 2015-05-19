@@ -71,7 +71,7 @@ class Maera_Admin {
 
 		return apply_filters( 'maera/admin/tabs', array(
 			'general'   => __( 'General', 'maera' ),
-			'settings'  => __( 'Settings', 'maera' ),
+			// 'settings'  => __( 'Settings', 'maera' ),
 			'licensing' => __( 'Licensing', 'maera' ),
 			'addons'    => __( 'Addons', 'maera' ),
 			'docs'      => __( 'Documentation', 'maera' ),
