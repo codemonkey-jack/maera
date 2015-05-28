@@ -91,6 +91,9 @@ class Maera_Init {
 		// Add title-tag support (introduced in WP 4.1)
 		add_theme_support( 'title-tag' );
 
+		// Add WooCommerce support
+		add_theme_support( 'woocommerce' );
+
 		// site-logo is included in Jetpack 3.2 and above
 		add_theme_support( 'site-logo' );
 
