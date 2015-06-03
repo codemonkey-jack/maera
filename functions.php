@@ -6,6 +6,10 @@
  */
 function maera_autoload_classes( $class_name ) {
 
+	if ( class_exists( $class_name ) ) {
+		return;
+	}
+
 	$class_path = get_template_directory() . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
 	if ( file_exists( $class_path ) ) {
 		include $class_path;
@@ -19,6 +23,30 @@ require_once( locate_template( '/includes/template-hierarchy.php' ) );
 require_once( locate_template( '/includes/utils.php' ) );
 require_once( locate_template( '/includes/widgets.php' ) );
 require_once( locate_template( '/includes/remote-installer/client.php' ) );
+
+/**
+ * If Kirki is not installed as a plugin include the embedded Version
+ */
+if ( ! class_exists( 'Kirki' ) ) {
+	define( 'KIRKI_PATH', get_template_directory() . '/includes/plugins/kirki' );
+	define( 'KIRKI_URL', get_template_directory_uri() . '/includes/plugins/kirki' );
+	require_once( get_template_directory() . '/includes/plugins/kirki/kirki.php' );
+}
+
+/**
+ * If Timber is not installed as a plugin include the embedded version.
+ */
+if ( ! class_exists( 'Timber' ) ) {
+	require_once( get_template_directory() . '/includes/plugins/timber-library/timber.php' );
+}
+
+/**
+ * Dummy function to prevent fatal errors with the Tonesque library
+ * Only used when Jetpack is not installed.
+ */
+if ( ! function_exists( 'jetpack_require_lib' ) ) {
+	function jetpack_require_lib() {}
+}
 
 function Maera() {
 	return Maera::get_instance();
