@@ -27,7 +27,7 @@ require_once( locate_template( '/includes/remote-installer/client.php' ) );
 /**
  * If Kirki is not installed as a plugin include the embedded Version
  */
-if ( ! class_exists( 'Kirki' ) ) {
+if ( ! class_exists( 'Kirki' ) && ! is_admin() ) {
 	define( 'KIRKI_PATH', get_template_directory() . '/includes/plugins/kirki' );
 	define( 'KIRKI_URL', get_template_directory_uri() . '/includes/plugins/kirki' );
 	require_once( get_template_directory() . '/includes/plugins/kirki/kirki.php' );
@@ -36,7 +36,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 /**
  * If Timber is not installed as a plugin include the embedded version.
  */
-if ( ! class_exists( 'Timber' ) ) {
+if ( ! class_exists( 'Timber' ) && ! is_admin() ) {
 	require_once( get_template_directory() . '/includes/plugins/timber-library/timber.php' );
 }
 
@@ -44,7 +44,7 @@ if ( ! class_exists( 'Timber' ) ) {
  * Dummy function to prevent fatal errors with the Tonesque library
  * Only used when Jetpack is not installed.
  */
-if ( ! function_exists( 'jetpack_require_lib' ) ) {
+if ( ! function_exists( 'jetpack_require_lib' ) && ! is_admin() ) {
 	function jetpack_require_lib() {}
 }
 
