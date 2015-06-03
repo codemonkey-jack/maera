@@ -1,5 +1,7 @@
-## HEAD
+## 1.2
 
+* New: Jetpack Infinite scroll implemented.
+* New: Kirki & Timber plugins as well as some Jetpack classes are now embedded. Installing external plugins is no longer required for the core theme.
 * New: Easy-Digital-Downloads integration
 * New: WooCommerce integration
 * Fix: Core shell CSS tweaks
