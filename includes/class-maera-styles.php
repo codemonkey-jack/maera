@@ -85,6 +85,9 @@ class Maera_Styles {
 			wp_enqueue_script( 'comment-reply' );
 		}
 
+		// Enqueue Socicon styles
+		wp_enqueue_style( 'socicon', get_template_directory_uri() . '/assets/css/socicon.css', false, MAERA_VERSION );
+
 	}
 
 }
