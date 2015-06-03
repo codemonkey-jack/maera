@@ -61,3 +61,23 @@ global $maera;
 if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 	Maera_EDD::get_instance();
 }
+
+/**
+ * Add theme support for infinite scroll.
+ * http://jetpack.me/support/infinite-scroll/
+ *
+ * @uses add_theme_support
+ * @return void
+ */
+function maera_infinite_scroll_init() {
+	add_theme_support( 'infinite-scroll', array(
+		'type'            => 'scroll',
+		'footer_widgets'  => false,
+		'container'       => 'main',
+		'footer'          => 'false',
+		'wrapper'         => true,
+		'render'          => false,
+		'posts_per_page'  => false,
+	) );
+}
+add_action( 'after_setup_theme', 'maera_infinite_scroll_init' );
