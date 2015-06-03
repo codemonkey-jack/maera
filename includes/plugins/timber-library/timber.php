@@ -4,21 +4,17 @@ Plugin Name: Timber
 Plugin URI: http://timber.upstatement.com
 Description: The WordPress Timber Library allows you to write themes using the power Twig templates
 Author: Jared Novack + Upstatement
-Version: 0.21.2
+Version: 0.21.0
 Author URI: http://upstatement.com/
 */
 
 global $wp_version;
 global $timber;
 
-// we look for Composer files first in the plugins dir
+// we look for Composer files first in the theme (theme install)
 // then in the wp-content dir (site install)
-// and finally in the current themes directories
-if (   file_exists( $composer_autoload = __DIR__ . '/vendor/autoload.php' ) /* check in self */
-	|| file_exists( $composer_autoload = WP_CONTENT_DIR.'/vendor/autoload.php') /* check in wp-content */
-	|| file_exists( $composer_autoload = get_stylesheet_directory().'/vendor/autoload.php') /* check in child theme */
-	|| file_exists( $composer_autoload = get_template_directory().'/vendor/autoload.php') /* check in parent theme */
-	) {
+if (    file_exists( $composer_autoload = __DIR__ . '/vendor/autoload.php' )
+	|| file_exists( $composer_autoload = WP_CONTENT_DIR.'/vendor/autoload.php' ) ) {
 	require_once $composer_autoload;
 }
 

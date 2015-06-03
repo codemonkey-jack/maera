@@ -101,12 +101,6 @@ Interfaces
   those constants Twig_Template::ANY_CALL, Twig_Template::ARRAY_CALL,
   Twig_Template::METHOD_CALL)
 
-Loaders
--------
-
-* As of Twig 1.x, ``Twig_Loader_String`` is deprecated and will be removed in
-  2.0.
-
 Globals
 -------
 

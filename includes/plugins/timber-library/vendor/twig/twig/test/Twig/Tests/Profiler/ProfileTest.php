@@ -69,10 +69,9 @@ class Twig_Tests_Profiler_ProfileTest extends PHPUnit_Framework_TestCase
     public function testGetDuration()
     {
         $profile = new Twig_Profiler_Profile();
-        usleep(1);
         $profile->leave();
 
-        $this->assertTrue($profile->getDuration() > 0, sprintf('Expected duration > 0, got: %f', $profile->getDuration()));
+        $this->assertTrue($profile->getDuration() > 0);
     }
 
     public function testSerialize()

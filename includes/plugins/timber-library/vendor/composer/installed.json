@@ -98,23 +98,23 @@
     },
     {
         "name": "twig/twig",
-        "version": "v1.18.1",
-        "version_normalized": "1.18.1.0",
+        "version": "v1.18.0",
+        "version_normalized": "1.18.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig.git",
-            "reference": "9f70492f44398e276d1b81c1b43adfe6751c7b7f"
+            "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/9f70492f44398e276d1b81c1b43adfe6751c7b7f",
-            "reference": "9f70492f44398e276d1b81c1b43adfe6751c7b7f",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/4cf7464348e7f9893a93f7096a90b73722be99cf",
+            "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.2.7"
+            "php": ">=5.2.4"
         },
-        "time": "2015-04-19 08:30:27",
+        "time": "2015-01-25 17:32:08",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -264,17 +264,17 @@
     },
     {
         "name": "upstatement/routes",
-        "version": "0.3",
-        "version_normalized": "0.3.0.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/Upstatement/routes.git",
-            "reference": "40d003b69c0f5c52fb4b15e5d1fa4d5c522c9475"
+            "reference": "e2711a97c754f2cccf366a8b70106ec27eec933a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Upstatement/routes/zipball/40d003b69c0f5c52fb4b15e5d1fa4d5c522c9475",
-            "reference": "40d003b69c0f5c52fb4b15e5d1fa4d5c522c9475",
+            "url": "https://api.github.com/repos/Upstatement/routes/zipball/e2711a97c754f2cccf366a8b70106ec27eec933a",
+            "reference": "e2711a97c754f2cccf366a8b70106ec27eec933a",
             "shasum": ""
         },
         "require": {
@@ -287,9 +287,9 @@
             "satooshi/php-coveralls": "dev-master",
             "wp-cli/wp-cli": "*"
         },
-        "time": "2015-03-07 13:41:29",
+        "time": "2015-03-05 13:17:27",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Routes": ""
