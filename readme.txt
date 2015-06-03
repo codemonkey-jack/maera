@@ -28,7 +28,7 @@ Chrome, Firefox, Safari and IE10+ are supported. IE7, IE8 and IE9 are not suppor
 
 More detail on the theme [commit page](https://github.com/presscodes/maera/commits).
 
-## 1.2
+= 1.2 =
 
 * New: Kirki & Timber plugins as well as some Jetpack classes are now embedded. Installing external plugins is no longer required for the core theme.
 * New: Easy-Digital-Downloads integration
@@ -48,7 +48,7 @@ More detail on the theme [commit page](https://github.com/presscodes/maera/commi
 * Tweak: Add before_widget & after_widget to the logo widget
 * Fix: Align left images on the extended-posts widget
 
-## 1.1.1
+= 1.1.1 =
 
 * Fix: Added a default license key
 * New: More OOP design
@@ -57,7 +57,7 @@ More detail on the theme [commit page](https://github.com/presscodes/maera/commi
 * New: Introducing Maera_Widget_Dropdown_Class.php
 * Fix: Move core styles to style.css
 
-## 1.1.0
+= 1.1.0 =
 
 * Fix: Most methods are not non-static.
 * New: The theme is now more OOP.
@@ -75,18 +75,18 @@ More detail on the theme [commit page](https://github.com/presscodes/maera/commi
 * Fix: Renamed the Maera_Template->main method to Maera_Template->render.
 * New: Introducing new "screen-reader-text" classes as per https://make.wordpress.org/accessibility/2015/01/27/test-chat-summary-januari-26/
 
-## 1.0.3
+= 1.0.3 =
 
 * Fix: Jetpack was being forced to Dev mode some hosts even when dev mode was disabled from the theme options dashboard.
 
-## 1.0.2
+= 1.0.2 =
 
 * Fix: remote-installer scripts were not loading properly
 
-## 1.0.1
+= 1.0.1 =
 
 * Fix: typo preventing automatic updates
 
-## 1.0.0
+= 1.0.0 =
 
 * Initial release
