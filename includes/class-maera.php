@@ -79,8 +79,9 @@ class Maera {
 	 */
 	function required_plugins() {
 
-		$plugins = array();
-
+		$plugins = array(
+			array( 'name' => 'Timber',  'file' => 'timber.php',  'slug' => 'timber-library' ),
+		);
 		if ( current_theme_supports( 'breadcrumbs' ) ) {
 			$plugins[] = array( 'name' => 'Breadcrumb Trail', 'file' => 'breadcrumb-trail.php', 'slug' => 'breadcrumb-trail' );
 		}
