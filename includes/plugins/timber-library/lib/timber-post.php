@@ -33,23 +33,51 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
      * @return \TimberPost TimberPost object -- woo!
      */
     function __construct($pid = null) {
-        global $wp_query;
-        if ($pid === null && isset($wp_query->queried_object_id) && $wp_query->queried_object_id) {
-            $pid = $wp_query->queried_object_id;
-            $this->ID = $pid;
-        } else if ($pid === null && get_the_ID()) {
-            $pid = get_the_ID();
-            $this->ID = $pid;
-        } else if ($pid === null && ($pid_from_loop = TimberPostGetter::loop_to_id())) {
-            $this->ID = $pid_from_loop;
-        }
-        if (is_numeric($pid)) {
-            $this->ID = $pid;
-        }
+    	$pid = $this->determine_id( $pid );
         $this->init($pid);
     }
 
-     /**
+    /**
+     * @param mixed a value to test against
+     * @return int the numberic id we should be using for this post object
+     */
+
+    protected function determine_id($pid) {
+    	global $wp_query;
+        if ($pid === null &&
+        	isset($wp_query->queried_object_id)
+        	&& $wp_query->queried_object_id
+        	&& isset($wp_query->queried_object)
+        	&& is_object($wp_query->queried_object)
+        	&& get_class($wp_query->queried_object) == 'WP_Post'
+        	) {
+            $pid = $wp_query->queried_object_id;
+    	} else if ($pid === null && $wp_query->is_home && isset($wp_query->queried_object_id) && $wp_query->queried_object_id )  {
+    		//hack for static page as home page
+    		$pid = $wp_query->queried_object_id;
+        } else if ($pid === null) {
+        	$gtid = false;
+    		$maybe_post = get_post();
+    		if (isset($maybe_post->ID)){
+    			$gtid = true;
+    		}
+    		if ( $gtid ) {
+        	    $pid = get_the_ID();
+    		}
+    		if ( !$pid ) {
+    			global $wp_query;
+    			if ( isset($wp_query->query['p']) ) {
+    				$pid = $wp_query->query['p'];
+    			}
+    		}
+        }
+        if ($pid === null && ($pid_from_loop = TimberPostGetter::loop_to_id())) {
+            $pid = $pid_from_loop;
+        }
+        return $pid;
+    }
+
+    /**
      * @return string
      */
     function __toString() {
@@ -64,6 +92,9 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
 		if ($pid === false) {
 			$pid = get_the_ID();
 		}
+		if (is_numeric($pid)) {
+            $this->ID = $pid;
+        }
 		$post_info = $this->get_info($pid);
 		$this->import($post_info);
 		/* deprecated, adding for support for older themes */
@@ -82,7 +113,6 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
         if ($this->can_edit()) {
             return get_edit_post_link($this->ID);
         }
-        return false;
     }
 
     /**
@@ -122,12 +152,12 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
 
 
     /**
-     *  helps you find the post id regardless of whetehr you send a string or whatever
+     *  helps you find the post id regardless of whether you send a string or whatever
      *
      * @param integer $pid ;
      * @return integer ID number of a post
      */
-    private function check_post_id($pid) {
+    protected function check_post_id($pid) {
         if (is_numeric($pid) && $pid === 0) {
             $pid = get_the_ID();
             return $pid;
@@ -277,7 +307,6 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
                 return new $this->ImageClass($tid);
             }
         }
-        return null;
     }
 
     /**
@@ -419,7 +448,6 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
         if (isset($this->post_author)) {
             return new TimberUser($this->post_author);
         }
-        return false;
     }
 
     /**
@@ -559,7 +587,6 @@ class TimberPost extends TimberCore implements TimberCoreInterface {
         if (count($cats) && isset($cats[0])) {
             return $cats[0];
         }
-        return null;
     }
 
     /** # get terms is good

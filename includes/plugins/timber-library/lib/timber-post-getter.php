@@ -20,7 +20,7 @@ class TimberPostGetter {
         return apply_filters('timber_post_getter_get_posts', $posts->get_posts( $return_collection ));
     }
 
-    static function query_post( $query = false, $PostClass = 'TimberPost' ) { 
+    static function query_post( $query = false, $PostClass = 'TimberPost' ) {
         $posts = self::query_posts( $query, $PostClass );
         if ( $post = $posts->current() ) {
             return $post;
@@ -33,7 +33,7 @@ class TimberPostGetter {
      * @param string $PostClass
      * @return array|bool|null
      */
-    static function query_posts($query = false, $PostClass = 'TimberPost' ){
+    static function query_posts($query = false, $PostClass = 'TimberPost' ) {
         if (self::is_post_class_or_class_map($query)) {
             $PostClass = $query;
             $query = false;
@@ -69,6 +69,7 @@ class TimberPostGetter {
      * @param array $results
      * @param string $PostClass
      * @return TimberPostsCollection
+     * @deprecated since 0.21.1
      */
     static function handle_post_results($results, $PostClass = 'TimberPost') {
         $posts = array();
