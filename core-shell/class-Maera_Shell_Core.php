@@ -192,7 +192,7 @@ class Maera_Shell_Core {
 
 		} else {
 
-			$styles .= '.page-header:before{background-color:#0C6890;background-image:url("' . get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' . '");background-size:auto !important;}';
+			$styles .= '.page-header:before{background-color:#0C6890;background-image:url("' . get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' . '");background-size:auto !important;background-repeat:repeat;}';
 
 		}
 
