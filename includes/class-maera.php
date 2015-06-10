@@ -101,8 +101,8 @@ class Maera {
 
 	function licensing() {
 
-		if ( is_admin() && class_exists( 'Maera_Updater' ) ) {
-			$maera_md_license = new Maera_Updater( 'theme', __FILE__, 'Maera', MAERA_VERSION, '3ac52694580f66e9a3de48b56692dd45' );
+		if ( is_admin() ) {
+			$maera_md_license = new Maera_Updater( 'theme', __FILE__, 'Maera', MAERA_VERSION, '3ac52694580f66e9a3de48b56692dd45', 'PressCodes Team', null, null, true );
 		}
 
 	}

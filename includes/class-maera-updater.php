@@ -11,8 +11,9 @@ class Maera_Updater {
 	private $author  = 'PressCodes Team';
 	private $api_url = 'https://press.codes/';
 	private $license_status;
+	private $auto;
 
-	function __construct( $context = 'plugin', $_file, $_item_name, $_version, $license = '', $_author = null, $_optname = null, $_api_url = null ) {
+	function __construct( $context = 'plugin', $_file, $_item_name, $_version, $license = '', $_author = null, $_optname = null, $_api_url = null, $auto = false ) {
 
 		$this->context        = $context;
 		$this->slug           = $_file;
@@ -26,6 +27,7 @@ class Maera_Updater {
 		$this->author         = is_null( $_author ) ? $this->author : $_author;
 		$this->api_url        = is_null( $_api_url ) ? $this->api_url : $_api_url;
 		$this->license_status = get_option( $this->item_shortname . '_license_status', '' );
+		$this->auto           = $auto;
 
 		if ( 'plugin' == $this->context ) {
 			if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
@@ -43,13 +45,13 @@ class Maera_Updater {
 			add_action( 'admin_init', array( $this, 'theme_updater' ), 0 );
 		}
 		add_action( 'admin_init', array( $this, 'register_option' ) );
-		add_action( 'admin_init', array( $this, 'activate_license') );
-
+		add_action( 'admin_init', array( $this, 'activate_license' ) );
 		add_action( 'maera/admin/licensing', array( $this, 'form' ) );
 
-		add_action('admin_notices', array( $this, 'admin_notice' ) );
-		add_action('admin_init', array( $this, 'nag_ignore' ) );
-
+		if ( ! $auto ) {
+			add_action('admin_notices', array( $this, 'admin_notice' ) );
+			add_action('admin_init', array( $this, 'nag_ignore' ) );
+		}
 
 	}
 
@@ -157,10 +159,10 @@ class Maera_Updater {
 	function activate_license() {
 
 		// listen for our activate button to be clicked
-		if ( isset( $_POST[$this->item_shortname . '_activate'] ) ) {
+		if ( $this->auto || isset( $_POST[$this->item_shortname . '_activate'] ) ) {
 
 			// run a quick security check
-			if ( ! check_admin_referer( $this->item_shortname . '_nonce', $this->item_shortname . '_nonce' ) ) {
+			if ( ! $this->auto && ! check_admin_referer( $this->item_shortname . '_nonce', $this->item_shortname . '_nonce' ) ) {
 				return; // get out if we didn't click the Activate button
 			}
 
@@ -172,19 +174,22 @@ class Maera_Updater {
 				'url'        => home_url()
 			);
 
-			// Call the custom API.
-			$response = wp_remote_get( esc_url_raw( add_query_arg( $api_params, $this->api_url ), array( 'timeout' => 15, 'sslverify' => false ) ) );
+			if ( ( $this->auto && 'valid' != get_option( $this->item_shortname . '_license_status' ) ) || ! $this->auto ) {
 
-			// make sure the response came back okay
-			if ( is_wp_error( $response ) ) {
-				return false;
+				// Call the custom API.
+				$response = wp_remote_post( $this->api_url, array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
+				// make sure the response came back okay
+				if ( is_wp_error( $response ) ) {
+					return false;
+				}
+
+				// decode the license data
+				$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+				// $license_data->license will be either "valid" or "invalid"
+
+				update_option( $this->item_shortname . '_license_status', $license_data->license );
+
 			}
-
-			// decode the license data
-			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
-			// $license_data->license will be either "valid" or "invalid"
-
-			update_option( $this->item_shortname . '_license_status', $license_data->license );
 
 		}
 
