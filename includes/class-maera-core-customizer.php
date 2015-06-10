@@ -53,6 +53,13 @@ class Maera_Core_Customizer {
 			'capability'     => 'edit_theme_options',
 		) );
 
+		$wp_customize->add_setting( 'maera_admin_options[reset]', array(
+			'default'           => 'core',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => array( $this, 'reset_sanitize_callback' ),
+		) );
+
 	}
 
 	/**
@@ -96,6 +103,25 @@ class Maera_Core_Customizer {
 				'default'   => __( 'Default', 'maera' ),
 			),
 		) );
+
+		$wp_customize->add_control( 'maera_reset', array(
+			'label'       => __( 'Reset', 'maera' ),
+			'section'     => 'maera_options',
+			'description' => __( 'Please enter RESET to reset the theme mods.', 'maera' ),
+			'settings'    => 'maera_admin_options[reset]',
+			'type'        => 'text',
+			'default'     => null,
+		) );
+
+	}
+
+	public function reset_sanitize_callback( $input ) {
+
+		if ( 'reset' == strtolower( $input ) ) {
+			remove_theme_mods();
+		}
+
+		return null;
 
 	}
 }
