@@ -110,7 +110,7 @@ class Maera_Core_Customizer {
 			'description' => __( 'Please enter RESET to reset the theme mods.', 'maera' ),
 			'settings'    => 'maera_admin_options[reset]',
 			'type'        => 'text',
-			'default'     => null,
+			'default'     => '',
 		) );
 
 	}
@@ -121,7 +121,7 @@ class Maera_Core_Customizer {
 			remove_theme_mods();
 		}
 
-		return null;
+		return '';
 
 	}
 }
