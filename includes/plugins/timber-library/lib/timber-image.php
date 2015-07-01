@@ -25,13 +25,12 @@ class TimberImage extends TimberPost implements TimberCoreInterface {
 	}
 
 	/**
-	 * @return string
+	 * @return string|null
 	 */
 	function __toString() {
 		if ($this->get_src()) {
 			return $this->get_src();
 		}
-		return '';
 	}
 
 	/**
@@ -57,11 +56,11 @@ class TimberImage extends TimberPost implements TimberCoreInterface {
 	}
 
 	/**
-	 * @param string $dim
+	 * @param string|null $dim
 	 * @return array|int
 	 */
-	function get_dimensions_loaded($dim) {
-		if ($dim == null) {
+	protected function get_dimensions_loaded($dim) {
+		if ($dim === null) {
 			return $this->_dimensions;
 		}
 		if ($dim == 'w' || $dim == 'width') {
