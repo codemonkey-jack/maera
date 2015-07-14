@@ -13,7 +13,7 @@
 
 // Widget folder url
 if ( ! defined( 'MAERA_EXT_POSTS_URL' ) ) {
-	define( 'MAERA_EXT_POSTS_URL', MAERA_THEME_URL . '/includes/widgets/extended-posts/' );
+	define( 'MAERA_EXT_POSTS_URL', trailingslashit( MAERA_THEME_URL ) . '/includes/widgets/extended-posts/' );
 }
 
 // Widget folder path

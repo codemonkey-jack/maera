@@ -57,7 +57,7 @@ class Maera_Admin {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 
-		wp_register_style( 'maera-admin-css', MAERA_THEME_URL . '/assets/css/admin-style.css', false, '1.0.0' );
+		wp_register_style( 'maera-admin-css', trailingslashit( MAERA_THEME_URL ) . 'assets/css/admin-style.css', false, '1.0.0' );
 		wp_enqueue_style( 'maera-admin-css' );
 
 		wp_enqueue_style( 'dashicons' );

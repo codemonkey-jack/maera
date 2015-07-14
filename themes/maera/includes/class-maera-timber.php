@@ -47,12 +47,13 @@ class Maera_Timber extends Maera {
 		$context['content_width']        = $content_width;
 
 		$context['sidebar_template']     = maera_templates_sidebar();
+		$context['theme_url']            = trailingslashit( MAERA_THEME_URL );
 
 		if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 			$data['edd_options']         = $edd_options;
 			$data['download_categories'] = Timber::get_terms( 'download_category' );
 			$data['download_tags']       = Timber::get_terms( 'download_tag' );
-			$data['default_image']       = new TimberImage( MAERA_THEME_URL . '/assets/images/default.png' );
+			$data['default_image']       = new TimberImage( trailingslashit( MAERA_THEME_URL ) . 'assets/images/default.png' );
 
 		}
 

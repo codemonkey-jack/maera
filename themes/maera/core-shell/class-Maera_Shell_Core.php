@@ -18,7 +18,7 @@ class Maera_Shell_Core {
 		// Add the shell Timber modifications
 		add_filter( 'timber_context', array( $this, 'timber_extras' ) );
 
-		$header_args = array( 'default-image' => get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' );
+		$header_args = array( 'default-image' => trailingslashit( MAERA_THEME_URL ) . 'core-shell/assets/images/grid-back.png' );
 		add_theme_support( 'custom-header', $header_args );
 
 		add_theme_support( 'tonesque' );
@@ -61,11 +61,11 @@ class Maera_Shell_Core {
 	 */
 	function scripts() {
 
-		wp_register_style( 'theme_main', get_template_directory_uri() . '/core-shell/assets/css/main.css' );
+		wp_register_style( 'theme_main', trailingslashit( MAERA_THEME_URL ) . 'core-shell/assets/css/main.css' );
 
 		wp_enqueue_style( 'theme_main' );
 
-		wp_register_script( 'menu', get_template_directory_uri() . '/core-shell/assets/js/vendor/menu.js', false, null, true );
+		wp_register_script( 'menu', trailingslashit( MAERA_THEME_URL ) . '/core-shell/assets/js/vendor/menu.js', false, null, true );
 		wp_enqueue_script( 'menu' );
 
 	}
@@ -158,7 +158,7 @@ class Maera_Shell_Core {
 
 		$src = $this->custom_header_url();
 
-		if ( $src && get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' != $src ) {
+		if ( $src && trailingslashit( MAERA_THEME_URL ) . 'core-shell/assets/images/grid-back.png' != $src ) {
 
 			$attachment_id = $this->pn_get_attachment_id_from_url( $src );
 			// Grab color from post meta
@@ -196,7 +196,7 @@ class Maera_Shell_Core {
 
 		} else {
 
-			$styles .= '.page-header:before{background-color:#0C6890;background-image:url("' . get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' . '");background-size:auto !important;background-repeat:repeat;}';
+			$styles .= '.page-header:before{background-color:#0C6890;background-image:url("' . trailingslashit( MAERA_THEME_URL ) . 'core-shell/assets/images/grid-back.png' . '");background-size:auto !important;background-repeat:repeat;}';
 
 		}
 
