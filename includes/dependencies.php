@@ -21,6 +21,11 @@ function maera__register_required_plugins() {
 			'slug'     => 'kirki',
 			'required' => true,
 		),
+		array(
+			'name'     => 'Jetpack',
+			'slug'     => 'jetpack',
+			'required' => true,
+		),
 	);
 
 	$config = array(
