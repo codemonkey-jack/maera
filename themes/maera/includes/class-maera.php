@@ -41,8 +41,6 @@ class Maera {
 			define( 'MAERA_HIDE_CORE_CUSTOMIZER', true );
 		}
 
-		add_action( 'init', array( $this, 'licensing' ) );
-
 		add_action( 'wp', array( $this, 'updates' ) );
 
 	}
@@ -94,14 +92,6 @@ class Maera {
 		}
 
 		return $plugins;
-
-	}
-
-	function licensing() {
-
-		if ( is_admin() ) {
-			$maera_md_license = new Maera_Updater( 'theme', __FILE__, 'Maera', MAERA_VERSION, '3ac52694580f66e9a3de48b56692dd45', 'PressCodes Team', null, null, true );
-		}
 
 	}
 

@@ -152,6 +152,10 @@ class Maera_Shell_Core {
 	*/
 	function colorposts_build_css( $styles ) {
 
+		if ( ! class_exists( 'Tonesque' ) ) {
+			return;
+		}
+
 		$src = $this->custom_header_url();
 
 		if ( $src && get_template_directory_uri() . '/core-shell/assets/images/grid-back.png' != $src ) {
