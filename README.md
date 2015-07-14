@@ -3,12 +3,9 @@ Maera
 
 ![Maera Logo](http://press.codes/wp-content/uploads/maera-logo.png)
 
-
 [![Code Climate](https://codeclimate.com/github/presscodes/maera/badges/gpa.svg)](https://codeclimate.com/github/presscodes/maera)
 
-**Maera** is a developer-friendly theme that allows you to quickly prototype sites and extend it with your own custom plugins.
-
-**It's a kick-ass open-minded theming framework.**
+**Maera is a developer-friendly framework that allows you to quickly prototype sites and extend it with your own custom plugins.**
 
 It is completely open-source, licensed under the MIT license
 In its heart it uses the [twig templating engine](http://twig.sensiolabs.org/) and the WordPress Customizer.
@@ -37,93 +34,6 @@ The template hierarchy of the twig files is the same as the [default WordPress t
 You can keep your `.twig` files in the root of your child theme, or a `/views` folder if you want to keep things a little more organized.
 
 ---
-
-## Template hierarchy on the Maera theme:
-<table>
-<th>
-<td>Content Template</td>
-<td>Sidebar Template</td>
-</th>
-<tr>
-<th>Author Archives</th>
-<td>
-author-{nicename}.twig, author-{ID}.twig, author.twig, archive.twig, index.twig
-</td>
-<td>
-sidebar.twig
-</td>
-</tr>
-<tr>
-<th>Category Archives</th>
-<td>
-category-{slug}.twig, category-{ID}.twig, category.twig, archive.twig, index.twig
-</td>
-<td>
-sidebar-category-{term_id}.twig, sidebar-category.twig, sidebar.twig
-</td>
-</tr>
-<tr>
-<th>Custom Post Type Archives</th>
-<td>
-archive-{post_type}.twig, archive.twig, index.twig
-</td>
-<td>
-sidebar-archive-{post_type}.twig, sidebar.twig
-</td>
-</tr>
-<tr>
-<th>Custom Taxonomy Archives</th>
-<td>
-taxonomy-{term}.twig, taxonomy-{taxonomy}.twig, archive.twig, index.twig
-</td>
-<td>
-sidebar-term-{term_id}.twig, sidebar-taxonomy-{taxonomy}.twig, sidebar-taxonomy.twig, sidebar.twig
-</td>
-</tr>
-<tr>
-<th>Date Archives</th>
-<td>
-date.twig, archive.twig, index.twig
-</td>
-<td>
-sidebar-date.twig, sidebar.twig
-</td>
-</tr>
-<tr>
-<th>Tag Archives</th>
-<td>
-tag-{slug}.twig, tag-{ID}.twig, tag.twig, archive.twig, index.twig
-</td>
-<td>
-sidebar-tag-{term_id}.twig, sidebar-tag.twig, sidebar.twig
-</td>
-</tr>
-<tr>
-<th>Single Post</th>
-<td>
-single-post.twig, single.twig, index.twig
-</td>
-<td>
-sidebar-{post-ID}.twig, sidebar-post.twig, sidebar-single.twig, sidebar.twig
-</td>
-</tr>
-<tr>
-<th>Single Page</th>
-<td>
-page-{slug}.twig, page-{ID}.twig, page.twig, index.twig
-</td>
-<td>
-sidebar-{post-ID}.twig, sidebar-page.twig, sidebar-single.twig, sidebar.twig
-</td>
-</tr>
-</table>
-
-## The stucture of a rendered page
-
-We divided the pages in sub-files in ordet to make them more modular.
-You can see the twig file template parts on the below diagram:
-![Twig Template Parts](https://press.codes/wp-content/uploads/template-structure.png)
-[Get this file for a larger view](https://press.codes/wp-content/uploads/template-structure.png)
 
 ## Post properties in twig files
 
