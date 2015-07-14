@@ -3,12 +3,9 @@ Maera
 
 ![Maera Logo](http://press.codes/wp-content/uploads/maera-logo.png)
 
-
 [![Code Climate](https://codeclimate.com/github/presscodes/maera/badges/gpa.svg)](https://codeclimate.com/github/presscodes/maera)
 
-**Maera** is a developer-friendly theme that allows you to quickly prototype sites and extend it with your own custom plugins.
-
-**It's a kick-ass open-minded theming framework.**
+**Maera is a developer-friendly framework that allows you to quickly prototype sites and extend it with your own custom plugins.**
 
 It is completely open-source, licensed under the MIT license
 In its heart it uses the [twig templating engine](http://twig.sensiolabs.org/) and the WordPress Customizer.
