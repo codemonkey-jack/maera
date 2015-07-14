@@ -21,6 +21,10 @@ if ( ! defined( 'MAERA_VERSION' ) ) {
 	define( 'MAERA_VERSION', '1.2' );
 }
 
+if ( ! defined( 'MAERA_THEME_URL' ) ) {
+	define( 'MAERA_THEME_URL', plugin_dir_url( __FILE__ ) . '/themes/maera' )
+}
+
 if ( ! defined( 'MAERA_ASSETS_URL' ) ) {
 	define( 'MAERA_ASSETS_URL', plugin_dir_url( __FILE__ ) . '/themes/maera/assets' );
 }

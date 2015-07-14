@@ -12,7 +12,7 @@
  */
 
 // Widget folder url
-Maera_Helper::define( 'MAERA_LOGO_WIDGET_URL', get_template_directory_uri() . '/lib/widgets/logo/' );
+Maera_Helper::define( 'MAERA_LOGO_WIDGET_URL', MAERA_THEME_URL . '/lib/widgets/logo/' );
 // Widget folder path
 Maera_Helper::define( 'MAERA_LOGO_WIDGET_PATH', dirname( __FILE__ ) );
 //Widget root file

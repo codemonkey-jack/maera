@@ -52,7 +52,7 @@ class Maera_Timber extends Maera {
 			$data['edd_options']         = $edd_options;
 			$data['download_categories'] = Timber::get_terms( 'download_category' );
 			$data['download_tags']       = Timber::get_terms( 'download_tag' );
-			$data['default_image']       = new TimberImage( get_template_directory_uri() . '/assets/images/default.png' );
+			$data['default_image']       = new TimberImage( MAERA_THEME_URL . '/assets/images/default.png' );
 
 		}
 

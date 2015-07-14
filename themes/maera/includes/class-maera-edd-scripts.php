@@ -24,19 +24,19 @@ class Maera_EDD_Scripts {
 		}
 
 		// Add our custom styles
-		wp_register_style( 'maera-edd', trailingslashit( get_template_directory_uri() ) . 'assets/css/edd/style.css' );
+		wp_register_style( 'maera-edd', trailingslashit( MAERA_THEME_URL ) . 'assets/css/edd/style.css' );
 		wp_enqueue_style( 'maera-edd' );
 
 		if ( 'isotope' == get_theme_mod( 'filter_mode', 'isotope' ) && ( is_archive( 'download' ) || is_tax('download_tag') || is_tax( 'download_category' ) ) ) {
 			// Register && Enqueue Isotope
-			wp_register_script( 'maera_isotope', trailingslashit( get_template_directory_uri() ) . 'assets/vendor/jquery.isotope.min.js', false, null, true );
+			wp_register_script( 'maera_isotope', trailingslashit( MAERA_THEME_URL ) . 'assets/vendor/jquery.isotope.min.js', false, null, true );
 			wp_enqueue_script( 'maera_isotope' );
 
 			// Register && Enqueue Isotope-Sloppy-Masonry
-			wp_register_script( 'maera_isotope_sloppy_masonry', trailingslashit( get_template_directory_uri() ) . 'assets/vendor/jquery.isotope.sloppy-masonry.min.js', false, null, true );
+			wp_register_script( 'maera_isotope_sloppy_masonry', trailingslashit( MAERA_THEME_URL ) . 'assets/vendor/jquery.isotope.sloppy-masonry.min.js', false, null, true );
 			wp_enqueue_script( 'maera_isotope_sloppy_masonry' );
 
-			wp_enqueue_script( 'edd_script', trailingslashit( get_template_directory_uri() ) . 'assets/js/edd-scripts.js', false, null, true );
+			wp_enqueue_script( 'edd_script', trailingslashit( MAERA_THEME_URL ) . 'assets/js/edd-scripts.js', false, null, true );
 			// wp_localize_script( 'maera_foundation_script', 'maera_foundation_script_vars', array(
 			//
 			//     )
