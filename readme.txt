@@ -1,28 +1,32 @@
 === Maera ===
+Contributors: aristath, fovoc
+Tags: theme, twig
+Donate link: http://maera.io/
+Requires at least: 4.0
+Tested up to: 4.3
+Stable tag: 1.2
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-[Maera](https://press.codes/downloads/maera/) is a developer-friendly theme that allows you to quickly prototype sites and extend it with your own custom plugins.
+Change the way you work with themes using the Maera plugin.
 
-== Instructions ==
+== Description ==
 
-Maera includes a blogging shell. You can get more shells from https://press.codes/
+Maera allows developers to work with template files in a way previously impossible in WordPress.
 
-== Limitations ==
+It includes a theme that is automatically activated once you install the plugin and allows you to create child themes of the "Maera" theme using twig for your template file instead of plain PHP.
+You can also create "shells" as plugins, or choose one of the existing shells to use from https://wordpress.org/plugins/search.php?q=maera
 
-Maera Requires you to install these plugins:
-* [Timber Library](https://wordpress.org/plugins/timber-library/)
-* [Jetpack](https://wordpress.org/plugins/jetpack/)
-* [Kirki](https://wordpress.org/plugins/kirki/)
+== Installation ==
 
-Additional plugins may depend on other plugins and in that case you will be notified from your dashboard
+Install the theme following the instructions on https://codex.wordpress.org/Managing_Plugins#Installing_Plugins
 
-== Credits ==
+Once you install the plugin, please follow the instructions on your dashboard to install the required plugins.
+After that, visit your dashboard and you'll see it now uses the Maera theme.
 
-* [_s](https://github.com/Automattic/_s) theme by Automattic, and released under the GPL v2.0.
-* [html5shiv](http://code.google.com/p/html5shiv/) script by Remy Sharp, and is dual-licensed under the MIT or GPL Version 2 licenses.
+You can install additional shells from https://wordpress.org/plugins/search.php?q=maera or theme your own site using our docs on http://maera.io
 
-== Browser Support ==
-
-Chrome, Firefox, Safari and IE10+ are supported. IE7, IE8 and IE9 are not supported.
+If you want to use a different theme then please deactivate the plugin.
 
 == Changelog ==
 
