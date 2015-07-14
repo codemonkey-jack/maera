@@ -17,6 +17,14 @@
  * @since       1.0
  */
 
+if ( ! defined( 'MAERA_VERSION' ) ) {
+	define( 'MAERA_VERSION', '1.2' );
+}
+
+if ( ! defined( 'MAERA_ASSETS_URL' ) ) {
+	define( 'MAERA_ASSETS_URL', plugin_dir_url( __FILE__ ) . '/themes/maera/assets' );
+}
+
 /**
  * Require 3rd-party plugins
  */
