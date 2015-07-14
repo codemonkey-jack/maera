@@ -19,7 +19,7 @@ You can also create "shells" as plugins, or choose one of the existing shells to
 
 == Installation ==
 
-Install the theme following the instructions on https://codex.wordpress.org/Managing_Plugins#Installing_Plugins
+Install the plugin following the instructions on https://codex.wordpress.org/Managing_Plugins#Installing_Plugins
 
 Once you install the plugin, please follow the instructions on your dashboard to install the required plugins.
 After that, visit your dashboard and you'll see it now uses the Maera theme.
