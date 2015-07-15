@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-global $product;
+global $product, $quantity;
 
 $context = array(
 	'product'  => $product,
