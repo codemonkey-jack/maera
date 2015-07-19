@@ -22,7 +22,6 @@ spl_autoload_register( 'maera_autoload_classes' );
 require_once( locate_template( '/includes/template-hierarchy.php' ) );
 require_once( locate_template( '/includes/utils.php' ) );
 require_once( locate_template( '/includes/widgets.php' ) );
-require_once( locate_template( '/includes/remote-installer/client.php' ) );
 
 /**
  * If Kirki is not installed as a plugin include the embedded Version
