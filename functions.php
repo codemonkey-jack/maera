@@ -13,12 +13,13 @@ if ( ! defined( 'MAERA_TEMPLATES_PATH' ) ) {
  * Add custom Maera classes
  */
 require get_template_directory() . '/includes/class-maera.php';
-require get_template_directory() . '/includes/class-maera-shell.php';
+require get_template_directory() . '/includes/class-maera-shell-handler.php';
 require get_template_directory() . '/includes/class-maera-mdl.php';
 
 function Maera() {
-	$maera        = new Maera();
-	$maera->shell = new Maera_Shell();
+	$maera = new Maera();
+
+	return $maera;
 }
 global $maera;
 $maera = Maera();
