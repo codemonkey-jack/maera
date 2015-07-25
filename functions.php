@@ -5,8 +5,12 @@
  * @package Maera
  */
 
-if ( ! defined( 'MAERA_TEMPLATES_PATH' ) ) {
-	define( 'MAERA_TEMPLATES_PATH', get_template_directory() . '/mdl-shell/templates' );
+if ( ! defined( 'MAERA_SHELL_PATH' ) ) {
+	define( 'MAERA_SHELL_PATH', get_template_directory() . '/mdl-shell/templates' );
+}
+
+if ( ! defined( 'MAERA_SHELL_URL' ) ) {
+	define( 'MAERA_SHELL_URL', get_template_directory_uri() . '/mdl-shell/' );
 }
 
 /**

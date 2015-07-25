@@ -65,9 +65,14 @@ function maera_locate_template( $template_names, $load = false, $require_once = 
 		if ( ! $template_name ) {
 			continue;
 		}
-		if ( file_exists( MAERA_TEMPLATES_PATH . '/' . $template_name ) ) {
-			$located = MAERA_TEMPLATES_PATH . '/' . $template_name;
-			break;
+		if ( defined( 'MAERA_SHELL_PATH' ) ) {
+			if ( file_exists( MAERA_SHELL_PATH . '/' . $template_name ) ) {
+				$located = MAERA_SHELL_PATH . '/' . $template_name;
+				break;
+			} elseif ( file_exists( MAERA_SHELL_PATH . '/templates/' . $template_name ) ) {
+				$located = MAERA_SHELL_PATH . '/templates/' . $template_name;
+				break;
+			}
 		} elseif ( file_exists( STYLESHEETPATH . '/' . $template_name ) ) {
 			$located = STYLESHEETPATH . '/' . $template_name;
 			break;
