@@ -5,8 +5,11 @@
  */
 class Maera_MDL {
 
+    public $customizer = null;
+
     public function __construct() {
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
+        $this->customizer = new Maera_MDL_Customizer();
     }
 
     /**

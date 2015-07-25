@@ -20,6 +20,7 @@ require get_template_directory() . '/includes/class-maera.php';
 require get_template_directory() . '/includes/class-maera-shell-handler.php';
 require get_template_directory() . '/mdl-shell/class-maera-mdl.php';
 require get_template_directory() . '/mdl-shell/class-maera-mdl-menu-navwalker.php';
+require get_template_directory() . '/mdl-shell/class-maera-mdl-customizer.php';
 
 function Maera() {
 	$maera = new Maera();
@@ -33,11 +34,6 @@ $maera = Maera();
  * Setup the theme
  */
 require get_template_directory() . '/includes/setup.php';
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/includes/custom-header.php';
 
 /**
  * Custom template tags for this theme.
