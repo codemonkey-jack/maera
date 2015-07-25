@@ -22,3 +22,7 @@
     align-items: flex-end;
     cursor: pointer;
 }
+
+.single-post-featured-image h3 {
+    max-width: 100%;
+}
