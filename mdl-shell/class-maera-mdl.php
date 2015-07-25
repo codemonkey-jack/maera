@@ -19,9 +19,9 @@ class Maera_MDL {
         /**
          * Add MDL assets
          */
-        wp_enqueue_style( 'maera-mdl', MAERA_SHELL_URL . '/assets/css/material.css' );
-        wp_enqueue_style( 'maera-mdl-custom', MAERA_SHELL_URL . '/assets/css/maera-mdl.css' );
-        wp_enqueue_script( 'maera-mdl-style', MAERA_SHELL_URL . '/assets/js/material.js' );
+        wp_enqueue_style( 'maera-mdl', trailingslashit( MAERA_SHELL_URL ) . 'assets/css/material.css' );
+        wp_enqueue_style( 'maera-mdl-custom', trailingslashit( MAERA_SHELL_URL ) . 'assets/css/maera-mdl.css' );
+        wp_enqueue_script( 'maera-mdl-style', trailingslashit( MAERA_SHELL_URL ) . 'assets/js/material.js' );
 
     }
 

@@ -26,3 +26,7 @@
 .single-post-featured-image h3 {
     max-width: 100%;
 }
+
+.archive-post-content-wrapper .mdl-card__media h3.entry-title a {
+    text-decoration: none;
+}

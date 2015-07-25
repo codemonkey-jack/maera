@@ -36,6 +36,10 @@ class Maera_MDL_Customizer {
             'title'          => __( 'Layout', 'maera' ),
             'priority'       => 10,
         ) );
+        Kirki::add_section( 'featured_images', array(
+            'title'          => __( 'Featured Images Area', 'maera' ),
+            'priority'       => 10,
+        ) );
     }
 
     public function add_fields() {
@@ -145,6 +149,44 @@ class Maera_MDL_Customizer {
                     'element'  => '.archive-post-content-wrapper .mdl-card__supporting-text .inner',
                     'property' => 'padding-right',
                     'units'    => 'px',
+                )
+            )
+        ) );
+
+        Kirki::add_field( 'maera_mdl', array(
+            'type'     => 'slider',
+            'settings' => 'featured_image_height',
+            'label'    => __( 'Featured Images min-height (in px)', 'maera' ),
+            'section'  => 'featured_images',
+            'default'  => 280,
+            'choices'  => array(
+                'min'  => 100,
+                'max'  => 700,
+                'step' => 1,
+            ),
+            'output'   => array(
+                array(
+                    'element'  => '.single-post-featured-image',
+                    'property' => 'min-height',
+                    'units'    => 'px',
+                ),
+            ),
+        ) );
+
+        Kirki::add_field( 'maera_mdl', array(
+            'type'     => 'color',
+            'settings' => 'featured_images_background_color',
+            'label'    => __( 'Background Color', 'maera' ),
+            'default'  => '#37474f',
+            'output'      => array(
+                array(
+                    'element'  => '.mdl-card__media',
+                    'property' => 'background-color'
+                ),
+                array(
+                    'element'           => '.archive-post-content-wrapper .mdl-card__media h3.entry-title a',
+                    'property'          => 'color',
+                    'sanitize_callback' => array( $this, 'max_readability' ),
                 )
             )
         ) );
