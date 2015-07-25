@@ -103,6 +103,51 @@ class Maera_MDL_Customizer {
                 )
             )
         ) );
+
+        Kirki::add_field( 'maera_mdl', array(
+            'type'     => 'slider',
+            'settings' => 'archive_post_max_width',
+            'label'    => __( 'Max-Width for single-posts content (in px)', 'maera' ),
+            'section'  => 'layout',
+            'default'  => 900,
+            'choices'  => array(
+                'min'  => 400,
+                'max'  => 1200,
+                'step' => 1,
+            ),
+            'output'   => array(
+                array(
+                    'element'  => '.archive-post-content-wrapper',
+                    'property' => 'max-width',
+                    'units'    => 'px',
+                )
+            )
+        ) );
+
+        Kirki::add_field( 'maera_mdl', array(
+            'type'     => 'slider',
+            'settings' => 'archive_post_inner_padding',
+            'label'    => __( 'Inner Padding on single-posts main content (in px)', 'maera' ),
+            'section'  => 'layout',
+            'default'  => 25,
+            'choices'  => array(
+                'min'  => 20,
+                'max'  => 400,
+                'step' => 1,
+            ),
+            'output'   => array(
+                array(
+                    'element'  => '.archive-post-content-wrapper .mdl-card__supporting-text .inner',
+                    'property' => 'padding-left',
+                    'units'    => 'px',
+                ),
+                array(
+                    'element'  => '.archive-post-content-wrapper .mdl-card__supporting-text .inner',
+                    'property' => 'padding-right',
+                    'units'    => 'px',
+                )
+            )
+        ) );
     }
 
     public function max_readability( $value ) {
