@@ -16,4 +16,4 @@
 
 	<?php maera_get_template_part( 'template-parts/header' ); ?>
 
-	<div id="content" class="site-content">
+	<main id="content" class="site-content mdl-layout__content">

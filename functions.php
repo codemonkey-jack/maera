@@ -6,7 +6,7 @@
  */
 
 if ( ! defined( 'MAERA_TEMPLATES_PATH' ) ) {
-	define( 'MAERA_TEMPLATES_PATH', get_template_directory() . '/templates' );
+	define( 'MAERA_TEMPLATES_PATH', get_template_directory() . '/mdl-shell/templates' );
 }
 
 /**
@@ -14,7 +14,8 @@ if ( ! defined( 'MAERA_TEMPLATES_PATH' ) ) {
  */
 require get_template_directory() . '/includes/class-maera.php';
 require get_template_directory() . '/includes/class-maera-shell-handler.php';
-require get_template_directory() . '/includes/class-maera-mdl.php';
+require get_template_directory() . '/mdl-shell/class-maera-mdl.php';
+require get_template_directory() . '/mdl-shell/class-maera-mdl-menu-navwalker.php';
 
 function Maera() {
 	$maera = new Maera();
