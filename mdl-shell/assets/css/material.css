@@ -6246,7 +6246,7 @@ input.mdl-button[type="submit"] {
 
 .mdl-layout {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
