@@ -30,9 +30,16 @@
 					'after'  => '</div>',
 				) );
 				?>
+				<?php the_post_navigation(); ?>
 			</div>
 		</div>
 		<div class="entry-footer mdl-color-text--primary-contrast mdl-card__supporting-text comments">
+			<?php
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;
+			?>
 			<?php maera_entry_footer(); ?>
 		</div><!-- .entry-footer -->
 	</div>
