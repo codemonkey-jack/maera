@@ -51,3 +51,12 @@
 .archive-post-content-wrapper .mdl-card__media h3.entry-title a {
     text-decoration: none;
 }
+
+.mdl-layout__drawer > .mdl-layout-title {
+    padding: 20px;
+}
+
+.mdl-layout__drawer > .mdl-layout-title img {
+    max-width: 100%;
+    height: auto;
+}

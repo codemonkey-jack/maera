@@ -64,3 +64,10 @@ require get_template_directory() . '/includes/scripts.php';
  * Add custom template functions
  */
 require get_template_directory() . '/includes/template-functions.php';
+
+/**
+ * Load Jetpack's site-logo module if it does not already exist.
+ */
+if ( ! function_exists( 'site_logo_init' ) ) {
+	require get_template_directory() . '/includes/site-logo.php';	
+}

@@ -28,6 +28,12 @@ function maera_setup() {
 	 */
 	add_theme_support( 'title-tag' );
 
+	/**
+	 * Add site-logo support.
+	 */
+	$args = array( 'header-text' => array( 'site-title', 'site-description' ), 'size' => 'full' );
+	add_theme_support( 'site-logo', $args );
+
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *

@@ -64,6 +64,21 @@ class Maera_MDL_Customizer {
         ) );
 
         Kirki::add_field( 'maera_mdl', array(
+            'type'        => 'color',
+            'settings'    => 'logo_background_color',
+            'label'       => __( 'Logo Background Color', 'maera' ),
+            'section'     => 'header',
+            'default'     => '#de3495',
+            'priority'    => 10,
+            'output'      => array(
+                array(
+                    'element'  => '.mdl-layout__drawer > .mdl-layout-title',
+                    'property' => 'background-color'
+                ),
+            ),
+        ) );
+
+        Kirki::add_field( 'maera_mdl', array(
             'type'     => 'slider',
             'settings' => 'single_post_max_width',
             'label'    => __( 'Max-Width for single-posts content (in px)', 'maera' ),
