@@ -65,6 +65,11 @@
     padding: 16px 40px;
 }
 
+#secondary.widget-area ul {
+    margin-left: 0;
+    padding-left: 1em;
+}
+
 .mdl-layout {
     min-height: 100vh;
 }
