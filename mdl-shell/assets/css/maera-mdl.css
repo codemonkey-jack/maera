@@ -64,3 +64,7 @@
 #secondary.widget-area {
     padding: 16px 40px;
 }
+
+.mdl-layout {
+    min-height: 100vh;
+}
