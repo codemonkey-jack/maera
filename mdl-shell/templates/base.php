@@ -43,6 +43,7 @@
                         'depth'           => -1,
                     ) );
                     ?>
+                    <?php get_sidebar(); ?>
                 </div>
 
                 <main id="content" class="site-content mdl-layout__content">
@@ -51,7 +52,6 @@
 
                 </main>
 
-                <?php get_sidebar(); ?>
                 <?php get_footer(); ?>
 
             </div>

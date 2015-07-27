@@ -6,7 +6,7 @@ class Maera_Template {
         add_filter( 'comments_template', array( $this, 'comments_template' ) );
     }
 
-    public function find_file( $template_name, $default = '' ) {
+    public static function find_file( $template_name, $default = '' ) {
         $located = $default;
         if ( STYLESHEETPATH != TEMPLATEPATH && file_exists( STYLESHEETPATH . '/' . $template_name ) ) {
             $located = STYLESHEETPATH . '/' . $template_name;
@@ -22,7 +22,7 @@ class Maera_Template {
     }
 
     public function comments_template() {
-        return $this->find_file( 'comments.php', '' );
+        return self::find_file( 'comments.php', '' );
     }
 
     public static function locate_template( $template_names, $load = false, $require_once = true ) {
@@ -31,7 +31,7 @@ class Maera_Template {
             if ( ! $template_name ) {
                 continue;
             }
-            $located = $this->find_file( $template_name, $located );
+            $located = self::find_file( $template_name, $located );
         }
 
         if ( $load && '' != $located ) {
