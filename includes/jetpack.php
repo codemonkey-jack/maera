@@ -25,6 +25,6 @@ add_action( 'after_setup_theme', 'maera_jetpack_setup' );
 function maera_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
-		get_template_part( 'template-parts/content', get_post_format() );
+		Maera::get_template_part( 'template-parts/content', get_post_format() );
 	}
 } // end function maera_infinite_scroll_render

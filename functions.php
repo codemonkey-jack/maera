@@ -17,7 +17,9 @@ if ( ! defined( 'MAERA_SHELL_URL' ) ) {
  * Add custom Maera classes
  */
 require get_template_directory() . '/includes/class-maera.php';
+require get_template_directory() . '/includes/class-maera-template.php';
 require get_template_directory() . '/includes/class-maera-shell-handler.php';
+require get_template_directory() . '/includes/class-maera-wrapper-override.php';
 require get_template_directory() . '/mdl-shell/class-maera-mdl.php';
 require get_template_directory() . '/mdl-shell/class-maera-mdl-menu-navwalker.php';
 require get_template_directory() . '/mdl-shell/class-maera-mdl-customizer.php';
@@ -64,11 +66,6 @@ require get_template_directory() . '/includes/jetpack.php';
  * Add scripts & styles
  */
 require get_template_directory() . '/includes/scripts.php';
-
-/**
- * Add custom template functions
- */
-require get_template_directory() . '/includes/template-functions.php';
 
 /**
  * Load Jetpack's site-logo module if it does not already exist.

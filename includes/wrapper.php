@@ -41,7 +41,7 @@ class Maera_Wrapping {
 
     public function __toString() {
         $this->templates = apply_filters( 'maera/wrap_' . $this->slug, $this->templates );
-        return locate_template( $this->templates );
+        return Maera_Template::locate_template( $this->templates );
     }
 
     public static function wrap( $main ) {
@@ -61,5 +61,6 @@ class Maera_Wrapping {
 
         return new Maera_Wrapping();
     }
+
 }
 add_filter( 'template_include', array( 'Maera_Wrapping', 'wrap' ), 99 );
