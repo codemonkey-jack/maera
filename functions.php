@@ -31,6 +31,11 @@ global $maera;
 $maera = Maera();
 
 /**
+ * The theme wrapper
+ */
+require get_template_directory() . '/includes/wrapper.php';
+
+/**
  * Setup the theme
  */
 require get_template_directory() . '/includes/setup.php';
@@ -69,5 +74,5 @@ require get_template_directory() . '/includes/template-functions.php';
  * Load Jetpack's site-logo module if it does not already exist.
  */
 if ( ! function_exists( 'site_logo_init' ) ) {
-	require get_template_directory() . '/includes/site-logo.php';	
+	require get_template_directory() . '/includes/site-logo.php';
 }
