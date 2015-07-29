@@ -8,13 +8,22 @@ class Maera_Template {
 
     public static function find_file( $template_name, $default = '' ) {
         $located = $default;
+        /**
+         * First check if the template exists in a child theme
+         */
         if ( STYLESHEETPATH != TEMPLATEPATH && file_exists( STYLESHEETPATH . '/' . $template_name ) ) {
             $located = STYLESHEETPATH . '/' . $template_name;
-        } elseif ( file_exists( MAERA_SHELL_PATH . '/templates/' . $template_name ) ) {
-            $located = MAERA_SHELL_PATH . '/' . $template_name;
-        } elseif ( file_exists( MAERA_SHELL_PATH . '/' . $template_name ) ) {
-            $located = MAERA_SHELL_PATH . '/' . $template_name;
-        } elseif ( file_exists( TEMPLATEPATH . '/' . $template_name ) ) {
+        }
+        /**
+         * Check if the template exists in the shell
+         */
+        elseif ( file_exists( Maera()->shell->templates_path . '/' . $template_name ) ) {
+            $located = Maera()->shell->templates_path . '/' . $template_name;
+        }
+        /**
+         * Fallback to the core theme's template files.
+         */
+        elseif ( file_exists( TEMPLATEPATH . '/' . $template_name ) ) {
             $located = TEMPLATEPATH . '/' . $template_name;
         }
 

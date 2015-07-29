@@ -5,18 +5,11 @@
  * @package Maera
  */
 
-if ( ! defined( 'MAERA_SHELL_PATH' ) ) {
-	define( 'MAERA_SHELL_PATH', get_template_directory() . '/mdl-shell/templates' );
-}
-
-if ( ! defined( 'MAERA_SHELL_URL' ) ) {
-	define( 'MAERA_SHELL_URL', get_template_directory_uri() . '/mdl-shell/' );
-}
-
 /**
  * Add custom Maera classes
  */
 require get_template_directory() . '/includes/class-maera.php';
+require get_template_directory() . '/includes/class-maera-shell.php';
 require get_template_directory() . '/includes/class-maera-template.php';
 require get_template_directory() . '/includes/class-maera-shell-handler.php';
 require get_template_directory() . '/includes/class-maera-wrapper-override.php';
@@ -26,7 +19,6 @@ require get_template_directory() . '/mdl-shell/class-maera-mdl-customizer.php';
 
 function Maera() {
 	$maera = new Maera();
-
 	return $maera;
 }
 global $maera;
