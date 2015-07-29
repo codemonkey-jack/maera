@@ -46,9 +46,9 @@ class Maera_MDL extends Maera_Shell {
      * @return void
      */
     public function enqueue() {
-        wp_enqueue_style( 'maera-mdl', trailingslashit( Maera()->shell->url ) . 'assets/css/material.css' );
-        wp_enqueue_style( 'maera-mdl-custom', trailingslashit( Maera()->shell->url ) . 'assets/css/maera-mdl.css' );
-        wp_enqueue_script( 'maera-mdl-style', trailingslashit( Maera()->shell->url ) . 'assets/js/material.js' );
+        wp_enqueue_style( 'maera-mdl', trailingslashit( Maera()->shell['instance']->url ) . 'assets/css/material.css' );
+        wp_enqueue_style( 'maera-mdl-custom', trailingslashit( Maera()->shell['instance']->url ) . 'assets/css/maera-mdl.css' );
+        wp_enqueue_script( 'maera-mdl-style', trailingslashit( Maera()->shell['instance']->url ) . 'assets/js/material.js' );
     }
 
     /**

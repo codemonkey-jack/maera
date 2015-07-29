@@ -17,8 +17,8 @@ class Maera_Template {
         /**
          * Check if the template exists in the shell
          */
-        elseif ( file_exists( Maera()->shell->templates_path . '/' . $template_name ) ) {
-            $located = Maera()->shell->templates_path . '/' . $template_name;
+        elseif ( file_exists( Maera()->shell['instance']->templates_path . '/' . $template_name ) ) {
+            $located = Maera()->shell['instance']->templates_path . '/' . $template_name;
         }
         /**
          * Fallback to the core theme's template files.

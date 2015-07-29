@@ -9,7 +9,7 @@
 
 ?>
 
-<section class="no-results not-found <?php echo Maera()->shell->row(); ?>">
+<section class="no-results not-found <?php echo Maera()->shell['instance']->row(); ?>">
 	<header class="page-header">
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'maera' ); ?></h1>
 	</header><!-- .page-header -->
