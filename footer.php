@@ -1,2 +1,2 @@
 <?php
-maera_get_template_part( 'footer' );
+Maera::get_template_part( 'footer' );

@@ -2,51 +2,23 @@
 
 class Maera {
 
-    /**
-     * The defined shell array.
-     * See the add_shell method for more details.
-     */
-    public $shell = array();
-    /**
-     * This holds the instance of the Maera_Template class.
-     */
-    public $template = null;
+    public $shell         = array();
+    public $template      = null;
 
-    /**
-     * The class constructor.
-     */
     public function __construct() {
-        /**
-         * Make sure the shell is instantiated on 'after_setup_theme'.
-         */
-        add_action( 'after_setup_theme', array( $this, 'add_shell' ) );
-        /**
-         * instantiate the Maera_Template class.
-         */
+        add_action( 'init', array( $this, 'add_shell' ) );
+        $this->add_shell();
         $this->template = new Maera_Template();
     }
 
-    /**
-     * Add the shell.
-     * The current shell can be changed by using Maera()->shell = array();
-     */
     public function add_shell() {
-        /**
-         * Set some defaults (core shell)
-         */
         $defaults = array(
             'name'     => 'Material Design Lite',
             'id'       => 'maera_mdl',
             'class'    => 'Maera_MDL',
         );
-        /**
-         * Merge args and use our defined shell (if another one is defined)
-         */
         $args = wp_parse_args( $this->shell, $defaults );
 
-        /**
-         * Instantiate the selected shell class
-         */
         if ( ! isset( $args['instance'] ) ) {
             $shell_class = $args['class'];
             if ( class_exists( $shell_class ) ) {
@@ -56,10 +28,14 @@ class Maera {
             }
         }
 
-        /**
-         * Set the class's $shell property.
-         */
         $this->shell = $args;
+    }
+
+    /**
+     * This is an alias of the static method in the Maera_Wrapping class.
+     */
+    public static function get_template_part( $slug, $name = null ) {
+        return Maera_Template::get_template_part( $slug, $name );
     }
 
 }
