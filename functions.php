@@ -64,3 +64,11 @@ require get_template_directory() . '/includes/scripts.php';
 if ( ! function_exists( 'site_logo_init' ) ) {
 	require get_template_directory() . '/includes/site-logo.php';
 }
+
+function maera_get_header() {
+	Maera_Template::get_template_part( 'header' );
+}
+
+function maera_get_footer() {
+	Maera_Template::get_template_part( 'footer' );
+}

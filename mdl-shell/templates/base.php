@@ -52,7 +52,7 @@
 
                 </main>
 
-                <?php get_footer(); ?>
+                <?php maera_get_footer(); ?>
 
             </div>
 
