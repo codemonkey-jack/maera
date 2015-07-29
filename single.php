@@ -1,2 +1,2 @@
 <?php
-Maera::get_template_part( 'single' );
+maera_get_template_part( 'single' );

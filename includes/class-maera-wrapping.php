@@ -1,13 +1,5 @@
 <?php
 
-function maera_template_path() {
-    return Maera_Wrapping::$main_template;
-}
-
-function sidebar_path() {
-    return new Maera_Wrapping( 'templates/sidebar.php' );
-}
-
 class Maera_Wrapping {
     /**
      * Stores the full path to the main template file

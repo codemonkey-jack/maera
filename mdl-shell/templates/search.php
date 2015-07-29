@@ -25,7 +25,7 @@ get_header(); ?>
 				 * If you want to overload this in a child theme then include a file
 				 * called content-search.php and that will be used instead.
 				 */
-				Maera::get_template_part( 'template-parts/content', 'search' );
+				maera_get_template_part( 'template-parts/content', 'search' );
 				?>
 
 			<?php endwhile; ?>
@@ -34,7 +34,7 @@ get_header(); ?>
 
 		<?php else : ?>
 
-			<?php Maera::get_template_part( 'template-parts/content', 'none' ); ?>
+			<?php maera_get_template_part( 'template-parts/content', 'none' ); ?>
 
 		<?php endif; ?>
 

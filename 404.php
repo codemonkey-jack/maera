@@ -1,2 +1,2 @@
 <?php
-Maera::get_template_part( '404' );
+maera_get_template_part( '404' );
