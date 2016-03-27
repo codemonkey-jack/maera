@@ -16,7 +16,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 	 * @todo TODO
 	 * @since 1.0.0
 	 */
-	function maera_ext_posts_widget_latest_articles() {
+	function __construct() {
 
 		$widget_ops = array(
 			'classname'   => __( 'maera_latest_posts', 'maera' ),
@@ -29,7 +29,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 			'id_base' => 'maera_ext_posts_widget_latest_articles',
 		);
 
-		$this->WP_Widget(
+		parent::__construct(
 			'maera_ext_posts_widget_latest_articles',
 			__( 'Maera Latest Posts', 'maera' ),
 			$widget_ops,
