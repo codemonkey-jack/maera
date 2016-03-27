@@ -1,597 +1,699 @@
 <?php
-/**
- * Sanitizes all variables from our fields and separates complex fields to their sub-fields.
- *
- * @package     Kirki
- * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       1.0
- */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
-// Early exit if the class already exists
-if ( class_exists( 'Kirki_Field' ) ) {
-	return;
-}
-
-class Kirki_Field {
-
-	/**
-	 * Sanitizes the field
-	 *
-	 * @param array the field definition
-	 * @return array
-	 */
-	public static function sanitize_field( $field ) {
-
-		$sanitized = array(
-			'settings_raw'      => self::sanitize_settings_raw( $field ),
-			'default'           => self::sanitize_default( $field ),
-			'label'             => self::sanitize_label( $field ),
-			'help'              => self::sanitize_help( $field ),
-			'description'       => self::sanitize_description( $field ),
-			'required'          => self::sanitize_required( $field ),
-			'transport'         => self::sanitize_transport( $field ),
-			'type'              => self::sanitize_control_type( $field ),
-			'option_type'       => self::sanitize_type( $field ),
-			'section'           => self::sanitize_section( $field ),
-			'settings'          => self::sanitize_settings( $field ),
-			'priority'          => self::sanitize_priority( $field ),
-			'choices'           => self::sanitize_choices( $field ),
-			'output'            => self::sanitize_output( $field ),
-			'sanitize_callback' => self::sanitize_callback( $field ),
-			'js_vars'           => self::sanitize_js_vars( $field ),
-			'id'                => self::sanitize_id( $field ),
-			'capability'        => self::sanitize_capability( $field ),
-			'variables'         => self::sanitize_variables( $field ),
-			'active_callback'   => self::sanitize_active_callback( $field )
-		);
-
-		return array_merge( $field, $sanitized );
-
-	}
-
-	/**
-	 * Sanitizes the control type.
-	 *
-	 * @param array the field definition
-	 * @return string If not set, then defaults to text.
-	 */
-	public static function sanitize_control_type( $field ) {
-
-		// If no field type has been defined then fallback to text
-		if ( ! isset( $field['type'] ) ) {
-			return 'text';
-		}
-
-		switch ( $field['type'] ) {
-
-			case 'checkbox' :
-				/**
-				 * Tweaks for backwards-compatibility:
-				 * Prior to version 0.8 switch & toggle were part of the checkbox control.
-				 */
-				if ( isset( $field['mode'] ) && 'switch' == $field['mode'] ) {
-					$field['type'] = 'switch';
-				} elseif ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) {
-					$field['type'] = 'toggle';
-				}
-				break;
-			case 'radio' :
-				/**
-				 * Tweaks for backwards-compatibility:
-				 * Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
-				 */
-			 	if ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) {
-					$field['type'] = 'radio-buttonset';
-				} elseif ( isset( $field['mode'] ) && 'image' == $field['mode'] ) {
-					$field['type'] = 'radio-image';
-				}
-				break;
-			case 'group-title' :
-			case 'group_title' :
-				/**
-				 * Tweaks for backwards-compatibility:
-				 * Prior to version 0.8 there was a group-title control.
-				 */
-				$field['type'] = 'custom';
-				break;
-			case 'color_alpha' :
-				// Just making sure that common mistakes will still work.
-				$field['type'] = 'color-alpha';
-				break;
-			case 'color' :
-				// If a default value of rgba() is defined for a color control then use color-alpha instead.
-				if ( isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) {
-					$field['type'] = 'color-alpha';
-				}
-				break;
-		}
-
-		return esc_attr( $field['type'] );
-
-	}
-
-	/**
-	 * Sanitizes the setting type.
-	 *
-	 * @param array the field definition
-	 * @return string (theme_mod|option)
-	 */
-	public static function sanitize_type( $field ) {
-
-		if ( isset( $field['option_type'] ) ) {
-			return esc_attr( $field['option_type'] );
-		}
-		// If no 'option_type' has been defined then try to get the option from the kirki/config filter.
-		$config = apply_filters( 'kirki/config', array() );
-		if ( isset( $config['option_type'] ) ) {
-			return esc_attr( $config['option_type'] );
-		}
-		// Fallback to theme_mod
-		return 'theme_mod';
-
-	}
-
-	/**
-	 * Sanitizes the setting variables.
-	 *
-	 * @param array the field definition
-	 * @return mixed
-	 */
-	public static function sanitize_variables( $field ) {
-
-		if ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) {
-			return $field['variables'];
-		}
-		// fallback to null
-		return null;
-
-	}
-
-	/**
-	 * Sanitizes the setting active callback.
-	 *
-	 * @param array the field definition
-	 * @return string callable function name.
-	 */
-	public static function sanitize_active_callback( $field ) {
-
-		if ( isset( $field['active_callback'] ) ) {
-			return $field['active_callback'];
-		}
-		// If the 'required' argument is set then we'll need to auto-calculate things.
-		if ( isset( $field['required'] ) ) {
-			return 'kirki_active_callback';
-		}
-		// fallback to __return_true
-		return '__return_true';
-
-	}
-
-	/**
-	 * Sanitizes the setting permissions.
-	 *
-	 * @param array the field definition
-	 * @return string (theme_mod|option)
-	 */
-	public static function sanitize_capability( $field ) {
-
-		if ( ! isset( $field['capability'] ) ) {
-			// Try to get a value from the kirki/config filter
-			$config = apply_filters( 'kirki/config', array() );
-			if ( isset( $config['capability'] ) ) {
-				return esc_attr( $config['capability'] );
-			}
-			// fallback to edit_theme_options
-			return 'edit_theme_options';
-		}
-		// All good, a capability has been defined so return that escaped.
-		return esc_attr( $field['capability'] );
-
-	}
-
-	/**
-	 * Sanitizes the raw setting name.
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_settings_raw( $field ) {
+if ( ! class_exists( 'Kirki_Field' ) ) {
+	class Kirki_Field {
 
 		/**
-		 * Compatibility tweak
-		 * Previous versions of the Kirki customizer used 'setting' istead of 'settings'.
+		 * @access protected
+		 * @var string
 		 */
-		if ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) {
-			return sanitize_key( $field['setting'] );
-		}
-
-		// Sanitize the field's settings attribute.
-		return sanitize_key( $field['settings'] );
-
-	}
-
-	/**
-	 * Sanitizes the setting name
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_settings( $field ) {
-
-		// If the value of 'option_name' is not empty, then we're also using options instead of theme_mods.
-		if ( ( isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
-			$field['settings'] = esc_attr( $field['option_name'] ).'['.esc_attr( $field['settings'] ).']';
-		}
-		return $field['settings'];
-
-	}
-
-	/**
-	 * Sanitizes the control label.
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_label( $field ) {
-
-		if ( isset( $field['label'] ) ) {
-			return esc_html( $field['label'] );
-		}
-		return '';
-
-	}
-
-	/**
-	 * Sanitizes the control section
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_section( $field ) {
-
-		// If no section is defined then make sure we add the one section that is ALWAYS present: title_tagline
-		if ( ! isset( $field['section'] ) ) {
-			return 'title_tagline';
-		}
-		return sanitize_key( $field['section'] );
-
-	}
-
-	/**
-	 * Sanitizes the control id.
-	 * Sanitizing the ID should happen after the 'settings' sanitization.
-	 * This way we can also properly handle cases where the option_type is set to 'option'
-	 * and we're using an array instead of individual options.
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_id( $field ) {
-		return sanitize_key( str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) ) );
-	}
-
-	/**
-	 * Sanitizes the setting default value
-	 *
-	 * @param array the field definition
-	 * @return mixed
-	 */
-	public static function sanitize_default( $field ) {
-
-		// make sure a default value is defined.
-		if ( ! isset( $field['default'] ) ) {
-			return '';
-		}
-		// If an array then sanitize the array items separately
-		if ( is_array( $field['default'] ) ) {
-			array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
-			return $field['default'];
-		}
-		// Return raw & unfiltered for custom controls
-		if ( isset( $field['type'] ) && 'custom' == $field['type'] ) {
-			return $field['default'];
-		}
-		// fallback to escaping the default value.
-		return esc_textarea( $field['default'] );
-
-	}
-
-	/**
-	 * Sanitizes the control description
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_description( $field ) {
-
-		if ( ! isset( $field['description'] ) && ! isset( $field['subtitle'] ) ) {
-			return '';
-		}
+		protected $kirki_config = 'global';
 
 		/**
-		 * Compatibility tweak
-		 *
-		 * Previous verions of the Kirki Customizer had the 'description' field mapped to the new 'help'
-		 * and instead of 'description' we were using 'subtitle'.
-		 * This has been deprecated in favor of WordPress core's 'description' field that was recently introduced.
-		 *
+		 * @access protected
+		 * @var string
 		 */
-		if ( isset( $field['subtitle'] ) ) {
-			return wp_strip_all_tags( $field['subtitle'] );
-		}
-		return wp_strip_all_tags( $field['description'] );
-
-	}
-
-	/**
-	 * Sanitizes the control help
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_help( $field ) {
+		protected $capability = 'edit_theme_options';
 
 		/**
-		 * Compatibility tweak
-		 *
-		 * Previous verions of the Kirki Customizer had the 'description' field mapped to the new 'help'
-		 * and instead of 'description' we were using 'subtitle'.
-		 * This has been deprecated in favor of WordPress core's 'description' field that was recently introduced.
-		 *
+		 * @access protected
+		 * @var string
 		 */
-		if ( isset( $field['subtitle'] ) ) {
-			// Use old arguments form.
-			if ( isset( $field['description'] ) ) {
-				return wp_strip_all_tags( $field['description'] );
+		protected $option_name = '';
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $option_type = 'theme_mod';
+
+		/**
+		 * @access protected
+		 * @var string|array
+		 */
+		protected $settings = '';
+
+		/**
+		 * @access protected
+		 * @var bool
+		 */
+		protected $disable_output = false;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $type = 'kirki-generic';
+
+		/**
+		 * @access protected
+		 * @var array
+		 */
+		protected $choices = array();
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $section = '';
+
+		/**
+		 * @access protected
+		 * @var string|array
+		 */
+		protected $default = '';
+
+		/**
+		 * @access protected
+		 * @var int
+		 */
+		protected $priority = 10;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $id = '';
+
+		/**
+		 * @access protected
+		 * @var array
+		 */
+		protected $output = array();
+
+		/**
+		 * @access protected
+		 * @var array
+		 */
+		protected $js_vars = array();
+
+		/**
+		 * @access protected
+		 * @var array
+		 */
+		protected $variables = array();
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $tooltip = '';
+
+		/**
+		 * Whitelisting for backwards-compatibility.
+		 *
+		 * @access protected
+		 * @var string
+		 */
+		protected $help = '';
+
+		/**
+		 * Whitelisting for backwards-compatibility.
+		 *
+		 * @access protected
+		 * @var string
+		 */
+		protected $mode = '';
+
+		/**
+		 * @access protected
+		 * @var string|array
+		 */
+		protected $active_callback = '__return_true';
+
+		/**
+		 * @access protected
+		 * @var string|array
+		 */
+		protected $sanitize_callback = '';
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $transport = 'refresh';
+
+		/**
+		 * @access protected
+		 * @var array
+		 */
+		protected $required = array();
+
+		/**
+		 * @access protected
+		 * @var int
+		 */
+		protected $multiple = 1;
+
+		/**
+		 * The class constructor.
+		 * Parses and sanitizes all field arguments.
+		 * Then it adds the field to Kirki::$fields
+		 *
+		 * @access public
+		 * @param $config_id    string    The ID of the config we want to use.
+		 *                                Defaults to "global".
+		 *                                Configs are handled by the Kirki_Config class.
+		 * @param $args         array     The arguments of the field.
+		 */
+		public function __construct( $config_id = 'global', $args = array() ) {
+
+			if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
+				$args['settings'] = $args['setting'];
+				unset( $args['setting'] );
+				error_log( 'Kirki: Typo found in field ' . $args['settings'] . ' ("setting" instead of "settings").' );
 			}
-			return '';
-		}
-		// Return empty string if not set.
-		if ( ! isset( $field['help'] ) ) {
-			return '';
-		}
-		// Fallback to stripping all tags and returning.
-		return wp_strip_all_tags( $field['help'] );
 
-	}
-
-	/**
-	 * Sanitizes the control choices.
-	 *
-	 * @param array the field definition
-	 * @return array|string
-	 */
-	public static function sanitize_choices( $field ) {
-
-		// If not set then return an empty array.
-		if ( ! isset( $field['choices'] ) ) {
-			return array();
-		}
-		// sanitize the array recursively.
-		if ( is_array( $field['choices'] ) ) {
-			array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
-			return $field['choices'];
-		}
-		// this is a string so fallback to escaping the value and return.
-		return esc_attr( $field['choices'] );
-
-	}
-
-	/**
-	 * Sanitizes the control output
-	 *
-	 * @param array the field definition
-	 * @return array
-	 */
-	public static function sanitize_output( $field ) {
-
-		// Early exit if output is not set
-		if ( ! isset( $field['output'] ) ) {
-			return null;
-		}
-		// sanitize using esc_attr if output is string.
-		if ( ! is_array( $field['output'] ) ) {
-			return esc_attr( $field['output'] );
-		}
-		$output_sanitized = array();
-		// convert to multidimentional array if necessary
-		if ( isset( $field['output']['element'] ) ) {
-			$field['output'] = array( $field['output'] );
-		}
-		// sanitize array items individually
-		foreach ( $field['output'] as $output ) {
-			if ( ! isset( $output['media_query'] ) ) {
-				if ( isset( $output['prefix'] ) && ( false !== strpos( $output['prefix'], '@media' ) ) ) {
-					$output['media_query'] = $output['prefix'];
-					$output['prefix']      = '';
-					$output['suffix']      = '';
-				} else {
-					$output['media_query'] = 'global';
+			if ( is_string( $config_id ) ) {
+				$args['kirki_config'] = $config_id;
+			}
+			// In case the user only provides 1 argument,
+			// assume that the provided argument is $args and set $config_id = 'global'
+			if ( is_array( $config_id ) && empty( $args ) ) {
+				$args = $config_id;
+				$this->kirki_config = 'global';
+			}
+			$this->kirki_config = trim( esc_attr( $config_id ) );
+			if ( '' == $config_id ) {
+				$this->kirki_config = 'global';
+			}
+			// Get defaults from the class
+			$defaults = get_class_vars( __CLASS__ );
+			// Get the config arguments, and merge them with the defaults
+			$config_defaults = ( isset( Kirki::$config['global'] ) ) ? Kirki::$config['global'] : array();
+			if ( 'global' != $this->kirki_config && isset( Kirki::$config[ $this->kirki_config ] ) ) {
+				$config_defaults = Kirki::$config[ $this->kirki_config ];
+			}
+			$config_defaults = ( is_array( $config_defaults ) ) ? $config_defaults : array();
+			foreach ( $config_defaults as $key => $value ) {
+				if ( isset( $defaults[ $key ] ) ) {
+					if ( ! empty( $value ) && $value != $defaults[ $key ] ) {
+						$defaults[ $key ] = $value;
+					}
 				}
 			}
-			$output_sanitized[] = array(
-				'element'     => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
-				'property'    => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
-				'units'       => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
-				'media_query' => trim( sanitize_text_field( str_replace( '{', '', $output['media_query'] ) ) ),
+			// Merge our args with the defaults
+			$args = wp_parse_args( $args, $defaults );
+			// Set the class properties using the parsed args
+			foreach ( $args as $key => $value ) {
+				$this->$key = $value;
+			}
+			// An array of whitelisted properties that don't need to be sanitized here.
+			// format: $key => $default_value
+			$whitelisted = apply_filters( 'kirki/' . $this->kirki_config . '/fields/properties_whitelist', array(
+				'label'       => '', // this is sanitized later in the controls themselves
+				'description' => '', // this is sanitized later in the controls themselves
+				// 'default'     => '', // this is sanitized later in the controls themselves
+				'mode'        => '', // only used for backwards-compatibility reasons
+				'fields'      => array(), // Used in repeater fields
+			) );
+
+			$this->set_field( $whitelisted );
+
+		}
+
+		protected function set_field( $whitelisted_properties = array() ) {
+
+			$properties = get_class_vars( __CLASS__ );
+			// remove any whitelisted properties from above
+			// These will get a free pass, completely unfiltered.
+			foreach ( $whitelisted_properties as $key => $default_value ) {
+				if ( isset( $properties[ $key ] ) ) {
+					unset( $properties[ $key ] );
+				}
+			}
+
+			// Some things must run before the others.
+			$priorities = array(
+				'option_name',
+				'option_type',
+				'settings',
 			);
-		}
-		return $output_sanitized;
 
-	}
-
-	/**
-	 * Sanitizes the control transport.
-	 *
-	 * @param array the field definition
-	 * @return string postMessage|refresh (defaults to refresh)
-	 */
-	public static function sanitize_transport( $field ) {
-
-		if ( isset( $field['transport'] ) && 'postMessage' == $field['transport'] ) {
-			return 'postMessage';
-		}
-		// fallback to 'refresh'
-		return 'refresh';
-
-	}
-
-	/**
-	 * Sanitizes the setting sanitize_callback
-	 *
-	 * @param array the field definition
-	 * @return mixed the sanitization callback for this setting
-	 */
-	public static function sanitize_callback( $field ) {
-
-		if ( isset( $field['sanitize_callback'] ) && ! empty( $field['sanitize_callback'] ) ) {
-			return $field['sanitize_callback'];
-		}
-		// Fallback callback
-		return self::fallback_callback( $field['type'] );
-
-	}
-
-	/**
-	 * Sanitizes the control js_vars.
-	 *
-	 * @param array the field definition
-	 * @return array|null
-	 */
-	public static function sanitize_js_vars( $field ) {
-
-		$js_vars_sanitized = null;
-		if ( isset( $field['js_vars'] ) && is_array( $field['js_vars'] ) ) {
-			$js_vars_sanitized = array();
-			if ( isset( $field['js_vars']['element'] ) ) {
-				$field['js_vars'] = array( $field['js_vars'] );
+			foreach ( $priorities as $priority ) {
+				if ( method_exists( $this, 'set_' . $priority ) ) {
+					$method_name = 'set_' . $priority;
+					$this->$method_name();
+				}
 			}
-			foreach ( $field['js_vars'] as $js_vars ) {
-				$js_vars_sanitized[] = array(
-					'element'  => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
-					'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
-					'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
-					'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
+
+			// Sanitize the properties, skipping the ones run from the $priorities
+			foreach ( $properties as $property => $value ) {
+				if ( in_array( $property, $priorities ) ) {
+					continue;
+				}
+				if ( method_exists( $this, 'set_' . $property ) ) {
+					$method_name = 'set_' . $property;
+					$this->$method_name();
+				}
+			}
+
+			// Get all arguments with their values
+			$args = get_class_vars( __CLASS__ );
+			foreach ( $args as $key => $default_value ) {
+				$args[ $key ] = $this->$key;
+			}
+
+			// add the whitelisted properties through the back door
+			foreach ( $whitelisted_properties as $key => $default_value ) {
+				if ( ! isset( $this->$key ) ) {
+					$this->$key = $default_value;
+				}
+				$args[ $key ] = $this->$key;
+			}
+
+			// Add the field to the static $fields variable properly indexed
+			Kirki::$fields[ $this->settings ] = $args;
+
+			if ( 'background' == $this->type ) {
+				// Build the background fields
+				Kirki::$fields = Kirki_Explode_Background_Field::process_fields( Kirki::$fields );
+			}
+
+		}
+
+		/**
+		 * This allows us to process this on a field-basis
+		 * by using sub-classes which can override this method.
+		 *
+		 * $default
+		 *
+		 * @access protected
+		 */
+		protected function set_default() {}
+
+		/**
+		 * escape $kirki_config
+		 *
+		 * @access protected
+		 */
+		protected function set_kirki_config() {
+
+			$this->kirki_config = esc_attr( $this->kirki_config );
+
+		}
+
+		/**
+		 * escape $option_name
+		 *
+		 * @access protected
+		 */
+		protected function set_option_name() {
+
+			$this->option_name = esc_attr( $this->option_name );
+
+		}
+
+
+		/**
+		 * escape the $section
+		 *
+		 * @access protected
+		 */
+		protected function set_section() {
+
+			$this->section = sanitize_key( $this->section );
+
+		}
+
+		/**
+		 * Checks the capability chosen is valid.
+		 * If not, then falls back to 'edit_theme_options'
+		 *
+		 * @access protected
+		 */
+		protected function set_capability() {
+			// early exit if we're using 'edit_theme_options'.
+			if ( 'edit_theme_options' == $this->capability ) {
+				return;
+			}
+			// escape & trim the capability
+			$this->capability = trim( esc_attr( $this->capability ) );
+		}
+
+		/**
+		 * Make sure we're using the correct option_type
+		 *
+		 * @access protected
+		 */
+		protected function set_option_type() {
+
+			// If we have an option_name
+			// then make sure we're using options and not theme_mods
+			if ( '' != $this->option_name ) {
+				$this->option_type = 'option';
+			}
+			// Take care of common typos
+			if ( 'options' == $this->option_type ) {
+				$this->option_type = 'option';
+			}
+			// Take care of common typos
+			if ( 'theme_mods' == $this->option_type ) {
+				$this->option_type = 'theme_mod';
+			}
+		}
+
+		/**
+		 * Sets the settings.
+		 * If we're using serialized options it makes sure that settings are properly formatted.
+		 * We'll also be escaping all setting names here for consistency.
+		 *
+		 * @access protected
+		 */
+		protected function set_settings() {
+
+			// If settings is not an array, temporarily convert it to an array.
+			// This is just to allow us to process everything the same way and avoid code duplication.
+			// if settings is not an array then it will not be set as an array in the end.
+			if ( ! is_array( $this->settings ) ) {
+				$this->settings = array( 'kirki_placeholder_setting' => $this->settings );
+			}
+			$settings = array();
+			foreach ( $this->settings as $setting_key => $setting_value ) {
+				$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
+				// If we're using serialized options then we need to spice this up
+				if ( 'option' == $this->option_type && '' != $this->option_name && ( false === strpos( $setting_key, '[' ) ) ) {
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $this->option_name ) . '[' . esc_attr( $setting_value ).']';
+				}
+			}
+			$this->settings = $settings;
+			if ( isset( $this->settings['kirki_placeholder_setting'] ) ) {
+				$this->settings = $this->settings['kirki_placeholder_setting'];
+			}
+
+		}
+
+		/**
+		 * escapes the tooltip messages
+		 *
+		 * @access protected
+		 */
+		protected function set_tooltip() {
+
+			if ( '' != $this->tooltip ) {
+				$this->tooltip = wp_strip_all_tags( $this->tooltip );
+				return;
+			}
+
+		}
+
+		/**
+		 * Sets the active_callback
+		 * If we're using the $required argument,
+		 * Then this is where the switch is made to our evaluation method.
+		 *
+		 * @access protected
+		 */
+		protected function set_active_callback() {
+
+			if ( ! empty( $this->required ) ) {
+				$this->active_callback = array( 'Kirki_Active_Callback', 'evaluate' );
+				return;
+			}
+			// No need to proceed any further if we're using the default value
+			if ( '__return_true' == $this->active_callback ) {
+				return;
+			}
+			// Make sure the function is callable, otherwise fallback to __return_true
+			if ( ! is_callable( $this->active_callback ) ) {
+				$this->active_callback = '__return_true';
+			}
+
+		}
+
+		/**
+		 * Sets the control type.
+		 *
+		 * @access protected
+		 */
+		protected function set_type() {
+
+			// escape the control type (it doesn't hurt to be sure)
+			$this->type = esc_attr( $this->type );
+
+		}
+
+		/**
+		 * Sets the $id.
+		 * Setting the ID should happen after the 'settings' sanitization.
+		 * This way we can also properly handle cases where the option_type is set to 'option'
+		 * and we're using an array instead of individual options.
+		 *
+		 * @access protected
+		 */
+		protected function set_id() {
+
+			$this->id = sanitize_key( str_replace( '[', '-', str_replace( ']', '', $this->settings ) ) );
+
+		}
+
+		/**
+		 * Sets the $sanitize_callback
+		 *
+		 * @access protected
+		 */
+		protected function set_sanitize_callback() {
+
+			// If a custom sanitize_callback has been defined,
+			// then we don't need to proceed any further.
+			if ( ! empty( $this->sanitize_callback ) ) {
+				return;
+			}
+
+			$default_callbacks = array(
+				'image'            => 'esc_url_raw',
+				'upload'           => 'esc_url_raw',
+				'radio-image'      => 'esc_attr',
+				'radio-buttonset'  => 'esc_attr',
+				'palette'          => 'esc_attr',
+				'dropdown-pages'   => array( 'Kirki_Sanitize_Values', 'dropdown_pages' ),
+				'slider'           => array( 'Kirki_Sanitize_Values', 'number' ),
+				'number'           => array( 'Kirki_Sanitize_Values', 'number' ),
+				'kirki-text'       => 'esc_textarea',
+				'editor'           => 'wp_kses_post',
+				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
+				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
+				'typography'       => array( 'Kirki_Sanitize_Values', 'typography' ),
+			);
+
+			if ( array_key_exists( $this->type, $default_callbacks ) ) {
+				$this->sanitize_callback = $default_callbacks[ $this->type ];
+			}
+
+		}
+
+		/**
+		 * Sets the $choices
+		 *
+		 * @access protected
+		 */
+		protected function set_choices() {
+
+			if ( ! is_array( $this->choices ) ) {
+				$this->choices = array();
+			}
+
+		}
+
+		/**
+		 * escapes the $disable_output
+		 *
+		 * @access protected
+		 */
+		protected function set_disable_output() {
+
+			$this->disable_output = (bool) $this->disable_output;
+
+		}
+
+		/**
+		 * Sets the $sanitize_callback
+		 *
+		 * @access protected
+		 */
+		protected function set_output() {
+
+			if ( empty( $this->output ) ) {
+				return;
+			}
+			if ( ! empty( $this->output ) && ! is_array( $this->output ) ) {
+				$this->output = array( array( 'element' => $this->output ) );
+			}
+			// Convert to array of arrays if needed
+			if ( isset( $this->output['element'] ) ) {
+				$this->output = array( $this->output );
+			}
+			$outputs = array();
+			foreach ( $this->output as $output ) {
+				if ( ! isset( $output['element'] ) ) {
+					continue;
+				}
+				if ( ! isset( $output['property'] ) && ! in_array( $this->type, array( 'typography', 'background' ) ) ) {
+					continue;
+				}
+				if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
+					$output['sanitize_callback'] = $output['callback'];
+				}
+				// Convert element arrays to strings
+				if ( is_array( $output['element'] ) ) {
+					$output['element'] = array_unique( $output['element'] );
+					sort( $output['element'] );
+					$output['element'] = implode( ',', $output['element'] );
+				}
+				$outputs[] = array(
+					'element'           => $output['element'],
+					'property'          => ( isset( $output['property'] ) ) ? $output['property'] : '',
+					'media_query'       => ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global',
+					'sanitize_callback' => ( isset( $output['sanitize_callback'] ) ) ? $output['sanitize_callback'] : '',
+					'units'             => ( isset( $output['units'] ) ) ? $output['units'] : '',
+					'prefix'            => ( isset( $output['prefix'] ) ) ? $output['prefix'] : '',
+					'suffix'            => ( isset( $output['suffix'] ) ) ? $output['suffix'] : '',
+					'exclude'           => ( isset( $output['exclude'] ) ) ? $output['exclude'] : false,
 				);
 			}
+
 		}
-		return $js_vars_sanitized;
 
-	}
+		/**
+		 * Sets the $js_vars
+		 *
+		 * @access protected
+		 */
+		protected function set_js_vars() {
 
-	/**
-	 * Sanitizes the control required argument.
-	 *
-	 * @param array the field definition
-	 * @return array|null
-	 */
-	public static function sanitize_required( $field ) {
-
-		$required_sanitized = null;
-		if ( isset( $field['required'] ) && is_array( $field['required'] ) ) {
-			$required_sanitized = array();
-			if ( isset( $field['required']['setting'] ) ) {
-				$field['required'] = array( $field['required'] );
+			if ( ! is_array( $this->js_vars ) ) {
+				$this->js_vars = array();
 			}
-			foreach ( $field['required'] as $required ) {
-				$required_sanitized[] = array(
-					'setting'  => ( isset( $required['setting'] ) ) ? sanitize_text_field( $required['setting'] ) : '',
-					'operator' => ( isset( $required['operator'] ) && in_array( $required['operator'], array( '==', '===', '!=', '!==', '>=', '<=', '>', '<' ) ) ) ? $required['operator'] : '==',
-					'value'    => ( isset( $required['value'] ) ) ? sanitize_text_field( $required['value'] ) : true,
-				);
+
+			/**
+			 * Check if transport is set to auto.
+			 * If not, then skip the auto-calculations and exit early.
+			 */
+			if ( 'auto' != $this->transport ) {
+				return;
 			}
-		}
-		return $required_sanitized;
 
-	}
+			// Set transport to refresh initially.
+			// Serves as a fallback in case we failt to auto-calculate js_vars
+			$this->transport = 'refresh';
+			$js_vars = array();
+			// Try to auto-generate js_vars.
+			// First we need to check if js_vars are empty, and that output is not empty.
+			if ( empty( $this->js_vars ) && ! empty( $this->output ) ) {
+				// start going through each item in the $output array
+				foreach ( $this->output as $output ) {
+					$output['function'] = 'css';
+					// If 'element' or 'property' are not defined, skip this.
+					if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
+						continue;
+					}
+					if ( is_array( $output['element'] ) ) {
+						$output['element'] = implode( ',', $output['element'] );
+					}
+					if ( false !== strpos( $output['element'], ':' ) ) {
+						$output['function'] = 'style';
+					}
+					// If there's a sanitize_callback defined, skip this.
+					if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) ) {
+						continue;
+					}
+					// If we got this far, it's safe to add this.
 
-	/**
-	 * Sanitizes the control priority
-	 *
-	 * @param array the field definition
-	 * @return int
-	 */
-	public static function sanitize_priority( $field ) {
+					$js_vars[] = $output;
+				}
 
-		if ( ! isset( $field['priority'] ) || '0' == absint( intval( $field['priority'] ) ) ) {
-			return 10;
-		}
-		return absint( intval( $field['priority'] ) );
+				// Did we manage to get all the items from 'output'?
+				// If not, then we're missing something so don't add this.
+				if ( count( $js_vars ) != count( $this->output ) ) {
+					return;
+				}
+				$this->js_vars   = $js_vars;
+				$this->transport = 'postMessage';
 
-	}
+			}
 
-	/**
-	 * Sanitizes the control transport.
-	 *
-	 * @param string the control type
-	 * @return string|string[] the function name of a sanitization callback
-	 */
-	public static function fallback_callback( $field_type ) {
-
-		switch ( $field_type ) {
-			case 'checkbox' :
-			case 'toggle' :
-			case 'switch' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
-				break;
-			case 'color' :
-			case 'color-alpha' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
-				break;
-			case 'image' :
-			case 'upload' :
-				$sanitize_callback = 'esc_url_raw';
-				break;
-			case 'radio' :
-			case 'radio-image' :
-			case 'radio-buttonset' :
-			case 'select' :
-			case 'palette' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
-				break;
-			case 'dropdown-pages' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'dropdown_pages' );
-				break;
-			case 'slider' :
-			case 'number' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
-				break;
-			case 'text' :
-			case 'textarea' :
-			case 'editor' :
-				$sanitize_callback = 'esc_textarea';
-				break;
-			case 'multicheck' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'multicheck' );
-				break;
-			case 'sortable' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
-				break;
-			default :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
-				break;
 		}
 
-		return $sanitize_callback;
+		/**
+		 * Sets the $variables
+		 *
+		 * @access protected
+		 */
+		protected function set_variables() {
 
-	}
+			if ( ! is_array( $this->variables ) ) {
+				$this->variables = array();
+			}
 
-	/**
-	 * Sanitizes the defaults array.
-	 * This is used as a callback function in the sanitize_default method.
-	 */
-	public static function sanitize_defaults_array( $value = '', $key = '' ) {
+		}
 
-		$value = esc_textarea( $value );
-		$key   = esc_attr( $key );
+		/**
+		 * This is a fallback method:
+		 * $help has now become $tooltip, so this just migrates the data
+		 *
+		 * @access protected
+		 */
+		protected function set_help() {
+
+			if ( '' != $this->tooltip ) {
+				return;
+			}
+			if ( '' != $this->help ) {
+				$this->tooltip = wp_strip_all_tags( $this->help );
+				// $help has been deprecated
+				$this->help = '';
+				return;
+			}
+
+		}
+
+		/**
+		 * Sets the $transport
+		 *
+		 * @access protected
+		 */
+		protected function set_transport() {
+
+			if ( 'postmessage' == trim( strtolower( $this->transport ) ) ) {
+				$this->transport = 'postMessage';
+			}
+
+		}
+
+		/**
+		 * Sets the $required
+		 *
+		 * @access protected
+		 */
+		protected function set_required() {
+
+			if ( ! is_array( $this->required ) ) {
+				$this->required = array();
+			}
+
+		}
+
+		/**
+		 * Sets the $multiple
+		 *
+		 * @access protected
+		 */
+		protected function set_multiple() {
+
+			$this->multiple = absint( $this->multiple );
+
+		}
+
+		/**
+		 * Sets the $priority
+		 *
+		 * @access protected
+		 */
+		protected function set_priority() {
+
+			$this->priority = absint( $this->priority );
+
+		}
 
 	}
 
