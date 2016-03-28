@@ -8,8 +8,8 @@ class Maera_Updater {
 	private $item_name;
 	private $item_shortname;
 	private $version;
-	private $author  = 'PressCodes Team';
-	private $api_url = 'https://press.codes/';
+	private $author  = 'WPSatchel';
+	private $api_url = 'https://wpsatchel.com/';
 	private $license_status;
 	private $auto;
 
