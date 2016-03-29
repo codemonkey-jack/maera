@@ -1,6 +1,6 @@
 === Maera ===
 
-[Maera](https://press.codes/downloads/maera/) is a developer-friendly theme that allows you to quickly prototype sites and extend it with your own custom plugins.
+[Maera](https://wpsatchel.com/downloads/maera/) is a developer-friendly theme that allows you to quickly prototype sites and extend it with your own custom plugins.
 
 == Instructions ==
 
@@ -25,8 +25,6 @@ Additional plugins may depend on other plugins and in that case you will be noti
 Chrome, Firefox, Safari and IE10+ are supported. IE7, IE8 and IE9 are not supported.
 
 == Changelog ==
-
-More detail on the theme [commit page](https://github.com/presscodes/maera/commits).
 
 = 1.2 =
 
