@@ -19,10 +19,6 @@ class Maera_Admin {
 		add_action( 'admin_menu', array( $this, 'maera_admin_options' ) );
 		add_action( 'after_switch_theme', array( $this, 'activation' ) );
 
-		if ( isset ( $_GET['tab'] ) && 'addons' == $_GET['tab'] ) {
-			wp_safe_redirect( admin_url( 'themes.php?page=maera-ri' ) );
-		}
-
 		add_action('admin_notices', array( $this, 'admin_notice' ) );
 		add_action('admin_init', array( $this, 'nag_ignore' ) );
 
@@ -72,8 +68,6 @@ class Maera_Admin {
 		return apply_filters( 'maera/admin/tabs', array(
 			'general'   => __( 'General', 'maera' ),
 			'settings'  => __( 'Settings', 'maera' ),
-			'licensing' => __( 'Licensing', 'maera' ),
-			'addons'    => __( 'Addons', 'maera' ),
 			'docs'      => __( 'Documentation', 'maera' ),
 		) );
 
@@ -106,8 +100,6 @@ class Maera_Admin {
 
 		$tabs    = $this->tabs();
 		$current = ( isset ( $_GET['tab'] ) ) ? $_GET['tab'] : 'general';
-		$current = ( isset ( $_GET['page'] ) && 'maera-ri' == $_GET['page'] ) ? 'addons' : $current;
-
 
 		// This checks whether the form has just been submitted.
 		if ( ! isset( $_REQUEST['updated'] ) ) {
