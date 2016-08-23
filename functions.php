@@ -22,22 +22,7 @@ spl_autoload_register( 'maera_autoload_classes' );
 require_once( locate_template( '/includes/template-hierarchy.php' ) );
 require_once( locate_template( '/includes/utils.php' ) );
 require_once( locate_template( '/includes/widgets.php' ) );
-
-/**
- * If Kirki is not installed as a plugin include the embedded Version
- */
-if ( ! class_exists( 'Kirki' ) && ! is_admin() ) {
-	define( 'KIRKI_PATH', get_template_directory() . '/includes/plugins/kirki' );
-	define( 'KIRKI_URL', get_template_directory_uri() . '/includes/plugins/kirki' );
-	require_once( get_template_directory() . '/includes/plugins/kirki/kirki.php' );
-}
-
-/**
- * If Timber is not installed as a plugin include the embedded version.
- */
-if ( ! class_exists( 'Timber' ) && ! is_admin() ) {
-	require_once( get_template_directory() . '/includes/plugins/timber-library/timber.php' );
-}
+require_once( locate_template( '/includes/class-maera-timber.php' ) );
 
 /**
  * Dummy function to prevent fatal errors with the Tonesque library

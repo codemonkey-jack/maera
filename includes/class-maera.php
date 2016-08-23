@@ -69,15 +69,20 @@ class Maera {
 
 		return $args;
 
-	}
-
+	}	
+	
 	/**
 	 * Build the array of required plugins.
 	 * You can use the 'maera/required_plugins' filter to add or remove plugins.
 	 */
 	function required_plugins() {
 
-		$plugins = array();
+		$plugins = array(
+			array( 'name' => 'Timber',  'file' => 'timber.php',  'slug' => 'timber-library' ),
+			array( 'name' => 'Jetpack', 'file' => 'jetpack.php', 'slug' => 'jetpack' ),
+			array( 'name' => 'Kirki',   'file' => 'kirki.php',   'slug' => 'kirki' ),
+		);
+
 		if ( current_theme_supports( 'breadcrumbs' ) ) {
 			$plugins[] = array( 'name' => 'Breadcrumb Trail', 'file' => 'breadcrumb-trail.php', 'slug' => 'breadcrumb-trail' );
 		}
