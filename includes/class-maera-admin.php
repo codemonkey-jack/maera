@@ -28,8 +28,14 @@ class Maera_Admin {
 	 * Go to the theme options page after theme activation
 	 */
 	function activation() {
+		if ( current_user_can( 'edit_theme_options' ) ) { 
 		wp_redirect( self_admin_url( 'themes.php?page=theme_options' ) );
 	}
+	else {
+		wp_die( 'Sorry you can\'t do that' );
+	}
+}
+	
 
 	/**
 	 * Register our settings
