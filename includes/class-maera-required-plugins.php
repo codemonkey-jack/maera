@@ -81,37 +81,4 @@ class Maera_Required_Plugins {
 
 	}
 
-	/**
-	 * Automaticaly activate required plugins
-	 */
-	function auto_activate_plugins() {
-
-		foreach ( $this->plugins as $plugin ) {
-			if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin['slug'] . '/' . $plugin['file'] ) ) {
-				activate_plugin( $plugin['slug'] . '/' . $plugin['file'] );
-			}
-		}
-
-	}
-
-	/**
-	 * Automaticaly activate required plugins
-	 */
-	function auto_deactivate_plugins() {
-
-		$required_plugins = array();
-		$ignore_plugins   = array(
-			'jetpack',
-			'breadcrumb-trail'
-		);
-		foreach ( $this->plugins as $plugin ) {
-			if ( ! in_array( $plugin['slug'], $ignore_plugins ) ) {
-				$required_plugins[] = $plugin['slug'] . '/' . $plugin['file'];
-			}
-		}
-
-		deactivate_plugins( $required_plugins );
-
-	}
-
 }
