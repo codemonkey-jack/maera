@@ -10,7 +10,7 @@ class Maera_Shell {
 	function __construct() {
 
 		// Include the Core shell
-		require_once locate_template( '/core-shell/class-Maera_Shell_Core.php' );
+		require_once get_template_directory() . '/core-shell/class-Maera_Shell_Core.php';
 
 		add_filter( 'timber_output', array( $this, 'do_twig_replacements' ) );
 		add_action( 'init', array( $this, 'fallback_shell' ) );

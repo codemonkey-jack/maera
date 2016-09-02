@@ -27,13 +27,13 @@ class Maera_Init {
 		/**
 		 * Load the Extended posts widget
 		 */
-		require_once locate_template( '/includes/widgets/extended-posts/extended-posts.php' );
+		require_once get_template_directory() . '/includes/widgets/extended-posts/extended-posts.php';
 
 
 		/**
 		 * Load the Logo widget
 		 */
-		require_once locate_template( '/includes/widgets/logo/logo.php' );
+		require_once get_template_directory() . '/includes/widgets/logo/logo.php';
 
 	}
 

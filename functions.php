@@ -19,10 +19,10 @@ function maera_autoload_classes( $class_name ) {
 // Run the autoloader
 spl_autoload_register( 'maera_autoload_classes' );
 
-require_once( locate_template( '/includes/template-hierarchy.php' ) );
-require_once( locate_template( '/includes/utils.php' ) );
-require_once( locate_template( '/includes/widgets.php' ) );
-require_once( locate_template( '/includes/class-maera-timber.php' ) );
+require_once( get_template_directory() . '/includes/template-hierarchy.php' );
+require_once( get_template_directory() . '/includes/utils.php' );
+require_once( get_template_directory() . '/includes/widgets.php' );
+require_once( get_template_directory() . '/includes/class-maera-timber.php' );
 
 /**
  * Dummy function to prevent fatal errors with the Tonesque library
