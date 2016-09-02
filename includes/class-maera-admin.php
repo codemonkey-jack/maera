@@ -190,16 +190,6 @@ class Maera_Admin {
 		$display_core_notification  = ( 1 >= count( $available_shells ) ) ? true : false;
 		$display_shell_notification = ( 1 < count( $available_shells ) && 'core' == $settings['shell'] ) ? true : false;
 
-		if ( ! get_user_meta( $user_id, 'maera_core_shell_notification_ignore' ) && $display_core_notification ) : ?>
-			<div class="updated">
-				<p><?php printf(
-					__( 'We have detected that you are using Maera with the <strong>Core shell</strong> active. Did you know there are more shells you can use to extend the Maera Framework? Visit the <a href="%1$s">Addons</a> tab in your theme options to explore more options. | <a href="%2$s">Hide this notice</a>' ),
-					admin_url( 'themes.php?page=maera-ri' ),
-					'?maera_core_shell_notification_ignore=0'
-				); ?></p>
-			</div>
-		<?php endif;
-
 		if ( ! get_user_meta( $user_id, 'maera_multiple_shells_notification_ignore' ) && $display_shell_notification ) : ?>
 			<div class="updated">
 				<p><?php printf(
