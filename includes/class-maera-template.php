@@ -124,13 +124,4 @@ class Maera_Template {
 
 	}
 
-	/**
-	 * Tell WordPress to use searchform.php from the templates/ directory
-	 */
-	function get_search_form( $form ) {
-		$form = '';
-		locate_template( '/searchform.php', true, false );
-		return $form;
-	}
-
 }
