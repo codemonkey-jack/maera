@@ -80,7 +80,6 @@ class Maera {
 		$plugins = array(
 			array( 'name' => 'Timber',  'file' => 'timber.php',  'slug' => 'timber-library' ),
 			array( 'name' => 'Jetpack', 'file' => 'jetpack.php', 'slug' => 'jetpack' ),
-			array( 'name' => 'Kirki',   'file' => 'kirki.php',   'slug' => 'kirki' ),
 		);
 
 		if ( current_theme_supports( 'breadcrumbs' ) ) {
