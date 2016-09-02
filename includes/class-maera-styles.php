@@ -77,9 +77,6 @@ class Maera_Styles {
 		wp_register_script( 'fitvids', get_template_directory_uri() . '/assets/js/jquery.fitvids.js',false, null, true  );
 		wp_enqueue_script( 'fitvids' );
 
-		// Enqueue jQuery
-		wp_enqueue_script( 'jquery' );
-
 		// If needed, add the comment-reply script.
 		if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
