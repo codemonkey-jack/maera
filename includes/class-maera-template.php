@@ -3,7 +3,6 @@
 class Maera_Template {
 
 	function __construct() {
-		add_filter( 'get_search_form', array( $this, 'get_search_form' ) );
 	}
 
 	/**
