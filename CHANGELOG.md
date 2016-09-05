@@ -1,3 +1,20 @@
+## 1.4
+
+* Fix searchform.twig causing internal server errors
+* Remove search filter breaking external search plugins
+* Fix use correct function for locating files
+* Fix multiple warnings
+* Modification: No Longer require Kirki for the core framework
+* Remove admin notice about the add-ons tabs that was removed in prior versions
+* Modification: Stop auto-activating plugins
+* Remove un-needed jQuery enqueue
+* Remove Kirki as an embedded plugin
+* Remove Timber as an embedded plugin
+
+## 1.3
+
+* Bug Fixes
+
 ## 1.2
 
 * New: Kirki & Timber plugins as well as some Jetpack classes are now embedded. Installing external plugins is no longer required for the core theme.
