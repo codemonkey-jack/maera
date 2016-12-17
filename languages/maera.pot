@@ -1,0 +1,407 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Maera\n"
+"POT-Creation-Date: 2016-12-17 14:23+0000\n"
+"PO-Revision-Date: 2016-12-17 14:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: archive-download.php:15
+msgid "Downloads"
+msgstr ""
+
+#: edd_templates/widget-cart-checkout.php:2
+msgid "Subtotal:"
+msgstr ""
+
+#: edd_templates/widget-cart-checkout.php:3
+msgid "Checkout"
+msgstr ""
+
+#: edd_templates/widget-cart-item.php:4
+msgid "remove"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:16 includes/class-maera-admin.php:182
+#: includes/class-maera-core-customizer.php:100
+msgid "No Caching"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:17 includes/class-maera-admin.php:183
+#: includes/class-maera-core-customizer.php:101
+msgid "WP Object Caching"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:18 includes/class-maera-admin.php:184
+#: includes/class-maera-core-customizer.php:102
+msgid "Transients"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:19 includes/class-maera-admin.php:185
+#: includes/class-maera-core-customizer.php:103
+msgid "Default"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:37
+msgid "Select a Shell"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:39
+msgid ""
+"You can select the shell that you want to activate here. Please note that "
+"when changing shells all your settings are lost so you should keep a backup "
+"of them."
+msgstr ""
+
+#: includes/admin/tabs/settings.php:50
+msgid "Development Mode & Caching"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:52
+msgid "Development Mode"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:54
+msgid ""
+"Enable development mode. Please keep in mind that the actual implementation "
+"of the dev mode depends on the shell you have chosen"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:55
+msgid "Caching (minutes)"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:57
+msgid ""
+"Set the time (in minutes) you want your pages cached. CAUTION: If you have "
+"any context dependent sub-views (eg. current user), this mode won't do. In "
+"that case, set this to 0."
+msgstr ""
+
+#: includes/admin/tabs/settings.php:60
+msgid "Choose a caching mode for your theme templates"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:69
+msgid "Export/Import customizer options"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:71
+msgid "Export Customizer options"
+msgstr ""
+
+#: includes/admin/tabs/settings.php:90
+msgid ""
+"Import Customizer options. If you want to reset the customizer, you will "
+"have to simply enter RESET in the import field (all capitals)."
+msgstr ""
+
+#: includes/class-maera-admin.php:75
+msgid "General"
+msgstr ""
+
+#: includes/class-maera-admin.php:76
+msgid "Settings"
+msgstr ""
+
+#: includes/class-maera-admin.php:77
+msgid "Documentation"
+msgstr ""
+
+#: includes/class-maera-admin.php:117
+msgid "Options saved"
+msgstr ""
+
+#: includes/class-maera-admin.php:196
+#, php-format
+msgid ""
+"We have detected that you are have installed a Maera Shell but still have "
+"the Core shell active. Please visit the <a href=\"%1$s\">Settings</a> tab in "
+"your theme options to activate your new shell. | <a href=\"%2$s\">Hide this "
+"notice</a>"
+msgstr ""
+
+#: includes/class-maera-core-customizer.php:21
+msgid "Maera Options"
+msgstr ""
+
+#: includes/class-maera-core-customizer.php:78
+msgid "Shell"
+msgstr ""
+
+#: includes/class-maera-core-customizer.php:81
+msgid ""
+"You can change the active shell here. Please note that the changes will not "
+"take effect immediately. You will have to save and your selection and then "
+"refresh this page. All current options will be lost, so we advise you to "
+"first export them from the \"Theme Options\" page on your dashboard."
+msgstr ""
+
+#: includes/class-maera-core-customizer.php:87
+msgid "Enable Development Mode"
+msgstr ""
+
+#: includes/class-maera-core-customizer.php:94
+msgid "Cache mode."
+msgstr ""
+
+#: includes/class-maera-core-customizer.php:108
+msgid "Reset"
+msgstr ""
+
+#: includes/class-maera-core-customizer.php:110
+msgid "Please enter RESET to reset the theme mods."
+msgstr ""
+
+#: includes/class-maera-cwa.php:65
+msgid "Custom Widget Areas"
+msgstr ""
+
+#: includes/class-maera-cwa.php:85
+#, php-format
+msgid "Number of widget areas in %s"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:24
+msgid "Easy Digital Downloads"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:41
+msgid "Button color"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:42
+msgid "Select the button color for the purchase/buynow button."
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:42
+#: includes/class-maera-edd-customizer.php:88
+msgid ""
+"Please note that this change will be applied after you save the options and "
+"refresh (no live-preview available)."
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:47
+msgid "White"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:48
+msgid "Gray"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:49
+msgid "Blue"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:50
+msgid "Red"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:51
+msgid "Green"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:52
+msgid "Yellow"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:53
+msgid "Orange"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:54
+msgid "Dark Gray"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:62
+msgid "Hover Type"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:63
+msgid "Select the hover type for the grid display."
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:68
+msgid "EDD style"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:69
+msgid "Zoe"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:77
+msgid "Replace variables radio select with a dropdown"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:87
+msgid "Downloads filter mode"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:93
+msgid "Isotope"
+msgstr ""
+
+#: includes/class-maera-edd-customizer.php:94
+msgid "PHP"
+msgstr ""
+
+#: includes/class-maera-init.php:70
+msgid "Primary Navigation"
+msgstr ""
+
+#: includes/class-maera-template.php:88
+msgid "Search results for "
+msgstr ""
+
+#: includes/class-maera-timber.php:45
+msgid "Reply"
+msgstr ""
+
+#: includes/required-error.php:20
+msgid ""
+"This theme requires some plugins to be installed on your site. Please visit "
+"your dashboard and install those before proceeding any further."
+msgstr ""
+
+#: includes/widgets.php:14
+msgid "Primary Sidebar"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:22
+msgid "maera_latest_posts"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:34
+msgid "Maera Latest Posts"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:146
+msgid "Read More"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:152
+msgid "Title:"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:157
+msgid "Post Type:"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:174
+msgid "Taxonomy:"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:188
+msgid "Term:"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:192
+msgid "Any Term"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:212
+msgid "Number of Posts to display"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:217
+msgid "Offset"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:222
+msgid "Post Title Size:"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:225
+msgid "Large (H3)"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:228
+msgid "Normal (H4)"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:231
+msgid "Small (H5)"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:236
+msgid "Excerpt Length"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:241
+msgid "Read More text:"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:248
+msgid "Display thumbs"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:257
+msgid "Float Tumbnails Left"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:262
+msgid "Thumbnail Width"
+msgstr ""
+
+#: includes/widgets/extended-posts/class-Maera_Ext_Posts_Widget_Latest_Articles.php:267
+msgid "Thumbnail Height"
+msgstr ""
+
+#: includes/widgets/logo/includes/class-Maera_Logo_Widget.php:23
+msgid "Maera Logo"
+msgstr ""
+
+#: includes/widgets/logo/includes/class-Maera_Logo_Widget.php:24
+msgid "Maera logo widget."
+msgstr ""
+
+#: includes/widgets/logo/includes/class-Maera_Logo_Widget.php:36
+msgid "This widget has no options to set"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variable.php:27
+msgid "Choose an option"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variable.php:62
+msgid "Clear selection"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variable.php:93
+msgid "This product is currently out of stock and unavailable."
+msgstr ""
+
+#: woocommerce/single-product/up-sells.php:43
+msgid "You may also like&hellip;"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Maera"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://wpsatchel.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Advanced WordPress theme based on Bootstrap."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPSatchel"
+msgstr ""
