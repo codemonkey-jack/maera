@@ -15,6 +15,6 @@
 	{% endfor %}
 
 	{% if pagination.next %}
-		<li><a href="{{ pagination.next.link |e('esc_url') }}" class="button next {{ pagination.next.link|length ? '' : 'invisible' }}">&#187;</a></li>
+		<li><a href="{{ pagination.next.link |e('esc_url') }}" class="button next {{ pagination.next.link|e('esc_url' |length ? '' : 'invisible' }}">&#187;</a></li>
 	{% endif %}
 </ul>
