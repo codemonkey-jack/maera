@@ -1,0 +1,108 @@
+{% if function('current_user_can', 'edit_topic_tags') %}
+
+	<div id="edit-topic-tag-{{ function('bbp_topic_tag_id') }}" class="bbp-topic-tag-form">
+
+		<fieldset class="bbp-form" id="bbp-edit-topic-tag">
+
+			<legend>{{ __('Manage Tag: "%s"', 'bbpress')|format(function('bbp_get_topic_tag_name')) }}</legend>
+
+			<fieldset class="bbp-form" id="tag-rename">
+
+				<legend>{{ __('Rename', 'bbpress') }}</legend>
+
+				<div class="bbp-template-notice info">
+					<p>{{ __('Leave the slug empty to have one automatically generated.', 'bbpress') }}</p>
+				</div>
+
+				<div class="bbp-template-notice">
+					<p>{{ __('Changing the slug affects its permalink. Any links to the old slug will stop working.', 'bbpress') }}</p>
+				</div>
+
+				<form id="rename_tag" name="rename_tag" method="post" action="{{ function('the_permalink') }}">
+
+					<div>
+						<label for="tag-name">{{ __('Name:', 'bbpress') }}</label>
+						<input type="text" id="tag-name" name="tag-name" size="20" maxlength="40" tabindex="{{ function('bbp_tab_index') }}" value="{{ __( function('bbp_get_topic_tag_name'), 'bbpress')|e('html_attr') }}" />
+					</div>
+
+					<div>
+						<label for="tag-slug">{{ __('Slug:', 'bbpress') }}</label>
+						<input type="text" id="tag-slug" name="tag-slug" size="20" maxlength="40" tabindex="{{ function('bbp_tab_index') }}" value="{{ __( apply_filters('editable_slug', function('bbp_get_topic_tag_slug'))|e('html_attr')) }}" />
+					</div>
+
+					<div class="bbp-submit-wrapper">
+						<button type="submit" tabindex="{{ function('bbp_tab_index') }}" class="button submit">{{ __('Update', 'bbpress')|e('html_attr') }}</button>
+
+						<input type="hidden" name="tag-id" value="{{ function('bbp_topic_tag_id') }}" />
+						<input type="hidden" name="action" value="bbp-update-topic-tag" />
+
+						{{ function( "wp_nonce_field", "update-tag_#{ function( 'bbp_get_topic_tag_id' ) }" ) }}
+
+					</div>
+				</form>
+
+			</fieldset>
+
+			<fieldset class="bbp-form" id="tag-merge">
+
+				<legend>{{ __('Merge', 'bbpress') }}</legend>
+
+				<div class="bbp-template-notice">
+					<p>{{ __('Merging tags together cannot be undone.', 'bbpress') }}</p>
+				</div>
+
+				<form id="merge_tag" name="merge_tag" method="post" action="{{ function('the_permalink') }}">
+
+					<div>
+						<label for="tag-existing-name">{{ __('Existing tag:', 'bbpress') }}</label>
+						<input type="text" id="tag-existing-name" name="tag-existing-name" size="22" tabindex="{{ function('bbp_tab_index') }}" maxlength="40" />
+					</div>
+
+					<div class="bbp-submit-wrapper">
+						<button type="submit" tabindex="{{ function('bbp_tab_index') }}" class="button submit" onclick="return confirm('{{ __('Are you sure you want to merge the "%s" tag into the tag you specified?', 'bbpress')|format(function('bbp_get_topic_tag_name'))|e('js') }}');">{{ __('Merge', 'bbpress')|e('html_attr') }}</button>
+
+						<input type="hidden" name="tag-id" value="{{ function('bbp_topic_tag_id') }}" />
+						<input type="hidden" name="action" value="bbp-merge-topic-tag" />
+
+						{{ function( "wp_nonce_field", "merge-tag_#{ function( 'bbp_get_topic_tag_id' ) }" ) }}
+
+					</div>
+				</form>
+
+			</fieldset>
+
+			{% if function('current_user_can', 'delete_topic_tags') %}
+
+				<fieldset class="bbp-form" id="delete-tag">
+
+					<legend>{{ __('Delete', 'bbpress') }}</legend>
+
+					<div class="bbp-template-notice info">
+						<p>{{ __('This does not delete your topics. Only the tag itself is deleted.', 'bbpress') }}</p>
+					</div>
+					<div class="bbp-template-notice">
+						<p>{{ __('Deleting a tag cannot be undone.', 'bbpress') }}</p>
+						<p>{{ __('Any links to this tag will no longer function.', 'bbpress') }}</p>
+					</div>
+
+					<form id="delete_tag" name="delete_tag" method="post" action="{{ function('the_permalink') }}">
+
+						<div class="bbp-submit-wrapper">
+							<button type="submit" tabindex="{{ function('bbp_tab_index') }}" class="button submit" onclick="return confirm('{{ __('Are you sure you want to delete the "%s" tag? This is permanent and cannot be undone.', 'bbpress')|format(function('bbp_get_topic_tag_name'))|e('js') }}');">{{ __('Delete', 'bbpress')|e('html_attr') }}</button>
+
+							<input type="hidden" name="tag-id" value="{{ function('bbp_topic_tag_id') }}" />
+							<input type="hidden" name="action" value="bbp-delete-topic-tag" />
+
+							{{ function( "wp_nonce_field", "delete-tag_#{ function( 'bbp_get_topic_tag_id' ) }" ) }}
+
+						</div>
+					</form>
+
+				</fieldset>
+
+			{% endif %}
+
+		</fieldset>
+	</div>
+
+{% endif %}

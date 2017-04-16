@@ -1,0 +1,23 @@
+<div id="bbpress-forums">
+
+	{{ function('bbp_breadcrumb') }}
+
+	{{ function('bbp_set_query_name', function('bbp_get_view_rewrite_id')) }}
+
+	{% if function('bbp_view_query') %}
+
+		{% include 'bbpress/pagination-topics.twig' %}
+
+		{% include 'bbpress/loop-topics.twig' %}
+
+		{% include 'bbpress/pagination-topics.twig' %}
+
+	{% elseif %}
+
+		{% include 'bbpress/feedback-no-topics.twig' %}
+
+	{% endif %}
+
+	{{ function('bbp_reset_query_name') }}
+
+</div>

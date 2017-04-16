@@ -1,0 +1,41 @@
+{% do action('bbp_template_before_search_results_loop') %}
+
+<ul id="bbp-search-results" class="forums bbp-search-results">
+
+	<li class="bbp-header">
+
+		<div class="bbp-search-author">{{ __('Author', 'bbpress') }}</div><!-- .bbp-reply-author -->
+
+		<div class="bbp-search-content">
+
+			{{ __('Search Results', 'bbpress') }}
+
+		</div><!-- .bbp-search-content -->
+
+	</li><!-- .bbp-header -->
+
+	<li class="bbp-body">
+		{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
+		<?php while ( bbp_search_results() ) : bbp_the_search_result(); ?><!--Original Loop Begin-->
+
+			{% include 'bbpress/loop-search-'~post.post_type~'.twig' %}
+
+		<?php endwhile; ?><!--Original Loop End-->
+		{% endfor %}
+	</li><!-- .bbp-body -->
+
+	<li class="bbp-footer">
+
+		<div class="bbp-search-author">{{ __('Author', 'bbpress') }}</div>
+
+		<div class="bbp-search-content">
+
+			{{ __('Search Results', 'bbpress') }}
+
+		</div><!-- .bbp-search-content -->
+
+	</li><!-- .bbp-footer -->
+
+</ul><!-- #bbp-search-results -->
+
+{% do action('bbp_template_after_search_results_loop') %}

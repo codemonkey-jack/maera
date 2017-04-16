@@ -1,0 +1,21 @@
+<div id="bbpress-forums">
+
+	{{ function('bbp_breadcrumb') }}
+
+	{{ function('bbp_set_query_name','bbp_get_search_rewrite_id') }}
+
+	{% do action('bbp_template_before_search') %}
+
+	{% if function('bbp_has_search_results') %}
+		{% include 'bbpress/pagination-search.twig' %}
+		{% include 'bbpress/loop-search.twig' %}
+		{% include 'bbpress/pagination-search.twig' %}
+	{% elseif function('bbp_get_search_terms') %}
+		{% include 'bbpress/feedback-no-search.twig' %}
+	{% else %}
+		{% include 'bbpress/form-search.twig' %}
+	{% endif %}
+
+	{% do action('bbp_template_after_search_results') %}
+
+</div>

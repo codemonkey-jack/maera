@@ -1,0 +1,22 @@
+<form method="post" action="{{ function('bbp_wp_login_action', [{'action':'lostpassword')}, {'context':'login_post'}]) }}" class="bbp-login-form">
+	<fieldset class="bbp-form">
+		<legend>{{ __('Lost Password', 'bbpress') }}</legend>
+
+		<div class="bbp-username">
+			<p>
+				<label for="user_login" class="hide">{{ __('Username or Email', 'bbpress') }}: </label>
+				<input type="text" name="user_login" value="" size="20" id="user_login" tabindex="{{ function('bbp_tab_index') }}" />
+			</p>
+		</div>
+
+		{% do action('login_form','resetpass') %}
+
+		<div class="bbp-submit-wrapper">
+
+			<button type="submit" tabindex="{{ function('bbp_tab_index') }}" name="user-submit" class="button submit user-submit">{{ __('Reset My Password', 'bbpress') }}</button>
+
+			{{ function('bbp_user_lost_pass_fields') }}
+
+		</div>
+	</fieldset>
+</form>

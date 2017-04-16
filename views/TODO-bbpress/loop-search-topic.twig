@@ -1,0 +1,72 @@
+<div class="bbp-topic-header">
+
+	<div class="bbp-meta">
+
+		<span class="bbp-topic-post-date">{{ function('bbp_topic_post_date',function('bbp_get_topic_id') ) }}</span>
+
+		<a href="{{ function('bbp_topic_permalink') }}" class="bbp-topic-permalink">#{{ function('bbp_topic_id') }}</a>
+
+	</div><!-- .bbp-meta -->
+
+	<div class="bbp-topic-title">
+
+		{% do action('bbp_theme_before_topic_title') %}
+
+		<h3>{{ __('Topic:', 'bbpress') }}
+		<a href="{{ function('bbp_topic_permalink') }}">{{ function('bbp_topic_title') }}</a></h3>
+
+		<div class="bbp-topic-title-meta">
+
+			{% if function('function_exists', 'bbp_is_forum_group_forum') and function('bbp_is_forum_group_forum', function('bbp_get_topic_forum_id')) %}
+
+				{{ __('in group forum ', 'bbpress') }}
+
+			{% else %}
+
+				{{ __('in forum ', 'bbpress') }}
+
+			{% endif %}
+
+			<a href="{{ function('bbp_forum_permalink',function('bbp_get_topic_forum_id')) }}">{{ function('bbp_forum_title',function('bbp_get_topic_forum_id')) }}</a>
+
+		</div><!-- .bbp-topic-title-meta -->
+
+		{% do action('bbp_theme_after_topic_title') %}
+
+	</div><!-- .bbp-topic-title -->
+
+</div><!-- .bbp-topic-header -->
+
+<div id="post-{{ function('bbp_topic_id') }}" {{ function('bbp_topic_class') }}>
+
+	<div class="bbp-topic-author">
+
+		{% do action('bbp_theme_before_topic_author_details') %}
+
+		{{ function('bbp_topic_author_link', [{'sep':'<br />'}, {'show_role':true}]) }}
+
+		{% if function('bbp_is_user_keymaster') %}
+
+			{% do action('bbp_theme_before_topic_author_admin_details') %}
+
+			<div class="bbp-reply-ip">{{ function('bbp_author_ip',function('bbp_get_topic_id')) }}</div>
+
+			{% do action('bbp_theme_after_topic_author_admin_details') %}
+
+		{% endif %}
+
+		{% do action('bbp_theme_after_topic_author_details') %}
+
+	</div><!-- .bbp-topic-author -->
+
+	<div class="bbp-topic-content">
+
+		{% do action('bbp_theme_before_topic_content') %}
+
+		{{ function('bbp_topic_content') }}
+
+		{% do action('bbp_theme_after_topic_content') %}
+
+	</div><!-- .bbp-topic-content -->
+
+</div><!-- #post-{{ function('bbp_topic_id') }} -->

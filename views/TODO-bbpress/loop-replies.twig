@@ -1,0 +1,69 @@
+{% do action('bbp_template_before_replies_loop') %}
+<ul id="topic-{{ function('bbp_topic_id') }}-replies" class="forums bbp-replies">
+
+	<li class="bbp-header">
+
+		<div class="bbp-reply-author">{{ __('Author', 'bbpress') }}</div><!-- .bbp-reply-author -->
+
+		<div class="bbp-reply-content">
+
+			{% if function('bbp_show_lead_topic') < 1 %}
+
+				{{ __('Posts', 'bbpress') }}
+
+				{{ function('bbp_topic_subscription_link') }}
+
+				{{ function('bbp_user_favorites_link') }}
+
+			{% else %}
+
+				{{ __('Replies', 'bbpress') }}
+
+			{% endif %}
+
+		</div><!-- .bbp-reply-content -->
+
+	</li><!-- .bbp-header -->
+
+	<li class="bbp-body">
+
+		{% if function('bbp_thread_replies') %}
+
+			{{ function('bbp_list_replies') }}
+
+		{% else %}
+
+			{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
+			<?php while ( bbp_replies() ) : bbp_the_reply(); ?><!--Original Loop Begin-->
+				{% include 'bbpress/loop-single-reply.twig' %}
+
+			<?php endwhile; ?><!--Original Loop End-->
+			{% endfor %}
+
+		{% endif %}
+
+	</li><!-- .bbp-body -->
+
+	<li class="bbp-footer">
+
+		<div class="bbp-reply-author">{{ __('Author', 'bbpress') }}</div>
+
+		<div class="bbp-reply-content">
+
+			{% if function('bbp_show_lead_topic') < 1 %}
+
+				{{ __('Posts', 'bbpress') }}
+
+			{% else %}
+
+				{{ __('Replies', 'bbpress') }}
+
+			{% endif %}
+
+		</div><!-- .bbp-reply-content -->
+
+	</li><!-- .bbp-footer -->
+
+</ul><!-- #topic-{{ function('bbp_topic_id') }}-replies -->
+
+{% do action('bbp_template_after_replies_loop') %}

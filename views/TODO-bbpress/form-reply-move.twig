@@ -1,0 +1,71 @@
+<div id="bbpress-forums">
+
+	{{ function('bbp_breadcrumb') }}
+
+	{% if function('is_user_logged_in') and function('current_user_can', 'edit_topic',function('bbp_get_topic_id')) %}
+
+		<div id="move-reply-{{ function('bbp_topic_id') }}" class="bbp-reply-move">
+
+			<form id="move_reply" name="move_reply" method="post" action="{{ function('the_permalink') }}">
+
+				<fieldset class="bbp-form">
+
+					<legend>{{ __('Move reply "%s"', 'bbpress')|format(function('bbp_get_reply_title')) }}</legend>
+
+					<div>
+
+						<div class="bbp-template-notice info">
+							<p>{{ __('You can either make this reply a new topic with a new title, or merge it into an existing topic.', 'bbpress') }}</p>
+						</div>
+
+						<div class="bbp-template-notice">
+							<p>{{ __('If you choose an existing topic, replies will be ordered by the time and date they were created.', 'bbpress') }}</p>
+						</div>
+
+						<fieldset class="bbp-form">
+							<legend>{{ __('Move Method', 'bbpress') }}</legend>
+
+							<div>
+								<input name="bbp_reply_move_option" id="bbp_reply_move_option_reply" type="radio" checked="checked" value="topic" tabindex="{{ function('bbp_tab_index') }}" />
+								<label for="bbp_reply_move_option_reply">{{ __('New topic in <strong>%s</strong> titled:', 'bbpress')|format(function('bbp_get_forum_title', function('bbp_get_reply_forum_id', function('bbp_get_reply_id')) )) }}</label>
+								<input type="text" id="bbp_reply_move_destination_title" value="{{ __('Moved: %s', 'bbpress')|format(function('bbp_get_reply_title')) }}" tabindex="{{ function('bbp_tab_index') }}" size="35" name="bbp_reply_move_destination_title" />
+							</div>
+
+							{% if function('bbp_has_topics', [ {'show_stickies':false, 'post_parent':function('bbp_get_reply_forum_id',function('bbp_get_reply_id')),'post__not_in': function('bbp_get_reply_topic_id',function('bbp_get_reply_id'))}]) %}
+
+								<div>
+									<input name="bbp_reply_move_option" id="bbp_reply_move_option_existing" type="radio" value="existing" tabindex="{{ function('bbp_tab_index') }}" />
+									<label for="bbp_reply_move_option_existing">{{ __('Use an existing topic in this forum:', 'bbpress') }}</label>
+
+									{{ function('bbp_dropdown', [{'post_type':function('bbp_get_topic_post_type')}, {'post_parent':function('bbp_get_reply_forum_id', function('bbp_get_reply_id'))}, {'selected':'-1'}, {'exclude':function('bbp_get_reply_topic_id', function('bbp_get_reply_id'))}, {'select_id':'bbp_destination_topic'} ]) }}
+
+								</div>
+
+							{% endif %}
+
+						</fieldset>
+
+						<div class="bbp-template-notice error">
+							<p>{{ __('<strong>WARNING:</strong> This process cannot be undone.', 'bbpress') }}</p>
+						</div>
+
+						<div class="bbp-submit-wrapper">
+							<button type="submit" tabindex="{{ function('bbp_tab_index') }}" id="bbp_move_reply_submit" name="bbp_move_reply_submit" class="button submit">{{ __('Submit', 'bbpress') }}</button>
+						</div>
+					</div>
+
+					{{ function('bbp_move_reply_form_fields') }}
+
+				</fieldset>
+			</form>
+		</div>
+
+	{% else %}
+
+		<div id="no-reply-{{ function('bbp_reply_id') }}" class="bbp-no-reply">
+			<div class="entry-content">{{ function('is_user_logged_in') ? __('You do not have the permissions to edit this reply!', 'bbpress') : __('You cannot edit this reply.', 'bbpress') }}</div>
+		</div>
+
+	{% endif %}
+
+</div>

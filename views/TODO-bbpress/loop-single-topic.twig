@@ -1,0 +1,95 @@
+<ul id="bbp-topic-{{ function('bbp_topic_id') }}" {{ function('bbp_topic_class') }}>
+
+	<li class="bbp-topic-title">
+
+		{% if function('bbp_is_user_home') %}
+
+			{% if function('bbp_is_favorites') %}
+
+				<span class="bbp-row-actions">
+
+					{% do action('bbp_theme_before_topic_favorites_action') %}
+
+					{{ function('bbp_topic_favorite_link', [{'before':''}, {'favorite':'+'}, {'favorited':'&times;'}]) }}
+
+					{% do action('bbp_theme_after_topic_favorites_action') %}
+
+				</span>
+
+			{% elseif function('bbp_is_subscriptions') %}
+
+				<span class="bbp-row-actions">
+
+					{% do action('bbp_theme_before_topic_subscription_action') %}
+
+					{{ function('bbp_topic_subscription_link', [{'before':''}, {'subscribe':'+'}, {'unsubscribe':'&times;'}]) }}
+
+					{% do action('bbp_theme_after_topic_subscription_action') %}
+
+				</span>
+
+			{% endif %}
+
+		{% endif %}
+
+		{% do action('bbp_theme_before_topic_title') %}
+
+		<a class="bbp-topic-permalink" href="{{ function('bbp_topic_permalink') }}">{{ function('bbp_topic_title') }}</a>
+
+		{% do action('bbp_theme_after_topic_title') %}
+
+		{{ function('bbp_topic_pagination') }}
+
+		{% do action('bbp_theme_before_topic_meta') %}
+
+		<p class="bbp-topic-meta">
+
+			{% do action('bbp_theme_before_topic_started_by') %}
+
+			<span class="bbp-topic-started-by">{{ __('Started by: %1$s', 'bbpress')|format(function('bbp_get_topic_author_link', [{'size':'14'}])) }}</span>
+
+			{% do action('bbp_theme_after_topic_started_by') %}
+
+
+			{% if function('bbp_is_single_forum') == false or function('bbp_get_topic_forum_id') != function('bbp_get_forum_id') %}
+
+				{% do action('bbp_theme_before_topic_started_in') %}
+
+				<span class="bbp-topic-started-in">{{ __('in: <a href="%1$s">%2$s</a>', 'bbpress')|format(function('bbp_get_forum_permalink',function('bbp_get_topic_forum_id')),function('bbp_get_forum_title',function('bbp_get_topic_forum_id'))) }}</span>
+
+				{% do action('bbp_theme_after_topic_started_in') %}
+
+			{% endif %}
+
+		</p>
+
+		{% do action('bbp_theme_after_topic_meta') %}
+
+		{{ function('bbp_topic_row_actions') }}
+
+	</li>
+
+	<li class="bbp-topic-voice-count">{{ function('bbp_topic_voice_count') }}</li>
+
+	<li class="bbp-topic-reply-count">{{ function('bbp_show_lead_topic') ? function('bbp_topic_reply_count') : function('bbp_topic_post_count') }}</li>
+
+	<li class="bbp-topic-freshness">
+
+		{% do action('bbp_theme_before_topic_freshness_link') %}
+
+		{{ function('bbp_topic_freshness_link') }}
+
+		{% do action('bbp_theme_after_topic_freshness_link') %}
+
+		<p class="bbp-topic-meta">
+
+			{% do action('bbp_theme_before_topic_freshness_author') %}
+
+			<span class="bbp-topic-freshness-author">{{ function('bbp_author_link', [{'post_id':function('bbp_get_topic_last_active_id')}, {'size':'14'}]) }}</span>
+
+			{% do action('bbp_theme_after_topic_freshness_author') %}
+
+		</p>
+	</li>
+
+</ul><!-- #bbp-topic-{{ function('bbp_topic_id') }} -->

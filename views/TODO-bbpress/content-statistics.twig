@@ -1,0 +1,65 @@
+{% set stats = function('bbp_get_statistics') %}
+
+<dl role="main">
+
+	{% do action('bbp_before_statistics') %}
+
+	<dt>{{ __('Registered Users', 'bbpress') }}</dt>
+	<dd>
+		<strong>{{- stats.user_count -}}</strong>
+	</dd>
+
+	<dt>{{ __('Forums', 'bbpress') }}</dt>
+	<dd>
+		<strong>{{- stats.forum_count -}}</strong>
+	</dd>
+
+	<dt>{{ __('Topics', 'bbpress') }}</dt>
+	<dd>
+		<strong>{{- stats.topic_count -}}</strong>
+	</dd>
+
+	<dt>{{ __('Replies', 'bbpress') }}</dt>
+	<dd>
+		<strong>{{- stats.reply_count -}}</strong>
+	</dd>
+
+	<dt>{{ __('Topic Tags', 'bbpress') }}</dt>
+	<dd>
+		<strong>{{- stats.tag_count -}}</strong>
+	</dd>
+
+	{% if stats.empty_topic_tag_count > 1 %}
+
+		<dt>{{ __('Empty Topic Tags', 'bbpress') }}</dt>
+		<dd>
+			<strong>{{- stats.empty_topic_tag_count -}}</strong>
+		</dd>
+
+	{% endif %}
+
+	{% if stats.topic_count_hidden > 1 %}
+
+		<dt>{{ __('Hidden Topics', 'bbpress') }}</dt>
+		<dd>
+			<strong>
+				<abbr title="{{- stats.hidden_topic_title -}}">{{- stats.hidden_topic_title -}}</abbr>
+			</strong>
+		</dd>
+
+	{% endif %}
+
+	{% if stats.reply_count_hidden > 1 %}
+
+		<dt>{{ __('Hidden', 'bbpress') }}</dt>
+		<dd>
+			<strong>
+				<abbr title="{{- stats.hidden_reply_title -}}">{{- stats.hidden_reply_title -}}</abbr>
+			</strong>
+		</dd>
+
+	{% endif %}
+
+	{% do action('bbp_after_statistics') %}
+
+</dl>

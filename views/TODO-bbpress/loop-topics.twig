@@ -1,0 +1,39 @@
+{% do action('bbp_template_before_topics_loop') %}
+
+<ul id="bbp-forum-{{ function('bbp_forum_id') }}" class="bbp-topics">
+
+	<li class="bbp-header">
+
+		<ul class="forum-titles">
+			<li class="bbp-topic-title">{{ __('Topic', 'bbpress') }}</li>
+			<li class="bbp-topic-voice-count">{{ __('Voices', 'bbpress') }}</li>
+			<li class="bbp-topic-reply-count">{{ function('bbp_show_lead_topic') ? __('Replies', 'bbpress') : __('Posts', 'bbpress') }}</li>
+			<li class="bbp-topic-freshness">{{ __('Freshness', 'bbpress') }}</li>
+		</ul>
+
+	</li>
+
+	<li class="bbp-body">
+		{% for post in posts %} {#  This loop is incorrect and needs a workaround. #}
+		<?php while ( bbp_topics() ) : bbp_the_topic(); ?><!--Original Loop Begin-->
+
+			{% include 'bbpress/loop-single-topic'.twig' %}
+
+		<?php endwhile; ?><!--Original Loop End-->
+		{% endfor %}
+
+	</li>
+
+	<li class="bbp-footer">
+
+		<div class="tr">
+			<p>
+				<span class="td colspan{{ __( function('bbp_is_user_home') and function('bbp_is_favorites') or function('bbp_is_subscriptions') ? '5' : '4') }}">&nbsp;</span>
+			</p>
+		</div><!-- .tr -->
+
+	</li>
+
+</ul><!-- #bbp-forum-{{ function('bbp_forum_id') }} -->
+
+{% do action('bbp_template_after_topics_loop') %}

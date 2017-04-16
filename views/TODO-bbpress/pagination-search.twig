@@ -1,0 +1,17 @@
+{% do action('bbp_template_before_pagination_loop') %}
+
+<div class="bbp-pagination">
+	<div class="bbp-pagination-count">
+
+		{{ function('bbp_search_pagination_count') }}
+
+	</div>
+
+	<div class="bbp-pagination-links">
+
+		{{ function('bbp_search_pagination_links') }}
+
+	</div>
+</div>
+
+{% do action('bbp_template_after_pagination_loop') %}

@@ -1,0 +1,47 @@
+	{% do action('bbp_template_before_user_subscriptions') %}
+
+	{% if function('bbp_is_subscriptions_active') %}
+
+		{% if function('bbp_is_user_home') or function('edit_users')%}
+
+			<div id="bbp-user-subscriptions" class="bbp-user-subscriptions">
+				<h2 class="entry-title">{{ __('Subscribed Forums', 'bbpress') }}</h2>
+				<div class="bbp-user-section">
+
+					{% if function('bbp_get_user_forum_subscriptions') %}
+
+						{% include 'bbpress/loop-forums.twig' %}
+
+					{% else %}
+
+						<p>{{ function('bbp_is_user_home') ? __('You are not currently subscribed to any forums.', 'bbpress') : __('This user is not currently subscribed to any forums.') }}</p>
+
+					{% endif %}
+
+				</div>
+
+				<h2 class="entry-title">{{ __('Subscribed Topics', 'bbpress') }}</h2>
+				<div class="bbp-user-section">
+
+					{% if function('bbp_get_user_topic_subscriptions') %}
+
+						{% include 'bbpress/pagination-topics.twig' %}
+
+						{% include 'bbpress/loop-topics.twig' %}
+
+						{% include 'bbpress/pagination-topics.twig' %}
+
+					{% else %}
+
+						<p>{{ function('bbp_is_user_home') ? __('You are not currently subscribed to any topics.', 'bbpress') : __('This user is not currently subscribed to any topics.') }}</p>
+
+					{% endif %}
+
+				</div>
+			</div><!-- #bbp-user-subscriptions -->
+
+		{% endif %}
+
+	{% endif %}
+
+	{% do action('bbp_template_after_user_subscriptions') %}

@@ -1,0 +1,24 @@
+	{% do action('bbp_template_before_user_topics_created') %}
+
+	<div id="bbp-user-topics-started" class="bbp-user-topics-started">
+		<h2 class="entry-title">{{ __('Forum Topics Started', 'bbpress') }}</h2>
+		<div class="bbp-user-section">
+
+			{% if function('bbp_get_user_topics_started') %}
+
+				{% include 'bbpress/pagination-topics.twig' %}
+
+				{% include 'bbpress/loop-topics.twig' %}
+
+				{% include 'bbpress/pagination-topics.twig' %}
+
+			{% else %}
+
+				<p>{{ function('bbp_is_user_home') ? __('You have not created any topics.', 'bbpress') : __('This user has not created any topics.', 'bbpress') }}</p>
+
+			{% endif %}
+
+		</div>
+	</div><!-- #bbp-user-topics-started -->
+
+	{% do action('bbp_template_after_user_topics_created') %}

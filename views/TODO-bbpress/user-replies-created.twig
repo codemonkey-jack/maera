@@ -1,0 +1,24 @@
+	{% do action('bbp_template_before_user_replies') %}
+
+	<div id="bbp-user-replies-created" class="bbp-user-replies-created">
+		<h2 class="entry-title">{{ __('Forum Replies Created', 'bbpress') }}</h2>
+		<div class="bbp-user-section">
+
+			{% if function('bbp_get_user_replies_created') %}
+
+				{% include 'bbpress/pagination-replies.twig' %}
+
+				{% include 'bbpress/loop-replies.twig' %}
+
+				{% include 'bbpress/pagination-replies.twig' %}
+
+			{% else %}
+
+				<p>{{ function('bbp_is_user_home') ? __('You have not replied to any topics.', 'bbpress') : __('This user has not replied to any topics.', 'bbpress') }}</p>
+
+			{% endif %}
+
+		</div>
+	</div><!-- #bbp-user-replies-created -->
+
+	{% do action('bbp_template_after_user_replies') %}

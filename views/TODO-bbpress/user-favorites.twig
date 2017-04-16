@@ -1,0 +1,24 @@
+	{% do action('bbp_template_before_user_favorites') %}
+
+	<div id="bbp-user-favorites" class="bbp-user-favorites">
+		<h2 class="entry-title">{{ __('Favorite Forum Topics', 'bbpress') }}</h2>
+		<div class="bbp-user-section">
+
+			{% if function('bbp_get_user_favorites') %}
+
+				{% include 'bbpress/pagination-topics.twig' %}
+
+				{% include 'bbpress/loop-topics.twig' %}
+
+				{% include 'bbpress/pagination-topics.twig' %}
+
+			{% else %}
+
+				<p>{{ function('bbp_is_user_home') ? __('You currently have no favorite topics.', 'bbpress') : __('This user has no favorite topics.', 'bbpress') }}</p>
+
+			{% endif %}
+
+		</div>
+	</div><!-- #bbp-user-favorites -->
+
+	{% do action('bbp_template_after_user_favorites') %}

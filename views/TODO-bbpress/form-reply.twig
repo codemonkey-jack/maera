@@ -1,0 +1,173 @@
+{% if function('bbp_is_reply_edit') %}
+
+<div id="bbpress-forums">
+
+	{{ function('bbp_breadcrumb') }}
+
+{% endif %}
+
+{% if function('bbp_current_user_can_access_create_reply_form') %}
+
+	<div id="new-reply-{{ function('bbp_topic_id') }}" class="bbp-reply-form">
+
+		<form id="new-post" name="new-post" method="post" action="{{ function('the_permalink') }}">
+
+			{% do action('bbp_theme_before_reply_form') %}
+
+			<fieldset class="bbp-form">
+
+				<legend>{{ __('Reply To: %s', 'bbpress')|format(function('bbp_get_topic_title')) }}</legend>
+
+				{% do action('bbp_theme_before_reply_form_notices') %}
+
+				{% if function('bbp_is_topic_open') == false and function('bbp_is_topic_open') == false %}
+
+					<div class="bbp-template-notice">
+						<p{{ __('This topic is marked as closed to new replies, however your posting capabilities still allow you to do so.', 'bbpress') }}</p>
+					</div>
+
+				{% endif %}
+
+				{% if function('current_user_can', 'unfiltered_html') %}
+
+					<div class="bbp-template-notice">
+						<p>{{ __('Your account has the ability to post unrestricted HTML content.', 'bbpress') }}</p>
+					</div>
+
+				{% endif %}
+
+				{% do action('bbp_template_notices') %}
+
+				<div>
+
+					{% include 'bbpress/form-anonymous.twig' %}
+
+					{% do action('bbp_theme_before_reply_form_content') %}
+
+					{{ function('bbp_the_content', [{'context':'reply'}]) }}
+
+					{% do action('bbp_theme_after_reply_form_content') %}
+
+					{% if function('bbp_use_wp_editor') == false or function('current_user_can', 'unfiltered_html') %}
+
+						<p class="form-allowed-tags">
+							<label>{{ __('You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'bbpress') }}</label><br />
+							<code>{{ function('bbp_allowed_tags') }}</code>
+						</p>
+
+					{% endif %}
+
+					{% if function('bbp_allow_topic_tags') and function('current_user_can', 'assign_topic_tags') %}
+
+						{% do action('bbp_theme_before_reply_form_tags') %}
+
+						<p>
+							<label for="bbp_topic_tags">{{ __('Tags:', 'bbpress') }}</label><br />
+							<input type="text" value="{{ function('bbp_form_topic_tags') }}" tabindex="{{ function('bbp_tab_index') }}" size="40" name="bbp_topic_tags" id="bbp_topic_tags" {{ function('disabled', 'bbp_is_topic_spam') }} />
+						</p>
+
+						{% do action('bbp_theme_after_reply_form_tags') %}
+
+					{% endif %}
+
+					{% if function('bbp_is_subscriptions_active') and function('bbp_is_anonymous') == false and function('bbp_is_anonymous') == false or function('bbp_is_reply_edit') and function('bbp_is_reply_anonymous') == false %}
+
+						{% do action('bbp_theme_before_reply_form_subscription') %}
+
+						<p>
+
+							<input name="bbp_topic_subscription" id="bbp_topic_subscription" type="checkbox" value="bbp_subscribe"{{ function('bbp_form_topic_subscribed') }} tabindex="{{ function('bbp_tab_index') }}" />
+
+							{% if function('bbp_is_reply_edit') and function('bbp_get_reply_author_id') != function('bbp_get_current_user_id') %}
+
+								<label for="bbp_topic_subscription">{{ __('Notify the author of follow-up replies via email', 'bbpress') }}</label>
+
+							{% else %}
+
+								<label for="bbp_topic_subscription">{{ __('Notify me of follow-up replies via email', 'bbpress') }}</label>
+
+							{% endif %}
+
+						</p>
+						{% do action('bbp_theme_after_reply_form_subscription') %}
+
+					{% endif %}
+
+					{% if function('bbp_allow_revisions') and function('bbp_is_reply_edit') %}
+
+						{% do action('bbp_theme_before_reply_form_revisions') %}
+
+						<fieldset class="bbp-form">
+							<legend>
+								<input name="bbp_log_reply_edit" id="bbp_log_reply_edit" type="checkbox" value="1" {{ function('bbp_form_reply_log_edit') }} tabindex="{{ function('bbp_tab_index') }}" />
+								<label for="bbp_log_reply_edit">{{ __('Keep a log of this edit:', 'bbpress') }}</label><br />
+							</legend>
+
+							<div>
+								<label for="bbp_reply_edit_reason">{{ __('Optional reason for editing:', 'bbpress')|format(function('bbp_get_current_user_name')) }}</label><br />
+								<input type="text" value="{{ function('bbp_form_reply_edit_reason') }}" tabindex="{{ function('bbp_tab_index') }}" size="40" name="bbp_reply_edit_reason" id="bbp_reply_edit_reason" />
+							</div>
+						</fieldset>
+
+						{% do action('bbp_theme_after_reply_form_revisions') %}
+
+					{% endif %}
+
+					{% do action('bbp_theme_before_reply_form_submit_wrapper') %}
+
+					<div class="bbp-submit-wrapper">
+
+						{% do action('bbp_theme_before_reply_form_submit_button') %}
+
+						{{ function('bbp_cancel_reply_to_link') }}
+
+						<button type="submit" tabindex="{{ function('bbp_tab_index') }}" id="bbp_reply_submit" name="bbp_reply_submit" class="button submit">{{ __('Submit', 'bbpress') }}</button>
+
+						{% do action('bbp_theme_after_reply_form_submit_button') %}
+
+					</div>
+
+					{% do action('bbp_theme_after_reply_form_submit_wrapper') %}
+
+				</div>
+
+				{{ function('bbp_reply_form_fields') }}
+
+			</fieldset>
+
+			{% do action('bbp_theme_after_reply_form') %}
+
+		</form>
+	</div>
+
+{% elseif function('bbp_is_topic_closed') %}
+
+	<div id="no-reply-{{ function('bbp_topic_id') }}" class="bbp-no-reply">
+		<div class="bbp-template-notice">
+			<p>{{ __('The topic &#8216;%s&#8217; is closed to new replies.', 'bbpress')|format(function('bbp_get_topic_title')) }}</p>
+		</div>
+	</div>
+
+{% elseif function('bbp_is_forum_closed', function('bbp_get_topic_forum_id')) %}
+
+	<div id="no-reply-{{ function('bbp_topic_id') }}" class="bbp-no-reply">
+		<div class="bbp-template-notice">
+			<p>{{ __('The forum &#8216;%s&#8217; is closed to new topics and replies.', 'bbpress')|format(function('bbp_get_forum_title', function('bbp_get_topic_forum_id'))) }}</p>
+		</div>
+	</div>
+
+{% else %}
+
+	<div id="no-reply-{{ function('bbp_topic_id') }}" class="bbp-no-reply">
+		<div class="bbp-template-notice">
+			<p>{{ function('is_user_logged_in') ? __('You cannot reply to this topic.', 'bbpress') : __('You must be logged in to reply to this topic.', 'bbpress') }}</p>
+		</div>
+	</div>
+
+{% endif %}
+
+{% if function('bbp_is_reply_edit') %}
+
+</div>
+
+{% endif %}

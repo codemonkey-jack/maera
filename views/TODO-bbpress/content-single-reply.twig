@@ -1,0 +1,19 @@
+<div id="bbpress-forums">
+
+	{{ function('bbp_breadcrumb') }}
+
+	{% do action('bbp_template_before_single_reply') %}
+
+	{% if function('post_password_required') %}
+
+		{% include 'bbpress/form-protected.twig' %}
+
+	{% else %}
+
+		{% include 'bbpress/loop-single-reply.twig' %}
+
+	{% endif %}
+
+	{% do action('bbp_template_after_single_reply') %}
+
+</div>

@@ -1,0 +1,13 @@
+<div id="bbpress-forums">
+
+	{{ function('bbp_breadcrumb') }}
+
+	{{ function('bbp_topic_tag_description') }}
+
+	{% do action('bbp_template_before_topic_tag_edit') %}
+
+	{% include 'bbpress/form-topic-tag.twig' %}
+
+	{% do action('bbp_template_after_topic_tag_edit') %}
+
+</div>

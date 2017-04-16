@@ -1,0 +1,91 @@
+{% do action('bbp_template_before_lead_topic') %}
+
+<ul id="bbp-topic-{{ function('bbp_topic_id') }}-lead" class="bbp-lead-topic">
+
+	<li class="bbp-header">
+
+		<div class="bbp-topic-author">{{ __('Creator', 'bbpress') }}</div><!-- .bbp-topic-author -->
+
+		<div class="bbp-topic-content">
+
+			{{ __('Topic', 'bbpress') }}
+
+			{{ function('bbp_topic_subscription_link') }}
+
+			{{ function('bbp_topic_favorite_link') }}
+
+		</div><!-- .bbp-topic-content -->
+
+	</li><!-- .bbp-header -->
+
+	<li class="bbp-body">
+
+		<div class="bbp-topic-header">
+
+			<div class="bbp-meta">
+
+				<span class="bbp-topic-post-date">{{ function('bbp_topic_post_date') }}</span>
+
+				<a href="{{ function('bbp_topic_permalink') }}" class="bbp-topic-permalink">#{{ function('bbp_topic_id') }}</a>
+
+				{% do action('bbp_theme_before_topic_admin_links') %}
+
+				{{ function('bbp_topic_admin_links') }}
+
+				{% do action('bbp_theme_after_topic_admin_links') %}
+
+			</div><!-- .bbp-meta -->
+
+		</div><!-- .bbp-topic-header -->
+
+		<div id="post-{{ function('bbp_topic_id') }}" {{ function('bbp_topic_class') }}>
+
+			<div class="bbp-topic-author">
+
+				{% do action('bbp_theme_before_topic_author_details') %}
+
+				{{ function('bbp_topic_author_link', [{'sep':'<br />'}, {'show_role':1}]) }}
+
+				{% if function('bbp_is_user_keymaster') %}
+
+					{% do action('bbp_theme_before_topic_author_admin_details') %}
+
+					<div class="bbp-topic-ip">{{ function('bbp_author_ip', function('bbp_get_topic_id')) }}</div>
+
+					{% do action('bbp_theme_after_topic_author_admin_details') %}
+
+				{% endif %}
+
+				{% do action('bbp_theme_after_topic_author_details') %}
+
+			</div><!-- .bbp-topic-author -->
+
+			<div class="bbp-topic-content">
+
+				{% do action('bbp_theme_before_topic_content') %}
+
+				{{ function('bbp_topic_content') }}
+
+				{% do action('bbp_theme_after_topic_content') %}
+
+			</div><!-- .bbp-topic-content -->
+
+		</div><!-- #post-{{ function('bbp_topic_id') }} -->
+
+	</li><!-- .bbp-body -->
+
+	<li class="bbp-footer">
+
+		<div class="bbp-topic-author">{{ __('Creator', 'bbpress') }}</div>
+
+		<div class="bbp-topic-content">
+
+			{{ __('Topic', 'bbpress') }}
+
+		</div><!-- .bbp-topic-content -->
+
+	</li>
+
+</ul><!-- #bbp-topic-{{ function('bbp_topic_id') }}-lead -->
+
+{% do action('bbp_template_after_lead_topic') %}

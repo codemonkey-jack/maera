@@ -1,0 +1,53 @@
+<div class="bbp-reply-header">
+
+	<div class="bbp-meta">
+
+		<span class="bbp-reply-post-date">{{ function('bbp_reply_post_date') }}</span>
+
+		<a href="{{ function('bbp_reply_url') }}" class="bbp-reply-permalink">#{{ function('bbp_reply_id') }}</a>
+
+	</div><!-- .bbp-meta -->
+
+	<div class="bbp-reply-title">
+
+		<h3>{{ __('In reply to: ', 'bbpress') }}
+		<a class="bbp-topic-permalink" href="{{ function('bbp_topic_permalink',function('bbp_get_reply_topic_id')) }}">{{ function('bbp_topic_title',function('bbp_get_reply_topic_id')) }}</a></h3>
+
+	</div><!-- .bbp-reply-title -->
+
+</div><!-- .bbp-reply-header -->
+
+<div id="post-{{ function('bbp_reply_id') }}" {{ function('bbp_reply_class') }}>
+
+	<div class="bbp-reply-author">
+
+		{% do action('bbp_theme_before_reply_author_details') %}
+
+		{{ function('bbp_reply_author_link', [{'sep':'<br />'}, {'show_role':true}]) }}
+
+		{% if function('bbp_is_user_keymaster') %}
+
+			{% do action('bbp_theme_before_reply_author_admin_details') %}
+
+			<div class="bbp-reply-ip">{{ function('bbp_author_ip',function('bbp_get_reply_id')) }}</div>
+
+			{% do action('bbp_theme_after_reply_author_admin_details') %}
+
+		{% endif %}
+
+		{% do action('bbp_theme_after_reply_author_details') %}
+
+	</div><!-- .bbp-reply-author -->
+
+	<div class="bbp-reply-content">
+
+		{% do action('bbp_theme_before_reply_content') %}
+
+		{{ function('bbp_reply_content') }}
+
+		{% do action('bbp_theme_after_reply_content') %}
+
+	</div><!-- .bbp-reply-content -->
+
+</div><!-- #post-{{ function('bbp_reply_id') }} -->
+

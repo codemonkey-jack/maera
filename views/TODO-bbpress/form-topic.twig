@@ -1,0 +1,234 @@
+{% if function('bbp_is_single_forum') == false %}
+
+<div id="bbpress-forums">
+
+	{{ function('bbp_breadcrumb') }}
+
+{% endif %}
+
+{% if function('bbp_is_topic_edit') %}
+
+	{{ function('bbp_topic_tag_list',function('bbp_get_topic_id')) }}
+
+	{{ function('bbp_single_topic_description', [{'topic_id':function('bbp_get_topic_id')}]) }}
+
+{% endif %}
+
+{% if function('bbp_current_user_can_access_create_topic_form') %}
+
+	<div id="new-topic-{{ function('bbp_topic_id') }}" class="bbp-topic-form">
+
+		<form id="new-post" name="new-post" method="post" action="{{ function('the_permalink') }}">
+
+			{% do action('bbp_theme_before_topic_form') %}
+
+			<fieldset class="bbp-form">
+				<legend>
+
+					{% if function('bbp_is_topic_edit') %}
+
+						{{ __('Now Editing &ldquo;%s&rdquo;', 'bbpress')|format(function('bbp_get_topic_title')) }}
+
+					{% else %}
+
+						{{ function('bbp_is_single_forum') ? __('Create New Topic in &ldquo;%s&rdquo;', 'bbpress')|format(function('bbp_get_forum_title')) : __('Create New Topic', 'bbpress') }}
+
+					{% endif %}
+
+				</legend>
+
+				{% do action('bbp_theme_before_topic_form_notices') %}
+
+				{% if function('bbp_is_topic_edit') == false and function('bbp_is_forum_closed') %}
+
+					<div class="bbp-template-notice">
+						<p>{{ __('This forum is marked as closed to new topics, however your posting capabilities still allow you to do so.', 'bbpress') }}</p>
+					</div>
+
+				{% endif %}
+
+				{% if function('current_user_can','unfiltered_html') %}
+
+					<div class="bbp-template-notice">
+						<p>{{ __('Your account has the ability to post unrestricted HTML content.', 'bbpress') }}</p>
+					</div>
+
+				{% endif %}
+
+				{% do action('bbp_template_notices') %}
+
+				<div>
+
+					{% include 'bbpress/form-anonymous.twig' %}
+
+					{% do action('bbp_theme_before_topic_form_title') %}
+
+					<p>
+						<label for="bbp_topic_title">{{ __('Topic Title (Maximum Length: %d):', 'bbpress')|format(function('bbp_get_title_max_length')) }}</label><br />
+						<input type="text" id="bbp_topic_title" value="{{ function('bbp_form_topic_title') }}" tabindex="{{ function('bbp_tab_index') }}" size="40" name="bbp_topic_title" maxlength="{{ function('bbp_title_max_length') }}" />
+					</p>
+
+					{% do action('bbp_theme_after_topic_form_title') %}
+
+					{% do action('bbp_theme_before_topic_form_content') %}
+
+					{{ function('bbp_the_content', [{'context':'topic'}]) }}
+
+					{% do action('bbp_theme_after_topic_form_content') %}
+
+					{% if function('bbp_use_wp_editor') == false or function('current_user_can','unfiltered_html')%}
+
+						<p class="form-allowed-tags">
+							<label>{{ __('You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'bbpress') }}</label><br />
+							<code>{{ function('bbp_allowed_tags') }}</code>
+						</p>
+
+					{% endif %}
+
+					{% if function('bbp_allow_topic_tags') and function('current_user_can','assign_topic_tags') %}
+
+						{% do action('bbp_theme_before_topic_form_tags') %}
+
+						<p>
+							<label for="bbp_topic_tags">{{ __('Topic Tags:', 'bbpress') }}</label><br />
+							<input type="text" value="{{ function('bbp_form_topic_tags') }}" tabindex="{{ function('bbp_tab_index') }}" size="40" name="bbp_topic_tags" id="bbp_topic_tags" {{ function('disabled',function('bbp_is_topic_spam')) }} />
+						</p>
+
+						{% do action('bbp_theme_after_topic_form_tags') %}
+
+					{% endif %}
+
+					{% if function('bbp_is_single_forum') == false %}
+
+						{% do action('bbp_theme_before_topic_form_forum') %}
+
+						<p>
+							<label for="bbp_forum_id">{{ __('Forum:', 'bbpress') }}</label><br />
+
+							{{ function('bbp_dropdown', [{'show_none':__('(No Forum)', 'bbpress')}, {'selected':function('bbp_get_form_topic_forum')}]) }}
+
+						</p>
+
+						{% do action('bbp_theme_after_topic_form_forum') %}
+
+					{% endif %}
+
+					{% if function('current_user_can','moderate') %}
+
+						{% do action('bbp_theme_before_topic_form_type') %}
+
+						<p>
+
+							<label for="bbp_stick_topic">{{ __('Topic Type:', 'bbpress') }}</label><br />
+
+							{{ function('bbp_form_topic_type_dropdown') }}
+
+						</p>
+
+						{% do action('bbp_theme_after_topic_form_type') %}
+
+						{% do action('bbp_theme_before_topic_form_status') %}
+
+						<p>
+
+							<label for="bbp_topic_status">{{ __('Topic Status:', 'bbpress') }}</label><br />
+
+							{{ function('bbp_form_topic_status_dropdown') }}
+
+						</p>
+
+						{% do action('bbp_theme_after_topic_form_status') %}
+
+					{% endif %}
+
+					{% if function('bbp_is_subscriptions_active') and function('bbp_is_anonymous') == false and function('bbp_is_topic_edit') == false or function('bbp_is_topic_edit') and function('bbp_is_topic_anonymous') %}
+
+						{% do action('bbp_theme_before_topic_form_subscriptions') %}
+
+						<p>
+							<input name="bbp_topic_subscription" id="bbp_topic_subscription" type="checkbox" value="bbp_subscribe" {{ function('bbp_form_topic_subscribed') }} tabindex="{{ function('bbp_tab_index') }}" />
+
+							{% if function('bbp_is_topic_edit') and function('bbp_get_topic_author_id') != function('bbp_get_current_user_id') %}
+
+								<label for="bbp_topic_subscription">{{ __('Notify the author of follow-up replies via email', 'bbpress') }}</label>
+
+							{% else %}
+
+								<label for="bbp_topic_subscription">{{ __('Notify me of follow-up replies via email', 'bbpress') }}</label>
+
+							{% endif %}
+						</p>
+
+						{% do action('bbp_theme_after_topic_form_subscriptions') %}
+
+					{% endif %}
+
+					{% if function('bbp_allow_revisions') and function('bbp_is_topic_edit') %}
+
+						{% do action('bbp_theme_before_topic_form_revisions') %}
+
+						<fieldset class="bbp-form">
+							<legend>
+								<input name="bbp_log_topic_edit" id="bbp_log_topic_edit" type="checkbox" value="1" {{ function('bbp_form_topic_log_edit') }} tabindex="{{ function('bbp_tab_index') }}" />
+								<label for="bbp_log_topic_edit">{{ __('Keep a log of this edit:', 'bbpress') }}</label><br />
+							</legend>
+
+							<div>
+								<label for="bbp_topic_edit_reason">{{ __('Optional reason for editing:', 'bbpress')|format(function('bbp_get_current_user_name')) }}</label><br />
+								<input type="text" value="{{ function('bbp_form_topic_edit_reason') }}" tabindex="{{ function('bbp_tab_index') }}" size="40" name="bbp_topic_edit_reason" id="bbp_topic_edit_reason" />
+							</div>
+						</fieldset>
+
+						{% do action('bbp_theme_after_topic_form_revisions') %}
+
+					{% endif %}
+
+					{% do action('bbp_theme_before_topic_form_submit_wrapper') %}
+
+					<div class="bbp-submit-wrapper">
+
+						{% do action('bbp_theme_before_topic_form_submit_button') %}
+
+						<button type="submit" tabindex="{{ function('bbp_tab_index') }}" id="bbp_topic_submit" name="bbp_topic_submit" class="button submit">{{ __('Submit', 'bbpress') }}</button>
+
+						{% do action('bbp_theme_after_topic_form_submit_button') %}
+
+					</div>
+
+					{% do action('bbp_theme_after_topic_form_submit_wrapper') %}
+
+				</div>
+
+				{{ function('bbp_topic_form_fields') }}
+
+			</fieldset>
+
+			{% do action('bbp_theme_after_topic_form') %}
+
+		</form>
+	</div>
+
+{% elseif function('bbp_is_forum_closed') %}
+
+	<div id="no-topic-{{ function('bbp_topic_id') }}" class="bbp-no-topic">
+		<div class="bbp-template-notice">
+			<p>{{ __('The forum &#8216;%s&#8217; is closed to new topics and replies.', 'bbpress')|format(function('bbp_get_forum_title')) }}</p>
+		</div>
+	</div>
+
+{% else %}
+
+	<div id="no-topic-{{ function('bbp_topic_id') }}" class="bbp-no-topic">
+		<div class="bbp-template-notice">
+
+			<p>{{ function('is_user_logged_in') ? __('You cannot create new topics.', 'bbpress') : __('You must be logged in to create new topics.', 'bbpress') }}</p>
+		</div>
+	</div>
+
+{% endif %}
+
+{% if function('bbp_is_single_forum') == false %}
+
+</div>
+
+{% endif %}

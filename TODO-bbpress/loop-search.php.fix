@@ -1,0 +1,8 @@
+<?php
+
+//TODO:  This file is calling the loop-search.twig which has "while" loop logic that is not currently supported by Twig/Timber.
+//       Find a workaround for loop-search.twig to support the loop.
+//       See lines 18-24.
+
+
+Maera()->views->render( 'bbpress/loop-search.twig' );

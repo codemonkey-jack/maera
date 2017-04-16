@@ -1,0 +1,174 @@
+<form id="bbp-your-profile" action="{{ function('bbp_user_profile_edit_url',function('bbp_get_displayed_user_id') ) }}" method="post" enctype="multipart/form-data">
+
+	<h2 class="entry-title">{{ __('Name', 'bbpress') }}</h2>
+
+	{% do action('bbp_user_edit_before') %}
+
+	<fieldset class="bbp-form">
+		<legend>{{ __('Name', 'bbpress') }}</legend>
+
+		{% do action('bbp_user_edit_before_name') %}
+
+		<div>
+			<label for="first_name">{{ __('First Name', 'bbpress') }}</label>
+			<input type="text" name="first_name" id="first_name" value="{{ function('bbp_displayed_user_field', 'first_name', 'edit') }}" class="regular-text" tabindex="{{ function('bbp_tab_index') }}" />
+		</div>
+
+		<div>
+			<label for="last_name">{{ __('Last Name', 'bbpress') }}</label>
+			<input type="text" name="last_name" id="last_name" value="{{ function('bbp_displayed_user_field', 'last_name', 'edit') }}" class="regular-text" tabindex="{{ function('bbp_tab_index') }}" />
+		</div>
+
+		<div>
+			<label for="nickname">{{ __('Nickname', 'bbpress') }}</label>
+			<input type="text" name="nickname" id="nickname" value="{{ function('bbp_displayed_user_field', 'nickname', 'edit') }}" class="regular-text" tabindex="{{ function('bbp_tab_index') }}" />
+		</div>
+
+		<div>
+			<label for="display_name">{{ __('Display Name', 'bbpress') }}</label>
+
+			{{ function('bbp_edit_user_display_name') }}
+
+		</div>
+
+		{% do action('bbp_user_edit_after_name') %}
+
+	</fieldset>
+
+	<h2 class="entry-title">{{ __('Contact Info', 'bbpress') }}</h2>
+
+	<fieldset class="bbp-form">
+		<legend>{{ __('Contact Info', 'bbpress') }}</legend>
+
+		{% do action('bbp_user_edit_before_contact') %}
+
+		<div>
+			<label for="url">{{ __('Website', 'bbpress') }}</label>
+			<input type="text" name="url" id="url" value="{{ function('bbp_displayed_user_field', 'user_url', 'edit') }}" class="regular-text code" tabindex="{{ function('bbp_tab_index') }}" />
+		</div>
+
+		{% set names = function('bbp_edit_user_contact_methods') %}
+		{% for name in names %}
+		<?php //foreach ( bbp_edit_user_contact_methods() as $name => $desc ) : ?>
+
+			<div>
+				<label for="{{name|e('html_attr')}}"><?php echo apply_filters( 'user_' . $name . '_label', $desc ); ?></label>
+				<input type="text" name="{{name|e('html_attr')}}" id="{{name|e('html_attr')}}" value="<?php bbp_displayed_user_field( $name, 'edit' ); ?>" class="regular-text" tabindex="{{ function('bbp_tab_index') }}" />
+			</div>
+		<?php //endforeach; ?>
+		{% endfor %}
+
+		{% do action('bbp_user_edit_after_contact') %}
+
+	</fieldset>
+
+	<h2 class="entry-title">{{ function('bbp_is_user_home_edit') ? __('About Yourself', 'bbpress') : __('About the user', 'bbpress') }}</h2>
+
+	<fieldset class="bbp-form">
+		<legend>{{ function('bbp_is_user_home_edit') ? __('About Yourself', 'bbpress') : __('About the user', 'bbpress') }}</legend>
+
+		{% do action('bbp_user_edit_before_about') %}
+
+		<div>
+			<label for="description">{{ __('Biographical Info', 'bbpress') }}</label>
+			<textarea name="description" id="description" rows="5" cols="30" tabindex="{{ function('bbp_tab_index') }}">{{ function('bbp_displayed_user_field', 'description', 'edit') }}</textarea>
+		</div>
+
+		{% do action('bbp_user_edit_after_about') %}
+
+	</fieldset>
+
+	<h2 class="entry-title">{{ __('Account', 'bbpress') }}</h2>
+
+	<fieldset class="bbp-form">
+		<legend>{{ __('Account', 'bbpress') }}</legend>
+
+		{% do action('bbp_user_edit_before_account') %}
+
+		<div>
+			<label for="user_login">{{ __('Username', 'bbpress') }}</label>
+			<input type="text" name="user_login" id="user_login" value="{{ function('bbp_displayed_user_field', 'user_login', 'edit') }}" disabled="disabled" class="regular-text" tabindex="{{ function('bbp_tab_index') }}" />
+		</div>
+
+		<div>
+			<label for="email">{{ __('Email', 'bbpress') }}</label>
+
+			<input type="text" name="email" id="email" value="{{ function('bbp_displayed_user_field', 'email', 'edit') }}" class="regular-text" tabindex="{{ function('bbp_tab_index') }}" />
+
+			{% set new_email = function('get_option',function("bbp_get_displayed_user_id#{_new_email}") ) %}
+
+			{% if new_email == true and new_email != function('bbp_get_displayed_user_field','user_email','edit') %}
+
+				<span class="updated inline">
+
+					{# TODO: This seems incorrect.  Must fix. #}
+					{{ __('There is a pending email address change to <code>%1$s</code>. <a href="%2$s">Cancel</a>', 'bbpress')|format(new_email.newemail, function('self_admin_url', "user.php?dismiss=#{ function( 'bbp_get_current_user_id' ) }_new_email"))|e('url') }}
+
+					<?php //printf( __( 'There is a pending email address change to <code>%1$s</code>. <a href="%2$s">Cancel</a>', 'bbpress' ), $new_email['newemail'], esc_url( self_admin_url( 'user.php?dismiss=' . bbp_get_current_user_id()  . '_new_email' ) ) ); ?>
+
+				</span>
+
+			{% endif %}
+
+		</div>
+
+		<div id="password">
+			<label for="pass1">{{ __('New Password', 'bbpress') }}</label>
+			<fieldset class="bbp-form password">
+				<input type="password" name="pass1" id="pass1" size="16" value="" autocomplete="off" tabindex="{{ function('bbp_tab_index') }}" />
+				<span class="description">{{ __('If you would like to change the password type a new one. Otherwise leave this blank.', 'bbpress') }}</span>
+
+				<input type="password" name="pass2" id="pass2" size="16" value="" autocomplete="off" tabindex="{{ function('bbp_tab_index') }}" />
+				<span class="description">{{ __('Type your new password again.', 'bbpress') }}</span><br />
+
+				<div id="pass-strength-result"></div>
+				<span class="description indicator-hint">{{ __('Your password should be at least ten characters long. Use upper and lower case letters, numbers, and symbols to make it even stronger.', 'bbpress') }}</span>
+			</fieldset>
+		</div>
+
+		{% do action('bbp_user_edit_after_account') %}
+
+	</fieldset>
+
+	{% if function('current_user_can','edit_users') and function('bbp_is_user_home_edit') == false %}
+
+		<h2 class="entry-title">{{ __('User Role', 'bbpress') }}</h2>
+
+		<fieldset class="bbp-form">
+			<legend>{{ __('User Role', 'bbpress') }}</legend>
+
+			{% do action('bbp_user_edit_before_role') %}
+
+			{% if function('is_multisite') and function('is_super_admin') and function('current_user_can','manage_network_options') %}
+
+				<div>
+					<label for="super_admin">{{ __('Network Role', 'bbpress') }}</label>
+					<label>
+						<input class="checkbox" type="checkbox" id="super_admin" name="super_admin"{{ function('checked',function('is_super_admin',function('bbp_get_displayed_user_id')) ) }}tabindex="{{ function('bbp_tab_index') }}" />
+						{{ __('Grant this user super admin privileges for the Network.', 'bbpress') }}
+					</label>
+				</div>
+
+			{% endif %}
+
+			{% include 'bbpress/form-user-roles.twig' %}
+
+			{% do action('bbp_user_edit_after_role') %}
+
+		</fieldset>
+
+	{% endif %}
+
+	{% do action('bbp_user_edit_after') %}
+
+	<fieldset class="submit">
+		<legend>{{ __('Save Changes', 'bbpress') }}</legend>
+		<div>
+
+			{{ function('bbp_edit_user_form_fields') }}
+
+			<button type="submit" tabindex="{{ function('bbp_tab_index') }}" id="bbp_user_edit_submit" name="bbp_user_edit_submit" class="button submit user-submit">{{ function('bbp_is_user_home_edit') ? __('Update Profile', 'bbpress') : __('Update User', 'bbpress') }}</button>
+		</div>
+	</fieldset>
+
+</form>

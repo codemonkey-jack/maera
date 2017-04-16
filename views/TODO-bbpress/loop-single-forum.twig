@@ -1,0 +1,42 @@
+<ul id="bbp-forum-{{ function('bbp_forum_id') }}" {{ function('bbp_forum_class') }}>
+	<li class="bbp-forum-info">
+		{% if function('bbp_is_user_home') and function('bbp_is_subscriptions') %}
+			<span class="bbp-row-actions">
+				{% do action('bbp_theme_before_forum_subscription_action') %}
+				{{ function('bbp_list_forums', [{'before':''}, {'subscribe':'+'}, {'unsubscribe':'&times;'} ]) }}
+				{% do action('bbp_theme_after_forum_subscription_action') %}
+			</span>
+		{% endif %}
+
+		{% do action('bbp_theme_before_forum_title') %}
+		<a class="bbp-forum-title" href="{{ function('bbp_forum_permalink') }}">{{ function('bbp_forum_title') }}</a>
+		{% do action('bbp_theme_after_forum_title') %}
+
+		{% do action('bbp_theme_before_forum_description') %}
+		<div class="bbp-forum-content">{{ function('bbp_forum_content') }}</div>
+		{% do action('bbp_theme_after_forum_description') %}
+
+		{% do action('bbp_theme_before_forum_sub_forums') %}
+		{{ function('bbp_list_forums') }}
+		{% do action('bbp_theme_after_forum_sub_forums') %}
+
+		{{ function('bbp_forum_row_actions') }}
+
+	</li>
+
+	<li class="bbp-forum-topic-count">{{ function('bbp_forum_topic_count') }}</li>
+	<li class="bbp-forum-reply-count">{{ function('bbp_show_lead_topic') ? function('bbp_forum_reply_count') : function('bbp_forum_post_count') }}</li>
+	<li class="bbp-forum-freshness">
+		{% do action('bbp_theme_before_forum_freshness_link') %}
+		{{ function('bbp_forum_freshness_link') }}
+		{% do action('bbp_theme_after_forum_freshness_link') %}
+
+		<p class="bbp-topic-meta">
+			{% do action('bbp_theme_before_topic_author') %}
+			<span class="bbp-topic-freshness-author">
+				{{ function('bbp_author_link', [{'post_id':function('bbp_get_forum_last_active_id')}, {'size':'14'}]) }}
+			</span>
+			{% do action('bbp_theme_after_topic_author') %}
+		</p>
+	</li>
+</ul><!-- #bbp-forum-{{ function('bbp_forum_id') }} -->

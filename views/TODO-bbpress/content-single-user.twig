@@ -1,0 +1,18 @@
+<div id="bbpress-forums">
+
+	{% do action('bbp_template_notices') %}
+
+	<div id="bbp-user-wrapper">
+
+		{% include 'bbpress/user-details.twig' %}
+
+		<div id="bbp-user-body">
+			{% if function('bbp_is_favorites') %} {% include 'bbpress/user-favorites.twig' %} {% endif %}
+			{% if function('bbp_is_subscriptions') %} {% include 'bbpress/user-subscriptions.twig' %} {% endif %}
+			{% if function('bbp_is_single_user_topics') %} {% include 'bbpress/user-topics-created.twig' %} {% endif %}
+			{% if function('bbp_is_single_user_replies') %} {% include 'bbpress/user-replies-created.twig' %} {% endif %}
+			{% if function('bbp_is_single_user_edit') %} {% include 'bbpress/form-user-edit.twig' %} {% endif %}
+			{% if function('bbp_is_single_user_profile') %} {% include 'bbpress/user-profile.twig' %} {% endif %}
+		</div>
+	</div>
+</div>
