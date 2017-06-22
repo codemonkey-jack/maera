@@ -107,15 +107,6 @@ pre {
   word-wrap: break-word;
 }
 
-q {
-  quotes: none;
-}
-
-q:after,q:before {
-  content: '';
-  content: none;
-}
-
 small {
   font-size: 80%;
 }
