@@ -3,8 +3,12 @@
 
 <div class="content-wrapper">
 	{% for post in posts %}
+        {% if fn('post_password_required', post.ID) %}
+            {% include ['content-protected.twig'] %}
+        {% else %}
 		{% include ['content-'~post.ID~'.twig', 'content-'~post.post_type~'.twig', 'content.twig'] %}
-		{{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+        {% endif %}
+        {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
 		<div class="clearfix"></div>
 	{% endfor %}
 </div>
