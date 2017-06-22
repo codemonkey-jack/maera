@@ -1,0 +1,5 @@
+<div class="entry-content" itemprop="text">
+	{% do action( 'maera/attachment/pre_content', post.ID ) %}
+	{{ post.content }}
+	{% do action( 'maera/attachment/after_content', post.ID ) %}
+</div>

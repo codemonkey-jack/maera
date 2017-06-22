@@ -1,0 +1,7 @@
+<article {{ function( 'post_class' ) }} id="post-{{post.ID}}" itemscope itemtype="http://schema.org/Article">
+    {% do action( 'maera/attachment/top', post.ID ) %}
+    {% include ['content-attachment-entry-'~post.ID~'-header.twig', 'content-attachment-entry-'~post.post_type~'-header.twig', 'content-attachment-entry-header.twig'] %}
+    {% include ['content-attachment-entry-'~post.ID~'-meta.twig', 'content-attachment-entry-'~post.post_type~'-meta.twig', 'content-attachment-entry-meta.twig'] %}
+    {% include ['content-attachment-entry-'~post.ID~'-content.twig', 'content-attachment-entry-'~post.post_type~'-content.twig', 'content-attachment-entry-content.twig'] %}
+    {% include ['content-attachment-entry-'~post.ID~'-footer.twig', 'content-attachment-entry-'~post.post_type~'-footer.twig', 'content-attachment-entry-footer.twig'] %}
+</article>

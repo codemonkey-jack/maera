@@ -1,0 +1,12 @@
+<div class="entry-meta">
+	{% if function('get_the_time', 'U', post) is same as(post.get_modified_time('U')) %}
+		<time class="entry-date published" datetime="{{ post.date('c') }}">
+			<span itemprop="datePublished">{{ post.date }}</span>
+		</time>
+	{% else %}
+		<time class="updated" datetime="{{ post.modified_date('c') }}">
+			<span itemprop="datePublished">{{ post.modified_date }}</span>
+		</time>
+	{% endif %}
+	<span class="byline">{{ __( 'by', 'maera' ) }} <span class="author vcard"><a class="url fn n" href="{{ post.author.link }}">{{ post.author.name }}</a></span></span>
+</div>
