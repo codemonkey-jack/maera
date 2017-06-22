@@ -1825,3 +1825,8 @@ figure {
   max-width: 100%;
   margin: 1em 0;
 }
+
+.wp-audio-shortcode,
+.wp-video {
+  margin-top: 1em;
+}
