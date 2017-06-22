@@ -1809,6 +1809,8 @@ body.show-menu #menu {
 
 figure {
   max-width: 100%;
+  display: inline-block;
+  margin: .5em;
 }
 
 .featured-image img {
