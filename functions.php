@@ -45,3 +45,15 @@ global $maera;
 if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 	Maera_EDD::get_instance();
 }
+
+
+
+function maera_replace_title_if_front_page_is_posts( $title ) {
+	if ( 'Archives' == $title ) {
+		$title = 'Blog';
+	}
+
+	return $title;
+}
+
+add_filter( 'get_the_archive_title', 'maera_replace_title_if_front_page_is_posts' );
