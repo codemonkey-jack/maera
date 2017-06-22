@@ -1821,3 +1821,11 @@ figure {
 .wp-video {
   margin-top: 1em;
 }
+
+.protected-msg {
+  margin-top: 0;
+}
+
+.archive .entry-meta {
+  margin-bottom: 1em;
+}
