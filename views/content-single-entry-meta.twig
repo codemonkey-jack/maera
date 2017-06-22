@@ -9,7 +9,9 @@
 		</time>
 	{% endif %}
 	{{ __( 'under', 'maera' ) }}
-	{% for category in post.get_categories %}<a href="{{ category.get_path }}" itemprop="articleSection">{{ category.name }}</a>{% endfor %}
+	{% for category in post.get_categories %}
+		<a href="{{ category.get_path }}" itemprop="articleSection">{{ category.name }}{% if not loop.last %}, {% endif %}</a>
+	{% endfor %}
 	<span class="byline">{{ __( 'by', 'maera' ) }} <span class="author vcard"><a class="url fn n" href="{{ post.author.link }}">{{ post.author.name }}</a></span></span>
 	{% if post.comments %}{{ __( 'with', 'maera' ) }} <a href="{{ post.link }}#comments">{{ post.comment_count }} {{ __( 'comments', 'maera' ) }}</a>{% endif %}
 </div>
