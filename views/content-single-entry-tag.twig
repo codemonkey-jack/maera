@@ -1,0 +1,8 @@
+<div class="entry-meta">
+    {% if post.get_tags|length > 0 %}
+        <span>Tagged:</span>
+        {% for tag in post.get_tags %}
+            <a href="{{ tag.get_path }}" itemprop="articleSection">{{ tag.name }}{% if not loop.last %}, {% endif %}</a>
+        {% endfor %}
+    {% endif %}
+</div>
