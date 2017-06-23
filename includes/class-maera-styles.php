@@ -70,12 +70,10 @@ class Maera_Styles {
 		wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 		// Enqueue Modernizr
-		wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.min.js', false, null, false );
-		wp_enqueue_script( 'modernizr' );
+		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.min.js', false, null, false );
 
 		// Enqueue fitvids
-		wp_register_script( 'fitvids', get_template_directory_uri() . '/assets/js/jquery.fitvids.js',false, null, true  );
-		wp_enqueue_script( 'fitvids' );
+		wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/assets/js/jquery.fitvids.js',false, null, true  );
 
 		// If needed, add the comment-reply script.
 		if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {

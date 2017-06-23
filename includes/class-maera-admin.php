@@ -28,14 +28,14 @@ class Maera_Admin {
 	 * Go to the theme options page after theme activation
 	 */
 	function activation() {
-		if ( current_user_can( 'edit_theme_options' ) ) { 
+		if ( current_user_can( 'edit_theme_options' ) ) {
 		wp_redirect( self_admin_url( 'themes.php?page=theme_options' ) );
 	}
 	else {
 		wp_die( 'Sorry you can\'t do that' );
 	}
 }
-	
+
 
 	/**
 	 * Register our settings
@@ -59,8 +59,7 @@ class Maera_Admin {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 
-		wp_register_style( 'maera-admin-css', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
-		wp_enqueue_style( 'maera-admin-css' );
+		wp_enqueue_style( 'maera_theme_admin_css', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
 
 		wp_enqueue_style( 'dashicons' );
 
