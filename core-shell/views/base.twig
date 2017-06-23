@@ -1,7 +1,7 @@
 {#<?php#}
 <div id="layout" class="g">
-	<div class="main" id="main">
-		<div id="content" class="content u-1 u-md-10-12 u-lg-9-12" itemprop="mainContentOfPage">
+	<div class="main " id="main">
+		<div id="content" class="content u-1-1  u-md-4-5" itemprop="mainContentOfPage">
 			<div class="posts" role="main">
 				{% do action( 'maera/wrap/before', post.ID ) %}
 				{% do action( 'maera/content/before', post.ID ) %}
@@ -10,7 +10,7 @@
 				{% do action( 'maera/main/after', post.ID ) %}
 			</div>
 		</div>
-		<div id="sidebar" class="sidebar u-1 u-md-10-12 u-lg-3-12">
+		<div id="sidebar" class="sidebar u-1-1  u-md-1-5 ">
 			<div class="primary-side">
 				{% include 'sidebar.twig'|apply_filters('maera/sidebar_template') %}
 			</div>

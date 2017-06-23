@@ -368,10 +368,6 @@ textarea {
   width: 95.8333%;
 }
 
-.u-1,.u-1-1,.u-24-24,.u-5-5 {
-  width: 100%;
-}
-
 .button,button,input[type=submit],a.button-primary {
   display: inline-block;
   zoom: 1;
@@ -1076,9 +1072,6 @@ table.horizontal tbody>tr:last-child td {
     width: 95.8333%;
   }
 
-  .u-sm-1,.u-sm-1-1,.u-sm-24-24,.u-sm-5-5 {
-    width: 100%;
-  };
 }
 
 @media screen and (min-width:48em) {
@@ -1778,13 +1771,6 @@ img {
 
 .menu-button:focus {
   border: 2px solid #08c;
-}
-
-#content {
-  max-width:68%;
-}
-#sidebar {
-  width:30%;
 }
 
 body.show-menu #menu {
