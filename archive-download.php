@@ -12,7 +12,7 @@ global $wp_query;
 
 $data = Maera()->template->context();
 
-$data['title'] = __( 'Downloads', 'maera_edd' );
+$data['title'] = esc_html__( 'Downloads', 'maera_edd' );
 $data['posts'] = Timber::query_posts( false, 'TimberPost' );
 $data['query'] = $wp_query->query_vars;
 

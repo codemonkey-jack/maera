@@ -42,7 +42,7 @@ class Maera_Timber extends Maera {
 
 		$context['pagination']           = Timber::get_pagination();
 		$context['comment_form']         = TimberHelper::get_comment_form();
-		$context['comments_args']        = array('style' => 'ul', 'reply_text' => __('Reply','maera'), 'short_ping' => true, 'avatar_size' => 60);
+		$context['comments_args']        = array('style' => 'ul', 'reply_text' => esc_html__('Reply','maera'), 'short_ping' => true, 'avatar_size' => 60);
 		$context['site_logo']            = get_option( 'site_logo', false );
 		$context['content_width']        = $content_width;
 

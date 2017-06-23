@@ -13,10 +13,10 @@ $maera_admin_options = apply_filters( 'maera/admin/options', array(
 $available_shells = apply_filters( 'maera/shells/available', array() );
 
 $cache_modes = array(
-	array( 'value' => 'none',      'label' => __( 'No Caching', 'maera' ) ),
-	array( 'value' => 'object',    'label' => __( 'WP Object Caching', 'maera' ) ),
-	array( 'value' => 'transient', 'label' => __( 'Transients', 'maera' ) ),
-	array( 'value' => 'default',   'label' => __( 'Default', 'maera' ) ),
+	array( 'value' => 'none',      'label' => esc_html__( 'No Caching', 'maera' ) ),
+	array( 'value' => 'object',    'label' => esc_html__( 'WP Object Caching', 'maera' ) ),
+	array( 'value' => 'transient', 'label' => esc_html__( 'Transients', 'maera' ) ),
+	array( 'value' => 'default',   'label' => esc_html__( 'Default', 'maera' ) ),
 );
 
 $settings = get_option( 'maera_admin_options', $maera_admin_options );
@@ -36,7 +36,7 @@ $settings['cache_mode']  = ! isset( $settings['cache_mode'] )  ? 'none' : $setti
 		<div id="maera_shell_select" class="postbox ">
 			<h3 class="hndle"><span><?php _e( 'Select a Shell', 'maera' ); ?></span></h3>
 			<div class="inside">
-				<?php echo apply_filters( 'maera/admin/shell_select_description', __( 'You can select the shell that you want to activate here. Please note that when changing shells all your settings are lost so you should keep a backup of them.', 'maera' ) ); ?>
+				<?php echo apply_filters( 'maera/admin/shell_select_description', esc_html__( 'You can select the shell that you want to activate here. Please note that when changing shells all your settings are lost so you should keep a backup of them.', 'maera' ) ); ?>
 				<br>
 				<?php foreach( $available_shells as $available_shell ) : ?>
 					<input type="radio" id="<?php echo $available_shell['value']; ?>" name="maera_admin_options[shell]" value="<?php esc_attr_e( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />

@@ -18,7 +18,7 @@ class Maera_Core_Customizer {
 	function add_section( $wp_customize ) {
 
 		$wp_customize->add_section( 'maera_options', array(
-			'title'    => __( 'Maera Options', 'themename' ),
+			'title'    => esc_html__( 'Maera Options', 'themename' ),
 			'priority' => 1,
 		) );
 
@@ -75,39 +75,39 @@ class Maera_Core_Customizer {
 		}
 
 		$wp_customize->add_control( 'maera_shell', array(
-			'label'       => __( 'Shell', 'themename' ),
+			'label'       => esc_html__( 'Shell', 'themename' ),
 			'section'     => 'maera_options',
 			'settings'    => 'maera_admin_options[shell]',
-			'description' => __( 'You can change the active shell here. Please note that the changes will not take effect immediately. You will have to save and your selection and then refresh this page. All current options will be lost, so we advise you to first export them from the "Theme Options" page on your dashboard.', 'maera' ),
+			'description' => esc_html__( 'You can change the active shell here. Please note that the changes will not take effect immediately. You will have to save and your selection and then refresh this page. All current options will be lost, so we advise you to first export them from the "Theme Options" page on your dashboard.', 'maera' ),
 			'type'        => 'radio',
 			'choices'     => $shells,
 		) );
 
 		$wp_customize->add_control( 'maera_dev_mode', array(
-			'label'       => __( 'Enable Development Mode', 'themename' ),
+			'label'       => esc_html__( 'Enable Development Mode', 'themename' ),
 			'section'     => 'maera_options',
 			'settings'    => 'maera_admin_options[dev_mode]',
 			'type'        => 'checkbox',
 		) );
 
 		$wp_customize->add_control( 'maera_cache_mode', array(
-			'label'       => __( 'Cache mode.', 'maera' ),
+			'label'       => esc_html__( 'Cache mode.', 'maera' ),
 			'section'     => 'maera_options',
 			'settings'    => 'maera_admin_options[cache_mode]',
 			'type'        => 'select',
 			'default'     => 'none',
 			'choices'     => array(
-				'none'      => __( 'No Caching', 'maera' ),
-				'object'    => __( 'WP Object Caching', 'maera' ),
-				'transient' => __( 'Transients', 'maera' ),
-				'default'   => __( 'Default', 'maera' ),
+				'none'      => esc_html__( 'No Caching', 'maera' ),
+				'object'    => esc_html__( 'WP Object Caching', 'maera' ),
+				'transient' => esc_html__( 'Transients', 'maera' ),
+				'default'   => esc_html__( 'Default', 'maera' ),
 			),
 		) );
 
 		$wp_customize->add_control( 'maera_reset', array(
-			'label'       => __( 'Reset', 'maera' ),
+			'label'       => esc_html__( 'Reset', 'maera' ),
 			'section'     => 'maera_options',
-			'description' => __( 'Please enter RESET to reset the theme mods.', 'maera' ),
+			'description' => esc_html__( 'Please enter RESET to reset the theme mods.', 'maera' ),
 			'settings'    => 'maera_admin_options[reset]',
 			'type'        => 'text',
 			'default'     => '',

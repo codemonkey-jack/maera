@@ -13,7 +13,7 @@
         {% else %}
 
         {% include 'content-page.twig' %}
-        {{ function( 'wp_link_pages', { 'before': '<div class="page-links">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+        {{ function( 'wp_link_pages', { 'before': '<div class="page-links">' . fn( 'esc_html__', 'Pages:', 'maera' ), 'after': '</div>' }) }}
 
         {% endif %}
     {% endfor %}

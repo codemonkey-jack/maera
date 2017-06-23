@@ -19,7 +19,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 	function __construct() {
 
 		$widget_ops = array(
-			'classname'   => __( 'maera_latest_posts', 'maera' ),
+			'classname'   => esc_html__( 'maera_latest_posts', 'maera' ),
 			'description' => '',
 		);
 
@@ -31,7 +31,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 
 		parent::__construct(
 			'maera_ext_posts_widget_latest_articles',
-			__( 'Maera Latest Posts', 'maera' ),
+			esc_html__( 'Maera Latest Posts', 'maera' ),
 			$widget_ops,
 			$control_ops
 		);
@@ -143,7 +143,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 			'thumb_width'     => 150,
 			'thumb_height'    => 100,
 			'excerpt_length'  => 20,
-			'more_text'       => __( 'Read More', 'maera' ),
+			'more_text'       => esc_html__( 'Read More', 'maera' ),
 			'post_title_size' => 'h4',
 		);
 

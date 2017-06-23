@@ -71,9 +71,9 @@ class Maera_Admin {
 	function tabs() {
 
 		return apply_filters( 'maera/admin/tabs', array(
-			'general'   => __( 'General', 'maera' ),
-			'settings'  => __( 'Settings', 'maera' ),
-			'docs'      => __( 'Documentation', 'maera' ),
+			'general'   => esc_html__( 'General', 'maera' ),
+			'settings'  => esc_html__( 'Settings', 'maera' ),
+			'docs'      => esc_html__( 'Documentation', 'maera' ),
 		) );
 
 	}
@@ -178,10 +178,10 @@ class Maera_Admin {
 		$available_shells = apply_filters( 'maera/shells/available', array() );
 
 		$cache_modes = array(
-			array( 'value' => 'none',      'label' => __( 'No Caching', 'maera' ) ),
-			array( 'value' => 'object',    'label' => __( 'WP Object Caching', 'maera' ) ),
-			array( 'value' => 'transient', 'label' => __( 'Transients', 'maera' ) ),
-			array( 'value' => 'default',   'label' => __( 'Default', 'maera' ) ),
+			array( 'value' => 'none',      'label' => esc_html__( 'No Caching', 'maera' ) ),
+			array( 'value' => 'object',    'label' => esc_html__( 'WP Object Caching', 'maera' ) ),
+			array( 'value' => 'transient', 'label' => esc_html__( 'Transients', 'maera' ) ),
+			array( 'value' => 'default',   'label' => esc_html__( 'Default', 'maera' ) ),
 		);
 
 		$settings = get_option( 'maera_admin_options', $maera_admin_options );
@@ -192,7 +192,7 @@ class Maera_Admin {
 		if ( ! get_user_meta( $user_id, 'maera_multiple_shells_notification_ignore' ) && $display_shell_notification ) : ?>
 			<div class="updated">
 				<p><?php printf(
-					__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>' ),
+					esc_html__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>' ),
 					admin_url( 'themes.php?page=theme_options&tab=settings' ),
 					'?maera_multiple_shells_notification_ignore=0'
 				); ?></p>

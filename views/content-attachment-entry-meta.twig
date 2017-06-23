@@ -8,5 +8,5 @@
 			<span itemprop="datePublished">{{ post.modified_date }}</span>
 		</time>
 	{% endif %}
-	<span class="byline">{{ __( 'by', 'maera' ) }} <span class="author vcard"><a class="url fn n" href="{{ post.author.link }}">{{ post.author.name }}</a></span></span>
+	<span class="byline">{{ fn( 'esc_html__', 'by', 'maera' ) }} <span class="author vcard"><a class="url fn n" href="{{ post.author.link }}">{{ post.author.name }}</a></span></span>
 </div>

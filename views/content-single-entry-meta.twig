@@ -8,10 +8,10 @@
 			<span itemprop="datePublished">{{ post.modified_date }}</span>
 		</time>
 	{% endif %}
-	{{ __( 'under', 'maera' ) }}
+	{{ fn( 'esc_html__', 'under', 'maera' ) }}
 	{% for category in post.get_categories %}
 		<a href="{{ category.get_path }}" itemprop="articleSection">{{ category.name }}{% if not loop.last %}, {% endif %}</a>
 	{% endfor %}
-	<span class="byline">{{ __( 'by', 'maera' ) }} <span class="author vcard"><a class="url fn n" href="{{ post.author.link }}">{{ post.author.name }}</a></span></span>
-	{% if post.comments %}{{ __( 'with', 'maera' ) }} <a href="{{ post.link }}#comments">{{ post.comment_count }} {{ __( 'comments', 'maera' ) }}</a>{% endif %}
+	<span class="byline">{{ fn( 'esc_html__', 'by', 'maera' ) }} <span class="author vcard"><a class="url fn n" href="{{ post.author.link }}">{{ post.author.name }}</a></span></span>
+	{% if post.comments %}{{ fn( 'esc_html__', 'with', 'maera' ) }} <a href="{{ post.link }}#comments">{{ post.comment_count }} {{ fn( 'esc_html__', 'comments', 'maera' ) }}</a>{% endif %}
 </div>

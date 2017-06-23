@@ -5,7 +5,7 @@
  *
  * $widget_widths = new Maera_Widget_Dropdown_Class( array(
  *     'id'      => 'maera_widget_width',
- *     'label'   => __( 'Width', 'maera' ),
+ *     'label'   => esc_html__( 'Width', 'maera' ),
  *     'default' => 12,
  *     'choices' => array(
  *         12 => array( 'label' => 'Full',       'classes' => 'col s12' ),

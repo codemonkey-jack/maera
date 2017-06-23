@@ -24,7 +24,7 @@
 	{% endblock %}
 
 	<body class="container base-container {{ body_class }}" data-source="base.twig">
-		<a href="#content" class="screen-reader-text">{{ __( 'Skip to main content', 'maera' ) }}</a>
+		<a href="#content" class="screen-reader-text">{{ fn('esc_html__', 'Skip to main content', 'maera') }}</a>
 
 		{% if function( 'has_nav_menu', 'primary_navigation' ) %}
 			<button class="menu-button" id="open-button"></button>

@@ -13,7 +13,7 @@
             </form>
         {% else %}
             {% include ['content-single-'~post.ID~'.twig', 'content-single-'~post.post_type~'.twig', 'content-single.twig'] %}
-            {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+            {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . fn( 'esc_html__', 'Pages:', 'maera' ), 'after': '</div>' }) }}
         {% endif %}
         <div class="clearfix"></div>
     {% endfor %}
