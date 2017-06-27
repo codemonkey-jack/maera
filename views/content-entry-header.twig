@@ -1,7 +1,7 @@
 <header class="entry-header">
 	{% do action( 'maera/teaser/start', post.ID ) %}
-	<title itemprop="name">{{ post.title }}</title>
-	<h2 class="entry-title"><a href="{{ post.link }}">{{ post.title|apply_filters( 'maera/title' ) }}</a></h2>
+	<title itemprop="name">{{ fn( 'esc_attr', post.title ) }}</title>
+	<h2 class="entry-title"><a href="{{ fn( 'esc_url', post.link ) }}">{{ post.title|apply_filters( 'maera/title' ) }}</a></h2>
 	{% if post.post_type == 'post' %}
 		{% include ['content-single-entry-'~post.ID~'-meta.twig', 'content-single-entry-'~post.post_type~'-meta.twig', 'content-single-entry-meta.twig'] %}
 	{% endif %}

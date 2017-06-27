@@ -1,4 +1,4 @@
 <header class="entry-header">
-	<title itemprop="name">{{ post.title }}</title>
+	<title itemprop="name">{{ fn( 'esc_attr', post.title ) }}</title>
 	<h1 class="entry-title">{{ post.title|apply_filters( 'maera/title' ) }}</h1>
 </header>

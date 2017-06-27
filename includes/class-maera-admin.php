@@ -86,7 +86,8 @@ class Maera_Admin {
 		foreach( $tabs as $tab => $name ){
 
 			$class = ( $tab == $current ) ? ' nav-tab-active' : '';
-			$content .= '<a class="nav-tab' . $class . '" href="?page=theme_options&tab=' . $tab . '">' . $name . '</a>';
+			$href = esc_url( '?page=theme_options&tab=' . $tab );
+			$content .= '<a class="nav-tab' . $class . '" href="' . $href . '">' . $name . '</a>';
 
 		}
 
@@ -191,11 +192,15 @@ class Maera_Admin {
 
 		if ( ! get_user_meta( $user_id, 'maera_multiple_shells_notification_ignore' ) && $display_shell_notification ) : ?>
 			<div class="updated">
-				<p><?php printf(
-					esc_html__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>' ),
-					admin_url( 'themes.php?page=theme_options&tab=settings' ),
-					'?maera_multiple_shells_notification_ignore=0'
-				); ?></p>
+				<p>
+					<?php
+						printf(
+							esc_html__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>' ),
+							esc_url( admin_url( 'themes.php?page=theme_options&tab=settings' ) ),
+							esc_url( '?maera_multiple_shells_notification_ignore=0' )
+						);
+					?>
+				</p>
 			</div>
 		<?php endif;
 

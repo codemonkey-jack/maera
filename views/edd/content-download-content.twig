@@ -5,7 +5,7 @@
 
 {{ panel_open('content') }}
 	{{ panel_heading_open() }}
-		<a title="{{ fn( 'esc_html__', 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ post.title }}</a>
+		<a title="{{ fn( 'esc_html__', 'View', 'maera_edd' ) }} {{ fn( 'esc_attr', post.title ) }}" href="{{ fn( 'esc_url, post.link ) }}">{{ fn( 'esc_attr', post.title ) }}</a>
 	{{ panel_heading_close }}
 	{{ post.get_preview(20|apply_filters(excerpt_length)) }}
 	<div class="edd_download_buy_button">

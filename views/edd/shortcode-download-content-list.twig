@@ -6,7 +6,7 @@
 		<div class="[maera_grid_col_3]">
 			<a class="download-featured-image" title="{{ fn( 'esc_html__', 'View', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
 				{% if post.thumbnail %}
-					<img src="{{ post.thumbnail.src|resize( width, height ) }}">
+					<img src="{{ fn( 'esc_url', post.thumbnail.src|resize( width, height ) ) }}">
 				{% else %}
 					<img src="{{ default_image.src|resize( width, height, 'center' ) }}">
 				{% endif %}

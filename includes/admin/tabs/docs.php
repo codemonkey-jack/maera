@@ -17,7 +17,7 @@ $docs_tabs = array(
 <div id="docs-tabs">
 	<ul>
 		<?php foreach ( $docs_tabs as $docs_tab => $docs_tab_label ) : ?>
-			<li><a href="#<?php echo $docs_tab; ?>"><?php echo $docs_tab_label; ?></a></li>
+			<li><a href="#<?php echo esc_attr( $docs_tab ); ?>"><?php echo $docs_tab_label; ?></a></li>
 		<?php endforeach; ?>
 	</ul>
 

@@ -22,8 +22,8 @@
 			</div>
 	{% endif %}
 		<a class="download-featured-image" title="{{ fn( 'esc_html__', 'View', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
-			{% if post.thumbnail.src %}<img src="{{ post.thumbnail.src|resize( width, height ) }}">
-			{% else %}<img src="{{ default_image.src|resize( width, height, 'center' ) }}">{% endif %}
+			{% if post.thumbnail.src %}<img src="{{ fn( 'esc_url', post.thumbnail.src|resize( width, height ) ) }}">
+			{% else %}<img src="{{ fn( 'esc_url', default_image.src|resize( width, height, 'center' ) ) }}">{% endif %}
 		</a>
 	{% if display_buy_btn == 'yes' %}</div>{% endif %}
 	<div class="grid-download-hentry-content">

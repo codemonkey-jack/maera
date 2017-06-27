@@ -1,7 +1,7 @@
 {% set width  = content_width // 3 %}
 {% set height = width // 1.618 %}
 
-<a class="download-featured-image" title="{{ fn( 'esc_html__', 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">
-	{% if post.thumbnail %}<img src="{{ post.thumbnail.src|resize( width, height ) }}">
-	{% else %}<img src="{{ default_image.src|resize( width, height, 'center' ) }}">{% endif %}
+<a class="download-featured-image" title="{{ fn( 'esc_html__', 'View', 'maera_edd' ) }} {{ fn( 'esc_attr', post.title ) }}" href="{{ fn( 'esc_url', post.link ) }}">
+	{% if post.thumbnail %}<img src="{{ fn( 'esc_url', post.thumbnail.src|resize( width, height ) ) }}">
+	{% else %}<img src="{{ fn( 'esc_url', default_image.src|resize( width, height, 'center' ) ) }}">{% endif %}
 </a>
