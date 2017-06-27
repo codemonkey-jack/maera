@@ -33,24 +33,29 @@ class Maera_Core_Customizer {
 			'default'        => 'core',
 			'type'           => 'option',
 			'capability'     => 'edit_theme_options',
+			'sanitize_callback' => array( $this, 'sanitize_text_value' ),
+
 		) );
 
 		$wp_customize->add_setting( 'maera_admin_options[dev_mode]', array(
-			'default'        => 'core',
-			'type'           => 'option',
-			'capability'     => 'edit_theme_options',
+			'default'        	=> 'core',
+			'type'           	=> 'option',
+			'capability'     	=> 'edit_theme_options',
+			'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 		) );
 
 		$wp_customize->add_setting( 'maera_admin_options[cache]', array(
 			'default'        => 'core',
 			'type'           => 'option',
 			'capability'     => 'edit_theme_options',
+
 		) );
 
 		$wp_customize->add_setting( 'maera_admin_options[cache_mode]', array(
 			'default'        => 'core',
 			'type'           => 'option',
 			'capability'     => 'edit_theme_options',
+			'sanitize_callback' => array( $this, 'sanitize_text_value' ),
 		) );
 
 		$wp_customize->add_setting( 'maera_admin_options[reset]', array(
@@ -123,5 +128,13 @@ class Maera_Core_Customizer {
 
 		return '';
 
+	}
+
+	function sanitize_checkbox( $checked ) {
+		return ( ( isset( $checked ) && true == $checked ) ? true : false );
+	}
+
+	function sanitize_text_field( $input ) {
+		return sanitize_text_field( $input );
 	}
 }
