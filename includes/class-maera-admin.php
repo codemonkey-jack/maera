@@ -120,8 +120,8 @@ class Maera_Admin {
 			<?php echo $this->tabs_head( $current ); ?>
 			<?php foreach ( $tabs as $tab => $label ) : ?>
 				<?php if ( $current == $tab ) : ?>
-					<?php if ( file_exists( dirname( __FILE__ ) . '/admin/tabs/' . $tab . '.php' ) ) : ?>
-						<?php include( dirname( __FILE__ ) . '/admin/tabs/' . $tab . '.php' ); ?>
+					<?php if ( file_exists( get_template_directory() . '/includes/admin/tabs/' . $tab . '.php' ) ) : ?>
+						<?php include( get_template_directory() . '/includes/admin/tabs/' . $tab . '.php' ); ?>
 					<?php endif; ?>
 					<?php do_action( 'maera/admin/' . $tab ); ?>
 				<?php endif; ?>
