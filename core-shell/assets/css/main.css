@@ -1452,6 +1452,7 @@ table.horizontal tbody>tr:last-child td {
 a {
   text-decoration: none;
   color: #3d92c9;
+  line-height: 1.5;
 }
 
 a:focus,a:hover {
@@ -1816,4 +1817,8 @@ figure {
 
 .archive .entry-meta {
   margin-bottom: 1em;
+}
+
+#comments li.comment {
+  list-style-type: none;
 }
