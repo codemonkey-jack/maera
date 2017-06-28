@@ -18,7 +18,7 @@ class Maera_Core_Customizer {
 	function add_section( $wp_customize ) {
 
 		$wp_customize->add_section( 'maera_options', array(
-			'title'    => esc_html__( 'Maera Options', 'themename' ),
+			'title'    => esc_html__( 'Maera Options', 'maera' ),
 			'priority' => 1,
 		) );
 
@@ -80,7 +80,7 @@ class Maera_Core_Customizer {
 		}
 
 		$wp_customize->add_control( 'maera_shell', array(
-			'label'       => esc_html__( 'Shell', 'themename' ),
+			'label'       => esc_html__( 'Shell', 'maera' ),
 			'section'     => 'maera_options',
 			'settings'    => 'maera_admin_options[shell]',
 			'description' => esc_html__( 'You can change the active shell here. Please note that the changes will not take effect immediately. You will have to save and your selection and then refresh this page. All current options will be lost, so we advise you to first export them from the "Theme Options" page on your dashboard.', 'maera' ),
@@ -89,7 +89,7 @@ class Maera_Core_Customizer {
 		) );
 
 		$wp_customize->add_control( 'maera_dev_mode', array(
-			'label'       => esc_html__( 'Enable Development Mode', 'themename' ),
+			'label'       => esc_html__( 'Enable Development Mode', 'maera' ),
 			'section'     => 'maera_options',
 			'settings'    => 'maera_admin_options[dev_mode]',
 			'type'        => 'checkbox',

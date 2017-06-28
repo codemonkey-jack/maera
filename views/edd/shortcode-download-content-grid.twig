@@ -8,27 +8,27 @@
 		{# Buy Button #}
 			<div class="edd_download_buy_button" onclick="location.href = '{{ post.link }}';">
 				{% if post.edd_coming_soon %}
-					<a class="button [maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ fn( 'esc_html__', 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
+					<a class="button [maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ fn( 'esc_html__', 'Details', 'maera' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
 						{% if post.edd_coming_soon_text %}{{ post.edd_coming_soon_text }}
-						{% else %}{{ fn( 'esc_html__','Coming Soon', 'maera_edd') }}{% endif %}
+						{% else %}{{ fn( 'esc_html__','Coming Soon', 'maera') }}{% endif %}
 					</a>
 				{% else %}
 					{% if variable_priced %}
-						<a class="button [maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ fn( 'esc_html__', 'Details', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">{{ fn( 'esc_html__','Details', 'maera_edd') }}</a>
+						<a class="button [maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ fn( 'esc_html__', 'Details', 'maera' ) }} {{ post.title|striptags }}" href="{{ post.link }}">{{ fn( 'esc_html__','Details', 'maera') }}</a>
 					{% else %}
 						{{ function('edd_get_purchase_link', [{'download_id':post.ID}]) }}
 					{% endif %}
 				{% endif %}
 			</div>
 	{% endif %}
-		<a class="download-featured-image" title="{{ fn( 'esc_html__', 'View', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
+		<a class="download-featured-image" title="{{ fn( 'esc_html__', 'View', 'maera' ) }} {{ post.title|striptags }}" href="{{ post.link }}">
 			{% if post.thumbnail.src %}<img src="{{ fn( 'esc_url', post.thumbnail.src|resize( width, height ) ) }}">
 			{% else %}<img src="{{ fn( 'esc_url', default_image.src|resize( width, height, 'center' ) ) }}">{% endif %}
 		</a>
 	{% if display_buy_btn == 'yes' %}</div>{% endif %}
 	<div class="grid-download-hentry-content">
 		{# The title of the download #}
-		<h4 class="grid-download-title"><a title="{{ fn( 'esc_html__', 'View', 'maera_edd' ) }} {{ post.title|striptags }}" href="{{ post.link }}">{{ post.title|striptags }}</a></h4>
+		<h4 class="grid-download-title"><a title="{{ fn( 'esc_html__', 'View', 'maera' ) }} {{ post.title|striptags }}" href="{{ post.link }}">{{ post.title|striptags }}</a></h4>
 		{# Excerpt and Content #}
 		{% if display_excerpt %}
 			{{ post.get_preview(20|apply_filters(excerpt_length)) }}

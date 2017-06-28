@@ -21,7 +21,7 @@ class Maera_EDD_Customizer {
 	function create_section( $wp_customize ) {
 
 		$wp_customize->add_section( 'maera_edd', array(
-			'title'    => esc_html__( 'Easy Digital Downloads', 'maera_edd' ),
+			'title'    => esc_html__( 'Easy Digital Downloads', 'maera' ),
 			'priority' => 999,
 		) );
 
@@ -38,8 +38,8 @@ class Maera_EDD_Customizer {
 		$controls[] = array(
 			'type'     => 'select',
 			'setting'  => 'checkout_color',
-			'label'    => esc_html__( 'Button color', 'maera_edd' ),
-			'subtitle' => esc_html__( 'Select the button color for the purchase/buynow button.', 'maera_edd' ) . ' ' . esc_html__( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera_edd' ),
+			'label'    => esc_html__( 'Button color', 'maera' ),
+			'subtitle' => esc_html__( 'Select the button color for the purchase/buynow button.', 'maera' ) . ' ' . esc_html__( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera' ),
 			'section'  => 'maera_edd',
 			'priority' => 12,
 			'default'  => $edd_options['checkout_color'],
@@ -59,14 +59,14 @@ class Maera_EDD_Customizer {
 		$controls[] = array(
 			'type'     => 'select',
 			'setting'  => 'hover_type',
-			'label'    => esc_html__( 'Hover Type', 'maera_edd' ),
-			'subtitle' => esc_html__( 'Select the hover type for the grid display.', 'maera_edd' ),
+			'label'    => esc_html__( 'Hover Type', 'maera' ),
+			'subtitle' => esc_html__( 'Select the hover type for the grid display.', 'maera' ),
 			'section'  => 'maera_edd',
 			'priority' => 13,
 			'default'  => 'edd',
 			'choices'  => array(
-				'edd'  => esc_html__( 'EDD style', 'maera_edd' ),
-				'zoe'  => esc_html__( 'Zoe', 'maera_edd' ),
+				'edd'  => esc_html__( 'EDD style', 'maera' ),
+				'zoe'  => esc_html__( 'Zoe', 'maera' ),
 			),
 
 		);
@@ -74,7 +74,7 @@ class Maera_EDD_Customizer {
 		$controls[] = array(
 			'type'     => 'checkbox',
 			'setting'  => 'edd_variables_dropdown',
-			'label'    => esc_html__( 'Replace variables radio select with a dropdown', 'maera_edd' ),
+			'label'    => esc_html__( 'Replace variables radio select with a dropdown', 'maera' ),
 			'section'  => 'maera_edd',
 			'default'  => 0,
 			'priority' => 20,
@@ -84,14 +84,14 @@ class Maera_EDD_Customizer {
 			'type'     => 'radio',
 			'mode'     => 'buttonset',
 			'setting'  => 'filter_mode',
-			'label'    => esc_html__( 'Downloads filter mode', 'textdomain' ),
-			'subtitle' => esc_html__( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera_edd' ),
+			'label'    => esc_html__( 'Downloads filter mode', 'maera' ),
+			'subtitle' => esc_html__( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera' ),
 			'section'  => 'maera_edd',
 			'default'  => 'php',
 			'priority' => 1,
 			'choices'  => array(
-				'isotope' => esc_html__( 'Isotope', 'maera_edd' ),
-				'php'     => esc_html__( 'PHP', 'maera_edd' ),
+				'isotope' => esc_html__( 'Isotope', 'maera' ),
+				'php'     => esc_html__( 'PHP', 'maera' ),
 			),
 		);
 

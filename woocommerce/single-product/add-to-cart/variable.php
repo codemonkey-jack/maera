@@ -24,7 +24,7 @@ global $product, $post;
 					<tr>
 						<td class="label"><label for="<?php echo sanitize_title( $name ); ?>"><?php echo wc_attribute_label( $name ); ?></label></td>
 						<td class="value"><select id="<?php echo esc_attr( sanitize_title( $name ) ); ?>" name="attribute_<?php echo sanitize_title( $name ); ?>" data-attribute_name="attribute_<?php echo sanitize_title( $name ); ?>">
-							<option value=""><?php echo esc_html__( 'Choose an option', 'woocommerce' ) ?>&hellip;</option>
+							<option value=""><?php echo esc_html__( 'Choose an option', 'maera' ) ?>&hellip;</option>
 							<?php
 								if ( is_array( $options ) ) {
 
@@ -59,7 +59,7 @@ global $product, $post;
 							?>
 						</select> <?php
 							if ( sizeof( $attributes ) === $loop ) {
-								echo '<a class="reset_variations" href="#reset">' . esc_html__( 'Clear selection', 'woocommerce' ) . '</a>';
+								echo '<a class="reset_variations" href="#reset">' . esc_html__( 'Clear selection', 'maera' ) . '</a>';
 							}
 						?></td>
 					</tr>
@@ -90,7 +90,7 @@ global $product, $post;
 
 	<?php else : ?>
 
-		<p class="stock out-of-stock"><?php _e( 'This product is currently out of stock and unavailable.', 'woocommerce' ); ?></p>
+		<p class="stock out-of-stock"><?php _e( 'This product is currently out of stock and unavailable.', 'maera' ); ?></p>
 
 	<?php endif; ?>
 
