@@ -1,17 +1,47 @@
 <div id="wiki-body" class="gollum-markdown-content instapaper_body">
 <div class="markdown-body">
-<p>Maera is a WordPress theme and as such it follows the default WordPress <a href="http://wphierarchy.com/">template hierarchy</a>. However, we do have some extra stuff going on under the hood that we have found make life a lot easier both for skilled developers and for novice users that may not be php developers. </p>
+<?php
+printf(
+    '<p>%s<a href="%s">%s</a>%s</p>',
+    esc_html__( 'Maera is a WordPress theme and as such it follows the default WordPress ', 'maera' ),
+    esc_url( 'http://wphierarchy.com/' ),
+    esc_html__( 'template hierarchy', 'maera' ),
+    esc_html__( ' However, we do have some extra stuff going on under the hood that we have found make life a lot easier both for skilled developers and for novice users that may not be php developers.', 'maera' )
+);
 
-<p>In addition to the default template files that you can use if you want, we also provide a "views" folder that contains "twig" files. You can learn more about the twig language by clicking on <a href="http://twig.sensiolabs.org/">this link</a>.
-<code>twig</code> files have a structure and syntax a lot easier and more user-friendly than php. For example if you wanted to echo something in PHP, you would do this:</p>
+?>
+
+<?php
+printf(
+    "<p>%s<a href='%s'>%s</a>.\n<code>%s</code>%s</p>",
+    esc_html__( 'In addition to the default template files that you can use if you want, we also provide a "views" folder that contains "twig" files. You can learn more about the twig language by clicking on ', 'maera' ),
+    esc_url( 'http://twig.sensiolabs.org/' ),
+    esc_html__( 'this link', 'maera' ),
+    esc_html( 'twig' ),
+    esc_html__( ' files have a structure and syntax a lot easier and more user-friendly than php. For example if you wanted to echo something in PHP, you would do this:', 'maera' )
+);
+
+?>
 
 <div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-s3">echo</span> <span class="pl-vo">$foo</span>; </span><span class="pl-pse"><span class="pl-s2">?</span>&gt;</span></pre></div>
 
-<p>In twig however it's a lot simpler than that:</p>
+<?php
+printf(
+    "<p>%s</p>",
+   esc_html__( 'In twig however it\'s a lot simpler than that:', 'maera' )
+);
+?>
 
 <div class="highlight highlight-twig"><pre>{{ <span class="pl-vo">foo</span> }}</pre></div>
 
-<p>You can learn more about the syntax and naming conventions by reading the <a href="https://github.com/jarednova/timber/wiki">Timber Docs</a>. </p>
+<?php
+printf(
+    "<p>%s <a href='%s'>%s</a>. </p>",
+   esc_html__( 'You can learn more about the syntax and naming conventions by reading the', 'maera' ),
+   esc_url( 'https://github.com/jarednova/timber/wiki' ),
+   esc_html__( 'Timber docs', 'maera' )
+);
+?>
 
 <p>To add your own templates you can create a <a>Child Theme</a> and either create custom php template files like you would do on every other WordPress theme, or custom twig templates.
 The template hierarchy of the twig files is the same as the <a>default WordPress templates structure</a>, simply by replacing the <code>.php</code> suffix with <code>.twig</code>.
@@ -102,13 +132,17 @@ sidebar-{post-ID}.twig, sidebar-page.twig, sidebar-single.twig, sidebar.twig
 </tr>
 </tbody></table>
 
-<h2>
-<a id="user-content-the-stucture-of-a-rendered-page" class="anchor" href="#the-stucture-of-a-rendered-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>The stucture of a rendered page</h2>
+<?php
+printf(
+    '<h2><a id="user-content-the-stucture-of-a-rendered-page" class="anchor" href="#the-stucture-of-a-rendered-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>%s</h2>',
+   esc_html__( 'The stucture of a rendered page', 'maera' )
+);
+?>
 
 <p>We divided the pages in sub-files in ordet to make them more modular.
 You can see the twig file template parts on the below diagram:
 <img src="https://camo.githubusercontent.com/160ce61f2a2250b16807698a3f093e9bf7d6158f/68747470733a2f2f70726573732e636f6465732f77702d636f6e74656e742f75706c6f6164732f74656d706c6174652d7374727563747572652e706e67" alt="Twig Template Parts" data-canonical-src="https://press.codes/wp-content/uploads/template-structure.png">
-<a href="https://press.codes/wp-content/uploads/template-structure.png">Get this file for a larger view</a></p>
+<a href="https://press.codes/wp-content/uploads/template-structure.png"><?php echo esc_html__( 'Get this file for a larger view', 'maera' ); ?> </a></p>
 
 <h2>
 <a id="user-content-post-properties-in-twig-files" class="anchor" href="#post-properties-in-twig-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Post properties in twig files</h2>

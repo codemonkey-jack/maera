@@ -48,7 +48,7 @@ class Maera_Admin {
 	 * Add the admin page
 	 */
 	function maera_admin_options() {
-		add_theme_page( 'Theme Options', 'Theme Options', 'edit_theme_options', 'theme_options', array( $this, 'admin_page' ) );
+		add_theme_page( __( 'Theme Options', 'maera' ), __( 'Theme Options', 'maera' ), 'edit_theme_options', 'theme_options', array( $this, 'admin_page' ) );
 	}
 
 	/**
@@ -195,7 +195,7 @@ class Maera_Admin {
 				<p>
 					<?php
 						printf(
-							esc_html__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>' ),
+							esc_html__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>', 'maera' ),
 							esc_url( admin_url( 'themes.php?page=theme_options&tab=settings' ) ),
 							esc_url( '?maera_multiple_shells_notification_ignore=0' )
 						);

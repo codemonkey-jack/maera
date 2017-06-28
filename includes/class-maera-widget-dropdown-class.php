@@ -90,7 +90,7 @@ class Maera_Widget_Dropdown_Class {
 		<div style="margin-top: 1em;">
 			<label for="<?php echo $widget->get_field_id( $this->id ); ?>"><?php echo $this->label; ?></label>
 			<select class="widefat" id="<?php echo $widget->get_field_id( $this->id ); ?>" name="<?php echo $widget->get_field_name( $this->id ); ?>">
-				<option value="-1"><?php _e( '', 'maera_md' ); ?></option>
+				<option value="-1"></option>
 				<?php foreach ( $choices as $choice => $options ) : ?>
 
 					<option value="<?php echo esc_attr( $choice ); ?>" <?php selected( $instance[$this->id], $choice) ?> <?php echo $options['label']; ?></option>

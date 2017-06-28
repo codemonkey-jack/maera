@@ -39,8 +39,8 @@ $settings['cache_mode']  = ! isset( $settings['cache_mode'] )  ? 'none' : $setti
 				<?php echo apply_filters( 'maera/admin/shell_select_description', esc_html__( 'You can select the shell that you want to activate here. Please note that when changing shells all your settings are lost so you should keep a backup of them.', 'maera' ) ); ?>
 				<br>
 				<?php foreach( $available_shells as $available_shell ) : ?>
-					<input type="radio" id="<?php echo $available_shell['value']; ?>" name="maera_admin_options[shell]" value="<?php esc_attr_e( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />
-					<label for="<?php echo $available_shell['value']; ?>"><?php echo $available_shell['label']; ?></label><br />
+					<input type="radio" id="<?php echo esc_attr( $available_shell['value'] ); ?>" name="maera_admin_options[shell]" value="<?php echo esc_attr( $available_shell['value'] ); ?>" <?php checked( $settings['shell'], $available_shell['value'] ); ?> />
+					<label for="<?php echo esc_attr( $available_shell['value'] ); ?>"><?php echo esc_attr( $available_shell['label'] ); ?></label><br />
 				<?php endforeach; ?>
 			</div>
 		</div>

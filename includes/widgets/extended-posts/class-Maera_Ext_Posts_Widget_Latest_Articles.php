@@ -19,7 +19,7 @@ class Maera_Ext_Posts_Widget_Latest_Articles extends WP_Widget {
 	function __construct() {
 
 		$widget_ops = array(
-			'classname'   => esc_html__( 'maera_latest_posts', 'maera' ),
+			'classname'   => esc_attr( 'maera_latest_posts' ),
 			'description' => '',
 		);
 
