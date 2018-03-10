@@ -6,7 +6,7 @@
 
 	<div class="{{ button_group_classes() }}" id="isotope-categories">
 		<a class="button {{ button_classes( 'default', 'extra-small', null, null ) }}" data-filter="*">
-			{{ __( 'All', 'maera_edd' ) }}
+			{{ fn( 'esc_html__', 'All', 'maera' ) }}
 		</a>
 		{% for download_category in download_categories %}
 			{% if download_category.get_posts %}
@@ -25,10 +25,10 @@
 	</div>
 
 	<div id="isotope-sort">
-		<h5 class="secondary label">{{ __( 'Sort by:', 'maera_edd' ) }}</h5>
-		<a class="active"  data-sort-by="title-def">{{ __( 'Default', 'maera_edd' ) }} <i class="fi-minus"></i></a>
-		<a data-sort-by="title-asc">{{ __( 'Title', 'maera_edd' ) }} <i class="dashicons dashicons-arrow-up"></i></a>
-		<a data-sort-by="title-dsc">{{ __( 'Title', 'maera_edd' ) }} <i class="dashicons dashicons-arrow-down"></i></a>
+		<h5 class="secondary label">{{ fn( 'esc_html__', 'Sort by:', 'maera' ) }}</h5>
+		<a class="active"  data-sort-by="title-def">{{ fn( 'esc_html__', 'Default', 'maera' ) }} <i class="fi-minus"></i></a>
+		<a data-sort-by="title-asc">{{ fn( 'esc_html__', 'Title', 'maera' ) }} <i class="dashicons dashicons-arrow-up"></i></a>
+		<a data-sort-by="title-dsc">{{ fn( 'esc_html__', 'Title', 'maera' ) }} <i class="dashicons dashicons-arrow-down"></i></a>
 	</div>
 
 </div>

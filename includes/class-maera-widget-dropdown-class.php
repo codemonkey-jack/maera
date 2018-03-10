@@ -5,7 +5,7 @@
  *
  * $widget_widths = new Maera_Widget_Dropdown_Class( array(
  *     'id'      => 'maera_widget_width',
- *     'label'   => __( 'Width', 'maera' ),
+ *     'label'   => esc_html__( 'Width', 'maera' ),
  *     'default' => 12,
  *     'choices' => array(
  *         12 => array( 'label' => 'Full',       'classes' => 'col s12' ),
@@ -90,10 +90,10 @@ class Maera_Widget_Dropdown_Class {
 		<div style="margin-top: 1em;">
 			<label for="<?php echo $widget->get_field_id( $this->id ); ?>"><?php echo $this->label; ?></label>
 			<select class="widefat" id="<?php echo $widget->get_field_id( $this->id ); ?>" name="<?php echo $widget->get_field_name( $this->id ); ?>">
-				<option value="-1"><?php _e( '', 'maera_md' ); ?></option>
+				<option value="-1"></option>
 				<?php foreach ( $choices as $choice => $options ) : ?>
-					<?php $selected = ( ( ( $choice == $instance[$this->id] ) || empty( $instance[$this->id] ) ) ? ' selected="selected"' : '' ); ?>
-					<option value="<?php echo $choice; ?>"<?php echo $selected; ?>><?php echo $options['label']; ?></option>
+
+					<option value="<?php echo esc_attr( $choice ); ?>" <?php selected( $instance[$this->id], $choice) ?> <?php echo $options['label']; ?></option>
 				<?php endforeach; ?>
 			</select>
 		</div>

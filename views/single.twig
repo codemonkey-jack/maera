@@ -2,9 +2,19 @@
 {% block content %}
 
 <div class="content-wrapper">
+
     {% for post in posts %}
-        {% include ['content-single-'~post.ID~'.twig', 'content-single-'~post.post_type~'.twig', 'content-single.twig'] %}
-        {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . __( 'Pages:', 'maera' ), 'after': '</div>' }) }}
+        {% if fn('post_password_required', post.ID) %}
+            <h3>The content of this page is password-protected</h3>
+            <form class="password-form" action="{{site.link}}/wp-login.php?action=postpass" method="post">
+                <label for="pwbox-{{post.ID}}">Password:</label>
+                <input class="password-box" name="post_password" id="pwbox-{{post.ID}}" type="password" placeholder="Password" size="20" maxlength="20" />
+                <input class="password-btn" type="submit" name="Submit" value="Submit" />
+            </form>
+        {% else %}
+            {% include ['content-single-'~post.ID~'.twig', 'content-single-'~post.post_type~'.twig', 'content-single.twig'] %}
+            {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . fn( 'esc_html__', 'Pages:', 'maera' ), 'after': '</div>' }) }}
+        {% endif %}
         <div class="clearfix"></div>
     {% endfor %}
 </div>

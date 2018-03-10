@@ -11,7 +11,7 @@ function maera_widgets_init() {
 
 	// Sidebars
 	register_sidebar( array(
-		'name'          => __( 'Primary Sidebar', 'maera' ),
+		'name'          => esc_html__( 'Primary Sidebar', 'maera' ),
 		'id'            => 'sidebar_primary',
 		'before_widget' => apply_filters( 'maera/widgets/before', '<section id="%1$s" class="' . $class . ' widget %2$s">' ),
 		'after_widget'  => apply_filters( 'maera/widgets/after', '</section>' ),

@@ -10,7 +10,7 @@
 		<div class="{{ grid.row() }} bg">
 			<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
 				{% do action( 'maera/main/before', post.ID ) %}
-				{% block main %}{{ __( 'Sorry, no content', 'maera' ) }}{% endblock %}
+				{% block main %}{{ fn( 'esc_html__', 'Sorry, no content', 'maera' ) }}{% endblock %}
 				{% do action( 'maera/main/after', post.ID ) %}
 				{% include 'sidebar.twig'|apply_filters('maera/sidebar_template') %}
 			</div>

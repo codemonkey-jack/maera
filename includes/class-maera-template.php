@@ -85,7 +85,7 @@ class Maera_Template {
 		}
 
 		if ( is_search() ) {
-			$context['title'] = __( 'Search results for ', 'maera' ) . get_search_query();
+			$context['title'] = esc_html__( 'Search results for ', 'maera' ) . get_search_query();
 		}
 
 		if ( is_archive() || is_home() ) {

@@ -9,12 +9,12 @@
 	{% for post in posts %}
 		<article class="maera_latest_posts_article">
 			<header class="title">
-				<a href="{{ post.link }}"><{{ widget.post_title_size }}>{{ post.title }}</{{widget.post_title_size}}></a>
+				<a href="{{ post.link }}"><{{ widget.post_title_size }}>{{ fn( 'esc_attr', post.title ) }}</{{widget.post_title_size}}></a>
 			</header>
 			<div class="post-content">
 				{% if post.thumbnail %}
 					<a href="{{ post.link }}" {% if widget.thumb_float %}class="{{ shell.float_class('left') }}"{% endif %}>
-						<img {% if widget.thumb_float %}class="alignleft" {% endif %}src="{{ post.get_thumbnail.get_src|resize(widget.thumb_width, widget.thumb_height) }}">
+						<img {% if widget.thumb_float %}class="alignleft" {% endif %}src="{{ fn( 'esc_url', post.get_thumbnail.get_src|resize(widget.thumb_width, widget.thumb_height) ) }}">
 					</a>
 				{% endif %}
 				<div class="inner">

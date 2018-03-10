@@ -69,8 +69,8 @@ class Maera {
 
 		return $args;
 
-	}	
-	
+	}
+
 	/**
 	 * Build the array of required plugins.
 	 * You can use the 'maera/required_plugins' filter to add or remove plugins.
@@ -105,8 +105,14 @@ class Maera {
 	 */
 	function updates() {
 
-		if ( ! get_option( 'maera_version' ) ) {
-			update_option( 'maera_version', MAERA_VERSION );
+		$options = get_option( 'maera_admin_options', array() );
+		if ( !isset( $options['maera_version'] ) ) {
+			$options['maera_version'] = MAERA_VERSION;
+			update_option( 'maera_admin_options', $options );
+		}
+
+		if( get_option( 'maera_version' ) ) {
+			delete_option( 'maera_version' );
 		}
 
 	}

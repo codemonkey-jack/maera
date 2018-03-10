@@ -4,11 +4,11 @@
 <section id="comments" class="comments">
 
 	{% if post.comment_status == 'closed' %}
-		{{ alert('warning', __( 'Comments are closed.', 'maera' ), false, 'comments-disabled', false) }}
+		{{ alert('warning', fn( 'esc_html__', 'Comments are closed.', 'maera' ), false, 'comments-disabled', false) }}
 	{% endif %}
 
 	<div class="respond">
-		<h2 class="h2">{{ __( 'Comments', 'maera' ) }} <span class="dashicons dashicons-testimonial"></span></h2>
+		<h2 class="h2">{{ fn( 'esc_html__', 'Comments', 'maera' ) }} <span class="dashicons dashicons-testimonial"></span></h2>
 
 		{% if post.comments %}
 			{{ function( 'wp_list_comments', comments_args ) }}

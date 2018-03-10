@@ -1,0 +1,12 @@
+{% extends "main.twig" %}
+{% block content %}
+
+<div class="content-wrapper">
+    {% for post in posts %}
+        {% include ['content-attachment-'~post.ID~'.twig', 'content-attachment-'~post.post_type~'.twig', 'content-attachment.twig'] %}
+        {{ function( 'wp_link_pages', { 'before': '<div class="page-links" itemprop="pagination">' . fn( 'esc_html__', 'Pages:', 'maera' ), 'after': '</div>' }) }}
+        <div class="clearfix"></div>
+    {% endfor %}
+</div>
+
+{% endblock %}

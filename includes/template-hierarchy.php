@@ -51,6 +51,15 @@ function maera_templates_hierarchy( $templates = array() ) {
 
 	}
 
+	// Attachment templates
+	if ( is_attachment() ) {
+		$post = new TimberPost();
+
+		$templates[] = 'attachment-' . $post->ID . '.twig';
+		$templates[] = 'attachment-' . $post->post_type . '.twig';
+		$templates[] = 'attachment.twig';
+	}
+
  	// Singular templates
 	if ( is_single() || is_singular( get_post_type() ) ) {
 

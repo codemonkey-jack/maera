@@ -28,14 +28,14 @@ class Maera_Admin {
 	 * Go to the theme options page after theme activation
 	 */
 	function activation() {
-		if ( current_user_can( 'edit_theme_options' ) ) { 
+		if ( current_user_can( 'edit_theme_options' ) ) {
 		wp_redirect( self_admin_url( 'themes.php?page=theme_options' ) );
 	}
 	else {
 		wp_die( 'Sorry you can\'t do that' );
 	}
 }
-	
+
 
 	/**
 	 * Register our settings
@@ -48,7 +48,7 @@ class Maera_Admin {
 	 * Add the admin page
 	 */
 	function maera_admin_options() {
-		add_theme_page( 'Theme Options', 'Theme Options', 'edit_theme_options', 'theme_options', array( $this, 'admin_page' ) );
+		add_theme_page( __( 'Theme Options', 'maera' ), __( 'Theme Options', 'maera' ), 'edit_theme_options', 'theme_options', array( $this, 'admin_page' ) );
 	}
 
 	/**
@@ -59,8 +59,7 @@ class Maera_Admin {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 
-		wp_register_style( 'maera-admin-css', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
-		wp_enqueue_style( 'maera-admin-css' );
+		wp_enqueue_style( 'maera_theme_admin_css', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
 
 		wp_enqueue_style( 'dashicons' );
 
@@ -72,9 +71,9 @@ class Maera_Admin {
 	function tabs() {
 
 		return apply_filters( 'maera/admin/tabs', array(
-			'general'   => __( 'General', 'maera' ),
-			'settings'  => __( 'Settings', 'maera' ),
-			'docs'      => __( 'Documentation', 'maera' ),
+			'general'   => esc_html__( 'General', 'maera' ),
+			'settings'  => esc_html__( 'Settings', 'maera' ),
+			'docs'      => esc_html__( 'Documentation', 'maera' ),
 		) );
 
 	}
@@ -87,7 +86,8 @@ class Maera_Admin {
 		foreach( $tabs as $tab => $name ){
 
 			$class = ( $tab == $current ) ? ' nav-tab-active' : '';
-			$content .= '<a class="nav-tab' . $class . '" href="?page=theme_options&tab=' . $tab . '">' . $name . '</a>';
+			$href = esc_url( '?page=theme_options&tab=' . $tab );
+			$content .= '<a class="nav-tab' . $class . '" href="' . $href . '">' . $name . '</a>';
 
 		}
 
@@ -120,8 +120,8 @@ class Maera_Admin {
 			<?php echo $this->tabs_head( $current ); ?>
 			<?php foreach ( $tabs as $tab => $label ) : ?>
 				<?php if ( $current == $tab ) : ?>
-					<?php if ( file_exists( dirname( __FILE__ ) . '/admin/tabs/' . $tab . '.php' ) ) : ?>
-						<?php include( dirname( __FILE__ ) . '/admin/tabs/' . $tab . '.php' ); ?>
+					<?php if ( file_exists( get_template_directory() . '/includes/admin/tabs/' . $tab . '.php' ) ) : ?>
+						<?php include( get_template_directory() . '/includes/admin/tabs/' . $tab . '.php' ); ?>
 					<?php endif; ?>
 					<?php do_action( 'maera/admin/' . $tab ); ?>
 				<?php endif; ?>
@@ -179,10 +179,10 @@ class Maera_Admin {
 		$available_shells = apply_filters( 'maera/shells/available', array() );
 
 		$cache_modes = array(
-			array( 'value' => 'none',      'label' => __( 'No Caching', 'maera' ) ),
-			array( 'value' => 'object',    'label' => __( 'WP Object Caching', 'maera' ) ),
-			array( 'value' => 'transient', 'label' => __( 'Transients', 'maera' ) ),
-			array( 'value' => 'default',   'label' => __( 'Default', 'maera' ) ),
+			array( 'value' => 'none',      'label' => esc_html__( 'No Caching', 'maera' ) ),
+			array( 'value' => 'object',    'label' => esc_html__( 'WP Object Caching', 'maera' ) ),
+			array( 'value' => 'transient', 'label' => esc_html__( 'Transients', 'maera' ) ),
+			array( 'value' => 'default',   'label' => esc_html__( 'Default', 'maera' ) ),
 		);
 
 		$settings = get_option( 'maera_admin_options', $maera_admin_options );
@@ -192,11 +192,15 @@ class Maera_Admin {
 
 		if ( ! get_user_meta( $user_id, 'maera_multiple_shells_notification_ignore' ) && $display_shell_notification ) : ?>
 			<div class="updated">
-				<p><?php printf(
-					__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>' ),
-					admin_url( 'themes.php?page=theme_options&tab=settings' ),
-					'?maera_multiple_shells_notification_ignore=0'
-				); ?></p>
+				<p>
+					<?php
+						printf(
+							esc_html__( 'We have detected that you are have installed a Maera Shell but still have the Core shell active. Please visit the <a href="%1$s">Settings</a> tab in your theme options to activate your new shell. | <a href="%2$s">Hide this notice</a>', 'maera' ),
+							esc_url( admin_url( 'themes.php?page=theme_options&tab=settings' ) ),
+							esc_url( '?maera_multiple_shells_notification_ignore=0' )
+						);
+					?>
+				</p>
 			</div>
 		<?php endif;
 

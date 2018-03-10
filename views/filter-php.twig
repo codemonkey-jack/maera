@@ -6,9 +6,9 @@
 {{ row_open('form', '', 'edd-filters-form', 'action="/" method="get"') }}
 
 	<div class="[maera_grid_col_3]">
-		<label for="download_category_dropdown">{{ __( 'Choose a category', 'maera_edd' ) }}
+		<label for="download_category_dropdown">{{ fn( 'esc_html__', 'Choose a category', 'maera' ) }}
 			<select class="postform" name="download_category_dropdown" id="download_category_dropdown">
-				<option value="-1">{{ __( 'All', 'maera_edd' ) }}</option>
+				<option value="-1">{{ fn( 'esc_html__', 'All', 'maera' ) }}</option>
 				{% for download_category in download_categories %}
 					{% if download_category.get_posts %}
 						<option class="level-0" value="{{ download_category.slug }}"{{ query.download_category == download_category.slug ? ' selected' : '' }}>
@@ -21,9 +21,9 @@
 	</div>
 
 	<div class="[maera_grid_col_3] end">
-		<label for="download_tag_dropdown">{{ __( 'Choose a tag', 'maera_edd' ) }}
+		<label for="download_tag_dropdown">{{ fn( 'esc_html__', 'Choose a tag', 'maera' ) }}
 			<select class="postform" name="download_tag_dropdown" id="download_tag_dropdown">
-				<option value="-1">{{ __( 'All', 'maera_edd' ) }}</option>
+				<option value="-1">{{ fn( 'esc_html__', 'All', 'maera' ) }}</option>
 				{% for download_tag in download_tags %}
 					{% if download_tag.get_posts %}
 						<option class="level-0" value="{{ download_tag.slug }}"{{ query.download_tag == download_tag.slug ? ' selected' : '' }}>

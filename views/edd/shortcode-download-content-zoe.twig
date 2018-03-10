@@ -3,24 +3,24 @@
 
 <div id="post-{{ post.ID }}" {{ function('post_class', download_classes) }}>
 
-	{% if post.thumbnail %}<img src="{{ post.thumbnail.src|resize( width, height ) }}">
-	{% else %}<img src="{{ default_image.src|resize( width, height, 'center' ) }}">{% endif %}
+	{% if post.thumbnail %}<img src="{{ fn( 'esc_url', post.thumbnail.src|resize( width, height ) ) }}">
+	{% else %}<img src="{{ fn( 'esc_url', default_image.src|resize( width, height, 'center' ) ) }}">{% endif %}
 
 	<div class="content">
-		<h5 class="title clearfix">{{ post.title }}</h5>
+		<h5 class="title clearfix">{{ fn( 'esc_attr', post.title ) }}</h5>
 		<p class="icon-links">
 			{% if post.edd_coming_soon %}
-				<a class="[maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">
+				<a class="[maera_button_default_small] {{ theme.theme_mod('checkout_color', 'blue') }} radius" title="{{ fn( 'esc_html__', 'Details', 'maera' ) }} {{ fn( 'esc_attr', post.title ) }}" href="{{ fn( 'esc_url', fn( ) 'esc_url', post.link ) }}">
 					{% if post.edd_coming_soon_text %}{{ post.edd_coming_soon_text }}
-					{% else %}{{ __('Coming Soon', 'maera_edd') }}{% endif %}
+					{% else %}{{ fn( 'esc_html__','Coming Soon', 'maera') }}{% endif %}
 				</a>
 			{% else %}
 				{% if variable_priced %}
-					<a class="{{ theme.theme_mod('checkout_color', 'blue') }}" title="{{ __( 'Choose options for ', '	maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="dashicons dashicons-screenoptions"></span></a>
-					<a class="{{ theme.theme_mod('checkout_color', 'blue') }}" title="{{ __( 'More details on ', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="dashicons dashicons-visibility"></span></a>
+					<a class="{{ theme.theme_mod('checkout_color', 'blue') }}" title="{{ fn( 'esc_html__', 'Choose options for ', '	maera' ) }} {{ fn( 'esc_attr', post.title ) }}" href="{{ fn( 'esc_url', post.link ) }}"><span class="dashicons dashicons-screenoptions"></span></a>
+					<a class="{{ theme.theme_mod('checkout_color', 'blue') }}" title="{{ fn( 'esc_html__', 'More details on ', 'maera' ) }} {{ fn( 'esc_attr', post.title ) }}" href="{{ fn( 'esc_url', post.link ) }}"><span class="dashicons dashicons-visibility"></span></a>
 				{% else %}
-					<a class="{{ theme.theme_mod('checkout_color', 'blue') }}" title="{{ __( 'Add to cart', 'maera_edd' ) }}" href="{{ site.link }}?edd_action=add_to_cart&download_id={{ post.ID }}"><span class="dashicons dashicons-cart"></span></a>
-					<a class="{{ theme.theme_mod('checkout_color', 'blue') }}" title="{{ __( 'More details on ', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="dashicons dashicons-visibility"></span></a>
+					<a class="{{ theme.theme_mod('checkout_color', 'blue') }}" title="{{ fn( 'esc_html__', 'Add to cart', 'maera' ) }}" href="{{ fn( 'esc_url', site.link ) }}?edd_action=add_to_cart&download_id={{ post.ID }}"><span class="dashicons dashicons-cart"></span></a>
+					<a class="{{ theme.theme_mod('checkout_color', 'blue') }}" title="{{ fn( 'esc_html__', 'More details on ', 'maera' ) }} {{ fn( 'esc_attr', post.title ) }}" href="{{ fn( 'esc_url', post.link ) }}"><span class="dashicons dashicons-visibility"></span></a>
 				{% endif %}
 			{% endif %}
 		</p>
