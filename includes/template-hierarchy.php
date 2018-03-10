@@ -102,8 +102,8 @@ function maera_templates_hierarchy( $templates = array() ) {
  	// Tag templates
  	if ( is_tag() ) {
 
-		$tag = get_tag( get_query_var( 'tag' ) );
-		$tag_id = get_query_var( 'tag_id' );
+		$tag = get_term_by( 'slug', get_query_var( 'tag' ), 'post_tag' );
+		$tag_id = $tag->term_id;
 		$tag_slug = $tag->slug;
 
 		$templates[] = 'tag-' . $tag_slug . '.twig';
