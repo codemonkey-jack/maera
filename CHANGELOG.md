@@ -1,3 +1,29 @@
+## 2.0
+
+* Fix Multiple DB options
+* Fix Template Tag Archive function
+* Fix styling of categories when there are 20+ resulting in grouped up categories
+* Add post tag display
+* Fix Attachment Pages
+* Add styling for [audio] and [video] shortcodes
+* Fix password protected posts
+* Add styling for quote tags
+* Fix readability of Byline
+* Fix archive page titles
+* Add styling for [gallery] shortcode
+* Fix multiple responsive issues
+* Modify/Fix script registration
+* Fix translation and strings
+* Fix hardcoding of some scripts
+* Add extra sanitzation checks to edd templates and core shell
+* Fix missing sanitization for theme Customizer options
+* Fix wrong filenames
+* Fix multiple issues with translations and textdomains using incorrect functions and missing text domain
+* Add support for core WordPress CSS classes
+* Fix styling on comments
+* Fix styling on widgets
+
+
 ## 1.4
 
 * Fix searchform.twig causing internal server errors
