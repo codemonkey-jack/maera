@@ -1,6 +1,6 @@
 === Maera ===
 
-[Maera](https://wpsatchel.com/downloads/maera/) is a developer-friendly theme that allows you to quickly prototype sites and extend it with your own custom plugins.
+[Maera](#) is a developer-friendly theme that allows you to quickly prototype sites and extend it with your own custom plugins.
 
 == Instructions ==
 
@@ -25,6 +25,48 @@ Additional plugins may depend on other plugins and in that case you will be noti
 Chrome, Firefox, Safari and IE10+ are supported. IE7, IE8 and IE9 are not supported.
 
 == Changelog ==
+
+= 2.0 =
+
+* Fix Multiple DB options
+* Fix Template Tag Archive function
+* Fix styling of categories when there are 20+ resulting in grouped up categories
+* Add post tag display
+* Fix Attachment Pages
+* Add styling for [audio] and [video] shortcodes
+* Fix password protected posts
+* Add styling for quote tags
+* Fix readability of Byline
+* Fix archive page titles
+* Add styling for [gallery] shortcode
+* Fix multiple responsive issues
+* Modify/Fix script registration
+* Fix translation and strings
+* Fix hardcoding of some scripts
+* Add extra sanitzation checks to edd templates and core shell
+* Fix missing sanitization for theme Customizer options
+* Fix wrong filenames
+* Fix multiple issues with translations and textdomains using incorrect functions and missing text domain
+* Add support for core WordPress CSS classes
+* Fix styling on comments
+* Fix styling on widgets
+
+= 1.4 =
+
+* Fix searchform.twig causing internal server errors
+* Remove search filter breaking external search plugins
+* Fix use correct function for locating files
+* Fix multiple warnings
+* Modification: No Longer require Kirki for the core framework
+* Remove admin notice about the add-ons tabs that was removed in prior versions
+* Modification: Stop auto-activating plugins
+* Remove un-needed jQuery enqueue
+* Remove Kirki as an embedded plugin
+* Remove Timber as an embedded plugin
+
+= 1.3 =
+
+* Bug Fixes
 
 = 1.2 =
 
