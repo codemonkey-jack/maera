@@ -67,6 +67,8 @@ class Maera_Styles {
 		}
 		wp_enqueue_style( 'maera', get_stylesheet_uri(), false, MAERA_VERSION );
 
+		wp_enqueue_script( 'maera-jquery', get_template_directory_uri() . '/assets/js/jquery-3.1.1.min.js', array(), '20130115', true );
+
 		wp_enqueue_script( 'maera-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 		// Enqueue Modernizr
